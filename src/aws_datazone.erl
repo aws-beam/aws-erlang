@@ -808,6 +808,7 @@
 %%   <<"assetId">> => string(),
 %%   <<"errorMessage">> => [string()],
 %%   <<"filterIds">> => list(string()),
+%%   <<"scopeName">> => [string()],
 %%   <<"status">> => [string()]
 %% }
 -type asset_scope() :: #{binary() => any()}.

@@ -82,6 +82,9 @@
          delete_privacy_budget_template/5,
          disallow_intermediate_table/3,
          disallow_intermediate_table/4,
+         get_analysis_log_export/3,
+         get_analysis_log_export/5,
+         get_analysis_log_export/6,
          get_analysis_template/3,
          get_analysis_template/5,
          get_analysis_template/6,
@@ -148,6 +151,9 @@
          get_schema_analysis_rule/4,
          get_schema_analysis_rule/6,
          get_schema_analysis_rule/7,
+         list_analysis_log_exports/2,
+         list_analysis_log_exports/4,
+         list_analysis_log_exports/5,
          list_analysis_templates/2,
          list_analysis_templates/4,
          list_analysis_templates/5,
@@ -223,6 +229,8 @@
          populate_intermediate_table/5,
          preview_privacy_impact/3,
          preview_privacy_impact/4,
+         start_analysis_log_export/3,
+         start_analysis_log_export/4,
          start_protected_job/3,
          start_protected_job/4,
          start_protected_query/3,
@@ -335,6 +343,62 @@
 %%   <<"type">> => string()
 %% }
 -type aggregation_constraint() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_log_export() :: #{
+%%   <<"analysisId">> => string(),
+%%   <<"analysisLogExportId">> => string(),
+%%   <<"analysisType">> => list(any()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"error">> => analysis_log_export_error(),
+%%   <<"membershipId">> => string(),
+%%   <<"resultConfiguration">> => analysis_log_export_result_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"updateTime">> => [non_neg_integer()]
+%% }
+-type analysis_log_export() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_log_export_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type analysis_log_export_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_log_export_output_configuration() :: #{
+%%   <<"s3">> => analysis_log_export_s3_output_configuration()
+%% }
+-type analysis_log_export_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_log_export_result_configuration() :: #{
+%%   <<"outputConfiguration">> => analysis_log_export_output_configuration()
+%% }
+-type analysis_log_export_result_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_log_export_s3_output_configuration() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"keyPrefix">> => string()
+%% }
+-type analysis_log_export_s3_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_log_export_summary() :: #{
+%%   <<"analysisId">> => string(),
+%%   <<"analysisLogExportId">> => string(),
+%%   <<"analysisType">> => list(any()),
+%%   <<"createTime">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type analysis_log_export_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1600,6 +1664,17 @@
 -type error_message_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% get_analysis_log_export_input() :: #{}
+-type get_analysis_log_export_input() :: #{}.
+
+
+%% Example:
+%% get_analysis_log_export_output() :: #{
+%%   <<"analysisLogExport">> => analysis_log_export()
+%% }
+-type get_analysis_log_export_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_analysis_template_input() :: #{}
 -type get_analysis_template_input() :: #{}.
 
@@ -2219,6 +2294,24 @@
 %%   <<"isResponsible">> => [boolean()]
 %% }
 -type job_compute_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analysis_log_exports_input() :: #{
+%%   <<"analysisIdentifier">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_analysis_log_exports_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_analysis_log_exports_output() :: #{
+%%   <<"analysisLogExports">> => list(analysis_log_export_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_analysis_log_exports_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3292,6 +3385,22 @@
 
 
 %% Example:
+%% start_analysis_log_export_input() :: #{
+%%   <<"analysisId">> := string(),
+%%   <<"analysisType">> := list(any()),
+%%   <<"resultConfiguration">> := analysis_log_export_result_configuration()
+%% }
+-type start_analysis_log_export_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_analysis_log_export_output() :: #{
+%%   <<"analysisLogExport">> => analysis_log_export()
+%% }
+-type start_analysis_log_export_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_protected_job_input() :: #{
 %%   <<"computeConfiguration">> => list(),
 %%   <<"jobComputePayerAccountId">> => string(),
@@ -3906,6 +4015,13 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type get_analysis_log_export_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_analysis_template_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -4053,6 +4169,13 @@
     access_denied_exception().
 
 -type get_schema_analysis_rule_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_analysis_log_exports_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -4239,6 +4362,14 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type start_analysis_log_export_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type start_protected_job_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -4303,6 +4434,7 @@
 -type update_configured_table_analysis_rule_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -4844,10 +4976,8 @@ create_id_namespace_association(Client, MembershipIdentifier, Input0, Options0) 
 
 %% @doc Creates an intermediate table in a membership.
 %%
-%% An intermediate table stores a query definition that you can execute later
-%% using `PopulateIntermediateTable' to materialize cached results. The
-%% intermediate table is owned by the member with the CAN_QUERY ability. This
-%% operation does not execute the stored query.
+%% The intermediate table is owned by the member with the CAN_QUERY ability.
+%% To populate the table with results, use `PopulateIntermediateTable'.
 -spec create_intermediate_table(aws_client:aws_client(), binary() | list(), create_intermediate_table_input()) ->
     {ok, create_intermediate_table_output(), tuple()} |
     {error, any()} |
@@ -4883,10 +5013,8 @@ create_intermediate_table(Client, MembershipIdentifier, Input0, Options0) ->
 
 %% @doc Creates an analysis rule for an intermediate table.
 %%
-%% Only the CUSTOM analysis rule type is supported. The service automatically
-%% determines whether the rule is first-party or multi-party restricted based
-%% on the intermediate table's inherited constraints. Only the
-%% intermediate table owner can call this operation.
+%% Only the CUSTOM analysis rule type is supported. Only the intermediate
+%% table owner can call this operation.
 -spec create_intermediate_table_analysis_rule(aws_client:aws_client(), binary() | list(), binary() | list(), create_intermediate_table_analysis_rule_input()) ->
     {ok, create_intermediate_table_analysis_rule_output(), tuple()} |
     {error, any()} |
@@ -5304,9 +5432,8 @@ delete_id_namespace_association(Client, IdNamespaceAssociationIdentifier, Member
 
 %% @doc Deletes an intermediate table.
 %%
-%% When you delete the table, the service marks it as DELETED, removes its
-%% analysis rule and schema, and triggers storage cleanup. This operation is
-%% idempotent. Only the intermediate table owner can call this operation.
+%% The delete is idempotent. Only the intermediate table owner can call this
+%% operation.
 -spec delete_intermediate_table(aws_client:aws_client(), binary() | list(), binary() | list(), delete_intermediate_table_input()) ->
     {ok, delete_intermediate_table_output(), tuple()} |
     {error, any()} |
@@ -5486,12 +5613,12 @@ delete_privacy_budget_template(Client, MembershipIdentifier, PrivacyBudgetTempla
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Invalidates a specific intermediate table that references the
+%% @doc Marks an intermediate table as invalid when it references the
 %% caller's base table.
 %%
 %% The data provider (base table owner) calls this operation, not the
-%% intermediate table owner. By default, invalidation cascades to descendant
-%% intermediate tables.
+%% intermediate table owner. By default, the operation also marks all
+%% descendant intermediate tables as invalid.
 -spec disallow_intermediate_table(aws_client:aws_client(), binary() | list(), disallow_intermediate_table_input()) ->
     {ok, disallow_intermediate_table_output(), tuple()} |
     {error, any()} |
@@ -5524,6 +5651,47 @@ disallow_intermediate_table(Client, MembershipIdentifier, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns information about an analysis log export, including its
+%% current status and, if the export failed, the reason for the failure.
+%%
+%% Poll this operation until the `status' is `SUCCESS' or
+%% `FAILED'. An export can't be canceled after it starts.
+-spec get_analysis_log_export(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_analysis_log_export_output(), tuple()} |
+    {error, any()} |
+    {error, get_analysis_log_export_errors(), tuple()}.
+get_analysis_log_export(Client, AnalysisLogExportIdentifier, MembershipIdentifier)
+  when is_map(Client) ->
+    get_analysis_log_export(Client, AnalysisLogExportIdentifier, MembershipIdentifier, #{}, #{}).
+
+-spec get_analysis_log_export(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_analysis_log_export_output(), tuple()} |
+    {error, any()} |
+    {error, get_analysis_log_export_errors(), tuple()}.
+get_analysis_log_export(Client, AnalysisLogExportIdentifier, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_analysis_log_export(Client, AnalysisLogExportIdentifier, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_analysis_log_export(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_analysis_log_export_output(), tuple()} |
+    {error, any()} |
+    {error, get_analysis_log_export_errors(), tuple()}.
+get_analysis_log_export(Client, AnalysisLogExportIdentifier, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysislogexports/", aws_util:encode_uri(AnalysisLogExportIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves an analysis template.
 -spec get_analysis_template(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -6342,6 +6510,53 @@ get_schema_analysis_rule(Client, CollaborationIdentifier, Name, Type, QueryMap, 
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists analysis log exports, sorted by the most recent export.
+%%
+%% Results are paginated. Use the `nextToken' parameter to retrieve
+%% additional results.
+-spec list_analysis_log_exports(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_analysis_log_exports_output(), tuple()} |
+    {error, any()} |
+    {error, list_analysis_log_exports_errors(), tuple()}.
+list_analysis_log_exports(Client, MembershipIdentifier)
+  when is_map(Client) ->
+    list_analysis_log_exports(Client, MembershipIdentifier, #{}, #{}).
+
+-spec list_analysis_log_exports(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_analysis_log_exports_output(), tuple()} |
+    {error, any()} |
+    {error, list_analysis_log_exports_errors(), tuple()}.
+list_analysis_log_exports(Client, MembershipIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_analysis_log_exports(Client, MembershipIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_analysis_log_exports(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_analysis_log_exports_output(), tuple()} |
+    {error, any()} |
+    {error, list_analysis_log_exports_errors(), tuple()}.
+list_analysis_log_exports(Client, MembershipIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysislogexports"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"analysisIdentifier">>, maps:get(<<"analysisIdentifier">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -7370,13 +7585,12 @@ populate_id_mapping_table(Client, IdMappingTableIdentifier, MembershipIdentifier
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Executes the stored query of an intermediate table to materialize
-%% data into managed storage.
+%% @doc Runs the stored query of an intermediate table and makes the results
+%% available for querying.
 %%
-%% With this operation, you can perform initial population and subsequent
-%% refreshes. Each call creates a new version. The returned analysis ID can
-%% be tracked using `GetProtectedQuery'. Only the intermediate table
-%% owner can call this operation.
+%% Each call creates a new version. Use `GetProtectedQuery' with the
+%% returned analysis ID to track progress. Only the intermediate table owner
+%% can call this operation.
 -spec populate_intermediate_table(aws_client:aws_client(), binary() | list(), binary() | list(), populate_intermediate_table_input()) ->
     {ok, populate_intermediate_table_output(), tuple()} |
     {error, any()} |
@@ -7426,6 +7640,72 @@ preview_privacy_impact(Client, MembershipIdentifier, Input) ->
 preview_privacy_impact(Client, MembershipIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/previewprivacyimpact"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an export of the Apache Spark logs for a protected query to an
+%% Amazon S3 bucket that you own.
+%%
+%% Use the exported logs to diagnose a query that failed or that ran more
+%% slowly than you expected.
+%%
+%% Clean Rooms exports a redacted copy of the Spark logs instead of the raw
+%% logs. Analyze the exported logs with the tooling of your choice, such as
+%% Spark History Server. For details about what the exported logs contain,
+%% see
+%% [https://docs.aws.amazon.com/clean-rooms/latest/userguide/export-analysis-logs-contents.html].
+%%
+%% The export runs asynchronously and returns with a `status' of
+%% `IN_PROGRESS'. Call `GetAnalysisLogExport' to poll for the final
+%% status.
+%%
+%% To use this operation, you must have the
+%% `CAN_EXPORT_QUERY_ANALYSIS_LOG' ability for your membership. You must
+%% also be the query runner or the query payer. Having the ability alone is
+%% not sufficient.
+%%
+%% The query must have reached a terminal state, and it must have reached the
+%% execution stage. A query that failed validation or that was canceled
+%% before it started produces no Spark logs.
+%%
+%% Log export isn't supported for queries that use differential privacy,
+%% and isn't supported for PySpark jobs.
+%%
+%% The destination bucket must be in the same Amazon Web Services Region as
+%% the collaboration. Cross-Region export isn't supported.
+%%
+%% For more information, see
+%% [https://docs.aws.amazon.com/clean-rooms/latest/userguide/export-analysis-logs.html].
+-spec start_analysis_log_export(aws_client:aws_client(), binary() | list(), start_analysis_log_export_input()) ->
+    {ok, start_analysis_log_export_output(), tuple()} |
+    {error, any()} |
+    {error, start_analysis_log_export_errors(), tuple()}.
+start_analysis_log_export(Client, MembershipIdentifier, Input) ->
+    start_analysis_log_export(Client, MembershipIdentifier, Input, []).
+
+-spec start_analysis_log_export(aws_client:aws_client(), binary() | list(), start_analysis_log_export_input(), proplists:proplist()) ->
+    {ok, start_analysis_log_export_output(), tuple()} |
+    {error, any()} |
+    {error, start_analysis_log_export_errors(), tuple()}.
+start_analysis_log_export(Client, MembershipIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/memberships/", aws_util:encode_uri(MembershipIdentifier), "/analysislogexports"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

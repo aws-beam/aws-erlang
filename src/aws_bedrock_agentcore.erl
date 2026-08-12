@@ -2338,6 +2338,15 @@
 
 
 %% Example:
+%% online_evaluation_trace_config() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type online_evaluation_trace_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% payment_instrument() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"paymentConnectorId">> => string(),

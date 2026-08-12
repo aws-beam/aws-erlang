@@ -334,6 +334,13 @@
 
 
 %% Example:
+%% allowed_values_constraint() :: #{
+%%   <<"allowedValues">> => list(string())
+%% }
+-type allowed_values_constraint() :: #{binary() => any()}.
+
+
+%% Example:
 %% argo_cd_aws_idc_config_request() :: #{
 %%   <<"idcInstanceArn">> => string(),
 %%   <<"idcRegion">> => string()
@@ -599,6 +606,9 @@
 %%   <<"health">> => cluster_health(),
 %%   <<"id">> => string(),
 %%   <<"identity">> => identity(),
+%%   <<"kubeApiServerConfig">> => kube_api_server_config_response(),
+%%   <<"kubeControllerManagerConfig">> => kube_controller_manager_config_response(),
+%%   <<"kubeSchedulerConfig">> => kube_scheduler_config_response(),
 %%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_response(),
 %%   <<"logging">> => logging(),
 %%   <<"name">> => string(),
@@ -637,6 +647,8 @@
 %% cluster_version_information() :: #{
 %%   <<"clusterType">> => string(),
 %%   <<"clusterVersion">> => string(),
+%%   <<"controlPlaneComponentConfig">> => control_plane_config_info(),
+%%   <<"controlPlaneScalingTiers">> => list(control_plane_scaling_tier_info()),
 %%   <<"defaultPlatformVersion">> => string(),
 %%   <<"defaultVersion">> => boolean(),
 %%   <<"endOfExtendedSupportDate">> => non_neg_integer(),
@@ -696,6 +708,15 @@
 
 
 %% Example:
+%% control_plane_config_info() :: #{
+%%   <<"kubeApiServerConfig">> => kube_api_server_version_config(),
+%%   <<"kubeControllerManagerConfig">> => kube_controller_manager_version_config(),
+%%   <<"kubeSchedulerConfig">> => kube_scheduler_version_config()
+%% }
+-type control_plane_config_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% control_plane_placement_request() :: #{
 %%   <<"groupName">> => string(),
 %%   <<"spreadLevel">> => list(any())
@@ -716,6 +737,17 @@
 %%   <<"tier">> => list(any())
 %% }
 -type control_plane_scaling_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_plane_scaling_tier_info() :: #{
+%%   <<"apiRequestConcurrency">> => integer(),
+%%   <<"clusterDatabaseSizeGb">> => integer(),
+%%   <<"controlPlaneComponentConfigOverrides">> => control_plane_config_info(),
+%%   <<"podSchedulingRatePerSecond">> => integer(),
+%%   <<"tierName">> => string()
+%% }
+-type control_plane_scaling_tier_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -796,6 +828,9 @@
 %%   <<"controlPlaneScalingConfig">> => control_plane_scaling_config(),
 %%   <<"deletionProtection">> => boolean(),
 %%   <<"encryptionConfig">> => list(encryption_config()),
+%%   <<"kubeApiServerConfig">> => kube_api_server_config_request(),
+%%   <<"kubeControllerManagerConfig">> => kube_controller_manager_config_request(),
+%%   <<"kubeSchedulerConfig">> => kube_scheduler_config_request(),
 %%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),
 %%   <<"logging">> => logging(),
 %%   <<"name">> := string(),
@@ -1249,6 +1284,22 @@
 
 
 %% Example:
+%% duration_constraints() :: #{
+%%   <<"max">> => string(),
+%%   <<"min">> => string()
+%% }
+-type duration_constraints() :: #{binary() => any()}.
+
+
+%% Example:
+%% duration_parameter_config() :: #{
+%%   <<"constraints">> => duration_constraints(),
+%%   <<"defaultValue">> => string()
+%% }
+-type duration_parameter_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% eks_anywhere_subscription() :: #{
 %%   <<"arn">> => string(),
 %%   <<"autoRenew">> => boolean(),
@@ -1354,6 +1405,27 @@
 
 
 %% Example:
+%% horizontal_pod_autoscaler_controller_config_request() :: #{
+%%   <<"horizontalPodAutoscalerSyncPeriod">> => string()
+%% }
+-type horizontal_pod_autoscaler_controller_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% horizontal_pod_autoscaler_controller_config_response() :: #{
+%%   <<"horizontalPodAutoscalerSyncPeriod">> => string()
+%% }
+-type horizontal_pod_autoscaler_controller_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% horizontal_pod_autoscaler_controller_version_config() :: #{
+%%   <<"horizontalPodAutoscalerSyncPeriod">> => duration_parameter_config()
+%% }
+-type horizontal_pod_autoscaler_controller_version_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% identity() :: #{
 %%   <<"oidc">> => o_id_c()
 %% }
@@ -1442,6 +1514,14 @@
 
 
 %% Example:
+%% integer_range_constraint() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type integer_range_constraint() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_parameter_exception() :: #{
 %%   <<"addonName">> => string(),
 %%   <<"clusterName">> => string(),
@@ -1479,6 +1559,72 @@
 %%   <<"resourceIds">> => list(string())
 %% }
 -type issue() :: #{binary() => any()}.
+
+
+%% Example:
+%% kube_api_server_config_request() :: #{
+%%   <<"eventTtl">> => string(),
+%%   <<"serviceNodePortRange">> => service_node_port_range()
+%% }
+-type kube_api_server_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% kube_api_server_config_response() :: #{
+%%   <<"eventTtl">> => string(),
+%%   <<"serviceNodePortRange">> => service_node_port_range()
+%% }
+-type kube_api_server_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% kube_api_server_version_config() :: #{
+%%   <<"eventTtl">> => duration_parameter_config(),
+%%   <<"serviceNodePortRange">> => port_range_parameter_config()
+%% }
+-type kube_api_server_version_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% kube_controller_manager_config_request() :: #{
+%%   <<"horizontalPodAutoscalerControllerConfig">> => horizontal_pod_autoscaler_controller_config_request()
+%% }
+-type kube_controller_manager_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% kube_controller_manager_config_response() :: #{
+%%   <<"horizontalPodAutoscalerControllerConfig">> => horizontal_pod_autoscaler_controller_config_response()
+%% }
+-type kube_controller_manager_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% kube_controller_manager_version_config() :: #{
+%%   <<"horizontalPodAutoscalerControllerConfig">> => horizontal_pod_autoscaler_controller_version_config()
+%% }
+-type kube_controller_manager_version_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% kube_scheduler_config_request() :: #{
+%%   <<"nodeResourcesFit">> => node_resources_fit_config()
+%% }
+-type kube_scheduler_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% kube_scheduler_config_response() :: #{
+%%   <<"nodeResourcesFit">> => node_resources_fit_config()
+%% }
+-type kube_scheduler_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% kube_scheduler_version_config() :: #{
+%%   <<"nodeResourcesFit">> => node_resources_fit_version_config()
+%% }
+-type kube_scheduler_version_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1793,6 +1939,20 @@
 
 
 %% Example:
+%% node_resources_fit_config() :: #{
+%%   <<"scoringStrategy">> => scoring_strategy()
+%% }
+-type node_resources_fit_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% node_resources_fit_version_config() :: #{
+%%   <<"scoringStrategy">> => scoring_strategy_config()
+%% }
+-type node_resources_fit_version_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% nodegroup() :: #{
 %%   <<"amiType">> => list(any()),
 %%   <<"capacityType">> => list(any()),
@@ -1957,6 +2117,22 @@
 
 
 %% Example:
+%% port_range_constraints() :: #{
+%%   <<"maxPort">> => integer_range_constraint(),
+%%   <<"minPort">> => integer_range_constraint()
+%% }
+-type port_range_constraints() :: #{binary() => any()}.
+
+
+%% Example:
+%% port_range_parameter_config() :: #{
+%%   <<"constraints">> => port_range_constraints(),
+%%   <<"defaultValue">> => service_node_port_range()
+%% }
+-type port_range_parameter_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% provider() :: #{
 %%   <<"keyArn">> => string()
 %% }
@@ -2019,6 +2195,14 @@
 
 
 %% Example:
+%% resource_constraints() :: #{
+%%   <<"name">> => allowed_values_constraint(),
+%%   <<"weight">> => integer_range_constraint()
+%% }
+-type resource_constraints() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_in_use_exception() :: #{
 %%   <<"addonName">> => string(),
 %%   <<"clusterName">> => string(),
@@ -2058,10 +2242,42 @@
 
 
 %% Example:
+%% resource_weight() :: #{
+%%   <<"name">> => string(),
+%%   <<"weight">> => integer()
+%% }
+-type resource_weight() :: #{binary() => any()}.
+
+
+%% Example:
 %% rollback_config() :: #{
 %%   <<"timeoutMinutes">> => integer()
 %% }
 -type rollback_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% scoring_strategy() :: #{
+%%   <<"resources">> => list(resource_weight()),
+%%   <<"type">> => list(any())
+%% }
+-type scoring_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% scoring_strategy_config() :: #{
+%%   <<"constraints">> => scoring_strategy_constraints(),
+%%   <<"defaultValue">> => scoring_strategy()
+%% }
+-type scoring_strategy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% scoring_strategy_constraints() :: #{
+%%   <<"resources">> => resource_constraints(),
+%%   <<"scoringStrategy">> => allowed_values_constraint()
+%% }
+-type scoring_strategy_constraints() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2073,6 +2289,14 @@
 %%   <<"subscriptionId">> => string()
 %% }
 -type server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_node_port_range() :: #{
+%%   <<"maxPort">> => integer(),
+%%   <<"minPort">> => integer()
+%% }
+-type service_node_port_range() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2259,6 +2483,9 @@
 %%   <<"computeConfig">> => compute_config_request(),
 %%   <<"controlPlaneScalingConfig">> => control_plane_scaling_config(),
 %%   <<"deletionProtection">> => boolean(),
+%%   <<"kubeApiServerConfig">> => kube_api_server_config_request(),
+%%   <<"kubeControllerManagerConfig">> => kube_controller_manager_config_request(),
+%%   <<"kubeSchedulerConfig">> => kube_scheduler_config_request(),
 %%   <<"kubernetesNetworkConfig">> => kubernetes_network_config_request(),
 %%   <<"logging">> => logging(),
 %%   <<"remoteNetworkConfig">> => remote_network_config_request(),

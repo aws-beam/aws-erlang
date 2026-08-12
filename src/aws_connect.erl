@@ -137,6 +137,8 @@
          create_instance/3,
          create_integration_association/3,
          create_integration_association/4,
+         create_metric/3,
+         create_metric/4,
          create_notification/3,
          create_notification/4,
          create_participant/2,
@@ -215,6 +217,8 @@
          delete_instance/4,
          delete_integration_association/4,
          delete_integration_association/5,
+         delete_metric/4,
+         delete_metric/5,
          delete_notification/4,
          delete_notification/5,
          delete_predefined_attribute/4,
@@ -310,6 +314,9 @@
          describe_instance_storage_config/4,
          describe_instance_storage_config/6,
          describe_instance_storage_config/7,
+         describe_metric/3,
+         describe_metric/5,
+         describe_metric/6,
          describe_notification/3,
          describe_notification/5,
          describe_notification/6,
@@ -539,6 +546,9 @@
          list_lex_bots/2,
          list_lex_bots/4,
          list_lex_bots/5,
+         list_metrics/2,
+         list_metrics/4,
+         list_metrics/5,
          list_notifications/2,
          list_notifications/4,
          list_notifications/5,
@@ -681,6 +691,8 @@
          search_hours_of_operation_overrides/3,
          search_hours_of_operations/2,
          search_hours_of_operations/3,
+         search_metrics/2,
+         search_metrics/3,
          search_notifications/2,
          search_notifications/3,
          search_predefined_attributes/2,
@@ -823,6 +835,10 @@
          update_instance_attribute/5,
          update_instance_storage_config/4,
          update_instance_storage_config/5,
+         update_metric_content/4,
+         update_metric_content/5,
+         update_metric_metadata/4,
+         update_metric_metadata/5,
          update_notification_content/4,
          update_notification_content/5,
          update_participant_authentication/2,
@@ -1617,6 +1633,14 @@
 
 
 %% Example:
+%% available_filter() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type available_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% available_number_summary() :: #{
 %%   <<"PhoneNumber">> => string(),
 %%   <<"PhoneNumberCountryCode">> => list(any()),
@@ -1848,6 +1872,16 @@
 %%   <<"FieldName">> => string()
 %% }
 -type boolean_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% calculation_component() :: #{
+%%   <<"Alias">> => string(),
+%%   <<"MetricFilters">> => list(metric_filter()),
+%%   <<"MetricId">> => string(),
+%%   <<"MetricName">> => string()
+%% }
+-type calculation_component() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2821,6 +2855,28 @@
 
 
 %% Example:
+%% create_metric_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"MetricCalculation">> := metric_calculation(),
+%%   <<"Name">> := string(),
+%%   <<"PositiveTrendIndicator">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"Unit">> := list(any())
+%% }
+-type create_metric_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_metric_response() :: #{
+%%   <<"MetricArn">> => string(),
+%%   <<"MetricId">> => string()
+%% }
+-type create_metric_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_notification_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"Content">> := map(),
@@ -3645,6 +3701,14 @@
 -type delete_integration_association_request() :: #{}.
 
 %% Example:
+%% delete_metric_request() :: #{}
+-type delete_metric_request() :: #{}.
+
+%% Example:
+%% delete_metric_response() :: #{}
+-type delete_metric_response() :: #{}.
+
+%% Example:
 %% delete_notification_request() :: #{}
 -type delete_notification_request() :: #{}.
 
@@ -3993,6 +4057,17 @@
 %%   <<"StorageConfig">> => instance_storage_config()
 %% }
 -type describe_instance_storage_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metric_request() :: #{}
+-type describe_metric_request() :: #{}.
+
+
+%% Example:
+%% describe_metric_response() :: #{
+%%   <<"Metric">> => metric_definition()
+%% }
+-type describe_metric_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_notification_request() :: #{}
@@ -6720,6 +6795,23 @@
 
 
 %% Example:
+%% list_metrics_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type list_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_metrics_response() :: #{
+%%   <<"MetricSummaryList">> => list(metric_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_metrics_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_notifications_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -7401,11 +7493,86 @@
 
 
 %% Example:
+%% metric_calculation() :: #{
+%%   <<"Calculation">> => string(),
+%%   <<"CalculationComponents">> => list(calculation_component())
+%% }
+-type metric_calculation() :: #{binary() => any()}.
+
+
+%% Example:
 %% metric_data_v2() :: #{
 %%   <<"Metric">> => metric_v2(),
 %%   <<"Value">> => float()
 %% }
 -type metric_data_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_definition() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Category">> => string(),
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"CreatedUser">> => list(),
+%%   <<"CreationMethod">> => list(any()),
+%%   <<"DefaultStat">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"EffectiveTime">> => non_neg_integer(),
+%%   <<"Filters">> => list(available_filter()),
+%%   <<"Groupings">> => list(string()),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastModifiedUser">> => list(),
+%%   <<"MetricCalculation">> => metric_calculation(),
+%%   <<"Name">> => string(),
+%%   <<"PositiveTrendIndicator">> => list(any()),
+%%   <<"PrimaryEventSource">> => string(),
+%%   <<"PrimaryEventSourceEffectiveTimestampType">> => string(),
+%%   <<"RefreshRate">> => float(),
+%%   <<"Status">> => list(any()),
+%%   <<"SupportedStats">> => list(string()),
+%%   <<"SupportsCustomCalculation">> => boolean(),
+%%   <<"SupportsPreaggregateCalculation">> => boolean(),
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any()),
+%%   <<"Unit">> => list(any())
+%% }
+-type metric_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_filter() :: #{
+%%   <<"BooleanCondition">> => metric_filter_boolean_condition(),
+%%   <<"MetricFilterKey">> => string(),
+%%   <<"Negate">> => boolean(),
+%%   <<"NumberCondition">> => metric_filter_number_condition(),
+%%   <<"StringCondition">> => metric_filter_string_condition()
+%% }
+-type metric_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_filter_boolean_condition() :: #{
+%%   <<"Comparison">> => list(any())
+%% }
+-type metric_filter_boolean_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_filter_number_condition() :: #{
+%%   <<"Comparison">> => list(any()),
+%%   <<"Values">> => list(float())
+%% }
+-type metric_filter_number_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_filter_string_condition() :: #{
+%%   <<"Comparison">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type metric_filter_string_condition() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7433,6 +7600,36 @@
 %%   <<"MetricInterval">> => metric_interval()
 %% }
 -type metric_result_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_search_criteria() :: #{
+%%   <<"AndConditions">> => list(metric_search_criteria()),
+%%   <<"BooleanCondition">> => boolean_condition(),
+%%   <<"OrConditions">> => list(metric_search_criteria()),
+%%   <<"StringCondition">> => string_condition()
+%% }
+-type metric_search_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_search_filter() :: #{
+%%   <<"TagFilter">> => control_plane_tag_filter()
+%% }
+-type metric_search_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type metric_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9044,6 +9241,26 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_hours_of_operations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_metrics_request() :: #{
+%%   <<"InstanceId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SearchCriteria">> => metric_search_criteria(),
+%%   <<"SearchFilter">> => metric_search_filter()
+%% }
+-type search_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_metrics_response() :: #{
+%%   <<"ApproximateTotalCount">> => float(),
+%%   <<"Metrics">> => list(metric_definition()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_metrics_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10800,6 +11017,31 @@
 
 
 %% Example:
+%% update_metric_content_request() :: #{
+%%   <<"MetricCalculation">> => metric_calculation(),
+%%   <<"PositiveTrendIndicator">> => list(any()),
+%%   <<"Unit">> => list(any())
+%% }
+-type update_metric_content_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_metric_content_response() :: #{}
+-type update_metric_content_response() :: #{}.
+
+
+%% Example:
+%% update_metric_metadata_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_metric_metadata_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_metric_metadata_response() :: #{}
+-type update_metric_metadata_response() :: #{}.
+
+
+%% Example:
 %% update_notification_content_request() :: #{
 %%   <<"Content">> := map()
 %% }
@@ -12207,6 +12449,16 @@
     internal_service_exception() | 
     duplicate_resource_exception().
 
+-type create_metric_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
+
 -type create_notification_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -12539,6 +12791,15 @@
     invalid_request_exception() | 
     internal_service_exception().
 
+-type delete_metric_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
 -type delete_notification_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -12829,6 +13090,14 @@
     invalid_request_exception() | 
     invalid_parameter_exception() | 
     internal_service_exception().
+
+-type describe_metric_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_notification_errors() ::
     throttling_exception() | 
@@ -13456,6 +13725,14 @@
     invalid_parameter_exception() | 
     internal_service_exception().
 
+-type list_metrics_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
 -type list_notifications_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -13855,6 +14132,14 @@
     invalid_request_exception() | 
     invalid_parameter_exception() | 
     internal_service_exception().
+
+-type search_metrics_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type search_notifications_errors() ::
     throttling_exception() | 
@@ -14416,6 +14701,23 @@
     invalid_request_exception() | 
     invalid_parameter_exception() | 
     internal_service_exception().
+
+-type update_metric_content_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
+-type update_metric_metadata_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
 
 -type update_notification_content_errors() ::
     throttling_exception() | 
@@ -16838,6 +17140,45 @@ create_integration_association(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new metric definition for the specified Connect Customer
+%% instance.
+%%
+%% You can create custom metrics
+%% that use formulas referencing existing Amazon Web Services-managed
+%% metrics, optionally with filters applied.
+-spec create_metric(aws_client:aws_client(), binary() | list(), create_metric_request()) ->
+    {ok, create_metric_response(), tuple()} |
+    {error, any()} |
+    {error, create_metric_errors(), tuple()}.
+create_metric(Client, InstanceId, Input) ->
+    create_metric(Client, InstanceId, Input, []).
+
+-spec create_metric(aws_client:aws_client(), binary() | list(), create_metric_request(), proplists:proplist()) ->
+    {ok, create_metric_response(), tuple()} |
+    {error, any()} |
+    {error, create_metric_errors(), tuple()}.
+create_metric(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/metrics/definitions/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new notification to be delivered to specified recipients.
 %%
 %% Notifications can include localized content with links, and an optional
@@ -18413,6 +18754,44 @@ delete_integration_association(Client, InstanceId, IntegrationAssociationId, Inp
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an existing metric from the specified Connect Customer
+%% instance.
+%%
+%% This operation fails with `ResourceConflictException' if the metric is
+%% currently in use in a dashboard.
+-spec delete_metric(aws_client:aws_client(), binary() | list(), binary() | list(), delete_metric_request()) ->
+    {ok, delete_metric_response(), tuple()} |
+    {error, any()} |
+    {error, delete_metric_errors(), tuple()}.
+delete_metric(Client, InstanceId, MetricId, Input) ->
+    delete_metric(Client, InstanceId, MetricId, Input, []).
+
+-spec delete_metric(aws_client:aws_client(), binary() | list(), binary() | list(), delete_metric_request(), proplists:proplist()) ->
+    {ok, delete_metric_response(), tuple()} |
+    {error, any()} |
+    {error, delete_metric_errors(), tuple()}.
+delete_metric(Client, InstanceId, MetricId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/metrics/definitions/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(MetricId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a notification.
 %%
 %% Once deleted, the notification is no longer visible to all users and
@@ -19969,6 +20348,44 @@ describe_instance_storage_config(Client, AssociationId, InstanceId, ResourceType
         {<<"resourceType">>, ResourceType}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the full definition of an existing metric from the
+%% specified Connect Customer instance.
+-spec describe_metric(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_metric_response(), tuple()} |
+    {error, any()} |
+    {error, describe_metric_errors(), tuple()}.
+describe_metric(Client, InstanceId, MetricId)
+  when is_map(Client) ->
+    describe_metric(Client, InstanceId, MetricId, #{}, #{}).
+
+-spec describe_metric(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_metric_response(), tuple()} |
+    {error, any()} |
+    {error, describe_metric_errors(), tuple()}.
+describe_metric(Client, InstanceId, MetricId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_metric(Client, InstanceId, MetricId, QueryMap, HeadersMap, []).
+
+-spec describe_metric(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_metric_response(), tuple()} |
+    {error, any()} |
+    {error, describe_metric_errors(), tuple()}.
+describe_metric(Client, InstanceId, MetricId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/metrics/definitions/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(MetricId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -23815,6 +24232,53 @@ list_lex_bots(Client, InstanceId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a paginated list of metric summaries for the specified
+%% Connect Customer instance.
+%%
+%% Use pagination to ensure that the operation returns quickly and
+%% successfully.
+-spec list_metrics(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, list_metrics_errors(), tuple()}.
+list_metrics(Client, InstanceId)
+  when is_map(Client) ->
+    list_metrics(Client, InstanceId, #{}, #{}).
+
+-spec list_metrics(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, list_metrics_errors(), tuple()}.
+list_metrics(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_metrics(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_metrics(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, list_metrics_errors(), tuple()}.
+list_metrics(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/metrics/definitions/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a paginated list of all notifications in the Amazon Connect
 %% instance.
 -spec list_notifications(aws_client:aws_client(), binary() | list()) ->
@@ -26245,6 +26709,44 @@ search_hours_of_operations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches for metrics in the specified Connect Customer instance using
+%% search criteria and optional tag-based filters.
+%%
+%% Use pagination to ensure that the operation returns quickly and
+%% successfully.
+-spec search_metrics(aws_client:aws_client(), search_metrics_request()) ->
+    {ok, search_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, search_metrics_errors(), tuple()}.
+search_metrics(Client, Input) ->
+    search_metrics(Client, Input, []).
+
+-spec search_metrics(aws_client:aws_client(), search_metrics_request(), proplists:proplist()) ->
+    {ok, search_metrics_response(), tuple()} |
+    {error, any()} |
+    {error, search_metrics_errors(), tuple()}.
+search_metrics(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/search-metrics"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches for notifications based on specified criteria and filters.
 %%
 %% Returns a paginated list of notifications matching the search parameters,
@@ -28138,8 +28640,9 @@ tag_contact(Client, Input0, Options0) ->
 %%
 %% Some of the supported resource types are agents, routing profiles, queues,
 %% quick connects, flows, agent
-%% statuses, hours of operation, phone numbers, security profiles, and task
-%% templates. For a complete list, see Tagging resources in Connect Customer:
+%% statuses, hours of operation, phone numbers, security profiles, task
+%% templates, and custom metrics. For a complete list, see Tagging resources
+%% in Connect Customer:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/tagging.html.
 %%
 %% For sample policies that use tags, see Connect Customer Identity-Based
@@ -29303,6 +29806,76 @@ update_instance_storage_config(Client, AssociationId, InstanceId, Input0, Option
                      {<<"resourceType">>, <<"ResourceType">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the calculation, unit, and/or trend indicator of an existing
+%% metric in the specified Connect Customer instance.
+-spec update_metric_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_metric_content_request()) ->
+    {ok, update_metric_content_response(), tuple()} |
+    {error, any()} |
+    {error, update_metric_content_errors(), tuple()}.
+update_metric_content(Client, InstanceId, MetricId, Input) ->
+    update_metric_content(Client, InstanceId, MetricId, Input, []).
+
+-spec update_metric_content(aws_client:aws_client(), binary() | list(), binary() | list(), update_metric_content_request(), proplists:proplist()) ->
+    {ok, update_metric_content_response(), tuple()} |
+    {error, any()} |
+    {error, update_metric_content_errors(), tuple()}.
+update_metric_content(Client, InstanceId, MetricId, Input0, Options0) ->
+    Method = post,
+    Path = ["/metrics/definitions/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(MetricId), "/content"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the name and/or description of an existing metric in the
+%% specified Connect Customer instance.
+-spec update_metric_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_metric_metadata_request()) ->
+    {ok, update_metric_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, update_metric_metadata_errors(), tuple()}.
+update_metric_metadata(Client, InstanceId, MetricId, Input) ->
+    update_metric_metadata(Client, InstanceId, MetricId, Input, []).
+
+-spec update_metric_metadata(aws_client:aws_client(), binary() | list(), binary() | list(), update_metric_metadata_request(), proplists:proplist()) ->
+    {ok, update_metric_metadata_response(), tuple()} |
+    {error, any()} |
+    {error, update_metric_metadata_errors(), tuple()}.
+update_metric_metadata(Client, InstanceId, MetricId, Input0, Options0) ->
+    Method = post,
+    Path = ["/metrics/definitions/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(MetricId), "/metadata"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the localized content of an existing notification.
