@@ -89,6 +89,8 @@
 
 -export([accept_delegation_request/2,
          accept_delegation_request/3,
+         acquire_role/2,
+         acquire_role/3,
          add_client_id_to_open_id_connect_provider/2,
          add_client_id_to_open_id_connect_provider/3,
          add_role_to_instance_profile/2,
@@ -215,6 +217,8 @@
          get_account_authorization_details/3,
          get_account_password_policy/2,
          get_account_password_policy/3,
+         get_account_properties/2,
+         get_account_properties/3,
          get_account_summary/2,
          get_account_summary/3,
          get_context_keys_for_custom_policy/2,
@@ -251,6 +255,8 @@
          get_role/3,
          get_role_policy/2,
          get_role_policy/3,
+         get_role_template_version/2,
+         get_role_template_version/3,
          get_saml_provider/2,
          get_saml_provider/3,
          get_server_certificate/2,
@@ -339,6 +345,8 @@
          list_users/3,
          list_virtual_mfa_devices/2,
          list_virtual_mfa_devices/3,
+         put_account_properties/2,
+         put_account_properties/3,
          put_group_policy/2,
          put_group_policy/3,
          put_role_permissions_boundary/2,
@@ -492,6 +500,20 @@
 %%   <<"Message">> => string()
 %% }
 -type account_not_management_or_delegated_administrator_exception() :: #{binary() => any()}.
+
+%% Example:
+%% acquire_role_request() :: #{
+%%   <<"ReplacementValues">> => map(),
+%%   <<"TemplateArn">> := string(),
+%%   <<"TemplateMinorVersion">> => integer()
+%% }
+-type acquire_role_request() :: #{binary() => any()}.
+
+%% Example:
+%% acquire_role_response() :: #{
+%%   <<"Role">> => role()
+%% }
+-type acquire_role_response() :: #{binary() => any()}.
 
 %% Example:
 %% add_client_id_to_open_id_connect_provider_request() :: #{
@@ -1250,6 +1272,18 @@
 -type get_account_password_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_account_properties_request() :: #{
+
+%% }
+-type get_account_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_properties_response() :: #{
+%%   <<"Properties">> => map()
+%% }
+-type get_account_properties_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_account_summary_response() :: #{
 %%   <<"SummaryMap">> => map()
 %% }
@@ -1483,6 +1517,19 @@
 -type get_role_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_role_template_version_request() :: #{
+%%   <<"MinorVersion">> => integer(),
+%%   <<"TemplateArn">> := string()
+%% }
+-type get_role_template_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_role_template_version_response() :: #{
+%%   <<"RoleTemplateVersion">> => role_template_version()
+%% }
+-type get_role_template_version_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_saml_provider_request() :: #{
 %%   <<"SAMLProviderArn">> := string()
 %% }
@@ -1629,6 +1676,13 @@
 %%   <<"Path">> => string()
 %% }
 -type group_detail() :: #{binary() => any()}.
+
+%% Example:
+%% inline_policy() :: #{
+%%   <<"PolicyDocument">> => string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type inline_policy() :: #{binary() => any()}.
 
 %% Example:
 %% inline_policy_identifier_type() :: #{
@@ -2322,6 +2376,12 @@
 -type mfa_device() :: #{binary() => any()}.
 
 %% Example:
+%% name_conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type name_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
 %% no_such_entity_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2362,6 +2422,18 @@
 %%   <<"AllowedByOrganizations">> => boolean()
 %% }
 -type organizations_decision_detail() :: #{binary() => any()}.
+
+%% Example:
+%% parameter_definition() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Immutable">> => boolean(),
+%%   <<"IsRequired">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"SubType">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type parameter_definition() :: #{binary() => any()}.
 
 %% Example:
 %% password_policy() :: #{
@@ -2482,6 +2554,18 @@
 -type position() :: #{binary() => any()}.
 
 %% Example:
+%% put_account_properties_request() :: #{
+%%   <<"Properties">> := map()
+%% }
+-type put_account_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_properties_response() :: #{
+
+%% }
+-type put_account_properties_response() :: #{binary() => any()}.
+
+%% Example:
 %% put_group_policy_request() :: #{
 %%   <<"GroupName">> := string(),
 %%   <<"PolicyDocument">> := string(),
@@ -2548,6 +2632,12 @@
 -type remove_user_from_group_request() :: #{binary() => any()}.
 
 %% Example:
+%% replacement_value_entry() :: #{
+%%   <<"Values">> => list(string())
+%% }
+-type replacement_value_entry() :: #{binary() => any()}.
+
+%% Example:
 %% report_generation_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2598,6 +2688,7 @@
 %%   <<"RoleId">> => string(),
 %%   <<"RoleLastUsed">> => role_last_used(),
 %%   <<"RoleName">> => string(),
+%%   <<"SourceRoleTemplate">> => source_role_template(),
 %%   <<"Tags">> => list(tag())
 %% }
 -type role() :: #{binary() => any()}.
@@ -2625,6 +2716,46 @@
 %%   <<"Region">> => string()
 %% }
 -type role_last_used() :: #{binary() => any()}.
+
+%% Example:
+%% role_modified_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type role_modified_exception() :: #{binary() => any()}.
+
+%% Example:
+%% role_template_disabled_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type role_template_disabled_exception() :: #{binary() => any()}.
+
+%% Example:
+%% role_template_version() :: #{
+%%   <<"AssumeRolePolicyDocumentTemplate">> => string(),
+%%   <<"CreateTimestamp">> => non_neg_integer(),
+%%   <<"DefaultMinorVersion">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"InlinePolicyTemplates">> => list(inline_policy()),
+%%   <<"MajorVersion">> => integer(),
+%%   <<"ManagedByType">> => list(any()),
+%%   <<"ManagedByValue">> => string(),
+%%   <<"ManagedPolicyArns">> => list(string()),
+%%   <<"MaxSessionDuration">> => integer(),
+%%   <<"MinorVersion">> => integer(),
+%%   <<"ParametersDefinition">> => list(parameter_definition()),
+%%   <<"PermissionBoundaryArn">> => string(),
+%%   <<"RoleDescriptionPattern">> => string(),
+%%   <<"RoleNamePattern">> => string(),
+%%   <<"RolePathPattern">> => string(),
+%%   <<"RoleTagsTemplate">> => list(tag_template()),
+%%   <<"TemplateArn">> => string(),
+%%   <<"TemplateName">> => string(),
+%%   <<"TemplateVersionId">> => string(),
+%%   <<"UpdateTimestamp">> => non_neg_integer(),
+%%   <<"VersionEnabled">> => boolean()
+%% }
+-type role_template_version() :: #{binary() => any()}.
 
 %% Example:
 %% role_usage_type() :: #{
@@ -2799,6 +2930,13 @@
 -type simulate_principal_policy_request() :: #{binary() => any()}.
 
 %% Example:
+%% source_role_template() :: #{
+%%   <<"TemplateArn">> => string(),
+%%   <<"TemplateMinorVersion">> => integer()
+%% }
+-type source_role_template() :: #{binary() => any()}.
+
+%% Example:
 %% ssh_public_key() :: #{
 %%   <<"Fingerprint">> => string(),
 %%   <<"SSHPublicKeyBody">> => string(),
@@ -2882,6 +3020,13 @@
 %%   <<"Tags">> := list(tag())
 %% }
 -type tag_server_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% tag_template() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type tag_template() :: #{binary() => any()}.
 
 %% Example:
 %% tag_user_request() :: #{
@@ -3195,6 +3340,18 @@
 -type accept_delegation_request_errors() ::
     service_failure_exception() | 
     no_such_entity_exception() | 
+    concurrent_modification_exception().
+
+-type acquire_role_errors() ::
+    service_failure_exception() | 
+    role_template_disabled_exception() | 
+    role_modified_exception() | 
+    no_such_entity_exception() | 
+    name_conflict_exception() | 
+    malformed_policy_document_exception() | 
+    limit_exceeded_exception() | 
+    invalid_input_exception() | 
+    entity_already_exists_exception() | 
     concurrent_modification_exception().
 
 -type add_client_id_to_open_id_connect_provider_errors() ::
@@ -3568,6 +3725,10 @@
     service_failure_exception() | 
     no_such_entity_exception().
 
+-type get_account_properties_errors() ::
+    service_failure_exception() | 
+    invalid_input_exception().
+
 -type get_account_summary_errors() ::
     service_failure_exception().
 
@@ -3641,6 +3802,11 @@
 -type get_role_policy_errors() ::
     service_failure_exception() | 
     no_such_entity_exception().
+
+-type get_role_template_version_errors() ::
+    service_failure_exception() | 
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type get_saml_provider_errors() ::
     service_failure_exception() | 
@@ -3817,6 +3983,11 @@
 
 -type list_users_errors() ::
     service_failure_exception().
+
+-type put_account_properties_errors() ::
+    service_failure_exception() | 
+    invalid_input_exception() | 
+    concurrent_modification_exception().
 
 -type put_group_policy_errors() ::
     service_failure_exception() | 
@@ -4157,6 +4328,38 @@ accept_delegation_request(Client, Input)
 accept_delegation_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptDelegationRequest">>, Input, Options).
+
+%% @doc Creates an IAM role from the specified role template.
+%%
+%% The new role takes its
+%% configuration—including its name, path, trust policy, inline and managed
+%% policies,
+%% permissions boundary, tags, and maximum session duration—from the role
+%% template version that you specify. For more information about roles, see
+%% IAM roles: https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html
+%% in the
+%% IAM User Guide.
+%%
+%% If the template version defines parameters, use the
+%% `ReplacementValues'
+%% parameter to supply the values that the service substitutes into the role
+%% during
+%% creation.
+-spec acquire_role(aws_client:aws_client(), acquire_role_request()) ->
+    {ok, acquire_role_response(), tuple()} |
+    {error, any()} |
+    {error, acquire_role_errors(), tuple()}.
+acquire_role(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    acquire_role(Client, Input, []).
+
+-spec acquire_role(aws_client:aws_client(), acquire_role_request(), proplists:proplist()) ->
+    {ok, acquire_role_response(), tuple()} |
+    {error, any()} |
+    {error, acquire_role_errors(), tuple()}.
+acquire_role(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcquireRole">>, Input, Options).
 
 %% @doc Adds a new client ID (also known as audience) to the list of client
 %% IDs already
@@ -6442,6 +6645,35 @@ get_account_password_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAccountPasswordPolicy">>, Input, Options).
 
+%% @doc Retrieves the account-level properties for the caller's Amazon
+%% Web Services account.
+%%
+%% Account
+%% properties are configuration settings that control account-wide IAM
+%% features such as
+%% Role Manager.
+%%
+%% The service returns properties as key-value pairs in
+%% `Namespace/PropertyName' format. Each namespace groups related
+%% configuration settings. Use PutAccountProperties:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_PutAccountProperties.html
+%% to modify these properties.
+-spec get_account_properties(aws_client:aws_client(), get_account_properties_request()) ->
+    {ok, get_account_properties_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_properties_errors(), tuple()}.
+get_account_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_account_properties(Client, Input, []).
+
+-spec get_account_properties(aws_client:aws_client(), get_account_properties_request(), proplists:proplist()) ->
+    {ok, get_account_properties_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_properties_errors(), tuple()}.
+get_account_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAccountProperties">>, Input, Options).
+
 %% @doc Retrieves information about IAM entity usage and IAM quotas in the
 %% Amazon Web Services
 %% account.
@@ -7075,6 +7307,35 @@ get_role_policy(Client, Input)
 get_role_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRolePolicy">>, Input, Options).
+
+%% @doc Retrieves information about a version of the specified role template.
+%%
+%% Role templates
+%% define a reusable configuration—including role name and path patterns,
+%% trust
+%% policy, inline and managed policies, permissions boundary, tags, and
+%% maximum session
+%% duration—that you use to create IAM roles with AcquireRole:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_AcquireRole.html.
+%%
+%% If you do not specify a minor version, the service returns the
+%% template's default
+%% minor version.
+-spec get_role_template_version(aws_client:aws_client(), get_role_template_version_request()) ->
+    {ok, get_role_template_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_role_template_version_errors(), tuple()}.
+get_role_template_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_role_template_version(Client, Input, []).
+
+-spec get_role_template_version(aws_client:aws_client(), get_role_template_version_request(), proplists:proplist()) ->
+    {ok, get_role_template_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_role_template_version_errors(), tuple()}.
+get_role_template_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetRoleTemplateVersion">>, Input, Options).
 
 %% @doc Returns the SAML provider metadocument that was uploaded when the IAM
 %% SAML provider
@@ -8519,6 +8780,35 @@ list_virtual_mfa_devices(Client, Input)
 list_virtual_mfa_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVirtualMFADevices">>, Input, Options).
+
+%% @doc Sets account-level properties for the caller's Amazon Web
+%% Services account.
+%%
+%% Account properties are
+%% configuration settings that control account-wide IAM features such as Role
+%% Manager.
+%%
+%% Specify properties as key-value pairs in
+%% `Namespace/PropertyName' format. All properties in a single request
+%% must
+%% belong to the same namespace. Use GetAccountProperties:
+%% https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetAccountProperties.html
+%% to view the current properties.
+-spec put_account_properties(aws_client:aws_client(), put_account_properties_request()) ->
+    {ok, put_account_properties_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_properties_errors(), tuple()}.
+put_account_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_account_properties(Client, Input, []).
+
+-spec put_account_properties(aws_client:aws_client(), put_account_properties_request(), proplists:proplist()) ->
+    {ok, put_account_properties_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_properties_errors(), tuple()}.
+put_account_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAccountProperties">>, Input, Options).
 
 %% @doc Adds or updates an inline policy document that is embedded in the
 %% specified IAM

@@ -762,6 +762,7 @@
 %%   <<"AvailabilityZone">> => [string()],
 %%   <<"ClientToken">> => string(),
 %%   <<"Configuration">> := list(),
+%%   <<"FabricConfiguration">> => fabric_configuration(),
 %%   <<"MaintenanceConfiguration">> => list(),
 %%   <<"MaximumBitrate">> := [float()],
 %%   <<"Name">> := [string()],
@@ -1042,6 +1043,13 @@
 %%   <<"Subscribers">> => list([string()]())
 %% }
 -type entitlement() :: #{binary() => any()}.
+
+
+%% Example:
+%% fabric_configuration() :: #{
+%%   <<"RecoveryLatencyMode">> => list(any())
+%% }
+-type fabric_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2255,6 +2263,7 @@
 %%   <<"AvailabilityZone">> => [string()],
 %%   <<"Configuration">> => list(),
 %%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"FabricConfiguration">> => fabric_configuration(),
 %%   <<"Id">> => [string()],
 %%   <<"IpAddress">> => [string()],
 %%   <<"MaintenanceConfiguration">> => list(),
@@ -3024,6 +3033,7 @@
 %% Example:
 %% update_router_output_request() :: #{
 %%   <<"Configuration">> => list(),
+%%   <<"FabricConfiguration">> => fabric_configuration(),
 %%   <<"MaintenanceConfiguration">> => list(),
 %%   <<"MaximumBitrate">> => [float()],
 %%   <<"Name">> => [string()],

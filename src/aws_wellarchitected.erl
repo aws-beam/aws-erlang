@@ -1,16 +1,27 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Well-Architected Tool
+%% @doc Amazon Web Services Well-Architected
 %%
-%% This is the Well-Architected Tool API Reference.
+%% Amazon Web Services Well-Architected helps you evaluate your architectures
+%% against Amazon Web Services best practices across operational excellence,
+%% security, reliability, performance efficiency, cost optimization, and
+%% sustainability.
 %%
-%% The WA Tool API provides programmatic access to the
-%% Well-Architected Tool: http://aws.amazon.com/well-architected-tool in the
-%% Amazon Web Services Management Console:
-%% https://console.aws.amazon.com/wellarchitected. For information
-%% about the Well-Architected Tool, see the
-%% Well-Architected Tool User Guide:
+%% The service includes the Amazon Web Services Well-Architected Agent for
+%% AI-powered recommendations tailored to your specific environment, and the
+%% Well-Architected Tool: http://aws.amazon.com/well-architected-tool for
+%% conducting reviews and tracking improvements.
+%%
+%% This is the Amazon Web Services Well-Architected API Reference. Through
+%% this API, you can programmatically access personalized recommendations and
+%% automation scripts from the Amazon Web Services Well-Architected Agent,
+%% and create and manage workloads, conduct lens reviews, track milestones,
+%% manage custom lenses, share workloads across accounts, and manage profiles
+%% with the Well-Architected Tool.
+%%
+%% For more information about the service, see the Amazon Web Services
+%% Well-Architected User Guide:
 %% https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html.
 -module(aws_wellarchitected).
 
@@ -18,6 +29,12 @@
          associate_lenses/4,
          associate_profiles/3,
          associate_profiles/4,
+         create_agent_context/3,
+         create_agent_context/4,
+         create_agent_goal/3,
+         create_agent_goal/4,
+         create_agent_profile/2,
+         create_agent_profile/3,
          create_lens_share/3,
          create_lens_share/4,
          create_lens_version/3,
@@ -36,6 +53,12 @@
          create_workload/3,
          create_workload_share/3,
          create_workload_share/4,
+         delete_agent_context/4,
+         delete_agent_context/5,
+         delete_agent_goal/4,
+         delete_agent_goal/5,
+         delete_agent_profile/3,
+         delete_agent_profile/4,
          delete_lens/3,
          delete_lens/4,
          delete_lens_share/4,
@@ -59,6 +82,21 @@
          export_lens/2,
          export_lens/4,
          export_lens/5,
+         get_agent_context/3,
+         get_agent_context/5,
+         get_agent_context/6,
+         get_agent_goal/3,
+         get_agent_goal/5,
+         get_agent_goal/6,
+         get_agent_profile/2,
+         get_agent_profile/4,
+         get_agent_profile/5,
+         get_agent_recommendation/2,
+         get_agent_recommendation/4,
+         get_agent_recommendation/5,
+         get_agent_recommendation_generation/3,
+         get_agent_recommendation_generation/5,
+         get_agent_recommendation_generation/6,
          get_answer/4,
          get_answer/6,
          get_answer/7,
@@ -103,6 +141,24 @@
          get_workload/5,
          import_lens/2,
          import_lens/3,
+         list_agent_contexts/2,
+         list_agent_contexts/4,
+         list_agent_contexts/5,
+         list_agent_goals/2,
+         list_agent_goals/4,
+         list_agent_goals/5,
+         list_agent_profiles/1,
+         list_agent_profiles/3,
+         list_agent_profiles/4,
+         list_agent_recommendation_generations/2,
+         list_agent_recommendation_generations/4,
+         list_agent_recommendation_generations/5,
+         list_agent_recommendation_items/2,
+         list_agent_recommendation_items/4,
+         list_agent_recommendation_items/5,
+         list_agent_recommendations/2,
+         list_agent_recommendations/4,
+         list_agent_recommendations/5,
          list_answers/3,
          list_answers/5,
          list_answers/6,
@@ -155,10 +211,22 @@
          list_workload_shares/5,
          list_workloads/2,
          list_workloads/3,
+         put_agent_recommendation_feedback/3,
+         put_agent_recommendation_feedback/4,
+         start_agent_recommendation_generation/3,
+         start_agent_recommendation_generation/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_agent_context/4,
+         update_agent_context/5,
+         update_agent_goal/4,
+         update_agent_goal/5,
+         update_agent_profile/3,
+         update_agent_profile/4,
+         update_agent_recommendation_status/3,
+         update_agent_recommendation_status/4,
          update_answer/5,
          update_answer/6,
          update_global_settings/2,
@@ -227,6 +295,108 @@
 %%   <<"Type">> => list(any())
 %% }
 -type additional_resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_profile_summary() :: #{
+%%   <<"aggregationConfiguration">> => list(aggregation_configuration()),
+%%   <<"arn">> => string(),
+%%   <<"businessOverview">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"eligibleForArchitectureGeneration">> => [boolean()],
+%%   <<"eligibleForScheduledGeneration">> => [boolean()],
+%%   <<"executionRoleArn">> => string(),
+%%   <<"fieldErrors">> => map(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"tags">> => list(tag())
+%% }
+-type agent_profile_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_recommendation_generation_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"estimatedCompletionTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"profileArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type agent_recommendation_generation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_recommendation_item_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"id">> => [string()],
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"metadata">> => [any()],
+%%   <<"recommendationArn">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type agent_recommendation_item_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_recommendation_remediation() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"recommendationArn">> => string(),
+%%   <<"resourceLinks">> => list(resource_link()),
+%%   <<"steps">> => list(remediation_step()),
+%%   <<"type">> => list(any())
+%% }
+-type agent_recommendation_remediation() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_recommendation_summary() :: #{
+%%   <<"applications">> => list([string()]()),
+%%   <<"awsServices">> => list([string()]()),
+%%   <<"businessUnits">> => list([string()]()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"effort">> => list(any()),
+%%   <<"impact">> => list(any()),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"numberOfResources">> => [integer()],
+%%   <<"pillar">> => list(any()),
+%%   <<"priority">> => list(any()),
+%%   <<"profileArn">> => string(),
+%%   <<"recommendationArn">> => string(),
+%%   <<"roi">> => roi(),
+%%   <<"state">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"title">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"updateReason">> => string()
+%% }
+-type agent_recommendation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% aggregation_configuration() :: #{
+%%   <<"accessRoleArn">> => string(),
+%%   <<"accountId">> => string(),
+%%   <<"regions">> => list(string())
+%% }
+-type aggregation_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -303,7 +473,7 @@
 %%   <<"QuestionId">> => string(),
 %%   <<"Reason">> => list(any()),
 %%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type check_detail() :: #{binary() => any()}.
 
@@ -320,7 +490,7 @@
 %%   <<"Provider">> => list(any()),
 %%   <<"QuestionId">> => string(),
 %%   <<"Status">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type check_summary() :: #{binary() => any()}.
 
@@ -397,12 +567,127 @@
 %%   <<"LensesAppliedCount">> => integer(),
 %%   <<"MetricType">> => list(any()),
 %%   <<"RiskCounts">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"UpdatedAt">> => [non_neg_integer()],
 %%   <<"WorkloadArn">> => string(),
 %%   <<"WorkloadId">> => string(),
 %%   <<"WorkloadName">> => string()
 %% }
 -type consolidated_report_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_content() :: #{
+%%   <<"accountIds">> => list([string()]()),
+%%   <<"additionalContext">> => string(),
+%%   <<"applicationOverview">> => string(),
+%%   <<"applicationType">> => list(any()),
+%%   <<"architectureOverview">> => string(),
+%%   <<"awsServices">> => list([string()]()),
+%%   <<"criticality">> => list(any()),
+%%   <<"industry">> => string(),
+%%   <<"regions">> => list([string()]()),
+%%   <<"resourceTags">> => list(context_resource_tag()),
+%%   <<"resourceTypes">> => list([string()]())
+%% }
+-type context_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_resource_tag() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type context_resource_tag() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_summary() :: #{
+%%   <<"applicationType">> => list(any()),
+%%   <<"content">> => context_content(),
+%%   <<"contextType">> => list(any()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"criticality">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"profileArn">> => string(),
+%%   <<"title">> => string()
+%% }
+-type context_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_context_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"content">> := context_content(),
+%%   <<"contextType">> := list(any()),
+%%   <<"title">> := string()
+%% }
+-type create_agent_context_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_context_response() :: #{
+%%   <<"context">> => context_summary()
+%% }
+-type create_agent_context_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_goal_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"pillars">> := list(list(any())()),
+%%   <<"title">> := string()
+%% }
+-type create_agent_goal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_goal_response() :: #{
+%%   <<"goal">> => goal_summary()
+%% }
+-type create_agent_goal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_profile_request() :: #{
+%%   <<"aggregationConfiguration">> := list(aggregation_configuration()),
+%%   <<"businessOverview">> => string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"name">> := [string()],
+%%   <<"pillars">> := list(list(any())()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_agent_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_profile_response() :: #{
+%%   <<"aggregationConfiguration">> => list(aggregation_configuration()),
+%%   <<"arn">> => string(),
+%%   <<"businessOverview">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"eligibleForArchitectureGeneration">> => [boolean()],
+%%   <<"eligibleForScheduledGeneration">> => [boolean()],
+%%   <<"executionRoleArn">> => string(),
+%%   <<"fieldErrors">> => map(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_agent_profile_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -575,6 +860,40 @@
 
 
 %% Example:
+%% cross_pillar_benefit() :: #{
+%%   <<"description">> => [string()],
+%%   <<"impact">> => list(any()),
+%%   <<"pillar">> => list(any()),
+%%   <<"title">> => [string()]
+%% }
+-type cross_pillar_benefit() :: #{binary() => any()}.
+
+%% Example:
+%% delete_agent_context_request() :: #{}
+-type delete_agent_context_request() :: #{}.
+
+%% Example:
+%% delete_agent_context_response() :: #{}
+-type delete_agent_context_response() :: #{}.
+
+%% Example:
+%% delete_agent_goal_request() :: #{}
+-type delete_agent_goal_request() :: #{}.
+
+%% Example:
+%% delete_agent_goal_response() :: #{}
+-type delete_agent_goal_response() :: #{}.
+
+%% Example:
+%% delete_agent_profile_request() :: #{}
+-type delete_agent_profile_request() :: #{}.
+
+%% Example:
+%% delete_agent_profile_response() :: #{}
+-type delete_agent_profile_response() :: #{}.
+
+
+%% Example:
 %% delete_lens_input() :: #{
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"LensStatus">> := list(any())
@@ -646,6 +965,14 @@
 
 
 %% Example:
+%% error_details() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type error_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% export_lens_input() :: #{
 %%   <<"LensVersion">> => string()
 %% }
@@ -657,6 +984,124 @@
 %%   <<"LensJSON">> => string()
 %% }
 -type export_lens_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_context_request() :: #{}
+-type get_agent_context_request() :: #{}.
+
+
+%% Example:
+%% get_agent_context_response() :: #{
+%%   <<"context">> => context_summary()
+%% }
+-type get_agent_context_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_goal_request() :: #{}
+-type get_agent_goal_request() :: #{}.
+
+
+%% Example:
+%% get_agent_goal_response() :: #{
+%%   <<"goal">> => goal_summary()
+%% }
+-type get_agent_goal_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_profile_request() :: #{}
+-type get_agent_profile_request() :: #{}.
+
+
+%% Example:
+%% get_agent_profile_response() :: #{
+%%   <<"aggregationConfiguration">> => list(aggregation_configuration()),
+%%   <<"arn">> => string(),
+%%   <<"businessOverview">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"eligibleForArchitectureGeneration">> => [boolean()],
+%%   <<"eligibleForScheduledGeneration">> => [boolean()],
+%%   <<"executionRoleArn">> => string(),
+%%   <<"fieldErrors">> => map(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"tags">> => list(tag())
+%% }
+-type get_agent_profile_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_recommendation_generation_request() :: #{}
+-type get_agent_recommendation_generation_request() :: #{}.
+
+
+%% Example:
+%% get_agent_recommendation_generation_response() :: #{
+%%   <<"additionalContext">> => [any()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"errorDetails">> => error_details(),
+%%   <<"estimatedCompletionTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"profileArn">> => string(),
+%%   <<"progress">> => progress(),
+%%   <<"scope">> => scope(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type get_agent_recommendation_generation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_agent_recommendation_request() :: #{
+%%   <<"remediationType">> => list(any())
+%% }
+-type get_agent_recommendation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_agent_recommendation_response() :: #{
+%%   <<"applications">> => list([string()]()),
+%%   <<"awsServices">> => list([string()]()),
+%%   <<"businessUnits">> => list([string()]()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"crossPillarBenefits">> => list(cross_pillar_benefit()),
+%%   <<"description">> => string(),
+%%   <<"effort">> => list(any()),
+%%   <<"goals">> => list(recommendation_goal()),
+%%   <<"highlights">> => list(string()),
+%%   <<"impact">> => list(any()),
+%%   <<"impactDetails">> => list(string()),
+%%   <<"insights">> => list(insight()),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"numberOfResources">> => [integer()],
+%%   <<"pillar">> => list(any()),
+%%   <<"priority">> => list(any()),
+%%   <<"profileArn">> => string(),
+%%   <<"recommendationArn">> => string(),
+%%   <<"remediationSummary">> => remediation_summary(),
+%%   <<"remediations">> => list(agent_recommendation_remediation()),
+%%   <<"roi">> => roi(),
+%%   <<"sources">> => list(list(any())()),
+%%   <<"state">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => list(tag()),
+%%   <<"title">> => string(),
+%%   <<"tradeOffs">> => list(trade_off()),
+%%   <<"type">> => list(any()),
+%%   <<"updateReason">> => string()
+%% }
+-type get_agent_recommendation_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -856,6 +1301,21 @@
 
 
 %% Example:
+%% goal_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"profileArn">> => string(),
+%%   <<"title">> => string()
+%% }
+-type goal_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% import_lens_input() :: #{
 %%   <<"ClientRequestToken">> := string(),
 %%   <<"JSONString">> := string(),
@@ -887,6 +1347,14 @@
 
 
 %% Example:
+%% insight() :: #{
+%%   <<"signalsDetected">> => [string()],
+%%   <<"usagePattern">> => [string()]
+%% }
+-type insight() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -896,7 +1364,7 @@
 %% Example:
 %% jira_configuration() :: #{
 %%   <<"JiraIssueUrl">> => string(),
-%%   <<"LastSyncedTime">> => non_neg_integer()
+%%   <<"LastSyncedTime">> => [non_neg_integer()]
 %% }
 -type jira_configuration() :: #{binary() => any()}.
 
@@ -944,7 +1412,7 @@
 %%   <<"PrioritizedRiskCounts">> => map(),
 %%   <<"Profiles">> => list(workload_profile()),
 %%   <<"RiskCounts">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type lens_review() :: #{binary() => any()}.
 
@@ -968,7 +1436,7 @@
 %%   <<"PrioritizedRiskCounts">> => map(),
 %%   <<"Profiles">> => list(workload_profile()),
 %%   <<"RiskCounts">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type lens_review_summary() :: #{binary() => any()}.
 
@@ -985,7 +1453,7 @@
 
 %% Example:
 %% lens_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
 %%   <<"LensAlias">> => string(),
 %%   <<"LensArn">> => string(),
@@ -994,7 +1462,7 @@
 %%   <<"LensType">> => list(any()),
 %%   <<"LensVersion">> => string(),
 %%   <<"Owner">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type lens_summary() :: #{binary() => any()}.
 
@@ -1011,6 +1479,106 @@
 %%   <<"WorkloadName">> => string()
 %% }
 -type lens_upgrade_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_contexts_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_contexts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_contexts_response() :: #{
+%%   <<"items">> => list(context_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_contexts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_goals_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_goals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_goals_response() :: #{
+%%   <<"items">> => list(goal_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_goals_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_profiles_response() :: #{
+%%   <<"items">> => list(agent_profile_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_recommendation_generations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recommendationType">> => list(any())
+%% }
+-type list_agent_recommendation_generations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_recommendation_generations_response() :: #{
+%%   <<"items">> => list(agent_recommendation_generation_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_recommendation_generations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_recommendation_items_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type list_agent_recommendation_items_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_recommendation_items_response() :: #{
+%%   <<"items">> => list(agent_recommendation_item_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_recommendation_items_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_recommendations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pillar">> => list(any()),
+%%   <<"state">> => list(any())
+%% }
+-type list_agent_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_recommendations_response() :: #{
+%%   <<"items">> => list(agent_recommendation_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_recommendations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1369,7 +1937,7 @@
 %% milestone() :: #{
 %%   <<"MilestoneName">> => string(),
 %%   <<"MilestoneNumber">> => integer(),
-%%   <<"RecordedAt">> => non_neg_integer(),
+%%   <<"RecordedAt">> => [non_neg_integer()],
 %%   <<"Workload">> => workload()
 %% }
 -type milestone() :: #{binary() => any()}.
@@ -1379,7 +1947,7 @@
 %% milestone_summary() :: #{
 %%   <<"MilestoneName">> => string(),
 %%   <<"MilestoneNumber">> => integer(),
-%%   <<"RecordedAt">> => non_neg_integer(),
+%%   <<"RecordedAt">> => [non_neg_integer()],
 %%   <<"WorkloadSummary">> => workload_summary()
 %% }
 -type milestone_summary() :: #{binary() => any()}.
@@ -1404,6 +1972,14 @@
 
 
 %% Example:
+%% pillar_item() :: #{
+%%   <<"ids">> => list(string()),
+%%   <<"pillar">> => list(any())
+%% }
+-type pillar_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% pillar_metric() :: #{
 %%   <<"PillarId">> => string(),
 %%   <<"Questions">> => list(question_metric()),
@@ -1425,7 +2001,7 @@
 
 %% Example:
 %% profile() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Owner">> => string(),
 %%   <<"ProfileArn">> => string(),
 %%   <<"ProfileDescription">> => string(),
@@ -1434,7 +2010,7 @@
 %%   <<"ProfileVersion">> => string(),
 %%   <<"ShareInvitationId">> => string(),
 %%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type profile() :: #{binary() => any()}.
 
@@ -1494,23 +2070,23 @@
 
 %% Example:
 %% profile_summary() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Owner">> => string(),
 %%   <<"ProfileArn">> => string(),
 %%   <<"ProfileDescription">> => string(),
 %%   <<"ProfileName">> => string(),
 %%   <<"ProfileVersion">> => string(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type profile_summary() :: #{binary() => any()}.
 
 
 %% Example:
 %% profile_template() :: #{
-%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"TemplateName">> => string(),
 %%   <<"TemplateQuestions">> => list(profile_template_question()),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type profile_template() :: #{binary() => any()}.
 
@@ -1537,6 +2113,28 @@
 
 
 %% Example:
+%% progress() :: #{
+%%   <<"completionPercentage">> => [float()],
+%%   <<"stepsCompleted">> => [integer()],
+%%   <<"totalSteps">> => [integer()]
+%% }
+-type progress() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_agent_recommendation_feedback_request() :: #{
+%%   <<"comments">> => [string()],
+%%   <<"feedbackCategory">> => list(any()),
+%%   <<"type">> := list(any())
+%% }
+-type put_agent_recommendation_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_agent_recommendation_feedback_response() :: #{}
+-type put_agent_recommendation_feedback_response() :: #{}.
+
+
+%% Example:
 %% question_difference() :: #{
 %%   <<"DifferenceStatus">> => list(any()),
 %%   <<"QuestionId">> => string(),
@@ -1552,6 +2150,37 @@
 %%   <<"Risk">> => list(any())
 %% }
 -type question_metric() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation_goal() :: #{
+%%   <<"title">> => [string()]
+%% }
+-type recommendation_goal() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_step() :: #{
+%%   <<"content">> => string(),
+%%   <<"title">> => string()
+%% }
+-type remediation_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_summary() :: #{
+%%   <<"recommendation">> => [string()],
+%%   <<"steps">> => list(string())
+%% }
+-type remediation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_link() :: #{
+%%   <<"title">> => [string()],
+%%   <<"url">> => [string()]
+%% }
+-type resource_link() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1575,7 +2204,7 @@
 %%   <<"TemplateArn">> => string(),
 %%   <<"TemplateName">> => string(),
 %%   <<"UpdateStatus">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type review_template() :: #{binary() => any()}.
 
@@ -1627,7 +2256,7 @@
 %%   <<"Notes">> => string(),
 %%   <<"PillarReviewSummaries">> => list(review_template_pillar_review_summary()),
 %%   <<"QuestionCounts">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type review_template_lens_review() :: #{binary() => any()}.
 
@@ -1650,9 +2279,26 @@
 %%   <<"TemplateArn">> => string(),
 %%   <<"TemplateName">> => string(),
 %%   <<"UpdateStatus">> => list(any()),
-%%   <<"UpdatedAt">> => non_neg_integer()
+%%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type review_template_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% roi() :: #{
+%%   <<"detail">> => [string()],
+%%   <<"estimate">> => [string()]
+%% }
+-type roi() :: #{binary() => any()}.
+
+
+%% Example:
+%% scope() :: #{
+%%   <<"goalIds">> => list(string()),
+%%   <<"items">> => list(pillar_item()),
+%%   <<"pillars">> => list(list(any())())
+%% }
+-type scope() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1707,6 +2353,39 @@
 
 
 %% Example:
+%% start_agent_recommendation_generation_request() :: #{
+%%   <<"additionalContext">> => [any()],
+%%   <<"name">> => [string()],
+%%   <<"scope">> := scope(),
+%%   <<"types">> := list(list(any())())
+%% }
+-type start_agent_recommendation_generation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_agent_recommendation_generation_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"estimatedCompletionTime">> => [non_neg_integer()],
+%%   <<"id">> => string(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"profileArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_agent_recommendation_generation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag() :: #{
+%%   <<"key">> => [string()],
+%%   <<"value">> => [string()]
+%% }
+-type tag() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_input() :: #{
 %%   <<"Tags">> := map()
 %% }
@@ -1737,6 +2416,18 @@
 
 
 %% Example:
+%% trade_off() :: #{
+%%   <<"description">> => [string()],
+%%   <<"mitigation">> => [string()],
+%%   <<"pillar">> => list(any()),
+%%   <<"risk">> => list(any()),
+%%   <<"riskExplanation">> => [string()],
+%%   <<"title">> => [string()]
+%% }
+-type trade_off() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_input() :: #{
 %%   <<"TagKeys">> := list(string())
 %% }
@@ -1745,6 +2436,88 @@
 %% Example:
 %% untag_resource_output() :: #{}
 -type untag_resource_output() :: #{}.
+
+
+%% Example:
+%% update_agent_context_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"content">> => context_content(),
+%%   <<"title">> => string()
+%% }
+-type update_agent_context_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_context_response() :: #{
+%%   <<"context">> => context_summary()
+%% }
+-type update_agent_context_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_goal_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"description">> => string(),
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"title">> => string()
+%% }
+-type update_agent_goal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_goal_response() :: #{
+%%   <<"goal">> => goal_summary()
+%% }
+-type update_agent_goal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_profile_request() :: #{
+%%   <<"aggregationConfiguration">> => list(aggregation_configuration()),
+%%   <<"businessOverview">> => string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"pillars">> => list(list(any())())
+%% }
+-type update_agent_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_profile_response() :: #{
+%%   <<"aggregationConfiguration">> => list(aggregation_configuration()),
+%%   <<"arn">> => string(),
+%%   <<"businessOverview">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"eligibleForArchitectureGeneration">> => [boolean()],
+%%   <<"eligibleForScheduledGeneration">> => [boolean()],
+%%   <<"executionRoleArn">> => string(),
+%%   <<"fieldErrors">> => map(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"tags">> => list(tag())
+%% }
+-type update_agent_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_recommendation_status_request() :: #{
+%%   <<"status">> := list(any()),
+%%   <<"updateReason">> => string()
+%% }
+-type update_agent_recommendation_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_agent_recommendation_status_response() :: #{}
+-type update_agent_recommendation_status_response() :: #{}.
 
 
 %% Example:
@@ -1999,11 +2772,11 @@
 %%   <<"PrioritizedRiskCounts">> => map(),
 %%   <<"Profiles">> => list(workload_profile()),
 %%   <<"ReviewOwner">> => string(),
-%%   <<"ReviewRestrictionDate">> => non_neg_integer(),
+%%   <<"ReviewRestrictionDate">> => [non_neg_integer()],
 %%   <<"RiskCounts">> => map(),
 %%   <<"ShareInvitationId">> => string(),
 %%   <<"Tags">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"UpdatedAt">> => [non_neg_integer()],
 %%   <<"WorkloadArn">> => string(),
 %%   <<"WorkloadId">> => string(),
 %%   <<"WorkloadName">> => string()
@@ -2078,7 +2851,7 @@
 %%   <<"PrioritizedRiskCounts">> => map(),
 %%   <<"Profiles">> => list(workload_profile()),
 %%   <<"RiskCounts">> => map(),
-%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"UpdatedAt">> => [non_neg_integer()],
 %%   <<"WorkloadArn">> => string(),
 %%   <<"WorkloadId">> => string(),
 %%   <<"WorkloadName">> => string()
@@ -2097,6 +2870,32 @@
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_agent_context_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_agent_goal_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_agent_profile_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -2176,6 +2975,28 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_agent_context_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type delete_agent_goal_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type delete_agent_profile_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -2262,6 +3083,41 @@
     access_denied_exception().
 
 -type export_lens_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agent_context_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agent_goal_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agent_profile_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agent_recommendation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agent_recommendation_generation_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -2372,6 +3228,45 @@
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type list_agent_contexts_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_agent_goals_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_agent_profiles_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_agent_recommendation_generations_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_agent_recommendation_items_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_agent_recommendations_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 -type list_answers_errors() ::
@@ -2497,6 +3392,21 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type put_agent_recommendation_feedback_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type start_agent_recommendation_generation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type tag_resource_errors() ::
     resource_not_found_exception() | 
     internal_server_exception().
@@ -2504,6 +3414,34 @@
 -type untag_resource_errors() ::
     resource_not_found_exception() | 
     internal_server_exception().
+
+-type update_agent_context_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_agent_goal_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_agent_profile_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type update_agent_recommendation_status_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_answer_errors() ::
     validation_exception() | 
@@ -2625,17 +3563,14 @@
 %% @doc Associate a lens to a workload.
 %%
 %% Up to 10 lenses can be associated with a workload in a single API
-%% operation. A
-%% maximum of 20 lenses can be associated with a workload.
+%% operation. A maximum of 20 lenses can be associated with a workload.
 %%
 %% Disclaimer
 %%
 %% By accessing and/or applying custom lenses created by another Amazon Web
-%% Services user or account,
-%% you acknowledge that custom lenses created by other users and shared with
-%% you are
-%% Third Party Content as defined in the Amazon Web Services Customer
-%% Agreement.
+%% Services user or account, you acknowledge that custom lenses created by
+%% other users and shared with you are Third Party Content as defined in the
+%% Amazon Web Services Customer Agreement.
 -spec associate_lenses(aws_client:aws_client(), binary() | list(), associate_lenses_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2703,35 +3638,142 @@ associate_profiles(Client, WorkloadId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a context associated with an optimization profile.
+%%
+%% Contexts provide application and environment information used during
+%% recommendation generation.
+-spec create_agent_context(aws_client:aws_client(), binary() | list(), create_agent_context_request()) ->
+    {ok, create_agent_context_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_context_errors(), tuple()}.
+create_agent_context(Client, ProfileArn, Input) ->
+    create_agent_context(Client, ProfileArn, Input, []).
+
+-spec create_agent_context(aws_client:aws_client(), binary() | list(), create_agent_context_request(), proplists:proplist()) ->
+    {ok, create_agent_context_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_context_errors(), tuple()}.
+create_agent_context(Client, ProfileArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/contexts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an optimization goal associated with a profile.
+%%
+%% Goals define specific targets and objectives for the optimization process.
+-spec create_agent_goal(aws_client:aws_client(), binary() | list(), create_agent_goal_request()) ->
+    {ok, create_agent_goal_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_goal_errors(), tuple()}.
+create_agent_goal(Client, ProfileArn, Input) ->
+    create_agent_goal(Client, ProfileArn, Input, []).
+
+-spec create_agent_goal(aws_client:aws_client(), binary() | list(), create_agent_goal_request(), proplists:proplist()) ->
+    {ok, create_agent_goal_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_goal_errors(), tuple()}.
+create_agent_goal(Client, ProfileArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/goals"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an optimization profile that defines the scope and
+%% configuration for generating recommendations.
+%%
+%% A profile specifies the execution role, target pillars, and aggregation
+%% settings for analyzing your Amazon Web Services resources.
+-spec create_agent_profile(aws_client:aws_client(), create_agent_profile_request()) ->
+    {ok, create_agent_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_profile_errors(), tuple()}.
+create_agent_profile(Client, Input) ->
+    create_agent_profile(Client, Input, []).
+
+-spec create_agent_profile(aws_client:aws_client(), create_agent_profile_request(), proplists:proplist()) ->
+    {ok, create_agent_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_profile_errors(), tuple()}.
+create_agent_profile(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/v1/agent-profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Create a lens share.
 %%
 %% The owner of a lens can share it with other Amazon Web Services accounts,
-%% users, an organization,
-%% and organizational units (OUs) in the same Amazon Web Services Region.
-%% Lenses provided by Amazon Web Services (Amazon Web Services Official
-%% Content) cannot be shared.
+%% users, an organization, and organizational units (OUs) in the same Amazon
+%% Web Services Region. Lenses provided by Amazon Web Services (Amazon Web
+%% Services Official Content) cannot be shared.
 %%
 %% Shared access to a lens is not removed until the lens invitation is
 %% deleted.
 %%
 %% If you share a lens with an organization or OU, all accounts in the
-%% organization or OU
-%% are granted access to the lens.
+%% organization or OU are granted access to the lens.
 %%
 %% For more information, see Sharing a custom lens:
 %% https://docs.aws.amazon.com/wellarchitected/latest/userguide/lenses-sharing.html
-%% in the
-%% Well-Architected Tool User Guide.
+%% in the Well-Architected Tool User Guide.
 %%
 %% Disclaimer
 %%
-%% By sharing your custom lenses with other Amazon Web Services accounts,
-%% you acknowledge that Amazon Web Services will make your custom lenses
-%% available to those
-%% other accounts. Those other accounts may continue to access and use your
-%% shared custom lenses even if you delete the custom lenses
-%% from your own Amazon Web Services account or terminate
-%% your Amazon Web Services account.
+%% By sharing your custom lenses with other Amazon Web Services accounts, you
+%% acknowledge that Amazon Web Services will make your custom lenses
+%% available to those other accounts. Those other accounts may continue to
+%% access and use your shared custom lenses even if you delete the custom
+%% lenses from your own Amazon Web Services account or terminate your Amazon
+%% Web Services account.
 -spec create_lens_share(aws_client:aws_client(), binary() | list(), create_lens_share_input()) ->
     {ok, create_lens_share_output(), tuple()} |
     {error, any()} |
@@ -2770,11 +3812,10 @@ create_lens_share(Client, LensAlias, Input0, Options0) ->
 %% A lens can have up to 100 versions.
 %%
 %% Use this operation to publish a new lens version after you have imported a
-%% lens. The `LensAlias'
-%% is used to identify the lens to be published.
-%% The owner of a lens can share the lens with other
-%% Amazon Web Services accounts and users in the same Amazon Web Services
-%% Region. Only the owner of a lens can delete it.
+%% lens. The `LensAlias' is used to identify the lens to be published.
+%% The owner of a lens can share the lens with other Amazon Web Services
+%% accounts and users in the same Amazon Web Services Region. Only the owner
+%% of a lens can delete it.
 -spec create_lens_version(aws_client:aws_client(), binary() | list(), create_lens_version_input()) ->
     {ok, create_lens_version_output(), tuple()} |
     {error, any()} |
@@ -2915,16 +3956,12 @@ create_profile_share(Client, ProfileArn, Input0, Options0) ->
 %% Disclaimer
 %%
 %% Do not include or gather personal identifiable information (PII) of end
-%% users or
-%% other identifiable individuals in or via your review templates. If your
-%% review
-%% template or those shared with you and used in your account do include or
-%% collect PII
-%% you are responsible for: ensuring that the included PII is processed in
-%% accordance
-%% with applicable law, providing adequate privacy notices, and obtaining
-%% necessary
-%% consents for processing such data.
+%% users or other identifiable individuals in or via your review templates.
+%% If your review template or those shared with you and used in your account
+%% do include or collect PII you are responsible for: ensuring that the
+%% included PII is processed in accordance with applicable law, providing
+%% adequate privacy notices, and obtaining necessary consents for processing
+%% such data.
 -spec create_review_template(aws_client:aws_client(), create_review_template_input()) ->
     {ok, create_review_template_output(), tuple()} |
     {error, any()} |
@@ -2961,25 +3998,20 @@ create_review_template(Client, Input0, Options0) ->
 %% @doc Create a review template share.
 %%
 %% The owner of a review template can share it with other Amazon Web Services
-%% accounts,
-%% users, an organization, and organizational units (OUs) in the same Amazon
-%% Web Services Region.
+%% accounts, users, an organization, and organizational units (OUs) in the
+%% same Amazon Web Services Region.
 %%
 %% Shared access to a review template is not removed until the review
-%% template share
-%% invitation is deleted.
+%% template share invitation is deleted.
 %%
 %% If you share a review template with an organization or OU, all accounts in
-%% the
-%% organization or OU are granted access to the review template.
+%% the organization or OU are granted access to the review template.
 %%
 %% Disclaimer
 %%
 %% By sharing your review template with other Amazon Web Services accounts,
-%% you
-%% acknowledge that Amazon Web Services will make your review template
-%% available to
-%% those other accounts.
+%% you acknowledge that Amazon Web Services will make your review template
+%% available to those other accounts.
 -spec create_template_share(aws_client:aws_client(), binary() | list(), create_template_share_input()) ->
     {ok, create_template_share_output(), tuple()} |
     {error, any()} |
@@ -3016,22 +4048,19 @@ create_template_share(Client, TemplateArn, Input0, Options0) ->
 %% @doc Create a new workload.
 %%
 %% The owner of a workload can share the workload with other Amazon Web
-%% Services accounts, users,
-%% an organization, and organizational units (OUs)
+%% Services accounts, users, an organization, and organizational units (OUs)
 %% in the same Amazon Web Services Region. Only the owner of a workload can
 %% delete it.
 %%
 %% For more information, see Defining a Workload:
 %% https://docs.aws.amazon.com/wellarchitected/latest/userguide/define-workload.html
-%% in the
-%% Well-Architected Tool User Guide.
+%% in the Well-Architected Tool User Guide.
 %%
 %% Either `AwsRegions', `NonAwsRegions', or both must be specified
-%% when
-%% creating a workload.
+%% when creating a workload.
 %%
-%% You also must specify `ReviewOwner', even though the
-%% parameter is listed as not being required in the following section.
+%% You also must specify `ReviewOwner', even though the parameter is
+%% listed as not being required in the following section.
 %%
 %% When creating a workload using a review template, you must have the
 %% following IAM permissions:
@@ -3079,19 +4108,15 @@ create_workload(Client, Input0, Options0) ->
 %% @doc Create a workload share.
 %%
 %% The owner of a workload can share it with other Amazon Web Services
-%% accounts and users in the same
-%% Amazon Web Services Region. Shared access to a workload is not removed
-%% until the workload invitation is
-%% deleted.
+%% accounts and users in the same Amazon Web Services Region. Shared access
+%% to a workload is not removed until the workload invitation is deleted.
 %%
 %% If you share a workload with an organization or OU, all accounts in the
-%% organization or OU
-%% are granted access to the workload.
+%% organization or OU are granted access to the workload.
 %%
 %% For more information, see Sharing a workload:
 %% https://docs.aws.amazon.com/wellarchitected/latest/userguide/workloads-sharing.html
-%% in the
-%% Well-Architected Tool User Guide.
+%% in the Well-Architected Tool User Guide.
 -spec create_workload_share(aws_client:aws_client(), binary() | list(), create_workload_share_input()) ->
     {ok, create_workload_share_output(), tuple()} |
     {error, any()} |
@@ -3125,22 +4150,124 @@ create_workload_share(Client, WorkloadId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a context associated with a profile.
+-spec delete_agent_context(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_context_request()) ->
+    {ok, delete_agent_context_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_context_errors(), tuple()}.
+delete_agent_context(Client, Id, ProfileArn, Input) ->
+    delete_agent_context(Client, Id, ProfileArn, Input, []).
+
+-spec delete_agent_context(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_context_request(), proplists:proplist()) ->
+    {ok, delete_agent_context_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_context_errors(), tuple()}.
+delete_agent_context(Client, Id, ProfileArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/contexts/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an optimization goal from a profile.
+-spec delete_agent_goal(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_goal_request()) ->
+    {ok, delete_agent_goal_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_goal_errors(), tuple()}.
+delete_agent_goal(Client, Id, ProfileArn, Input) ->
+    delete_agent_goal(Client, Id, ProfileArn, Input, []).
+
+-spec delete_agent_goal(aws_client:aws_client(), binary() | list(), binary() | list(), delete_agent_goal_request(), proplists:proplist()) ->
+    {ok, delete_agent_goal_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_goal_errors(), tuple()}.
+delete_agent_goal(Client, Id, ProfileArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/goals/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an optimization profile and its associated configuration.
+%%
+%% This action cannot be undone.
+-spec delete_agent_profile(aws_client:aws_client(), binary() | list(), delete_agent_profile_request()) ->
+    {ok, delete_agent_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_profile_errors(), tuple()}.
+delete_agent_profile(Client, ProfileArn, Input) ->
+    delete_agent_profile(Client, ProfileArn, Input, []).
+
+-spec delete_agent_profile(aws_client:aws_client(), binary() | list(), delete_agent_profile_request(), proplists:proplist()) ->
+    {ok, delete_agent_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_profile_errors(), tuple()}.
+delete_agent_profile(Client, ProfileArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Delete an existing lens.
 %%
 %% Only the owner of a lens can delete it. After the lens is deleted, Amazon
-%% Web Services accounts and users
-%% that you shared the lens with can continue to use it, but they will no
-%% longer be able to apply it to new workloads.
+%% Web Services accounts and users that you shared the lens with can continue
+%% to use it, but they will no longer be able to apply it to new workloads.
 %%
 %% Disclaimer
 %%
-%% By sharing your custom lenses with other Amazon Web Services accounts,
-%% you acknowledge that Amazon Web Services will make your custom lenses
-%% available to those
-%% other accounts. Those other accounts may continue to access and use your
-%% shared custom lenses even if you delete the custom lenses
-%% from your own Amazon Web Services account or terminate
-%% your Amazon Web Services account.
+%% By sharing your custom lenses with other Amazon Web Services accounts, you
+%% acknowledge that Amazon Web Services will make your custom lenses
+%% available to those other accounts. Those other accounts may continue to
+%% access and use your shared custom lenses even if you delete the custom
+%% lenses from your own Amazon Web Services account or terminate your Amazon
+%% Web Services account.
 -spec delete_lens(aws_client:aws_client(), binary() | list(), delete_lens_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3179,20 +4306,18 @@ delete_lens(Client, LensAlias, Input0, Options0) ->
 %% @doc Delete a lens share.
 %%
 %% After the lens share is deleted, Amazon Web Services accounts, users,
-%% organizations,
-%% and organizational units (OUs)
-%% that you shared the lens with can continue to use it, but they will no
-%% longer be able to apply it to new workloads.
+%% organizations, and organizational units (OUs) that you shared the lens
+%% with can continue to use it, but they will no longer be able to apply it
+%% to new workloads.
 %%
 %% Disclaimer
 %%
-%% By sharing your custom lenses with other Amazon Web Services accounts,
-%% you acknowledge that Amazon Web Services will make your custom lenses
-%% available to those
-%% other accounts. Those other accounts may continue to access and use your
-%% shared custom lenses even if you delete the custom lenses
-%% from your own Amazon Web Services account or terminate
-%% your Amazon Web Services account.
+%% By sharing your custom lenses with other Amazon Web Services accounts, you
+%% acknowledge that Amazon Web Services will make your custom lenses
+%% available to those other accounts. Those other accounts may continue to
+%% access and use your shared custom lenses even if you delete the custom
+%% lenses from your own Amazon Web Services account or terminate your Amazon
+%% Web Services account.
 -spec delete_lens_share(aws_client:aws_client(), binary() | list(), binary() | list(), delete_lens_share_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3231,13 +4356,11 @@ delete_lens_share(Client, LensAlias, ShareId, Input0, Options0) ->
 %%
 %% Disclaimer
 %%
-%% By sharing your profile with other Amazon Web Services accounts,
-%% you acknowledge that Amazon Web Services will make your profile available
-%% to those
-%% other accounts. Those other accounts may continue to access and use your
-%% shared profile even if you delete the profile
-%% from your own Amazon Web Services account or terminate
-%% your Amazon Web Services account.
+%% By sharing your profile with other Amazon Web Services accounts, you
+%% acknowledge that Amazon Web Services will make your profile available to
+%% those other accounts. Those other accounts may continue to access and use
+%% your shared profile even if you delete the profile from your own Amazon
+%% Web Services account or terminate your Amazon Web Services account.
 -spec delete_profile(aws_client:aws_client(), binary() | list(), delete_profile_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3313,8 +4436,7 @@ delete_profile_share(Client, ProfileArn, ShareId, Input0, Options0) ->
 %%
 %% After the review template is deleted, Amazon Web Services accounts, users,
 %% organizations, and organizational units (OUs) that you shared the review
-%% template with
-%% will no longer be able to apply it to new workloads.
+%% template with will no longer be able to apply it to new workloads.
 -spec delete_review_template(aws_client:aws_client(), binary() | list(), delete_review_template_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3352,10 +4474,8 @@ delete_review_template(Client, TemplateArn, Input0, Options0) ->
 %% @doc Delete a review template share.
 %%
 %% After the review template share is deleted, Amazon Web Services accounts,
-%% users,
-%% organizations, and organizational units (OUs) that you shared the review
-%% template with
-%% will no longer be able to apply it to new workloads.
+%% users, organizations, and organizational units (OUs) that you shared the
+%% review template with will no longer be able to apply it to new workloads.
 -spec delete_template_share(aws_client:aws_client(), binary() | list(), binary() | list(), delete_template_share_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3466,8 +4586,7 @@ delete_workload_share(Client, ShareId, WorkloadId, Input0, Options0) ->
 %% operation.
 %%
 %% The Amazon Web Services Well-Architected Framework lens
-%% (`wellarchitected') cannot be
-%% removed from a workload.
+%% (`wellarchitected') cannot be removed from a workload.
 -spec disassociate_lenses(aws_client:aws_client(), binary() | list(), disassociate_lenses_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3538,8 +4657,7 @@ disassociate_profiles(Client, WorkloadId, Input0, Options0) ->
 %% @doc Export an existing lens.
 %%
 %% Only the owner of a lens can export it. Lenses provided by Amazon Web
-%% Services (Amazon Web Services Official Content)
-%% cannot be exported.
+%% Services (Amazon Web Services Official Content) cannot be exported.
 %%
 %% Lenses are defined in JSON. For more information, see JSON format
 %% specification:
@@ -3549,16 +4667,12 @@ disassociate_profiles(Client, WorkloadId, Input0, Options0) ->
 %% Disclaimer
 %%
 %% Do not include or gather personal identifiable information (PII) of end
-%% users or
-%% other identifiable individuals in or via your custom lenses. If your
-%% custom
-%% lens or those shared with you and used in your account do include or
-%% collect
-%% PII you are responsible for: ensuring that the included PII is processed
-%% in accordance
-%% with applicable law, providing adequate privacy notices, and obtaining
-%% necessary
-%% consents for processing such data.
+%% users or other identifiable individuals in or via your custom lenses. If
+%% your custom lens or those shared with you and used in your account do
+%% include or collect PII you are responsible for: ensuring that the included
+%% PII is processed in accordance with applicable law, providing adequate
+%% privacy notices, and obtaining necessary consents for processing such
+%% data.
 -spec export_lens(aws_client:aws_client(), binary() | list()) ->
     {ok, export_lens_output(), tuple()} |
     {error, any()} |
@@ -3596,6 +4710,204 @@ export_lens(Client, LensAlias, QueryMap, HeadersMap, Options0)
         {<<"LensVersion">>, maps:get(<<"LensVersion">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific context associated
+%% with a profile.
+-spec get_agent_context(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_agent_context_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_context_errors(), tuple()}.
+get_agent_context(Client, Id, ProfileArn)
+  when is_map(Client) ->
+    get_agent_context(Client, Id, ProfileArn, #{}, #{}).
+
+-spec get_agent_context(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_agent_context_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_context_errors(), tuple()}.
+get_agent_context(Client, Id, ProfileArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_context(Client, Id, ProfileArn, QueryMap, HeadersMap, []).
+
+-spec get_agent_context(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_context_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_context_errors(), tuple()}.
+get_agent_context(Client, Id, ProfileArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/contexts/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific optimization goal.
+-spec get_agent_goal(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_agent_goal_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_goal_errors(), tuple()}.
+get_agent_goal(Client, Id, ProfileArn)
+  when is_map(Client) ->
+    get_agent_goal(Client, Id, ProfileArn, #{}, #{}).
+
+-spec get_agent_goal(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_agent_goal_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_goal_errors(), tuple()}.
+get_agent_goal(Client, Id, ProfileArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_goal(Client, Id, ProfileArn, QueryMap, HeadersMap, []).
+
+-spec get_agent_goal(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_goal_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_goal_errors(), tuple()}.
+get_agent_goal(Client, Id, ProfileArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/goals/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about an optimization profile,
+%% including its configuration and metadata.
+-spec get_agent_profile(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_agent_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_profile_errors(), tuple()}.
+get_agent_profile(Client, ProfileArn)
+  when is_map(Client) ->
+    get_agent_profile(Client, ProfileArn, #{}, #{}).
+
+-spec get_agent_profile(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_agent_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_profile_errors(), tuple()}.
+get_agent_profile(Client, ProfileArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_profile(Client, ProfileArn, QueryMap, HeadersMap, []).
+
+-spec get_agent_profile(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_profile_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_profile_errors(), tuple()}.
+get_agent_profile(Client, ProfileArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves detailed information about a specific optimization
+%% recommendation, including its impact analysis, content, and implementation
+%% guidance.
+-spec get_agent_recommendation(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_agent_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_recommendation_errors(), tuple()}.
+get_agent_recommendation(Client, RecommendationArn)
+  when is_map(Client) ->
+    get_agent_recommendation(Client, RecommendationArn, #{}, #{}).
+
+-spec get_agent_recommendation(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_agent_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_recommendation_errors(), tuple()}.
+get_agent_recommendation(Client, RecommendationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_recommendation(Client, RecommendationArn, QueryMap, HeadersMap, []).
+
+-spec get_agent_recommendation(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_recommendation_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_recommendation_errors(), tuple()}.
+get_agent_recommendation(Client, RecommendationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-recommendations/", aws_util:encode_uri(RecommendationArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"remediationType">>, maps:get(<<"remediationType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a recommendation generation process,
+%% including its status, progress, and results.
+%%
+%% Recommendation generation is asynchronous: poll this operation until
+%% status reaches a terminal value of COMPLETED (results are ready) or ERROR
+%% (see errorDetails). Intermediate values are QUEUED and IN_PROGRESS.
+-spec get_agent_recommendation_generation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_agent_recommendation_generation_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_recommendation_generation_errors(), tuple()}.
+get_agent_recommendation_generation(Client, GenerationId, ProfileArn)
+  when is_map(Client) ->
+    get_agent_recommendation_generation(Client, GenerationId, ProfileArn, #{}, #{}).
+
+-spec get_agent_recommendation_generation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_agent_recommendation_generation_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_recommendation_generation_errors(), tuple()}.
+get_agent_recommendation_generation(Client, GenerationId, ProfileArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_recommendation_generation(Client, GenerationId, ProfileArn, QueryMap, HeadersMap, []).
+
+-spec get_agent_recommendation_generation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_recommendation_generation_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_recommendation_generation_errors(), tuple()}.
+get_agent_recommendation_generation(Client, GenerationId, ProfileArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/generations/", aws_util:encode_uri(GenerationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -4155,14 +5467,11 @@ get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options0)
 %% @doc Import a new custom lens or update an existing custom lens.
 %%
 %% To update an existing custom lens, specify its ARN as the `LensAlias'.
-%% If
-%% no ARN is specified, a new custom lens is created.
+%% If no ARN is specified, a new custom lens is created.
 %%
 %% The new or updated lens will have a status of `DRAFT'. The lens cannot
-%% be
-%% applied to workloads or shared with other Amazon Web Services accounts
-%% until it's
-%% published with `CreateLensVersion'.
+%% be applied to workloads or shared with other Amazon Web Services accounts
+%% until it's published with `CreateLensVersion'.
 %%
 %% Lenses are defined in JSON. For more information, see JSON format
 %% specification:
@@ -4174,16 +5483,12 @@ get_workload(Client, WorkloadId, QueryMap, HeadersMap, Options0)
 %% Disclaimer
 %%
 %% Do not include or gather personal identifiable information (PII) of end
-%% users or
-%% other identifiable individuals in or via your custom lenses. If your
-%% custom
-%% lens or those shared with you and used in your account do include or
-%% collect
-%% PII you are responsible for: ensuring that the included PII is processed
-%% in accordance
-%% with applicable law, providing adequate privacy notices, and obtaining
-%% necessary
-%% consents for processing such data.
+%% users or other identifiable individuals in or via your custom lenses. If
+%% your custom lens or those shared with you and used in your account do
+%% include or collect PII you are responsible for: ensuring that the included
+%% PII is processed in accordance with applicable law, providing adequate
+%% privacy notices, and obtaining necessary consents for processing such
+%% data.
 -spec import_lens(aws_client:aws_client(), import_lens_input()) ->
     {ok, import_lens_output(), tuple()} |
     {error, any()} |
@@ -4216,6 +5521,271 @@ import_lens(Client, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists contexts associated with a profile.
+-spec list_agent_contexts(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_agent_contexts_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_contexts_errors(), tuple()}.
+list_agent_contexts(Client, ProfileArn)
+  when is_map(Client) ->
+    list_agent_contexts(Client, ProfileArn, #{}, #{}).
+
+-spec list_agent_contexts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_agent_contexts_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_contexts_errors(), tuple()}.
+list_agent_contexts(Client, ProfileArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_agent_contexts(Client, ProfileArn, QueryMap, HeadersMap, []).
+
+-spec list_agent_contexts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_agent_contexts_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_contexts_errors(), tuple()}.
+list_agent_contexts(Client, ProfileArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/contexts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists optimization goals associated with a specified profile.
+%%
+%% Goals define specific targets and objectives for the optimization process.
+-spec list_agent_goals(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_agent_goals_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_goals_errors(), tuple()}.
+list_agent_goals(Client, ProfileArn)
+  when is_map(Client) ->
+    list_agent_goals(Client, ProfileArn, #{}, #{}).
+
+-spec list_agent_goals(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_agent_goals_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_goals_errors(), tuple()}.
+list_agent_goals(Client, ProfileArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_agent_goals(Client, ProfileArn, QueryMap, HeadersMap, []).
+
+-spec list_agent_goals(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_agent_goals_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_goals_errors(), tuple()}.
+list_agent_goals(Client, ProfileArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/goals"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists optimization profiles in your account.
+%%
+%% Profiles define the scope and configuration for generating optimization
+%% recommendations.
+-spec list_agent_profiles(aws_client:aws_client()) ->
+    {ok, list_agent_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_profiles_errors(), tuple()}.
+list_agent_profiles(Client)
+  when is_map(Client) ->
+    list_agent_profiles(Client, #{}, #{}).
+
+-spec list_agent_profiles(aws_client:aws_client(), map(), map()) ->
+    {ok, list_agent_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_profiles_errors(), tuple()}.
+list_agent_profiles(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_agent_profiles(Client, QueryMap, HeadersMap, []).
+
+-spec list_agent_profiles(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_agent_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_profiles_errors(), tuple()}.
+list_agent_profiles(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists recommendation generation processes for a specified profile.
+-spec list_agent_recommendation_generations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_agent_recommendation_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_recommendation_generations_errors(), tuple()}.
+list_agent_recommendation_generations(Client, ProfileArn)
+  when is_map(Client) ->
+    list_agent_recommendation_generations(Client, ProfileArn, #{}, #{}).
+
+-spec list_agent_recommendation_generations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_agent_recommendation_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_recommendation_generations_errors(), tuple()}.
+list_agent_recommendation_generations(Client, ProfileArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_agent_recommendation_generations(Client, ProfileArn, QueryMap, HeadersMap, []).
+
+-spec list_agent_recommendation_generations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_agent_recommendation_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_recommendation_generations_errors(), tuple()}.
+list_agent_recommendation_generations(Client, ProfileArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/generations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"RecommendationType">>, maps:get(<<"RecommendationType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists recommendation items for a specific recommendation.
+%%
+%% Recommendation items provide detailed information about individual
+%% optimization opportunities.
+-spec list_agent_recommendation_items(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_agent_recommendation_items_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_recommendation_items_errors(), tuple()}.
+list_agent_recommendation_items(Client, RecommendationArn)
+  when is_map(Client) ->
+    list_agent_recommendation_items(Client, RecommendationArn, #{}, #{}).
+
+-spec list_agent_recommendation_items(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_agent_recommendation_items_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_recommendation_items_errors(), tuple()}.
+list_agent_recommendation_items(Client, RecommendationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_agent_recommendation_items(Client, RecommendationArn, QueryMap, HeadersMap, []).
+
+-spec list_agent_recommendation_items(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_agent_recommendation_items_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_recommendation_items_errors(), tuple()}.
+list_agent_recommendation_items(Client, RecommendationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-recommendations/", aws_util:encode_uri(RecommendationArn), "/items"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists active optimization recommendations for a specified profile
+%% with optional filtering by state.
+-spec list_agent_recommendations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_agent_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_recommendations_errors(), tuple()}.
+list_agent_recommendations(Client, ProfileArn)
+  when is_map(Client) ->
+    list_agent_recommendations(Client, ProfileArn, #{}, #{}).
+
+-spec list_agent_recommendations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_agent_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_recommendations_errors(), tuple()}.
+list_agent_recommendations(Client, ProfileArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_agent_recommendations(Client, ProfileArn, QueryMap, HeadersMap, []).
+
+-spec list_agent_recommendations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_agent_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_recommendations_errors(), tuple()}.
+list_agent_recommendations(Client, ProfileArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/recommendations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"pillar">>, maps:get(<<"pillar">>, QueryMap, undefined)},
+        {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc List of answers for a particular workload and lens.
 -spec list_answers(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -4795,9 +6365,9 @@ list_review_templates(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc List the share invitations.
 %%
-%% `WorkloadNamePrefix', `LensNamePrefix',
-%% `ProfileNamePrefix', and `TemplateNamePrefix' are mutually
-%% exclusive. Use the parameter that matches your `ShareResourceType'.
+%% `WorkloadNamePrefix', `LensNamePrefix', `ProfileNamePrefix',
+%% and `TemplateNamePrefix' are mutually exclusive. Use the parameter
+%% that matches your `ShareResourceType'.
 -spec list_share_invitations(aws_client:aws_client()) ->
     {ok, list_share_invitations_output(), tuple()} |
     {error, any()} |
@@ -5006,6 +6576,80 @@ list_workloads(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Submits user feedback on a recommendation to help improve future
+%% optimization suggestions and track implementation outcomes.
+-spec put_agent_recommendation_feedback(aws_client:aws_client(), binary() | list(), put_agent_recommendation_feedback_request()) ->
+    {ok, put_agent_recommendation_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, put_agent_recommendation_feedback_errors(), tuple()}.
+put_agent_recommendation_feedback(Client, RecommendationArn, Input) ->
+    put_agent_recommendation_feedback(Client, RecommendationArn, Input, []).
+
+-spec put_agent_recommendation_feedback(aws_client:aws_client(), binary() | list(), put_agent_recommendation_feedback_request(), proplists:proplist()) ->
+    {ok, put_agent_recommendation_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, put_agent_recommendation_feedback_errors(), tuple()}.
+put_agent_recommendation_feedback(Client, RecommendationArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/api/v1/agent-recommendations/", aws_util:encode_uri(RecommendationArn), "/feedback"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates a new recommendation generation process for the specified
+%% optimization profile.
+%%
+%% This asynchronous operation analyzes your Amazon Web Services resources
+%% and generates optimization recommendations based on the configured pillars
+%% and scope. Use GetAgentRecommendationGeneration to check status.
+-spec start_agent_recommendation_generation(aws_client:aws_client(), binary() | list(), start_agent_recommendation_generation_request()) ->
+    {ok, start_agent_recommendation_generation_response(), tuple()} |
+    {error, any()} |
+    {error, start_agent_recommendation_generation_errors(), tuple()}.
+start_agent_recommendation_generation(Client, ProfileArn, Input) ->
+    start_agent_recommendation_generation(Client, ProfileArn, Input, []).
+
+-spec start_agent_recommendation_generation(aws_client:aws_client(), binary() | list(), start_agent_recommendation_generation_request(), proplists:proplist()) ->
+    {ok, start_agent_recommendation_generation_response(), tuple()} |
+    {error, any()} |
+    {error, start_agent_recommendation_generation_errors(), tuple()}.
+start_agent_recommendation_generation(Client, ProfileArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/generations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds one or more tags to the specified resource.
 %%
 %% The WorkloadArn parameter can be a workload ARN, a custom lens ARN, a
@@ -5083,6 +6727,145 @@ untag_resource(Client, WorkloadArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing context associated with a profile.
+-spec update_agent_context(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_context_request()) ->
+    {ok, update_agent_context_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_context_errors(), tuple()}.
+update_agent_context(Client, Id, ProfileArn, Input) ->
+    update_agent_context(Client, Id, ProfileArn, Input, []).
+
+-spec update_agent_context(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_context_request(), proplists:proplist()) ->
+    {ok, update_agent_context_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_context_errors(), tuple()}.
+update_agent_context(Client, Id, ProfileArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/contexts/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the pillars and title of an existing goal associated with a
+%% profile.
+-spec update_agent_goal(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_goal_request()) ->
+    {ok, update_agent_goal_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_goal_errors(), tuple()}.
+update_agent_goal(Client, Id, ProfileArn, Input) ->
+    update_agent_goal(Client, Id, ProfileArn, Input, []).
+
+-spec update_agent_goal(aws_client:aws_client(), binary() | list(), binary() | list(), update_agent_goal_request(), proplists:proplist()) ->
+    {ok, update_agent_goal_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_goal_errors(), tuple()}.
+update_agent_goal(Client, Id, ProfileArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/goals/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing optimization profile's configuration,
+%% including its pillars, execution role, and aggregation settings.
+-spec update_agent_profile(aws_client:aws_client(), binary() | list(), update_agent_profile_request()) ->
+    {ok, update_agent_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_profile_errors(), tuple()}.
+update_agent_profile(Client, ProfileArn, Input) ->
+    update_agent_profile(Client, ProfileArn, Input, []).
+
+-spec update_agent_profile(aws_client:aws_client(), binary() | list(), update_agent_profile_request(), proplists:proplist()) ->
+    {ok, update_agent_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_profile_errors(), tuple()}.
+update_agent_profile(Client, ProfileArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the status of a recommendation to track its progress through
+%% the implementation lifecycle.
+-spec update_agent_recommendation_status(aws_client:aws_client(), binary() | list(), update_agent_recommendation_status_request()) ->
+    {ok, update_agent_recommendation_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_recommendation_status_errors(), tuple()}.
+update_agent_recommendation_status(Client, RecommendationArn, Input) ->
+    update_agent_recommendation_status(Client, RecommendationArn, Input, []).
+
+-spec update_agent_recommendation_status(aws_client:aws_client(), binary() | list(), update_agent_recommendation_status_request(), proplists:proplist()) ->
+    {ok, update_agent_recommendation_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_recommendation_status_errors(), tuple()}.
+update_agent_recommendation_status(Client, RecommendationArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/api/v1/agent-recommendations/", aws_util:encode_uri(RecommendationArn), "/status"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update the answer to a specific question in a workload review.

@@ -19,6 +19,8 @@
          batch_delete_knowledge_base/4,
          batch_delete_topic_reviewed_answer/4,
          batch_delete_topic_reviewed_answer/5,
+         batch_describe_user_limits/3,
+         batch_describe_user_limits/4,
          cancel_ingestion/5,
          cancel_ingestion/6,
          create_account_customization/3,
@@ -31,6 +33,8 @@
          create_agent/4,
          create_analysis/4,
          create_analysis/5,
+         create_approval_policy/2,
+         create_approval_policy/3,
          create_brand/4,
          create_brand/5,
          create_custom_permissions/3,
@@ -41,6 +45,8 @@
          create_data_set/4,
          create_data_source/3,
          create_data_source/4,
+         create_dlp_setting/4,
+         create_dlp_setting/5,
          create_flow/3,
          create_flow/4,
          create_folder/4,
@@ -57,6 +63,8 @@
          create_ingestion/6,
          create_knowledge_base/3,
          create_knowledge_base/4,
+         create_limits_profile/3,
+         create_limits_profile/4,
          create_namespace/3,
          create_namespace/4,
          create_o_auth_client_application/3,
@@ -95,6 +103,8 @@
          delete_agent/5,
          delete_analysis/4,
          delete_analysis/5,
+         delete_approval_policy/3,
+         delete_approval_policy/4,
          delete_brand/4,
          delete_brand/5,
          delete_brand_assignment/3,
@@ -111,6 +121,8 @@
          delete_data_source/5,
          delete_default_q_business_application/3,
          delete_default_q_business_application/4,
+         delete_dlp_setting/4,
+         delete_dlp_setting/5,
          delete_flow/4,
          delete_flow/5,
          delete_folder/4,
@@ -127,6 +139,8 @@
          delete_identity_propagation_config/5,
          delete_knowledge_base/4,
          delete_knowledge_base/5,
+         delete_limits_profile/4,
+         delete_limits_profile/5,
          delete_namespace/4,
          delete_namespace/5,
          delete_o_auth_client_application/4,
@@ -194,6 +208,9 @@
          describe_analysis_permissions/3,
          describe_analysis_permissions/5,
          describe_analysis_permissions/6,
+         describe_approval_policy/2,
+         describe_approval_policy/4,
+         describe_approval_policy/5,
          describe_asset_bundle_export_job/3,
          describe_asset_bundle_export_job/5,
          describe_asset_bundle_export_job/6,
@@ -251,6 +268,9 @@
          describe_default_q_business_application/2,
          describe_default_q_business_application/4,
          describe_default_q_business_application/5,
+         describe_dlp_setting/3,
+         describe_dlp_setting/5,
+         describe_dlp_setting/6,
          describe_flow/4,
          describe_flow/6,
          describe_flow/7,
@@ -287,6 +307,9 @@
          describe_knowledge_base_permissions/3,
          describe_knowledge_base_permissions/5,
          describe_knowledge_base_permissions/6,
+         describe_limits_profile/3,
+         describe_limits_profile/5,
+         describe_limits_profile/6,
          describe_namespace/3,
          describe_namespace/5,
          describe_namespace/6,
@@ -388,6 +411,9 @@
          list_analyses/2,
          list_analyses/4,
          list_analyses/5,
+         list_approval_policies/1,
+         list_approval_policies/3,
+         list_approval_policies/4,
          list_asset_bundle_export_jobs/2,
          list_asset_bundle_export_jobs/4,
          list_asset_bundle_export_jobs/5,
@@ -412,6 +438,9 @@
          list_data_sources/2,
          list_data_sources/4,
          list_data_sources/5,
+         list_dlp_settings/2,
+         list_dlp_settings/4,
+         list_dlp_settings/5,
          list_flows/2,
          list_flows/4,
          list_flows/5,
@@ -445,6 +474,9 @@
          list_knowledge_bases/2,
          list_knowledge_bases/4,
          list_knowledge_bases/5,
+         list_limits_profiles/2,
+         list_limits_profiles/4,
+         list_limits_profiles/5,
          list_namespaces/2,
          list_namespaces/4,
          list_namespaces/5,
@@ -578,6 +610,8 @@
          update_analysis_permissions/5,
          update_application_with_token_exchange_grant/3,
          update_application_with_token_exchange_grant/4,
+         update_approval_policy/3,
+         update_approval_policy/4,
          update_brand/4,
          update_brand/5,
          update_brand_assignment/3,
@@ -606,6 +640,8 @@
          update_data_source_permissions/5,
          update_default_q_business_application/3,
          update_default_q_business_application/4,
+         update_dlp_setting/4,
+         update_dlp_setting/5,
          update_flow/4,
          update_flow/5,
          update_flow_permissions/4,
@@ -628,6 +664,8 @@
          update_knowledge_base/5,
          update_knowledge_base_permissions/4,
          update_knowledge_base_permissions/5,
+         update_limits_profile/4,
+         update_limits_profile/5,
          update_o_auth_client_application/4,
          update_o_auth_client_application/5,
          update_public_sharing_settings/3,
@@ -1126,12 +1164,36 @@
 
 
 %% Example:
+%% applicable_to() :: #{
+%%   <<"GroupArns">> => list(string()),
+%%   <<"Type">> => list(any())
+%% }
+-type applicable_to() :: #{binary() => any()}.
+
+
+%% Example:
 %% application_theme() :: #{
 %%   <<"BrandColorPalette">> => brand_color_palette(),
 %%   <<"BrandElementStyle">> => brand_element_style(),
 %%   <<"ContextualAccentPalette">> => contextual_accent_palette()
 %% }
 -type application_theme() :: #{binary() => any()}.
+
+
+%% Example:
+%% approval_policy() :: #{
+%%   <<"Actions">> => list(list(any())()),
+%%   <<"ApplicableTo">> => applicable_to(),
+%%   <<"ApprovalGroups">> => list(string()),
+%%   <<"AssetTypes">> => list(list(any())()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"PolicyArn">> => string(),
+%%   <<"PolicyId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type approval_policy() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1175,6 +1237,7 @@
 %%   <<"RefreshSchedules">> => list(asset_bundle_export_job_refresh_schedule_override_properties()),
 %%   <<"ResourceIdOverrideConfiguration">> => asset_bundle_export_job_resource_id_override_configuration(),
 %%   <<"Themes">> => list(asset_bundle_export_job_theme_override_properties()),
+%%   <<"TopicsV2">> => list(asset_bundle_export_job_topic_v2_override_properties()),
 %%   <<"VPCConnections">> => list(asset_bundle_export_job_vpc_connection_override_properties())
 %% }
 -type asset_bundle_cloud_formation_override_property_configuration() :: #{binary() => any()}.
@@ -1264,6 +1327,14 @@
 %%   <<"Properties">> => list(list(any())())
 %% }
 -type asset_bundle_export_job_theme_override_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_export_job_topic_v2_override_properties() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Properties">> => list(list(any())())
+%% }
+-type asset_bundle_export_job_topic_v2_override_properties() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1451,6 +1522,7 @@
 %%   <<"RefreshSchedules">> => list(asset_bundle_import_job_refresh_schedule_override_parameters()),
 %%   <<"ResourceIdOverrideConfiguration">> => asset_bundle_import_job_resource_id_override_configuration(),
 %%   <<"Themes">> => list(asset_bundle_import_job_theme_override_parameters()),
+%%   <<"TopicsV2">> => list(asset_bundle_import_job_topic_v2_override_parameters()),
 %%   <<"VPCConnections">> => list(asset_bundle_import_job_vpc_connection_override_parameters())
 %% }
 -type asset_bundle_import_job_override_parameters() :: #{binary() => any()}.
@@ -1463,7 +1535,8 @@
 %%   <<"DataSets">> => list(asset_bundle_import_job_data_set_override_permissions()),
 %%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_permissions()),
 %%   <<"Folders">> => list(asset_bundle_import_job_folder_override_permissions()),
-%%   <<"Themes">> => list(asset_bundle_import_job_theme_override_permissions())
+%%   <<"Themes">> => list(asset_bundle_import_job_theme_override_permissions()),
+%%   <<"TopicsV2">> => list(asset_bundle_import_job_topic_v2_override_permissions())
 %% }
 -type asset_bundle_import_job_override_permissions() :: #{binary() => any()}.
 
@@ -1476,6 +1549,7 @@
 %%   <<"DataSources">> => list(asset_bundle_import_job_data_source_override_tags()),
 %%   <<"Folders">> => list(asset_bundle_import_job_folder_override_tags()),
 %%   <<"Themes">> => list(asset_bundle_import_job_theme_override_tags()),
+%%   <<"TopicsV2">> => list(asset_bundle_import_job_topic_v2_override_tags()),
 %%   <<"VPCConnections">> => list(asset_bundle_import_job_vpc_connection_override_tags())
 %% }
 -type asset_bundle_import_job_override_tags() :: #{binary() => any()}.
@@ -1537,6 +1611,31 @@
 %%   <<"ThemeIds">> => list(string())
 %% }
 -type asset_bundle_import_job_theme_override_tags() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_topic_v2_override_parameters() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"TopicId">> => string()
+%% }
+-type asset_bundle_import_job_topic_v2_override_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_topic_v2_override_permissions() :: #{
+%%   <<"Permissions">> => asset_bundle_resource_permissions(),
+%%   <<"TopicIds">> => list(string())
+%% }
+-type asset_bundle_import_job_topic_v2_override_permissions() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_bundle_import_job_topic_v2_override_tags() :: #{
+%%   <<"Tags">> => list(tag()),
+%%   <<"TopicIds">> => list(string())
+%% }
+-type asset_bundle_import_job_topic_v2_override_tags() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1954,6 +2053,33 @@
 %%   <<"TopicId">> => string()
 %% }
 -type batch_delete_topic_reviewed_answer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_describe_user_limits_error() :: #{
+%%   <<"errorCode">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"namespace">> => [string()],
+%%   <<"userArn">> => [string()],
+%%   <<"userName">> => [string()]
+%% }
+-type batch_describe_user_limits_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_describe_user_limits_request() :: #{
+%%   <<"resourceTypes">> => list(list(any())()),
+%%   <<"users">> => list(user_limits_entry())
+%% }
+-type batch_describe_user_limits_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_describe_user_limits_response() :: #{
+%%   <<"errors">> => list(batch_describe_user_limits_error()),
+%%   <<"userLimits">> => list(user_limits())
+%% }
+-type batch_describe_user_limits_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3253,6 +3379,26 @@
 
 
 %% Example:
+%% create_approval_policy_request() :: #{
+%%   <<"Actions">> := list(list(any())()),
+%%   <<"ApplicableTo">> := applicable_to(),
+%%   <<"ApprovalGroups">> := list(string()),
+%%   <<"AssetTypes">> := list(list(any())()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"PolicyId">> := string()
+%% }
+-type create_approval_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_approval_policy_response() :: #{
+%%   <<"Policy">> => approval_policy()
+%% }
+-type create_approval_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_brand_request() :: #{
 %%   <<"BrandDefinition">> => brand_definition(),
 %%   <<"Tags">> => list(tag())
@@ -3390,6 +3536,27 @@
 %%   <<"Status">> => integer()
 %% }
 -type create_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dlp_setting_request() :: #{
+%%   <<"Enabled">> := boolean(),
+%%   <<"Name">> := string(),
+%%   <<"ProviderConfig">> := list(),
+%%   <<"ProviderOutageAction">> := list(any()),
+%%   <<"ProviderType">> := list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_dlp_setting_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dlp_setting_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DlpSettingId">> => string(),
+%%   <<"RequestId">> => [string()]
+%% }
+-type create_dlp_setting_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3544,6 +3711,24 @@
 %%   <<"Status">> => integer()
 %% }
 -type create_knowledge_base_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_limits_profile_request() :: #{
+%%   <<"clientToken">> := string(),
+%%   <<"description">> => string(),
+%%   <<"profileName">> := string(),
+%%   <<"resourceLimits">> := map()
+%% }
+-type create_limits_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_limits_profile_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"profileId">> => string()
+%% }
+-type create_limits_profile_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5161,6 +5346,14 @@
 -type delete_analysis_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_approval_policy_request() :: #{}
+-type delete_approval_policy_request() :: #{}.
+
+%% Example:
+%% delete_approval_policy_response() :: #{}
+-type delete_approval_policy_response() :: #{}.
+
+%% Example:
 %% delete_brand_assignment_request() :: #{}
 -type delete_brand_assignment_request() :: #{}.
 
@@ -5268,6 +5461,19 @@
 -type delete_default_q_business_application_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_dlp_setting_request() :: #{}
+-type delete_dlp_setting_request() :: #{}.
+
+
+%% Example:
+%% delete_dlp_setting_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DlpSettingId">> => string(),
+%%   <<"RequestId">> => [string()]
+%% }
+-type delete_dlp_setting_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_flow_request() :: #{}
 -type delete_flow_request() :: #{}.
 
@@ -5367,6 +5573,17 @@
 %%   <<"Status">> => integer()
 %% }
 -type delete_knowledge_base_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_limits_profile_request() :: #{}
+-type delete_limits_profile_request() :: #{}.
+
+
+%% Example:
+%% delete_limits_profile_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type delete_limits_profile_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_namespace_request() :: #{}
@@ -5764,6 +5981,17 @@
 -type describe_analysis_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_approval_policy_request() :: #{}
+-type describe_approval_policy_request() :: #{}.
+
+
+%% Example:
+%% describe_approval_policy_response() :: #{
+%%   <<"Policy">> => approval_policy()
+%% }
+-type describe_approval_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_asset_bundle_export_job_request() :: #{}
 -type describe_asset_bundle_export_job_request() :: #{}.
 
@@ -6087,6 +6315,18 @@
 %% }
 -type describe_default_q_business_application_response() :: #{binary() => any()}.
 
+%% Example:
+%% describe_dlp_setting_request() :: #{}
+-type describe_dlp_setting_request() :: #{}.
+
+
+%% Example:
+%% describe_dlp_setting_response() :: #{
+%%   <<"DlpSetting">> => dlp_setting_details(),
+%%   <<"RequestId">> => [string()]
+%% }
+-type describe_dlp_setting_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% describe_flow_request() :: #{
@@ -6272,6 +6512,17 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_knowledge_base_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_limits_profile_request() :: #{}
+-type describe_limits_profile_request() :: #{}.
+
+
+%% Example:
+%% describe_limits_profile_response() :: #{
+%%   <<"profile">> => limits_profile()
+%% }
+-type describe_limits_profile_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_namespace_request() :: #{}
@@ -6681,6 +6932,34 @@
 
 
 %% Example:
+%% dlp_setting_details() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DlpSettingId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ProviderConfig">> => list(),
+%%   <<"ProviderOutageAction">> => list(any()),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type dlp_setting_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% dlp_setting_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DlpSettingId">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ProviderType">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type dlp_setting_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% domain_not_whitelisted_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"RequestId">> => string()
@@ -6728,6 +7007,17 @@
 %%   <<"UserNameColumn">> => column_identifier()
 %% }
 -type dynamic_default_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% effective_limit() :: #{
+%%   <<"limitUnit">> => list(any()),
+%%   <<"limitValue">> => float(),
+%%   <<"profileId">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"source">> => list(any())
+%% }
+-type effective_limit() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8996,6 +9286,15 @@
 
 
 %% Example:
+%% label_action_mapping() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"LabelId">> => string(),
+%%   <<"LabelName">> => string()
+%% }
+-type label_action_mapping() :: #{binary() => any()}.
+
+
+%% Example:
 %% label_options() :: #{
 %%   <<"CustomLabel">> => string(),
 %%   <<"FontConfiguration">> => font_configuration(),
@@ -9073,6 +9372,20 @@
 %%   <<"ResourceType">> => list(any())
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% limits_profile() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"profileId">> => string(),
+%%   <<"profileName">> => string(),
+%%   <<"resourceLimits">> => map(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type limits_profile() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9251,6 +9564,22 @@
 
 
 %% Example:
+%% list_approval_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_approval_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_approval_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Policies">> => list(approval_policy())
+%% }
+-type list_approval_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_asset_bundle_export_jobs_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -9414,6 +9743,23 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_data_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dlp_settings_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dlp_settings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dlp_settings_response() :: #{
+%%   <<"DlpSettingSummaries">> => list(dlp_setting_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => [string()]
+%% }
+-type list_dlp_settings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9613,6 +9959,23 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_knowledge_bases_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_limits_profiles_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()],
+%%   <<"resourceType">> => list(any())
+%% }
+-type list_limits_profiles_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_limits_profiles_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"profiles">> => list(limits_profile())
+%% }
+-type list_limits_profiles_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10163,6 +10526,22 @@
 %%   <<"Time">> => dimension_field()
 %% }
 -type metric_comparison_computation() :: #{binary() => any()}.
+
+
+%% Example:
+%% microsoft_purview_credentials() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type microsoft_purview_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% microsoft_purview_provider_config() :: #{
+%%   <<"Credentials">> => microsoft_purview_credentials(),
+%%   <<"LabelActionMappings">> => list(label_action_mapping()),
+%%   <<"UnmappedAction">> => list(any())
+%% }
+-type microsoft_purview_provider_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11177,6 +11556,14 @@
 %%   <<"Port">> => integer()
 %% }
 -type presto_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_limit_value() :: #{
+%%   <<"maxValue">> => float(),
+%%   <<"unit">> => list(any())
+%% }
+-type profile_limit_value() :: #{binary() => any()}.
 
 
 %% Example:
@@ -14901,6 +15288,25 @@
 
 
 %% Example:
+%% update_approval_policy_request() :: #{
+%%   <<"Actions">> => list(list(any())()),
+%%   <<"ApplicableTo">> => applicable_to(),
+%%   <<"ApprovalGroups">> => list(string()),
+%%   <<"AssetTypes">> => list(list(any())()),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_approval_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_approval_policy_response() :: #{
+%%   <<"Policy">> => approval_policy()
+%% }
+-type update_approval_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_brand_assignment_request() :: #{
 %%   <<"BrandArn">> := string()
 %% }
@@ -15165,6 +15571,26 @@
 
 
 %% Example:
+%% update_dlp_setting_request() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"ProviderConfig">> => list(),
+%%   <<"ProviderOutageAction">> => list(any()),
+%%   <<"ProviderType">> => list(any())
+%% }
+-type update_dlp_setting_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dlp_setting_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"DlpSettingId">> => string(),
+%%   <<"RequestId">> => [string()]
+%% }
+-type update_dlp_setting_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_flow_permissions_input() :: #{
 %%   <<"GrantPermissions">> => list(permission()),
 %%   <<"RevokePermissions">> => list(permission())
@@ -15366,6 +15792,22 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_knowledge_base_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_limits_profile_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"profileName">> => string(),
+%%   <<"resourceLimits">> => map()
+%% }
+-type update_limits_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_limits_profile_response() :: #{
+%%   <<"arn">> => string()
+%% }
+-type update_limits_profile_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -15893,6 +16335,23 @@
 
 
 %% Example:
+%% user_limits() :: #{
+%%   <<"effectiveLimits">> => list(effective_limit()),
+%%   <<"namespace">> => [string()],
+%%   <<"userName">> => [string()]
+%% }
+-type user_limits() :: #{binary() => any()}.
+
+
+%% Example:
+%% user_limits_entry() :: #{
+%%   <<"namespace">> => [string()],
+%%   <<"userName">> => [string()]
+%% }
+-type user_limits_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% user_name_or_email_filter() :: #{
 %%   <<"prefix">> => string()
 %% }
@@ -16343,6 +16802,12 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type batch_describe_user_limits_errors() ::
+    throttling_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type cancel_ingestion_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -16400,6 +16865,15 @@
     internal_failure_exception() | 
     conflict_exception().
 
+-type create_approval_policy_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_brand_errors() ::
     throttling_exception() | 
     limit_exceeded_exception() | 
@@ -16450,6 +16924,15 @@
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     customer_managed_key_unavailable_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_dlp_setting_errors() ::
+    throttling_exception() | 
+    resource_exists_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
     conflict_exception() | 
     access_denied_exception().
 
@@ -16531,6 +17014,14 @@
     invalid_request_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
+    access_denied_exception().
+
+-type create_limits_profile_errors() ::
+    throttling_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type create_namespace_errors() ::
@@ -16713,6 +17204,13 @@
     internal_failure_exception() | 
     conflict_exception().
 
+-type delete_approval_policy_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type delete_brand_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -16776,6 +17274,13 @@
     resource_not_found_exception() | 
     internal_failure_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type delete_dlp_setting_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type delete_flow_errors() ::
@@ -16844,6 +17349,14 @@
     precondition_not_met_exception() | 
     limit_exceeded_exception() | 
     invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_limits_profile_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     conflict_exception() | 
@@ -17081,6 +17594,13 @@
     invalid_parameter_value_exception() | 
     internal_failure_exception().
 
+-type describe_approval_policy_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type describe_asset_bundle_export_job_errors() ::
     unsupported_user_edition_exception() | 
     throttling_exception() | 
@@ -17224,6 +17744,13 @@
     internal_failure_exception() | 
     access_denied_exception().
 
+-type describe_dlp_setting_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type describe_flow_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -17320,6 +17847,13 @@
     precondition_not_met_exception() | 
     limit_exceeded_exception() | 
     invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type describe_limits_profile_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     access_denied_exception().
@@ -17616,6 +18150,13 @@
     invalid_next_token_exception() | 
     internal_failure_exception().
 
+-type list_approval_policies_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type list_asset_bundle_export_jobs_errors() ::
     unsupported_user_edition_exception() | 
     throttling_exception() | 
@@ -17670,6 +18211,12 @@
     throttling_exception() | 
     invalid_parameter_value_exception() | 
     invalid_next_token_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type list_dlp_settings_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
     internal_failure_exception() | 
     access_denied_exception().
 
@@ -17763,6 +18310,12 @@
     throttling_exception() | 
     precondition_not_met_exception() | 
     invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type list_limits_profiles_errors() ::
+    throttling_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     access_denied_exception().
@@ -18245,6 +18798,14 @@
     internal_failure_exception() | 
     access_denied_exception().
 
+-type update_approval_policy_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_brand_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -18366,6 +18927,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type update_dlp_setting_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_flow_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -18456,6 +19025,14 @@
     precondition_not_met_exception() | 
     limit_exceeded_exception() | 
     invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_limits_profile_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     conflict_exception() | 
@@ -18808,6 +19385,42 @@ batch_delete_topic_reviewed_answer(Client, AwsAccountId, TopicId, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Describes the effective resource limits for one or more Amazon Quick
+%% Sight users, including the limits that apply to each user based on their
+%% profile assignments.
+-spec batch_describe_user_limits(aws_client:aws_client(), binary() | list(), batch_describe_user_limits_request()) ->
+    {ok, batch_describe_user_limits_response(), tuple()} |
+    {error, any()} |
+    {error, batch_describe_user_limits_errors(), tuple()}.
+batch_describe_user_limits(Client, AccountId, Input) ->
+    batch_describe_user_limits(Client, AccountId, Input, []).
+
+-spec batch_describe_user_limits(aws_client:aws_client(), binary() | list(), batch_describe_user_limits_request(), proplists:proplist()) ->
+    {ok, batch_describe_user_limits_response(), tuple()} |
+    {error, any()} |
+    {error, batch_describe_user_limits_errors(), tuple()}.
+batch_describe_user_limits(Client, AccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/governance/limits/accounts/", aws_util:encode_uri(AccountId), "/user-limits"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Cancels an ongoing ingestion of data into SPICE.
 -spec cancel_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), cancel_ingestion_request()) ->
     {ok, cancel_ingestion_response(), tuple()} |
@@ -19104,6 +19717,40 @@ create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an approval policy in Quick Sight.
+-spec create_approval_policy(aws_client:aws_client(), create_approval_policy_request()) ->
+    {ok, create_approval_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_approval_policy_errors(), tuple()}.
+create_approval_policy(Client, Input) ->
+    create_approval_policy(Client, Input, []).
+
+-spec create_approval_policy(aws_client:aws_client(), create_approval_policy_request(), proplists:proplist()) ->
+    {ok, create_approval_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_approval_policy_errors(), tuple()}.
+create_approval_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/governance/approvalworkflows/policies"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Quick Sight brand.
 -spec create_brand(aws_client:aws_client(), binary() | list(), binary() | list(), create_brand_request()) ->
     {ok, create_brand_response(), tuple()} |
@@ -19275,6 +19922,44 @@ create_data_source(Client, AwsAccountId, Input) ->
 create_data_source(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a data loss prevention (DLP) setting configuration for an
+%% Amazon Web Services account.
+%%
+%% A DLP setting defines the DLP provider, the enforcement behavior, and the
+%% Quick capabilities that the setting applies to.
+-spec create_dlp_setting(aws_client:aws_client(), binary() | list(), binary() | list(), create_dlp_setting_request()) ->
+    {ok, create_dlp_setting_response(), tuple()} |
+    {error, any()} |
+    {error, create_dlp_setting_errors(), tuple()}.
+create_dlp_setting(Client, AwsAccountId, DlpSettingId, Input) ->
+    create_dlp_setting(Client, AwsAccountId, DlpSettingId, Input, []).
+
+-spec create_dlp_setting(aws_client:aws_client(), binary() | list(), binary() | list(), create_dlp_setting_request(), proplists:proplist()) ->
+    {ok, create_dlp_setting_response(), tuple()} |
+    {error, any()} |
+    {error, create_dlp_setting_errors(), tuple()}.
+create_dlp_setting(Client, AwsAccountId, DlpSettingId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-loss-prevention/settings/", aws_util:encode_uri(DlpSettingId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -19606,6 +20291,41 @@ create_knowledge_base(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a limits profile that defines resource usage limits for
+%% Amazon Quick Sight users.
+-spec create_limits_profile(aws_client:aws_client(), binary() | list(), create_limits_profile_request()) ->
+    {ok, create_limits_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_limits_profile_errors(), tuple()}.
+create_limits_profile(Client, AccountId, Input) ->
+    create_limits_profile(Client, AccountId, Input, []).
+
+-spec create_limits_profile(aws_client:aws_client(), binary() | list(), create_limits_profile_request(), proplists:proplist()) ->
+    {ok, create_limits_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_limits_profile_errors(), tuple()}.
+create_limits_profile(Client, AccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/governance/limits/accounts/", aws_util:encode_uri(AccountId), "/profiles"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -20393,6 +21113,40 @@ delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an approval policy in Quick Sight.
+-spec delete_approval_policy(aws_client:aws_client(), binary() | list(), delete_approval_policy_request()) ->
+    {ok, delete_approval_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_approval_policy_errors(), tuple()}.
+delete_approval_policy(Client, PolicyId, Input) ->
+    delete_approval_policy(Client, PolicyId, Input, []).
+
+-spec delete_approval_policy(aws_client:aws_client(), binary() | list(), delete_approval_policy_request(), proplists:proplist()) ->
+    {ok, delete_approval_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_approval_policy_errors(), tuple()}.
+delete_approval_policy(Client, PolicyId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/governance/approvalworkflows/policies/", aws_util:encode_uri(PolicyId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc
 %% This API permanently deletes the specified Quick Sight brand.
 %%
@@ -20686,6 +21440,41 @@ delete_default_q_business_application(Client, AwsAccountId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a DLP setting configuration from an Amazon Web Services
+%% account.
+-spec delete_dlp_setting(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dlp_setting_request()) ->
+    {ok, delete_dlp_setting_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dlp_setting_errors(), tuple()}.
+delete_dlp_setting(Client, AwsAccountId, DlpSettingId, Input) ->
+    delete_dlp_setting(Client, AwsAccountId, DlpSettingId, Input, []).
+
+-spec delete_dlp_setting(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dlp_setting_request(), proplists:proplist()) ->
+    {ok, delete_dlp_setting_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dlp_setting_errors(), tuple()}.
+delete_dlp_setting(Client, AwsAccountId, DlpSettingId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-loss-prevention/settings/", aws_util:encode_uri(DlpSettingId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Permanently deletes a flow from the specified Amazon Web Services
 %% account.
 %%
@@ -20949,6 +21738,40 @@ delete_knowledge_base(Client, AwsAccountId, KnowledgeBaseId, Input0, Options0) -
     Method = delete,
     Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), ""],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a limits profile.
+-spec delete_limits_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_limits_profile_request()) ->
+    {ok, delete_limits_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_limits_profile_errors(), tuple()}.
+delete_limits_profile(Client, AccountId, ProfileId, Input) ->
+    delete_limits_profile(Client, AccountId, ProfileId, Input, []).
+
+-spec delete_limits_profile(aws_client:aws_client(), binary() | list(), binary() | list(), delete_limits_profile_request(), proplists:proplist()) ->
+    {ok, delete_limits_profile_response(), tuple()} |
+    {error, any()} |
+    {error, delete_limits_profile_errors(), tuple()}.
+delete_limits_profile(Client, AccountId, ProfileId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/governance/limits/accounts/", aws_util:encode_uri(AccountId), "/profiles/", aws_util:encode_uri(ProfileId), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -22060,6 +22883,43 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes an approval policy in Quick Sight.
+-spec describe_approval_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_approval_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_approval_policy_errors(), tuple()}.
+describe_approval_policy(Client, PolicyId)
+  when is_map(Client) ->
+    describe_approval_policy(Client, PolicyId, #{}, #{}).
+
+-spec describe_approval_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_approval_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_approval_policy_errors(), tuple()}.
+describe_approval_policy(Client, PolicyId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_approval_policy(Client, PolicyId, QueryMap, HeadersMap, []).
+
+-spec describe_approval_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_approval_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_approval_policy_errors(), tuple()}.
+describe_approval_policy(Client, PolicyId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/governance/approvalworkflows/policies/", aws_util:encode_uri(PolicyId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes an existing export job.
 %%
 %% Poll job descriptions after a job starts to know the status of the job.
@@ -22885,6 +23745,44 @@ describe_default_q_business_application(Client, AwsAccountId, QueryMap, HeadersM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes the full configuration of a DLP setting in an Amazon Web
+%% Services account.
+-spec describe_dlp_setting(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_dlp_setting_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dlp_setting_errors(), tuple()}.
+describe_dlp_setting(Client, AwsAccountId, DlpSettingId)
+  when is_map(Client) ->
+    describe_dlp_setting(Client, AwsAccountId, DlpSettingId, #{}, #{}).
+
+-spec describe_dlp_setting(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_dlp_setting_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dlp_setting_errors(), tuple()}.
+describe_dlp_setting(Client, AwsAccountId, DlpSettingId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_dlp_setting(Client, AwsAccountId, DlpSettingId, QueryMap, HeadersMap, []).
+
+-spec describe_dlp_setting(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_dlp_setting_response(), tuple()} |
+    {error, any()} |
+    {error, describe_dlp_setting_errors(), tuple()}.
+describe_dlp_setting(Client, AwsAccountId, DlpSettingId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-loss-prevention/settings/", aws_util:encode_uri(DlpSettingId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the full details of a flow for the latest version of the
 %% requested publish state.
 -spec describe_flow(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
@@ -23348,6 +24246,43 @@ describe_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, Query
 describe_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the properties of an existing limits profile.
+-spec describe_limits_profile(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_limits_profile_response(), tuple()} |
+    {error, any()} |
+    {error, describe_limits_profile_errors(), tuple()}.
+describe_limits_profile(Client, AccountId, ProfileId)
+  when is_map(Client) ->
+    describe_limits_profile(Client, AccountId, ProfileId, #{}, #{}).
+
+-spec describe_limits_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_limits_profile_response(), tuple()} |
+    {error, any()} |
+    {error, describe_limits_profile_errors(), tuple()}.
+describe_limits_profile(Client, AccountId, ProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_limits_profile(Client, AccountId, ProfileId, QueryMap, HeadersMap, []).
+
+-spec describe_limits_profile(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_limits_profile_response(), tuple()} |
+    {error, any()} |
+    {error, describe_limits_profile_errors(), tuple()}.
+describe_limits_profile(Client, AccountId, ProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/governance/limits/accounts/", aws_util:encode_uri(AccountId), "/profiles/", aws_util:encode_uri(ProfileId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -24942,6 +25877,53 @@ list_analyses(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists all approval policies in the specified Quick Sight account.
+%%
+%% The results are paginated. If the
+%% response includes a `NextToken' value, pass it in a subsequent call to
+%% retrieve the next
+%% set of results.
+-spec list_approval_policies(aws_client:aws_client()) ->
+    {ok, list_approval_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_approval_policies_errors(), tuple()}.
+list_approval_policies(Client)
+  when is_map(Client) ->
+    list_approval_policies(Client, #{}, #{}).
+
+-spec list_approval_policies(aws_client:aws_client(), map(), map()) ->
+    {ok, list_approval_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_approval_policies_errors(), tuple()}.
+list_approval_policies(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_approval_policies(Client, QueryMap, HeadersMap, []).
+
+-spec list_approval_policies(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_approval_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_approval_policies_errors(), tuple()}.
+list_approval_policies(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/governance/approvalworkflows/policies"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all asset bundle export jobs that have been taken place in the
 %% last 14 days.
 %%
@@ -25283,6 +26265,48 @@ list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap)
 list_data_sources(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all DLP settings in an Amazon Web Services account.
+-spec list_dlp_settings(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_dlp_settings_response(), tuple()} |
+    {error, any()} |
+    {error, list_dlp_settings_errors(), tuple()}.
+list_dlp_settings(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_dlp_settings(Client, AwsAccountId, #{}, #{}).
+
+-spec list_dlp_settings(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_dlp_settings_response(), tuple()} |
+    {error, any()} |
+    {error, list_dlp_settings_errors(), tuple()}.
+list_dlp_settings(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dlp_settings(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_dlp_settings(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_dlp_settings_response(), tuple()} |
+    {error, any()} |
+    {error, list_dlp_settings_errors(), tuple()}.
+list_dlp_settings(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-loss-prevention/settings"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -25774,6 +26798,53 @@ list_knowledge_bases(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
       [
         {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all limits profiles in an Amazon Quick Sight account.
+%%
+%% Results are paginated. Use the `maxResults' parameter to limit the
+%% number of results returned in a single call, and use the `nextToken'
+%% parameter to retrieve the next page of results.
+-spec list_limits_profiles(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_limits_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_limits_profiles_errors(), tuple()}.
+list_limits_profiles(Client, AccountId)
+  when is_map(Client) ->
+    list_limits_profiles(Client, AccountId, #{}, #{}).
+
+-spec list_limits_profiles(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_limits_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_limits_profiles_errors(), tuple()}.
+list_limits_profiles(Client, AccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_limits_profiles(Client, AccountId, QueryMap, HeadersMap, []).
+
+-spec list_limits_profiles(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_limits_profiles_response(), tuple()} |
+    {error, any()} |
+    {error, list_limits_profiles_errors(), tuple()}.
+list_limits_profiles(Client, AccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/governance/limits/accounts/", aws_util:encode_uri(AccountId), "/profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -28167,6 +29238,40 @@ update_application_with_token_exchange_grant(Client, AwsAccountId, Input0, Optio
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an approval policy in Quick Sight.
+-spec update_approval_policy(aws_client:aws_client(), binary() | list(), update_approval_policy_request()) ->
+    {ok, update_approval_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_approval_policy_errors(), tuple()}.
+update_approval_policy(Client, PolicyId, Input) ->
+    update_approval_policy(Client, PolicyId, Input, []).
+
+-spec update_approval_policy(aws_client:aws_client(), binary() | list(), update_approval_policy_request(), proplists:proplist()) ->
+    {ok, update_approval_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_approval_policy_errors(), tuple()}.
+update_approval_policy(Client, PolicyId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/governance/approvalworkflows/policies/", aws_util:encode_uri(PolicyId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates a brand.
 -spec update_brand(aws_client:aws_client(), binary() | list(), binary() | list(), update_brand_request()) ->
     {ok, update_brand_response(), tuple()} |
@@ -28661,6 +29766,43 @@ update_default_q_business_application(Client, AwsAccountId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an existing DLP setting configuration in an Amazon Web
+%% Services account.
+%%
+%% Fields that are omitted from the request retain their current values.
+-spec update_dlp_setting(aws_client:aws_client(), binary() | list(), binary() | list(), update_dlp_setting_request()) ->
+    {ok, update_dlp_setting_response(), tuple()} |
+    {error, any()} |
+    {error, update_dlp_setting_errors(), tuple()}.
+update_dlp_setting(Client, AwsAccountId, DlpSettingId, Input) ->
+    update_dlp_setting(Client, AwsAccountId, DlpSettingId, Input, []).
+
+-spec update_dlp_setting(aws_client:aws_client(), binary() | list(), binary() | list(), update_dlp_setting_request(), proplists:proplist()) ->
+    {ok, update_dlp_setting_response(), tuple()} |
+    {error, any()} |
+    {error, update_dlp_setting_errors(), tuple()}.
+update_dlp_setting(Client, AwsAccountId, DlpSettingId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-loss-prevention/settings/", aws_util:encode_uri(DlpSettingId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing flow.
 %%
 %% Supply only the fields you want to change. Updates both DRAFT and
@@ -29035,6 +30177,40 @@ update_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, Input) 
 update_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the properties of an existing limits profile.
+-spec update_limits_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_limits_profile_request()) ->
+    {ok, update_limits_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_limits_profile_errors(), tuple()}.
+update_limits_profile(Client, AccountId, ProfileId, Input) ->
+    update_limits_profile(Client, AccountId, ProfileId, Input, []).
+
+-spec update_limits_profile(aws_client:aws_client(), binary() | list(), binary() | list(), update_limits_profile_request(), proplists:proplist()) ->
+    {ok, update_limits_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_limits_profile_errors(), tuple()}.
+update_limits_profile(Client, AccountId, ProfileId, Input0, Options0) ->
+    Method = put,
+    Path = ["/governance/limits/accounts/", aws_util:encode_uri(AccountId), "/profiles/", aws_util:encode_uri(ProfileId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

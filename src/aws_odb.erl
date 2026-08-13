@@ -39,6 +39,8 @@
          accept_marketplace_registration/3,
          associate_iam_role_to_resource/2,
          associate_iam_role_to_resource/3,
+         associate_virtual_machines_to_exadb_vm_cluster/2,
+         associate_virtual_machines_to_exadb_vm_cluster/3,
          create_autonomous_database/2,
          create_autonomous_database/3,
          create_autonomous_database_backup/2,
@@ -51,6 +53,10 @@
          create_cloud_exadata_infrastructure/3,
          create_cloud_vm_cluster/2,
          create_cloud_vm_cluster/3,
+         create_exadb_vm_cluster/2,
+         create_exadb_vm_cluster/3,
+         create_exascale_db_storage_vault/2,
+         create_exascale_db_storage_vault/3,
          create_odb_network/2,
          create_odb_network/3,
          create_odb_peering_connection/2,
@@ -65,12 +71,18 @@
          delete_cloud_exadata_infrastructure/3,
          delete_cloud_vm_cluster/2,
          delete_cloud_vm_cluster/3,
+         delete_exadb_vm_cluster/2,
+         delete_exadb_vm_cluster/3,
+         delete_exascale_db_storage_vault/2,
+         delete_exascale_db_storage_vault/3,
          delete_odb_network/2,
          delete_odb_network/3,
          delete_odb_peering_connection/2,
          delete_odb_peering_connection/3,
          disassociate_iam_role_from_resource/2,
          disassociate_iam_role_from_resource/3,
+         disassociate_virtual_machines_from_exadb_vm_cluster/2,
+         disassociate_virtual_machines_from_exadb_vm_cluster/3,
          failover_autonomous_database/2,
          failover_autonomous_database/3,
          get_autonomous_database/2,
@@ -91,6 +103,10 @@
          get_db_node/3,
          get_db_server/2,
          get_db_server/3,
+         get_exadb_vm_cluster/2,
+         get_exadb_vm_cluster/3,
+         get_exascale_db_storage_vault/2,
+         get_exascale_db_storage_vault/3,
          get_oci_onboarding_status/2,
          get_oci_onboarding_status/3,
          get_odb_network/2,
@@ -125,6 +141,12 @@
          list_db_servers/3,
          list_db_system_shapes/2,
          list_db_system_shapes/3,
+         list_exadb_vm_clusters/2,
+         list_exadb_vm_clusters/3,
+         list_exascale_db_storage_vaults/2,
+         list_exascale_db_storage_vaults/3,
+         list_gi_minor_versions/2,
+         list_gi_minor_versions/3,
          list_gi_versions/2,
          list_gi_versions/3,
          list_odb_networks/2,
@@ -163,6 +185,10 @@
          update_autonomous_database_backup/3,
          update_cloud_exadata_infrastructure/2,
          update_cloud_exadata_infrastructure/3,
+         update_exadb_vm_cluster/2,
+         update_exadb_vm_cluster/3,
+         update_exascale_db_storage_vault/2,
+         update_exascale_db_storage_vault/3,
          update_odb_network/2,
          update_odb_network/3,
          update_odb_peering_connection/2,
@@ -209,6 +235,22 @@
 
 %% }
 -type associate_iam_role_to_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% associate_virtual_machines_to_exadb_vm_cluster_input() :: #{
+%%   <<"desiredNodeCount">> := [integer()],
+%%   <<"exadbVmClusterId">> := string()
+%% }
+-type associate_virtual_machines_to_exadb_vm_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_virtual_machines_to_exadb_vm_cluster_output() :: #{
+%%   <<"displayName">> => [string()],
+%%   <<"exadbVmClusterId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type associate_virtual_machines_to_exadb_vm_cluster_output() :: #{binary() => any()}.
 
 %% Example:
 %% autonomous_database() :: #{
@@ -1084,6 +1126,66 @@
 -type create_cloud_vm_cluster_output() :: #{binary() => any()}.
 
 %% Example:
+%% create_exadb_vm_cluster_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"clusterName">> => string(),
+%%   <<"dataCollectionOptions">> => data_collection_options(),
+%%   <<"displayName">> := string(),
+%%   <<"enabledEcpuCount">> := [integer()],
+%%   <<"exascaleDbStorageVaultId">> := string(),
+%%   <<"gridImageId">> := [string()],
+%%   <<"hostname">> := string(),
+%%   <<"licenseModel">> => list(any()),
+%%   <<"nodeCount">> := [integer()],
+%%   <<"odbNetworkId">> := string(),
+%%   <<"scanListenerPortTcp">> => [integer()],
+%%   <<"scanListenerPortTcpSsl">> => [integer()],
+%%   <<"shape">> := [string()],
+%%   <<"shapeAttribute">> => list(any()),
+%%   <<"sshPublicKeys">> := list([string()]()),
+%%   <<"systemVersion">> => [string()],
+%%   <<"tags">> => map(),
+%%   <<"timeZone">> => [string()],
+%%   <<"totalEcpuCount">> := [integer()],
+%%   <<"vmFileSystemStorageTotalSizeInGBs">> := [integer()]
+%% }
+-type create_exadb_vm_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_exadb_vm_cluster_output() :: #{
+%%   <<"displayName">> => [string()],
+%%   <<"exadbVmClusterId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type create_exadb_vm_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% create_exascale_db_storage_vault_input() :: #{
+%%   <<"additionalFlashCacheInPercent">> => [integer()],
+%%   <<"autoscaleLimitInGBs">> => [integer()],
+%%   <<"availabilityZone">> => [string()],
+%%   <<"availabilityZoneId">> => [string()],
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => [string()],
+%%   <<"displayName">> := string(),
+%%   <<"highCapacityDatabaseStorageTotalSizeInGBs">> := [integer()],
+%%   <<"isAutoscaleEnabled">> => [boolean()],
+%%   <<"tags">> => map(),
+%%   <<"timeZone">> => [string()]
+%% }
+-type create_exascale_db_storage_vault_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_exascale_db_storage_vault_output() :: #{
+%%   <<"displayName">> => [string()],
+%%   <<"exascaleDbStorageVaultId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type create_exascale_db_storage_vault_output() :: #{binary() => any()}.
+
+%% Example:
 %% create_odb_network_input() :: #{
 %%   <<"availabilityZone">> => [string()],
 %%   <<"availabilityZoneId">> => [string()],
@@ -1392,6 +1494,7 @@
 %%   <<"minimumNodeCount">> => [integer()],
 %%   <<"name">> => [string()],
 %%   <<"runtimeMinimumCoreCount">> => [integer()],
+%%   <<"shapeAttributes">> => list(list(any())()),
 %%   <<"shapeFamily">> => [string()],
 %%   <<"shapeType">> => list(any())
 %% }
@@ -1458,6 +1561,30 @@
 -type delete_cloud_vm_cluster_output() :: #{binary() => any()}.
 
 %% Example:
+%% delete_exadb_vm_cluster_input() :: #{
+%%   <<"exadbVmClusterId">> := string()
+%% }
+-type delete_exadb_vm_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_exadb_vm_cluster_output() :: #{
+
+%% }
+-type delete_exadb_vm_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_exascale_db_storage_vault_input() :: #{
+%%   <<"exascaleDbStorageVaultId">> := string()
+%% }
+-type delete_exascale_db_storage_vault_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_exascale_db_storage_vault_output() :: #{
+
+%% }
+-type delete_exascale_db_storage_vault_output() :: #{binary() => any()}.
+
+%% Example:
 %% delete_odb_network_input() :: #{
 %%   <<"deleteAssociatedResources">> := [boolean()]
 %% }
@@ -1496,6 +1623,22 @@
 -type disassociate_iam_role_from_resource_output() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_virtual_machines_from_exadb_vm_cluster_input() :: #{
+%%   <<"dbNodeIds">> := list(string()),
+%%   <<"exadbVmClusterId">> := string()
+%% }
+-type disassociate_virtual_machines_from_exadb_vm_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_virtual_machines_from_exadb_vm_cluster_output() :: #{
+%%   <<"displayName">> => [string()],
+%%   <<"exadbVmClusterId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type disassociate_virtual_machines_from_exadb_vm_cluster_output() :: #{binary() => any()}.
+
+%% Example:
 %% disaster_recovery_configuration() :: #{
 %%   <<"disasterRecoveryType">> => list(any()),
 %%   <<"isReplicateAutomaticBackups">> => [boolean()],
@@ -1519,6 +1662,171 @@
 %%   <<"objective">> => list(any())
 %% }
 -type exadata_iorm_config() :: #{binary() => any()}.
+
+%% Example:
+%% exadb_vm_cluster() :: #{
+%%   <<"clusterName">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"dataCollectionOptions">> => data_collection_options(),
+%%   <<"displayName">> => string(),
+%%   <<"domain">> => [string()],
+%%   <<"enabledEcpuCount">> => [integer()],
+%%   <<"exadbVmClusterArn">> => string(),
+%%   <<"exadbVmClusterId">> => string(),
+%%   <<"exascaleDbStorageVaultArn">> => string(),
+%%   <<"exascaleDbStorageVaultId">> => string(),
+%%   <<"giVersion">> => [string()],
+%%   <<"gridImageId">> => [string()],
+%%   <<"gridImageType">> => list(any()),
+%%   <<"hostname">> => string(),
+%%   <<"iamRoles">> => list(iam_role()),
+%%   <<"iormConfigCache">> => exadata_iorm_config(),
+%%   <<"lastUpdateHistoryEntryId">> => [string()],
+%%   <<"licenseModel">> => list(any()),
+%%   <<"listenerPort">> => [integer()],
+%%   <<"memorySizeInGBs">> => [integer()],
+%%   <<"nodeCount">> => [integer()],
+%%   <<"ociResourceAnchorName">> => [string()],
+%%   <<"ociUrl">> => [string()],
+%%   <<"ocid">> => [string()],
+%%   <<"odbNetworkArn">> => string(),
+%%   <<"odbNetworkId">> => string(),
+%%   <<"percentProgress">> => [float()],
+%%   <<"scanDnsName">> => [string()],
+%%   <<"scanDnsRecordId">> => [string()],
+%%   <<"scanIpIds">> => list([string()]()),
+%%   <<"scanListenerPortTcp">> => [integer()],
+%%   <<"scanListenerPortTcpSsl">> => [integer()],
+%%   <<"shape">> => [string()],
+%%   <<"shapeAttribute">> => list(any()),
+%%   <<"snapshotFileSystemStorage">> => exadb_vm_cluster_storage_details(),
+%%   <<"sshPublicKeys">> => list([string()]()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"systemVersion">> => [string()],
+%%   <<"timeZone">> => [string()],
+%%   <<"totalEcpuCount">> => [integer()],
+%%   <<"totalFileSystemStorage">> => exadb_vm_cluster_storage_details(),
+%%   <<"vipIds">> => list([string()]()),
+%%   <<"vmFileSystemStorage">> => exadb_vm_cluster_storage_details()
+%% }
+-type exadb_vm_cluster() :: #{binary() => any()}.
+
+%% Example:
+%% exadb_vm_cluster_storage_details() :: #{
+%%   <<"totalSizeInGBs">> => [integer()]
+%% }
+-type exadb_vm_cluster_storage_details() :: #{binary() => any()}.
+
+%% Example:
+%% exadb_vm_cluster_summary() :: #{
+%%   <<"clusterName">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"dataCollectionOptions">> => data_collection_options(),
+%%   <<"displayName">> => string(),
+%%   <<"domain">> => [string()],
+%%   <<"enabledEcpuCount">> => [integer()],
+%%   <<"exadbVmClusterArn">> => string(),
+%%   <<"exadbVmClusterId">> => string(),
+%%   <<"exascaleDbStorageVaultArn">> => string(),
+%%   <<"exascaleDbStorageVaultId">> => string(),
+%%   <<"giVersion">> => [string()],
+%%   <<"gridImageId">> => [string()],
+%%   <<"gridImageType">> => list(any()),
+%%   <<"hostname">> => string(),
+%%   <<"iamRoles">> => list(iam_role()),
+%%   <<"iormConfigCache">> => exadata_iorm_config(),
+%%   <<"lastUpdateHistoryEntryId">> => [string()],
+%%   <<"licenseModel">> => list(any()),
+%%   <<"listenerPort">> => [integer()],
+%%   <<"memorySizeInGBs">> => [integer()],
+%%   <<"nodeCount">> => [integer()],
+%%   <<"ociResourceAnchorName">> => [string()],
+%%   <<"ociUrl">> => [string()],
+%%   <<"ocid">> => [string()],
+%%   <<"odbNetworkArn">> => string(),
+%%   <<"odbNetworkId">> => string(),
+%%   <<"percentProgress">> => [float()],
+%%   <<"scanDnsName">> => [string()],
+%%   <<"scanDnsRecordId">> => [string()],
+%%   <<"scanIpIds">> => list([string()]()),
+%%   <<"scanListenerPortTcp">> => [integer()],
+%%   <<"scanListenerPortTcpSsl">> => [integer()],
+%%   <<"shape">> => [string()],
+%%   <<"shapeAttribute">> => list(any()),
+%%   <<"snapshotFileSystemStorage">> => exadb_vm_cluster_storage_details(),
+%%   <<"sshPublicKeys">> => list([string()]()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"systemVersion">> => [string()],
+%%   <<"timeZone">> => [string()],
+%%   <<"totalEcpuCount">> => [integer()],
+%%   <<"totalFileSystemStorage">> => exadb_vm_cluster_storage_details(),
+%%   <<"vipIds">> => list([string()]()),
+%%   <<"vmFileSystemStorage">> => exadb_vm_cluster_storage_details()
+%% }
+-type exadb_vm_cluster_summary() :: #{binary() => any()}.
+
+%% Example:
+%% exascale_db_storage_details() :: #{
+%%   <<"availableSizeInGBs">> => [integer()],
+%%   <<"totalSizeInGBs">> => [integer()]
+%% }
+-type exascale_db_storage_details() :: #{binary() => any()}.
+
+%% Example:
+%% exascale_db_storage_vault() :: #{
+%%   <<"additionalFlashCacheInPercent">> => [integer()],
+%%   <<"attachedShapeAttributes">> => list(list(any())()),
+%%   <<"autoscaleLimitInGBs">> => [integer()],
+%%   <<"availabilityZone">> => [string()],
+%%   <<"availabilityZoneId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"exascaleDbStorageVaultArn">> => string(),
+%%   <<"exascaleDbStorageVaultId">> => string(),
+%%   <<"highCapacityDatabaseStorage">> => exascale_db_storage_details(),
+%%   <<"isAutoscaleEnabled">> => [boolean()],
+%%   <<"ociResourceAnchorName">> => [string()],
+%%   <<"ociUrl">> => [string()],
+%%   <<"ocid">> => [string()],
+%%   <<"percentProgress">> => [float()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"timeZone">> => [string()],
+%%   <<"vmClusterArns">> => list(string()),
+%%   <<"vmClusterCount">> => [integer()],
+%%   <<"vmClusterIds">> => list(string())
+%% }
+-type exascale_db_storage_vault() :: #{binary() => any()}.
+
+%% Example:
+%% exascale_db_storage_vault_summary() :: #{
+%%   <<"additionalFlashCacheInPercent">> => [integer()],
+%%   <<"attachedShapeAttributes">> => list(list(any())()),
+%%   <<"autoscaleLimitInGBs">> => [integer()],
+%%   <<"availabilityZone">> => [string()],
+%%   <<"availabilityZoneId">> => [string()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"exascaleDbStorageVaultArn">> => string(),
+%%   <<"exascaleDbStorageVaultId">> => string(),
+%%   <<"highCapacityDatabaseStorage">> => exascale_db_storage_details(),
+%%   <<"isAutoscaleEnabled">> => [boolean()],
+%%   <<"ociResourceAnchorName">> => [string()],
+%%   <<"ociUrl">> => [string()],
+%%   <<"ocid">> => [string()],
+%%   <<"percentProgress">> => [float()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"timeZone">> => [string()],
+%%   <<"vmClusterArns">> => list(string()),
+%%   <<"vmClusterCount">> => [integer()],
+%%   <<"vmClusterIds">> => list(string())
+%% }
+-type exascale_db_storage_vault_summary() :: #{binary() => any()}.
 
 %% Example:
 %% failover_autonomous_database_input() :: #{
@@ -1622,7 +1930,8 @@
 
 %% Example:
 %% get_db_node_input() :: #{
-
+%%   <<"cloudVmClusterId">> => string(),
+%%   <<"exadbVmClusterId">> => string()
 %% }
 -type get_db_node_input() :: #{binary() => any()}.
 
@@ -1643,6 +1952,30 @@
 %%   <<"dbServer">> => db_server()
 %% }
 -type get_db_server_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_exadb_vm_cluster_input() :: #{
+%%   <<"exadbVmClusterId">> := string()
+%% }
+-type get_exadb_vm_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_exadb_vm_cluster_output() :: #{
+%%   <<"exadbVmCluster">> => exadb_vm_cluster()
+%% }
+-type get_exadb_vm_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_exascale_db_storage_vault_input() :: #{
+%%   <<"exascaleDbStorageVaultId">> := string()
+%% }
+-type get_exascale_db_storage_vault_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_exascale_db_storage_vault_output() :: #{
+%%   <<"exascaleDbStorageVault">> => exascale_db_storage_vault()
+%% }
+-type get_exascale_db_storage_vault_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_oci_onboarding_status_input() :: #{
@@ -1686,6 +2019,13 @@
 %%   <<"odbPeeringConnection">> => odb_peering_connection()
 %% }
 -type get_odb_peering_connection_output() :: #{binary() => any()}.
+
+%% Example:
+%% gi_minor_version_summary() :: #{
+%%   <<"gridImageId">> => [string()],
+%%   <<"version">> => [string()]
+%% }
+-type gi_minor_version_summary() :: #{binary() => any()}.
 
 %% Example:
 %% gi_version_summary() :: #{
@@ -1879,6 +2219,8 @@
 
 %% Example:
 %% list_db_nodes_input() :: #{
+%%   <<"cloudVmClusterId">> => string(),
+%%   <<"exadbVmClusterId">> => string(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -1910,7 +2252,8 @@
 %%   <<"availabilityZone">> => [string()],
 %%   <<"availabilityZoneId">> => [string()],
 %%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
+%%   <<"nextToken">> => [string()],
+%%   <<"shapeFamily">> => [string()]
 %% }
 -type list_db_system_shapes_input() :: #{binary() => any()}.
 
@@ -1920,6 +2263,53 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_db_system_shapes_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_exadb_vm_clusters_input() :: #{
+%%   <<"exascaleDbStorageVaultId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_exadb_vm_clusters_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_exadb_vm_clusters_output() :: #{
+%%   <<"exadbVmClusters">> => list(exadb_vm_cluster_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_exadb_vm_clusters_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_exascale_db_storage_vaults_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_exascale_db_storage_vaults_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_exascale_db_storage_vaults_output() :: #{
+%%   <<"exascaleDbStorageVaults">> => list(exascale_db_storage_vault_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_exascale_db_storage_vaults_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_gi_minor_versions_input() :: #{
+%%   <<"availabilityZone">> => [string()],
+%%   <<"availabilityZoneId">> => [string()],
+%%   <<"giVersion">> := [string()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"shapeFamily">> => [string()]
+%% }
+-type list_gi_minor_versions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_gi_minor_versions_output() :: #{
+%%   <<"giMinorVersions">> => list(gi_minor_version_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_gi_minor_versions_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_gi_versions_input() :: #{
@@ -2203,7 +2593,8 @@
 
 %% Example:
 %% reboot_db_node_input() :: #{
-
+%%   <<"cloudVmClusterId">> => string(),
+%%   <<"exadbVmClusterId">> => string()
 %% }
 -type reboot_db_node_input() :: #{binary() => any()}.
 
@@ -2323,7 +2714,8 @@
 
 %% Example:
 %% start_db_node_input() :: #{
-
+%%   <<"cloudVmClusterId">> => string(),
+%%   <<"exadbVmClusterId">> => string()
 %% }
 -type start_db_node_input() :: #{binary() => any()}.
 
@@ -2352,7 +2744,8 @@
 
 %% Example:
 %% stop_db_node_input() :: #{
-
+%%   <<"cloudVmClusterId">> => string(),
+%%   <<"exadbVmClusterId">> => string()
 %% }
 -type stop_db_node_input() :: #{binary() => any()}.
 
@@ -2531,6 +2924,52 @@
 -type update_cloud_exadata_infrastructure_output() :: #{binary() => any()}.
 
 %% Example:
+%% update_exadb_vm_cluster_input() :: #{
+%%   <<"dataCollectionOptions">> => data_collection_options(),
+%%   <<"displayName">> => string(),
+%%   <<"enabledEcpuCount">> => [integer()],
+%%   <<"exadbVmClusterId">> := string(),
+%%   <<"gridImageId">> => [string()],
+%%   <<"licenseModel">> => list(any()),
+%%   <<"sshPublicKeys">> => list([string()]()),
+%%   <<"systemVersion">> => [string()],
+%%   <<"totalEcpuCount">> => [integer()],
+%%   <<"updateAction">> => list(any()),
+%%   <<"vmFileSystemStorageTotalSizeInGBs">> => [integer()]
+%% }
+-type update_exadb_vm_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_exadb_vm_cluster_output() :: #{
+%%   <<"displayName">> => [string()],
+%%   <<"exadbVmClusterId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type update_exadb_vm_cluster_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_exascale_db_storage_vault_input() :: #{
+%%   <<"additionalFlashCacheInPercent">> => [integer()],
+%%   <<"autoscaleLimitInGBs">> => [integer()],
+%%   <<"description">> => [string()],
+%%   <<"displayName">> => string(),
+%%   <<"exascaleDbStorageVaultId">> := string(),
+%%   <<"highCapacityDatabaseStorageTotalSizeInGBs">> => [integer()],
+%%   <<"isAutoscaleEnabled">> => [boolean()]
+%% }
+-type update_exascale_db_storage_vault_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_exascale_db_storage_vault_output() :: #{
+%%   <<"displayName">> => [string()],
+%%   <<"exascaleDbStorageVaultId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type update_exascale_db_storage_vault_output() :: #{binary() => any()}.
+
+%% Example:
 %% update_odb_network_input() :: #{
 %%   <<"crossRegionS3RestoreSourcesToDisable">> => list([string()]()),
 %%   <<"crossRegionS3RestoreSourcesToEnable">> => list([string()]()),
@@ -2617,6 +3056,15 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type associate_virtual_machines_to_exadb_vm_cluster_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_autonomous_database_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -2664,6 +3112,23 @@
     throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_exadb_vm_cluster_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_exascale_db_storage_vault_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -2722,6 +3187,22 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type delete_exadb_vm_cluster_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_exascale_db_storage_vault_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type delete_odb_network_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -2737,6 +3218,14 @@
     access_denied_exception().
 
 -type disassociate_iam_role_from_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type disassociate_virtual_machines_from_exadb_vm_cluster_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -2809,6 +3298,20 @@
     access_denied_exception().
 
 -type get_db_server_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_exadb_vm_cluster_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_exascale_db_storage_vault_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -2922,6 +3425,25 @@
     access_denied_exception().
 
 -type list_db_system_shapes_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_exadb_vm_clusters_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_exascale_db_storage_vaults_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_gi_minor_versions_errors() ::
     validation_exception() | 
     throttling_exception() | 
     internal_server_exception() | 
@@ -3056,6 +3578,22 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type update_exadb_vm_cluster_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_exascale_db_storage_vault_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_odb_network_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -3113,6 +3651,23 @@ associate_iam_role_to_resource(Client, Input)
 associate_iam_role_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateIamRoleToResource">>, Input, Options).
+
+%% @doc Adds virtual machines to the specified Exascale VM cluster.
+-spec associate_virtual_machines_to_exadb_vm_cluster(aws_client:aws_client(), associate_virtual_machines_to_exadb_vm_cluster_input()) ->
+    {ok, associate_virtual_machines_to_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, associate_virtual_machines_to_exadb_vm_cluster_errors(), tuple()}.
+associate_virtual_machines_to_exadb_vm_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_virtual_machines_to_exadb_vm_cluster(Client, Input, []).
+
+-spec associate_virtual_machines_to_exadb_vm_cluster(aws_client:aws_client(), associate_virtual_machines_to_exadb_vm_cluster_input(), proplists:proplist()) ->
+    {ok, associate_virtual_machines_to_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, associate_virtual_machines_to_exadb_vm_cluster_errors(), tuple()}.
+associate_virtual_machines_to_exadb_vm_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateVirtualMachinesToExadbVmCluster">>, Input, Options).
 
 %% @doc Creates a new Autonomous Database.
 -spec create_autonomous_database(aws_client:aws_client(), create_autonomous_database_input()) ->
@@ -3216,6 +3771,40 @@ create_cloud_vm_cluster(Client, Input)
 create_cloud_vm_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCloudVmCluster">>, Input, Options).
+
+%% @doc Creates an Exascale VM cluster.
+-spec create_exadb_vm_cluster(aws_client:aws_client(), create_exadb_vm_cluster_input()) ->
+    {ok, create_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, create_exadb_vm_cluster_errors(), tuple()}.
+create_exadb_vm_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_exadb_vm_cluster(Client, Input, []).
+
+-spec create_exadb_vm_cluster(aws_client:aws_client(), create_exadb_vm_cluster_input(), proplists:proplist()) ->
+    {ok, create_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, create_exadb_vm_cluster_errors(), tuple()}.
+create_exadb_vm_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateExadbVmCluster">>, Input, Options).
+
+%% @doc Creates an Exascale storage vault.
+-spec create_exascale_db_storage_vault(aws_client:aws_client(), create_exascale_db_storage_vault_input()) ->
+    {ok, create_exascale_db_storage_vault_output(), tuple()} |
+    {error, any()} |
+    {error, create_exascale_db_storage_vault_errors(), tuple()}.
+create_exascale_db_storage_vault(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_exascale_db_storage_vault(Client, Input, []).
+
+-spec create_exascale_db_storage_vault(aws_client:aws_client(), create_exascale_db_storage_vault_input(), proplists:proplist()) ->
+    {ok, create_exascale_db_storage_vault_output(), tuple()} |
+    {error, any()} |
+    {error, create_exascale_db_storage_vault_errors(), tuple()}.
+create_exascale_db_storage_vault(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateExascaleDbStorageVault">>, Input, Options).
 
 %% @doc Creates an ODB network.
 -spec create_odb_network(aws_client:aws_client(), create_odb_network_input()) ->
@@ -3342,6 +3931,40 @@ delete_cloud_vm_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCloudVmCluster">>, Input, Options).
 
+%% @doc Deletes the specified Exascale VM cluster.
+-spec delete_exadb_vm_cluster(aws_client:aws_client(), delete_exadb_vm_cluster_input()) ->
+    {ok, delete_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, delete_exadb_vm_cluster_errors(), tuple()}.
+delete_exadb_vm_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_exadb_vm_cluster(Client, Input, []).
+
+-spec delete_exadb_vm_cluster(aws_client:aws_client(), delete_exadb_vm_cluster_input(), proplists:proplist()) ->
+    {ok, delete_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, delete_exadb_vm_cluster_errors(), tuple()}.
+delete_exadb_vm_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteExadbVmCluster">>, Input, Options).
+
+%% @doc Deletes the specified Exascale storage vault.
+-spec delete_exascale_db_storage_vault(aws_client:aws_client(), delete_exascale_db_storage_vault_input()) ->
+    {ok, delete_exascale_db_storage_vault_output(), tuple()} |
+    {error, any()} |
+    {error, delete_exascale_db_storage_vault_errors(), tuple()}.
+delete_exascale_db_storage_vault(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_exascale_db_storage_vault(Client, Input, []).
+
+-spec delete_exascale_db_storage_vault(aws_client:aws_client(), delete_exascale_db_storage_vault_input(), proplists:proplist()) ->
+    {ok, delete_exascale_db_storage_vault_output(), tuple()} |
+    {error, any()} |
+    {error, delete_exascale_db_storage_vault_errors(), tuple()}.
+delete_exascale_db_storage_vault(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteExascaleDbStorageVault">>, Input, Options).
+
 %% @doc Deletes the specified ODB network.
 -spec delete_odb_network(aws_client:aws_client(), delete_odb_network_input()) ->
     {ok, delete_odb_network_output(), tuple()} |
@@ -3397,6 +4020,23 @@ disassociate_iam_role_from_resource(Client, Input)
 disassociate_iam_role_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateIamRoleFromResource">>, Input, Options).
+
+%% @doc Removes virtual machines from the specified Exascale VM cluster.
+-spec disassociate_virtual_machines_from_exadb_vm_cluster(aws_client:aws_client(), disassociate_virtual_machines_from_exadb_vm_cluster_input()) ->
+    {ok, disassociate_virtual_machines_from_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_virtual_machines_from_exadb_vm_cluster_errors(), tuple()}.
+disassociate_virtual_machines_from_exadb_vm_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_virtual_machines_from_exadb_vm_cluster(Client, Input, []).
+
+-spec disassociate_virtual_machines_from_exadb_vm_cluster(aws_client:aws_client(), disassociate_virtual_machines_from_exadb_vm_cluster_input(), proplists:proplist()) ->
+    {ok, disassociate_virtual_machines_from_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_virtual_machines_from_exadb_vm_cluster_errors(), tuple()}.
+disassociate_virtual_machines_from_exadb_vm_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateVirtualMachinesFromExadbVmCluster">>, Input, Options).
 
 %% @doc Initiates a failover of the specified Autonomous Database to a
 %% standby peer database.
@@ -3569,6 +4209,40 @@ get_db_server(Client, Input)
 get_db_server(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDbServer">>, Input, Options).
+
+%% @doc Returns information about the specified Exascale VM cluster.
+-spec get_exadb_vm_cluster(aws_client:aws_client(), get_exadb_vm_cluster_input()) ->
+    {ok, get_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, get_exadb_vm_cluster_errors(), tuple()}.
+get_exadb_vm_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_exadb_vm_cluster(Client, Input, []).
+
+-spec get_exadb_vm_cluster(aws_client:aws_client(), get_exadb_vm_cluster_input(), proplists:proplist()) ->
+    {ok, get_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, get_exadb_vm_cluster_errors(), tuple()}.
+get_exadb_vm_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetExadbVmCluster">>, Input, Options).
+
+%% @doc Returns information about the specified Exascale storage vault.
+-spec get_exascale_db_storage_vault(aws_client:aws_client(), get_exascale_db_storage_vault_input()) ->
+    {ok, get_exascale_db_storage_vault_output(), tuple()} |
+    {error, any()} |
+    {error, get_exascale_db_storage_vault_errors(), tuple()}.
+get_exascale_db_storage_vault(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_exascale_db_storage_vault(Client, Input, []).
+
+-spec get_exascale_db_storage_vault(aws_client:aws_client(), get_exascale_db_storage_vault_input(), proplists:proplist()) ->
+    {ok, get_exascale_db_storage_vault_output(), tuple()} |
+    {error, any()} |
+    {error, get_exascale_db_storage_vault_errors(), tuple()}.
+get_exascale_db_storage_vault(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetExascaleDbStorageVault">>, Input, Options).
 
 %% @doc Returns the tenancy activation link and onboarding status for your
 %% Amazon Web Services account.
@@ -3866,6 +4540,60 @@ list_db_system_shapes(Client, Input)
 list_db_system_shapes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDbSystemShapes">>, Input, Options).
+
+%% @doc Returns information about the Exascale VM clusters owned by your
+%% Amazon Web Services account.
+-spec list_exadb_vm_clusters(aws_client:aws_client(), list_exadb_vm_clusters_input()) ->
+    {ok, list_exadb_vm_clusters_output(), tuple()} |
+    {error, any()} |
+    {error, list_exadb_vm_clusters_errors(), tuple()}.
+list_exadb_vm_clusters(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_exadb_vm_clusters(Client, Input, []).
+
+-spec list_exadb_vm_clusters(aws_client:aws_client(), list_exadb_vm_clusters_input(), proplists:proplist()) ->
+    {ok, list_exadb_vm_clusters_output(), tuple()} |
+    {error, any()} |
+    {error, list_exadb_vm_clusters_errors(), tuple()}.
+list_exadb_vm_clusters(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListExadbVmClusters">>, Input, Options).
+
+%% @doc Returns information about the Exascale storage vaults owned by your
+%% Amazon Web Services account.
+-spec list_exascale_db_storage_vaults(aws_client:aws_client(), list_exascale_db_storage_vaults_input()) ->
+    {ok, list_exascale_db_storage_vaults_output(), tuple()} |
+    {error, any()} |
+    {error, list_exascale_db_storage_vaults_errors(), tuple()}.
+list_exascale_db_storage_vaults(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_exascale_db_storage_vaults(Client, Input, []).
+
+-spec list_exascale_db_storage_vaults(aws_client:aws_client(), list_exascale_db_storage_vaults_input(), proplists:proplist()) ->
+    {ok, list_exascale_db_storage_vaults_output(), tuple()} |
+    {error, any()} |
+    {error, list_exascale_db_storage_vaults_errors(), tuple()}.
+list_exascale_db_storage_vaults(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListExascaleDbStorageVaults">>, Input, Options).
+
+%% @doc Returns a list of the Oracle Grid Infrastructure (GI) minor versions
+%% for the specified major version.
+-spec list_gi_minor_versions(aws_client:aws_client(), list_gi_minor_versions_input()) ->
+    {ok, list_gi_minor_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_gi_minor_versions_errors(), tuple()}.
+list_gi_minor_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_gi_minor_versions(Client, Input, []).
+
+-spec list_gi_minor_versions(aws_client:aws_client(), list_gi_minor_versions_input(), proplists:proplist()) ->
+    {ok, list_gi_minor_versions_output(), tuple()} |
+    {error, any()} |
+    {error, list_gi_minor_versions_errors(), tuple()}.
+list_gi_minor_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGiMinorVersions">>, Input, Options).
 
 %% @doc Returns information about Oracle Grid Infrastructure (GI) software
 %% versions that are available for a VM cluster for the specified shape.
@@ -4195,6 +4923,40 @@ update_cloud_exadata_infrastructure(Client, Input)
 update_cloud_exadata_infrastructure(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCloudExadataInfrastructure">>, Input, Options).
+
+%% @doc Updates the specified Exascale VM cluster.
+-spec update_exadb_vm_cluster(aws_client:aws_client(), update_exadb_vm_cluster_input()) ->
+    {ok, update_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, update_exadb_vm_cluster_errors(), tuple()}.
+update_exadb_vm_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_exadb_vm_cluster(Client, Input, []).
+
+-spec update_exadb_vm_cluster(aws_client:aws_client(), update_exadb_vm_cluster_input(), proplists:proplist()) ->
+    {ok, update_exadb_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, update_exadb_vm_cluster_errors(), tuple()}.
+update_exadb_vm_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateExadbVmCluster">>, Input, Options).
+
+%% @doc Updates the specified Exascale storage vault.
+-spec update_exascale_db_storage_vault(aws_client:aws_client(), update_exascale_db_storage_vault_input()) ->
+    {ok, update_exascale_db_storage_vault_output(), tuple()} |
+    {error, any()} |
+    {error, update_exascale_db_storage_vault_errors(), tuple()}.
+update_exascale_db_storage_vault(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_exascale_db_storage_vault(Client, Input, []).
+
+-spec update_exascale_db_storage_vault(aws_client:aws_client(), update_exascale_db_storage_vault_input(), proplists:proplist()) ->
+    {ok, update_exascale_db_storage_vault_output(), tuple()} |
+    {error, any()} |
+    {error, update_exascale_db_storage_vault_errors(), tuple()}.
+update_exascale_db_storage_vault(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateExascaleDbStorageVault">>, Input, Options).
 
 %% @doc Updates properties of a specified ODB network.
 -spec update_odb_network(aws_client:aws_client(), update_odb_network_input()) ->

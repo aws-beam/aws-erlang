@@ -17322,8 +17322,8 @@ start_job_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartJobRun">>, Input, Options).
 
-%% @doc Starts a materialized view refresh task run, for a specified table
-%% and columns.
+%% @doc Starts a materialized view refresh task run for a specified
+%% materialized view.
 -spec start_materialized_view_refresh_task_run(aws_client:aws_client(), start_materialized_view_refresh_task_run_request()) ->
     {ok, start_materialized_view_refresh_task_run_response(), tuple()} |
     {error, any()} |
@@ -17519,8 +17519,8 @@ stop_crawler_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCrawlerSchedule">>, Input, Options).
 
-%% @doc Stops a materialized view refresh task run, for a specified table and
-%% columns.
+%% @doc Stops a materialized view refresh task run for a specified
+%% materialized view.
 -spec stop_materialized_view_refresh_task_run(aws_client:aws_client(), stop_materialized_view_refresh_task_run_request()) ->
     {ok, stop_materialized_view_refresh_task_run_response(), tuple()} |
     {error, any()} |
