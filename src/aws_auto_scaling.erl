@@ -205,6 +205,7 @@
 
 %% Example:
 %% activity_type() :: #{
+%%   <<"Activities">> => list(activity()),
 %%   <<"Activity">> => activity()
 %% }
 -type activity_type() :: #{binary() => any()}.
@@ -985,6 +986,12 @@
 %%   <<"StartTime">> := non_neg_integer()
 %% }
 -type get_predictive_scaling_forecast_type() :: #{binary() => any()}.
+
+%% Example:
+%% idempotent_call_in_progress_fault() :: #{
+%%   <<"Message">> => string()
+%% }
+-type idempotent_call_in_progress_fault() :: #{binary() => any()}.
 
 %% Example:
 %% idempotent_parameter_mismatch_error() :: #{
@@ -1844,7 +1851,9 @@
 
 %% Example:
 %% terminate_instance_in_auto_scaling_group_type() :: #{
-%%   <<"InstanceId">> := string(),
+%%   <<"AutoScalingGroupName">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceIds">> => list(string()),
 %%   <<"ShouldDecrementDesiredCapacity">> := boolean()
 %% }
 -type terminate_instance_in_auto_scaling_group_type() :: #{binary() => any()}.
@@ -2118,7 +2127,8 @@
 
 -type launch_instances_errors() ::
     resource_contention_fault() | 
-    idempotent_parameter_mismatch_error().
+    idempotent_parameter_mismatch_error() | 
+    idempotent_call_in_progress_fault().
 
 -type put_lifecycle_hook_errors() ::
     resource_contention_fault() | 
@@ -4322,7 +4332,7 @@ suspend_processes(Client, Input, Options)
 %% This
 %% operation cannot be called on instances in a warm pool.
 %%
-%% This call simply makes a termination request. The instance is not
+%% This call simply makes a termination request. The instances are not
 %% terminated
 %% immediately. When an instance is terminated, the instance status changes
 %% to
@@ -4333,6 +4343,12 @@ suspend_processes(Client, Input, Options)
 %% If you do not specify the option to decrement the desired capacity, Amazon
 %% EC2 Auto Scaling launches
 %% instances to replace the ones that are terminated.
+%%
+%% To terminate multiple instances in a single call, use the
+%% `InstanceIds'
+%% and `AutoScalingGroupName' parameters instead of `InstanceId'.
+%% When terminating multiple instances, the response populates
+%% `Activities' instead of `Activity'.
 %%
 %% By default, Amazon EC2 Auto Scaling balances instances across all
 %% Availability Zones. If you

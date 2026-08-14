@@ -346,6 +346,17 @@
 
 
 %% Example:
+%% aggregation_threshold() :: #{
+%%   <<"allowedAggregateExpressionType">> => list(any()),
+%%   <<"identityColumns">> => list(string()),
+%%   <<"minimumIdentityCount">> => [integer()],
+%%   <<"outputColumnThresholds">> => list(output_column_threshold()),
+%%   <<"type">> => list(any())
+%% }
+-type aggregation_threshold() :: #{binary() => any()}.
+
+
+%% Example:
 %% analysis_log_export() :: #{
 %%   <<"analysisId">> => string(),
 %%   <<"analysisLogExportId">> => string(),
@@ -441,10 +452,12 @@
 %% Example:
 %% analysis_rule_custom() :: #{
 %%   <<"additionalAnalyses">> => list(any()),
+%%   <<"aggregationThresholds">> => list(aggregation_threshold()),
 %%   <<"allowedAdditionalAnalyses">> => list(string()),
 %%   <<"allowedAnalyses">> => list(string()),
 %%   <<"allowedAnalysisProviders">> => list(string()),
 %%   <<"allowedResultReceivers">> => list(string()),
+%%   <<"comparisonControls">> => comparison_controls(),
 %%   <<"differentialPrivacy">> => differential_privacy_configuration(),
 %%   <<"disallowedOutputColumns">> => list(string())
 %% }
@@ -956,6 +969,14 @@
 
 
 %% Example:
+%% comparison_controls() :: #{
+%%   <<"allowedColumnComparisonColumns">> => list(string()),
+%%   <<"allowedLiteralComparisonColumns">> => list(string())
+%% }
+-type comparison_controls() :: #{binary() => any()}.
+
+
+%% Example:
 %% configured_audience_model_association() :: #{
 %%   <<"arn">> => string(),
 %%   <<"collaborationArn">> => string(),
@@ -1140,10 +1161,12 @@
 %% Example:
 %% consolidated_policy_custom() :: #{
 %%   <<"additionalAnalyses">> => list(any()),
+%%   <<"aggregationThresholds">> => list(aggregation_threshold()),
 %%   <<"allowedAdditionalAnalyses">> => list(string()),
 %%   <<"allowedAnalyses">> => list(string()),
 %%   <<"allowedAnalysisProviders">> => list(string()),
 %%   <<"allowedResultReceivers">> => list(string()),
+%%   <<"comparisonControls">> => comparison_controls(),
 %%   <<"differentialPrivacy">> => differential_privacy_configuration(),
 %%   <<"disallowedOutputColumns">> => list(string())
 %% }
@@ -2187,10 +2210,12 @@
 %% Example:
 %% intermediate_table_analysis_rule_custom() :: #{
 %%   <<"additionalAnalyses">> => list(any()),
+%%   <<"aggregationThresholds">> => list(aggregation_threshold()),
 %%   <<"allowedAdditionalAnalyses">> => list(string()),
 %%   <<"allowedAnalyses">> => list(string()),
 %%   <<"allowedAnalysisProviders">> => list(string()),
 %%   <<"allowedResultReceivers">> => list(string()),
+%%   <<"comparisonControls">> => comparison_controls(),
 %%   <<"differentialPrivacy">> => differential_privacy_configuration(),
 %%   <<"disallowedOutputColumns">> => list(string())
 %% }
@@ -2874,6 +2899,14 @@
 %%   <<"isResponsible">> => [boolean()]
 %% }
 -type model_training_payment_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% output_column_threshold() :: #{
+%%   <<"minimumIdentityCount">> => [integer()],
+%%   <<"outputColumnName">> => string()
+%% }
+-type output_column_threshold() :: #{binary() => any()}.
 
 
 %% Example:

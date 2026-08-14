@@ -60,6 +60,10 @@
 %% `GetBlob', which returns the base-64 encoded content of an
 %% individual Git blob object in a repository.
 %%
+%% `GetBlobDifferences', which returns a structured, line-level
+%% diff between two blob versions in a repository, with optional surrounding
+%% context lines.
+%%
 %% `GetFile', which returns the base-64 encoded content of a specified
 %% file.
 %%
@@ -350,6 +354,8 @@
          get_approval_rule_template/3,
          get_blob/2,
          get_blob/3,
+         get_blob_differences/2,
+         get_blob_differences/3,
          get_branch/2,
          get_branch/3,
          get_comment/2,
@@ -1213,6 +1219,25 @@
 -type describe_pull_request_events_output() :: #{binary() => any()}.
 
 %% Example:
+%% diff_change() :: #{
+%%   <<"afterLineNumber">> => integer(),
+%%   <<"beforeLineNumber">> => integer(),
+%%   <<"content">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type diff_change() :: #{binary() => any()}.
+
+%% Example:
+%% diff_hunk() :: #{
+%%   <<"afterLineCount">> => integer(),
+%%   <<"afterStartLine">> => integer(),
+%%   <<"beforeLineCount">> => integer(),
+%%   <<"beforeStartLine">> => integer(),
+%%   <<"changes">> => list(diff_change())
+%% }
+-type diff_hunk() :: #{binary() => any()}.
+
+%% Example:
 %% difference() :: #{
 %%   <<"afterBlob">> => blob_metadata(),
 %%   <<"beforeBlob">> => blob_metadata(),
@@ -1430,6 +1455,28 @@
 %%   <<"approvalRuleTemplate">> => approval_rule_template()
 %% }
 -type get_approval_rule_template_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_blob_differences_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"afterBlobId">> := string(),
+%%   <<"beforeBlobId">> => string(),
+%%   <<"contextLines">> => integer(),
+%%   <<"ignoreWhitespace">> => boolean(),
+%%   <<"repositoryName">> := string()
+%% }
+-type get_blob_differences_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_blob_differences_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"afterBlobSize">> => float(),
+%%   <<"beforeBlobSize">> => float(),
+%%   <<"hunks">> => list(diff_hunk()),
+%%   <<"isBinary">> => boolean()
+%% }
+-type get_blob_differences_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_blob_input() :: #{
@@ -3300,6 +3347,12 @@
 %% }
 -type user_info() :: #{binary() => any()}.
 
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
 -type associate_approval_rule_template_with_repository_errors() ::
     repository_name_required_exception() | 
     repository_does_not_exist_exception() | 
@@ -3695,6 +3748,23 @@
     repository_name_required_exception() | 
     repository_does_not_exist_exception() | 
     invalid_repository_name_exception() | 
+    invalid_blob_id_exception() | 
+    file_too_large_exception() | 
+    encryption_key_unavailable_exception() | 
+    encryption_key_not_found_exception() | 
+    encryption_key_disabled_exception() | 
+    encryption_key_access_denied_exception() | 
+    encryption_integrity_checks_failed_exception() | 
+    blob_id_required_exception() | 
+    blob_id_does_not_exist_exception().
+
+-type get_blob_differences_errors() ::
+    validation_exception() | 
+    repository_name_required_exception() | 
+    repository_does_not_exist_exception() | 
+    invalid_repository_name_exception() | 
+    invalid_max_results_exception() | 
+    invalid_continuation_token_exception() | 
     invalid_blob_id_exception() | 
     file_too_large_exception() | 
     encryption_key_unavailable_exception() | 
@@ -5077,6 +5147,35 @@ get_blob(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBlob">>, Input, Options).
 
+%% @doc Returns a structured, line-level diff between two blob versions in a
+%% repository.
+%%
+%% The
+%% diff is returned as an ordered list of hunks, where each hunk represents a
+%% contiguous
+%% run of changed lines together with any surrounding unchanged context
+%% lines.
+%%
+%% Results are paginated. Use `MaxResults' and `NextToken' to
+%% retrieve additional pages.
+%%
+%% For the typical usage workflow, see `GetDifferences'.
+-spec get_blob_differences(aws_client:aws_client(), get_blob_differences_input()) ->
+    {ok, get_blob_differences_output(), tuple()} |
+    {error, any()} |
+    {error, get_blob_differences_errors(), tuple()}.
+get_blob_differences(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_blob_differences(Client, Input, []).
+
+-spec get_blob_differences(aws_client:aws_client(), get_blob_differences_input(), proplists:proplist()) ->
+    {ok, get_blob_differences_output(), tuple()} |
+    {error, any()} |
+    {error, get_blob_differences_errors(), tuple()}.
+get_blob_differences(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBlobDifferences">>, Input, Options).
+
 %% @doc Returns information about a repository branch, including its name and
 %% the last commit ID.
 -spec get_branch(aws_client:aws_client(), get_branch_input()) ->
@@ -5204,6 +5303,10 @@ get_commit(Client, Input, Options)
 %%
 %% Results can be
 %% limited to a specified path.
+%%
+%% For line-level diff details, pass the `beforeBlob.blobId' and
+%% `afterBlob.blobId' values from a `Difference' object to
+%% `GetBlobDifferences'.
 -spec get_differences(aws_client:aws_client(), get_differences_input()) ->
     {ok, get_differences_output(), tuple()} |
     {error, any()} |

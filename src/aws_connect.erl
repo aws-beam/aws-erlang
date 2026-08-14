@@ -731,6 +731,8 @@
          send_outbound_email/4,
          send_outbound_web_notification/3,
          send_outbound_web_notification/4,
+         start_assistant_contact/2,
+         start_assistant_contact/3,
          start_attached_file_upload/3,
          start_attached_file_upload/4,
          start_chat_contact/2,
@@ -1127,6 +1129,13 @@
 %%   <<"AiUseCase">> => list(any())
 %% }
 -type ai_agent_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% ai_agent_input() :: #{
+%%   <<"AiAgentId">> => string()
+%% }
+-type ai_agent_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9840,6 +9849,30 @@
 
 
 %% Example:
+%% start_assistant_contact_request() :: #{
+%%   <<"AiAgent">> := ai_agent_input(),
+%%   <<"Attributes">> => map(),
+%%   <<"ClientToken">> => string(),
+%%   <<"InitialMessage">> => chat_message(),
+%%   <<"InstanceId">> := string(),
+%%   <<"ParticipantDetails">> := participant_details(),
+%%   <<"PersistentChat">> => persistent_chat(),
+%%   <<"RelatedContactId">> => string()
+%% }
+-type start_assistant_contact_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_assistant_contact_response() :: #{
+%%   <<"ContactId">> => string(),
+%%   <<"ContinuedFromContactId">> => string(),
+%%   <<"ParticipantId">> => string(),
+%%   <<"ParticipantToken">> => string()
+%% }
+-type start_assistant_contact_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_attached_file_upload_request() :: #{
 %%   <<"AssociatedResourceArn">> := string(),
 %%   <<"ClientToken">> => string(),
@@ -10160,7 +10193,8 @@
 %%   <<"InstanceId">> := string(),
 %%   <<"ParticipantDetails">> := participant_details(),
 %%   <<"References">> => map(),
-%%   <<"RelatedContactId">> => string()
+%%   <<"RelatedContactId">> => string(),
+%%   <<"SegmentAttributes">> => map()
 %% }
 -type start_web_r_t_c_contact_request() :: #{binary() => any()}.
 
@@ -14282,6 +14316,14 @@
     internal_service_exception() | 
     access_denied_exception().
 
+-type start_assistant_contact_errors() ::
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
 -type start_attached_file_upload_errors() ::
     throttling_exception() | 
     service_quota_exceeded_exception() | 
@@ -14410,7 +14452,8 @@
     limit_exceeded_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
-    internal_service_exception().
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type stop_contact_errors() ::
     resource_not_found_exception() | 
@@ -27472,6 +27515,55 @@ send_outbound_web_notification(Client, InstanceId, Input) ->
 send_outbound_web_notification(Client, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/outbound-web-notification"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a chat contact with an AI agent.
+%%
+%% Use the returned `ParticipantToken' to call the
+%% CreateParticipantConnection:
+%% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
+%% API.
+%%
+%% For more information about chat, see the following topics in the Connect
+%% Customer
+%% Administrator Guide:
+%%
+%% Concepts: Web and mobile messaging capabilities in Connect Customer:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/web-and-mobile-chat.html
+%%
+%% Connect Customer Chat security best practices:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/security-best-practices.html#bp-security-chat
+-spec start_assistant_contact(aws_client:aws_client(), start_assistant_contact_request()) ->
+    {ok, start_assistant_contact_response(), tuple()} |
+    {error, any()} |
+    {error, start_assistant_contact_errors(), tuple()}.
+start_assistant_contact(Client, Input) ->
+    start_assistant_contact(Client, Input, []).
+
+-spec start_assistant_contact(aws_client:aws_client(), start_assistant_contact_request(), proplists:proplist()) ->
+    {ok, start_assistant_contact_response(), tuple()} |
+    {error, any()} |
+    {error, start_assistant_contact_errors(), tuple()}.
+start_assistant_contact(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact/assistant"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

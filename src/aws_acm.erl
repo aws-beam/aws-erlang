@@ -54,6 +54,8 @@
          list_acme_endpoints/3,
          list_acme_external_account_bindings/2,
          list_acme_external_account_bindings/3,
+         list_certificate_domain_validations/2,
+         list_certificate_domain_validations/3,
          list_certificates/2,
          list_certificates/3,
          list_tags_for_certificate/2,
@@ -263,14 +265,16 @@
 %%   <<"Status">> => list(any()),
 %%   <<"Subject">> => string(),
 %%   <<"SubjectAlternativeNames">> => list(string()),
-%%   <<"Type">> => list(any())
+%%   <<"Type">> => list(any()),
+%%   <<"UpdateSummary">> => update_summary()
 %% }
 -type certificate_detail() :: #{binary() => any()}.
 
 %% Example:
 %% certificate_options() :: #{
 %%   <<"CertificateTransparencyLoggingPreference">> => list(any()),
-%%   <<"Export">> => list(any())
+%%   <<"Export">> => list(any()),
+%%   <<"ValidationMethod">> => list(any())
 %% }
 -type certificate_options() :: #{binary() => any()}.
 
@@ -506,6 +510,12 @@
 -type dns_prevalidation_options() :: #{binary() => any()}.
 
 %% Example:
+%% dns_validation_challenge() :: #{
+%%   <<"ResourceRecord">> => resource_record()
+%% }
+-type dns_validation_challenge() :: #{binary() => any()}.
+
+%% Example:
 %% domain_scope() :: #{
 %%   <<"ExactDomain">> => list(any()),
 %%   <<"Subdomains">> => list(any()),
@@ -526,11 +536,33 @@
 -type domain_validation() :: #{binary() => any()}.
 
 %% Example:
+%% domain_validation_method_update_summary() :: #{
+%%   <<"From">> => list(any()),
+%%   <<"To">> => list(any())
+%% }
+-type domain_validation_method_update_summary() :: #{binary() => any()}.
+
+%% Example:
 %% domain_validation_option() :: #{
 %%   <<"DomainName">> => string(),
 %%   <<"ValidationDomain">> => string()
 %% }
 -type domain_validation_option() :: #{binary() => any()}.
+
+%% Example:
+%% domain_validation_summary() :: #{
+%%   <<"ActiveValidationConfiguration">> => validation_configuration(),
+%%   <<"DomainName">> => string(),
+%%   <<"RequestedValidationConfiguration">> => validation_configuration()
+%% }
+-type domain_validation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% email_validation_challenge() :: #{
+%%   <<"ValidationDomain">> => string(),
+%%   <<"ValidationEmails">> => list(string())
+%% }
+-type email_validation_challenge() :: #{binary() => any()}.
 
 %% Example:
 %% expiration() :: #{
@@ -751,6 +783,21 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_acme_external_account_bindings_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_certificate_domain_validations_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_certificate_domain_validations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_certificate_domain_validations_response() :: #{
+%%   <<"DomainValidationSummaryList">> => list(domain_validation_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_certificate_domain_validations_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_certificates_request() :: #{
@@ -1019,6 +1066,24 @@
 -type update_certificate_options_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_summary() :: #{
+%%   <<"DomainValidationMethodUpdateSummary">> => domain_validation_method_update_summary(),
+%%   <<"RequestedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type update_summary() :: #{binary() => any()}.
+
+%% Example:
+%% validation_configuration() :: #{
+%%   <<"ValidationChallenge">> => list(),
+%%   <<"ValidationMethod">> => list(any()),
+%%   <<"ValidationStatus">> => list(any())
+%% }
+-type validation_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1198,6 +1263,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_certificate_domain_validations_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_args_exception() | 
+    access_denied_exception().
+
 -type list_certificates_errors() ::
     validation_exception() | 
     invalid_args_exception().
@@ -1308,7 +1379,8 @@
     resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_state_exception() | 
-    invalid_arn_exception().
+    invalid_arn_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1866,6 +1938,29 @@ list_acme_external_account_bindings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAcmeExternalAccountBindings">>, Input, Options).
 
+%% @doc Returns per-domain validation summaries for an ACM certificate.
+%%
+%% Each summary includes the domain name, the active validation
+%% configuration, and the requested validation configuration when a
+%% validation method migration is in progress. You can use the results to
+%% monitor the progress of an email-to-DNS validation migration and to
+%% retrieve the CNAME records required for DNS validation.
+-spec list_certificate_domain_validations(aws_client:aws_client(), list_certificate_domain_validations_request()) ->
+    {ok, list_certificate_domain_validations_response(), tuple()} |
+    {error, any()} |
+    {error, list_certificate_domain_validations_errors(), tuple()}.
+list_certificate_domain_validations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_certificate_domain_validations(Client, Input, []).
+
+-spec list_certificate_domain_validations(aws_client:aws_client(), list_certificate_domain_validations_request(), proplists:proplist()) ->
+    {ok, list_certificate_domain_validations_response(), tuple()} |
+    {error, any()} |
+    {error, list_certificate_domain_validations_errors(), tuple()}.
+list_certificate_domain_validations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCertificateDomainValidations">>, Input, Options).
+
 %% @doc Retrieves a list of certificate ARNs and domain names.
 %%
 %% You can request that only certificates that match a specific status be
@@ -2265,12 +2360,12 @@ update_acme_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAcmeEndpoint">>, Input, Options).
 
-%% @doc Updates a certificate.
+%% @doc Updates certificate options.
 %%
-%% You can use this function to specify whether to export your certificate.
-%% Certificate transparency logging opt-out is no longer available. For more
-%% information, see Certificate Transparency Logging:
-%% https://docs.aws.amazon.com/acm/latest/userguide/acm-concepts.html#concept-transparency
+%% You can use this operation to change the domain validation method or
+%% specify whether to export your certificate. For more information, see
+%% Migrate from email to DNS validation:
+%% https://docs.aws.amazon.com/acm/latest/userguide/email-to-dns-migration.html
 %% and Certificate Manager Exportable Managed Certificates:
 %% https://docs.aws.amazon.com/acm/latest/userguide/acm-exportable-certificates.html.
 -spec update_certificate_options(aws_client:aws_client(), update_certificate_options_request()) ->
