@@ -181,7 +181,9 @@
 %%   <<"LastUpdateTimeStamp">> => [float()],
 %%   <<"RuleArn">> => string(),
 %%   <<"RuleHealth">> => list(any()),
-%%   <<"RuleName">> => string()
+%%   <<"RuleName">> => string(),
+%%   <<"TagPropagationFailureReason">> => list(any()),
+%%   <<"TagPropagationStatus">> => list(any())
 %% }
 -type centralization_rule_summary() :: #{binary() => any()}.
 
@@ -352,7 +354,8 @@
 %% destination_logs_configuration() :: #{
 %%   <<"BackupConfiguration">> => logs_backup_configuration(),
 %%   <<"LogGroupNameConfiguration">> => log_group_name_configuration(),
-%%   <<"LogsEncryptionConfiguration">> => logs_encryption_configuration()
+%%   <<"LogsEncryptionConfiguration">> => logs_encryption_configuration(),
+%%   <<"TagPropagationConfiguration">> => tag_propagation_configuration()
 %% }
 -type destination_logs_configuration() :: #{binary() => any()}.
 
@@ -416,7 +419,9 @@
 %%   <<"LastUpdateTimeStamp">> => [float()],
 %%   <<"RuleArn">> => string(),
 %%   <<"RuleHealth">> => list(any()),
-%%   <<"RuleName">> => string()
+%%   <<"RuleName">> => string(),
+%%   <<"TagPropagationFailureReason">> => list(any()),
+%%   <<"TagPropagationStatus">> => list(any())
 %% }
 -type get_centralization_rule_for_organization_output() :: #{binary() => any()}.
 
@@ -863,6 +868,14 @@
 %%   <<"Status">> => list(any())
 %% }
 -type stop_telemetry_enrichment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_propagation_configuration() :: #{
+%%   <<"DestinationRoleArn">> => string(),
+%%   <<"TagConflictResolutionStrategy">> => list(any())
+%% }
+-type tag_propagation_configuration() :: #{binary() => any()}.
 
 
 %% Example:

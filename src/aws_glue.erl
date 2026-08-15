@@ -746,14 +746,18 @@
 %% Example:
 %% associate_glossary_terms_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"GlossaryTermIdentifiers">> := list(string())
+%%   <<"GlossaryTermIdentifiers">> := list(string()),
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"IterableFormName">> => string()
 %% }
 -type associate_glossary_terms_request() :: #{binary() => any()}.
 
 %% Example:
 %% associate_glossary_terms_response() :: #{
 %%   <<"AssetIdentifier">> => string(),
-%%   <<"GlossaryTerms">> => list(string())
+%%   <<"GlossaryTerms">> => list(string()),
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"IterableFormName">> => string()
 %% }
 -type associate_glossary_terms_response() :: #{binary() => any()}.
 
@@ -3183,7 +3187,9 @@
 
 %% Example:
 %% delete_attachment_response() :: #{
-%%   <<"AssetIdentifier">> => string()
+%%   <<"AssetIdentifier">> => string(),
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"IterableFormName">> => string()
 %% }
 -type delete_attachment_response() :: #{binary() => any()}.
 
@@ -3839,14 +3845,18 @@
 %% Example:
 %% disassociate_glossary_terms_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"GlossaryTermIdentifiers">> := list(string())
+%%   <<"GlossaryTermIdentifiers">> := list(string()),
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"IterableFormName">> => string()
 %% }
 -type disassociate_glossary_terms_request() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_glossary_terms_response() :: #{
 %%   <<"AssetIdentifier">> => string(),
-%%   <<"GlossaryTerms">> => list(string())
+%%   <<"GlossaryTerms">> => list(string()),
+%%   <<"ItemIdentifier">> => string(),
+%%   <<"IterableFormName">> => string()
 %% }
 -type disassociate_glossary_terms_response() :: #{binary() => any()}.
 
@@ -11793,6 +11803,7 @@
     throttling_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
+    entity_not_found_exception() | 
     concurrent_modification_exception() | 
     access_denied_exception().
 

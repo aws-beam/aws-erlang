@@ -65,6 +65,7 @@
 %% Example:
 %% create_workflow_request() :: #{
 %%   <<"ClientToken">> => string(),
+%%   <<"Code">> => list(),
 %%   <<"DefinitionS3Location">> := definition_s3_location(),
 %%   <<"Description">> => string(),
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
@@ -152,6 +153,8 @@
 
 %% Example:
 %% get_workflow_response() :: #{
+%%   <<"Code">> => list(),
+%%   <<"CodeSnapshottedAt">> => non_neg_integer(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DefinitionS3Location">> => definition_s3_location(),
 %%   <<"Description">> => string(),
@@ -301,6 +304,14 @@
 -type run_detail_summary() :: #{binary() => any()}.
 
 %% Example:
+%% s3_location() :: #{
+%%   <<"Bucket">> => [string()],
+%%   <<"ObjectKey">> => [string()],
+%%   <<"VersionId">> => [string()]
+%% }
+-type s3_location() :: #{binary() => any()}.
+
+%% Example:
 %% schedule_configuration() :: #{
 %%   <<"CronExpression">> => [string()]
 %% }
@@ -394,6 +405,7 @@
 
 %% Example:
 %% update_workflow_request() :: #{
+%%   <<"Code">> => list(),
 %%   <<"DefinitionS3Location">> := definition_s3_location(),
 %%   <<"Description">> => string(),
 %%   <<"EngineVersion">> => list(integer()),

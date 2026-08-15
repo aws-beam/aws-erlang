@@ -1,12 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Contains APIs related to model invocation and querying of knowledge
-%% bases.
+%% @doc Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no
+%% longer open to new customers.
+%%
+%% For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock
+%% AgentCore. Existing customers can continue to use the service as normal.
+%% For more information, see Amazon Bedrock Agents Classic availability
+%% change:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/agents-classic-maintenance-mode.html.
+%%
+%% Contains APIs related to model invocation and querying of knowledge bases.
 -module(aws_bedrock_agent_runtime).
 
 -export([agentic_retrieve_stream/2,
          agentic_retrieve_stream/3,
+         check_ingested_document_acl/4,
+         check_ingested_document_acl/5,
          create_invocation/3,
          create_invocation/4,
          create_session/2,
@@ -30,6 +40,8 @@
          get_flow_execution/4,
          get_flow_execution/6,
          get_flow_execution/7,
+         get_ingested_document_acl/4,
+         get_ingested_document_acl/5,
          get_invocation_step/4,
          get_invocation_step/5,
          get_session/2,
@@ -526,6 +538,21 @@
 
 
 %% Example:
+%% check_ingested_document_acl_request() :: #{
+%%   <<"documentId">> := string(),
+%%   <<"userContext">> := user_context()
+%% }
+-type check_ingested_document_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% check_ingested_document_acl_response() :: #{
+%%   <<"hasAccess">> => [boolean()]
+%% }
+-type check_ingested_document_acl_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% citation() :: #{
 %%   <<"generatedResponsePart">> => generated_response_part(),
 %%   <<"retrievedReferences">> => list(retrieved_reference())
@@ -703,6 +730,47 @@
 %%   <<"resourceName">> => string()
 %% }
 -type dependency_failed_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_acl() :: #{
+%%   <<"allowList">> => document_acl_membership(),
+%%   <<"denyList">> => document_acl_membership()
+%% }
+-type document_acl() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_acl_condition() :: #{
+%%   <<"conditionOperator">> => list(any()),
+%%   <<"groups">> => list(document_acl_group()),
+%%   <<"users">> => list(document_acl_user())
+%% }
+-type document_acl_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_acl_group() :: #{
+%%   <<"id">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type document_acl_group() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_acl_membership() :: #{
+%%   <<"conditions">> => list(document_acl_condition()),
+%%   <<"memberRelation">> => list(any())
+%% }
+-type document_acl_membership() :: #{binary() => any()}.
+
+
+%% Example:
+%% document_acl_user() :: #{
+%%   <<"id">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type document_acl_user() :: #{binary() => any()}.
 
 %% Example:
 %% end_session_request() :: #{}
@@ -1166,6 +1234,20 @@
 %%   <<"status">> => list(any())
 %% }
 -type get_flow_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_ingested_document_acl_request() :: #{
+%%   <<"documentId">> := string()
+%% }
+-type get_ingested_document_acl_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_ingested_document_acl_response() :: #{
+%%   <<"documentAcl">> => document_acl()
+%% }
+-type get_ingested_document_acl_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2827,6 +2909,13 @@
     bad_gateway_exception() | 
     access_denied_exception().
 
+-type check_ingested_document_acl_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type create_invocation_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -2908,6 +2997,13 @@
     access_denied_exception().
 
 -type get_flow_execution_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_ingested_document_acl_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3138,6 +3234,45 @@ agentic_retrieve_stream(Client, Input) ->
 agentic_retrieve_stream(Client, Input0, Options0) ->
     Method = post,
     Path = ["/agenticRetrieveStream"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Checks whether a user has access to a specific document by verifying
+%% against the ingested access control list (ACL) in a knowledge base.
+%%
+%% Use this operation to validate that document-level access control is
+%% working as expected after ingestion. To use this operation, you must have
+%% the `bedrock:CheckIngestedDocumentAcl' permission.
+-spec check_ingested_document_acl(aws_client:aws_client(), binary() | list(), binary() | list(), check_ingested_document_acl_request()) ->
+    {ok, check_ingested_document_acl_response(), tuple()} |
+    {error, any()} |
+    {error, check_ingested_document_acl_errors(), tuple()}.
+check_ingested_document_acl(Client, DataSourceId, KnowledgeBaseId, Input) ->
+    check_ingested_document_acl(Client, DataSourceId, KnowledgeBaseId, Input, []).
+
+-spec check_ingested_document_acl(aws_client:aws_client(), binary() | list(), binary() | list(), check_ingested_document_acl_request(), proplists:proplist()) ->
+    {ok, check_ingested_document_acl_response(), tuple()} |
+    {error, any()} |
+    {error, check_ingested_document_acl_errors(), tuple()}.
+check_ingested_document_acl(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/check-ingested-document-acl"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3596,6 +3731,46 @@ get_flow_execution(Client, ExecutionIdentifier, FlowAliasIdentifier, FlowIdentif
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the ingested access control list (ACL) for a specific
+%% document in a knowledge base.
+%%
+%% Use this operation to inspect the allow and deny lists that were ingested
+%% for a document to troubleshoot access control issues. To use this
+%% operation, you must have the `bedrock:GetIngestedDocumentAcl'
+%% permission.
+-spec get_ingested_document_acl(aws_client:aws_client(), binary() | list(), binary() | list(), get_ingested_document_acl_request()) ->
+    {ok, get_ingested_document_acl_response(), tuple()} |
+    {error, any()} |
+    {error, get_ingested_document_acl_errors(), tuple()}.
+get_ingested_document_acl(Client, DataSourceId, KnowledgeBaseId, Input) ->
+    get_ingested_document_acl(Client, DataSourceId, KnowledgeBaseId, Input, []).
+
+-spec get_ingested_document_acl(aws_client:aws_client(), binary() | list(), binary() | list(), get_ingested_document_acl_request(), proplists:proplist()) ->
+    {ok, get_ingested_document_acl_response(), tuple()} |
+    {error, any()} |
+    {error, get_ingested_document_acl_errors(), tuple()}.
+get_ingested_document_acl(Client, DataSourceId, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/datasources/", aws_util:encode_uri(DataSourceId), "/get-ingested-document-acl"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves the details of a specific invocation step within an
 %% invocation in a session.
 %%
@@ -3676,11 +3851,17 @@ get_session(Client, SessionIdentifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
+%% @doc Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no
+%% longer open to new customers.
 %%
-%% Sends a prompt for the agent to process and respond to.
+%% For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock
+%% AgentCore. Existing customers can continue to use the service as normal.
+%% For more information, see Amazon Bedrock Agents Classic availability
+%% change:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/agents-classic-maintenance-mode.html.
 %%
-%% Note the following fields for the request:
+%% Sends a prompt for the agent to process and respond to. Note the following
+%% fields for the request:
 %%
 %% To continue the same conversation with an agent, use the same
 %% `sessionId' value in the request.

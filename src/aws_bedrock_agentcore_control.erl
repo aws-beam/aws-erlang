@@ -1427,6 +1427,7 @@
 %%   <<"credentialProviderConfigurations">> := list(list()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
+%%   <<"provisionMode">> => list(any()),
 %%   <<"type">> := list(any())
 %% }
 -type create_payment_connector_request() :: #{binary() => any()}.
@@ -1434,6 +1435,7 @@
 
 %% Example:
 %% create_payment_connector_response() :: #{
+%%   <<"authorizationUrl">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialProviderConfigurations">> => list(list()),
 %%   <<"name">> => string(),
@@ -1471,6 +1473,7 @@
 %%   <<"authorizerType">> := list(any()),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> := string(),
 %%   <<"roleArn">> := string(),
 %%   <<"tags">> => map()
@@ -1483,6 +1486,7 @@
 %%   <<"authorizerConfiguration">> => list(),
 %%   <<"authorizerType">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"paymentManagerArn">> => string(),
 %%   <<"paymentManagerId">> => string(),
@@ -2905,6 +2909,7 @@
 
 %% Example:
 %% get_payment_connector_response() :: #{
+%%   <<"authorizationUrl">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialProviderConfigurations">> => list(list()),
 %%   <<"description">> => string(),
@@ -2947,6 +2952,7 @@
 %%   <<"authorizerType">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"paymentManagerArn">> => string(),
@@ -4813,6 +4819,7 @@
 %%   <<"authorizerType">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"paymentManagerArn">> => string(),
@@ -5525,6 +5532,15 @@
 
 
 %% Example:
+%% subscription_required_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"productName">> => [string()],
+%%   <<"subscriptionUrl">> => [string()]
+%% }
+-type subscription_required_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% summary_consolidation_override() :: #{
 %%   <<"appendToPrompt">> => string(),
 %%   <<"modelId">> => [string()]
@@ -6160,6 +6176,7 @@
 
 %% Example:
 %% update_payment_connector_response() :: #{
+%%   <<"authorizationUrl">> => string(),
 %%   <<"credentialProviderConfigurations">> => list(list()),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
@@ -6198,6 +6215,7 @@
 %%   <<"authorizerType">> => list(any()),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"roleArn">> => string()
 %% }
 -type update_payment_manager_request() :: #{binary() => any()}.
@@ -6206,6 +6224,7 @@
 %% Example:
 %% update_payment_manager_response() :: #{
 %%   <<"authorizerType">> => list(any()),
+%%   <<"kmsKeyArn">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"paymentManagerArn">> => string(),
@@ -6851,6 +6870,7 @@
 -type create_payment_connector_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    subscription_required_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -7874,6 +7894,7 @@
 -type update_payment_connector_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    subscription_required_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 

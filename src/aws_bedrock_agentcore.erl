@@ -678,6 +678,7 @@
 %% Example:
 %% crypto_x402_payment_input() :: #{
 %%   <<"payload">> => any(),
+%%   <<"permit2AllowanceLimit">> => string(),
 %%   <<"version">> => [string()]
 %% }
 -type crypto_x402_payment_input() :: #{binary() => any()}.
@@ -2309,6 +2310,24 @@
 
 
 %% Example:
+%% mpp_payment_input() :: #{
+%%   <<"buyerPaysGasFees">> => [boolean()],
+%%   <<"version">> => string(),
+%%   <<"wwwAuthenticateHeaders">> => list(string())
+%% }
+-type mpp_payment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% mpp_payment_output() :: #{
+%%   <<"paymentCredential">> => string(),
+%%   <<"selectedPaymentId">> => [string()],
+%%   <<"version">> => string()
+%% }
+-type mpp_payment_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% o_auth2_authentication() :: #{
 %%   <<"emailAddress">> => string(),
 %%   <<"name">> => [string()],
@@ -2969,6 +2988,15 @@
 
 
 %% Example:
+%% subscription_required_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"productName">> => [string()],
+%%   <<"subscriptionUrl">> => [string()]
+%% }
+-type subscription_required_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% system_prompt_configuration_bundle() :: #{
 %%   <<"bundleArn">> => string(),
 %%   <<"systemPromptJsonPath">> => [string()],
@@ -3311,7 +3339,9 @@
 -type create_payment_instrument_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    subscription_required_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -3319,6 +3349,7 @@
 -type create_payment_session_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    subscription_required_exception() | 
     service_quota_exceeded_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -3673,7 +3704,9 @@
 -type process_payment_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    subscription_required_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
