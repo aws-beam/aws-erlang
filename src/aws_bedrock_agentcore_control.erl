@@ -2148,6 +2148,14 @@
 
 
 %% Example:
+%% derived_evaluator_config() :: #{
+%%   <<"baseEvaluatorId">> => string(),
+%%   <<"modelConfig">> => list()
+%% }
+-type derived_evaluator_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% descriptors() :: #{
 %%   <<"a2a">> => a2a_descriptor(),
 %%   <<"agentSkills">> => agent_skills_descriptor(),
@@ -2334,6 +2342,7 @@
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"level">> => list(any()),
 %%   <<"lockedForModification">> => [boolean()],
+%%   <<"provider">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
@@ -2708,9 +2717,11 @@
 %%   <<"evaluatorConfig">> => list(),
 %%   <<"evaluatorId">> => string(),
 %%   <<"evaluatorName">> => string(),
+%%   <<"evaluatorType">> => list(any()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"level">> => list(any()),
 %%   <<"lockedForModification">> => [boolean()],
+%%   <<"provider">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
@@ -8908,6 +8919,13 @@ create_payment_manager(Client, Input0, Options0) ->
 %% asynchronous operation. Use the GetPolicy:
 %% https://docs.aws.amazon.com/bedrock-agentcore-control/latest/APIReference/API_GetPolicy.html
 %% operation to poll the `status' field to track completion.
+%%
+%% If the new policy is a temporal policy, creating it invalidates the policy
+%% engine's active temporal sessions. For more information about temporal
+%% policy sessions, see session-based temporal policies:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy-session-based-temporal.html.
+%% The policy engine returns an HTTP 409 `ConflictException' to in-flight
+%% sessions. To resume, you must start a new session with a new session ID.
 -spec create_policy(aws_client:aws_client(), binary() | list(), create_policy_request()) ->
     {ok, create_policy_response(), tuple()} |
     {error, any()} |
@@ -14065,6 +14083,15 @@ update_payment_manager(Client, PaymentManagerId, Input0, Options0) ->
 %% is validated against the Cedar schema before being applied. This is an
 %% asynchronous operation. Use the `GetPolicy' operation to poll the
 %% `status' field to track completion.
+%%
+%% If the updated policy is a temporal policy, the policy engine invalidates
+%% all active temporal sessions. If the update adds or removes temporal
+%% operators, the policy engine also invalidates active temporal sessions.
+%% For more information about temporal policy sessions, see session-based
+%% temporal policies:
+%% https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/policy-session-based-temporal.html.
+%% The policy engine returns an HTTP 409 `ConflictException' to in-flight
+%% sessions. To resume, you must start a new session with a new session ID.
 -spec update_policy(aws_client:aws_client(), binary() | list(), binary() | list(), update_policy_request()) ->
     {ok, update_policy_response(), tuple()} |
     {error, any()} |

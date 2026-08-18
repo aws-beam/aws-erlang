@@ -6,10 +6,16 @@
 
 -export([associate_source_network_stack/2,
          associate_source_network_stack/3,
+         cancel_recovery_plan_execution/2,
+         cancel_recovery_plan_execution/3,
          create_extended_source_server/2,
          create_extended_source_server/3,
          create_launch_configuration_template/2,
          create_launch_configuration_template/3,
+         create_recovery_plan/2,
+         create_recovery_plan/3,
+         create_recovery_plan_step/2,
+         create_recovery_plan_step/3,
          create_replication_configuration_template/2,
          create_replication_configuration_template/3,
          create_source_network/2,
@@ -22,6 +28,12 @@
          delete_launch_configuration_template/3,
          delete_recovery_instance/2,
          delete_recovery_instance/3,
+         delete_recovery_plan/2,
+         delete_recovery_plan/3,
+         delete_recovery_plan_execution/2,
+         delete_recovery_plan_execution/3,
+         delete_recovery_plan_step/2,
+         delete_recovery_plan_step/3,
          delete_replication_configuration_template/2,
          delete_replication_configuration_template/3,
          delete_source_network/2,
@@ -54,6 +66,14 @@
          get_failback_replication_configuration/3,
          get_launch_configuration/2,
          get_launch_configuration/3,
+         get_recovery_plan/2,
+         get_recovery_plan/3,
+         get_recovery_plan_execution/2,
+         get_recovery_plan_execution/3,
+         get_recovery_plan_execution_step/2,
+         get_recovery_plan_execution_step/3,
+         get_recovery_plan_step/2,
+         get_recovery_plan_step/3,
          get_replication_configuration/2,
          get_replication_configuration/3,
          initialize_service/2,
@@ -62,6 +82,14 @@
          list_extensible_source_servers/3,
          list_launch_actions/2,
          list_launch_actions/3,
+         list_recovery_plan_execution_steps/2,
+         list_recovery_plan_execution_steps/3,
+         list_recovery_plan_executions/2,
+         list_recovery_plan_executions/3,
+         list_recovery_plan_steps/2,
+         list_recovery_plan_steps/3,
+         list_recovery_plans/2,
+         list_recovery_plans/3,
          list_staging_accounts/1,
          list_staging_accounts/3,
          list_staging_accounts/4,
@@ -70,14 +98,20 @@
          list_tags_for_resource/5,
          put_launch_action/2,
          put_launch_action/3,
+         reorder_recovery_plan_steps/2,
+         reorder_recovery_plan_steps/3,
          retry_data_replication/2,
          retry_data_replication/3,
+         retry_recovery_plan_execution_step/2,
+         retry_recovery_plan_execution_step/3,
          reverse_replication/2,
          reverse_replication/3,
          start_failback_launch/2,
          start_failback_launch/3,
          start_recovery/2,
          start_recovery/3,
+         start_recovery_plan_execution/2,
+         start_recovery_plan_execution/3,
          start_replication/2,
          start_replication/3,
          start_source_network_recovery/2,
@@ -102,6 +136,12 @@
          update_launch_configuration/3,
          update_launch_configuration_template/2,
          update_launch_configuration_template/3,
+         update_recovery_plan/2,
+         update_recovery_plan/3,
+         update_recovery_plan_execution_step/2,
+         update_recovery_plan_execution_step/3,
+         update_recovery_plan_step/2,
+         update_recovery_plan_step/3,
          update_replication_configuration/2,
          update_replication_configuration/3,
          update_replication_configuration_template/2,
@@ -147,6 +187,20 @@
 %%   <<"modelName">> => string()
 %% }
 -type c_p_u() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_recovery_plan_execution_request() :: #{
+%%   <<"recoveryPlanExecutionArn">> := string()
+%% }
+-type cancel_recovery_plan_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_recovery_plan_execution_response() :: #{
+%%   <<"recoveryPlanExecution">> => recovery_plan_execution()
+%% }
+-type cancel_recovery_plan_execution_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -207,6 +261,41 @@
 %%   <<"launchConfigurationTemplate">> => launch_configuration_template()
 %% }
 -type create_launch_configuration_template_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recovery_plan_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_recovery_plan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recovery_plan_response() :: #{
+%%   <<"recoveryPlan">> => recovery_plan()
+%% }
+-type create_recovery_plan_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recovery_plan_step_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"recoveryPlanArn">> := string(),
+%%   <<"stepName">> := string(),
+%%   <<"stepOrder">> => integer()
+%% }
+-type create_recovery_plan_step_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_recovery_plan_step_response() :: #{
+%%   <<"recoveryPlanStep">> => recovery_plan_step()
+%% }
+-type create_recovery_plan_step_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -338,6 +427,48 @@
 %%   <<"recoveryInstanceID">> := string()
 %% }
 -type delete_recovery_instance_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recovery_plan_execution_request() :: #{
+%%   <<"recoveryPlanExecutionArn">> := string()
+%% }
+-type delete_recovery_plan_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recovery_plan_execution_response() :: #{
+%%   <<"recoveryPlanExecutionArn">> => string()
+%% }
+-type delete_recovery_plan_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recovery_plan_request() :: #{
+%%   <<"recoveryPlanArn">> := string()
+%% }
+-type delete_recovery_plan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recovery_plan_response() :: #{
+%%   <<"recoveryPlanArn">> => string()
+%% }
+-type delete_recovery_plan_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recovery_plan_step_request() :: #{
+%%   <<"recoveryPlanStepArn">> := string()
+%% }
+-type delete_recovery_plan_step_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_recovery_plan_step_response() :: #{
+%%   <<"recoveryPlanStepArn">> => string()
+%% }
+-type delete_recovery_plan_step_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -577,6 +708,21 @@
 
 
 %% Example:
+%% error_detail() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_server_step_configuration() :: #{
+%%   <<"servers">> => list(recovery_plan_execution_server())
+%% }
+-type execution_server_step_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% export_source_network_cfn_template_request() :: #{
 %%   <<"sourceNetworkID">> := string()
 %% }
@@ -613,6 +759,62 @@
 %%   <<"sourceServerID">> := string()
 %% }
 -type get_launch_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_plan_execution_request() :: #{
+%%   <<"recoveryPlanExecutionArn">> := string()
+%% }
+-type get_recovery_plan_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_plan_execution_response() :: #{
+%%   <<"recoveryPlanExecution">> => recovery_plan_execution()
+%% }
+-type get_recovery_plan_execution_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_plan_execution_step_request() :: #{
+%%   <<"recoveryPlanExecutionStepArn">> := string()
+%% }
+-type get_recovery_plan_execution_step_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_plan_execution_step_response() :: #{
+%%   <<"recoveryPlanExecutionStep">> => recovery_plan_execution_step()
+%% }
+-type get_recovery_plan_execution_step_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_plan_request() :: #{
+%%   <<"recoveryPlanArn">> := string()
+%% }
+-type get_recovery_plan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_plan_response() :: #{
+%%   <<"recoveryPlan">> => recovery_plan()
+%% }
+-type get_recovery_plan_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_plan_step_request() :: #{
+%%   <<"recoveryPlanStepArn">> := string()
+%% }
+-type get_recovery_plan_step_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_recovery_plan_step_response() :: #{
+%%   <<"recoveryPlanStep">> => recovery_plan_step()
+%% }
+-type get_recovery_plan_step_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -850,6 +1052,82 @@
 
 
 %% Example:
+%% list_recovery_plan_execution_steps_filter() :: #{
+%%   <<"status">> => string()
+%% }
+-type list_recovery_plan_execution_steps_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_plan_execution_steps_request() :: #{
+%%   <<"filter">> => list_recovery_plan_execution_steps_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recoveryPlanExecutionArn">> := string()
+%% }
+-type list_recovery_plan_execution_steps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_plan_execution_steps_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recoveryPlanExecutionSteps">> => list(recovery_plan_execution_step_summary())
+%% }
+-type list_recovery_plan_execution_steps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_plan_executions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recoveryPlanArn">> => string(),
+%%   <<"status">> => string()
+%% }
+-type list_recovery_plan_executions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_plan_executions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recoveryPlanExecutions">> => list(recovery_plan_execution_summary())
+%% }
+-type list_recovery_plan_executions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_plan_steps_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"recoveryPlanArn">> := string()
+%% }
+-type list_recovery_plan_steps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_plan_steps_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recoveryPlanSteps">> => list(recovery_plan_step())
+%% }
+-type list_recovery_plan_steps_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_plans_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_recovery_plans_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_recovery_plans_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"recoveryPlans">> => list(recovery_plan_summary())
+%% }
+-type list_recovery_plans_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_staging_accounts_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string()
@@ -1083,6 +1361,120 @@
 
 
 %% Example:
+%% recovery_plan() :: #{
+%%   <<"createdAt">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"recoveryPlanArn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => string()
+%% }
+-type recovery_plan() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_plan_execution() :: #{
+%%   <<"completedAt">> => string(),
+%%   <<"errorDetail">> => error_detail(),
+%%   <<"mode">> => string(),
+%%   <<"recoveryPlanArn">> => string(),
+%%   <<"recoveryPlanExecutionArn">> => string(),
+%%   <<"startedAt">> => string(),
+%%   <<"status">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type recovery_plan_execution() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_plan_execution_server() :: #{
+%%   <<"impactLevel">> => string(),
+%%   <<"jobID">> => string(),
+%%   <<"serverArn">> => string()
+%% }
+-type recovery_plan_execution_server() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_plan_execution_source_server() :: #{
+%%   <<"recoverySnapshotID">> => string(),
+%%   <<"sourceServerID">> => string()
+%% }
+-type recovery_plan_execution_source_server() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_plan_execution_step() :: #{
+%%   <<"attempt">> => integer(),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => string(),
+%%   <<"errorDetail">> => error_detail(),
+%%   <<"recoveryPlanExecutionStepArn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"stepIndex">> => integer(),
+%%   <<"stepName">> => string(),
+%%   <<"updatedAt">> => string()
+%% }
+-type recovery_plan_execution_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_plan_execution_step_summary() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"errorDetail">> => error_detail(),
+%%   <<"recoveryPlanExecutionStepArn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"stepIndex">> => integer(),
+%%   <<"stepName">> => string()
+%% }
+-type recovery_plan_execution_step_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_plan_execution_summary() :: #{
+%%   <<"errorDetail">> => error_detail(),
+%%   <<"mode">> => string(),
+%%   <<"recoveryPlanArn">> => string(),
+%%   <<"recoveryPlanExecutionArn">> => string(),
+%%   <<"startedAt">> => string(),
+%%   <<"status">> => string()
+%% }
+-type recovery_plan_execution_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_plan_server() :: #{
+%%   <<"impactLevel">> => string(),
+%%   <<"serverArn">> => string()
+%% }
+-type recovery_plan_server() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_plan_step() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => string(),
+%%   <<"recoveryPlanStepArn">> => string(),
+%%   <<"stepName">> => string(),
+%%   <<"stepOrder">> => integer(),
+%%   <<"updatedAt">> => string()
+%% }
+-type recovery_plan_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% recovery_plan_summary() :: #{
+%%   <<"createdAt">> => string(),
+%%   <<"name">> => string(),
+%%   <<"recoveryPlanArn">> => string(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => string()
+%% }
+-type recovery_plan_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% recovery_snapshot() :: #{
 %%   <<"ebsSnapshots">> => list(string()),
 %%   <<"expectedTimestamp">> => string(),
@@ -1091,6 +1483,21 @@
 %%   <<"timestamp">> => string()
 %% }
 -type recovery_snapshot() :: #{binary() => any()}.
+
+
+%% Example:
+%% reorder_recovery_plan_steps_request() :: #{
+%%   <<"orderedStepArns">> := list(string()),
+%%   <<"recoveryPlanArn">> := string()
+%% }
+-type reorder_recovery_plan_steps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% reorder_recovery_plan_steps_response() :: #{
+%%   <<"recoveryPlanSteps">> => list(recovery_plan_step())
+%% }
+-type reorder_recovery_plan_steps_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1171,6 +1578,20 @@
 
 
 %% Example:
+%% retry_recovery_plan_execution_step_request() :: #{
+%%   <<"recoveryPlanExecutionStepArn">> := string()
+%% }
+-type retry_recovery_plan_execution_step_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_recovery_plan_execution_step_response() :: #{
+%%   <<"recoveryPlanExecutionStep">> => recovery_plan_execution_step()
+%% }
+-type retry_recovery_plan_execution_step_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% reverse_replication_request() :: #{
 %%   <<"recoveryInstanceID">> := string()
 %% }
@@ -1182,6 +1603,13 @@
 %%   <<"reversedDirectionSourceServerArn">> => string()
 %% }
 -type reverse_replication_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% server_step_configuration() :: #{
+%%   <<"servers">> => list(recovery_plan_server())
+%% }
+-type server_step_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1300,6 +1728,24 @@
 %%   <<"job">> => job()
 %% }
 -type start_failback_launch_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_recovery_plan_execution_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"mode">> := string(),
+%%   <<"recoveryPlanArn">> := string(),
+%%   <<"sourceServers">> => list(recovery_plan_execution_source_server()),
+%%   <<"tags">> => map()
+%% }
+-type start_recovery_plan_execution_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_recovery_plan_execution_response() :: #{
+%%   <<"recoveryPlanExecution">> => recovery_plan_execution()
+%% }
+-type start_recovery_plan_execution_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1510,6 +1956,55 @@
 
 
 %% Example:
+%% update_recovery_plan_execution_step_request() :: #{
+%%   <<"recoveryPlanExecutionStepArn">> := string(),
+%%   <<"servers">> => list(recovery_plan_server()),
+%%   <<"status">> => string(),
+%%   <<"waitDurationMinutes">> => integer()
+%% }
+-type update_recovery_plan_execution_step_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_plan_execution_step_response() :: #{
+%%   <<"recoveryPlanExecutionStep">> => recovery_plan_execution_step()
+%% }
+-type update_recovery_plan_execution_step_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_plan_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"recoveryPlanArn">> := string()
+%% }
+-type update_recovery_plan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_plan_response() :: #{
+%%   <<"recoveryPlan">> => recovery_plan()
+%% }
+-type update_recovery_plan_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_plan_step_request() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"recoveryPlanStepArn">> := string(),
+%%   <<"stepName">> => string()
+%% }
+-type update_recovery_plan_step_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_recovery_plan_step_response() :: #{
+%%   <<"recoveryPlanStep">> => recovery_plan_step()
+%% }
+-type update_recovery_plan_step_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_replication_configuration_request() :: #{
 %%   <<"associateDefaultSecurityGroup">> => [boolean()],
 %%   <<"autoReplicateNewDisks">> => [boolean()],
@@ -1573,6 +2068,13 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+
+%% Example:
+%% wait_step_configuration() :: #{
+%%   <<"waitDurationMinutes">> => integer()
+%% }
+-type wait_step_configuration() :: #{binary() => any()}.
+
 -type associate_source_network_stack_errors() ::
     validation_exception() | 
     uninitialized_account_exception() | 
@@ -1581,6 +2083,15 @@
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception().
+
+-type cancel_recovery_plan_execution_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type create_extended_source_server_errors() ::
     validation_exception() | 
@@ -1597,6 +2108,25 @@
     throttling_exception() | 
     service_quota_exceeded_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type create_recovery_plan_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_recovery_plan_step_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type create_replication_configuration_template_errors() ::
@@ -1640,6 +2170,33 @@
 -type delete_recovery_instance_errors() ::
     uninitialized_account_exception() | 
     throttling_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_recovery_plan_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_recovery_plan_execution_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_recovery_plan_step_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -1751,6 +2308,38 @@
     resource_not_found_exception() | 
     internal_server_exception().
 
+-type get_recovery_plan_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_recovery_plan_execution_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_recovery_plan_execution_step_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_recovery_plan_step_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_replication_configuration_errors() ::
     uninitialized_account_exception() | 
     throttling_exception() | 
@@ -1778,6 +2367,36 @@
     resource_not_found_exception() | 
     internal_server_exception().
 
+-type list_recovery_plan_execution_steps_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_recovery_plan_executions_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_recovery_plan_steps_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_recovery_plans_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_staging_accounts_errors() ::
     validation_exception() | 
     uninitialized_account_exception() | 
@@ -1800,12 +2419,30 @@
     internal_server_exception() | 
     conflict_exception().
 
+-type reorder_recovery_plan_steps_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type retry_data_replication_errors() ::
     validation_exception() | 
     uninitialized_account_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
+
+-type retry_recovery_plan_execution_step_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type reverse_replication_errors() ::
     validation_exception() | 
@@ -1830,6 +2467,16 @@
     service_quota_exceeded_exception() | 
     internal_server_exception() | 
     conflict_exception().
+
+-type start_recovery_plan_execution_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type start_replication_errors() ::
     uninitialized_account_exception() | 
@@ -1918,6 +2565,33 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type update_recovery_plan_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_recovery_plan_execution_step_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_recovery_plan_step_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_replication_configuration_errors() ::
     validation_exception() | 
     uninitialized_account_exception() | 
@@ -1958,6 +2632,42 @@ associate_source_network_stack(Client, Input0, Options0) ->
     Method = post,
     Path = ["/AssociateSourceNetworkStack"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels an in-progress Recovery Plan execution.
+%%
+%% Remaining steps are skipped.
+-spec cancel_recovery_plan_execution(aws_client:aws_client(), cancel_recovery_plan_execution_request()) ->
+    {ok, cancel_recovery_plan_execution_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_recovery_plan_execution_errors(), tuple()}.
+cancel_recovery_plan_execution(Client, Input) ->
+    cancel_recovery_plan_execution(Client, Input, []).
+
+-spec cancel_recovery_plan_execution(aws_client:aws_client(), cancel_recovery_plan_execution_request(), proplists:proplist()) ->
+    {ok, cancel_recovery_plan_execution_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_recovery_plan_execution_errors(), tuple()}.
+cancel_recovery_plan_execution(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CancelRecoveryPlanExecution"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2026,6 +2736,78 @@ create_launch_configuration_template(Client, Input) ->
 create_launch_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateLaunchConfigurationTemplate"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a Recovery Plan to orchestrate multi-server disaster
+%% recovery.
+-spec create_recovery_plan(aws_client:aws_client(), create_recovery_plan_request()) ->
+    {ok, create_recovery_plan_response(), tuple()} |
+    {error, any()} |
+    {error, create_recovery_plan_errors(), tuple()}.
+create_recovery_plan(Client, Input) ->
+    create_recovery_plan(Client, Input, []).
+
+-spec create_recovery_plan(aws_client:aws_client(), create_recovery_plan_request(), proplists:proplist()) ->
+    {ok, create_recovery_plan_response(), tuple()} |
+    {error, any()} |
+    {error, create_recovery_plan_errors(), tuple()}.
+create_recovery_plan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateRecoveryPlan"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a step in a Recovery Plan.
+%%
+%% A step is either `SERVER' type (servers to recover in parallel) or
+%% `WAIT' type (timed pause between steps).
+-spec create_recovery_plan_step(aws_client:aws_client(), create_recovery_plan_step_request()) ->
+    {ok, create_recovery_plan_step_response(), tuple()} |
+    {error, any()} |
+    {error, create_recovery_plan_step_errors(), tuple()}.
+create_recovery_plan_step(Client, Input) ->
+    create_recovery_plan_step(Client, Input, []).
+
+-spec create_recovery_plan_step(aws_client:aws_client(), create_recovery_plan_step_request(), proplists:proplist()) ->
+    {ok, create_recovery_plan_step_response(), tuple()} |
+    {error, any()} |
+    {error, create_recovery_plan_step_errors(), tuple()}.
+create_recovery_plan_step(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateRecoveryPlanStep"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2234,6 +3016,113 @@ delete_recovery_instance(Client, Input) ->
 delete_recovery_instance(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteRecoveryInstance"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a Recovery Plan.
+%%
+%% Cannot delete a plan that has an execution in a non-terminal status
+%% (`CREATED', `IN_PROGRESS').
+-spec delete_recovery_plan(aws_client:aws_client(), delete_recovery_plan_request()) ->
+    {ok, delete_recovery_plan_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recovery_plan_errors(), tuple()}.
+delete_recovery_plan(Client, Input) ->
+    delete_recovery_plan(Client, Input, []).
+
+-spec delete_recovery_plan(aws_client:aws_client(), delete_recovery_plan_request(), proplists:proplist()) ->
+    {ok, delete_recovery_plan_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recovery_plan_errors(), tuple()}.
+delete_recovery_plan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteRecoveryPlan"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a Recovery Plan execution record.
+%%
+%% Must be in a terminal status.
+-spec delete_recovery_plan_execution(aws_client:aws_client(), delete_recovery_plan_execution_request()) ->
+    {ok, delete_recovery_plan_execution_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recovery_plan_execution_errors(), tuple()}.
+delete_recovery_plan_execution(Client, Input) ->
+    delete_recovery_plan_execution(Client, Input, []).
+
+-spec delete_recovery_plan_execution(aws_client:aws_client(), delete_recovery_plan_execution_request(), proplists:proplist()) ->
+    {ok, delete_recovery_plan_execution_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recovery_plan_execution_errors(), tuple()}.
+delete_recovery_plan_execution(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteRecoveryPlanExecution"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a step from a Recovery Plan.
+-spec delete_recovery_plan_step(aws_client:aws_client(), delete_recovery_plan_step_request()) ->
+    {ok, delete_recovery_plan_step_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recovery_plan_step_errors(), tuple()}.
+delete_recovery_plan_step(Client, Input) ->
+    delete_recovery_plan_step(Client, Input, []).
+
+-spec delete_recovery_plan_step(aws_client:aws_client(), delete_recovery_plan_step_request(), proplists:proplist()) ->
+    {ok, delete_recovery_plan_step_response(), tuple()} |
+    {error, any()} |
+    {error, delete_recovery_plan_step_errors(), tuple()}.
+delete_recovery_plan_step(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteRecoveryPlanStep"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2834,6 +3723,142 @@ get_launch_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Gets a Recovery Plan by ARN.
+-spec get_recovery_plan(aws_client:aws_client(), get_recovery_plan_request()) ->
+    {ok, get_recovery_plan_response(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_plan_errors(), tuple()}.
+get_recovery_plan(Client, Input) ->
+    get_recovery_plan(Client, Input, []).
+
+-spec get_recovery_plan(aws_client:aws_client(), get_recovery_plan_request(), proplists:proplist()) ->
+    {ok, get_recovery_plan_response(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_plan_errors(), tuple()}.
+get_recovery_plan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetRecoveryPlan"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the details of a Recovery Plan execution.
+-spec get_recovery_plan_execution(aws_client:aws_client(), get_recovery_plan_execution_request()) ->
+    {ok, get_recovery_plan_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_plan_execution_errors(), tuple()}.
+get_recovery_plan_execution(Client, Input) ->
+    get_recovery_plan_execution(Client, Input, []).
+
+-spec get_recovery_plan_execution(aws_client:aws_client(), get_recovery_plan_execution_request(), proplists:proplist()) ->
+    {ok, get_recovery_plan_execution_response(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_plan_execution_errors(), tuple()}.
+get_recovery_plan_execution(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetRecoveryPlanExecution"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the details of a step within a Recovery Plan execution.
+-spec get_recovery_plan_execution_step(aws_client:aws_client(), get_recovery_plan_execution_step_request()) ->
+    {ok, get_recovery_plan_execution_step_response(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_plan_execution_step_errors(), tuple()}.
+get_recovery_plan_execution_step(Client, Input) ->
+    get_recovery_plan_execution_step(Client, Input, []).
+
+-spec get_recovery_plan_execution_step(aws_client:aws_client(), get_recovery_plan_execution_step_request(), proplists:proplist()) ->
+    {ok, get_recovery_plan_execution_step_response(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_plan_execution_step_errors(), tuple()}.
+get_recovery_plan_execution_step(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetRecoveryPlanExecutionStep"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets a Recovery Plan step by ARN.
+-spec get_recovery_plan_step(aws_client:aws_client(), get_recovery_plan_step_request()) ->
+    {ok, get_recovery_plan_step_response(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_plan_step_errors(), tuple()}.
+get_recovery_plan_step(Client, Input) ->
+    get_recovery_plan_step(Client, Input, []).
+
+-spec get_recovery_plan_step(aws_client:aws_client(), get_recovery_plan_step_request(), proplists:proplist()) ->
+    {ok, get_recovery_plan_step_response(), tuple()} |
+    {error, any()} |
+    {error, get_recovery_plan_step_errors(), tuple()}.
+get_recovery_plan_step(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetRecoveryPlanStep"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets a ReplicationConfiguration, filtered by Source Server ID.
 -spec get_replication_configuration(aws_client:aws_client(), get_replication_configuration_request()) ->
     {ok, replication_configuration(), tuple()} |
@@ -2975,6 +4000,143 @@ list_launch_actions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all steps within a Recovery Plan execution.
+-spec list_recovery_plan_execution_steps(aws_client:aws_client(), list_recovery_plan_execution_steps_request()) ->
+    {ok, list_recovery_plan_execution_steps_response(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_plan_execution_steps_errors(), tuple()}.
+list_recovery_plan_execution_steps(Client, Input) ->
+    list_recovery_plan_execution_steps(Client, Input, []).
+
+-spec list_recovery_plan_execution_steps(aws_client:aws_client(), list_recovery_plan_execution_steps_request(), proplists:proplist()) ->
+    {ok, list_recovery_plan_execution_steps_response(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_plan_execution_steps_errors(), tuple()}.
+list_recovery_plan_execution_steps(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListRecoveryPlanExecutionSteps"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists executions of Recovery Plans, optionally filtered by plan or
+%% status.
+-spec list_recovery_plan_executions(aws_client:aws_client(), list_recovery_plan_executions_request()) ->
+    {ok, list_recovery_plan_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_plan_executions_errors(), tuple()}.
+list_recovery_plan_executions(Client, Input) ->
+    list_recovery_plan_executions(Client, Input, []).
+
+-spec list_recovery_plan_executions(aws_client:aws_client(), list_recovery_plan_executions_request(), proplists:proplist()) ->
+    {ok, list_recovery_plan_executions_response(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_plan_executions_errors(), tuple()}.
+list_recovery_plan_executions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListRecoveryPlanExecutions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all steps in a Recovery Plan.
+-spec list_recovery_plan_steps(aws_client:aws_client(), list_recovery_plan_steps_request()) ->
+    {ok, list_recovery_plan_steps_response(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_plan_steps_errors(), tuple()}.
+list_recovery_plan_steps(Client, Input) ->
+    list_recovery_plan_steps(Client, Input, []).
+
+-spec list_recovery_plan_steps(aws_client:aws_client(), list_recovery_plan_steps_request(), proplists:proplist()) ->
+    {ok, list_recovery_plan_steps_response(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_plan_steps_errors(), tuple()}.
+list_recovery_plan_steps(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListRecoveryPlanSteps"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all Recovery Plans in the account.
+-spec list_recovery_plans(aws_client:aws_client(), list_recovery_plans_request()) ->
+    {ok, list_recovery_plans_response(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_plans_errors(), tuple()}.
+list_recovery_plans(Client, Input) ->
+    list_recovery_plans(Client, Input, []).
+
+-spec list_recovery_plans(aws_client:aws_client(), list_recovery_plans_request(), proplists:proplist()) ->
+    {ok, list_recovery_plans_response(), tuple()} |
+    {error, any()} |
+    {error, list_recovery_plans_errors(), tuple()}.
+list_recovery_plans(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListRecoveryPlans"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns an array of staging accounts for existing extended source
 %% servers.
 -spec list_staging_accounts(aws_client:aws_client()) ->
@@ -3089,6 +4251,42 @@ put_launch_action(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Reorders steps in a Recovery Plan.
+%%
+%% Accepts a complete ordered list of step ARNs.
+-spec reorder_recovery_plan_steps(aws_client:aws_client(), reorder_recovery_plan_steps_request()) ->
+    {ok, reorder_recovery_plan_steps_response(), tuple()} |
+    {error, any()} |
+    {error, reorder_recovery_plan_steps_errors(), tuple()}.
+reorder_recovery_plan_steps(Client, Input) ->
+    reorder_recovery_plan_steps(Client, Input, []).
+
+-spec reorder_recovery_plan_steps(aws_client:aws_client(), reorder_recovery_plan_steps_request(), proplists:proplist()) ->
+    {ok, reorder_recovery_plan_steps_response(), tuple()} |
+    {error, any()} |
+    {error, reorder_recovery_plan_steps_errors(), tuple()}.
+reorder_recovery_plan_steps(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ReorderRecoveryPlanSteps"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc WARNING: RetryDataReplication is deprecated.
 %%
 %% Causes the data replication initiation sequence to begin immediately upon
@@ -3109,6 +4307,40 @@ retry_data_replication(Client, Input) ->
 retry_data_replication(Client, Input0, Options0) ->
     Method = post,
     Path = ["/RetryDataReplication"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retries a failed `SERVER' type execution step.
+-spec retry_recovery_plan_execution_step(aws_client:aws_client(), retry_recovery_plan_execution_step_request()) ->
+    {ok, retry_recovery_plan_execution_step_response(), tuple()} |
+    {error, any()} |
+    {error, retry_recovery_plan_execution_step_errors(), tuple()}.
+retry_recovery_plan_execution_step(Client, Input) ->
+    retry_recovery_plan_execution_step(Client, Input, []).
+
+-spec retry_recovery_plan_execution_step(aws_client:aws_client(), retry_recovery_plan_execution_step_request(), proplists:proplist()) ->
+    {ok, retry_recovery_plan_execution_step_response(), tuple()} |
+    {error, any()} |
+    {error, retry_recovery_plan_execution_step_errors(), tuple()}.
+retry_recovery_plan_execution_step(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/RetryRecoveryPlanExecutionStep"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3224,6 +4456,44 @@ start_recovery(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartRecovery"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts executing a Recovery Plan in `DRILL' or `RECOVERY'
+%% mode.
+%%
+%% A plan cannot have more than one execution in a non-terminal status at a
+%% time.
+-spec start_recovery_plan_execution(aws_client:aws_client(), start_recovery_plan_execution_request()) ->
+    {ok, start_recovery_plan_execution_response(), tuple()} |
+    {error, any()} |
+    {error, start_recovery_plan_execution_errors(), tuple()}.
+start_recovery_plan_execution(Client, Input) ->
+    start_recovery_plan_execution(Client, Input, []).
+
+-spec start_recovery_plan_execution(aws_client:aws_client(), start_recovery_plan_execution_request(), proplists:proplist()) ->
+    {ok, start_recovery_plan_execution_response(), tuple()} |
+    {error, any()} |
+    {error, start_recovery_plan_execution_errors(), tuple()}.
+start_recovery_plan_execution(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartRecoveryPlanExecution"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -3657,6 +4927,114 @@ update_launch_configuration_template(Client, Input) ->
 update_launch_configuration_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLaunchConfigurationTemplate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a Recovery Plan's name or description.
+-spec update_recovery_plan(aws_client:aws_client(), update_recovery_plan_request()) ->
+    {ok, update_recovery_plan_response(), tuple()} |
+    {error, any()} |
+    {error, update_recovery_plan_errors(), tuple()}.
+update_recovery_plan(Client, Input) ->
+    update_recovery_plan(Client, Input, []).
+
+-spec update_recovery_plan(aws_client:aws_client(), update_recovery_plan_request(), proplists:proplist()) ->
+    {ok, update_recovery_plan_response(), tuple()} |
+    {error, any()} |
+    {error, update_recovery_plan_errors(), tuple()}.
+update_recovery_plan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateRecoveryPlan"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an execution step.
+%%
+%% Supports two actions: (1) skip a step that is in `NOT_STARTED' or
+%% `FAILED' status; (2) update the wait duration of a `WAIT' type
+%% step that is in `NOT_STARTED' status.
+-spec update_recovery_plan_execution_step(aws_client:aws_client(), update_recovery_plan_execution_step_request()) ->
+    {ok, update_recovery_plan_execution_step_response(), tuple()} |
+    {error, any()} |
+    {error, update_recovery_plan_execution_step_errors(), tuple()}.
+update_recovery_plan_execution_step(Client, Input) ->
+    update_recovery_plan_execution_step(Client, Input, []).
+
+-spec update_recovery_plan_execution_step(aws_client:aws_client(), update_recovery_plan_execution_step_request(), proplists:proplist()) ->
+    {ok, update_recovery_plan_execution_step_response(), tuple()} |
+    {error, any()} |
+    {error, update_recovery_plan_execution_step_errors(), tuple()}.
+update_recovery_plan_execution_step(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateRecoveryPlanExecutionStep"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a Recovery Plan step's name or configuration.
+%%
+%% Step type is immutable.
+-spec update_recovery_plan_step(aws_client:aws_client(), update_recovery_plan_step_request()) ->
+    {ok, update_recovery_plan_step_response(), tuple()} |
+    {error, any()} |
+    {error, update_recovery_plan_step_errors(), tuple()}.
+update_recovery_plan_step(Client, Input) ->
+    update_recovery_plan_step(Client, Input, []).
+
+-spec update_recovery_plan_step(aws_client:aws_client(), update_recovery_plan_step_request(), proplists:proplist()) ->
+    {ok, update_recovery_plan_step_response(), tuple()} |
+    {error, any()} |
+    {error, update_recovery_plan_step_errors(), tuple()}.
+update_recovery_plan_step(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateRecoveryPlanStep"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

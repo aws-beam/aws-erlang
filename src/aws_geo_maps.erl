@@ -7,13 +7,18 @@
 %% Capabilities include:
 %%
 %% Access to comprehensive base map data, allowing you to tailor the map
-%% display to your specific needs.
+%% display to your specific needs. See GetTile:
+%% https://docs.aws.amazon.com/location/latest/APIReference/API_geomaps_GetTile.html.
 %%
 %% Multiple pre-designed map styles suited for various application types,
-%% such as navigation, logistics, or data visualization.
+%% such as navigation, logistics, or data visualization. See
+%% GetStyleDescriptor:
+%% https://docs.aws.amazon.com/location/latest/APIReference/API_geomaps_GetStyleDescriptor.html.
 %%
 %% Generation of static map images for scenarios where interactive maps
-%% aren't suitable, such as:
+%% aren't suitable. See GetStaticMap:
+%% https://docs.aws.amazon.com/location/latest/APIReference/API_geomaps_GetStaticMap.html.
+%% Use cases include:
 %%
 %% Embedding in emails or documents
 %%
@@ -84,20 +89,20 @@
 %%   <<"BoundedPositions">> => string(),
 %%   <<"BoundingBox">> => string(),
 %%   <<"Center">> => string(),
-%%   <<"ColorScheme">> => string(),
+%%   <<"ColorScheme">> => list(any()),
 %%   <<"CompactOverlay">> => string(),
 %%   <<"CropLabels">> => [boolean()],
 %%   <<"GeoJsonOverlay">> => string(),
 %%   <<"Height">> := integer(),
 %%   <<"Key">> => string(),
-%%   <<"LabelSize">> => string(),
+%%   <<"LabelSize">> => list(any()),
 %%   <<"Language">> => string(),
 %%   <<"Padding">> => integer(),
-%%   <<"PointsOfInterests">> => string(),
+%%   <<"PointsOfInterests">> => list(any()),
 %%   <<"PoliticalView">> => string(),
 %%   <<"Radius">> => float(),
-%%   <<"ScaleBarUnit">> => string(),
-%%   <<"Style">> => string(),
+%%   <<"ScaleBarUnit">> => list(any()),
+%%   <<"Style">> => list(any()),
 %%   <<"Width">> := integer(),
 %%   <<"Zoom">> => float()
 %% }
@@ -117,14 +122,16 @@
 
 %% Example:
 %% get_style_descriptor_request() :: #{
-%%   <<"Buildings">> => string(),
-%%   <<"ColorScheme">> => string(),
-%%   <<"ContourDensity">> => string(),
+%%   <<"Buildings">> => list(any()),
+%%   <<"ColorScheme">> => list(any()),
+%%   <<"ContourDensity">> => list(any()),
 %%   <<"Key">> => string(),
+%%   <<"PoiCategories">> => list(list(any())()),
+%%   <<"PoiDensity">> => list(any()),
 %%   <<"PoliticalView">> => string(),
-%%   <<"Terrain">> => string(),
-%%   <<"Traffic">> => string(),
-%%   <<"TravelModes">> => list(string())
+%%   <<"Terrain">> => list(any()),
+%%   <<"Traffic">> => list(any()),
+%%   <<"TravelModes">> => list(list(any())())
 %% }
 -type get_style_descriptor_request() :: #{binary() => any()}.
 
@@ -141,7 +148,7 @@
 
 %% Example:
 %% get_tile_request() :: #{
-%%   <<"AdditionalFeatures">> => list(string()),
+%%   <<"AdditionalFeatures">> => list(list(any())()),
 %%   <<"Key">> => string()
 %% }
 -type get_tile_request() :: #{binary() => any()}.
@@ -183,7 +190,7 @@
 %% validation_exception() :: #{
 %%   <<"FieldList">> => list(validation_exception_field()),
 %%   <<"Message">> => [string()],
-%%   <<"Reason">> => string()
+%%   <<"Reason">> => list(any())
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
@@ -236,7 +243,7 @@ get_glyphs(Client, FontStack, FontUnicodeRange, QueryMap, HeadersMap)
     {error, any()}.
 get_glyphs(Client, FontStack, FontUnicodeRange, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/glyphs/", aws_util:encode_uri(FontStack), "/", aws_util:encode_uri(FontUnicodeRange), ""],
+    Path = ["/v2/glyphs/", aws_util:encode_uri(FontStack), "/", aws_util:encode_uri(FontUnicodeRange), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -292,7 +299,7 @@ get_sprites(Client, ColorScheme, FileName, Style, Variant, QueryMap, HeadersMap)
     {error, any()}.
 get_sprites(Client, ColorScheme, FileName, Style, Variant, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/styles/", aws_util:encode_uri(Style), "/", aws_util:encode_uri(ColorScheme), "/", aws_util:encode_uri(Variant), "/sprites/", aws_util:encode_uri(FileName), ""],
+    Path = ["/v2/styles/", aws_util:encode_uri(Style), "/", aws_util:encode_uri(ColorScheme), "/", aws_util:encode_uri(Variant), "/sprites/", aws_util:encode_uri(FileName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -324,15 +331,15 @@ get_sprites(Client, ColorScheme, FileName, Style, Variant, QueryMap, HeadersMap,
         Result
     end.
 
-%% @doc This operation is not supported in `ap-southeast-1' and
+%% @doc `GetStaticMap' provides high-quality static map images with
+%% customizable options.
+%%
+%% You can modify the map's appearance and overlay additional
+%% information. It's an ideal solution for applications requiring
+%% tailored static map snapshots. Not supported in `ap-southeast-1' and
 %% `ap-southeast-5' regions for GrabMaps:
 %% https://docs.aws.amazon.com/location/latest/developerguide/GrabMaps.html
 %% customers.
-%%
-%% `GetStaticMap' provides high-quality static map images with
-%% customizable options. You can modify the map's appearance and overlay
-%% additional information. It's an ideal solution for applications
-%% requiring tailored static map snapshots.
 %%
 %% For more information, see the following topics in the Amazon Location
 %% Service Developer Guide:
@@ -367,7 +374,7 @@ get_static_map(Client, FileName, Height, Width, QueryMap, HeadersMap)
     {error, get_static_map_errors(), tuple()}.
 get_static_map(Client, FileName, Height, Width, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/static/", aws_util:encode_uri(FileName), ""],
+    Path = ["/v2/static/", aws_util:encode_uri(FileName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -446,7 +453,7 @@ get_style_descriptor(Client, Style, QueryMap, HeadersMap)
     {error, any()}.
 get_style_descriptor(Client, Style, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/styles/", aws_util:encode_uri(Style), "/descriptor"],
+    Path = ["/v2/styles/", aws_util:encode_uri(Style), "/descriptor"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -462,6 +469,8 @@ get_style_descriptor(Client, Style, QueryMap, HeadersMap, Options0)
         {<<"color-scheme">>, maps:get(<<"color-scheme">>, QueryMap, undefined)},
         {<<"contour-density">>, maps:get(<<"contour-density">>, QueryMap, undefined)},
         {<<"key">>, maps:get(<<"key">>, QueryMap, undefined)},
+        {<<"poi-categories">>, maps:get(<<"poi-categories">>, QueryMap, undefined)},
+        {<<"poi-density">>, maps:get(<<"poi-density">>, QueryMap, undefined)},
         {<<"political-view">>, maps:get(<<"political-view">>, QueryMap, undefined)},
         {<<"terrain">>, maps:get(<<"terrain">>, QueryMap, undefined)},
         {<<"traffic">>, maps:get(<<"traffic">>, QueryMap, undefined)},
@@ -519,7 +528,7 @@ get_tile(Client, Tileset, X, Y, Z, QueryMap, HeadersMap)
     {error, get_tile_errors(), tuple()}.
 get_tile(Client, Tileset, X, Y, Z, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/tiles/", aws_util:encode_uri(Tileset), "/", aws_util:encode_uri(Z), "/", aws_util:encode_uri(X), "/", aws_util:encode_uri(Y), ""],
+    Path = ["/v2/tiles/", aws_util:encode_uri(Tileset), "/", aws_util:encode_uri(Z), "/", aws_util:encode_uri(X), "/", aws_util:encode_uri(Y), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

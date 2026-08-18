@@ -129,6 +129,8 @@
          create_email_address/4,
          create_evaluation_form/3,
          create_evaluation_form/4,
+         create_extraction_definition/3,
+         create_extraction_definition/4,
          create_hours_of_operation/3,
          create_hours_of_operation/4,
          create_hours_of_operation_override/4,
@@ -209,6 +211,8 @@
          delete_email_address/5,
          delete_evaluation_form/4,
          delete_evaluation_form/5,
+         delete_extraction_definition/4,
+         delete_extraction_definition/5,
          delete_hours_of_operation/4,
          delete_hours_of_operation/5,
          delete_hours_of_operation_override/5,
@@ -299,6 +303,9 @@
          describe_evaluation_form/3,
          describe_evaluation_form/5,
          describe_evaluation_form/6,
+         describe_extraction_definition/3,
+         describe_extraction_definition/5,
+         describe_extraction_definition/6,
          describe_hours_of_operation/3,
          describe_hours_of_operation/5,
          describe_hours_of_operation/6,
@@ -519,6 +526,9 @@
          list_evaluation_forms/2,
          list_evaluation_forms/4,
          list_evaluation_forms/5,
+         list_extraction_definitions/2,
+         list_extraction_definitions/4,
+         list_extraction_definitions/5,
          list_flow_associations/2,
          list_flow_associations/4,
          list_flow_associations/5,
@@ -829,6 +839,8 @@
          update_email_address_metadata/5,
          update_evaluation_form/4,
          update_evaluation_form/5,
+         update_extraction_definition/4,
+         update_extraction_definition/5,
          update_hours_of_operation/4,
          update_hours_of_operation/5,
          update_hours_of_operation_override/5,
@@ -2783,6 +2795,25 @@
 
 
 %% Example:
+%% create_extraction_definition_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Display">> => extraction_definition_display(),
+%%   <<"ExtractionConfiguration">> := extraction_configuration(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_extraction_definition_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_extraction_definition_response() :: #{
+%%   <<"ExtractionDefinitionArn">> => string(),
+%%   <<"ExtractionDefinitionId">> => string()
+%% }
+-type create_extraction_definition_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_hours_of_operation_override_request() :: #{
 %%   <<"Config">> := list(hours_of_operation_override_config()),
 %%   <<"Description">> => string(),
@@ -3691,6 +3722,14 @@
 -type delete_evaluation_form_request() :: #{binary() => any()}.
 
 %% Example:
+%% delete_extraction_definition_request() :: #{}
+-type delete_extraction_definition_request() :: #{}.
+
+%% Example:
+%% delete_extraction_definition_response() :: #{}
+-type delete_extraction_definition_response() :: #{}.
+
+%% Example:
 %% delete_hours_of_operation_override_request() :: #{}
 -type delete_hours_of_operation_override_request() :: #{}.
 
@@ -4007,6 +4046,17 @@
 %%   <<"EvaluationForm">> => evaluation_form()
 %% }
 -type describe_evaluation_form_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_extraction_definition_request() :: #{}
+-type describe_extraction_definition_request() :: #{}.
+
+
+%% Example:
+%% describe_extraction_definition_response() :: #{
+%%   <<"ExtractionDefinition">> => extraction_definition()
+%% }
+-type describe_extraction_definition_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_hours_of_operation_override_request() :: #{}
@@ -5349,6 +5399,63 @@
 
 
 %% Example:
+%% extract_information_action_definition() :: #{
+%%   <<"RulesExtractionDefinitions">> => list(rules_extraction_definition_identifier())
+%% }
+-type extract_information_action_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% extraction_configuration() :: #{
+%%   <<"NotFoundBehavior">> => extraction_definition_not_found_behavior(),
+%%   <<"PromptHint">> => string()
+%% }
+-type extraction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% extraction_definition() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"Display">> => extraction_definition_display(),
+%%   <<"ExtractionConfiguration">> => extraction_configuration(),
+%%   <<"ExtractionDefinitionArn">> => string(),
+%%   <<"ExtractionDefinitionId">> => string(),
+%%   <<"LastUpdatedBy">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type extraction_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% extraction_definition_display() :: #{
+%%   <<"Label">> => string()
+%% }
+-type extraction_definition_display() :: #{binary() => any()}.
+
+
+%% Example:
+%% extraction_definition_not_found_behavior() :: #{
+%%   <<"Behavior">> => list(any()),
+%%   <<"DefaultValue">> => string()
+%% }
+-type extraction_definition_not_found_behavior() :: #{binary() => any()}.
+
+
+%% Example:
+%% extraction_definition_summary() :: #{
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"ExtractionDefinitionArn">> => string(),
+%%   <<"ExtractionDefinitionId">> => string(),
+%%   <<"LastUpdatedBy">> => string(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string()
+%% }
+-type extraction_definition_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% failed_batch_association_summary() :: #{
 %%   <<"ErrorCode">> => string(),
 %%   <<"ErrorMessage">> => string(),
@@ -6651,6 +6758,22 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_evaluation_forms_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_extraction_definitions_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_extraction_definitions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_extraction_definitions_response() :: #{
+%%   <<"ExtractionDefinitionSummaryList">> => list(extraction_definition_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_extraction_definitions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8881,6 +9004,7 @@
 %%   <<"CreateCaseAction">> => create_case_action_definition(),
 %%   <<"EndAssociatedTasksAction">> => end_associated_tasks_action_definition(),
 %%   <<"EventBridgeAction">> => event_bridge_action_definition(),
+%%   <<"ExtractInformationAction">> => extract_information_action_definition(),
 %%   <<"SendNotificationAction">> => send_notification_action_definition(),
 %%   <<"SubmitAutoEvaluationAction">> => submit_auto_evaluation_action_definition(),
 %%   <<"TaskAction">> => task_action_definition(),
@@ -8950,6 +9074,13 @@
 %%   <<"Behavior">> => list(any())
 %% }
 -type rules_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rules_extraction_definition_identifier() :: #{
+%%   <<"Identifier">> => string()
+%% }
+-type rules_extraction_definition_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11011,6 +11142,20 @@
 
 
 %% Example:
+%% update_extraction_definition_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Display">> => extraction_definition_display(),
+%%   <<"ExtractionConfiguration">> := extraction_configuration(),
+%%   <<"Name">> := string()
+%% }
+-type update_extraction_definition_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_extraction_definition_response() :: #{}
+-type update_extraction_definition_response() :: #{}.
+
+
+%% Example:
 %% update_hours_of_operation_override_request() :: #{
 %%   <<"Config">> => list(hours_of_operation_override_config()),
 %%   <<"Description">> => string(),
@@ -12450,6 +12595,15 @@
     invalid_parameter_exception() | 
     internal_service_exception().
 
+-type create_extraction_definition_errors() ::
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
 -type create_hours_of_operation_errors() ::
     throttling_exception() | 
     service_quota_exceeded_exception() | 
@@ -12800,6 +12954,13 @@
     invalid_parameter_exception() | 
     internal_service_exception().
 
+-type delete_extraction_definition_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
 -type delete_hours_of_operation_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -13091,6 +13252,13 @@
     resource_not_found_exception() | 
     invalid_parameter_exception() | 
     internal_service_exception().
+
+-type describe_extraction_definition_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_hours_of_operation_errors() ::
     throttling_exception() | 
@@ -13698,6 +13866,13 @@
     resource_not_found_exception() | 
     invalid_parameter_exception() | 
     internal_service_exception().
+
+-type list_extraction_definitions_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_flow_associations_errors() ::
     throttling_exception() | 
@@ -14317,6 +14492,7 @@
     access_denied_exception().
 
 -type start_assistant_contact_errors() ::
+    throttling_exception() | 
     resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_request_exception() | 
@@ -14713,6 +14889,14 @@
     resource_conflict_exception() | 
     invalid_parameter_exception() | 
     internal_service_exception().
+
+-type update_extraction_definition_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type update_hours_of_operation_errors() ::
     throttling_exception() | 
@@ -17025,6 +17209,48 @@ create_evaluation_form(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an extraction definition in the specified Connect Customer
+%% instance.
+%%
+%% An extraction
+%% definition specifies how structured data is extracted from customer
+%% interactions using generative
+%% AI, including the prompt hint that guides extraction and the behavior when
+%% a value cannot be
+%% found.
+-spec create_extraction_definition(aws_client:aws_client(), binary() | list(), create_extraction_definition_request()) ->
+    {ok, create_extraction_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_extraction_definition_errors(), tuple()}.
+create_extraction_definition(Client, InstanceId, Input) ->
+    create_extraction_definition(Client, InstanceId, Input, []).
+
+-spec create_extraction_definition(aws_client:aws_client(), binary() | list(), create_extraction_definition_request(), proplists:proplist()) ->
+    {ok, create_extraction_definition_response(), tuple()} |
+    {error, any()} |
+    {error, create_extraction_definition_errors(), tuple()}.
+create_extraction_definition(Client, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/extraction-definitions/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates hours of operation.
 -spec create_hours_of_operation(aws_client:aws_client(), binary() | list(), create_hours_of_operation_request()) ->
     {ok, create_hours_of_operation_response(), tuple()} |
@@ -18640,6 +18866,41 @@ delete_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) -
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an extraction definition from the specified Connect Customer
+%% instance.
+-spec delete_extraction_definition(aws_client:aws_client(), binary() | list(), binary() | list(), delete_extraction_definition_request()) ->
+    {ok, delete_extraction_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_extraction_definition_errors(), tuple()}.
+delete_extraction_definition(Client, ExtractionDefinitionId, InstanceId, Input) ->
+    delete_extraction_definition(Client, ExtractionDefinitionId, InstanceId, Input, []).
+
+-spec delete_extraction_definition(aws_client:aws_client(), binary() | list(), binary() | list(), delete_extraction_definition_request(), proplists:proplist()) ->
+    {ok, delete_extraction_definition_response(), tuple()} |
+    {error, any()} |
+    {error, delete_extraction_definition_errors(), tuple()}.
+delete_extraction_definition(Client, ExtractionDefinitionId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/extraction-definitions/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ExtractionDefinitionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an hours of operation.
 -spec delete_hours_of_operation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_hours_of_operation_request()) ->
     {ok, undefined, tuple()} |
@@ -20184,6 +20445,44 @@ describe_evaluation_form(Client, EvaluationFormId, InstanceId, QueryMap, Headers
         {<<"version">>, maps:get(<<"version">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes an extraction definition in the specified Connect Customer
+%% instance.
+-spec describe_extraction_definition(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_extraction_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_extraction_definition_errors(), tuple()}.
+describe_extraction_definition(Client, ExtractionDefinitionId, InstanceId)
+  when is_map(Client) ->
+    describe_extraction_definition(Client, ExtractionDefinitionId, InstanceId, #{}, #{}).
+
+-spec describe_extraction_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_extraction_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_extraction_definition_errors(), tuple()}.
+describe_extraction_definition(Client, ExtractionDefinitionId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_extraction_definition(Client, ExtractionDefinitionId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec describe_extraction_definition(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_extraction_definition_response(), tuple()} |
+    {error, any()} |
+    {error, describe_extraction_definition_errors(), tuple()}.
+describe_extraction_definition(Client, ExtractionDefinitionId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/extraction-definitions/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ExtractionDefinitionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -23841,6 +24140,49 @@ list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap)
 list_evaluation_forms(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists extraction definitions in the specified Connect Customer
+%% instance.
+-spec list_extraction_definitions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_extraction_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_extraction_definitions_errors(), tuple()}.
+list_extraction_definitions(Client, InstanceId)
+  when is_map(Client) ->
+    list_extraction_definitions(Client, InstanceId, #{}, #{}).
+
+-spec list_extraction_definitions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_extraction_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_extraction_definitions_errors(), tuple()}.
+list_extraction_definitions(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_extraction_definitions(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_extraction_definitions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_extraction_definitions_response(), tuple()} |
+    {error, any()} |
+    {error, list_extraction_definitions_errors(), tuple()}.
+list_extraction_definitions(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/extraction-definitions/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -27536,10 +27878,10 @@ send_outbound_web_notification(Client, InstanceId, Input0, Options0) ->
 
 %% @doc Starts a chat contact with an AI agent.
 %%
-%% Use the returned `ParticipantToken' to call the
+%% Use the returned `ParticipantToken' with the
 %% CreateParticipantConnection:
 %% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
-%% API.
+%% operation.
 %%
 %% For more information about chat, see the following topics in the Connect
 %% Customer
@@ -29737,6 +30079,41 @@ update_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
 update_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
     Method = put,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an extraction definition in the specified Connect Customer
+%% instance.
+-spec update_extraction_definition(aws_client:aws_client(), binary() | list(), binary() | list(), update_extraction_definition_request()) ->
+    {ok, update_extraction_definition_response(), tuple()} |
+    {error, any()} |
+    {error, update_extraction_definition_errors(), tuple()}.
+update_extraction_definition(Client, ExtractionDefinitionId, InstanceId, Input) ->
+    update_extraction_definition(Client, ExtractionDefinitionId, InstanceId, Input, []).
+
+-spec update_extraction_definition(aws_client:aws_client(), binary() | list(), binary() | list(), update_extraction_definition_request(), proplists:proplist()) ->
+    {ok, update_extraction_definition_response(), tuple()} |
+    {error, any()} |
+    {error, update_extraction_definition_errors(), tuple()}.
+update_extraction_definition(Client, ExtractionDefinitionId, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/extraction-definitions/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ExtractionDefinitionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -177,6 +177,7 @@
 %% Example:
 %% agentic_retrieve_action() :: #{
 %%   <<"fullDocumentExpansion">> => agentic_retrieve_full_doc_expansion_details(),
+%%   <<"memoryRetrieve">> => agentic_retrieve_memory_retrieve_details(),
 %%   <<"retrieve">> => agentic_retrieve_action_details()
 %% }
 -type agentic_retrieve_action() :: #{binary() => any()}.
@@ -273,6 +274,54 @@
 
 
 %% Example:
+%% agentic_retrieve_memory_configuration() :: #{
+%%   <<"memoryId">> => string(),
+%%   <<"persistenceMode">> => list(any()),
+%%   <<"retrievalConfigs">> => list(agentic_retrieve_memory_retrieval_config()),
+%%   <<"sessionBinding">> => agentic_retrieve_memory_session_binding()
+%% }
+-type agentic_retrieve_memory_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_memory_metadata_filter() :: #{
+%%   <<"left">> => list(),
+%%   <<"operator">> => list(any()),
+%%   <<"right">> => list()
+%% }
+-type agentic_retrieve_memory_metadata_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_memory_retrieval_config() :: #{
+%%   <<"metadataFilters">> => list(agentic_retrieve_memory_metadata_filter()),
+%%   <<"namespace">> => string(),
+%%   <<"namespacePath">> => string(),
+%%   <<"strategyId">> => string()
+%% }
+-type agentic_retrieve_memory_retrieval_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_memory_retrieve_details() :: #{
+%%   <<"inputQuery">> => agentic_retrieve_message_content(),
+%%   <<"memoryId">> => [string()],
+%%   <<"namespace">> => [string()],
+%%   <<"namespacePath">> => [string()],
+%%   <<"strategyId">> => [string()]
+%% }
+-type agentic_retrieve_memory_retrieve_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_memory_session_binding() :: #{
+%%   <<"actorId">> => string(),
+%%   <<"sessionId">> => string()
+%% }
+-type agentic_retrieve_memory_session_binding() :: #{binary() => any()}.
+
+
+%% Example:
 %% agentic_retrieve_message() :: #{
 %%   <<"content">> => agentic_retrieve_message_content(),
 %%   <<"role">> => list(any())
@@ -346,6 +395,7 @@
 %% agentic_retrieve_stream_request() :: #{
 %%   <<"agenticRetrieveConfiguration">> := agentic_retrieve_configuration(),
 %%   <<"generateResponse">> => [boolean()],
+%%   <<"memoryConfiguration">> => agentic_retrieve_memory_configuration(),
 %%   <<"messages">> := list(agentic_retrieve_message()),
 %%   <<"nextToken">> => string(),
 %%   <<"policyConfiguration">> => agentic_retrieve_policy_configuration(),

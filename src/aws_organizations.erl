@@ -2262,6 +2262,18 @@
 %% and `departureTime' and an `AccountJoinedOrganization' event with
 %% `joinedMethod:INVITED' and `joinedTime' are logged in their
 %% respective management accounts.
+%%
+%% When a billing transfer (`TRANSFER_RESPONSIBILITY') handshake is
+%% accepted,
+%% Organizations publishes a `ResponsibilityTransferAccepted' service
+%% event to CloudTrail.
+%% Each affected account receives this event, including upstream participants
+%% such as
+%% distributors in a chained transfer. For an example log entry, see Example
+%% log entries: AcceptResponsibilityTransfer:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_cloudtrail-integration.html#Log-entries-accept-responsibility-transfer
+%% in the
+%% Organizations User Guide.
 -spec accept_handshake(aws_client:aws_client(), accept_handshake_request()) ->
     {ok, accept_handshake_response(), tuple()} |
     {error, any()} |
@@ -2650,7 +2662,7 @@ create_account(Client, Input, Options)
 %% request, do one of
 %% the following:
 %%
-%% Use the `OperationId' response element from this operation to
+%% Use the `Id' response element from this operation to
 %% provide as a parameter to the `DescribeCreateAccountStatus'
 %% operation.
 %%
@@ -4508,6 +4520,17 @@ tag_resource(Client, Input, Options)
 %% A transfer is an arrangement between two
 %% management accounts where one account designates the other with specified
 %% responsibilities for their organization.
+%%
+%% When a transfer ends, Organizations publishes a
+%% `ResponsibilityTransferTerminated' service event to CloudTrail. Each
+%% affected
+%% account receives this event, including upstream participants such as
+%% distributors in a
+%% chained transfer. For an example log entry, see Example log entries:
+%% TerminateResponsibilityTransfer:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_cloudtrail-integration.html#Log-entries-terminate-responsibility-transfer
+%% in the
+%% Organizations User Guide.
 -spec terminate_responsibility_transfer(aws_client:aws_client(), terminate_responsibility_transfer_request()) ->
     {ok, terminate_responsibility_transfer_response(), tuple()} |
     {error, any()} |
