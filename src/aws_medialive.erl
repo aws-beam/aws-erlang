@@ -4527,10 +4527,20 @@
 
 
 %% Example:
+%% nielsen_nw_only() :: #{
+%%   <<"CheckDigitString">> => string(),
+%%   <<"Sid">> => float(),
+%%   <<"Timezone">> => list(any())
+%% }
+-type nielsen_nw_only() :: #{binary() => any()}.
+
+
+%% Example:
 %% nielsen_watermarks_settings() :: #{
 %%   <<"NielsenCbetSettings">> => nielsen_c_b_e_t(),
 %%   <<"NielsenDistributionType">> => list(any()),
-%%   <<"NielsenNaesIiNwSettings">> => nielsen_naes_ii_nw()
+%%   <<"NielsenNaesIiNwSettings">> => nielsen_naes_ii_nw(),
+%%   <<"NielsenNwOnlySettings">> => nielsen_nw_only()
 %% }
 -type nielsen_watermarks_settings() :: #{binary() => any()}.
 

@@ -12,6 +12,12 @@
 %% in Amazon Web Services Regions, while using local compute and storage
 %% resources for lower latency and local
 %% data processing needs.
+%%
+%% You can use certain Amazon EC2 API actions for Amazon Web Services
+%% Outposts. For more information on these API actions, see Amazon Web
+%% Services Outposts actions:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/operation-list-outposts.html
+%% in the Amazon EC2 API Reference.
 -module(aws_outposts).
 
 -export([cancel_capacity_task/4,
@@ -22,6 +28,8 @@
          create_order/3,
          create_outpost/2,
          create_outpost/3,
+         create_private_connectivity_config/3,
+         create_private_connectivity_config/4,
          create_quote/2,
          create_quote/3,
          create_renewal/2,
@@ -58,6 +66,9 @@
          get_outpost_supported_instance_types/2,
          get_outpost_supported_instance_types/4,
          get_outpost_supported_instance_types/5,
+         get_private_connectivity_config/2,
+         get_private_connectivity_config/4,
+         get_private_connectivity_config/5,
          get_quote/2,
          get_quote/4,
          get_quote/5,
@@ -330,6 +341,21 @@
 
 
 %% Example:
+%% create_private_connectivity_config_input() :: #{
+%%   <<"VpcInformationList">> := list(vpc_information())
+%% }
+-type create_private_connectivity_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_private_connectivity_config_output() :: #{
+%%   <<"OutpostId">> => string(),
+%%   <<"PrivateConnectivityConfig">> => private_connectivity_config()
+%% }
+-type create_private_connectivity_config_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_quote_input() :: #{
 %%   <<"CountryCode">> := string(),
 %%   <<"Description">> => string(),
@@ -564,6 +590,17 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_outpost_supported_instance_types_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_private_connectivity_config_input() :: #{}
+-type get_private_connectivity_config_input() :: #{}.
+
+
+%% Example:
+%% get_private_connectivity_config_output() :: #{
+%%   <<"PrivateConnectivityConfig">> => private_connectivity_config()
+%% }
+-type get_private_connectivity_config_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_quote_input() :: #{}
@@ -942,6 +979,16 @@
 
 
 %% Example:
+%% private_connectivity_config() :: #{
+%%   <<"PrivateConnectivityStatus">> => list(any()),
+%%   <<"ProvisioningRoleArn">> => string(),
+%%   <<"RoleArn">> => string(),
+%%   <<"VpcInformationList">> => list(vpc_information())
+%% }
+-type private_connectivity_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% quote() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"CountryCode">> => string(),
@@ -1305,6 +1352,15 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% vpc_information() :: #{
+%%   <<"SubnetIds">> => list(string()),
+%%   <<"VpcEndpointId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type vpc_information() :: #{binary() => any()}.
+
 -type cancel_capacity_task_errors() ::
     validation_exception() | 
     not_found_exception() | 
@@ -1330,6 +1386,13 @@
 -type create_outpost_errors() ::
     validation_exception() | 
     service_quota_exceeded_exception() | 
+    not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_private_connectivity_config_errors() ::
+    validation_exception() | 
     not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -1415,6 +1478,12 @@
     access_denied_exception().
 
 -type get_outpost_supported_instance_types_errors() ::
+    validation_exception() | 
+    not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_private_connectivity_config_errors() ::
     validation_exception() | 
     not_found_exception() | 
     internal_server_exception() | 
@@ -1692,6 +1761,48 @@ create_outpost(Client, Input) ->
 create_outpost(Client, Input0, Options0) ->
     Method = post,
     Path = ["/outposts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates the private connectivity configuration for the specified
+%% Outpost.
+%%
+%% Private
+%% connectivity establishes a service link VPN connection between the Outpost
+%% and its home
+%% Amazon Web Services Region using a VPC and subnet that you specify, which
+%% allows the service link traffic
+%% to flow through your VPC and minimizes public internet exposure.
+-spec create_private_connectivity_config(aws_client:aws_client(), binary() | list(), create_private_connectivity_config_input()) ->
+    {ok, create_private_connectivity_config_output(), tuple()} |
+    {error, any()} |
+    {error, create_private_connectivity_config_errors(), tuple()}.
+create_private_connectivity_config(Client, OutpostId, Input) ->
+    create_private_connectivity_config(Client, OutpostId, Input, []).
+
+-spec create_private_connectivity_config(aws_client:aws_client(), binary() | list(), create_private_connectivity_config_input(), proplists:proplist()) ->
+    {ok, create_private_connectivity_config_output(), tuple()} |
+    {error, any()} |
+    {error, create_private_connectivity_config_errors(), tuple()}.
+create_private_connectivity_config(Client, OutpostId, Input0, Options0) ->
+    Method = post,
+    Path = ["/outposts/", aws_util:encode_uri(OutpostId), "/privateConnectivity"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2252,6 +2363,44 @@ get_outpost_supported_instance_types(Client, OutpostIdentifier, QueryMap, Header
         {<<"OrderId">>, maps:get(<<"OrderId">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the private connectivity configuration for the specified
+%% Outpost.
+-spec get_private_connectivity_config(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_private_connectivity_config_output(), tuple()} |
+    {error, any()} |
+    {error, get_private_connectivity_config_errors(), tuple()}.
+get_private_connectivity_config(Client, OutpostId)
+  when is_map(Client) ->
+    get_private_connectivity_config(Client, OutpostId, #{}, #{}).
+
+-spec get_private_connectivity_config(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_private_connectivity_config_output(), tuple()} |
+    {error, any()} |
+    {error, get_private_connectivity_config_errors(), tuple()}.
+get_private_connectivity_config(Client, OutpostId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_private_connectivity_config(Client, OutpostId, QueryMap, HeadersMap, []).
+
+-spec get_private_connectivity_config(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_private_connectivity_config_output(), tuple()} |
+    {error, any()} |
+    {error, get_private_connectivity_config_errors(), tuple()}.
+get_private_connectivity_config(Client, OutpostId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/outposts/", aws_util:encode_uri(OutpostId), "/privateConnectivity"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

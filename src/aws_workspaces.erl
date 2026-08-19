@@ -2315,6 +2315,7 @@
 %% workspace_properties() :: #{
 %%   <<"ComputeTypeName">> => list(any()),
 %%   <<"GlobalAccelerator">> => global_accelerator_for_work_space(),
+%%   <<"NestedVirtualizationEnabled">> => boolean(),
 %%   <<"OperatingSystemName">> => list(any()),
 %%   <<"Protocols">> => list(list(any())()),
 %%   <<"RootVolumeSizeGib">> => integer(),
@@ -4339,6 +4340,10 @@ list_available_management_cidr_ranges(Client, Input, Options)
 %% practices, see Migrate a
 %% WorkSpace:
 %% https://docs.aws.amazon.com/workspaces/latest/adminguide/migrate-workspaces.html.
+%%
+%% If the source WorkSpace has nested virtualization enabled and the target
+%% bundle does
+%% not support nested virtualization, the migration fails.
 -spec migrate_workspace(aws_client:aws_client(), migrate_workspace_request()) ->
     {ok, migrate_workspace_result(), tuple()} |
     {error, any()} |

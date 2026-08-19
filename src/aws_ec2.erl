@@ -26514,6 +26514,14 @@ create_fpga_image(Client, Input, Options)
 %% the same
 %% Local Zone or in its parent Region.
 %%
+%% If the source instance is on an Outpost that supports local snapshots, you
+%% can create
+%% the snapshots on the same Outpost or in the parent Region of that Outpost.
+%% In this case,
+%% you must use the `SnapshotLocation' parameter to specify where to
+%% create the
+%% snapshots.
+%%
 %% For more information, see Create an Amazon EBS-backed AMI:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html
 %% in

@@ -22,6 +22,8 @@
          cancel_change_set/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
+         describe_assessment/2,
+         describe_assessment/3,
          describe_change_set/3,
          describe_change_set/5,
          describe_change_set/6,
@@ -31,6 +33,8 @@
          get_resource_policy/2,
          get_resource_policy/4,
          get_resource_policy/5,
+         list_assessments/2,
+         list_assessments/3,
          list_change_sets/2,
          list_change_sets/3,
          list_entities/2,
@@ -48,6 +52,20 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% a_m_i_security_filters() :: #{
+%%   <<"DeliveryOptionId">> => string()
+%% }
+-type a_m_i_security_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% a_m_i_security_summary() :: #{
+%%   <<"DeliveryOptionId">> => string()
+%% }
+-type a_m_i_security_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -118,6 +136,36 @@
 %%   <<"ValueList">> => list(list(any())())
 %% }
 -type ami_product_visibility_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_summary() :: #{
+%%   <<"AssessmentArn">> => string(),
+%%   <<"AssessmentId">> => string(),
+%%   <<"AssessmentResult">> => list(any()),
+%%   <<"AssessmentTargetSummary">> => assessment_target_summary(),
+%%   <<"CreatedAt">> => string(),
+%%   <<"ExpiresAt">> => string(),
+%%   <<"FrameworkId">> => string(),
+%%   <<"FrameworkSummary">> => list()
+%% }
+-type assessment_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_target_filter() :: #{
+%%   <<"ChangeSetId">> => string(),
+%%   <<"EntityId">> => string()
+%% }
+-type assessment_target_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_target_summary() :: #{
+%%   <<"ChangeSetId">> => string(),
+%%   <<"EntityId">> => string()
+%% }
+-type assessment_target_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -261,6 +309,38 @@
 
 
 %% Example:
+%% container_security_filters() :: #{
+%%   <<"DeliveryOptionId">> => string()
+%% }
+-type container_security_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% container_security_summary() :: #{
+%%   <<"DeliveryOptionId">> => string()
+%% }
+-type container_security_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_assessment() :: #{
+%%   <<"ControlAssessmentResult">> => list(any()),
+%%   <<"ControlId">> => string(),
+%%   <<"Errors">> => list(control_error())
+%% }
+-type control_assessment() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Scope">> => list(error_scope())
+%% }
+-type control_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% data_product_entity_id_filter() :: #{
 %%   <<"ValueList">> => list(string())
 %% }
@@ -332,6 +412,32 @@
 %% Example:
 %% delete_resource_policy_response() :: #{}
 -type delete_resource_policy_response() :: #{}.
+
+
+%% Example:
+%% describe_assessment_request() :: #{
+%%   <<"AssessmentIdentifier">> := string(),
+%%   <<"Catalog">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% describe_assessment_response() :: #{
+%%   <<"AssessmentArn">> => string(),
+%%   <<"AssessmentId">> => string(),
+%%   <<"AssessmentResult">> => list(any()),
+%%   <<"AssessmentTargetSummary">> => assessment_target_summary(),
+%%   <<"ControlAssessments">> => list(control_assessment()),
+%%   <<"CreatedAt">> => string(),
+%%   <<"ExpiresAt">> => string(),
+%%   <<"FrameworkId">> => string(),
+%%   <<"FrameworkSummary">> => list(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_assessment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -434,6 +540,14 @@
 
 
 %% Example:
+%% error_scope() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type error_scope() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"ValueList">> => list(string())
@@ -460,6 +574,26 @@
 %%   <<"Message">> => string()
 %% }
 -type internal_service_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessments_request() :: #{
+%%   <<"AssessmentTargetFilter">> => assessment_target_filter(),
+%%   <<"Catalog">> := string(),
+%%   <<"FrameworkFilters">> => list(),
+%%   <<"FrameworkId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assessments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessments_response() :: #{
+%%   <<"AssessmentSummaryList">> => list(assessment_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assessments_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1197,9 +1331,22 @@
 
 %% Example:
 %% validation_exception() :: #{
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"ValidationExceptionFieldList">> => list(validation_exception_field())
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"ChangeType">> => string(),
+%%   <<"EntityId">> => string(),
+%%   <<"EntityType">> => string(),
+%%   <<"Field">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
 
 -type batch_describe_entities_errors() ::
     validation_exception() | 
@@ -1216,6 +1363,13 @@
     access_denied_exception().
 
 -type delete_resource_policy_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
+-type describe_assessment_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -1241,6 +1395,12 @@
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
+-type list_assessments_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     internal_service_exception() | 
     access_denied_exception().
 
@@ -1415,6 +1575,47 @@ delete_resource_policy(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the metadata and detailed results of a single assessment,
+%% including the
+%% framework that was evaluated, the overall assessment result, and a
+%% paginated list of
+%% individual control evaluation results.
+%%
+%% To list available assessments before describing one, use the
+%% `ListAssessments' action.
+-spec describe_assessment(aws_client:aws_client(), describe_assessment_request()) ->
+    {ok, describe_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_assessment_errors(), tuple()}.
+describe_assessment(Client, Input) ->
+    describe_assessment(Client, Input, []).
+
+-spec describe_assessment(aws_client:aws_client(), describe_assessment_request(), proplists:proplist()) ->
+    {ok, describe_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_assessment_errors(), tuple()}.
+describe_assessment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DescribeAssessment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Provides information about a given change set.
 -spec describe_change_set(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_change_set_response(), tuple()} |
@@ -1541,6 +1742,56 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of assessments associated with an entity or
+%% change set in
+%% AWS Marketplace.
+%%
+%% An assessment is the result of evaluating a
+%% product or change set against a framework, such as AMI Security or
+%% Container
+%% Security.
+%%
+%% Use the `AssessmentTargetFilter' to scope results to a specific entity
+%% or
+%% change set, and use `FrameworkFilters' to scope results to a single
+%% framework. To retrieve detailed control-level results for an individual
+%% assessment, use
+%% the `DescribeAssessment' action.
+%%
+%% Results are sorted by assessment creation time in descending order.
+-spec list_assessments(aws_client:aws_client(), list_assessments_request()) ->
+    {ok, list_assessments_response(), tuple()} |
+    {error, any()} |
+    {error, list_assessments_errors(), tuple()}.
+list_assessments(Client, Input) ->
+    list_assessments(Client, Input, []).
+
+-spec list_assessments(aws_client:aws_client(), list_assessments_request(), proplists:proplist()) ->
+    {ok, list_assessments_response(), tuple()} |
+    {error, any()} |
+    {error, list_assessments_errors(), tuple()}.
+list_assessments(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListAssessments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns the list of change sets owned by the account being used to
 %% make the call.
