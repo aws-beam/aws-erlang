@@ -6225,14 +6225,26 @@
 %% Example:
 %% video_description() :: #{
 %%   <<"CodecSettings">> => video_codec_settings(),
+%%   <<"CropRectangle">> => video_position_rectangle(),
 %%   <<"Height">> => integer(),
 %%   <<"Name">> => string(),
+%%   <<"OutputPositionRectangle">> => video_position_rectangle(),
 %%   <<"RespondToAfd">> => list(any()),
 %%   <<"ScalingBehavior">> => list(any()),
 %%   <<"Sharpness">> => integer(),
 %%   <<"Width">> => integer()
 %% }
 -type video_description() :: #{binary() => any()}.
+
+
+%% Example:
+%% video_position_rectangle() :: #{
+%%   <<"Height">> => integer(),
+%%   <<"Width">> => integer(),
+%%   <<"X">> => integer(),
+%%   <<"Y">> => integer()
+%% }
+-type video_position_rectangle() :: #{binary() => any()}.
 
 
 %% Example:

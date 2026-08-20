@@ -616,6 +616,7 @@
 %%   <<"IpAddressType">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"LakehouseRegistrationStatus">> => string(),
+%%   <<"LoggingPublishStatus">> => logging_publish_status(),
 %%   <<"MaintenanceTrackName">> => string(),
 %%   <<"ManualSnapshotRetentionPeriod">> => integer(),
 %%   <<"MasterPasswordSecretArn">> => string(),
@@ -1978,7 +1979,9 @@
 
 %% Example:
 %% disable_logging_message() :: #{
-%%   <<"ClusterIdentifier">> := string()
+%%   <<"ClusterIdentifier">> := string(),
+%%   <<"LogDestinationType">> => list(any()),
+%%   <<"LogExports">> => list(string())
 %% }
 -type disable_logging_message() :: #{binary() => any()}.
 
@@ -2025,7 +2028,9 @@
 %%   <<"ClusterIdentifier">> := string(),
 %%   <<"LogDestinationType">> => list(any()),
 %%   <<"LogExports">> => list(string()),
-%%   <<"S3KeyPrefix">> => string()
+%%   <<"S3KeyPrefix">> => string(),
+%%   <<"S3TableGranularity">> => string(),
+%%   <<"S3TableKmsKeyId">> => string()
 %% }
 -type enable_logging_message() :: #{binary() => any()}.
 
@@ -2726,6 +2731,12 @@
 -type list_recommendations_result() :: #{binary() => any()}.
 
 %% Example:
+%% logging_publish_status() :: #{
+%%   <<"S3Tables">> => s3_table_publish_status()
+%% }
+-type logging_publish_status() :: #{binary() => any()}.
+
+%% Example:
 %% logging_status() :: #{
 %%   <<"BucketName">> => string(),
 %%   <<"LastFailureMessage">> => string(),
@@ -2734,7 +2745,8 @@
 %%   <<"LogDestinationType">> => list(any()),
 %%   <<"LogExports">> => list(string()),
 %%   <<"LoggingEnabled">> => boolean(),
-%%   <<"S3KeyPrefix">> => string()
+%%   <<"S3KeyPrefix">> => string(),
+%%   <<"S3Tables">> => s3_table_publish_status()
 %% }
 -type logging_status() :: #{binary() => any()}.
 
@@ -3675,6 +3687,16 @@
 %%   <<"Cluster">> => cluster()
 %% }
 -type rotate_encryption_key_result() :: #{binary() => any()}.
+
+%% Example:
+%% s3_table_publish_status() :: #{
+%%   <<"EnabledAll">> => boolean(),
+%%   <<"LastIngestionTimes">> => map(),
+%%   <<"S3TableGranularity">> => string(),
+%%   <<"S3TableNamespace">> => string(),
+%%   <<"S3Tables">> => list(string())
+%% }
+-type s3_table_publish_status() :: #{binary() => any()}.
 
 %% Example:
 %% s_n_s_invalid_topic_fault() :: #{

@@ -981,6 +981,7 @@
 %%   <<"namespaceArn">> => [string()],
 %%   <<"namespaceId">> => [string()],
 %%   <<"namespaceName">> => string(),
+%%   <<"s3TablePublishStatus">> => s3_table_publish_status(),
 %%   <<"status">> => string()
 %% }
 -type namespace() :: #{binary() => any()}.
@@ -1141,6 +1142,16 @@
 %%   <<"tableRestoreStatus">> => table_restore_status()
 %% }
 -type restore_table_from_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% s3_table_publish_status() :: #{
+%%   <<"enabledAll">> => [boolean()],
+%%   <<"lastIngestionTimes">> => map(),
+%%   <<"s3TableGranularity">> => string(),
+%%   <<"s3TableNamespace">> => [string()],
+%%   <<"s3Tables">> => list(string())
+%% }
+-type s3_table_publish_status() :: #{binary() => any()}.
 
 %% Example:
 %% scheduled_action_association() :: #{
@@ -1343,9 +1354,14 @@
 %%   <<"defaultIamRoleArn">> => [string()],
 %%   <<"iamRoles">> => list(string()),
 %%   <<"kmsKeyId">> => [string()],
+%%   <<"logDestinationType">> => string(),
 %%   <<"logExports">> => list(string()),
 %%   <<"manageAdminPassword">> => [boolean()],
-%%   <<"namespaceName">> := string()
+%%   <<"namespaceName">> := string(),
+%%   <<"s3TableAction">> => string(),
+%%   <<"s3TableGranularity">> => string(),
+%%   <<"s3TableKmsKeyId">> => string(),
+%%   <<"s3TableNames">> => list(string())
 %% }
 -type update_namespace_request() :: #{binary() => any()}.
 
@@ -3020,6 +3036,11 @@ update_lakehouse_configuration(Client, Input, Options)
 %% For example, you must specify both `adminUsername' and
 %% `adminUserPassword' to update either field, but you can't update
 %% both `kmsKeyId' and `logExports' in a single request.
+%%
+%% Similarly, an S3 Tables log-publishing update (a request where
+%% `logDestinationType' is `s3table') cannot be combined with any
+%% other namespace configuration change and must be submitted as its own
+%% request.
 -spec update_namespace(aws_client:aws_client(), update_namespace_request()) ->
     {ok, update_namespace_response(), tuple()} |
     {error, any()} |

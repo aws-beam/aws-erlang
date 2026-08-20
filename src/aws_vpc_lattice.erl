@@ -301,7 +301,7 @@
 %%   <<"groupDomain">> => string(),
 %%   <<"name">> := string(),
 %%   <<"portRanges">> => list(string()),
-%%   <<"protocol">> => string(),
+%%   <<"protocol">> => list(any()),
 %%   <<"resourceConfigurationDefinition">> => list(),
 %%   <<"resourceConfigurationGroupIdentifier">> => string(),
 %%   <<"resourceGatewayIdentifier">> => string(),
@@ -324,7 +324,7 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"portRanges">> => list(string()),
-%%   <<"protocol">> => string(),
+%%   <<"protocol">> => list(any()),
 %%   <<"resourceConfigurationDefinition">> => list(),
 %%   <<"resourceConfigurationGroupId">> => string(),
 %%   <<"resourceGatewayId">> => string(),
@@ -848,7 +848,7 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"portRanges">> => list(string()),
-%%   <<"protocol">> => string(),
+%%   <<"protocol">> => list(any()),
 %%   <<"resourceConfigurationDefinition">> => list(),
 %%   <<"resourceConfigurationGroupId">> => string(),
 %%   <<"resourceGatewayId">> => string(),
@@ -1834,7 +1834,7 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"portRanges">> => list(string()),
-%%   <<"protocol">> => string(),
+%%   <<"protocol">> => list(any()),
 %%   <<"resourceConfigurationDefinition">> => list(),
 %%   <<"resourceConfigurationGroupId">> => string(),
 %%   <<"resourceGatewayId">> => string(),
@@ -1906,7 +1906,9 @@
 
 %% Example:
 %% update_service_network_vpc_association_request() :: #{
-%%   <<"securityGroupIds">> := list(string())
+%%   <<"dnsOptions">> => dns_options(),
+%%   <<"privateDnsEnabled">> => boolean(),
+%%   <<"securityGroupIds">> => list(string())
 %% }
 -type update_service_network_vpc_association_request() :: #{binary() => any()}.
 
@@ -1915,7 +1917,9 @@
 %% update_service_network_vpc_association_response() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdBy">> => string(),
+%%   <<"dnsOptions">> => dns_options(),
 %%   <<"id">> => string(),
+%%   <<"privateDnsEnabled">> => boolean(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string()
 %% }

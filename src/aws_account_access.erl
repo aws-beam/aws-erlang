@@ -329,6 +329,7 @@
 
 -type create_application_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     already_created_exception() | 
@@ -345,6 +346,7 @@
 
 -type delete_application_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -360,6 +362,7 @@
 
 -type get_application_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().

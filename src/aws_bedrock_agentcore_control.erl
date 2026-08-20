@@ -1354,6 +1354,7 @@
 %%   <<"memoryExecutionRoleArn">> => string(),
 %%   <<"memoryStrategies">> => list(list()),
 %%   <<"name">> := string(),
+%%   <<"namespaceKeys">> => list(namespace_key_entry()),
 %%   <<"streamDeliveryResources">> => stream_delivery_resources(),
 %%   <<"tags">> => map()
 %% }
@@ -4519,6 +4520,7 @@
 %%   <<"managedByResourceArn">> => string(),
 %%   <<"memoryExecutionRoleArn">> => string(),
 %%   <<"name">> => string(),
+%%   <<"namespaceKeys">> => list(namespace_key_entry()),
 %%   <<"status">> => list(any()),
 %%   <<"strategies">> => list(memory_strategy()),
 %%   <<"streamDeliveryResources">> => stream_delivery_resources(),
@@ -4675,6 +4677,22 @@
 %%   <<"selfManagedConfiguration">> => modify_self_managed_configuration()
 %% }
 -type modify_strategy_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% namespace_key_entry() :: #{
+%%   <<"key">> => string(),
+%%   <<"validation">> => namespace_key_validation()
+%% }
+-type namespace_key_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% namespace_key_validation() :: #{
+%%   <<"allowedValues">> => list(string()),
+%%   <<"regexPattern">> => string()
+%% }
+-type namespace_key_validation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6110,6 +6128,7 @@
 %%   <<"eventExpiryDuration">> => [integer()],
 %%   <<"memoryExecutionRoleArn">> => string(),
 %%   <<"memoryStrategies">> => modify_memory_strategies(),
+%%   <<"namespaceKeys">> => list(namespace_key_entry()),
 %%   <<"streamDeliveryResources">> => stream_delivery_resources()
 %% }
 -type update_memory_input() :: #{binary() => any()}.

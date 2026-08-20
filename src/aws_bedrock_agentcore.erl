@@ -621,6 +621,7 @@
 %%   <<"branch">> => branch(),
 %%   <<"clientToken">> => [string()],
 %%   <<"eventTimestamp">> := [non_neg_integer()],
+%%   <<"extractionConfig">> => extraction_config(),
 %%   <<"extractionMode">> => list(any()),
 %%   <<"metadata">> => map(),
 %%   <<"payload">> := list(list()),
@@ -748,9 +749,12 @@
 %% }
 -type delete_event_output() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_memory_record_input() :: #{}
--type delete_memory_record_input() :: #{}.
+%% delete_memory_record_input() :: #{
+%%   <<"namespace">> => string()
+%% }
+-type delete_memory_record_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -997,6 +1001,13 @@
 
 
 %% Example:
+%% extraction_config() :: #{
+%%   <<"namespaceVariables">> => map()
+%% }
+-type extraction_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% extraction_job() :: #{
 %%   <<"jobId">> => [string()]
 %% }
@@ -1212,9 +1223,12 @@
 %% }
 -type get_event_output() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_memory_record_input() :: #{}
--type get_memory_record_input() :: #{}.
+%% get_memory_record_input() :: #{
+%%   <<"namespace">> => string()
+%% }
+-type get_memory_record_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2155,6 +2169,13 @@
 
 
 %% Example:
+%% memory_json_data() :: #{
+%%   <<"content">> => any()
+%% }
+-type memory_json_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% memory_metadata_filter_expression() :: #{
 %%   <<"left">> => list(),
 %%   <<"operator">> => list(any()),
@@ -2189,7 +2210,8 @@
 
 %% Example:
 %% memory_record_delete_input() :: #{
-%%   <<"memoryRecordId">> => string()
+%%   <<"memoryRecordId">> => string(),
+%%   <<"namespace">> => string()
 %% }
 -type memory_record_delete_input() :: #{binary() => any()}.
 
@@ -2225,6 +2247,7 @@
 %%   <<"memoryStrategyId">> => string(),
 %%   <<"metadata">> => map(),
 %%   <<"namespaces">> => list(string()),
+%%   <<"sourceNamespaces">> => list(string()),
 %%   <<"timestamp">> => [non_neg_integer()]
 %% }
 -type memory_record_update_input() :: #{binary() => any()}.
@@ -4315,9 +4338,10 @@ delete_memory_record(Client, MemoryId, MemoryRecordId, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"namespace">>, <<"namespace">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a payment instrument.
@@ -4804,7 +4828,11 @@ get_memory_record(Client, MemoryId, MemoryRecordId, QueryMap, HeadersMap, Option
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

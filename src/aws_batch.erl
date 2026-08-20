@@ -227,6 +227,7 @@
 %%   <<"containerOrchestrationType">> => list(any()),
 %%   <<"context">> => string(),
 %%   <<"ecsClusterArn">> => string(),
+%%   <<"ecsSettings">> => ecs_settings(),
 %%   <<"eksConfiguration">> => eks_configuration(),
 %%   <<"serviceRole">> => string(),
 %%   <<"state">> => list(any()),
@@ -421,6 +422,7 @@
 %%   <<"computeEnvironmentName">> := string(),
 %%   <<"computeResources">> => compute_resource(),
 %%   <<"context">> => string(),
+%%   <<"ecsSettings">> => ecs_settings(),
 %%   <<"eksConfiguration">> => eks_configuration(),
 %%   <<"serviceRole">> => string(),
 %%   <<"state">> => list(any()),
@@ -850,6 +852,13 @@
 %%   <<"taskProperties">> => list(task_properties_override())
 %% }
 -type ecs_properties_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% ecs_settings() :: #{
+%%   <<"containerInsights">> => list(any())
+%% }
+-type ecs_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2186,6 +2195,7 @@
 %%   <<"computeEnvironment">> := string(),
 %%   <<"computeResources">> => compute_resource_update(),
 %%   <<"context">> => string(),
+%%   <<"ecsSettings">> => ecs_settings(),
 %%   <<"serviceRole">> => string(),
 %%   <<"state">> => list(any()),
 %%   <<"unmanagedvCpus">> => integer(),
