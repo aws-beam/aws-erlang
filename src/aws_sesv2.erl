@@ -450,6 +450,13 @@
 
 
 %% Example:
+%% configuration_overrides() :: #{
+%%   <<"Tracking">> => tracking_configuration_overrides()
+%% }
+-type configuration_overrides() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2503,6 +2510,7 @@
 %% Example:
 %% send_bulk_email_request() :: #{
 %%   <<"BulkEmailEntries">> := list(bulk_email_entry()),
+%%   <<"ConfigurationOverrides">> => configuration_overrides(),
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"DefaultContent">> := bulk_email_content(),
 %%   <<"DefaultEmailTags">> => list(message_tag()),
@@ -2542,6 +2550,7 @@
 
 %% Example:
 %% send_email_request() :: #{
+%%   <<"ConfigurationOverrides">> => configuration_overrides(),
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"Content">> := email_content(),
 %%   <<"Destination">> => destination(),
@@ -2801,6 +2810,14 @@
 %%   <<"TopicName">> => string()
 %% }
 -type topic_preference() :: #{binary() => any()}.
+
+
+%% Example:
+%% tracking_configuration_overrides() :: #{
+%%   <<"ClickTrackingEnabled">> => list(any()),
+%%   <<"OpenTrackingEnabled">> => list(any())
+%% }
+-type tracking_configuration_overrides() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6770,9 +6787,6 @@ put_account_details(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Set the pricing plan for your Amazon SES account.
-%%
-%% Use this operation to choose a billing plan
-%% that packages multiple Amazon SES features at a single rate.
 -spec put_account_pricing_attributes(aws_client:aws_client(), put_account_pricing_attributes_request()) ->
     {ok, put_account_pricing_attributes_response(), tuple()} |
     {error, any()} |

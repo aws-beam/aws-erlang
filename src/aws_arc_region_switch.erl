@@ -694,6 +694,22 @@
 -type rds_promote_read_replica_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% rds_switchover_read_replica_configuration() :: #{
+%%   <<"crossAccountRole">> => string(),
+%%   <<"dbInstanceArnMap">> => map(),
+%%   <<"externalId">> => [string()],
+%%   <<"timeoutMinutes">> => [integer()],
+%%   <<"ungraceful">> => rds_ungraceful()
+%% }
+-type rds_switchover_read_replica_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% rds_ungraceful() :: #{
+%%   <<"ungraceful">> => list(any())
+%% }
+-type rds_ungraceful() :: #{binary() => any()}.
+
+%% Example:
 %% region_switch_plan_configuration() :: #{
 %%   <<"arn">> => string(),
 %%   <<"crossAccountRole">> => string(),

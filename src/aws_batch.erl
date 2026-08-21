@@ -213,6 +213,14 @@
 
 
 %% Example:
+%% capacity_reservation_request() :: #{
+%%   <<"reservationGroupArn">> => string(),
+%%   <<"reservationPreference">> => string()
+%% }
+-type capacity_reservation_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% client_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -254,6 +262,7 @@
 %% compute_resource() :: #{
 %%   <<"allocationStrategy">> => list(any()),
 %%   <<"bidPercentage">> => integer(),
+%%   <<"capacityTags">> => map(),
 %%   <<"desiredvCpus">> => integer(),
 %%   <<"ec2Configuration">> => list(ec2_configuration()),
 %%   <<"ec2KeyPair">> => string(),
@@ -261,6 +270,7 @@
 %%   <<"instanceRole">> => string(),
 %%   <<"instanceTypes">> => list(string()),
 %%   <<"launchTemplate">> => launch_template_specification(),
+%%   <<"managedInstancesProvider">> => managed_instances_provider(),
 %%   <<"maxvCpus">> => integer(),
 %%   <<"minvCpus">> => integer(),
 %%   <<"placementGroup">> => string(),
@@ -278,6 +288,7 @@
 %% compute_resource_update() :: #{
 %%   <<"allocationStrategy">> => list(any()),
 %%   <<"bidPercentage">> => integer(),
+%%   <<"capacityTags">> => map(),
 %%   <<"desiredvCpus">> => integer(),
 %%   <<"ec2Configuration">> => list(ec2_configuration()),
 %%   <<"ec2KeyPair">> => string(),
@@ -285,6 +296,7 @@
 %%   <<"instanceRole">> => string(),
 %%   <<"instanceTypes">> => list(string()),
 %%   <<"launchTemplate">> => launch_template_specification(),
+%%   <<"managedInstancesProvider">> => update_managed_instances_provider_configuration(),
 %%   <<"maxvCpus">> => integer(),
 %%   <<"minvCpus">> => integer(),
 %%   <<"placementGroup">> => string(),
@@ -870,6 +882,7 @@
 %%   <<"executionRoleArn">> => string(),
 %%   <<"ipcMode">> => string(),
 %%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"networkMode">> => string(),
 %%   <<"pidMode">> => string(),
 %%   <<"platformVersion">> => string(),
 %%   <<"runtimePlatform">> => runtime_platform(),
@@ -888,6 +901,7 @@
 %%   <<"executionRoleArn">> => string(),
 %%   <<"ipcMode">> => string(),
 %%   <<"networkConfiguration">> => network_configuration(),
+%%   <<"networkMode">> => string(),
 %%   <<"pidMode">> => string(),
 %%   <<"platformVersion">> => string(),
 %%   <<"runtimePlatform">> => runtime_platform(),
@@ -1253,6 +1267,50 @@
 
 
 %% Example:
+%% infrastructure_optimization() :: #{
+%%   <<"scaleInAfter">> => integer()
+%% }
+-type infrastructure_optimization() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_launch_template() :: #{
+%%   <<"capacityOptionType">> => string(),
+%%   <<"capacityReservations">> => capacity_reservation_request(),
+%%   <<"ec2InstanceProfileArn">> => string(),
+%%   <<"fipsEnabled">> => boolean(),
+%%   <<"instanceMetadataTagsPropagation">> => boolean(),
+%%   <<"instanceRequirements">> => instance_requirements_request(),
+%%   <<"localStorageConfiguration">> => managed_instances_local_storage_configuration(),
+%%   <<"monitoring">> => string(),
+%%   <<"networkConfiguration">> => managed_instances_network_configuration(),
+%%   <<"storageConfiguration">> => managed_instances_storage_configuration()
+%% }
+-type instance_launch_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_launch_template_update() :: #{
+%%   <<"capacityReservations">> => capacity_reservation_request(),
+%%   <<"ec2InstanceProfileArn">> => string(),
+%%   <<"instanceMetadataTagsPropagation">> => boolean(),
+%%   <<"instanceRequirements">> => instance_requirements_request(),
+%%   <<"localStorageConfiguration">> => managed_instances_local_storage_configuration(),
+%%   <<"monitoring">> => string(),
+%%   <<"networkConfiguration">> => managed_instances_network_configuration(),
+%%   <<"storageConfiguration">> => managed_instances_storage_configuration()
+%% }
+-type instance_launch_template_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% instance_requirements_request() :: #{
+%%   <<"allowedInstanceTypes">> => list(string())
+%% }
+-type instance_requirements_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% job_capacity_usage_summary() :: #{
 %%   <<"capacityUnit">> => string(),
 %%   <<"quantity">> => float()
@@ -1584,6 +1642,38 @@
 %%   <<"secretOptions">> => list(secret())
 %% }
 -type log_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_instances_local_storage_configuration() :: #{
+%%   <<"useLocalStorage">> => boolean()
+%% }
+-type managed_instances_local_storage_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_instances_network_configuration() :: #{
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnets">> => list(string())
+%% }
+-type managed_instances_network_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_instances_provider() :: #{
+%%   <<"infrastructureOptimization">> => infrastructure_optimization(),
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"instanceLaunchTemplate">> => instance_launch_template(),
+%%   <<"propagateTags">> => string()
+%% }
+-type managed_instances_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% managed_instances_storage_configuration() :: #{
+%%   <<"storageSizeGiB">> => integer()
+%% }
+-type managed_instances_storage_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2250,6 +2340,16 @@
 %%   <<"jobQueueName">> => string()
 %% }
 -type update_job_queue_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_managed_instances_provider_configuration() :: #{
+%%   <<"infrastructureOptimization">> => infrastructure_optimization(),
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"instanceLaunchTemplate">> => instance_launch_template_update(),
+%%   <<"propagateTags">> => string()
+%% }
+-type update_managed_instances_provider_configuration() :: #{binary() => any()}.
 
 
 %% Example:

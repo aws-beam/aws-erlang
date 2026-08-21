@@ -3450,6 +3450,7 @@
 %%   <<"AccountDefaultStatus">> => list(any()),
 %%   <<"ArtifactStoreUri">> := string(),
 %%   <<"DefaultDomainIdList">> => list(string()),
+%%   <<"KmsKeyId">> => string(),
 %%   <<"ModelRegistrationMode">> => list(any()),
 %%   <<"Name">> := string(),
 %%   <<"RoleArn">> := string(),
@@ -3751,6 +3752,7 @@
 %%   <<"EnableAutoMinorVersionUpgrade">> => boolean(),
 %%   <<"EnableIamSessionBasedIdentity">> => boolean(),
 %%   <<"ExecutionRoleArn">> := string(),
+%%   <<"IdcConfig">> => idc_config_input(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MaintenanceConfig">> => partner_app_maintenance_config(),
 %%   <<"Name">> := string(),
@@ -5901,6 +5903,7 @@
 %%   <<"CreatedBy">> => user_context(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DefaultDomainIdList">> => list(string()),
+%%   <<"KmsKeyId">> => string(),
 %%   <<"LastModifiedBy">> => user_context(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"MaintenanceStatus">> => list(any()),
@@ -6258,6 +6261,7 @@
 %%   <<"EnableIamSessionBasedIdentity">> => boolean(),
 %%   <<"Error">> => error_info(),
 %%   <<"ExecutionRoleArn">> => string(),
+%%   <<"IdcConfig">> => idc_config_output(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"MaintenanceConfig">> => partner_app_maintenance_config(),
@@ -7870,6 +7874,19 @@
 %%   <<"VpcSourceIp">> => list(any())
 %% }
 -type iam_policy_constraints() :: #{binary() => any()}.
+
+%% Example:
+%% idc_config_input() :: #{
+%%   <<"InstanceArn">> => string()
+%% }
+-type idc_config_input() :: #{binary() => any()}.
+
+%% Example:
+%% idc_config_output() :: #{
+%%   <<"ApplicationArn">> => string(),
+%%   <<"InstanceArn">> => string()
+%% }
+-type idc_config_output() :: #{binary() => any()}.
 
 %% Example:
 %% identity_provider_o_auth_setting() :: #{
@@ -14484,9 +14501,11 @@
 %%   <<"AppVersion">> => string(),
 %%   <<"ApplicationConfig">> => partner_app_config(),
 %%   <<"Arn">> := string(),
+%%   <<"AuthType">> => list(any()),
 %%   <<"ClientToken">> => string(),
 %%   <<"EnableAutoMinorVersionUpgrade">> => boolean(),
 %%   <<"EnableIamSessionBasedIdentity">> => boolean(),
+%%   <<"IdcConfig">> => idc_config_input(),
 %%   <<"MaintenanceConfig">> => partner_app_maintenance_config(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"Tier">> => string()

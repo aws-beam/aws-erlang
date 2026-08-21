@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Manages flat-rate pricing subscriptions for supported AWS services.
+%% @doc Manages flat-rate pricing subscriptions for supported services.
 %%
 %% Use this API to create, approve, update, and cancel subscriptions;
 %% associate and disassociate resources; and retrieve subscription details.
@@ -421,9 +421,9 @@ approve_paid_subscription(Client, Input0, Options0) ->
 %% changes.
 %%
 %% For subscriptions in the CloudFront plan family, the associated resources
-%% must include exactly one Amazon CloudFront distribution and one AWS WAF
-%% web ACL. You can also include other supported resources, such as Amazon
-%% Route 53 hosted zones, and CloudFront KeyValueStores.
+%% must include exactly one Amazon CloudFront distribution and one WAF web
+%% ACL. You can also include other supported resources, such as Amazon Route
+%% 53 hosted zones, and CloudFront KeyValueStores.
 -spec associate_resources_to_subscription(aws_client:aws_client(), associate_resources_to_subscription_input()) ->
     {ok, associate_resources_to_subscription_output(), tuple()} |
     {error, any()} |
@@ -656,7 +656,7 @@ create_subscription(Client, Input0, Options0) ->
 %%
 %% For subscriptions in the CloudFront plan family, the associated resources
 %% must always include exactly one Amazon CloudFront distribution and exactly
-%% one AWS WAF web ACL. You cannot remove these required resources.
+%% one WAF web ACL. You cannot remove these required resources.
 -spec disassociate_resources_from_subscription(aws_client:aws_client(), disassociate_resources_from_subscription_input()) ->
     {ok, disassociate_resources_from_subscription_output(), tuple()} |
     {error, any()} |

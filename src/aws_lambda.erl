@@ -121,6 +121,8 @@
          delete_layer_version/5,
          delete_provisioned_concurrency_config/3,
          delete_provisioned_concurrency_config/4,
+         delete_resource_policy/3,
+         delete_resource_policy/4,
          get_account_settings/1,
          get_account_settings/3,
          get_account_settings/4,
@@ -184,6 +186,9 @@
          get_provisioned_concurrency_config/3,
          get_provisioned_concurrency_config/5,
          get_provisioned_concurrency_config/6,
+         get_resource_policy/2,
+         get_resource_policy/4,
+         get_resource_policy/5,
          get_runtime_management_config/2,
          get_runtime_management_config/4,
          get_runtime_management_config/5,
@@ -254,6 +259,8 @@
          put_function_scaling_config/4,
          put_provisioned_concurrency_config/3,
          put_provisioned_concurrency_config/4,
+         put_resource_policy/3,
+         put_resource_policy/4,
          put_runtime_management_config/3,
          put_runtime_management_config/4,
          remove_layer_version_permission/5,
@@ -940,6 +947,13 @@
 %%   <<"Qualifier">> := string()
 %% }
 -type delete_provisioned_concurrency_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_resource_policy_request() :: #{
+%%   <<"RevisionId">> => string()
+%% }
+-type delete_resource_policy_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1692,6 +1706,18 @@
 %%   <<"StatusReason">> => string()
 %% }
 -type get_provisioned_concurrency_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_policy_request() :: #{}
+-type get_resource_policy_request() :: #{}.
+
+
+%% Example:
+%% get_resource_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type get_resource_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2519,6 +2545,22 @@
 
 
 %% Example:
+%% put_resource_policy_request() :: #{
+%%   <<"Policy">> := string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type put_resource_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_resource_policy_response() :: #{
+%%   <<"Policy">> => string(),
+%%   <<"RevisionId">> => string()
+%% }
+-type put_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_runtime_management_config_request() :: #{
 %%   <<"Qualifier">> => string(),
 %%   <<"RuntimeVersionArn">> => string(),
@@ -3272,6 +3314,14 @@
     resource_conflict_exception() | 
     invalid_parameter_value_exception().
 
+-type delete_resource_policy_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    precondition_failed_exception() | 
+    invalid_parameter_value_exception().
+
 -type get_account_settings_errors() ::
     too_many_requests_exception() | 
     service_exception().
@@ -3406,6 +3456,12 @@
     service_exception() | 
     resource_not_found_exception() | 
     provisioned_concurrency_config_not_found_exception() | 
+    invalid_parameter_value_exception().
+
+-type get_resource_policy_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_value_exception().
 
 -type get_runtime_management_config_errors() ::
@@ -3671,6 +3727,16 @@
     service_exception() | 
     resource_not_found_exception() | 
     resource_conflict_exception() | 
+    invalid_parameter_value_exception().
+
+-type put_resource_policy_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    public_policy_exception() | 
+    precondition_failed_exception() | 
+    policy_length_exceeded_exception() | 
     invalid_parameter_value_exception().
 
 -type put_runtime_management_config_errors() ::
@@ -4748,6 +4814,43 @@ delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a resource-based policy:
+%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
+%% from a Lambda resource.
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, ResourceArn, Input) ->
+    delete_resource_policy(Client, ResourceArn, Input, []).
+
+-spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_resource_policy_errors(), tuple()}.
+delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2026-07-09/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"RevisionId">>, <<"RevisionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves details about your account's limits:
 %% https://docs.aws.amazon.com/lambda/latest/dg/limits.html and usage in an
 %% Amazon Web Services Region.
@@ -5635,6 +5738,45 @@ get_provisioned_concurrency_config(Client, FunctionName, Qualifier, QueryMap, He
         {<<"Qualifier">>, Qualifier}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the resource-based policy:
+%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
+%% attached to a Lambda resource.
+-spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn)
+  when is_map(Client) ->
+    get_resource_policy(Client, ResourceArn, #{}, #{}).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec get_resource_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_resource_policy_errors(), tuple()}.
+get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2026-07-09/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -6969,6 +7111,56 @@ put_provisioned_concurrency_config(Client, FunctionName, Input0, Options0) ->
                      {<<"Qualifier">>, <<"Qualifier">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds a resource-based policy:
+%% https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html
+%% to a Lambda resource.
+%%
+%% Resource-based policies grant access to other Amazon Web Services
+%% accounts:
+%% https://docs.aws.amazon.com/lambda/latest/dg/permissions-function-cross-account.html,
+%% organizations:
+%% https://docs.aws.amazon.com/lambda/latest/dg/permissions-function-organization.html,
+%% or services:
+%% https://docs.aws.amazon.com/lambda/latest/dg/permissions-function-services.html.
+%% Resource-based policies apply to a single Lambda resource (for example, a
+%% function, function version, or function alias).
+%%
+%% This operation replaces any existing policy on the Lambda resource. If you
+%% previously added permissions using the `AddPermission' operation, the
+%% new policy overwrites those permissions.
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, ResourceArn, Input) ->
+    put_resource_policy(Client, ResourceArn, Input, []).
+
+-spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request(), proplists:proplist()) ->
+    {ok, put_resource_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_resource_policy_errors(), tuple()}.
+put_resource_policy(Client, ResourceArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/2026-07-09/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Sets the runtime management configuration for a function's
