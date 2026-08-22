@@ -1665,17 +1665,22 @@ enable_enhanced_monitoring(Client, Input, Options)
 %% the last record
 %% to process.
 %%
-%% Each data record can be up to 1 MiB in size, and each shard can read up to
-%% 2 MiB per
-%% second. You can ensure that your calls don't exceed the maximum
-%% supported size or
-%% throughput by using the `Limit' parameter to specify the maximum
-%% number of
-%% records that `GetRecords' can return. Consider your average record
-%% size
-%% when determining this limit. The maximum number of records that can be
-%% returned per call
-%% is 10,000.
+%% Each data record can be up to 1 MiB in size by default. Amazon Kinesis
+%% Data Streams supports
+%% large records up to 10 MiB in size, but the average throughput for your
+%% stream cannot exceed
+%% 1 MiB per second. For more information about how large records are
+%% handled, see
+%% Large records:
+%% https://docs.aws.amazon.com/streams/latest/dev/large-records.html.
+%% Each shard can read up to 2 MiB per second. You can ensure that your calls
+%% don't exceed
+%% the maximum supported size or throughput by using the `Limit'
+%% parameter to
+%% specify the maximum number of records that `GetRecords' can return.
+%% Consider your average record size when determining this limit. The maximum
+%% number of records
+%% that can be returned per call is 10,000.
 %%
 %% The size of the data returned by `GetRecords' varies depending on the
 %% utilization of the shard. It is recommended that consumer applications
@@ -2884,9 +2889,10 @@ update_stream_mode(Client, Input, Options)
 %% @doc Updates the warm throughput configuration for the specified Amazon
 %% Kinesis Data Streams on-demand data stream.
 %%
-%% This operation allows you to proactively scale your on-demand data stream
-%% to a specified throughput level, enabling better performance for sudden
-%% traffic spikes.
+%% Updates the warm throughput configuration for the specified on-demand data
+%% stream. Use this operation to scale your stream to a specified throughput
+%% level before anticipated traffic spikes, or to release excess capacity
+%% after traffic has decreased.
 %%
 %% When invoking this API, you must use either the `StreamARN' or the
 %% `StreamName' parameter, or both. It is recommended that you use the
@@ -2904,6 +2910,9 @@ update_stream_mode(Client, Input, Options)
 %% capacity mode in accounts that have
 %% `MinimumThroughputBillingCommitment' enabled. Provisioned capacity
 %% mode streams do not support warm throughput configuration.
+%%
+%% To release excess capacity, call the API again and set the warm throughput
+%% to the same or a lower value.
 %%
 %% This operation has the following default limits. By default, you cannot do
 %% the following:

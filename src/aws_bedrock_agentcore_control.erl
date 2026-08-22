@@ -4809,6 +4809,8 @@
 %%   <<"endpoint">> => string(),
 %%   <<"protocolType">> => list(any()),
 %%   <<"schema">> => http_api_schema_configuration(),
+%%   <<"staticQueryParameterConflictResolution">> => list(any()),
+%%   <<"staticQueryParameters">> => map(),
 %%   <<"stickinessConfiguration">> => stickiness_configuration()
 %% }
 -type passthrough_target_configuration() :: #{binary() => any()}.
@@ -5471,6 +5473,7 @@
 
 %% Example:
 %% stickiness_configuration() :: #{
+%%   <<"compositeIdentifier">> => list(string()),
 %%   <<"identifier">> => [string()],
 %%   <<"timeout">> => integer()
 %% }
@@ -9746,6 +9749,8 @@ delete_harness_endpoint(Client, EndpointName, HarnessId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon Bedrock AgentCore Memory resource.
+%%
+%% When you delete a memory resource, it is permanently removed.
 -spec delete_memory(aws_client:aws_client(), binary() | list(), delete_memory_input()) ->
     {ok, delete_memory_output(), tuple()} |
     {error, any()} |

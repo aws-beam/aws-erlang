@@ -6325,7 +6325,7 @@ list_backup_access_points_by_resource(Client, ResourceArn, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc This is a request for a summary of backup jobs created
-%% or running within the most recent 30 days.
+%% or running within the most recent 14 days.
 %%
 %% You can
 %% include parameters AccountID, State, ResourceType, MessageCategory,
@@ -6659,7 +6659,7 @@ list_backup_vaults(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This request obtains a list of copy jobs created
-%% or running within the the most recent 30 days.
+%% or running within the the most recent 14 days.
 %%
 %% You can
 %% include parameters AccountID, State, ResourceType, MessageCategory,
@@ -7273,7 +7273,7 @@ list_restore_access_backup_vaults(Client, BackupVaultName, QueryMap, HeadersMap,
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This request obtains a summary of restore jobs created
-%% or running within the the most recent 30 days.
+%% or running within the the most recent 14 days.
 %%
 %% You can
 %% include parameters AccountID, State, ResourceType,
@@ -7520,7 +7520,7 @@ list_restore_testing_selections(Client, RestoreTestingPlanName, QueryMap, Header
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This is a request for a summary of scan jobs created or running
-%% within the most recent 30 days.
+%% within the most recent 14 days.
 -spec list_scan_job_summaries(aws_client:aws_client()) ->
     {ok, list_scan_job_summaries_output(), tuple()} |
     {error, any()} |

@@ -313,6 +313,7 @@
 %%   <<"auxiliaryApps">> => list(string()),
 %%   <<"billingMethod">> => list(any()),
 %%   <<"deviceProxy">> => device_proxy(),
+%%   <<"parameters">> => map(),
 %%   <<"vpceConfigurationArns">> => list(string())
 %% }
 -type create_remote_access_session_configuration() :: #{binary() => any()}.
@@ -3046,15 +3047,15 @@ get_test_grid_project(Client, Input, Options)
     request(Client, <<"GetTestGridProject">>, Input, Options).
 
 %% @doc A session is an instance of a browser created through a
-%% `RemoteWebDriver' with the URL from `CreateTestGridUrlResult$url'.
+%% `RemoteWebDriver' with the URL from
+%% ```
+%% CreateTestGridUrlResult'''.
 %%
 %% You can use the following to look up sessions:
 %%
-%% The session ARN (`GetTestGridSessionRequest$sessionArn').
+%% The session ARN.
 %%
-%% The project ARN and a session ID
-%% (`GetTestGridSessionRequest$projectArn' and
-%% `GetTestGridSessionRequest$sessionId').
+%% The project ARN and a session ID.
 -spec get_test_grid_session(aws_client:aws_client(), get_test_grid_session_request()) ->
     {ok, get_test_grid_session_result(), tuple()} |
     {error, any()} |
@@ -3380,6 +3381,9 @@ list_runs(Client, Input, Options)
     request(Client, <<"ListRuns">>, Input, Options).
 
 %% @doc Gets information about samples, given an AWS Device Farm job ARN.
+%%
+%% Device Farm does not support performance data samples during test
+%% executions.
 -spec list_samples(aws_client:aws_client(), list_samples_request()) ->
     {ok, list_samples_result(), tuple()} |
     {error, any()} |
