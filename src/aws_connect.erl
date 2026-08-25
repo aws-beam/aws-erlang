@@ -8567,6 +8567,14 @@
 
 
 %% Example:
+%% real_time_contact_analysis_extracted_information_value() :: #{
+%%   <<"Content">> => string(),
+%%   <<"PointsOfInterest">> => list(real_time_contact_analysis_transcript_item_with_character_offsets())
+%% }
+-type real_time_contact_analysis_extracted_information_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% real_time_contact_analysis_issue_detected() :: #{
 %%   <<"TranscriptItems">> => list(real_time_contact_analysis_transcript_item_with_content())
 %% }
@@ -8609,6 +8617,17 @@
 %%   <<"Time">> => list()
 %% }
 -type real_time_contact_analysis_segment_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_segment_extracted_information() :: #{
+%%   <<"ExtractedValues">> => list(real_time_contact_analysis_extracted_information_value()),
+%%   <<"ExtractionDefinitionDisplayLabel">> => string(),
+%%   <<"ExtractionDefinitionId">> => string(),
+%%   <<"ExtractionDefinitionName">> => string(),
+%%   <<"FailureCode">> => list(any())
+%% }
+-type real_time_contact_analysis_segment_extracted_information() :: #{binary() => any()}.
 
 
 %% Example:

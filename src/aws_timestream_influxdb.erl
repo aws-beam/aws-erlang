@@ -477,6 +477,7 @@
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"dbStorageType">> => list(any()),
 %%   <<"deploymentType">> => list(any()),
+%%   <<"effectiveDbParameterGroupIdentifier">> => string(),
 %%   <<"endpoint">> => [string()],
 %%   <<"engineType">> => list(any()),
 %%   <<"failoverMode">> => list(any()),

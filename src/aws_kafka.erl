@@ -1198,6 +1198,7 @@
 %% Example:
 %% kafka_cluster_client_authentication() :: #{
 %%   <<"MTLS">> => kafka_cluster_m_t_l_s_authentication(),
+%%   <<"SaslOAuthBearer">> => kafka_cluster_sasl_o_auth_bearer_authentication(),
 %%   <<"SaslScram">> => kafka_cluster_sasl_scram_authentication()
 %% }
 -type kafka_cluster_client_authentication() :: #{binary() => any()}.
@@ -1236,6 +1237,44 @@
 %%   <<"SecretArn">> => string()
 %% }
 -type kafka_cluster_m_t_l_s_authentication() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_o_auth_client_credentials() :: #{
+%%   <<"TokenRequestSecretArn">> => string()
+%% }
+-type kafka_cluster_o_auth_client_credentials() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_o_auth_client_credentials_assertion() :: #{
+%%   <<"Audience">> => string(),
+%%   <<"SigningAlgorithm">> => list(any()),
+%%   <<"TokenRequestSecretArn">> => string()
+%% }
+-type kafka_cluster_o_auth_client_credentials_assertion() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_o_auth_iam_jwt_bearer() :: #{
+%%   <<"Audience">> => string(),
+%%   <<"SigningAlgorithm">> => list(any()),
+%%   <<"TokenRequestSecretArn">> => string()
+%% }
+-type kafka_cluster_o_auth_iam_jwt_bearer() :: #{binary() => any()}.
+
+
+%% Example:
+%% kafka_cluster_sasl_o_auth_bearer_authentication() :: #{
+%%   <<"ClientCredentials">> => kafka_cluster_o_auth_client_credentials(),
+%%   <<"ClientCredentialsAssertion">> => kafka_cluster_o_auth_client_credentials_assertion(),
+%%   <<"IamJwtBearer">> => kafka_cluster_o_auth_iam_jwt_bearer(),
+%%   <<"Scope">> => string(),
+%%   <<"TokenEndpointAuthenticationMethod">> => list(any()),
+%%   <<"TokenEndpointTlsCertificateArn">> => string(),
+%%   <<"TokenEndpointUrl">> => string()
+%% }
+-type kafka_cluster_sasl_o_auth_bearer_authentication() :: #{binary() => any()}.
 
 
 %% Example:

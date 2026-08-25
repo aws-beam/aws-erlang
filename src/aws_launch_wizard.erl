@@ -64,6 +64,13 @@
 
 
 %% Example:
+%% delegated_admin_constraint() :: #{
+%%   <<"servicePrincipal">> => string()
+%% }
+-type delegated_admin_constraint() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_deployment_input() :: #{
 %%   <<"deploymentId">> := string()
 %% }
@@ -121,6 +128,7 @@
 %% Example:
 %% deployment_event_data_summary() :: #{
 %%   <<"description">> => [string()],
+%%   <<"metadata">> => map(),
 %%   <<"name">> => [string()],
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()],
@@ -329,6 +337,10 @@
 %% }
 -type list_workloads_output() :: #{binary() => any()}.
 
+%% Example:
+%% management_account_constraint() :: #{}
+-type management_account_constraint() :: #{}.
+
 
 %% Example:
 %% resource_limit_exception() :: #{
@@ -394,6 +406,7 @@
 
 %% Example:
 %% workload_data() :: #{
+%%   <<"accountConstraints">> => list(list()),
 %%   <<"description">> => [string()],
 %%   <<"displayName">> => [string()],
 %%   <<"documentationUrl">> => [string()],
@@ -407,6 +420,7 @@
 
 %% Example:
 %% workload_data_summary() :: #{
+%%   <<"accountConstraints">> => list(list()),
 %%   <<"displayName">> => [string()],
 %%   <<"status">> => list(any()),
 %%   <<"workloadName">> => string()
@@ -416,6 +430,7 @@
 
 %% Example:
 %% workload_deployment_pattern_data() :: #{
+%%   <<"accountConstraints">> => list(list()),
 %%   <<"deploymentPatternName">> => string(),
 %%   <<"deploymentPatternVersionName">> => string(),
 %%   <<"description">> => [string()],
@@ -431,6 +446,7 @@
 
 %% Example:
 %% workload_deployment_pattern_data_summary() :: #{
+%%   <<"accountConstraints">> => list(list()),
 %%   <<"deploymentPatternName">> => string(),
 %%   <<"deploymentPatternVersionName">> => string(),
 %%   <<"description">> => [string()],

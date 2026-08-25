@@ -33,6 +33,9 @@
          get_feed/2,
          get_feed/4,
          get_feed/5,
+         get_fixture/2,
+         get_fixture/4,
+         get_fixture/5,
          list_dictionaries/1,
          list_dictionaries/3,
          list_dictionaries/4,
@@ -147,6 +150,7 @@
 
 %% Example:
 %% create_feed_response() :: #{
+%%   <<"accessRoleArn">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"association">> => feed_association(),
 %%   <<"dataEndpoints">> => list([string()]()),
@@ -307,6 +311,7 @@
 
 %% Example:
 %% get_feed_response() :: #{
+%%   <<"accessRoleArn">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"association">> => feed_association(),
 %%   <<"dataEndpoints">> => list([string()]()),
@@ -317,6 +322,22 @@
 %%   <<"tags">> => map()
 %% }
 -type get_feed_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_fixture_request() :: #{}
+-type get_fixture_request() :: #{}.
+
+
+%% Example:
+%% get_fixture_response() :: #{
+%%   <<"competitors">> => list(competitor()),
+%%   <<"fixtureGroup">> => [string()],
+%%   <<"fixtureId">> => string(),
+%%   <<"name">> => [string()],
+%%   <<"scheduledStart">> => [non_neg_integer()],
+%%   <<"status">> => [string()]
+%% }
+-type get_fixture_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -501,6 +522,7 @@
 
 %% Example:
 %% update_feed_response() :: #{
+%%   <<"accessRoleArn">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"association">> => feed_association(),
 %%   <<"dataEndpoints">> => list([string()]()),
@@ -597,6 +619,15 @@
     too_many_request_exception() | 
     resource_not_found_exception() | 
     internal_server_error_exception() | 
+    access_denied_exception().
+
+-type get_fixture_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    service_unavailable_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    gateway_timed_out_exception() | 
     access_denied_exception().
 
 -type list_dictionaries_errors() ::
@@ -1015,6 +1046,47 @@ get_feed(Client, Id, QueryMap, HeadersMap)
 get_feed(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/feed/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about the specified fixture (a sports event,
+%% such as a specific basketball game).
+%%
+%% You obtain a fixtureId from SearchFixtures, or from the clipping output of
+%% a feed.
+-spec get_fixture(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_fixture_response(), tuple()} |
+    {error, any()} |
+    {error, get_fixture_errors(), tuple()}.
+get_fixture(Client, FixtureId)
+  when is_map(Client) ->
+    get_fixture(Client, FixtureId, #{}, #{}).
+
+-spec get_fixture(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_fixture_response(), tuple()} |
+    {error, any()} |
+    {error, get_fixture_errors(), tuple()}.
+get_fixture(Client, FixtureId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_fixture(Client, FixtureId, QueryMap, HeadersMap, []).
+
+-spec get_fixture(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_fixture_response(), tuple()} |
+    {error, any()} |
+    {error, get_fixture_errors(), tuple()}.
+get_fixture(Client, FixtureId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/fixtures/", aws_util:encode_uri(FixtureId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

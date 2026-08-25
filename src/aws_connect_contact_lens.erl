@@ -65,6 +65,25 @@
 
 
 %% Example:
+%% extracted_information() :: #{
+%%   <<"ExtractedValues">> => list(extracted_information_value()),
+%%   <<"ExtractionDefinitionDisplayLabel">> => string(),
+%%   <<"ExtractionDefinitionId">> => string(),
+%%   <<"ExtractionDefinitionName">> => string(),
+%%   <<"FailureCode">> => list(any())
+%% }
+-type extracted_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% extracted_information_value() :: #{
+%%   <<"Content">> => string(),
+%%   <<"PointsOfInterest">> => list(point_of_interest())
+%% }
+-type extracted_information_value() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_service_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -123,6 +142,7 @@
 %% Example:
 %% realtime_contact_analysis_segment() :: #{
 %%   <<"Categories">> => categories(),
+%%   <<"ExtractedInformation">> => extracted_information(),
 %%   <<"PostContactSummary">> => post_contact_summary(),
 %%   <<"Transcript">> => transcript()
 %% }
@@ -167,8 +187,12 @@
 %% API
 %%====================================================================
 
-%% @doc Provides a list of analysis segments for a real-time analysis
-%% session.
+%% @doc Provides a list of analysis segments for a real-time analysis session
+%% for
+%% voice.
+%%
+%% Voice data is retained for 24 hours. You must invoke this API during that
+%% time.
 -spec list_realtime_contact_analysis_segments(aws_client:aws_client(), list_realtime_contact_analysis_segments_request()) ->
     {ok, list_realtime_contact_analysis_segments_response(), tuple()} |
     {error, any()} |

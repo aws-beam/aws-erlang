@@ -310,7 +310,8 @@
 %%   <<"documents">> => list(document_info()),
 %%   <<"endpoints">> => list(endpoint()),
 %%   <<"integratedRepositories">> => list(integrated_repository()),
-%%   <<"sourceCode">> => list(source_code_repository())
+%%   <<"sourceCode">> => list(source_code_repository()),
+%%   <<"trustedCaCertificates">> => list(trusted_ca_certificate())
 %% }
 -type assets() :: #{binary() => any()}.
 
@@ -2268,6 +2269,7 @@
 %%   <<"status">> => list(any()),
 %%   <<"steps">> => list(step()),
 %%   <<"title">> => [string()],
+%%   <<"trustedCaCertificates">> => list(trusted_ca_certificate()),
 %%   <<"updatedAt">> => [non_neg_integer()],
 %%   <<"vpcConfig">> => vpc_config()
 %% }
@@ -2756,6 +2758,13 @@
 %%   <<"serviceCode">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% trusted_ca_certificate() :: #{
+%%   <<"source">> => list()
+%% }
+-type trusted_ca_certificate() :: #{binary() => any()}.
 
 
 %% Example:
