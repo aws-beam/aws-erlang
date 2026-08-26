@@ -732,6 +732,7 @@
 %%   <<"elasticsearch">> => elasticsearch_action(),
 %%   <<"firehose">> => firehose_action(),
 %%   <<"http">> => http_action(),
+%%   <<"influxDB">> => influx_db_action(),
 %%   <<"iotAnalytics">> => iot_analytics_action(),
 %%   <<"iotEvents">> => iot_events_action(),
 %%   <<"iotSiteWise">> => iot_site_wise_action(),
@@ -3812,6 +3813,63 @@
 
 
 %% Example:
+%% influx_db_action() :: #{
+%%   <<"batchConfig">> => influx_db_batch_config(),
+%%   <<"databaseName">> => string(),
+%%   <<"destinationArn">> => string(),
+%%   <<"organization">> => string(),
+%%   <<"roleArn">> => string(),
+%%   <<"tableName">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timestampUnit">> => list(any())
+%% }
+-type influx_db_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% influx_db_batch_config() :: #{
+%%   <<"batchAcrossTopics">> => boolean(),
+%%   <<"maxBatchOpenMs">> => integer(),
+%%   <<"maxBatchSize">> => integer(),
+%%   <<"maxBatchSizeBytes">> => integer()
+%% }
+-type influx_db_batch_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% influx_db_destination_configuration() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"influxDBVersion">> => list(any()),
+%%   <<"secretId">> => string(),
+%%   <<"secretKey">> => string(),
+%%   <<"secretType">> => list(any())
+%% }
+-type influx_db_destination_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% influx_db_destination_properties() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"influxDBVersion">> => list(any()),
+%%   <<"secretId">> => string(),
+%%   <<"secretKey">> => string(),
+%%   <<"secretType">> => list(any())
+%% }
+-type influx_db_destination_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% influx_db_destination_summary() :: #{
+%%   <<"endpoint">> => string(),
+%%   <<"influxDBVersion">> => list(any()),
+%%   <<"secretId">> => string(),
+%%   <<"secretKey">> => string(),
+%%   <<"secretType">> => list(any())
+%% }
+-type influx_db_destination_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -6595,6 +6653,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"httpUrlProperties">> => http_url_destination_properties(),
+%%   <<"influxDBProperties">> => influx_db_destination_properties(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => string(),
@@ -6606,6 +6665,7 @@
 %% Example:
 %% topic_rule_destination_configuration() :: #{
 %%   <<"httpUrlConfiguration">> => http_url_destination_configuration(),
+%%   <<"influxDBConfiguration">> => influx_db_destination_configuration(),
 %%   <<"vpcConfiguration">> => vpc_destination_configuration()
 %% }
 -type topic_rule_destination_configuration() :: #{binary() => any()}.
@@ -6616,6 +6676,7 @@
 %%   <<"arn">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"httpUrlSummary">> => http_url_destination_summary(),
+%%   <<"influxDBSummary">> => influx_db_destination_summary(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => string(),
@@ -9557,10 +9618,18 @@ attach_principal_policy(Client, PolicyName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Associates a Device Defender security profile with a thing group or
-%% this account.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
 %%
-%% Each
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Associates a Device Defender security profile with a thing group or this
+%% account. Each
 %% thing group or account can have up to five security profiles associated
 %% with it.
 %%
@@ -9778,6 +9847,15 @@ cancel_certificate_transfer(Client, CertificateId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
 %% Cancels a Device Defender ML Detect mitigation action.
 %%
 %% Requires permission to access the CancelDetectMitigationActionsTask:
@@ -10290,7 +10368,17 @@ create_command(Client, CommandId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Use this API to define a
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Use this API to define a
 %% Custom
 %% Metric
 %% published by your devices to Device Defender.
@@ -10331,9 +10419,18 @@ create_custom_metric(Client, MetricName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a dimension that you can use to limit the scope of a metric
-%% used in a security profile for IoT Device Defender.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
 %%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Create a dimension that you can use to limit the scope of a metric used in
+%% a security profile for IoT Device Defender.
 %% For example, using a `TOPIC_FILTER' dimension, you can narrow down the
 %% scope of the metric only to MQTT topics whose name match the pattern
 %% specified in the dimension.
@@ -11076,7 +11173,17 @@ create_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a Device Defender security profile.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Creates a Device Defender security profile.
 %%
 %% Requires permission to access the CreateSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -11742,6 +11849,15 @@ delete_command_execution(Client, ExecutionId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
 %% Deletes a Device Defender detect custom metric.
 %%
 %% Requires permission to access the DeleteCustomMetric:
@@ -11790,8 +11906,17 @@ delete_custom_metric(Client, MetricName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes the specified dimension from your Amazon Web Services
-%% accounts.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Removes the specified dimension from your Amazon Web Services accounts.
 %%
 %% Requires permission to access the DeleteDimension:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -12525,7 +12650,17 @@ delete_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Device Defender security profile.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Deletes a Device Defender security profile.
 %%
 %% Requires permission to access the DeleteSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -13302,6 +13437,15 @@ describe_certificate_provider(Client, CertificateProviderName, QueryMap, Headers
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
 %% Gets information about a Device Defender detect custom metric.
 %%
 %% Requires permission to access the DescribeCustomMetric:
@@ -13385,6 +13529,15 @@ describe_default_authorizer(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
 %% Gets information about a Device Defender ML Detect mitigation action.
 %%
 %% Requires permission to access the DescribeDetectMitigationActionsTask:
@@ -13426,7 +13579,17 @@ describe_detect_mitigation_actions_task(Client, TaskId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Provides details about a dimension that is defined in your Amazon Web
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Provides details about a dimension that is defined in your Amazon Web
 %% Services accounts.
 %%
 %% Requires permission to access the DescribeDimension:
@@ -14099,7 +14262,17 @@ describe_scheduled_audit(Client, ScheduledAuditName, QueryMap, HeadersMap, Optio
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets information about a Device Defender security profile.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Gets information about a Device Defender security profile.
 %%
 %% Requires permission to access the DescribeSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -14431,8 +14604,18 @@ detach_principal_policy(Client, PolicyName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Disassociates a Device Defender security profile from a thing group
-%% or from this account.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Disassociates a Device Defender security profile from a thing group or
+%% from this account.
 %%
 %% Requires permission to access the DetachSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -14637,6 +14820,15 @@ enable_topic_rule(Client, RuleName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
 %% Returns a Device Defender's ML Detect Security Profile training
 %% model's status.
 %%
@@ -15575,8 +15767,17 @@ get_v2_logging_options(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the active violations for a given Device Defender security
-%% profile.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Lists the active violations for a given Device Defender security profile.
 %%
 %% Requires permission to access the ListActiveViolations:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -16295,6 +16496,15 @@ list_commands(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
 %% Lists your Device Defender detect custom metrics.
 %%
 %% Requires permission to access the ListCustomMetrics:
@@ -16342,6 +16552,15 @@ list_custom_metrics(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
 %% Lists mitigation actions executions for a Device Defender ML Detect
 %% Security Profile.
 %%
@@ -16395,6 +16614,15 @@ list_detect_mitigation_actions_executions(Client, QueryMap, HeadersMap, Options0
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
 %% List of Device Defender ML Detect mitigation actions tasks.
 %%
 %% Requires permission to access the ListDetectMitigationActionsTasks:
@@ -16443,8 +16671,18 @@ list_detect_mitigation_actions_tasks(Client, EndTime, StartTime, QueryMap, Heade
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc List the set of dimensions that are defined for your Amazon Web
-%% Services accounts.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% List the set of dimensions that are defined for your Amazon Web Services
+%% accounts.
 %%
 %% Requires permission to access the ListDimensions:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -17771,11 +18009,19 @@ list_scheduled_audits(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Device Defender security profiles
-%% you've
-%% created.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
 %%
-%% You can filter security profiles by dimension or custom metric.
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Lists the Device Defender security profiles
+%% you've
+%% created. You can filter security profiles by dimension or custom metric.
 %%
 %% Requires permission to access the ListSecurityProfiles:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -17826,8 +18072,18 @@ list_security_profiles(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Device Defender security profiles attached to a target
-%% (thing group).
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Lists the Device Defender security profiles attached to a target (thing
+%% group).
 %%
 %% Requires permission to access the ListSecurityProfilesForTarget:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -18008,8 +18264,18 @@ list_targets_for_policy(Client, PolicyName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists the targets (thing groups) associated with a given Device
-%% Defender security profile.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Lists the targets (thing groups) associated with a given Device Defender
+%% security profile.
 %%
 %% Requires permission to access the ListTargetsForSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -18688,9 +18954,18 @@ list_v2_logging_levels(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists the Device Defender security profile violations discovered
-%% during the given time period.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
 %%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Lists the Device Defender security profile violations discovered during
+%% the given time period.
 %% You can use filters to limit the results to those alerts issued for a
 %% particular security profile,
 %% behavior, or thing (device).
@@ -18746,8 +19021,18 @@ list_violation_events(Client, EndTime, StartTime, QueryMap, HeadersMap, Options0
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Set a verification state and provide a description of that
-%% verification state on a violation (detect alarm).
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Set a verification state and provide a description of that verification
+%% state on a violation (detect alarm).
 -spec put_verification_state_on_violation(aws_client:aws_client(), binary() | list(), put_verification_state_on_violation_request()) ->
     {ok, put_verification_state_on_violation_response(), tuple()} |
     {error, any()} |
@@ -19424,6 +19709,15 @@ start_audit_mitigation_actions_task(Client, TaskId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
 %% Starts a Device Defender ML Detect mitigation actions task.
 %%
 %% Requires permission to access the StartDetectMitigationActionsTask:
@@ -20137,7 +20431,17 @@ update_command(Client, CommandId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Updates a
 %% Device Defender detect custom metric.
 %%
 %% Requires permission to access the UpdateCustomMetric:
@@ -20176,9 +20480,17 @@ update_custom_metric(Client, MetricName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the definition for a dimension.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
 %%
-%% You
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Updates the definition for a dimension. You
 %% cannot
 %% change the type of a dimension after
 %% it is created (you can delete it and
@@ -20788,7 +21100,17 @@ update_scheduled_audit(Client, ScheduledAuditName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a Device Defender security profile.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Updates a Device Defender security profile.
 %%
 %% Requires permission to access the UpdateSecurityProfile:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions
@@ -21056,7 +21378,17 @@ update_topic_rule_destination(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Validates a Device Defender security profile behaviors specification.
+%% @doc
+%% The IoT Device Defender detect feature will no longer be available to new
+%% customers starting August 31, 2026.
+%%
+%% If you would like to use the detect feature, sign up prior to August 31,
+%% 2026. To learn about alternatives to IoT Device Defender detect, see IoT
+%% Device Defender detect feature availability change in the IoT Device
+%% Defender Developer Guide. There is no change to IoT Device Defender audit
+%% availability.
+%%
+%% Validates a Device Defender security profile behaviors specification.
 %%
 %% Requires permission to access the ValidateSecurityProfileBehaviors:
 %% https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsiot.html#awsiot-actions-as-permissions

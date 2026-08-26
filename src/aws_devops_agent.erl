@@ -136,6 +136,8 @@
          untag_resource/4,
          update_agent_space/3,
          update_agent_space/4,
+         update_approval_action/4,
+         update_approval_action/5,
          update_asset/4,
          update_asset/5,
          update_asset_file/5,
@@ -176,9 +178,29 @@
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"locale">> => string(),
 %%   <<"name">> => string(),
+%%   <<"preferences">> => map(),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type agent_space() :: #{binary() => any()}.
+
+
+%% Example:
+%% approval_action() :: #{
+%%   <<"action">> => list(any()),
+%%   <<"approvalId">> => string(),
+%%   <<"buttonText">> => string(),
+%%   <<"interruptId">> => string(),
+%%   <<"toolUseId">> => string()
+%% }
+-type approval_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% approval_pattern() :: #{
+%%   <<"argumentPins">> => map(),
+%%   <<"tool">> => string()
+%% }
+-type approval_pattern() :: #{binary() => any()}.
 
 
 %% Example:
@@ -291,6 +313,8 @@
 %% aws_configuration() :: #{
 %%   <<"accountId">> => [string()],
 %%   <<"accountType">> => list(any()),
+%%   <<"agentElevatedRoleArn">> => string(),
+%%   <<"agentElevatedRoleArnStatus">> => list(any()),
 %%   <<"assumableRoleArn">> => string()
 %% }
 -type aws_configuration() :: #{binary() => any()}.
@@ -350,6 +374,7 @@
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"locale">> => string(),
 %%   <<"name">> := string(),
+%%   <<"preferences">> => map(),
 %%   <<"tags">> => map()
 %% }
 -type create_agent_space_input() :: #{binary() => any()}.
@@ -1277,13 +1302,17 @@
 
 %% Example:
 %% m_c_p_server_configuration() :: #{
+%%   <<"toolDetails">> => list(m_c_p_tool_detail()),
 %%   <<"tools">> => list([string()]())
 %% }
 -type m_c_p_server_configuration() :: #{binary() => any()}.
 
+
 %% Example:
-%% m_c_p_server_datadog_configuration() :: #{}
--type m_c_p_server_datadog_configuration() :: #{}.
+%% m_c_p_server_datadog_configuration() :: #{
+%%   <<"enabledElevatedTools">> => list(m_c_p_tool_detail())
+%% }
+-type m_c_p_server_datadog_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1298,6 +1327,7 @@
 
 %% Example:
 %% m_c_p_server_grafana_configuration() :: #{
+%%   <<"enabledElevatedTools">> => list(m_c_p_tool_detail()),
 %%   <<"endpoint">> => [string()],
 %%   <<"organizationId">> => [string()],
 %%   <<"tools">> => list([string()]())
@@ -1353,6 +1383,7 @@
 
 %% Example:
 %% m_c_p_server_sig_v4_configuration() :: #{
+%%   <<"toolDetails">> => list(m_c_p_tool_detail()),
 %%   <<"tools">> => list([string()]())
 %% }
 -type m_c_p_server_sig_v4_configuration() :: #{binary() => any()}.
@@ -1370,6 +1401,14 @@
 %% Example:
 %% m_c_p_server_splunk_configuration() :: #{}
 -type m_c_p_server_splunk_configuration() :: #{}.
+
+
+%% Example:
+%% m_c_p_tool_detail() :: #{
+%%   <<"name">> => [string()],
+%%   <<"toolClassification">> => list(any())
+%% }
+-type m_c_p_tool_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1633,11 +1672,13 @@
 %% registered_service() :: #{
 %%   <<"accessibleResources">> => list([any()]()),
 %%   <<"additionalServiceDetails">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"name">> => string(),
 %%   <<"privateConnectionName">> => string(),
 %%   <<"serviceId">> => string(),
-%%   <<"serviceType">> => list(any())
+%%   <<"serviceType">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type registered_service() :: #{binary() => any()}.
 
@@ -1779,6 +1820,7 @@
 
 %% Example:
 %% send_message_context() :: #{
+%%   <<"approvalAction">> => approval_action(),
 %%   <<"currentPage">> => [string()],
 %%   <<"lastMessage">> => [string()],
 %%   <<"userActionResponse">> => [string()]
@@ -1803,6 +1845,7 @@
 %%   <<"content">> := string(),
 %%   <<"context">> => send_message_context(),
 %%   <<"executionId">> := string(),
+%%   <<"modelTier">> => [string()],
 %%   <<"userId">> => string()
 %% }
 -type send_message_request() :: #{binary() => any()}.
@@ -1951,6 +1994,8 @@
 %% source_aws_configuration() :: #{
 %%   <<"accountId">> => [string()],
 %%   <<"accountType">> => list(any()),
+%%   <<"agentElevatedRoleArn">> => string(),
+%%   <<"agentElevatedRoleArnStatus">> => list(any()),
 %%   <<"assumableRoleArn">> => string(),
 %%   <<"externalId">> => [string()]
 %% }
@@ -2039,7 +2084,8 @@
 %% update_agent_space_input() :: #{
 %%   <<"description">> => string(),
 %%   <<"locale">> => string(),
-%%   <<"name">> => string()
+%%   <<"name">> => string(),
+%%   <<"preferences">> => map()
 %% }
 -type update_agent_space_input() :: #{binary() => any()}.
 
@@ -2049,6 +2095,26 @@
 %%   <<"agentSpace">> => agent_space()
 %% }
 -type update_agent_space_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_approval_action_request() :: #{
+%%   <<"action">> := list(any()),
+%%   <<"finalPattern">> => approval_pattern(),
+%%   <<"reason">> => string(),
+%%   <<"singleUse">> => [boolean()],
+%%   <<"ttlSeconds">> => [integer()]
+%% }
+-type update_approval_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_approval_action_response() :: #{
+%%   <<"approvalId">> => string(),
+%%   <<"expiresAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any())
+%% }
+-type update_approval_action_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2295,6 +2361,7 @@
 -type create_private_connection_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    invalid_parameter_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -2592,6 +2659,15 @@
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception().
+
+-type update_approval_action_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_asset_errors() ::
     validation_exception() | 
@@ -4561,6 +4637,43 @@ update_agent_space(Client, AgentSpaceId, Input) ->
 update_agent_space(Client, AgentSpaceId, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/agentspaces/", aws_util:encode_uri(AgentSpaceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an approval request with the terminal decision (APPROVED or
+%% REJECTED).
+%%
+%% A single operation handles both verbs via the action enum.
+-spec update_approval_action(aws_client:aws_client(), binary() | list(), binary() | list(), update_approval_action_request()) ->
+    {ok, update_approval_action_response(), tuple()} |
+    {error, any()} |
+    {error, update_approval_action_errors(), tuple()}.
+update_approval_action(Client, AgentSpaceId, ApprovalId, Input) ->
+    update_approval_action(Client, AgentSpaceId, ApprovalId, Input, []).
+
+-spec update_approval_action(aws_client:aws_client(), binary() | list(), binary() | list(), update_approval_action_request(), proplists:proplist()) ->
+    {ok, update_approval_action_response(), tuple()} |
+    {error, any()} |
+    {error, update_approval_action_errors(), tuple()}.
+update_approval_action(Client, AgentSpaceId, ApprovalId, Input0, Options0) ->
+    Method = post,
+    Path = ["/agents/agent-space/", aws_util:encode_uri(AgentSpaceId), "/approvals/", aws_util:encode_uri(ApprovalId), "/update-action"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -36,7 +36,7 @@
 %%
 %% Submits the metering record for a set of customers.
 %% `BatchMeterUsage' API calls are captured by CloudTrail. You can use
-%% CloudTrail to verify that the software as a subscription (SaaS) metering
+%% CloudTrail to verify that the software as a service (SaaS) metering
 %% records that
 %% you sent are accurate by searching for records with the `eventName'
 %% of `BatchMeterUsage'. You can also use CloudTrail to audit records
@@ -69,7 +69,7 @@
 %% Entitlement and metering for paid container
 %% products
 %%
-%% RegisteredUsage
+%% RegisterUsage
 %%
 %% Provides software entitlement and metering. Paid container software
 %% products
@@ -405,6 +405,10 @@
 %% integrations. Existing integrations continue to work. Review the new
 %% integration for Concurrent Agreements here:
 %% https://catalog.workshops.aws/mpseller/en-US/saas/integration-for-concurrent-agreements.
+%% For additional implementation details, see BatchMeterUsage code example
+%% with LicenseArn:
+%% https://docs.aws.amazon.com/marketplace/latest/userguide/saas-code-examples.html#saas-batchmeterusage-licensearn-example
+%% in the Amazon Web Services Marketplace Seller Guide.
 %%
 %% To post metering records for customers, SaaS applications call
 %% `BatchMeterUsage', which is used for metering SaaS flexible
@@ -423,7 +427,10 @@
 %% day of the
 %% next month. For example, you must submit March usage records before 06:00
 %% UTC on
-%% April 1. After this grace period, we return a
+%% April 1. On April 1 at 05:00 UTC, you can still submit records for March
+%% 31 (within the 6-hour grace period). After 06:00 UTC on April 1, March
+%% records are rejected regardless of the normal 24-hour submission window.
+%% After this grace period, we return a
 %% `TimestampOutOfBoundsException' error.
 %%
 %% `BatchMeterUsage' can process up to 25

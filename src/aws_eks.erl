@@ -1637,6 +1637,22 @@
 
 
 %% Example:
+%% integer_constraints() :: #{
+%%   <<"max">> => integer(),
+%%   <<"min">> => integer()
+%% }
+-type integer_constraints() :: #{binary() => any()}.
+
+
+%% Example:
+%% integer_parameter_config() :: #{
+%%   <<"constraints">> => integer_constraints(),
+%%   <<"defaultValue">> => integer()
+%% }
+-type integer_parameter_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% integer_range_constraint() :: #{
 %%   <<"max">> => integer(),
 %%   <<"min">> => integer()
@@ -1710,21 +1726,24 @@
 
 %% Example:
 %% kube_controller_manager_config_request() :: #{
-%%   <<"horizontalPodAutoscalerControllerConfig">> => horizontal_pod_autoscaler_controller_config_request()
+%%   <<"horizontalPodAutoscalerControllerConfig">> => horizontal_pod_autoscaler_controller_config_request(),
+%%   <<"podGcControllerConfig">> => pod_gc_controller_config_request()
 %% }
 -type kube_controller_manager_config_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% kube_controller_manager_config_response() :: #{
-%%   <<"horizontalPodAutoscalerControllerConfig">> => horizontal_pod_autoscaler_controller_config_response()
+%%   <<"horizontalPodAutoscalerControllerConfig">> => horizontal_pod_autoscaler_controller_config_response(),
+%%   <<"podGcControllerConfig">> => pod_gc_controller_config_response()
 %% }
 -type kube_controller_manager_config_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% kube_controller_manager_version_config() :: #{
-%%   <<"horizontalPodAutoscalerControllerConfig">> => horizontal_pod_autoscaler_controller_version_config()
+%%   <<"horizontalPodAutoscalerControllerConfig">> => horizontal_pod_autoscaler_controller_version_config(),
+%%   <<"podGcControllerConfig">> => pod_gc_controller_version_config()
 %% }
 -type kube_controller_manager_version_config() :: #{binary() => any()}.
 
@@ -2221,6 +2240,27 @@
 %%   <<"outpostArns">> => list(string())
 %% }
 -type outpost_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pod_gc_controller_config_request() :: #{
+%%   <<"terminatedPodGcThreshold">> => integer()
+%% }
+-type pod_gc_controller_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% pod_gc_controller_config_response() :: #{
+%%   <<"terminatedPodGcThreshold">> => integer()
+%% }
+-type pod_gc_controller_config_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% pod_gc_controller_version_config() :: #{
+%%   <<"terminatedPodGcThreshold">> => integer_parameter_config()
+%% }
+-type pod_gc_controller_version_config() :: #{binary() => any()}.
 
 
 %% Example:

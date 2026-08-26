@@ -12712,6 +12712,13 @@
 -type fleet_capacity_reservation() :: #{binary() => any()}.
 
 %% Example:
+%% fleet_capacity_reservation_target_request() :: #{
+%%   <<"CapacityReservationIds">> => list(string()),
+%%   <<"CapacityReservationResourceGroupArns">> => list(string())
+%% }
+-type fleet_capacity_reservation_target_request() :: #{binary() => any()}.
+
+%% Example:
 %% fleet_data() :: #{
 %%   <<"ActivityStatus">> => list(any()),
 %%   <<"ClientToken">> => string(),
@@ -20448,14 +20455,31 @@
 -type reservation_value() :: #{binary() => any()}.
 
 %% Example:
+%% reserved_capacity_fallback_options() :: #{
+%%   <<"MarketTypes">> => list(list(any())())
+%% }
+-type reserved_capacity_fallback_options() :: #{binary() => any()}.
+
+%% Example:
+%% reserved_capacity_fallback_options_request() :: #{
+%%   <<"MarketTypes">> => list(list(any())())
+%% }
+-type reserved_capacity_fallback_options_request() :: #{binary() => any()}.
+
+%% Example:
 %% reserved_capacity_options() :: #{
-%%   <<"ReservationTypes">> => list(list(any())())
+%%   <<"AllocationStrategy">> => list(any()),
+%%   <<"ReservationTypes">> => list(list(any())()),
+%%   <<"ReservedCapacityFallbackOptions">> => reserved_capacity_fallback_options()
 %% }
 -type reserved_capacity_options() :: #{binary() => any()}.
 
 %% Example:
 %% reserved_capacity_options_request() :: #{
-%%   <<"ReservationTypes">> => list(list(any())())
+%%   <<"AllocationStrategy">> => list(any()),
+%%   <<"CapacityReservationTarget">> => fleet_capacity_reservation_target_request(),
+%%   <<"ReservationTypes">> => list(list(any())()),
+%%   <<"ReservedCapacityFallbackOptions">> => reserved_capacity_fallback_options_request()
 %% }
 -type reserved_capacity_options_request() :: #{binary() => any()}.
 

@@ -892,6 +892,12 @@
 -type disable_metrics_collection_query() :: #{binary() => any()}.
 
 %% Example:
+%% distribution_segment() :: #{
+%%   <<"TargetCapacityTypes">> => list(list(any())())
+%% }
+-type distribution_segment() :: #{binary() => any()}.
+
+%% Example:
 %% ebs() :: #{
 %%   <<"DeleteOnTermination">> => boolean(),
 %%   <<"Encrypted">> => boolean(),
@@ -1136,6 +1142,7 @@
 
 %% Example:
 %% instances_distribution() :: #{
+%%   <<"DistributionSegments">> => list(distribution_segment()),
 %%   <<"OnDemandAllocationStrategy">> => string(),
 %%   <<"OnDemandBaseCapacity">> => integer(),
 %%   <<"OnDemandPercentageAboveBaseCapacity">> => integer(),
