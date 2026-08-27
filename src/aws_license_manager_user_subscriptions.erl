@@ -366,6 +366,7 @@
 %% product_user_summary() :: #{
 %%   <<"Domain">> => [string()],
 %%   <<"IdentityProvider">> => list(),
+%%   <<"LicenseExpirationDate">> => [string()],
 %%   <<"Product">> => [string()],
 %%   <<"ProductUserArn">> => string(),
 %%   <<"Status">> => [string()],

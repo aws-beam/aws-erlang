@@ -338,7 +338,8 @@
 
 %% Example:
 %% capability_configuration() :: #{
-%%   <<"enabled">> => [boolean()]
+%%   <<"enabled">> => [boolean()],
+%%   <<"triggerFilterGroups">> => list(trigger_filter_group())
 %% }
 -type capability_configuration() :: #{binary() => any()}.
 
@@ -1464,6 +1465,13 @@
 
 
 %% Example:
+%% pattern_filter() :: #{
+%%   <<"patterns">> => list(string())
+%% }
+-type pattern_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% pending_message() :: #{
 %%   <<"message">> => list(),
 %%   <<"messageId">> => [string()]
@@ -2067,6 +2075,14 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type trigger() :: #{binary() => any()}.
+
+
+%% Example:
+%% trigger_filter_group() :: #{
+%%   <<"events">> => list(list(any())()),
+%%   <<"targetBranches">> => pattern_filter()
+%% }
+-type trigger_filter_group() :: #{binary() => any()}.
 
 
 %% Example:
