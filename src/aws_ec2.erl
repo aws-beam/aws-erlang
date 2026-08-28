@@ -1550,6 +1550,8 @@
          replace_iam_instance_profile_association/3,
          replace_image_criteria_in_allowed_images_settings/2,
          replace_image_criteria_in_allowed_images_settings/3,
+         replace_image_instance_type_specification/2,
+         replace_image_instance_type_specification/3,
          replace_network_acl_association/2,
          replace_network_acl_association/3,
          replace_network_acl_entry/2,
@@ -14482,6 +14484,7 @@
 %%   <<"ImageType">> => list(any()),
 %%   <<"ImageWatermarks">> => list(image_watermark()),
 %%   <<"ImdsSupport">> => list(any()),
+%%   <<"InstanceTypeSpecification">> => instance_type_specification(),
 %%   <<"KernelId">> => string(),
 %%   <<"LastLaunchedTime">> => string(),
 %%   <<"Name">> => string(),
@@ -15634,12 +15637,32 @@
 -type instance_type_info_from_instance_requirements() :: #{binary() => any()}.
 
 %% Example:
+%% instance_type_item() :: #{
+%%   <<"InstanceType">> => string()
+%% }
+-type instance_type_item() :: #{binary() => any()}.
+
+%% Example:
 %% instance_type_offering() :: #{
 %%   <<"InstanceType">> => list(any()),
 %%   <<"Location">> => string(),
 %%   <<"LocationType">> => list(any())
 %% }
 -type instance_type_offering() :: #{binary() => any()}.
+
+%% Example:
+%% instance_type_specification() :: #{
+%%   <<"SupportedInstanceTypes">> => list(instance_type_item()),
+%%   <<"UnsupportedInstanceTypes">> => list(instance_type_item())
+%% }
+-type instance_type_specification() :: #{binary() => any()}.
+
+%% Example:
+%% instance_type_specification_request() :: #{
+%%   <<"SupportedInstanceTypes">> => list(string()),
+%%   <<"UnsupportedInstanceTypes">> => list(string())
+%% }
+-type instance_type_specification_request() :: #{binary() => any()}.
 
 %% Example:
 %% instance_usage() :: #{
@@ -20188,6 +20211,20 @@
 %%   <<"ReturnValue">> => boolean()
 %% }
 -type replace_image_criteria_in_allowed_images_settings_result() :: #{binary() => any()}.
+
+%% Example:
+%% replace_image_instance_type_specification_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageId">> := string(),
+%%   <<"InstanceTypeSpecification">> => instance_type_specification_request()
+%% }
+-type replace_image_instance_type_specification_request() :: #{binary() => any()}.
+
+%% Example:
+%% replace_image_instance_type_specification_result() :: #{
+%%   <<"ReturnValue">> => boolean()
+%% }
+-type replace_image_instance_type_specification_result() :: #{binary() => any()}.
 
 %% Example:
 %% replace_network_acl_association_request() :: #{
@@ -42148,6 +42185,58 @@ replace_image_criteria_in_allowed_images_settings(Client, Input)
 replace_image_criteria_in_allowed_images_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ReplaceImageCriteriaInAllowedImagesSettings">>, Input, Options).
+
+%% @doc Replaces or removes the instance type specification for an AMI.
+%%
+%% The instance type
+%% specification defines which instance types are compatible with the AMI.
+%%
+%% When you launch an instance using
+%% RunInstances:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_RunInstances.html,
+%% Amazon EC2 validates the requested instance type against the AMI's
+%% instance type specification. If the instance type is not compatible, the
+%% request fails with an
+%% `InvalidParameterCombination' error.
+%%
+%% You can specify supported instance types, unsupported instance types, or
+%% both. The
+%% evaluation logic is as follows:
+%%
+%% No specification set – all instance types are allowed.
+%%
+%% Only `UnsupportedInstanceTypes' set – All instance types are allowed
+%% except those that match the unsupported list.
+%%
+%% `SupportedInstanceTypes' set – The instance type must match the
+%% supported list and must not match the unsupported list.
+%%
+%% Instance type entries support wildcard patterns using `*' (for
+%% example,
+%% `t3.*' matches all t3 sizes).
+%%
+%% To remove an existing instance type specification, omit the
+%% `InstanceTypeSpecification' parameter or set it to `null'.
+%%
+%% To set the instance type specification, you must be the AMI owner. You
+%% cannot set an instance
+%% type specification on an AMI that is listed in Amazon Web Services
+%% Marketplace, and you cannot list an AMI
+%% in Amazon Web Services Marketplace if it has an instance type
+%% specification set.
+-spec replace_image_instance_type_specification(aws_client:aws_client(), replace_image_instance_type_specification_request()) ->
+    {ok, replace_image_instance_type_specification_result(), tuple()} |
+    {error, any()}.
+replace_image_instance_type_specification(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    replace_image_instance_type_specification(Client, Input, []).
+
+-spec replace_image_instance_type_specification(aws_client:aws_client(), replace_image_instance_type_specification_request(), proplists:proplist()) ->
+    {ok, replace_image_instance_type_specification_result(), tuple()} |
+    {error, any()}.
+replace_image_instance_type_specification(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ReplaceImageInstanceTypeSpecification">>, Input, Options).
 
 %% @doc Changes which network ACL a subnet is associated with.
 %%

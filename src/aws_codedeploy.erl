@@ -487,6 +487,7 @@
 %%   <<"autoRollbackConfiguration">> => auto_rollback_configuration(),
 %%   <<"deploymentConfigName">> => string(),
 %%   <<"deploymentGroupName">> => string(),
+%%   <<"deploymentMode">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"fileExistsBehavior">> => list(any()),
 %%   <<"ignoreApplicationStopFailures">> => boolean(),
@@ -2058,6 +2059,7 @@
     deployment_already_completed_exception().
 
 -type create_application_errors() ::
+    throttling_exception() | 
     invalid_tags_to_add_exception() | 
     invalid_compute_platform_exception() | 
     invalid_application_name_exception() | 
@@ -2075,11 +2077,14 @@
     invalid_role_exception() | 
     invalid_revision_exception() | 
     invalid_load_balancer_info_exception() | 
+    invalid_input_exception() | 
     invalid_ignore_application_stop_failures_value_exception() | 
     invalid_git_hub_account_token_exception() | 
     invalid_file_exists_behavior_exception() | 
+    invalid_e_c_s_service_exception() | 
     invalid_deployment_group_name_exception() | 
     invalid_deployment_config_name_exception() | 
+    invalid_compute_platform_exception() | 
     invalid_auto_scaling_group_exception() | 
     invalid_auto_rollback_config_exception() | 
     invalid_application_name_exception() | 
@@ -2258,7 +2263,9 @@
     invalid_compute_platform_exception() | 
     deployment_not_started_exception() | 
     deployment_id_required_exception() | 
-    deployment_does_not_exist_exception().
+    deployment_group_does_not_exist_exception() | 
+    deployment_does_not_exist_exception() | 
+    application_does_not_exist_exception().
 
 -type list_deployment_targets_errors() ::
     invalid_target_filter_name_exception() | 
@@ -2269,7 +2276,9 @@
     invalid_deployment_id_exception() | 
     deployment_not_started_exception() | 
     deployment_id_required_exception() | 
-    deployment_does_not_exist_exception().
+    deployment_group_does_not_exist_exception() | 
+    deployment_does_not_exist_exception() | 
+    application_does_not_exist_exception().
 
 -type list_deployments_errors() ::
     invalid_time_range_exception() | 

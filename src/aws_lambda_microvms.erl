@@ -312,6 +312,13 @@
 
 
 %% Example:
+%% insufficient_capacity_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type insufficient_capacity_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"retryAfterSeconds">> => [integer()]
@@ -458,6 +465,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"imageArn">> => string(),
 %%   <<"imageVersion">> => string(),
+%%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type managed_microvm_image_version() :: #{binary() => any()}.
@@ -602,7 +610,7 @@
 %%   <<"ingressNetworkConnectors">> => list(string()),
 %%   <<"logging">> => list(),
 %%   <<"maximumDurationInSeconds">> => [integer()],
-%%   <<"runHookPayload">> => [string()]
+%%   <<"runHookPayload">> => string()
 %% }
 -type run_microvm_request() :: #{binary() => any()}.
 
@@ -791,6 +799,7 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type create_microvm_image_errors() ::
@@ -807,6 +816,7 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type delete_microvm_image_errors() ::
@@ -913,6 +923,7 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    insufficient_capacity_exception() | 
     conflict_exception() | 
     access_denied_exception().
 

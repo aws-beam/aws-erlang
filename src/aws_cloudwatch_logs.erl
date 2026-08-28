@@ -2572,7 +2572,8 @@
 %%   <<"estimatedRecordsSkipped">> => float(),
 %%   <<"logGroupsScanned">> => float(),
 %%   <<"recordsMatched">> => float(),
-%%   <<"recordsScanned">> => float()
+%%   <<"recordsScanned">> => float(),
+%%   <<"resultCount">> => float()
 %% }
 -type query_statistics() :: #{binary() => any()}.
 

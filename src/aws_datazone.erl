@@ -2361,6 +2361,7 @@
 
 %% Example:
 %% delete_domain_input() :: #{
+%%   <<"cascadeDelete">> => [boolean()],
 %%   <<"clientToken">> => [string()],
 %%   <<"skipDeletionCheck">> => [boolean()]
 %% }
@@ -2457,6 +2458,13 @@
 %% Example:
 %% delete_notebook_output() :: #{}
 -type delete_notebook_output() :: #{}.
+
+
+%% Example:
+%% delete_progress() :: #{
+%%   <<"successfullyDeletedProjectCount">> => [integer()]
+%% }
+-type delete_progress() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2848,6 +2856,14 @@
 
 
 %% Example:
+%% failure_reason() :: #{
+%%   <<"id">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type failure_reason() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter() :: #{
 %%   <<"attribute">> => string(),
 %%   <<"intValue">> => [float()],
@@ -3155,9 +3171,11 @@
 %% get_domain_output() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deleteProgress">> => delete_progress(),
 %%   <<"description">> => [string()],
 %%   <<"domainExecutionRole">> => string(),
 %%   <<"domainVersion">> => list(any()),
+%%   <<"failureReasons">> => list(failure_reason()),
 %%   <<"id">> => string(),
 %%   <<"kmsKeyIdentifier">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
@@ -10825,6 +10843,7 @@ delete_domain(Client, Identifier, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"cascadeDelete">>, <<"cascadeDelete">>},
                      {<<"clientToken">>, <<"clientToken">>},
                      {<<"skipDeletionCheck">>, <<"skipDeletionCheck">>}
                    ],

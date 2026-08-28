@@ -2293,6 +2293,7 @@
 %%   <<"Encrypted">> => boolean(),
 %%   <<"Engine">> => string(),
 %%   <<"EngineVersion">> => string(),
+%%   <<"FullSnapshotSizeInBytes">> => float(),
 %%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
 %%   <<"InstanceCreateTime">> => non_neg_integer(),
 %%   <<"Iops">> => integer(),
