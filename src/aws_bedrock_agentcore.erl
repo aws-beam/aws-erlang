@@ -83,6 +83,8 @@
          get_workload_access_token_for_j_w_t/3,
          get_workload_access_token_for_user_id/2,
          get_workload_access_token_for_user_id/3,
+         ingest_data/3,
+         ingest_data/4,
          invoke_agent_runtime/3,
          invoke_agent_runtime/4,
          invoke_agent_runtime_command/3,
@@ -1687,12 +1689,39 @@
 
 
 %% Example:
+%% ingest_data_input() :: #{
+%%   <<"actorId">> := string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"contentTimestamp">> := [non_neg_integer()],
+%%   <<"extractionConfig">> => extraction_config(),
+%%   <<"metadata">> => map(),
+%%   <<"sessionId">> => string(),
+%%   <<"source">> := list()
+%% }
+-type ingest_data_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% ingest_data_output() :: #{
+%%   <<"sessionId">> => string()
+%% }
+-type ingest_data_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% inline_ground_truth() :: #{
 %%   <<"assertions">> => list(list()),
 %%   <<"expectedTrajectory">> => evaluation_expected_trajectory(),
 %%   <<"turns">> => list(ground_truth_turn())
 %% }
 -type inline_ground_truth() :: #{binary() => any()}.
+
+
+%% Example:
+%% inline_memory_content() :: #{
+%%   <<"payload">> => list(list())
+%% }
+-type inline_memory_content() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3588,6 +3617,14 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type ingest_data_errors() ::
+    validation_exception() | 
+    throttled_exception() | 
+    service_quota_exceeded_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
+
 -type invoke_agent_runtime_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -5175,6 +5212,44 @@ get_workload_access_token_for_user_id(Client, Input0, Options0) ->
     Method = post,
     Path = ["/identities/GetWorkloadAccessTokenForUserId"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Submits content directly for ingestion to generate long-term memory
+%% records in a AgentCore Memory resource.
+%%
+%% To use this operation, you must have the
+%% `bedrock-agentcore:IngestData' permission.
+-spec ingest_data(aws_client:aws_client(), binary() | list(), ingest_data_input()) ->
+    {ok, ingest_data_output(), tuple()} |
+    {error, any()} |
+    {error, ingest_data_errors(), tuple()}.
+ingest_data(Client, MemoryId, Input) ->
+    ingest_data(Client, MemoryId, Input, []).
+
+-spec ingest_data(aws_client:aws_client(), binary() | list(), ingest_data_input(), proplists:proplist()) ->
+    {ok, ingest_data_output(), tuple()} |
+    {error, any()} |
+    {error, ingest_data_errors(), tuple()}.
+ingest_data(Client, MemoryId, Input0, Options0) ->
+    Method = post,
+    Path = ["/memories/", aws_util:encode_uri(MemoryId), "/ingest"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

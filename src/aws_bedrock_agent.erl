@@ -913,6 +913,10 @@
 %% }
 -type cyclic_connection_flow_validation_details() :: #{binary() => any()}.
 
+%% Example:
+%% daily_schedule() :: #{}
+-type daily_schedule() :: #{}.
+
 
 %% Example:
 %% data_source() :: #{
@@ -1856,6 +1860,10 @@
 %% }
 -type lambda_function_flow_node_configuration() :: #{binary() => any()}.
 
+%% Example:
+%% last_day_of_month() :: #{}
+-type last_day_of_month() :: #{}.
+
 
 %% Example:
 %% lex_flow_node_configuration() :: #{
@@ -2163,7 +2171,8 @@
 %% managed_knowledge_base_connector_configuration() :: #{
 %%   <<"connectorParameters">> => [any()],
 %%   <<"deletionProtectionConfiguration">> => deletion_protection_configuration(),
-%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration()
+%%   <<"mediaExtractionConfiguration">> => media_extraction_configuration(),
+%%   <<"syncSchedule">> => list()
 %% }
 -type managed_knowledge_base_connector_configuration() :: #{binary() => any()}.
 
@@ -2319,6 +2328,13 @@
 %%   <<"vectorField">> => string()
 %% }
 -type mongo_db_atlas_field_mapping() :: #{binary() => any()}.
+
+
+%% Example:
+%% monthly_schedule() :: #{
+%%   <<"dayOfMonth">> => list()
+%% }
+-type monthly_schedule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3509,6 +3525,13 @@
 %%   <<"urlConfiguration">> => url_configuration()
 %% }
 -type web_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% weekly_schedule() :: #{
+%%   <<"dayOfWeek">> => list(any())
+%% }
+-type weekly_schedule() :: #{binary() => any()}.
 
 -type associate_agent_collaborator_errors() ::
     validation_exception() | 

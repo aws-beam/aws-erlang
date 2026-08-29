@@ -190,6 +190,8 @@
          describe_risk_configuration/3,
          describe_terms/2,
          describe_terms/3,
+         describe_terms_by_client/2,
+         describe_terms_by_client/3,
          describe_user_import_job/2,
          describe_user_import_job/3,
          describe_user_pool/2,
@@ -202,6 +204,8 @@
          forget_device/3,
          forgot_password/2,
          forgot_password/3,
+         get_client_token/2,
+         get_client_token/3,
          get_csv_header/2,
          get_csv_header/3,
          get_device/2,
@@ -905,6 +909,14 @@
 -type change_password_response() :: #{binary() => any()}.
 
 %% Example:
+%% client_authentication_result_type() :: #{
+%%   <<"AccessToken">> => string(),
+%%   <<"ExpiresIn">> => integer(),
+%%   <<"TokenType">> => string()
+%% }
+-type client_authentication_result_type() :: #{binary() => any()}.
+
+%% Example:
 %% client_secret_descriptor_type() :: #{
 %%   <<"ClientSecretCreateDate">> => non_neg_integer(),
 %%   <<"ClientSecretId">> => string(),
@@ -1443,6 +1455,20 @@
 -type describe_risk_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_terms_by_client_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"TermsName">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_terms_by_client_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_terms_by_client_response() :: #{
+%%   <<"Terms">> => terms_type()
+%% }
+-type describe_terms_by_client_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_terms_request() :: #{
 %%   <<"TermsId">> := string(),
 %%   <<"UserPoolId">> := string()
@@ -1678,6 +1704,21 @@
 %%   <<"CodeDeliveryDetails">> => code_delivery_details_type()
 %% }
 -type forgot_password_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_client_token_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"ClientMetadata">> => map(),
+%%   <<"Scopes">> => list(string()),
+%%   <<"Secret">> := string()
+%% }
+-type get_client_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_client_token_response() :: #{
+%%   <<"ClientAuthenticationResult">> => client_authentication_result_type()
+%% }
+-type get_client_token_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_csv_header_request() :: #{
@@ -4158,6 +4199,14 @@
     invalid_parameter_exception() | 
     internal_error_exception().
 
+-type describe_terms_by_client_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
+
 -type describe_user_import_job_errors() ::
     too_many_requests_exception() | 
     resource_not_found_exception() | 
@@ -4220,6 +4269,15 @@
     internal_error_exception() | 
     forbidden_exception() | 
     code_delivery_failure_exception().
+
+-type get_client_token_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type get_csv_header_errors() ::
     too_many_requests_exception() | 
@@ -7508,6 +7566,52 @@ describe_terms(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTerms">>, Input, Options).
 
+%% @doc Returns details for the terms documents that are associated with an
+%% app client,
+%% identified by the app client ID, user pool ID, and terms name.
+%%
+%% For
+%% more information, see Terms documents:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-managed-login.html#managed-login-terms-documents.
+%%
+%% To call `DescribeTermsByClient', you must have the
+%% `cognito-idp:DescribeTermsByClient' Identity and Access Management
+%% (IAM) permission. This
+%% operation additionally validates your permission for
+%% `cognito-idp:DescribeTerms', the action for . As a result, an IAM
+%% policy that denies
+%% `cognito-idp:DescribeTerms' also denies requests to
+%% `DescribeTermsByClient'.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec describe_terms_by_client(aws_client:aws_client(), describe_terms_by_client_request()) ->
+    {ok, describe_terms_by_client_response(), tuple()} |
+    {error, any()} |
+    {error, describe_terms_by_client_errors(), tuple()}.
+describe_terms_by_client(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_terms_by_client(Client, Input, []).
+
+-spec describe_terms_by_client(aws_client:aws_client(), describe_terms_by_client_request(), proplists:proplist()) ->
+    {ok, describe_terms_by_client_response(), tuple()} |
+    {error, any()} |
+    {error, describe_terms_by_client_errors(), tuple()}.
+describe_terms_by_client(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTermsByClient">>, Input, Options).
+
 %% @doc Describes a user import job.
 %%
 %% For more information about user CSV import, see Importing users from a CSV
@@ -7752,6 +7856,51 @@ forgot_password(Client, Input)
 forgot_password(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ForgotPassword">>, Input, Options).
+
+%% @doc Issues an access token for machine-to-machine (M2M) authorization.
+%%
+%% Your app client
+%% provides its client ID and secret, and receives an access token that
+%% authorizes requests
+%% to your resource servers. `GetClientToken' provides the same
+%% functionality as
+%% the OAuth2 client-credentials grant; both authorize an application rather
+%% than a user.
+%%
+%% To use this operation, you must configure the app client with a client
+%% secret and
+%% enable the `ALLOW_CLIENT_TOKEN_AUTH' authentication flow. The
+%% `ALLOW_CLIENT_TOKEN_AUTH' flow is mutually exclusive with user
+%% authentication
+%% flows. It must be the only authentication flow that you configure for the
+%% app client. For
+%% more information, see Scopes, M2M, and resource servers:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-define-resource-servers.html.
+%%
+%% Amazon Cognito doesn't evaluate Identity and Access Management (IAM)
+%% policies in requests for this API operation. For
+%% this operation, you can't use IAM credentials to authorize requests,
+%% and you can't
+%% grant IAM permissions in policies. For more information about
+%% authorization models in
+%% Amazon Cognito, see Using the Amazon Cognito user pools API and user pool
+%% endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html.
+-spec get_client_token(aws_client:aws_client(), get_client_token_request()) ->
+    {ok, get_client_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_client_token_errors(), tuple()}.
+get_client_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_client_token(Client, Input, []).
+
+-spec get_client_token(aws_client:aws_client(), get_client_token_request(), proplists:proplist()) ->
+    {ok, get_client_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_client_token_errors(), tuple()}.
+get_client_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetClientToken">>, Input, Options).
 
 %% @doc Given a user pool ID, generates a comma-separated value (CSV) list
 %% populated with

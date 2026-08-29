@@ -1159,6 +1159,7 @@
 %%   <<"bakeTimeInMinutes">> => integer(),
 %%   <<"canaryConfiguration">> => canary_configuration(),
 %%   <<"deploymentCircuitBreaker">> => deployment_circuit_breaker(),
+%%   <<"earlySuccessCriteria">> => deployment_early_success_criteria(),
 %%   <<"lifecycleHooks">> => list(deployment_lifecycle_hook()),
 %%   <<"linearConfiguration">> => linear_configuration(),
 %%   <<"maximumPercent">> => integer(),
@@ -1172,6 +1173,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type deployment_controller() :: #{binary() => any()}.
+
+%% Example:
+%% deployment_early_success_criteria() :: #{
+%%   <<"enable">> => boolean(),
+%%   <<"healthyPercent">> => integer(),
+%%   <<"sourceServiceRevisionCleanup">> => list(any())
+%% }
+-type deployment_early_success_criteria() :: #{binary() => any()}.
 
 %% Example:
 %% deployment_ephemeral_storage() :: #{

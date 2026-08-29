@@ -285,6 +285,7 @@
 %%   <<"Project">> => aws_opportunity_project(),
 %%   <<"RelatedEntityIds">> => aws_opportunity_related_entities(),
 %%   <<"RelatedOpportunityId">> => string(),
+%%   <<"SoftwareRevenue">> => aws_software_revenue(),
 %%   <<"Visibility">> => list(any())
 %% }
 -type aws_opportunity_summary_full_view() :: #{binary() => any()}.
@@ -326,6 +327,15 @@
 %%   <<"Partner">> => aws_product_insights()
 %% }
 -type aws_products_spend_insights_by_source() :: #{binary() => any()}.
+
+%% Example:
+%% aws_software_revenue() :: #{
+%%   <<"Discount">> => [string()],
+%%   <<"EffectiveDate">> => [string()],
+%%   <<"ExpirationDate">> => [string()],
+%%   <<"Value">> => monetary_value()
+%% }
+-type aws_software_revenue() :: #{binary() => any()}.
 
 %% Example:
 %% aws_submission() :: #{
@@ -663,6 +673,7 @@
 %%   <<"Project">> => aws_opportunity_project(),
 %%   <<"RelatedEntityIds">> => aws_opportunity_related_entities(),
 %%   <<"RelatedOpportunityId">> => string(),
+%%   <<"SoftwareRevenue">> => aws_software_revenue(),
 %%   <<"Visibility">> => list(any())
 %% }
 -type get_aws_opportunity_summary_response() :: #{binary() => any()}.
