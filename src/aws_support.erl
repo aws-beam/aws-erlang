@@ -13,13 +13,19 @@
 %% uses HTTP methods that return
 %% results in JSON format.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -73,10 +79,14 @@
          add_attachments_to_set/3,
          add_communication_to_case/2,
          add_communication_to_case/3,
+         complete_attachment_upload/2,
+         complete_attachment_upload/3,
          create_case/2,
          create_case/3,
          describe_attachment/2,
          describe_attachment/3,
+         describe_attachment_upload_status/2,
+         describe_attachment_upload_status/3,
          describe_cases/2,
          describe_cases/3,
          describe_communications/2,
@@ -97,6 +107,10 @@
          describe_trusted_advisor_check_summaries/3,
          describe_trusted_advisor_checks/2,
          describe_trusted_advisor_checks/3,
+         get_attachment_download_link/2,
+         get_attachment_download_link/3,
+         get_attachment_upload_links/2,
+         get_attachment_upload_links/3,
          refresh_trusted_advisor_check/2,
          refresh_trusted_advisor_check/3,
          resolve_case/2,
@@ -108,7 +122,8 @@
 %% Example:
 %% add_attachments_to_set_request() :: #{
 %%   <<"attachmentSetId">> => string(),
-%%   <<"attachments">> := list(attachment())
+%%   <<"attachments">> := list(attachment()),
+%%   <<"dryRun">> => boolean()
 %% }
 -type add_attachments_to_set_request() :: #{binary() => any()}.
 
@@ -124,7 +139,9 @@
 %%   <<"attachmentSetId">> => string(),
 %%   <<"caseId">> => string(),
 %%   <<"ccEmailAddresses">> => list(string()),
-%%   <<"communicationBody">> := string()
+%%   <<"communicationBody">> := string(),
+%%   <<"dryRun">> => boolean(),
+%%   <<"uploadIds">> => list(string())
 %% }
 -type add_communication_to_case_request() :: #{binary() => any()}.
 
@@ -217,6 +234,7 @@
 %% Example:
 %% communication() :: #{
 %%   <<"attachmentSet">> => list(attachment_details()),
+%%   <<"attachments">> => list(attachment_details()),
 %%   <<"body">> => string(),
 %%   <<"caseId">> => string(),
 %%   <<"submittedBy">> => string(),
@@ -233,16 +251,39 @@
 -type communication_type_options() :: #{binary() => any()}.
 
 %% Example:
+%% complete_attachment_upload_request() :: #{
+%%   <<"completedUploads">> := list(completed_upload()),
+%%   <<"dryRun">> => boolean(),
+%%   <<"uploadId">> := string()
+%% }
+-type complete_attachment_upload_request() :: #{binary() => any()}.
+
+%% Example:
+%% complete_attachment_upload_response() :: #{
+%%   <<"uploadStatus">> => list(any())
+%% }
+-type complete_attachment_upload_response() :: #{binary() => any()}.
+
+%% Example:
+%% completed_upload() :: #{
+%%   <<"eTag">> => string(),
+%%   <<"partIndex">> => integer()
+%% }
+-type completed_upload() :: #{binary() => any()}.
+
+%% Example:
 %% create_case_request() :: #{
 %%   <<"attachmentSetId">> => string(),
 %%   <<"categoryCode">> => string(),
 %%   <<"ccEmailAddresses">> => list(string()),
 %%   <<"communicationBody">> := string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"issueType">> => string(),
 %%   <<"language">> => string(),
 %%   <<"serviceCode">> => string(),
 %%   <<"severityCode">> => string(),
-%%   <<"subject">> := string()
+%%   <<"subject">> := string(),
+%%   <<"uploadIds">> => list(string())
 %% }
 -type create_case_request() :: #{binary() => any()}.
 
@@ -267,7 +308,8 @@
 
 %% Example:
 %% describe_attachment_request() :: #{
-%%   <<"attachmentId">> := string()
+%%   <<"attachmentId">> := string(),
+%%   <<"dryRun">> => boolean()
 %% }
 -type describe_attachment_request() :: #{binary() => any()}.
 
@@ -278,11 +320,27 @@
 -type describe_attachment_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_attachment_upload_status_request() :: #{
+%%   <<"dryRun">> => boolean(),
+%%   <<"uploadId">> := string()
+%% }
+-type describe_attachment_upload_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_attachment_upload_status_response() :: #{
+%%   <<"fileName">> => string(),
+%%   <<"uploadProgress">> => upload_progress(),
+%%   <<"uploadStatus">> => list(any())
+%% }
+-type describe_attachment_upload_status_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_cases_request() :: #{
 %%   <<"afterTime">> => string(),
 %%   <<"beforeTime">> => string(),
 %%   <<"caseIdList">> => list(string()),
 %%   <<"displayId">> => string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"includeCommunications">> => boolean(),
 %%   <<"includeResolvedCases">> => boolean(),
 %%   <<"language">> => string(),
@@ -303,6 +361,7 @@
 %%   <<"afterTime">> => string(),
 %%   <<"beforeTime">> => string(),
 %%   <<"caseId">> := string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -318,6 +377,7 @@
 %% Example:
 %% describe_create_case_options_request() :: #{
 %%   <<"categoryCode">> := string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"issueType">> := string(),
 %%   <<"language">> := string(),
 %%   <<"serviceCode">> := string()
@@ -333,6 +393,7 @@
 
 %% Example:
 %% describe_services_request() :: #{
+%%   <<"dryRun">> => boolean(),
 %%   <<"language">> => string(),
 %%   <<"serviceCodeList">> => list(string())
 %% }
@@ -346,6 +407,7 @@
 
 %% Example:
 %% describe_severity_levels_request() :: #{
+%%   <<"dryRun">> => boolean(),
 %%   <<"language">> => string()
 %% }
 -type describe_severity_levels_request() :: #{binary() => any()}.
@@ -359,6 +421,7 @@
 %% Example:
 %% describe_supported_languages_request() :: #{
 %%   <<"categoryCode">> := string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"issueType">> := string(),
 %%   <<"serviceCode">> := string()
 %% }
@@ -420,6 +483,53 @@
 -type describe_trusted_advisor_checks_response() :: #{binary() => any()}.
 
 %% Example:
+%% download_url() :: #{
+%%   <<"expiryDate">> => string(),
+%%   <<"url">> => string()
+%% }
+-type download_url() :: #{binary() => any()}.
+
+%% Example:
+%% dry_run_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dry_run_operation_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_attachment_download_link_request() :: #{
+%%   <<"attachmentId">> := string(),
+%%   <<"dryRun">> => boolean()
+%% }
+-type get_attachment_download_link_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_attachment_download_link_response() :: #{
+%%   <<"downloadUrl">> => download_url(),
+%%   <<"fileName">> => string()
+%% }
+-type get_attachment_download_link_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_attachment_upload_links_request() :: #{
+%%   <<"dryRun">> => boolean(),
+%%   <<"fileName">> := string(),
+%%   <<"fileSizeBytes">> => float(),
+%%   <<"uploadId">> => string(),
+%%   <<"uploadRange">> => upload_range()
+%% }
+-type get_attachment_upload_links_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_attachment_upload_links_response() :: #{
+%%   <<"nextIndex">> => integer(),
+%%   <<"partSizeBytes">> => float(),
+%%   <<"totalParts">> => integer(),
+%%   <<"uploadId">> => string(),
+%%   <<"uploadUrls">> => list(upload_url())
+%% }
+-type get_attachment_upload_links_response() :: #{binary() => any()}.
+
+%% Example:
 %% internal_server_error() :: #{
 %%   <<"message">> => string()
 %% }
@@ -446,7 +556,8 @@
 
 %% Example:
 %% resolve_case_request() :: #{
-%%   <<"caseId">> => string()
+%%   <<"caseId">> => string(),
+%%   <<"dryRun">> => boolean()
 %% }
 -type resolve_case_request() :: #{binary() => any()}.
 
@@ -489,9 +600,17 @@
 
 %% Example:
 %% throttling_exception() :: #{
-%%   <<"message">> => string()
+%%   <<"message">> => string(),
+%%   <<"throttlingReasons">> => list(throttling_reason())
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
+%% throttling_reason() :: #{
+%%   <<"reason">> => string(),
+%%   <<"resource">> => string()
+%% }
+-type throttling_reason() :: #{binary() => any()}.
 
 %% Example:
 %% trusted_advisor_category_specific_summary() :: #{
@@ -565,8 +684,37 @@
 %% }
 -type trusted_advisor_resources_summary() :: #{binary() => any()}.
 
+%% Example:
+%% upload_id_not_found() :: #{
+%%   <<"message">> => string()
+%% }
+-type upload_id_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% upload_progress() :: #{
+%%   <<"completedPartsCount">> => integer(),
+%%   <<"totalParts">> => integer()
+%% }
+-type upload_progress() :: #{binary() => any()}.
+
+%% Example:
+%% upload_range() :: #{
+%%   <<"endIndex">> => integer(),
+%%   <<"startIndex">> => integer()
+%% }
+-type upload_range() :: #{binary() => any()}.
+
+%% Example:
+%% upload_url() :: #{
+%%   <<"expiryDate">> => string(),
+%%   <<"partIndex">> => integer(),
+%%   <<"url">> => string()
+%% }
+-type upload_url() :: #{binary() => any()}.
+
 -type add_attachments_to_set_errors() ::
     internal_server_error() | 
+    dry_run_operation_exception() | 
     attachment_set_size_limit_exceeded() | 
     attachment_set_id_not_found() | 
     attachment_set_expired() | 
@@ -574,42 +722,61 @@
 
 -type add_communication_to_case_errors() ::
     internal_server_error() | 
+    dry_run_operation_exception() | 
     case_id_not_found() | 
     attachment_set_id_not_found() | 
     attachment_set_expired().
 
+-type complete_attachment_upload_errors() ::
+    upload_id_not_found() | 
+    internal_server_error() | 
+    dry_run_operation_exception().
+
 -type create_case_errors() ::
     internal_server_error() | 
+    dry_run_operation_exception() | 
     case_creation_limit_exceeded() | 
     attachment_set_id_not_found() | 
     attachment_set_expired().
 
 -type describe_attachment_errors() ::
     internal_server_error() | 
+    dry_run_operation_exception() | 
     describe_attachment_limit_exceeded() | 
     attachment_id_not_found().
 
+-type describe_attachment_upload_status_errors() ::
+    upload_id_not_found() | 
+    internal_server_error() | 
+    dry_run_operation_exception().
+
 -type describe_cases_errors() ::
     internal_server_error() | 
+    dry_run_operation_exception() | 
     case_id_not_found().
 
 -type describe_communications_errors() ::
     internal_server_error() | 
+    dry_run_operation_exception() | 
     case_id_not_found().
 
 -type describe_create_case_options_errors() ::
     throttling_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    dry_run_operation_exception().
 
 -type describe_services_errors() ::
-    internal_server_error().
+    internal_server_error() | 
+    dry_run_operation_exception().
 
 -type describe_severity_levels_errors() ::
-    internal_server_error().
+    internal_server_error() | 
+    dry_run_operation_exception().
 
 -type describe_supported_languages_errors() ::
     throttling_exception() | 
-    internal_server_error().
+    internal_server_error() | 
+    dry_run_operation_exception().
 
 -type describe_trusted_advisor_check_refresh_statuses_errors() ::
     throttling_exception() | 
@@ -627,11 +794,22 @@
     throttling_exception() | 
     internal_server_error().
 
+-type get_attachment_download_link_errors() ::
+    internal_server_error() | 
+    dry_run_operation_exception() | 
+    attachment_id_not_found().
+
+-type get_attachment_upload_links_errors() ::
+    upload_id_not_found() | 
+    internal_server_error() | 
+    dry_run_operation_exception().
+
 -type refresh_trusted_advisor_check_errors() ::
     internal_server_error().
 
 -type resolve_case_errors() ::
     internal_server_error() | 
+    dry_run_operation_exception() | 
     case_id_not_found().
 
 %%====================================================================
@@ -646,13 +824,19 @@
 %% created. The
 %% `expiryTime' returned in the response is when the set expires.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -672,24 +856,49 @@ add_attachments_to_set(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddAttachmentsToSet">>, Input, Options).
 
-%% @doc Adds additional customer communication to an Amazon Web Services
+%% @doc Adds additional customer communication to a Amazon Web Services
 %% Support case.
 %%
 %% Use the `caseId'
-%% parameter to identify the case to which to add communication. You can list
-%% a set of
-%% email addresses to copy on the communication by using the
+%% parameter to identify the case to which to add communication. To list a
+%% set of
+%% email addresses to copy on the communication, use the
 %% `ccEmailAddresses'
 %% parameter. The `communicationBody' value contains the text of the
 %% communication.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% To attach files larger than 5 MB to the communication, use the
+%% `uploadIds' parameter.
+%%
+%% Amazon Web Services Support automatically redacts sensitive information
+%% from support cases to protect your data. The following information is
+%% replaced with `[REDACTED_BY_Amazon Web Services]' and is not stored:
+%%
+%% Amazon Web Services secret keys - The complete key is replaced. Example:
+%% `[REDACTED_BY_Amazon Web Services]'
+%%
+%% Private keys - The complete key is replaced. Example: `[REDACTED_BY_Amazon
+%% Web Services]'
+%%
+%% Credit card numbers - The number is redacted, but the last 4 digits
+%% remain. Example: `[REDACTED_BY_Amazon Web Services]-7016'
+%%
+%% This sensitive information is never required by Amazon Web Services
+%% Support.
+%%
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -709,6 +918,36 @@ add_communication_to_case(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddCommunicationToCase">>, Input, Options).
 
+%% @doc Completes an attachment upload that was started with
+%% `GetAttachmentUploadLinks'.
+%%
+%% After you upload a part of the file to its
+%% presigned Amazon S3 URL, call `CompleteAttachmentUpload' with the
+%% `partIndex' and `eTag' of that part. You can include one part per
+%% call, or multiple parts in a single call. After
+%% `CompleteAttachmentUpload' has
+%% been called for every part of the file, the service processes the upload
+%% asynchronously. The
+%% `attachment-ready' status might not be reflected immediately. Use
+%% `DescribeAttachmentUploadStatus' to poll for the `uploadStatus' to
+%% become `attachment-ready' before passing the `uploadId' to
+%% `CreateCase' or `AddCommunicationToCase'.
+-spec complete_attachment_upload(aws_client:aws_client(), complete_attachment_upload_request()) ->
+    {ok, complete_attachment_upload_response(), tuple()} |
+    {error, any()} |
+    {error, complete_attachment_upload_errors(), tuple()}.
+complete_attachment_upload(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    complete_attachment_upload(Client, Input, []).
+
+-spec complete_attachment_upload(aws_client:aws_client(), complete_attachment_upload_request(), proplists:proplist()) ->
+    {ok, complete_attachment_upload_response(), tuple()} |
+    {error, any()} |
+    {error, complete_attachment_upload_errors(), tuple()}.
+complete_attachment_upload(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CompleteAttachmentUpload">>, Input, Options).
+
 %% @doc Creates a case in the Amazon Web Services Support Center.
 %%
 %% This operation is similar to how you create a case
@@ -726,7 +965,23 @@ add_communication_to_case(Client, Input, Options)
 %% https://docs.aws.amazon.com/servicequotas/2019-06-24/apireference/API_RequestServiceQuotaIncrease.html
 %% operation.
 %%
-%% A successful `CreateCase' request returns an Amazon Web Services
+%% Amazon Web Services Support automatically redacts sensitive information
+%% from support cases to protect your data. The following information is
+%% replaced with `[REDACTED_BY_Amazon Web Services]' and is not stored:
+%%
+%% Amazon Web Services secret keys - The complete key is replaced. Example:
+%% `[REDACTED_BY_Amazon Web Services]'
+%%
+%% Private keys - The complete key is replaced. Example: `[REDACTED_BY_Amazon
+%% Web Services]'
+%%
+%% Credit card numbers - The number is redacted, but the last 4 digits
+%% remain. Example: `[REDACTED_BY_Amazon Web Services]-7016'
+%%
+%% This sensitive information is never required by Amazon Web Services
+%% Support.
+%%
+%% A successful `CreateCase' request returns a Amazon Web Services
 %% Support case number. You can use
 %% the `DescribeCases' operation and specify the case number to get
 %% existing Amazon Web Services Support cases. After you create a case, use
@@ -739,13 +994,19 @@ add_communication_to_case(Client, Input, Options)
 %% https://console.aws.amazon.com/support. Use the `DescribeCases'
 %% operation to get the `displayId'.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -776,16 +1037,34 @@ create_case(Client, Input, Options)
 %% are
 %% returned by the `DescribeCommunications' operation.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+%%
+%% `DescribeAttachment' can't return attachments larger than 5 MB. If
+%% the
+%% specified `attachmentId' refers to an attachment larger than 5 MB, the
+%% request fails with `InvalidParameterValueException'.
+%%
+%% To download an attachment of any size, including attachments larger than 5
+%% MB, use
+%% `GetAttachmentDownloadLink'.
+%% `GetAttachmentDownloadLink' returns an Amazon S3 presigned URL that
+%% you can
+%% use to download the attachment directly.
 -spec describe_attachment(aws_client:aws_client(), describe_attachment_request()) ->
     {ok, describe_attachment_response(), tuple()} |
     {error, any()} |
@@ -801,6 +1080,55 @@ describe_attachment(Client, Input)
 describe_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAttachment">>, Input, Options).
+
+%% @doc Returns the current status, file name, and progress of a multipart
+%% attachment upload that
+%% was started with `GetAttachmentUploadLinks'.
+%%
+%% Use this operation to track
+%% where an upload is in the workflow. While parts are still being uploaded
+%% and reported through
+%% `CompleteAttachmentUpload', the `uploadStatus' is
+%% `attachment-not-ready' and `uploadProgress' reports the total
+%% number
+%% of parts and how many have been completed so far. After every part has
+%% been reported and the
+%% service finishes processing the upload asynchronously, the
+%% `uploadStatus' becomes
+%% `attachment-ready' and the `uploadId' can be attached to a case
+%% through `CreateCase' or `AddCommunicationToCase'.
+%%
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
+%%
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
+%% `SubscriptionRequiredException' error message appears. For
+%% information about changing your support plan, see Amazon Web Services
+%% Support: http://aws.amazon.com/premiumsupport/.
+-spec describe_attachment_upload_status(aws_client:aws_client(), describe_attachment_upload_status_request()) ->
+    {ok, describe_attachment_upload_status_response(), tuple()} |
+    {error, any()} |
+    {error, describe_attachment_upload_status_errors(), tuple()}.
+describe_attachment_upload_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_attachment_upload_status(Client, Input, []).
+
+-spec describe_attachment_upload_status(aws_client:aws_client(), describe_attachment_upload_status_request(), proplists:proplist()) ->
+    {ok, describe_attachment_upload_status_response(), tuple()} |
+    {error, any()} |
+    {error, describe_attachment_upload_status_errors(), tuple()}.
+describe_attachment_upload_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAttachmentUploadStatus">>, Input, Options).
 
 %% @doc Returns a list of cases that you specify by passing one or more case
 %% IDs.
@@ -820,20 +1148,41 @@ describe_attachment(Client, Input, Options)
 %% One or more `nextToken' values, which specify where to paginate the
 %% returned records represented by the `CaseDetails' objects.
 %%
-%% Case data is available for 12 months after creation. If a case was created
+%% Case data is available for 24 months after creation. If a case was created
 %% more than
-%% 12 months ago, a request might return an error.
+%% 24 months ago, a request might return an error.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+%%
+%% Each `Communication' returned by this operation includes
+%% attachment information in two fields:
+%%
+%% `attachmentSet': returns only attachments that are 5 MB or
+%% smaller. Attachments larger than 5 MB are not included in this field.
+%%
+%% `attachments': returns all attachments regardless of size.
+%%
+%% Amazon Web Services recommends that you use the `attachments' field
+%% and download each
+%% attachment with `GetAttachmentDownloadLink', which supports
+%% attachments of any size. The `attachmentSet' field and
+%% `DescribeAttachment' return only attachments that are 5 MB or
+%% smaller.
 -spec describe_cases(aws_client:aws_client(), describe_cases_request()) ->
     {ok, describe_cases_response(), tuple()} |
     {error, any()} |
@@ -857,9 +1206,9 @@ describe_cases(Client, Input, Options)
 %% can use the `caseId' parameter to restrict the results to a specific
 %% case.
 %%
-%% Case data is available for 12 months after creation. If a case was created
+%% Case data is available for 24 months after creation. If a case was created
 %% more than
-%% 12 months ago, a request for data might cause an error.
+%% 24 months ago, a request for data might cause an error.
 %%
 %% You can use the `maxResults' and `nextToken' parameters to
 %% control the pagination of the results. Set `maxResults' to the number
@@ -868,16 +1217,37 @@ describe_cases(Client, Input, Options)
 %% specify
 %% the resumption of pagination.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
+%%
+%% Each `Communication' returned by this operation includes
+%% attachment information in two fields:
+%%
+%% `attachmentSet': returns only attachments that are 5 MB or
+%% smaller. Attachments larger than 5 MB are not included in this field.
+%%
+%% `attachments': returns all attachments regardless of size.
+%%
+%% Amazon Web Services recommends that you use the `attachments' field
+%% and download each
+%% attachment with `GetAttachmentDownloadLink', which supports
+%% attachments of any size. The `attachmentSet' field and
+%% `DescribeAttachment' return only attachments that are 5 MB or
+%% smaller.
 -spec describe_communications(aws_client:aws_client(), describe_communications_request()) ->
     {ok, describe_communications_response(), tuple()} |
     {error, any()} |
@@ -902,13 +1272,19 @@ describe_communications(Client, Input, Options)
 %% `issueType' and `serviceCode' used to retrieve the
 %% CreateCaseOptions.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -948,13 +1324,19 @@ describe_create_case_options(Client, Input, Options)
 %% most
 %% recent set of service and category codes.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -982,13 +1364,19 @@ describe_services(Client, Input, Options)
 %% type
 %% that you include for a `CreateCase' request.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -1016,13 +1404,19 @@ describe_severity_levels(Client, Input, Options)
 %% include a ISO 639-1 code for the `language', and the language display
 %% name.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -1056,13 +1450,19 @@ describe_supported_languages(Client, Input, Options)
 %% call this operation for these checks, you might see an
 %% `InvalidParameterValue' error.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -1119,13 +1519,19 @@ describe_trusted_advisor_check_refresh_statuses(Client, Input, Options)
 %% checkId - The unique identifier for the
 %% check.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -1164,13 +1570,19 @@ describe_trusted_advisor_check_result(Client, Input, Options)
 %% The response contains an array of `TrustedAdvisorCheckSummary'
 %% objects.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -1183,6 +1595,22 @@ describe_trusted_advisor_check_result(Client, Input, Options)
 %% API:
 %% https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html#endpoint
 %% in the Amazon Web Services Support User Guide.
+%%
+%% Understanding the Trusted Advisor Resources processed value
+%%
+%% The Resources processed value, `resourcesProcessed', usually shows
+%% both flagged resources (those with warnings or errors) and resources in
+%% good standing (ok status resources). However, some checks report flagged
+%% resources only. To understand what a specific check reports, review the
+%% detailed check information in the Trusted Advisor check reference:
+%% https://docs.aws.amazon.com/awssupport/latest/user/trusted-advisor-check-reference.html.
+%% If you see a Green criterion listed in the Alert criteria, then the check
+%% reports all resources. If there's no Green criterion listed in the
+%% Alert criteria, then the check reports only flagged resources. For
+%% example, the Amazon EC2 Reserved Instance optimization check (cX3c2R1chu):
+%% https://docs.aws.amazon.com/awssupport/latest/user/cost-optimization-checks.html#amazon-ec2-reserved-instances-optimization
+%% doesn't list a Green criterion in the Alert criteria. So, this check
+%% only reports flagged resources.
 -spec describe_trusted_advisor_check_summaries(aws_client:aws_client(), describe_trusted_advisor_check_summaries_request()) ->
     {ok, describe_trusted_advisor_check_summaries_response(), tuple()} |
     {error, any()} |
@@ -1208,12 +1636,14 @@ describe_trusted_advisor_check_summaries(Client, Input, Options)
 %% The response contains a `TrustedAdvisorCheckDescription' object for
 %% each check. You must set the Amazon Web Services Region to us-east-1.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support API.
+%% You must have a Amazon Web Services Business Support+, Amazon Web Services
+%% Enterprise Support, or Amazon Web Services Unified Operations plan to use
+%% the Amazon Web Services Support API.
 %%
 %% If you call the Amazon Web Services Support API from an account that
 %% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error
 %% message appears. For information about changing your support plan, see
 %% Amazon Web Services Support: http://aws.amazon.com/premiumsupport/.
@@ -1248,6 +1678,113 @@ describe_trusted_advisor_checks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrustedAdvisorChecks">>, Input, Options).
 
+%% @doc Returns a presigned download URL for an attachment that is associated
+%% with a case
+%% communication.
+%%
+%% The download link works for an attachment of any size, including
+%% attachments
+%% added through `AddAttachmentsToSet' and attachments uploaded through
+%% `GetAttachmentUploadLinks'. The download URL is time-limited and
+%% expires at the
+%% date and time indicated in the `downloadUrl' response field. Download
+%% the
+%% attachment from the URL before it expires.
+%%
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
+%%
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
+%% `SubscriptionRequiredException' error message appears. For
+%% information about changing your support plan, see Amazon Web Services
+%% Support: http://aws.amazon.com/premiumsupport/.
+-spec get_attachment_download_link(aws_client:aws_client(), get_attachment_download_link_request()) ->
+    {ok, get_attachment_download_link_response(), tuple()} |
+    {error, any()} |
+    {error, get_attachment_download_link_errors(), tuple()}.
+get_attachment_download_link(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_attachment_download_link(Client, Input, []).
+
+-spec get_attachment_download_link(aws_client:aws_client(), get_attachment_download_link_request(), proplists:proplist()) ->
+    {ok, get_attachment_download_link_response(), tuple()} |
+    {error, any()} |
+    {error, get_attachment_download_link_errors(), tuple()}.
+get_attachment_download_link(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAttachmentDownloadLink">>, Input, Options).
+
+%% @doc Returns one or more presigned upload URLs for uploading a large file
+%% attachment to a
+%% support case by using a multipart upload workflow.
+%%
+%% The maximum file size that you can upload
+%% with this workflow is 150 MB, and parts can be up to 100 MB each. Initiate
+%% a new upload by
+%% providing `fileName' and `fileSizeBytes'; the response returns a
+%% unique
+%% `uploadId', the part size, the total number of parts, and a list of
+%% presigned
+%% upload URLs for the requested range of parts. A maximum of 10 upload URLs
+%% are returned per
+%% call. To retrieve more upload URLs for an upload
+%% that's already in progress, call `GetAttachmentUploadLinks' again
+%% with the existing
+%% `uploadId' and a new `uploadRange'.
+%%
+%% Upload each part to its presigned URL by using HTTP `PUT' and capture
+%% the ETag
+%% from the response. After you upload all parts, call
+%% `CompleteAttachmentUpload'
+%% with the `uploadId' and the list of part indexes and ETags to finalize
+%% the upload.
+%% You can then attach the upload to a case by passing the `uploadId' in
+%% the
+%% `uploadIds' parameter of `CreateCase' or
+%% `AddCommunicationToCase'. To monitor progress before completion, call
+%% `DescribeAttachmentUploadStatus'.
+%%
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
+%%
+%% If you call the Amazon Web Services Support API from an account that
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
+%% `SubscriptionRequiredException' error message appears. For
+%% information about changing your support plan, see Amazon Web Services
+%% Support: http://aws.amazon.com/premiumsupport/.
+-spec get_attachment_upload_links(aws_client:aws_client(), get_attachment_upload_links_request()) ->
+    {ok, get_attachment_upload_links_response(), tuple()} |
+    {error, any()} |
+    {error, get_attachment_upload_links_errors(), tuple()}.
+get_attachment_upload_links(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_attachment_upload_links(Client, Input, []).
+
+-spec get_attachment_upload_links(aws_client:aws_client(), get_attachment_upload_links_request(), proplists:proplist()) ->
+    {ok, get_attachment_upload_links_response(), tuple()} |
+    {error, any()} |
+    {error, get_attachment_upload_links_errors(), tuple()}.
+get_attachment_upload_links(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAttachmentUploadLinks">>, Input, Options).
+
 %% @doc Refreshes the Trusted Advisor check that you specify using the check
 %% ID.
 %%
@@ -1262,13 +1799,19 @@ describe_trusted_advisor_checks(Client, Input, Options)
 %% The response contains a `TrustedAdvisorCheckRefreshStatus'
 %% object.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.
@@ -1302,13 +1845,19 @@ refresh_trusted_advisor_check(Client, Input, Options)
 %% This operation takes a `caseId' and returns the
 %% initial and final state of the case.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% to use the Amazon Web Services Support
-%% API.
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan to use the Amazon Web Services Support
+%% API. If you're in an Amazon Web Services Region that doesn't offer
+%% one of these Amazon Web Services Support plans, or if you haven't
+%% transitioned to one of these plans, you can use the Amazon Web Services
+%% Support API with a Business, Enterprise On-Ramp, or Enterprise Support
+%% plan.
 %%
 %% If you call the Amazon Web Services Support API from an account that
-%% doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, the
+%% doesn't have an
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, the
 %% `SubscriptionRequiredException' error message appears. For
 %% information about changing your support plan, see Amazon Web Services
 %% Support: http://aws.amazon.com/premiumsupport/.

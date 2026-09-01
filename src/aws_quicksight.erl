@@ -103,6 +103,8 @@
          delete_agent/5,
          delete_analysis/4,
          delete_analysis/5,
+         delete_app/4,
+         delete_app/5,
          delete_approval_policy/3,
          delete_approval_policy/4,
          delete_brand/4,
@@ -208,6 +210,12 @@
          describe_analysis_permissions/3,
          describe_analysis_permissions/5,
          describe_analysis_permissions/6,
+         describe_app/3,
+         describe_app/5,
+         describe_app/6,
+         describe_app_permissions/3,
+         describe_app_permissions/5,
+         describe_app_permissions/6,
          describe_approval_policy/2,
          describe_approval_policy/4,
          describe_approval_policy/5,
@@ -414,6 +422,9 @@
          list_approval_policies/1,
          list_approval_policies/3,
          list_approval_policies/4,
+         list_apps/2,
+         list_apps/4,
+         list_apps/5,
          list_asset_bundle_export_jobs/2,
          list_asset_bundle_export_jobs/4,
          list_asset_bundle_export_jobs/5,
@@ -556,6 +567,8 @@
          search_agents/4,
          search_analyses/3,
          search_analyses/4,
+         search_apps/3,
+         search_apps/4,
          search_dashboards/3,
          search_dashboards/4,
          search_data_sets/3,
@@ -608,6 +621,8 @@
          update_analysis/5,
          update_analysis_permissions/4,
          update_analysis_permissions/5,
+         update_app_permissions/4,
+         update_app_permissions/5,
          update_application_with_token_exchange_grant/3,
          update_application_with_token_exchange_grant/4,
          update_approval_policy/3,
@@ -1143,6 +1158,18 @@
 %%   <<"Email">> => string()
 %% }
 -type api_key_connection_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% app_summary() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"Arn">> => [string()],
+%%   <<"CreatedTime">> => non_neg_integer(),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Visibility">> => list(any())
+%% }
+-type app_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5346,6 +5373,17 @@
 -type delete_analysis_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_app_request() :: #{}
+-type delete_app_request() :: #{}.
+
+
+%% Example:
+%% delete_app_response() :: #{
+%%   <<"RequestId">> => [string()]
+%% }
+-type delete_app_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_approval_policy_request() :: #{}
 -type delete_approval_policy_request() :: #{}.
 
@@ -5979,6 +6017,32 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_permissions_request() :: #{}
+-type describe_app_permissions_request() :: #{}.
+
+
+%% Example:
+%% describe_app_permissions_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"Arn">> => [string()],
+%%   <<"Permissions">> => list(resource_permission()),
+%%   <<"RequestId">> => [string()]
+%% }
+-type describe_app_permissions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_app_request() :: #{}
+-type describe_app_request() :: #{}.
+
+
+%% Example:
+%% describe_app_response() :: #{
+%%   <<"App">> => app_summary(),
+%%   <<"RequestId">> => [string()]
+%% }
+-type describe_app_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_approval_policy_request() :: #{}
@@ -9580,6 +9644,23 @@
 
 
 %% Example:
+%% list_apps_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_apps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_apps_response() :: #{
+%%   <<"AppSummaryList">> => list(app_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => [string()]
+%% }
+-type list_apps_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_asset_bundle_export_jobs_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -12519,6 +12600,33 @@
 
 
 %% Example:
+%% search_apps_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Operator">> => list(any()),
+%%   <<"Value">> => [string()]
+%% }
+-type search_apps_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_apps_request() :: #{
+%%   <<"Filters">> := list(search_apps_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type search_apps_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_apps_response() :: #{
+%%   <<"AppSummaryList">> => list(app_summary()),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => [string()]
+%% }
+-type search_apps_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_dashboards_request() :: #{
 %%   <<"Filters">> := list(dashboard_search_filter()),
 %%   <<"MaxResults">> => integer(),
@@ -15273,6 +15381,26 @@
 
 
 %% Example:
+%% update_app_permissions_request() :: #{
+%%   <<"GrantPermissions">> => list(resource_permission()),
+%%   <<"RevokePermissions">> => list(resource_permission()),
+%%   <<"Visibility">> => list(any())
+%% }
+-type update_app_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_app_permissions_response() :: #{
+%%   <<"AppId">> => string(),
+%%   <<"Arn">> => [string()],
+%%   <<"Permissions">> => list(resource_permission()),
+%%   <<"RequestId">> => [string()],
+%%   <<"Visibility">> => list(any())
+%% }
+-type update_app_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_application_with_token_exchange_grant_request() :: #{
 %%   <<"Namespace">> := string()
 %% }
@@ -17204,6 +17332,13 @@
     internal_failure_exception() | 
     conflict_exception().
 
+-type delete_app_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type delete_approval_policy_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -17593,6 +17728,20 @@
     resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception().
+
+-type describe_app_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type describe_app_permissions_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type describe_approval_policy_errors() ::
     throttling_exception() | 
@@ -18157,6 +18306,12 @@
     internal_failure_exception() | 
     access_denied_exception().
 
+-type list_apps_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type list_asset_bundle_export_jobs_errors() ::
     unsupported_user_edition_exception() | 
     throttling_exception() | 
@@ -18564,6 +18719,12 @@
     invalid_next_token_exception() | 
     internal_failure_exception().
 
+-type search_apps_errors() ::
+    throttling_exception() | 
+    invalid_parameter_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type search_dashboards_errors() ::
     unsupported_user_edition_exception() | 
     throttling_exception() | 
@@ -18788,6 +18949,14 @@
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     conflict_exception().
+
+-type update_app_permissions_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_application_with_token_exchange_grant_errors() ::
     throttling_exception() | 
@@ -19871,9 +20040,6 @@ create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a dataset.
-%%
-%% This operation doesn't support datasets that include uploaded files
-%% as a source.
 -spec create_data_set(aws_client:aws_client(), binary() | list(), create_data_set_request()) ->
     {ok, create_data_set_response(), tuple()} |
     {error, any()} |
@@ -21111,6 +21277,40 @@ delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options0) ->
                      {<<"recovery-window-in-days">>, <<"RecoveryWindowInDays">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an app.
+-spec delete_app(aws_client:aws_client(), binary() | list(), binary() | list(), delete_app_request()) ->
+    {ok, delete_app_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_errors(), tuple()}.
+delete_app(Client, AppId, AwsAccountId, Input) ->
+    delete_app(Client, AppId, AwsAccountId, Input, []).
+
+-spec delete_app(aws_client:aws_client(), binary() | list(), binary() | list(), delete_app_request(), proplists:proplist()) ->
+    {ok, delete_app_response(), tuple()} |
+    {error, any()} |
+    {error, delete_app_errors(), tuple()}.
+delete_app(Client, AppId, AwsAccountId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/apps/", aws_util:encode_uri(AppId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an approval policy in Quick Sight.
@@ -22883,6 +23083,80 @@ describe_analysis_permissions(Client, AnalysisId, AwsAccountId, QueryMap, Header
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes an app.
+-spec describe_app(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_errors(), tuple()}.
+describe_app(Client, AppId, AwsAccountId)
+  when is_map(Client) ->
+    describe_app(Client, AppId, AwsAccountId, #{}, #{}).
+
+-spec describe_app(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_errors(), tuple()}.
+describe_app(Client, AppId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_app(Client, AppId, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_app(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_app_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_errors(), tuple()}.
+describe_app(Client, AppId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/apps/", aws_util:encode_uri(AppId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the resource permissions for an app.
+-spec describe_app_permissions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_app_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_permissions_errors(), tuple()}.
+describe_app_permissions(Client, AppId, AwsAccountId)
+  when is_map(Client) ->
+    describe_app_permissions(Client, AppId, AwsAccountId, #{}, #{}).
+
+-spec describe_app_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_app_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_permissions_errors(), tuple()}.
+describe_app_permissions(Client, AppId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_app_permissions(Client, AppId, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_app_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_app_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_app_permissions_errors(), tuple()}.
+describe_app_permissions(Client, AppId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/apps/", aws_util:encode_uri(AppId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes an approval policy in Quick Sight.
 -spec describe_approval_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_approval_policy_response(), tuple()} |
@@ -23513,9 +23787,6 @@ describe_dashboards_q_a_configuration(Client, AwsAccountId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes a dataset.
-%%
-%% This operation doesn't support datasets that include uploaded
-%% files as a source.
 -spec describe_data_set(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, describe_data_set_response(), tuple()} |
     {error, any()} |
@@ -25924,6 +26195,51 @@ list_approval_policies(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the apps in an Amazon Web Services account.
+%%
+%% Results are paginated; use the `NextToken' parameter to retrieve
+%% additional results.
+-spec list_apps(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_apps_response(), tuple()} |
+    {error, any()} |
+    {error, list_apps_errors(), tuple()}.
+list_apps(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_apps(Client, AwsAccountId, #{}, #{}).
+
+-spec list_apps(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_apps_response(), tuple()} |
+    {error, any()} |
+    {error, list_apps_errors(), tuple()}.
+list_apps(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_apps(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_apps(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_apps_response(), tuple()} |
+    {error, any()} |
+    {error, list_apps_errors(), tuple()}.
+list_apps(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/apps"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all asset bundle export jobs that have been taken place in the
 %% last 14 days.
 %%
@@ -28035,6 +28351,45 @@ search_analyses(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Searches for apps in an Amazon Web Services account using the
+%% specified filters.
+%%
+%% This operation is eventually consistent; the results might not reflect
+%% very recent updates. Results are paginated; use the `NextToken'
+%% parameter to retrieve additional results.
+-spec search_apps(aws_client:aws_client(), binary() | list(), search_apps_request()) ->
+    {ok, search_apps_response(), tuple()} |
+    {error, any()} |
+    {error, search_apps_errors(), tuple()}.
+search_apps(Client, AwsAccountId, Input) ->
+    search_apps(Client, AwsAccountId, Input, []).
+
+-spec search_apps(aws_client:aws_client(), binary() | list(), search_apps_request(), proplists:proplist()) ->
+    {ok, search_apps_response(), tuple()} |
+    {error, any()} |
+    {error, search_apps_errors(), tuple()}.
+search_apps(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/search/apps"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Searches for dashboards that belong to a user.
 %%
 %% This operation is eventually consistent. The results are best effort and
@@ -29200,6 +29555,43 @@ update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the resource permissions for an app.
+%%
+%% You can grant or revoke permissions and, optionally, change the app's
+%% visibility.
+-spec update_app_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_app_permissions_request()) ->
+    {ok, update_app_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_permissions_errors(), tuple()}.
+update_app_permissions(Client, AppId, AwsAccountId, Input) ->
+    update_app_permissions(Client, AppId, AwsAccountId, Input, []).
+
+-spec update_app_permissions(aws_client:aws_client(), binary() | list(), binary() | list(), update_app_permissions_request(), proplists:proplist()) ->
+    {ok, update_app_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_app_permissions_errors(), tuple()}.
+update_app_permissions(Client, AppId, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/apps/", aws_util:encode_uri(AppId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an Quick application with a token exchange grant.
 %%
 %% This operation only supports Quick applications that are registered with
@@ -29590,8 +29982,7 @@ update_dashboards_q_a_configuration(Client, AwsAccountId, Input0, Options0) ->
 
 %% @doc Updates a dataset.
 %%
-%% This operation doesn't support datasets that include uploaded files
-%% as a source. Partial updates are not supported by this operation.
+%% Partial updates are not supported by this operation.
 -spec update_data_set(aws_client:aws_client(), binary() | list(), binary() | list(), update_data_set_request()) ->
     {ok, update_data_set_response(), tuple()} |
     {error, any()} |

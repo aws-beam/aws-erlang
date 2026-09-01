@@ -423,6 +423,9 @@
          get_contact_attributes/6,
          get_contact_metrics/2,
          get_contact_metrics/3,
+         get_cross_region_routing/2,
+         get_cross_region_routing/4,
+         get_cross_region_routing/5,
          get_current_metric_data/3,
          get_current_metric_data/4,
          get_current_user_data/3,
@@ -829,6 +832,8 @@
          update_contact_schedule/3,
          update_contact_task_template/2,
          update_contact_task_template/3,
+         update_cross_region_routing/3,
+         update_cross_region_routing/4,
          update_data_table_attribute/5,
          update_data_table_attribute/6,
          update_data_table_metadata/4,
@@ -1042,6 +1047,7 @@
 %% Example:
 %% agent_info() :: #{
 %%   <<"AcceptedByAgentTimestamp">> => non_neg_integer(),
+%%   <<"ActiveRegion">> => string(),
 %%   <<"AfterContactWorkDuration">> => integer(),
 %%   <<"AfterContactWorkEndTimestamp">> => non_neg_integer(),
 %%   <<"AfterContactWorkStartTimestamp">> => non_neg_integer(),
@@ -5603,6 +5609,17 @@
 %%   <<"MetricResults">> => list(contact_metric_result())
 %% }
 -type get_contact_metrics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_cross_region_routing_request() :: #{}
+-type get_cross_region_routing_request() :: #{}.
+
+
+%% Example:
+%% get_cross_region_routing_response() :: #{
+%%   <<"IsolatedRegions">> => list(string())
+%% }
+-type get_cross_region_routing_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11065,6 +11082,17 @@
 
 
 %% Example:
+%% update_cross_region_routing_request() :: #{
+%%   <<"IsolatedAll">> := boolean()
+%% }
+-type update_cross_region_routing_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cross_region_routing_response() :: #{}
+-type update_cross_region_routing_response() :: #{}.
+
+
+%% Example:
 %% update_data_table_attribute_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
@@ -13613,6 +13641,13 @@
     internal_service_exception() | 
     access_denied_exception().
 
+-type get_cross_region_routing_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
 -type get_current_metric_data_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -14858,6 +14893,14 @@
     resource_not_found_exception() | 
     property_validation_exception() | 
     limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
+-type update_cross_region_routing_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
     access_denied_exception().
@@ -22463,6 +22506,52 @@ get_contact_metrics(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the current cross-region routing configuration for an
+%% Amazon Connect Global Resiliency instance
+%% enabled for global routing.
+%%
+%% This operation returns whether cross-region routing is currently enabled
+%% or disabled
+%% (isolated) for the instance.
+%%
+%% This operation is available only for Amazon Connect Global Resiliency
+%% instances enabled for global routing.
+-spec get_cross_region_routing(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_cross_region_routing_response(), tuple()} |
+    {error, any()} |
+    {error, get_cross_region_routing_errors(), tuple()}.
+get_cross_region_routing(Client, InstanceId)
+  when is_map(Client) ->
+    get_cross_region_routing(Client, InstanceId, #{}, #{}).
+
+-spec get_cross_region_routing(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_cross_region_routing_response(), tuple()} |
+    {error, any()} |
+    {error, get_cross_region_routing_errors(), tuple()}.
+get_cross_region_routing(Client, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_cross_region_routing(Client, InstanceId, QueryMap, HeadersMap, []).
+
+-spec get_cross_region_routing(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_cross_region_routing_response(), tuple()} |
+    {error, any()} |
+    {error, get_cross_region_routing_errors(), tuple()}.
+get_cross_region_routing(Client, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/cross-region-routing/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets the real-time metric data from the specified Connect Customer
 %% instance.
 %%
@@ -29894,6 +29983,52 @@ update_contact_task_template(Client, Input) ->
 update_contact_task_template(Client, Input0, Options0) ->
     Method = post,
     Path = ["/contact/task-template"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the cross-region routing configuration for an Amazon Connect
+%% Global Resiliency instance enabled
+%% for global routing.
+%%
+%% When invoked with `IsolatedAll' set to `true', this operation
+%% disables
+%% cross-region routing, meaning contacts originating in one Region will no
+%% longer be routed to agents in
+%% another Region.
+%%
+%% This operation is available only for Amazon Connect Global Resiliency
+%% instances enabled for global routing. Reporting and contact
+%% search continue to operate globally after you use this operation.
+-spec update_cross_region_routing(aws_client:aws_client(), binary() | list(), update_cross_region_routing_request()) ->
+    {ok, update_cross_region_routing_response(), tuple()} |
+    {error, any()} |
+    {error, update_cross_region_routing_errors(), tuple()}.
+update_cross_region_routing(Client, InstanceId, Input) ->
+    update_cross_region_routing(Client, InstanceId, Input, []).
+
+-spec update_cross_region_routing(aws_client:aws_client(), binary() | list(), update_cross_region_routing_request(), proplists:proplist()) ->
+    {ok, update_cross_region_routing_response(), tuple()} |
+    {error, any()} |
+    {error, update_cross_region_routing_errors(), tuple()}.
+update_cross_region_routing(Client, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/cross-region-routing/", aws_util:encode_uri(InstanceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

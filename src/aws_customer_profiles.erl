@@ -27,6 +27,8 @@
 
 -export([add_profile_key/3,
          add_profile_key/4,
+         associate_stream_for_segments/3,
+         associate_stream_for_segments/4,
          batch_get_calculated_attribute_for_profile/4,
          batch_get_calculated_attribute_for_profile/5,
          batch_get_profile/3,
@@ -91,10 +93,14 @@
          delete_recommender_schema/5,
          delete_segment_definition/4,
          delete_segment_definition/5,
+         delete_segment_subscription/4,
+         delete_segment_subscription/5,
          delete_workflow/4,
          delete_workflow/5,
          detect_profile_object_type/3,
          detect_profile_object_type/4,
+         disassociate_stream_for_segments/3,
+         disassociate_stream_for_segments/4,
          get_auto_merging_preview/3,
          get_auto_merging_preview/4,
          get_calculated_attribute_definition/3,
@@ -159,8 +165,14 @@
          get_segment_snapshot/4,
          get_segment_snapshot/6,
          get_segment_snapshot/7,
+         get_segment_subscription/3,
+         get_segment_subscription/5,
+         get_segment_subscription/6,
          get_similar_profiles/3,
          get_similar_profiles/4,
+         get_stream_for_segments/2,
+         get_stream_for_segments/4,
+         get_stream_for_segments/5,
          get_upload_job/3,
          get_upload_job/5,
          get_upload_job/6,
@@ -239,6 +251,9 @@
          list_segment_definitions/2,
          list_segment_definitions/4,
          list_segment_definitions/5,
+         list_segment_subscription_events/3,
+         list_segment_subscription_events/5,
+         list_segment_subscription_events/6,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -257,6 +272,8 @@
          put_profile_object/4,
          put_profile_object_type/4,
          put_profile_object_type/5,
+         put_segment_subscription/4,
+         put_segment_subscription/5,
          search_profiles/3,
          search_profiles/4,
          start_recommender/4,
@@ -386,6 +403,27 @@
 %%   <<"Status">> => list(any())
 %% }
 -type appflow_integration_workflow_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_stream_for_segments_request() :: #{
+%%   <<"DestinationArn">> := string(),
+%%   <<"DestinationRoleArn">> := string()
+%% }
+-type associate_stream_for_segments_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_stream_for_segments_response() :: #{}
+-type associate_stream_for_segments_response() :: #{}.
+
+
+%% Example:
+%% associated_segment() :: #{
+%%   <<"Message">> => string(),
+%%   <<"SegmentName">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type associated_segment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1147,6 +1185,17 @@
 -type delete_segment_definition_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_segment_subscription_request() :: #{}
+-type delete_segment_subscription_request() :: #{}.
+
+
+%% Example:
+%% delete_segment_subscription_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type delete_segment_subscription_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_workflow_request() :: #{}
 -type delete_workflow_request() :: #{}.
 
@@ -1185,6 +1234,17 @@
 %%   <<"SourceLastUpdatedTimestampFormat">> => string()
 %% }
 -type detected_profile_object_type() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_stream_for_segments_request() :: #{}
+-type disassociate_stream_for_segments_request() :: #{}.
+
+
+%% Example:
+%% disassociate_stream_for_segments_response() :: #{
+%%   <<"Message">> => string()
+%% }
+-type disassociate_stream_for_segments_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1875,6 +1935,22 @@
 %% }
 -type get_segment_snapshot_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_segment_subscription_request() :: #{}
+-type get_segment_subscription_request() :: #{}.
+
+
+%% Example:
+%% get_segment_subscription_response() :: #{
+%%   <<"LastUpdatedAt">> => non_neg_integer(),
+%%   <<"Message">> => string(),
+%%   <<"ScheduleConfiguration">> => schedule_configuration(),
+%%   <<"ScheduledExecutions">> => scheduled_executions(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_segment_subscription_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_similar_profiles_request() :: #{
@@ -1897,6 +1973,24 @@
 %%   <<"RuleLevel">> => integer()
 %% }
 -type get_similar_profiles_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_stream_for_segments_request() :: #{}
+-type get_stream_for_segments_request() :: #{}.
+
+
+%% Example:
+%% get_stream_for_segments_response() :: #{
+%%   <<"AssociatedAt">> => non_neg_integer(),
+%%   <<"AssociatedSegments">> => list(associated_segment()),
+%%   <<"DestinationArn">> => string(),
+%%   <<"DestinationRoleArn">> => string(),
+%%   <<"DisassociatedAt">> => non_neg_integer(),
+%%   <<"DomainName">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type get_stream_for_segments_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_upload_job_path_request() :: #{}
@@ -2513,6 +2607,22 @@
 %% }
 -type list_segment_definitions_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_segment_subscription_events_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_segment_subscription_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_segment_subscription_events_response() :: #{
+%%   <<"Events">> => list(subscription_event_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_segment_subscription_events_response() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
@@ -2915,6 +3025,22 @@
 
 
 %% Example:
+%% put_segment_subscription_request() :: #{
+%%   <<"ScheduleConfiguration">> => schedule_configuration()
+%% }
+-type put_segment_subscription_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_segment_subscription_response() :: #{
+%%   <<"ScheduleConfiguration">> => schedule_configuration(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type put_segment_subscription_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% range() :: #{
 %%   <<"TimestampFormat">> => string(),
 %%   <<"TimestampSource">> => string(),
@@ -3135,6 +3261,22 @@
 
 
 %% Example:
+%% schedule_configuration() :: #{
+%%   <<"Interval">> => integer(),
+%%   <<"Unit">> => list(any())
+%% }
+-type schedule_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% scheduled_executions() :: #{
+%%   <<"LastExecutedAt">> => non_neg_integer(),
+%%   <<"NextExecutedAt">> => non_neg_integer()
+%% }
+-type scheduled_executions() :: #{binary() => any()}.
+
+
+%% Example:
 %% scheduled_trigger_properties() :: #{
 %%   <<"DataPullMode">> => list(any()),
 %%   <<"FirstExecutionFrom">> => non_neg_integer(),
@@ -3278,6 +3420,16 @@
 %% Example:
 %% stop_upload_job_response() :: #{}
 -type stop_upload_job_response() :: #{}.
+
+
+%% Example:
+%% subscription_event_item() :: #{
+%%   <<"Event">> => list(any()),
+%%   <<"EventType">> => list(any()),
+%%   <<"ProfileId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type subscription_event_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3587,6 +3739,13 @@
     bad_request_exception() | 
     access_denied_exception().
 
+-type associate_stream_for_segments_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
 -type batch_get_calculated_attribute_for_profile_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3811,6 +3970,13 @@
     bad_request_exception() | 
     access_denied_exception().
 
+-type delete_segment_subscription_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
 -type delete_workflow_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3819,6 +3985,13 @@
     access_denied_exception().
 
 -type detect_profile_object_type_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type disassociate_stream_for_segments_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -3986,7 +4159,21 @@
     bad_request_exception() | 
     access_denied_exception().
 
+-type get_segment_subscription_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
 -type get_similar_profiles_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type get_stream_for_segments_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -4181,6 +4368,13 @@
     bad_request_exception() | 
     access_denied_exception().
 
+-type list_segment_subscription_events_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -4228,6 +4422,13 @@
     access_denied_exception().
 
 -type put_profile_object_type_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type put_segment_subscription_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -4346,6 +4547,46 @@ add_profile_key(Client, DomainName, Input) ->
 add_profile_key(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/profiles/keys"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates an Amazon Kinesis data stream to receive segment
+%% membership events for a given
+%% domain.
+%%
+%% This is a domain-level configuration that applies to all segment
+%% subscriptions within the domain. A domain can have only one associated
+%% stream at a time.
+-spec associate_stream_for_segments(aws_client:aws_client(), binary() | list(), associate_stream_for_segments_request()) ->
+    {ok, associate_stream_for_segments_response(), tuple()} |
+    {error, any()} |
+    {error, associate_stream_for_segments_errors(), tuple()}.
+associate_stream_for_segments(Client, DomainName, Input) ->
+    associate_stream_for_segments(Client, DomainName, Input, []).
+
+-spec associate_stream_for_segments(aws_client:aws_client(), binary() | list(), associate_stream_for_segments_request(), proplists:proplist()) ->
+    {ok, associate_stream_for_segments_response(), tuple()} |
+    {error, any()} |
+    {error, associate_stream_for_segments_errors(), tuple()}.
+associate_stream_for_segments(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-streams"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5571,6 +5812,43 @@ delete_segment_definition(Client, DomainName, SegmentDefinitionName, Input0, Opt
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a segment subscription for membership events.
+%%
+%% All active event notifications for
+%% this segment are stopped.
+-spec delete_segment_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), delete_segment_subscription_request()) ->
+    {ok, delete_segment_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, delete_segment_subscription_errors(), tuple()}.
+delete_segment_subscription(Client, DomainName, SegmentDefinitionName, Input) ->
+    delete_segment_subscription(Client, DomainName, SegmentDefinitionName, Input, []).
+
+-spec delete_segment_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), delete_segment_subscription_request(), proplists:proplist()) ->
+    {ok, delete_segment_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, delete_segment_subscription_errors(), tuple()}.
+delete_segment_subscription(Client, DomainName, SegmentDefinitionName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-definitions/", aws_util:encode_uri(SegmentDefinitionName), "/subscriptions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified workflow and all its corresponding resources.
 %%
 %% This is an async
@@ -5624,6 +5902,45 @@ detect_profile_object_type(Client, DomainName, Input) ->
 detect_profile_object_type(Client, DomainName, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/detect/object-types"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates the Amazon Kinesis data stream configured for segment
+%% membership events.
+%%
+%% All
+%% active segment subscriptions delivering events to this stream are
+%% eventually stopped.
+-spec disassociate_stream_for_segments(aws_client:aws_client(), binary() | list(), disassociate_stream_for_segments_request()) ->
+    {ok, disassociate_stream_for_segments_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_stream_for_segments_errors(), tuple()}.
+disassociate_stream_for_segments(Client, DomainName, Input) ->
+    disassociate_stream_for_segments(Client, DomainName, Input, []).
+
+-spec disassociate_stream_for_segments(aws_client:aws_client(), binary() | list(), disassociate_stream_for_segments_request(), proplists:proplist()) ->
+    {ok, disassociate_stream_for_segments_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_stream_for_segments_errors(), tuple()}.
+disassociate_stream_for_segments(Client, DomainName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-streams"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6598,6 +6915,45 @@ get_segment_snapshot(Client, DomainName, SegmentDefinitionName, SnapshotId, Quer
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the current subscription configuration, execution schedule,
+%% and status for
+%% segment membership events.
+-spec get_segment_subscription(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_segment_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_subscription_errors(), tuple()}.
+get_segment_subscription(Client, DomainName, SegmentDefinitionName)
+  when is_map(Client) ->
+    get_segment_subscription(Client, DomainName, SegmentDefinitionName, #{}, #{}).
+
+-spec get_segment_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_segment_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_subscription_errors(), tuple()}.
+get_segment_subscription(Client, DomainName, SegmentDefinitionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_segment_subscription(Client, DomainName, SegmentDefinitionName, QueryMap, HeadersMap, []).
+
+-spec get_segment_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_segment_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, get_segment_subscription_errors(), tuple()}.
+get_segment_subscription(Client, DomainName, SegmentDefinitionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-definitions/", aws_util:encode_uri(SegmentDefinitionName), "/subscriptions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a set of profiles that belong to the same matching group
 %% using the
 %% `matchId' or `profileId'.
@@ -6639,6 +6995,45 @@ get_similar_profiles(Client, DomainName, Input0, Options0) ->
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns information about the segment membership event stream
+%% configured for a specific
+%% domain, including the stream state and associated segments.
+-spec get_stream_for_segments(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_stream_for_segments_response(), tuple()} |
+    {error, any()} |
+    {error, get_stream_for_segments_errors(), tuple()}.
+get_stream_for_segments(Client, DomainName)
+  when is_map(Client) ->
+    get_stream_for_segments(Client, DomainName, #{}, #{}).
+
+-spec get_stream_for_segments(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_stream_for_segments_response(), tuple()} |
+    {error, any()} |
+    {error, get_stream_for_segments_errors(), tuple()}.
+get_stream_for_segments(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_stream_for_segments(Client, DomainName, QueryMap, HeadersMap, []).
+
+-spec get_stream_for_segments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_stream_for_segments_response(), tuple()} |
+    {error, any()} |
+    {error, get_stream_for_segments_errors(), tuple()}.
+get_stream_for_segments(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-streams"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc This API retrieves the details of a specific upload job.
 -spec get_upload_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -7759,6 +8154,53 @@ list_segment_definitions(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the most recent membership events for a segment.
+%%
+%% Each event represents a profile
+%% that entered or exited the segment.
+%%
+%% This operation is paginated.
+-spec list_segment_subscription_events(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_segment_subscription_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_segment_subscription_events_errors(), tuple()}.
+list_segment_subscription_events(Client, DomainName, SegmentDefinitionName)
+  when is_map(Client) ->
+    list_segment_subscription_events(Client, DomainName, SegmentDefinitionName, #{}, #{}).
+
+-spec list_segment_subscription_events(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_segment_subscription_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_segment_subscription_events_errors(), tuple()}.
+list_segment_subscription_events(Client, DomainName, SegmentDefinitionName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_segment_subscription_events(Client, DomainName, SegmentDefinitionName, QueryMap, HeadersMap, []).
+
+-spec list_segment_subscription_events(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_segment_subscription_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_segment_subscription_events_errors(), tuple()}.
+list_segment_subscription_events(Client, DomainName, SegmentDefinitionName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-definitions/", aws_util:encode_uri(SegmentDefinitionName), "/subscription-events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Displays the tags associated with an Amazon Connect Customer Profiles
 %% resource.
 %%
@@ -8097,6 +8539,63 @@ put_profile_object_type(Client, DomainName, ObjectTypeName, Input) ->
 put_profile_object_type(Client, DomainName, ObjectTypeName, Input0, Options0) ->
     Method = put,
     Path = ["/domains/", aws_util:encode_uri(DomainName), "/object-types/", aws_util:encode_uri(ObjectTypeName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates or updates a segment subscription for membership events.
+%%
+%% When a subscription is
+%% created, an initial snapshot is taken and the system begins monitoring for
+%% membership
+%% changes.
+%%
+%% You can optionally set a schedule configuration interval to control how
+%% often membership
+%% snapshots are run. The interval can be from 1 to 24 hours. If not set, the
+%% interval defaults
+%% to 24 hours. Scheduled snapshots run on
+%% a best-effort basis. If a scheduled snapshot takes longer than the
+%% configured interval, the
+%% next scheduled run does not start until the in-progress snapshot
+%% completes, so a run might
+%% be delayed or skipped and is not guaranteed to occur at exactly the
+%% requested time.
+%%
+%% For Classic segments, membership events are generated from these scheduled
+%% snapshots and
+%% also in near real-time as profile attribute changes occur. For SQL
+%% segments, membership
+%% events are generated only from the scheduled snapshots.
+-spec put_segment_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), put_segment_subscription_request()) ->
+    {ok, put_segment_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, put_segment_subscription_errors(), tuple()}.
+put_segment_subscription(Client, DomainName, SegmentDefinitionName, Input) ->
+    put_segment_subscription(Client, DomainName, SegmentDefinitionName, Input, []).
+
+-spec put_segment_subscription(aws_client:aws_client(), binary() | list(), binary() | list(), put_segment_subscription_request(), proplists:proplist()) ->
+    {ok, put_segment_subscription_response(), tuple()} |
+    {error, any()} |
+    {error, put_segment_subscription_errors(), tuple()}.
+put_segment_subscription(Client, DomainName, SegmentDefinitionName, Input0, Options0) ->
+    Method = put,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/segment-definitions/", aws_util:encode_uri(SegmentDefinitionName), "/subscriptions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

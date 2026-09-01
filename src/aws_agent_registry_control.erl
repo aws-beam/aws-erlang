@@ -1,8 +1,9 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Agent Registry is a managed catalog for publishing and
-%% discovering resources such as MCP servers, agents, and agent skills.
+%% @doc Amazon Web Services Agent Registry is a managed catalog for
+%% publishing and discovering resources such as MCP servers, agents, and
+%% agent skills.
 %%
 %% Agent Registry Control is its control-plane API: use it to create and
 %% manage registries and the records they contain, configure discovery and
@@ -66,6 +67,39 @@
 
 
 %% Example:
+%% ag_ui_descriptor() :: #{
+%%   <<"source">> => descriptor_source()
+%% }
+-type ag_ui_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_core_gateway_source_details() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"authorizerType">> => [string()],
+%%   <<"protocolType">> => list(any()),
+%%   <<"workloadIdentityDetails">> => workload_identity_details()
+%% }
+-type agent_core_gateway_source_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_core_runtime_protocol_configuration() :: #{
+%%   <<"serverProtocol">> => list(any())
+%% }
+-type agent_core_runtime_protocol_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_core_runtime_source_details() :: #{
+%%   <<"authorizerConfiguration">> => list(),
+%%   <<"protocolConfiguration">> => agent_core_runtime_protocol_configuration(),
+%%   <<"workloadIdentityDetails">> => workload_identity_details()
+%% }
+-type agent_core_runtime_source_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_skills_additional_data() :: #{
 %%   <<"skillMd">> => agent_skills_md_descriptor()
 %% }
@@ -106,6 +140,23 @@
 
 
 %% Example:
+%% auto_detection() :: #{
+%%   <<"configuration">> => auto_detection_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type auto_detection() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_detection_configuration() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"scope">> => list(any())
+%% }
+-type auto_detection_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -119,6 +170,7 @@
 %%   <<"descriptors">> := descriptors(),
 %%   <<"displayName">> => string(),
 %%   <<"name">> := string(),
+%%   <<"provenance">> => list(provenance()),
 %%   <<"recordType">> := list(any()),
 %%   <<"recordVersion">> => string(),
 %%   <<"tags">> => map()
@@ -137,9 +189,11 @@
 %% Example:
 %% create_registry_request() :: #{
 %%   <<"approvalConfiguration">> => approval_configuration(),
+%%   <<"autoDetectionConfiguration">> => auto_detection_configuration(),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"discoveryConfiguration">> => discovery_configuration(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -220,7 +274,9 @@
 %% descriptors() :: #{
 %%   <<"a2aAgentCard">> => a2a_agent_card_descriptor(),
 %%   <<"agentSkillsDefinition">> => agent_skills_definition_descriptor(),
+%%   <<"agui">> => ag_ui_descriptor(),
 %%   <<"custom">> => custom_descriptor(),
+%%   <<"http">> => http_descriptor(),
 %%   <<"mcpServer">> => mcp_server_descriptor()
 %% }
 -type descriptors() :: #{binary() => any()}.
@@ -233,6 +289,13 @@
 %% }
 -type discovery_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% encryption_configuration() :: #{
+%%   <<"kmsKeyArn">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_registry_record_request() :: #{}
 -type get_registry_record_request() :: #{}.
@@ -241,10 +304,13 @@
 %% Example:
 %% get_registry_record_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"createdByAutoDetection">> => [boolean()],
 %%   <<"description">> => string(),
 %%   <<"descriptors">> => descriptors(),
 %%   <<"displayName">> => string(),
 %%   <<"name">> => string(),
+%%   <<"provenance">> => list(provenance()),
 %%   <<"recordArn">> => string(),
 %%   <<"recordId">> => string(),
 %%   <<"recordType">> => list(any()),
@@ -264,9 +330,11 @@
 %% Example:
 %% get_registry_response() :: #{
 %%   <<"approvalConfiguration">> => approval_configuration(),
+%%   <<"autoDetection">> => auto_detection(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"discoveryConfiguration">> => discovery_configuration(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"name">> => string(),
 %%   <<"registryArn">> => string(),
 %%   <<"registryId">> => string(),
@@ -275,6 +343,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type get_registry_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_descriptor() :: #{
+%%   <<"source">> => descriptor_source()
+%% }
+-type http_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -375,6 +450,25 @@
 
 
 %% Example:
+%% provenance() :: #{
+%%   <<"relation">> => list(any()),
+%%   <<"sourceDetails">> => list(),
+%%   <<"sourceId">> => string(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type provenance() :: #{binary() => any()}.
+
+
+%% Example:
+%% provenance_summary() :: #{
+%%   <<"relation">> => list(any()),
+%%   <<"sourceId">> => string(),
+%%   <<"sourceType">> => list(any())
+%% }
+-type provenance_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% registry_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"values">> => list(string())
@@ -420,9 +514,12 @@
 %% Example:
 %% registry_record_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"createdByAutoDetection">> => [boolean()],
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"name">> => string(),
+%%   <<"provenanceSummaryList">> => list(provenance_summary()),
 %%   <<"recordArn">> => string(),
 %%   <<"recordId">> => string(),
 %%   <<"recordType">> => list(any()),
@@ -436,6 +533,7 @@
 
 %% Example:
 %% registry_summary() :: #{
+%%   <<"autoDetection">> => auto_detection(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"discoveryConfiguration">> => discovery_configuration(),
@@ -513,6 +611,7 @@
 %%   <<"descriptors">> => updated_descriptors(),
 %%   <<"displayName">> => updated_display_name(),
 %%   <<"name">> => string(),
+%%   <<"provenance">> => list(provenance()),
 %%   <<"recordType">> => list(any()),
 %%   <<"recordVersion">> => string(),
 %%   <<"triggerSynchronization">> => [boolean()]
@@ -523,10 +622,13 @@
 %% Example:
 %% update_registry_record_response() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"createdBy">> => string(),
+%%   <<"createdByAutoDetection">> => [boolean()],
 %%   <<"description">> => string(),
 %%   <<"descriptors">> => descriptors(),
 %%   <<"displayName">> => string(),
 %%   <<"name">> => string(),
+%%   <<"provenance">> => list(provenance()),
 %%   <<"recordArn">> => string(),
 %%   <<"recordId">> => string(),
 %%   <<"recordType">> => list(any()),
@@ -562,6 +664,7 @@
 %% Example:
 %% update_registry_request() :: #{
 %%   <<"approvalConfiguration">> => updated_approval_configuration(),
+%%   <<"autoDetectionConfiguration">> => updated_auto_detection_configuration(),
 %%   <<"description">> => updated_description(),
 %%   <<"discoveryConfiguration">> => updated_discovery_configuration(),
 %%   <<"name">> => string()
@@ -572,9 +675,11 @@
 %% Example:
 %% update_registry_response() :: #{
 %%   <<"approvalConfiguration">> => approval_configuration(),
+%%   <<"autoDetection">> => auto_detection(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"discoveryConfiguration">> => discovery_configuration(),
+%%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"name">> => string(),
 %%   <<"registryArn">> => string(),
 %%   <<"registryId">> => string(),
@@ -599,6 +704,20 @@
 %%   <<"source">> => updated_descriptor_source()
 %% }
 -type updated_a2a_agent_card_descriptor_fields() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_ag_ui_descriptor() :: #{
+%%   <<"optionalValue">> => updated_ag_ui_descriptor_fields()
+%% }
+-type updated_ag_ui_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_ag_ui_descriptor_fields() :: #{
+%%   <<"source">> => updated_descriptor_source()
+%% }
+-type updated_ag_ui_descriptor_fields() :: #{binary() => any()}.
 
 
 %% Example:
@@ -662,6 +781,13 @@
 
 
 %% Example:
+%% updated_auto_detection_configuration() :: #{
+%%   <<"optionalValue">> => auto_detection_configuration()
+%% }
+-type updated_auto_detection_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% updated_custom_descriptor() :: #{
 %%   <<"optionalValue">> => updated_custom_descriptor_fields()
 %% }
@@ -714,7 +840,9 @@
 %% updated_descriptors_fields() :: #{
 %%   <<"a2aAgentCard">> => updated_a2a_agent_card_descriptor(),
 %%   <<"agentSkillsDefinition">> => updated_agent_skills_definition_descriptor(),
+%%   <<"agui">> => updated_ag_ui_descriptor(),
 %%   <<"custom">> => updated_custom_descriptor(),
+%%   <<"http">> => updated_http_descriptor(),
 %%   <<"mcpServer">> => updated_mcp_server_descriptor()
 %% }
 -type updated_descriptors_fields() :: #{binary() => any()}.
@@ -732,6 +860,20 @@
 %%   <<"optionalValue">> => string()
 %% }
 -type updated_display_name() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_http_descriptor() :: #{
+%%   <<"optionalValue">> => updated_http_descriptor_fields()
+%% }
+-type updated_http_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_http_descriptor_fields() :: #{
+%%   <<"source">> => updated_descriptor_source()
+%% }
+-type updated_http_descriptor_fields() :: #{binary() => any()}.
 
 
 %% Example:
@@ -795,6 +937,13 @@
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_identity_details() :: #{
+%%   <<"workloadIdentityArn">> => [string()]
+%% }
+-type workload_identity_details() :: #{binary() => any()}.
 
 -type create_registry_errors() ::
     validation_exception() | 
@@ -1209,7 +1358,10 @@ list_registry_records(Client, RegistryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List the tags on a resource
+%% @doc Lists the tags associated with the specified Amazon Web Services
+%% Agent Registry resource.
+%%
+%% Returns the current tag key-value pairs on the resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1285,7 +1437,12 @@ submit_registry_record_for_approval(Client, RecordId, RegistryId, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Tag a resource with key-value pairs
+%% @doc Adds or overwrites one or more tags for the specified Amazon Web
+%% Services Agent Registry resource.
+%%
+%% Tags are key-value pairs that you can use to categorize and manage Amazon
+%% Web Services resources. If a tag with the same key already exists on the
+%% resource, the service replaces its value with the value you specify.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1319,7 +1476,11 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Remove tags from a resource by key
+%% @doc Removes one or more tags from the specified Amazon Web Services Agent
+%% Registry resource.
+%%
+%% The operation removes only the tags whose keys you supply; other tags on
+%% the resource remain unchanged.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |

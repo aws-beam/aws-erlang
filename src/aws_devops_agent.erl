@@ -1974,6 +1974,14 @@
 
 
 %% Example:
+%% slack_bidirectional_configuration() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"roleArn">> => string()
+%% }
+-type slack_bidirectional_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% slack_channel() :: #{
 %%   <<"channelId">> => [string()],
 %%   <<"channelName">> => [string()]
@@ -1983,6 +1991,7 @@
 
 %% Example:
 %% slack_configuration() :: #{
+%%   <<"bidirectional">> => slack_bidirectional_configuration(),
 %%   <<"transmissionTarget">> => slack_transmission_target(),
 %%   <<"workspaceId">> => [string()],
 %%   <<"workspaceName">> => [string()]

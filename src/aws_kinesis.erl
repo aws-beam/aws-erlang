@@ -10,10 +10,14 @@
 
 -export([add_tags_to_stream/2,
          add_tags_to_stream/3,
+         create_channel/2,
+         create_channel/3,
          create_stream/2,
          create_stream/3,
          decrease_stream_retention_period/2,
          decrease_stream_retention_period/3,
+         delete_channel/2,
+         delete_channel/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
          delete_stream/2,
@@ -22,6 +26,8 @@
          deregister_stream_consumer/3,
          describe_account_settings/2,
          describe_account_settings/3,
+         describe_channel/2,
+         describe_channel/3,
          describe_limits/2,
          describe_limits/3,
          describe_stream/2,
@@ -42,6 +48,8 @@
          get_shard_iterator/3,
          increase_stream_retention_period/2,
          increase_stream_retention_period/3,
+         list_channels/2,
+         list_channels/3,
          list_shards/2,
          list_shards/3,
          list_stream_consumers/2,
@@ -78,6 +86,8 @@
          untag_resource/3,
          update_account_settings/2,
          update_account_settings/3,
+         update_channel/2,
+         update_channel/3,
          update_max_record_size/2,
          update_max_record_size/3,
          update_shard_count/2,
@@ -106,12 +116,99 @@
 -type add_tags_to_stream_input() :: #{binary() => any()}.
 
 %% Example:
+%% channel_description() :: #{
+%%   <<"ChannelARN">> => string(),
+%%   <<"ChannelCreationTimestamp">> => non_neg_integer(),
+%%   <<"ChannelId">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChannelStatus">> => list(any()),
+%%   <<"ChannelStatusReason">> => string(),
+%%   <<"EncryptionConfiguration">> => channel_encryption_configuration(),
+%%   <<"LoggingConfiguration">> => channel_logging_configuration(),
+%%   <<"S3DestinationConfiguration">> => s3_destination_description(),
+%%   <<"S3TablesDestinationConfiguration">> => s3_tables_destination_description(),
+%%   <<"ServiceExecutionRoleARN">> => string(),
+%%   <<"StreamConfigurationList">> => list(channel_stream_description())
+%% }
+-type channel_description() :: #{binary() => any()}.
+
+%% Example:
+%% channel_encryption_configuration() :: #{
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"KeyId">> => string()
+%% }
+-type channel_encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% channel_logging_configuration() :: #{
+%%   <<"CloudWatchLogs">> => cloud_watch_logs()
+%% }
+-type channel_logging_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% channel_logging_update_input() :: #{
+%%   <<"CloudWatchLogs">> => cloud_watch_logs_update_input()
+%% }
+-type channel_logging_update_input() :: #{binary() => any()}.
+
+%% Example:
+%% channel_stream_configuration() :: #{
+%%   <<"RecordConfiguration">> => record_configuration(),
+%%   <<"StreamARN">> => string()
+%% }
+-type channel_stream_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% channel_stream_description() :: #{
+%%   <<"RecordConfiguration">> => record_configuration(),
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamCreationTimestamp">> => non_neg_integer()
+%% }
+-type channel_stream_description() :: #{binary() => any()}.
+
+%% Example:
+%% channel_stream_identifier() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamCreationTimestamp">> => non_neg_integer()
+%% }
+-type channel_stream_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% channel_summary() :: #{
+%%   <<"ChannelARN">> => string(),
+%%   <<"ChannelCreationTimestamp">> => non_neg_integer(),
+%%   <<"ChannelDestinationType">> => list(any()),
+%%   <<"ChannelId">> => string(),
+%%   <<"ChannelName">> => string(),
+%%   <<"ChannelStatus">> => list(any()),
+%%   <<"ChannelStatusReason">> => string(),
+%%   <<"Streams">> => list(channel_stream_identifier())
+%% }
+-type channel_summary() :: #{binary() => any()}.
+
+%% Example:
 %% child_shard() :: #{
 %%   <<"HashKeyRange">> => hash_key_range(),
 %%   <<"ParentShards">> => list(string()),
 %%   <<"ShardId">> => string()
 %% }
 -type child_shard() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogGroupName">> => string(),
+%%   <<"LogStreamName">> => string()
+%% }
+-type cloud_watch_logs() :: #{binary() => any()}.
+
+%% Example:
+%% cloud_watch_logs_update_input() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"LogGroupName">> => string(),
+%%   <<"LogStreamName">> => string()
+%% }
+-type cloud_watch_logs_update_input() :: #{binary() => any()}.
 
 %% Example:
 %% consumer() :: #{
@@ -133,6 +230,25 @@
 -type consumer_description() :: #{binary() => any()}.
 
 %% Example:
+%% create_channel_input() :: #{
+%%   <<"ChannelName">> := string(),
+%%   <<"EncryptionConfiguration">> => channel_encryption_configuration(),
+%%   <<"LoggingConfiguration">> => channel_logging_configuration(),
+%%   <<"S3DestinationConfiguration">> => s3_destination_configuration(),
+%%   <<"S3TablesDestinationConfiguration">> => s3_tables_destination_configuration(),
+%%   <<"ServiceExecutionRoleARN">> := string(),
+%%   <<"StreamConfigurationList">> := list(channel_stream_configuration()),
+%%   <<"Tags">> => map()
+%% }
+-type create_channel_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_channel_output() :: #{
+%%   <<"ChannelDescription">> => channel_description()
+%% }
+-type create_channel_output() :: #{binary() => any()}.
+
+%% Example:
 %% create_stream_input() :: #{
 %%   <<"MaxRecordSizeInKiB">> => integer(),
 %%   <<"ShardCount">> => integer(),
@@ -144,6 +260,14 @@
 -type create_stream_input() :: #{binary() => any()}.
 
 %% Example:
+%% dead_letter_queue_s3_configuration() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"ErrorOutputPrefix">> => string(),
+%%   <<"ExpectedBucketOwner">> => string()
+%% }
+-type dead_letter_queue_s3_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% decrease_stream_retention_period_input() :: #{
 %%   <<"RetentionPeriodHours">> := integer(),
 %%   <<"StreamARN">> => string(),
@@ -151,6 +275,12 @@
 %%   <<"StreamName">> => string()
 %% }
 -type decrease_stream_retention_period_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_channel_input() :: #{
+%%   <<"ChannelARN">> := string()
+%% }
+-type delete_channel_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_policy_input() :: #{
@@ -190,6 +320,18 @@
 -type describe_account_settings_output() :: #{binary() => any()}.
 
 %% Example:
+%% describe_channel_input() :: #{
+%%   <<"ChannelARN">> := string()
+%% }
+-type describe_channel_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_channel_output() :: #{
+%%   <<"ChannelDescription">> => channel_description()
+%% }
+-type describe_channel_output() :: #{binary() => any()}.
+
+%% Example:
 %% describe_limits_input() :: #{
 
 %% }
@@ -197,6 +339,8 @@
 
 %% Example:
 %% describe_limits_output() :: #{
+%%   <<"ChannelCount">> => integer(),
+%%   <<"ChannelCountLimit">> => integer(),
 %%   <<"OnDemandStreamCount">> => integer(),
 %%   <<"OnDemandStreamCountLimit">> => integer(),
 %%   <<"OpenShardCount">> => integer(),
@@ -424,6 +568,21 @@
 -type limit_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% list_channels_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StreamFilter">> => list(stream_filter())
+%% }
+-type list_channels_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_channels_output() :: #{
+%%   <<"ChannelSummaries">> => list(channel_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_channels_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_shards_input() :: #{
 %%   <<"ExclusiveStartShardId">> => string(),
 %%   <<"MaxResults">> => integer(),
@@ -533,6 +692,19 @@
 -type minimum_throughput_billing_commitment_output() :: #{binary() => any()}.
 
 %% Example:
+%% partition_field() :: #{
+%%   <<"SourceName">> => string(),
+%%   <<"Transform">> => list(any())
+%% }
+-type partition_field() :: #{binary() => any()}.
+
+%% Example:
+%% partition_spec() :: #{
+%%   <<"PartitionFields">> => list(partition_field())
+%% }
+-type partition_spec() :: #{binary() => any()}.
+
+%% Example:
 %% provisioned_throughput_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -601,6 +773,13 @@
 -type put_resource_policy_input() :: #{binary() => any()}.
 
 %% Example:
+%% record_configuration() :: #{
+%%   <<"GSRSchemaARN">> => string(),
+%%   <<"RecordFormatType">> => list(any())
+%% }
+-type record_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% register_stream_consumer_input() :: #{
 %%   <<"ConsumerName">> := string(),
 %%   <<"StreamARN">> := string(),
@@ -635,6 +814,70 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% s3_destination_configuration() :: #{
+%%   <<"DataFreshnessInSeconds">> => integer(),
+%%   <<"DeadLetterQueueS3Configuration">> => dead_letter_queue_s3_configuration(),
+%%   <<"StorageConfiguration">> => s3_storage_configuration()
+%% }
+-type s3_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_destination_description() :: #{
+%%   <<"DataFreshnessInSeconds">> => integer(),
+%%   <<"DeadLetterQueueS3Configuration">> => dead_letter_queue_s3_configuration(),
+%%   <<"StorageConfiguration">> => s3_storage_configuration()
+%% }
+-type s3_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% s3_destination_update_input() :: #{
+%%   <<"DataFreshnessInSeconds">> => integer()
+%% }
+-type s3_destination_update_input() :: #{binary() => any()}.
+
+%% Example:
+%% s3_storage_configuration() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"CompressionType">> => list(any()),
+%%   <<"ExpectedBucketOwner">> => string(),
+%%   <<"OutputKeyTemplate">> => string(),
+%%   <<"StorageClass">> => list(any())
+%% }
+-type s3_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_tables_configuration() :: #{
+%%   <<"CompressionType">> => list(any()),
+%%   <<"Namespace">> => string(),
+%%   <<"PartitionSpec">> => partition_spec(),
+%%   <<"TableBucketARN">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type s3_tables_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_tables_destination_configuration() :: #{
+%%   <<"DataFreshnessInSeconds">> => integer(),
+%%   <<"DeadLetterQueueS3Configuration">> => dead_letter_queue_s3_configuration(),
+%%   <<"S3TablesConfigurationList">> => list(s3_tables_configuration())
+%% }
+-type s3_tables_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_tables_destination_description() :: #{
+%%   <<"DataFreshnessInSeconds">> => integer(),
+%%   <<"DeadLetterQueueS3Configuration">> => dead_letter_queue_s3_configuration(),
+%%   <<"S3TablesConfigurationList">> => list(s3_tables_configuration())
+%% }
+-type s3_tables_destination_description() :: #{binary() => any()}.
+
+%% Example:
+%% s3_tables_destination_update_input() :: #{
+%%   <<"DataFreshnessInSeconds">> => integer()
+%% }
+-type s3_tables_destination_update_input() :: #{binary() => any()}.
 
 %% Example:
 %% sequence_number_range() :: #{
@@ -717,6 +960,7 @@
 
 %% Example:
 %% stream_description_summary() :: #{
+%%   <<"ChannelCount">> => integer(),
 %%   <<"ConsumerCount">> => integer(),
 %%   <<"EncryptionType">> => list(any()),
 %%   <<"EnhancedMonitoring">> => list(enhanced_metrics()),
@@ -733,6 +977,13 @@
 %%   <<"WarmThroughput">> => warm_throughput_object()
 %% }
 -type stream_description_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stream_filter() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamCreationTimestamp">> => non_neg_integer()
+%% }
+-type stream_filter() :: #{binary() => any()}.
 
 %% Example:
 %% stream_mode_details() :: #{
@@ -810,6 +1061,21 @@
 -type update_account_settings_output() :: #{binary() => any()}.
 
 %% Example:
+%% update_channel_input() :: #{
+%%   <<"ChannelARN">> := string(),
+%%   <<"LoggingConfiguration">> => channel_logging_update_input(),
+%%   <<"S3DestinationConfiguration">> => s3_destination_update_input(),
+%%   <<"S3TablesDestinationConfiguration">> => s3_tables_destination_update_input()
+%% }
+-type update_channel_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_channel_output() :: #{
+%%   <<"ChannelDescription">> => channel_description()
+%% }
+-type update_channel_output() :: #{binary() => any()}.
+
+%% Example:
 %% update_max_record_size_input() :: #{
 %%   <<"MaxRecordSizeInKiB">> := integer(),
 %%   <<"StreamARN">> => string(),
@@ -882,6 +1148,20 @@
     invalid_argument_exception() | 
     access_denied_exception().
 
+-type create_channel_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
+
 -type create_stream_errors() ::
     validation_exception() | 
     resource_in_use_exception() | 
@@ -891,6 +1171,13 @@
 -type decrease_stream_retention_period_errors() ::
     resource_not_found_exception() | 
     resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
+
+-type delete_channel_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
     access_denied_exception().
@@ -916,6 +1203,13 @@
 
 -type describe_account_settings_errors() ::
     limit_exceeded_exception().
+
+-type describe_channel_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
 
 -type describe_limits_errors() ::
     limit_exceeded_exception().
@@ -984,6 +1278,13 @@
     resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
+    access_denied_exception().
+
+-type list_channels_errors() ::
+    validation_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    expired_next_token_exception() | 
     access_denied_exception().
 
 -type list_shards_errors() ::
@@ -1127,6 +1428,14 @@
     limit_exceeded_exception() | 
     invalid_argument_exception().
 
+-type update_channel_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
+
 -type update_max_record_size_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
@@ -1191,6 +1500,44 @@ add_tags_to_stream(Client, Input)
 add_tags_to_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTagsToStream">>, Input, Options).
+
+%% @doc Creates a channel that delivers records from a Kinesis data stream to
+%% a destination.
+%%
+%% A channel reads records from the specified stream and writes them to
+%% streaming tables on Apache Iceberg (Amazon S3 Tables) or to a general
+%% purpose Amazon S3 bucket.
+%%
+%% You must specify either `S3DestinationConfiguration' or
+%% `S3TablesDestinationConfiguration', but not both.
+%%
+%% Creating a channel is an asynchronous operation. Upon receiving the
+%% request, Amazon Kinesis Data Streams returns immediately with the channel
+%% in the `CREATING' state. After provisioning is complete, Amazon
+%% Kinesis Data Streams sets the state to `ACTIVE'. You can use
+%% `DescribeChannel' to check the current state.
+%%
+%% This operation is only supported for data streams with the on-demand
+%% capacity mode.
+%%
+%% This API has a call limit of 5 transactions per second (TPS) for each
+%% Amazon Web Services account. Exceeding 5 TPS results in a
+%% `LimitExceededException'.
+-spec create_channel(aws_client:aws_client(), create_channel_input()) ->
+    {ok, create_channel_output(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
+create_channel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_channel(Client, Input, []).
+
+-spec create_channel(aws_client:aws_client(), create_channel_input(), proplists:proplist()) ->
+    {ok, create_channel_output(), tuple()} |
+    {error, any()} |
+    {error, create_channel_errors(), tuple()}.
+create_channel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateChannel">>, Input, Options).
 
 %% @doc Creates a Kinesis data stream.
 %%
@@ -1314,6 +1661,34 @@ decrease_stream_retention_period(Client, Input)
 decrease_stream_retention_period(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DecreaseStreamRetentionPeriod">>, Input, Options).
+
+%% @doc Deletes the specified channel.
+%%
+%% Deleting a channel stops delivery from the source stream to the
+%% destination. Data already delivered to the destination is not deleted.
+%%
+%% A stream cannot be deleted while it has active channels. To delete the
+%% stream, first delete all channels attached to it. To find them, use
+%% `ListChannels' with a stream filter.
+%%
+%% This API has a call limit of 5 transactions per second (TPS) for each
+%% Amazon Web Services account. Exceeding 5 TPS results in a
+%% `LimitExceededException'.
+-spec delete_channel(aws_client:aws_client(), delete_channel_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_errors(), tuple()}.
+delete_channel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_channel(Client, Input, []).
+
+-spec delete_channel(aws_client:aws_client(), delete_channel_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_channel_errors(), tuple()}.
+delete_channel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteChannel">>, Input, Options).
 
 %% @doc Delete a policy for the specified data stream or consumer.
 %%
@@ -1441,6 +1816,32 @@ describe_account_settings(Client, Input)
 describe_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountSettings">>, Input, Options).
+
+%% @doc Describes the specified channel, including its configuration and
+%% current status.
+%%
+%% Use this operation to verify that a channel reached the `ACTIVE' state
+%% after creation, or to diagnose a channel in the `FAILED' state by
+%% reading the `ChannelStatusReason'.
+%%
+%% This API has a call limit of 5 transactions per second (TPS) for each
+%% Amazon Web Services account. Exceeding 5 TPS results in a
+%% `LimitExceededException'.
+-spec describe_channel(aws_client:aws_client(), describe_channel_input()) ->
+    {ok, describe_channel_output(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_errors(), tuple()}.
+describe_channel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_channel(Client, Input, []).
+
+-spec describe_channel(aws_client:aws_client(), describe_channel_input(), proplists:proplist()) ->
+    {ok, describe_channel_output(), tuple()} |
+    {error, any()} |
+    {error, describe_channel_errors(), tuple()}.
+describe_channel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeChannel">>, Input, Options).
 
 %% @doc Describes the shard limits and usage for the account.
 %%
@@ -1881,6 +2282,34 @@ increase_stream_retention_period(Client, Input)
 increase_stream_retention_period(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"IncreaseStreamRetentionPeriod">>, Input, Options).
+
+%% @doc Lists the channels in your account.
+%%
+%% You can filter the results by source stream. The results are paginated.
+%% Use the `NextToken' value returned in the response to retrieve
+%% additional results.
+%%
+%% Use this operation to find channels before deleting a stream, or to audit
+%% the channels configured in an Amazon Web Services Region.
+%%
+%% This API has a call limit of 5 transactions per second (TPS) for each
+%% Amazon Web Services account. Exceeding 5 TPS results in a
+%% `LimitExceededException'.
+-spec list_channels(aws_client:aws_client(), list_channels_input()) ->
+    {ok, list_channels_output(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
+list_channels(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_channels(Client, Input, []).
+
+-spec list_channels(aws_client:aws_client(), list_channels_input(), proplists:proplist()) ->
+    {ok, list_channels_output(), tuple()} |
+    {error, any()} |
+    {error, list_channels_errors(), tuple()}.
+list_channels(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListChannels">>, Input, Options).
 
 %% @doc Lists the shards in a stream and provides information about each
 %% shard.
@@ -2755,6 +3184,39 @@ update_account_settings(Client, Input)
 update_account_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAccountSettings">>, Input, Options).
+
+%% @doc Updates the data freshness interval or the Amazon CloudWatch Logs
+%% configuration of an existing channel.
+%%
+%% You cannot change the destination, source stream, record format, schema,
+%% encryption configuration, or service execution role of an existing
+%% channel. To change any other setting, delete the channel and create a new
+%% one.
+%%
+%% Updating a channel is an asynchronous operation. Upon receiving the
+%% request, Amazon Kinesis Data Streams sets the channel to the
+%% `UPDATING' state and returns immediately. After the change is applied,
+%% Amazon Kinesis Data Streams sets the channel back to the `ACTIVE'
+%% state.
+%%
+%% This API has a call limit of 5 transactions per second (TPS) for each
+%% Amazon Web Services account. Exceeding 5 TPS results in a
+%% `LimitExceededException'.
+-spec update_channel(aws_client:aws_client(), update_channel_input()) ->
+    {ok, update_channel_output(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
+update_channel(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_channel(Client, Input, []).
+
+-spec update_channel(aws_client:aws_client(), update_channel_input(), proplists:proplist()) ->
+    {ok, update_channel_output(), tuple()} |
+    {error, any()} |
+    {error, update_channel_errors(), tuple()}.
+update_channel(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateChannel">>, Input, Options).
 
 %% @doc This allows you to update the `MaxRecordSize' of a single record
 %% that you can write to, and read from a stream.

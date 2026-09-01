@@ -43,6 +43,8 @@
          list_worker_configurations/1,
          list_worker_configurations/3,
          list_worker_configurations/4,
+         restart_connector/3,
+         restart_connector/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -666,6 +668,21 @@
 
 
 %% Example:
+%% restart_connector_request() :: #{
+%%   <<"onlyFailedTasks">> => boolean()
+%% }
+-type restart_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% restart_connector_response() :: #{
+%%   <<"connectorArn">> => string(),
+%%   <<"connectorOperationArn">> => string()
+%% }
+-type restart_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_location() :: #{
 %%   <<"bucketArn">> => string(),
 %%   <<"fileKey">> => string(),
@@ -1029,6 +1046,15 @@
     bad_request_exception().
 
 -type list_worker_configurations_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
+
+-type restart_connector_errors() ::
     unauthorized_exception() | 
     too_many_requests_exception() | 
     service_unavailable_exception() | 
@@ -1635,6 +1661,46 @@ list_worker_configurations(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Restarts the specified connector.
+%%
+%% By default, this operation restarts the connector and all of its tasks.
+%% This operation is asynchronous and returns a connector operation ARN that
+%% you can pass to `DescribeConnectorOperation' to track the state of the
+%% restart.
+-spec restart_connector(aws_client:aws_client(), binary() | list(), restart_connector_request()) ->
+    {ok, restart_connector_response(), tuple()} |
+    {error, any()} |
+    {error, restart_connector_errors(), tuple()}.
+restart_connector(Client, ConnectorArn, Input) ->
+    restart_connector(Client, ConnectorArn, Input, []).
+
+-spec restart_connector(aws_client:aws_client(), binary() | list(), restart_connector_request(), proplists:proplist()) ->
+    {ok, restart_connector_response(), tuple()} |
+    {error, any()} |
+    {error, restart_connector_errors(), tuple()}.
+restart_connector(Client, ConnectorArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/connectors/", aws_util:encode_uri(ConnectorArn), "/restart"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"onlyFailedTasks">>, <<"onlyFailedTasks">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attaches tags to the specified resource.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->

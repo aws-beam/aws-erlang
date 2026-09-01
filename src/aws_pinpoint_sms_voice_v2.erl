@@ -360,6 +360,30 @@
 -type cloud_watch_logs_destination() :: #{binary() => any()}.
 
 %% Example:
+%% conditional_behavior() :: #{
+%%   <<"DefaultBehavior">> => string(),
+%%   <<"Rules">> => list(conditional_rule())
+%% }
+-type conditional_behavior() :: #{binary() => any()}.
+
+%% Example:
+%% conditional_rule() :: #{
+%%   <<"ConditionalValidation">> => conditional_validation(),
+%%   <<"Conditions">> => list(field_condition()),
+%%   <<"RuleBehavior">> => string()
+%% }
+-type conditional_rule() :: #{binary() => any()}.
+
+%% Example:
+%% conditional_validation() :: #{
+%%   <<"AllowedValues">> => list(string()),
+%%   <<"MaxLength">> => [integer()],
+%%   <<"MinLength">> => [integer()],
+%%   <<"Pattern">> => [string()]
+%% }
+-type conditional_validation() :: #{binary() => any()}.
+
+%% Example:
 %% configuration_set_filter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(string())
@@ -1487,6 +1511,14 @@
 -type event_destination() :: #{binary() => any()}.
 
 %% Example:
+%% field_condition() :: #{
+%%   <<"DependsOnFieldPath">> => string(),
+%%   <<"Operator">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type field_condition() :: #{binary() => any()}.
+
+%% Example:
 %% get_protect_configuration_country_rule_set_request() :: #{
 %%   <<"NumberCapability">> := string(),
 %%   <<"ProtectConfigurationId">> := string()
@@ -2141,6 +2173,7 @@
 
 %% Example:
 %% registration_field_definition() :: #{
+%%   <<"ConditionalBehavior">> => conditional_behavior(),
 %%   <<"DisplayHints">> => registration_field_display_hints(),
 %%   <<"FieldPath">> => string(),
 %%   <<"FieldRequirement">> => string(),
@@ -4182,7 +4215,7 @@ create_registration_association(Client, Input, Options)
 %% @doc Create a new registration attachment to use for uploading a file or a
 %% URL to a file.
 %%
-%% The maximum file size is 500KB and valid file extensions are PDF, JPEG and
+%% The maximum file size is 5MB and valid file extensions are PDF, JPEG and
 %% PNG. For example, many sender ID registrations require a signed “letter of
 %% authorization” (LOA) to be submitted.
 %%

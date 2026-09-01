@@ -105,6 +105,7 @@
 %% cpu_options_request() :: #{
 %%   <<"AmdSevSnp">> => list(any()),
 %%   <<"CoreCount">> => integer(),
+%%   <<"NestedVirtualization">> => list(any()),
 %%   <<"ThreadsPerCore">> => integer()
 %% }
 -type cpu_options_request() :: #{binary() => any()}.

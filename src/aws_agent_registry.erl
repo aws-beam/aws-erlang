@@ -33,6 +33,13 @@
 
 
 %% Example:
+%% ag_ui_descriptor() :: #{
+%%   <<"source">> => descriptor_source()
+%% }
+-type ag_ui_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_skills_additional_data() :: #{
 %%   <<"skillMd">> => agent_skills_md_descriptor()
 %% }
@@ -107,7 +114,9 @@
 %% descriptors() :: #{
 %%   <<"a2aAgentCard">> => a2a_agent_card_descriptor(),
 %%   <<"agentSkillsDefinition">> => agent_skills_definition_descriptor(),
+%%   <<"agui">> => ag_ui_descriptor(),
 %%   <<"custom">> => custom_descriptor(),
+%%   <<"http">> => http_descriptor(),
 %%   <<"mcpServer">> => mcp_server_descriptor()
 %% }
 -type descriptors() :: #{binary() => any()}.
@@ -117,6 +126,7 @@
 %% discoverable_registry_record_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
+%%   <<"descriptorTypes">> => list([string()]()),
 %%   <<"displayName">> => string(),
 %%   <<"name">> => string(),
 %%   <<"recordArn">> => string(),
@@ -128,6 +138,13 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type discoverable_registry_record_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% http_descriptor() :: #{
+%%   <<"source">> => descriptor_source()
+%% }
+-type http_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
