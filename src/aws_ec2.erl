@@ -2962,12 +2962,6 @@
 -type batch_modify_ipam_routing_policy_registrations_result() :: #{binary() => any()}.
 
 %% Example:
-%% blob_attribute_value() :: #{
-%%   <<"Value">> => binary()
-%% }
--type blob_attribute_value() :: #{binary() => any()}.
-
-%% Example:
 %% block_device_mapping() :: #{
 %%   <<"DeviceName">> => string(),
 %%   <<"Ebs">> => ebs_block_device(),
@@ -17520,7 +17514,7 @@
 %%   <<"Ramdisk">> => attribute_value(),
 %%   <<"SourceDestCheck">> => attribute_boolean_value(),
 %%   <<"SriovNetSupport">> => attribute_value(),
-%%   <<"UserData">> => blob_attribute_value(),
+%%   <<"UserData">> => secure_blob_attribute_value(),
 %%   <<"Value">> => string()
 %% }
 -type modify_instance_attribute_request() :: #{binary() => any()}.
@@ -21521,6 +21515,12 @@
 %%   <<"StateReason">> => string()
 %% }
 -type secondary_subnet_ipv4_cidr_block_association() :: #{binary() => any()}.
+
+%% Example:
+%% secure_blob_attribute_value() :: #{
+%%   <<"Value">> => binary()
+%% }
+-type secure_blob_attribute_value() :: #{binary() => any()}.
 
 %% Example:
 %% security_group() :: #{

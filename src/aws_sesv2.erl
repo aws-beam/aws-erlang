@@ -15,7 +15,9 @@
 %% programmatically.
 -module(aws_sesv2).
 
--export([batch_get_metric_data/2,
+-export([associate_email_identity_certificate/2,
+         associate_email_identity_certificate/3,
+         batch_get_metric_data/2,
          batch_get_metric_data/3,
          cancel_export_job/3,
          cancel_export_job/4,
@@ -75,6 +77,8 @@
          delete_tenant/3,
          delete_tenant_resource_association/2,
          delete_tenant_resource_association/3,
+         disassociate_email_identity_certificate/2,
+         disassociate_email_identity_certificate/3,
          get_account/1,
          get_account/3,
          get_account/4,
@@ -171,6 +175,8 @@
          list_email_identities/1,
          list_email_identities/3,
          list_email_identities/4,
+         list_email_identity_certificates/2,
+         list_email_identity_certificates/3,
          list_email_templates/1,
          list_email_templates/3,
          list_email_templates/4,
@@ -257,6 +263,8 @@
          test_render_email_template/4,
          untag_resource/2,
          untag_resource/3,
+         update_configuration_set/2,
+         update_configuration_set/3,
          update_configuration_set_event_destination/4,
          update_configuration_set_event_destination/5,
          update_contact/4,
@@ -309,6 +317,19 @@
 %%   <<"ArchiveArn">> => string()
 %% }
 -type archiving_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_email_identity_certificate_request() :: #{
+%%   <<"CertificateArn">> := string(),
+%%   <<"EmailIdentity">> := string(),
+%%   <<"FromAddress">> => string()
+%% }
+-type associate_email_identity_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_email_identity_certificate_response() :: #{}
+-type associate_email_identity_certificate_response() :: #{}.
 
 
 %% Example:
@@ -515,6 +536,7 @@
 %%   <<"ArchivingOptions">> => archiving_options(),
 %%   <<"ConfigurationSetName">> := string(),
 %%   <<"DeliveryOptions">> => delivery_options(),
+%%   <<"MessageSecurityOptions">> => message_security_options(),
 %%   <<"ReputationOptions">> => reputation_options(),
 %%   <<"SendingOptions">> => sending_options(),
 %%   <<"SuppressionOptions">> => suppression_options(),
@@ -781,6 +803,10 @@
 -type dedicated_ip_pool() :: #{binary() => any()}.
 
 %% Example:
+%% default_signing_scheme() :: #{}
+-type default_signing_scheme() :: #{}.
+
+%% Example:
 %% delete_configuration_set_event_destination_request() :: #{}
 -type delete_configuration_set_event_destination_request() :: #{}.
 
@@ -933,6 +959,18 @@
 %%   <<"RoutesDetails">> => list(route_details())
 %% }
 -type details() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_email_identity_certificate_request() :: #{
+%%   <<"EmailIdentity">> := string(),
+%%   <<"FromAddress">> => string()
+%% }
+-type disassociate_email_identity_certificate_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_email_identity_certificate_response() :: #{}
+-type disassociate_email_identity_certificate_response() :: #{}.
 
 
 %% Example:
@@ -1199,6 +1237,7 @@
 %%   <<"ArchivingOptions">> => archiving_options(),
 %%   <<"ConfigurationSetName">> => string(),
 %%   <<"DeliveryOptions">> => delivery_options(),
+%%   <<"MessageSecurityOptions">> => message_security_options(),
 %%   <<"ReputationOptions">> => reputation_options(),
 %%   <<"SendingOptions">> => sending_options(),
 %%   <<"SuppressionOptions">> => suppression_options(),
@@ -1537,6 +1576,16 @@
 
 
 %% Example:
+%% identity_certificate() :: #{
+%%   <<"CertificateArn">> => string(),
+%%   <<"CertificateExpiryTime">> => non_neg_integer(),
+%%   <<"FromAddress">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type identity_certificate() :: #{binary() => any()}.
+
+
+%% Example:
 %% identity_info() :: #{
 %%   <<"IdentityName">> => string(),
 %%   <<"IdentityType">> => list(any()),
@@ -1765,6 +1814,23 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_email_identities_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_email_identity_certificates_request() :: #{
+%%   <<"EmailIdentity">> := string(),
+%%   <<"NextToken">> => string(),
+%%   <<"PageSize">> => integer()
+%% }
+-type list_email_identity_certificates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_email_identity_certificates_response() :: #{
+%%   <<"Certificates">> => list(identity_certificate()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_email_identity_certificates_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2031,6 +2097,13 @@
 %%   <<"message">> => string()
 %% }
 -type message_rejected() :: #{binary() => any()}.
+
+
+%% Example:
+%% message_security_options() :: #{
+%%   <<"SigningScheme">> => list()
+%% }
+-type message_security_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2598,6 +2671,13 @@
 
 
 %% Example:
+%% smime_signing_scheme() :: #{
+%%   <<"SignatureFormat">> => list(any())
+%% }
+-type smime_signing_scheme() :: #{binary() => any()}.
+
+
+%% Example:
 %% sns_destination() :: #{
 %%   <<"TopicArn">> => string()
 %% }
@@ -2852,6 +2932,18 @@
 
 
 %% Example:
+%% update_configuration_set_request() :: #{
+%%   <<"ConfigurationSetName">> := string(),
+%%   <<"MessageSecurityOptions">> => message_security_options()
+%% }
+-type update_configuration_set_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_configuration_set_response() :: #{}
+-type update_configuration_set_response() :: #{}.
+
+
+%% Example:
 %% update_contact_list_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Topics">> => list(topic())
@@ -2970,6 +3062,12 @@
 %%   <<"SpamRawCount">> => float()
 %% }
 -type volume_statistics() :: #{binary() => any()}.
+
+-type associate_email_identity_certificate_errors() ::
+    too_many_requests_exception() | 
+    not_found_exception() | 
+    bad_request_exception() | 
+    already_exists_exception().
 
 -type batch_get_metric_data_errors() ::
     too_many_requests_exception() | 
@@ -3154,6 +3252,11 @@
     not_found_exception() | 
     bad_request_exception().
 
+-type disassociate_email_identity_certificate_errors() ::
+    too_many_requests_exception() | 
+    not_found_exception() | 
+    bad_request_exception().
+
 -type get_account_errors() ::
     too_many_requests_exception() | 
     bad_request_exception().
@@ -3310,6 +3413,11 @@
 
 -type list_email_identities_errors() ::
     too_many_requests_exception() | 
+    bad_request_exception().
+
+-type list_email_identity_certificates_errors() ::
+    too_many_requests_exception() | 
+    not_found_exception() | 
     bad_request_exception().
 
 -type list_email_templates_errors() ::
@@ -3527,6 +3635,11 @@
     concurrent_modification_exception() | 
     bad_request_exception().
 
+-type update_configuration_set_errors() ::
+    too_many_requests_exception() | 
+    not_found_exception() | 
+    bad_request_exception().
+
 -type update_configuration_set_event_destination_errors() ::
     too_many_requests_exception() | 
     not_found_exception() | 
@@ -3572,6 +3685,69 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates an S/MIME certificate with an email identity.
+%%
+%% After the certificate is
+%% active, Amazon SES API v2 can add an S/MIME signature to messages that you
+%% send from the associated
+%% address when signing is enabled on the configuration set used to send the
+%% message.
+%%
+%% The certificate is an X.509 certificate that you manage in Certificate
+%% Manager
+%% (ACM). You identify it by its Amazon Resource Name (ARN).
+%%
+%% If the email identity is a domain, you must specify a `FromAddress'
+%% that belongs to that domain or one of its subdomains. The certificate
+%% applies to
+%% messages sent from that address.
+%%
+%% If the email identity is an email address, `FromAddress' is
+%% optional. If you specify it, it must exactly match the email identity.
+%%
+%% When the association is created, the certificate begins provisioning and
+%% its status is
+%% `PROVISIONING'. The status changes to `ACTIVE' when the
+%% certificate
+%% is ready to use for signing. Each email address can have only one
+%% certificate
+%% association. If an association already exists for the address, this
+%% operation returns an
+%% error, unless the existing association is in the `DEPROVISIONING'
+%% state.
+-spec associate_email_identity_certificate(aws_client:aws_client(), associate_email_identity_certificate_request()) ->
+    {ok, associate_email_identity_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, associate_email_identity_certificate_errors(), tuple()}.
+associate_email_identity_certificate(Client, Input) ->
+    associate_email_identity_certificate(Client, Input, []).
+
+-spec associate_email_identity_certificate(aws_client:aws_client(), associate_email_identity_certificate_request(), proplists:proplist()) ->
+    {ok, associate_email_identity_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, associate_email_identity_certificate_errors(), tuple()}.
+associate_email_identity_certificate(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/identity/certificates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves batches of metric data collected based on your sending
 %% activity.
@@ -4801,6 +4977,57 @@ delete_tenant_resource_association(Client, Input) ->
 delete_tenant_resource_association(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/email/tenants/resources/delete"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the association between an S/MIME certificate and an email
+%% identity.
+%%
+%% After the
+%% association is removed, Amazon SES API v2 stops adding an S/MIME signature
+%% to messages sent from
+%% that address.
+%%
+%% If the email identity is a domain, specify the `FromAddress' whose
+%% certificate association you want to remove.
+%%
+%% This operation is idempotent. If the specified email identity exists but
+%% there's no
+%% matching certificate association, the operation succeeds without making
+%% any changes.
+%% Amazon SES API v2 returns a `NotFoundException' only when the
+%% specified email identity
+%% doesn't exist.
+-spec disassociate_email_identity_certificate(aws_client:aws_client(), disassociate_email_identity_certificate_request()) ->
+    {ok, disassociate_email_identity_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_email_identity_certificate_errors(), tuple()}.
+disassociate_email_identity_certificate(Client, Input) ->
+    disassociate_email_identity_certificate(Client, Input, []).
+
+-spec disassociate_email_identity_certificate(aws_client:aws_client(), disassociate_email_identity_certificate_request(), proplists:proplist()) ->
+    {ok, disassociate_email_identity_certificate_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_email_identity_certificate_errors(), tuple()}.
+disassociate_email_identity_certificate(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/identity/certificates/delete"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6254,6 +6481,58 @@ list_email_identities(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the S/MIME certificates that are associated with the specified
+%% email identity.
+%%
+%% The results include certificates in all states, such as
+%% `PROVISIONING',
+%% `ACTIVE', `INACTIVE', `DEPROVISIONING', and
+%% `FAILED'.
+%%
+%% If a certificate has passed its expiration time, it's returned with a
+%% status of
+%% `FAILED'.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and
+%% successfully. When there are more results than fit in a single response,
+%% the response
+%% includes a `NextToken' value that you use in a subsequent call to
+%% retrieve
+%% the next set of results.
+-spec list_email_identity_certificates(aws_client:aws_client(), list_email_identity_certificates_request()) ->
+    {ok, list_email_identity_certificates_response(), tuple()} |
+    {error, any()} |
+    {error, list_email_identity_certificates_errors(), tuple()}.
+list_email_identity_certificates(Client, Input) ->
+    list_email_identity_certificates(Client, Input, []).
+
+-spec list_email_identity_certificates(aws_client:aws_client(), list_email_identity_certificates_request(), proplists:proplist()) ->
+    {ok, list_email_identity_certificates_response(), tuple()} |
+    {error, any()} |
+    {error, list_email_identity_certificates_errors(), tuple()}.
+list_email_identity_certificates(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/identity/certificates/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the email templates present in your Amazon SES account in the
 %% current Amazon Web Services
@@ -7899,6 +8178,44 @@ untag_resource(Client, Input0, Options0) ->
                      {<<"TagKeys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing configuration set.
+%%
+%% This operation performs a partial update. Only the attributes that you
+%% include in the
+%% request are updated; any omitted attribute is left unchanged.
+-spec update_configuration_set(aws_client:aws_client(), update_configuration_set_request()) ->
+    {ok, update_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_configuration_set_errors(), tuple()}.
+update_configuration_set(Client, Input) ->
+    update_configuration_set(Client, Input, []).
+
+-spec update_configuration_set(aws_client:aws_client(), update_configuration_set_request(), proplists:proplist()) ->
+    {ok, update_configuration_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_configuration_set_errors(), tuple()}.
+update_configuration_set(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/update-configuration-sets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Update the configuration of an event destination for a configuration

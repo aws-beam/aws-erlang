@@ -1276,7 +1276,8 @@
 %% Example:
 %% file_system_config() :: #{
 %%   <<"Arn">> => string(),
-%%   <<"LocalMountPath">> => string()
+%%   <<"LocalMountPath">> => string(),
+%%   <<"S3FilesConfig">> => s3_files_config()
 %% }
 -type file_system_config() :: #{binary() => any()}.
 
@@ -2672,6 +2673,13 @@
 %%   <<"Message">> => string()
 %% }
 -type runtime_version_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_files_config() :: #{
+%%   <<"DirectS3Read">> => list(any())
+%% }
+-type s3_files_config() :: #{binary() => any()}.
 
 
 %% Example:

@@ -403,6 +403,12 @@
 -type disable_enhanced_monitoring_input() :: #{binary() => any()}.
 
 %% Example:
+%% dry_run_operation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dry_run_operation_exception() :: #{binary() => any()}.
+
+%% Example:
 %% enable_enhanced_monitoring_input() :: #{
 %%   <<"ShardLevelMetrics">> := list(list(any())()),
 %%   <<"StreamARN">> => string(),
@@ -440,6 +446,7 @@
 
 %% Example:
 %% get_records_input() :: #{
+%%   <<"DryRun">> => boolean(),
 %%   <<"Limit">> => integer(),
 %%   <<"ShardIterator">> := string(),
 %%   <<"StreamARN">> => string(),
@@ -471,6 +478,7 @@
 
 %% Example:
 %% get_shard_iterator_input() :: #{
+%%   <<"DryRun">> => boolean(),
 %%   <<"ShardId">> := string(),
 %%   <<"ShardIteratorType">> := list(any()),
 %%   <<"StartingSequenceNumber">> => string(),
@@ -713,6 +721,7 @@
 %% Example:
 %% put_record_input() :: #{
 %%   <<"Data">> := binary(),
+%%   <<"DryRun">> => boolean(),
 %%   <<"ExplicitHashKey">> => string(),
 %%   <<"PartitionKey">> := string(),
 %%   <<"SequenceNumberForOrdering">> => string(),
@@ -732,6 +741,7 @@
 
 %% Example:
 %% put_records_input() :: #{
+%%   <<"DryRun">> => boolean(),
 %%   <<"Records">> := list(put_records_request_entry()),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamId">> => string(),
@@ -1013,6 +1023,7 @@
 %% Example:
 %% subscribe_to_shard_input() :: #{
 %%   <<"ConsumerARN">> := string(),
+%%   <<"DryRun">> => boolean(),
 %%   <<"ShardId">> := string(),
 %%   <<"StartingPosition">> := starting_position(),
 %%   <<"StreamId">> => string()
@@ -1257,6 +1268,7 @@
     invalid_argument_exception() | 
     internal_failure_exception() | 
     expired_iterator_exception() | 
+    dry_run_operation_exception() | 
     access_denied_exception().
 
 -type get_resource_policy_errors() ::
@@ -1271,6 +1283,7 @@
     provisioned_throughput_exceeded_exception() | 
     invalid_argument_exception() | 
     internal_failure_exception() | 
+    dry_run_operation_exception() | 
     access_denied_exception().
 
 -type increase_stream_retention_period_errors() ::
@@ -1339,6 +1352,7 @@
     kms_access_denied_exception() | 
     invalid_argument_exception() | 
     internal_failure_exception() | 
+    dry_run_operation_exception() | 
     access_denied_exception().
 
 -type put_records_errors() ::
@@ -1352,6 +1366,7 @@
     kms_access_denied_exception() | 
     invalid_argument_exception() | 
     internal_failure_exception() | 
+    dry_run_operation_exception() | 
     access_denied_exception().
 
 -type put_resource_policy_errors() ::
@@ -1407,6 +1422,7 @@
     resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
+    dry_run_operation_exception() | 
     access_denied_exception().
 
 -type tag_resource_errors() ::
@@ -1511,6 +1527,10 @@ add_tags_to_stream(Client, Input, Options)
 %% You must specify either `S3DestinationConfiguration' or
 %% `S3TablesDestinationConfiguration', but not both.
 %%
+%% To use this operation, you must have permission to pass the specified
+%% service execution IAM role to Amazon Kinesis Data Streams (the
+%% `iam:PassRole' permission on that role).
+%%
 %% Creating a channel is an asynchronous operation. Upon receiving the
 %% request, Amazon Kinesis Data Streams returns immediately with the channel
 %% in the `CREATING' state. After provisioning is complete, Amazon
@@ -1520,8 +1540,8 @@ add_tags_to_stream(Client, Input, Options)
 %% This operation is only supported for data streams with the on-demand
 %% capacity mode.
 %%
-%% This API has a call limit of 5 transactions per second (TPS) for each
-%% Amazon Web Services account. Exceeding 5 TPS results in a
+%% This operation has a call limit of 5 transactions per second (TPS) for
+%% each Amazon Web Services account. Exceeding 5 TPS results in a
 %% `LimitExceededException'.
 -spec create_channel(aws_client:aws_client(), create_channel_input()) ->
     {ok, create_channel_output(), tuple()} |
@@ -1671,8 +1691,8 @@ decrease_stream_retention_period(Client, Input, Options)
 %% stream, first delete all channels attached to it. To find them, use
 %% `ListChannels' with a stream filter.
 %%
-%% This API has a call limit of 5 transactions per second (TPS) for each
-%% Amazon Web Services account. Exceeding 5 TPS results in a
+%% This operation has a call limit of 5 transactions per second (TPS) for
+%% each Amazon Web Services account. Exceeding 5 TPS results in a
 %% `LimitExceededException'.
 -spec delete_channel(aws_client:aws_client(), delete_channel_input()) ->
     {ok, undefined, tuple()} |
@@ -1824,8 +1844,8 @@ describe_account_settings(Client, Input, Options)
 %% after creation, or to diagnose a channel in the `FAILED' state by
 %% reading the `ChannelStatusReason'.
 %%
-%% This API has a call limit of 5 transactions per second (TPS) for each
-%% Amazon Web Services account. Exceeding 5 TPS results in a
+%% This operation has a call limit of 5 transactions per second (TPS) for
+%% each Amazon Web Services account. Exceeding 5 TPS results in a
 %% `LimitExceededException'.
 -spec describe_channel(aws_client:aws_client(), describe_channel_input()) ->
     {ok, describe_channel_output(), tuple()} |
@@ -2292,8 +2312,8 @@ increase_stream_retention_period(Client, Input, Options)
 %% Use this operation to find channels before deleting a stream, or to audit
 %% the channels configured in an Amazon Web Services Region.
 %%
-%% This API has a call limit of 5 transactions per second (TPS) for each
-%% Amazon Web Services account. Exceeding 5 TPS results in a
+%% This operation has a call limit of 5 transactions per second (TPS) for
+%% each Amazon Web Services account. Exceeding 5 TPS results in a
 %% `LimitExceededException'.
 -spec list_channels(aws_client:aws_client(), list_channels_input()) ->
     {ok, list_channels_output(), tuple()} |
@@ -3199,8 +3219,8 @@ update_account_settings(Client, Input, Options)
 %% Amazon Kinesis Data Streams sets the channel back to the `ACTIVE'
 %% state.
 %%
-%% This API has a call limit of 5 transactions per second (TPS) for each
-%% Amazon Web Services account. Exceeding 5 TPS results in a
+%% This operation has a call limit of 5 transactions per second (TPS) for
+%% each Amazon Web Services account. Exceeding 5 TPS results in a
 %% `LimitExceededException'.
 -spec update_channel(aws_client:aws_client(), update_channel_input()) ->
     {ok, update_channel_output(), tuple()} |

@@ -1345,6 +1345,7 @@
 %%   <<"dependsOn">> => list(string()),
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"executionEnvironmentVariables">> => map(),
+%%   <<"executionMounts">> => list(mount()),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"status">> => compute_node_execution_status(),
 %%   <<"taskArn">> => string(),
@@ -1401,6 +1402,8 @@
 %%   <<"command">> => list([string()]()),
 %%   <<"ecrUri">> => string(),
 %%   <<"environmentVariables">> => map(),
+%%   <<"ephemeralStorageConfiguration">> => ephemeral_storage_configuration(),
+%%   <<"mounts">> => list(mount()),
 %%   <<"processingType">> => list(any()),
 %%   <<"processingUnit">> => list(any()),
 %%   <<"taskExecutionRole">> => string(),
@@ -2589,6 +2592,7 @@
 %%   <<"pipelineName">> => string(),
 %%   <<"pipelineVersion">> => string(),
 %%   <<"requestEnvironmentVariables">> => execution_environment_variables(),
+%%   <<"requestMountOverrides">> => mount_overrides(),
 %%   <<"startTime">> => [non_neg_integer()],
 %%   <<"status">> => pipeline_execution_status(),
 %%   <<"workspaceName">> => string()
@@ -2847,6 +2851,14 @@
 %%   <<"startTime">> => time_in_nanos()
 %% }
 -type enrichment_trim_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% ephemeral_storage_configuration() :: #{
+%%   <<"storageClass">> => list(any()),
+%%   <<"storageSizeInGiB">> => integer()
+%% }
+-type ephemeral_storage_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4097,6 +4109,23 @@
 %% }
 -type monitor_error_details() :: #{binary() => any()}.
 
+
+%% Example:
+%% mount() :: #{
+%%   <<"name">> => string(),
+%%   <<"relativePath">> => string(),
+%%   <<"source">> => list(),
+%%   <<"storageType">> => list(any())
+%% }
+-type mount() :: #{binary() => any()}.
+
+
+%% Example:
+%% mount_overrides() :: #{
+%%   <<"computeNodes">> => map()
+%% }
+-type mount_overrides() :: #{binary() => any()}.
+
 %% Example:
 %% mp4() :: #{}
 -type mp4() :: #{}.
@@ -4450,6 +4479,14 @@
 
 
 %% Example:
+%% s3_access_point_source() :: #{
+%%   <<"accessPointArn">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type s3_access_point_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% search_filters() :: #{
 %%   <<"datasetIds">> => list(string()),
 %%   <<"timeIntervals">> => list(time_interval()),
@@ -4527,6 +4564,7 @@
 %% start_pipeline_execution_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"executionEnvironmentVariableOverrides">> => execution_environment_variables(),
+%%   <<"executionMountOverrides">> => mount_overrides(),
 %%   <<"executionPriority">> => integer()
 %% }
 -type start_pipeline_execution_request() :: #{binary() => any()}.

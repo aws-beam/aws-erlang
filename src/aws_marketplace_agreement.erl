@@ -176,7 +176,11 @@
 %%   <<"agreementId">> => string(),
 %%   <<"agreementType">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
+%%   <<"endTimeBehaviorReasonCode">> => list(any()),
+%%   <<"endTimeBehaviorType">> => list(any()),
 %%   <<"entitlements">> => list(entitlement()),
+%%   <<"initialAgreementId">> => string(),
+%%   <<"lastUpdateTime">> => non_neg_integer(),
 %%   <<"proposalSummary">> => proposal_summary(),
 %%   <<"proposer">> => proposer(),
 %%   <<"startTime">> => non_neg_integer(),
@@ -397,7 +401,9 @@
 %%   <<"agreementId">> => string(),
 %%   <<"agreementType">> => string(),
 %%   <<"endTime">> => non_neg_integer(),
+%%   <<"endTimeBehavior">> => end_time_behavior(),
 %%   <<"estimatedCharges">> => estimated_charges(),
+%%   <<"initialAgreementId">> => string(),
 %%   <<"proposalSummary">> => proposal_summary(),
 %%   <<"proposer">> => proposer(),
 %%   <<"startTime">> => non_neg_integer(),
@@ -419,6 +425,14 @@
 %%   <<"version">> => string()
 %% }
 -type document_item() :: #{binary() => any()}.
+
+%% Example:
+%% end_time_behavior() :: #{
+%%   <<"reasonCode">> => list(any()),
+%%   <<"renewalSummary">> => renewal_summary(),
+%%   <<"type">> => list(any())
+%% }
+-type end_time_behavior() :: #{binary() => any()}.
 
 %% Example:
 %% entitlement() :: #{
@@ -457,6 +471,12 @@
 %%   <<"values">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
+
+%% Example:
+%% fixed_percentage() :: #{
+%%   <<"value">> => string()
+%% }
+-type fixed_percentage() :: #{binary() => any()}.
 
 %% Example:
 %% fixed_upfront_pricing_term() :: #{
@@ -739,6 +759,14 @@
 -type payment_request_summary() :: #{binary() => any()}.
 
 %% Example:
+%% payment_schedule_entry() :: #{
+%%   <<"chargeDateOffset">> => string(),
+%%   <<"chargePercentage">> => string(),
+%%   <<"dayOfMonth">> => [integer()]
+%% }
+-type payment_schedule_entry() :: #{binary() => any()}.
+
+%% Example:
 %% payment_schedule_term() :: #{
 %%   <<"currencyCode">> => string(),
 %%   <<"id">> => string(),
@@ -746,6 +774,20 @@
 %%   <<"type">> => string()
 %% }
 -type payment_schedule_term() :: #{binary() => any()}.
+
+%% Example:
+%% payment_schedule_term_template() :: #{
+%%   <<"schedule">> => list(payment_schedule_entry())
+%% }
+-type payment_schedule_term_template() :: #{binary() => any()}.
+
+%% Example:
+%% percentage_range() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"maxValue">> => string(),
+%%   <<"minValue">> => string()
+%% }
+-type percentage_range() :: #{binary() => any()}.
 
 %% Example:
 %% pricing_currency_amount() :: #{
@@ -840,9 +882,20 @@
 -type reject_agreement_payment_request_output() :: #{binary() => any()}.
 
 %% Example:
+%% renewal_summary() :: #{
+%%   <<"offerId">> => string()
+%% }
+-type renewal_summary() :: #{binary() => any()}.
+
+%% Example:
 %% renewal_term() :: #{
+%%   <<"adjustmentDeadline">> => string(),
 %%   <<"configuration">> => renewal_term_configuration(),
 %%   <<"id">> => string(),
+%%   <<"lockoutPeriod">> => string(),
+%%   <<"maxRenewals">> => [integer()],
+%%   <<"priceIncrease">> => list(),
+%%   <<"termTemplates">> => list(list()),
 %%   <<"type">> => string()
 %% }
 -type renewal_term() :: #{binary() => any()}.
@@ -1753,135 +1806,6 @@ reject_agreement_payment_request(Client, Input, Options)
 %% AWS Marketplace.
 %%
 %% The search returns a list of agreements with basic agreement information.
-%%
-%% The following filter combinations are supported when the `PartyType'
-%% is `Proposer':
-%%
-%% `AgreementType'
-%%
-%% `AgreementType' + `EndTime'
-%%
-%% `AgreementType' + `ResourceType'
-%%
-%% `AgreementType' + `ResourceType' + `EndTime'
-%%
-%% `AgreementType' + `ResourceType' + `Status'
-%%
-%% `AgreementType' + `ResourceType' + `Status' + `EndTime'
-%%
-%% `AgreementType' + `ResourceIdentifier'
-%%
-%% `AgreementType' + `ResourceIdentifier' + `EndTime'
-%%
-%% `AgreementType' + `ResourceIdentifier' + `Status'
-%%
-%% `AgreementType' + `ResourceIdentifier' + `Status' +
-%% `EndTime'
-%%
-%% `AgreementType' + `AcceptorAccountId'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `EndTime'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `Status'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `Status' +
-%% `EndTime'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `OfferId'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `OfferId' +
-%% `Status'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `OfferId' +
-%% `EndTime'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `OfferId' +
-%% `Status' + `EndTime'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `ResourceIdentifier'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `ResourceIdentifier' +
-%% `Status'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `ResourceIdentifier' +
-%% `EndTime'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `ResourceIdentifier' +
-%% `Status' + `EndTime'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `ResourceType'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `ResourceType' +
-%% `EndTime'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `ResourceType' +
-%% `Status'
-%%
-%% `AgreementType' + `AcceptorAccountId' + `ResourceType' +
-%% `Status' + `EndTime'
-%%
-%% `AgreementType' + `Status'
-%%
-%% `AgreementType' + `Status' + `EndTime'
-%%
-%% `AgreementType' + `OfferId'
-%%
-%% `AgreementType' + `OfferId' + `EndTime'
-%%
-%% `AgreementType' + `OfferId' + `Status'
-%%
-%% `AgreementType' + `OfferId' + `Status' + `EndTime'
-%%
-%% `AgreementType' + `OfferSetId'
-%%
-%% `AgreementType' + `OfferSetId' + `EndTime'
-%%
-%% `AgreementType' + `OfferSetId' + `Status'
-%%
-%% `AgreementType' + `OfferSetId' + `Status' + `EndTime'
-%%
-%% To filter by `EndTime', you can use `BeforeEndTime' and/or
-%% `AfterEndTime'. Only `EndTime' is supported for sorting.
-%%
-%% The following filter combinations are supported when the `PartyType'
-%% is `Acceptor':
-%%
-%% `AgreementType'
-%%
-%% `AgreementType' + `Status'
-%%
-%% `AgreementType' + `EndTime'
-%%
-%% `AgreementType' + `Status' + `EndTime'
-%%
-%% `AgreementType' + `ResourceIdentifier'
-%%
-%% `AgreementType' + `ResourceIdentifier' + `EndTime'
-%%
-%% `AgreementType' + `ResourceIdentifier' + `Status'
-%%
-%% `AgreementType' + `ResourceIdentifier' + `Status' +
-%% `EndTime'
-%%
-%% `AgreementType' + `ResourceType'
-%%
-%% `AgreementType' + `ResourceType' + `EndTime'
-%%
-%% `AgreementType' + `OfferId'
-%%
-%% `AgreementType' + `OfferId' + `EndTime'
-%%
-%% `AgreementType' + `OfferId' + `Status'
-%%
-%% `AgreementType' + `OfferId' + `Status' + `EndTime'
-%%
-%% `AgreementType' + `OfferSetId'
-%%
-%% `AgreementType' + `OfferSetId' + `EndTime'
-%%
-%% `AgreementType' + `OfferSetId' + `Status'
-%%
-%% `AgreementType' + `OfferSetId' + `Status' + `EndTime'
 -spec search_agreements(aws_client:aws_client(), search_agreements_input()) ->
     {ok, search_agreements_output(), tuple()} |
     {error, any()} |

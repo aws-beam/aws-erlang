@@ -96,6 +96,7 @@
 %%   <<"italyAdditionalInfo">> => italy_additional_info(),
 %%   <<"kenyaAdditionalInfo">> => kenya_additional_info(),
 %%   <<"malaysiaAdditionalInfo">> => malaysia_additional_info(),
+%%   <<"monacoAdditionalInfo">> => monaco_additional_info(),
 %%   <<"philippinesAdditionalInfo">> => philippines_additional_info(),
 %%   <<"polandAdditionalInfo">> => poland_additional_info(),
 %%   <<"romaniaAdditionalInfo">> => romania_additional_info(),
@@ -127,6 +128,7 @@
 %%   <<"italyAdditionalInfo">> => italy_additional_info(),
 %%   <<"kenyaAdditionalInfo">> => kenya_additional_info(),
 %%   <<"malaysiaAdditionalInfo">> => malaysia_additional_info(),
+%%   <<"monacoAdditionalInfo">> => monaco_additional_info(),
 %%   <<"philippinesAdditionalInfo">> => philippines_additional_info(),
 %%   <<"polandAdditionalInfo">> => poland_additional_info(),
 %%   <<"romaniaAdditionalInfo">> => romania_additional_info(),
@@ -337,6 +339,7 @@
 
 %% Example:
 %% france_additional_info() :: #{
+%%   <<"eInvoiceRoutingCode">> => [string()],
 %%   <<"sirenNumber">> => string()
 %% }
 -type france_additional_info() :: #{binary() => any()}.
@@ -521,6 +524,13 @@
 %%   <<"taxInformationNumber">> => string()
 %% }
 -type malaysia_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% monaco_additional_info() :: #{
+%%   <<"businessNumber">> => string()
+%% }
+-type monaco_additional_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1215,6 +1225,16 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %% You must specify the `sirenNumber' in the `franceAdditionalInfo'
 %% field of the `additionalTaxInformation' object.
 %%
+%% You can optionally specify the `eInvoiceRoutingCode' in the
+%% `franceAdditionalInfo' field of the `additionalTaxInformation'
+%% object.
+%%
+%% Monaco
+%%
+%% You must specify the `businessNumber' in the
+%% `monacoAdditionalInfo' field of the `additionalTaxInformation'
+%% object.
+%%
 %% Poland
 %%
 %% You can optionally specify the `taxRegistrationNumberType' in the
@@ -1896,6 +1916,16 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %%
 %% You must specify the `sirenNumber' in the `franceAdditionalInfo'
 %% field of the `additionalTaxInformation' object.
+%%
+%% You can optionally specify the `eInvoiceRoutingCode' in the
+%% `franceAdditionalInfo' field of the `additionalTaxInformation'
+%% object.
+%%
+%% Monaco
+%%
+%% You must specify the `businessNumber' in the
+%% `monacoAdditionalInfo' field of the `additionalTaxInformation'
+%% object.
 %%
 %% Poland
 %%

@@ -254,6 +254,8 @@
          get_operations/3,
          get_operations_for_resource/2,
          get_operations_for_resource/3,
+         get_profile/2,
+         get_profile/3,
          get_regions/2,
          get_regions/3,
          get_relational_database/2,
@@ -2527,6 +2529,19 @@
 -type get_operations_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_profile_request() :: #{
+
+%% }
+-type get_profile_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_profile_result() :: #{
+%%   <<"partner">> => partner_info(),
+%%   <<"profileType">> => list(any())
+%% }
+-type get_profile_result() :: #{binary() => any()}.
+
+%% Example:
 %% get_regions_request() :: #{
 %%   <<"includeAvailabilityZones">> => boolean(),
 %%   <<"includeRelationalDatabaseAvailabilityZones">> => boolean()
@@ -3200,6 +3215,14 @@
 %%   <<"responseTimeout">> => integer()
 %% }
 -type origin() :: #{binary() => any()}.
+
+%% Example:
+%% partner_info() :: #{
+%%   <<"enrolledAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"tierName">> => list(any())
+%% }
+-type partner_info() :: #{binary() => any()}.
 
 %% Example:
 %% password_data() :: #{
@@ -5009,6 +5032,13 @@
     region_setup_in_progress_exception() | 
     operation_failure_exception() | 
     not_found_exception() | 
+    invalid_input_exception() | 
+    account_setup_in_progress_exception() | 
+    access_denied_exception().
+
+-type get_profile_errors() ::
+    unauthenticated_exception() | 
+    service_exception() | 
     invalid_input_exception() | 
     account_setup_in_progress_exception() | 
     access_denied_exception().
@@ -8275,6 +8305,29 @@ get_operations_for_resource(Client, Input)
 get_operations_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOperationsForResource">>, Input, Options).
+
+%% @doc Returns information about the profile of the Amazon Lightsail account
+%% that makes the
+%% request.
+%%
+%% The response includes the profile type and, for accounts enrolled in the
+%% Lightsail
+%% partner program, the partner membership details.
+-spec get_profile(aws_client:aws_client(), get_profile_request()) ->
+    {ok, get_profile_result(), tuple()} |
+    {error, any()} |
+    {error, get_profile_errors(), tuple()}.
+get_profile(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_profile(Client, Input, []).
+
+-spec get_profile(aws_client:aws_client(), get_profile_request(), proplists:proplist()) ->
+    {ok, get_profile_result(), tuple()} |
+    {error, any()} |
+    {error, get_profile_errors(), tuple()}.
+get_profile(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetProfile">>, Input, Options).
 
 %% @doc Returns a list of all valid regions for Amazon Lightsail.
 %%

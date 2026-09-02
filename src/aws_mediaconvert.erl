@@ -97,6 +97,7 @@
 %%   <<"CodecProfile">> => list(any()),
 %%   <<"CodingMode">> => list(any()),
 %%   <<"LoudnessMeasurementMode">> => list(any()),
+%%   <<"PassthroughControl">> => list(any()),
 %%   <<"RapInterval">> => integer(),
 %%   <<"RateControlMode">> => list(any()),
 %%   <<"RawFormat">> => list(any()),
@@ -186,6 +187,14 @@
 
 
 %% Example:
+%% aspect_ratio() :: #{
+%%   <<"Denominator">> => integer(),
+%%   <<"Numerator">> => integer()
+%% }
+-type aspect_ratio() :: #{binary() => any()}.
+
+
+%% Example:
 %% associate_certificate_request() :: #{
 %%   <<"Arn">> := string()
 %% }
@@ -265,6 +274,7 @@
 %% audio_properties() :: #{
 %%   <<"BitDepth">> => integer(),
 %%   <<"BitRate">> => float(),
+%%   <<"ChannelLayout">> => string(),
 %%   <<"Channels">> => integer(),
 %%   <<"FrameRate">> => frame_rate(),
 %%   <<"LanguageCode">> => string(),
@@ -640,6 +650,7 @@
 %%   <<"ColorPrimaries">> => list(any()),
 %%   <<"ContentLightLevel">> => content_light_level(),
 %%   <<"FieldOrder">> => string(),
+%%   <<"Hdr10PlusPresence">> => list(any()),
 %%   <<"Height">> => integer(),
 %%   <<"Level">> => string(),
 %%   <<"MatrixCoefficients">> => list(any()),
@@ -2940,7 +2951,15 @@
 
 %% Example:
 %% ttml_destination_settings() :: #{
-%%   <<"StylePassthrough">> => list(any())
+%%   <<"BackgroundColor">> => list(any()),
+%%   <<"BackgroundOpacity">> => integer(),
+%%   <<"FontColor">> => list(any()),
+%%   <<"FontOpacity">> => integer(),
+%%   <<"FontSize">> => integer(),
+%%   <<"FontStyle">> => list(any()),
+%%   <<"FontWeight">> => list(any()),
+%%   <<"StylePassthrough">> => list(any()),
+%%   <<"TextDecoration">> => list(any())
 %% }
 -type ttml_destination_settings() :: #{binary() => any()}.
 
@@ -3178,11 +3197,13 @@
 %%   <<"BitRate">> => float(),
 %%   <<"CodecMetadata">> => codec_metadata(),
 %%   <<"ColorPrimaries">> => list(any()),
+%%   <<"DisplayAspectRatio">> => aspect_ratio(),
 %%   <<"FrameRate">> => frame_rate(),
 %%   <<"HdrMetadata">> => hdr_metadata(),
 %%   <<"Height">> => integer(),
 %%   <<"MatrixCoefficients">> => list(any()),
 %%   <<"Rotation">> => integer(),
+%%   <<"SampleAspectRatio">> => aspect_ratio(),
 %%   <<"TransferCharacteristics">> => list(any()),
 %%   <<"Width">> => integer()
 %% }
@@ -3320,6 +3341,7 @@
 
 %% Example:
 %% xavc_hd_intra_cbg_profile_settings() :: #{
+%%   <<"InterlaceMode">> => list(any()),
 %%   <<"XavcClass">> => list(any())
 %% }
 -type xavc_hd_intra_cbg_profile_settings() :: #{binary() => any()}.

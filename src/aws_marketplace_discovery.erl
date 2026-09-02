@@ -244,6 +244,13 @@
 
 
 %% Example:
+%% fixed_percentage() :: #{
+%%   <<"percentageValue">> => string()
+%% }
+-type fixed_percentage() :: #{binary() => any()}.
+
+
+%% Example:
 %% fixed_upfront_pricing_term() :: #{
 %%   <<"currencyCode">> => string(),
 %%   <<"duration">> => string(),
@@ -576,6 +583,15 @@
 
 
 %% Example:
+%% payment_schedule_entry() :: #{
+%%   <<"chargeDateOffset">> => string(),
+%%   <<"chargePercentage">> => string(),
+%%   <<"dayOfMonth">> => [integer()]
+%% }
+-type payment_schedule_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% payment_schedule_term() :: #{
 %%   <<"currencyCode">> => string(),
 %%   <<"id">> => string(),
@@ -583,6 +599,22 @@
 %%   <<"type">> => list(any())
 %% }
 -type payment_schedule_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% payment_schedule_term_template() :: #{
+%%   <<"schedule">> => list(payment_schedule_entry())
+%% }
+-type payment_schedule_term_template() :: #{binary() => any()}.
+
+
+%% Example:
+%% percentage_range() :: #{
+%%   <<"defaultValue">> => string(),
+%%   <<"maximumValue">> => string(),
+%%   <<"minimumValue">> => string()
+%% }
+-type percentage_range() :: #{binary() => any()}.
 
 
 %% Example:
@@ -704,7 +736,12 @@
 
 %% Example:
 %% renewal_term() :: #{
+%%   <<"adjustmentDeadline">> => string(),
 %%   <<"id">> => string(),
+%%   <<"lockoutPeriod">> => string(),
+%%   <<"maxRenewals">> => [integer()],
+%%   <<"priceIncrease">> => list(),
+%%   <<"termTemplates">> => list(list()),
 %%   <<"type">> => list(any())
 %% }
 -type renewal_term() :: #{binary() => any()}.

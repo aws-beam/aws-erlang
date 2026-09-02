@@ -35,6 +35,10 @@
          accept_invitation/4,
          archive_findings/3,
          archive_findings/4,
+         create_custom_detection_rule_association/2,
+         create_custom_detection_rule_association/3,
+         create_custom_detection_rule_org_configuration/2,
+         create_custom_detection_rule_org_configuration/3,
          create_detector/2,
          create_detector/3,
          create_filter/3,
@@ -59,6 +63,10 @@
          create_trusted_entity_set/4,
          decline_invitations/2,
          decline_invitations/3,
+         delete_custom_detection_rule_association/4,
+         delete_custom_detection_rule_association/5,
+         delete_custom_detection_rule_org_configuration/3,
+         delete_custom_detection_rule_org_configuration/4,
          delete_detector/3,
          delete_detector/4,
          delete_filter/4,
@@ -102,6 +110,15 @@
          get_administrator_account/5,
          get_coverage_statistics/3,
          get_coverage_statistics/4,
+         get_custom_detection_rule/2,
+         get_custom_detection_rule/4,
+         get_custom_detection_rule/5,
+         get_custom_detection_rule_association/3,
+         get_custom_detection_rule_association/5,
+         get_custom_detection_rule_association/6,
+         get_custom_detection_rule_org_configuration/3,
+         get_custom_detection_rule_org_configuration/5,
+         get_custom_detection_rule_org_configuration/6,
          get_detector/2,
          get_detector/4,
          get_detector/5,
@@ -157,6 +174,14 @@
          invite_members/4,
          list_coverage/3,
          list_coverage/4,
+         list_custom_detection_rule_associations/1,
+         list_custom_detection_rule_associations/3,
+         list_custom_detection_rule_associations/4,
+         list_custom_detection_rule_org_configurations/1,
+         list_custom_detection_rule_org_configurations/3,
+         list_custom_detection_rule_org_configurations/4,
+         list_custom_detection_rules/2,
+         list_custom_detection_rules/3,
          list_detectors/1,
          list_detectors/3,
          list_detectors/4,
@@ -213,6 +238,10 @@
          unarchive_findings/4,
          untag_resource/3,
          untag_resource/4,
+         update_custom_detection_rule_association/4,
+         update_custom_detection_rule_association/5,
+         update_custom_detection_rule_org_configuration/3,
+         update_custom_detection_rule_org_configuration/4,
          update_detector/3,
          update_detector/4,
          update_filter/4,
@@ -451,6 +480,33 @@
 %% Example:
 %% archive_findings_response() :: #{}
 -type archive_findings_response() :: #{}.
+
+
+%% Example:
+%% association_detail() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"AssociationId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"Mode">> => list(any()),
+%%   <<"RuleId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type association_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% association_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociationId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"Mode">> => list(any()),
+%%   <<"RuleId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type association_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -744,6 +800,38 @@
 
 
 %% Example:
+%% create_custom_detection_rule_association_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Mode">> := list(any()),
+%%   <<"RuleId">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_custom_detection_rule_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_detection_rule_association_response() :: #{
+%%   <<"RuleAssociation">> => association_detail()
+%% }
+-type create_custom_detection_rule_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_custom_detection_rule_org_configuration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ExcludeAccountIds">> => list(string()),
+%%   <<"IncludeAccountIds">> => list(string()),
+%%   <<"Mode">> := list(any()),
+%%   <<"RuleId">> := string()
+%% }
+-type create_custom_detection_rule_org_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_custom_detection_rule_org_configuration_response() :: #{}
+-type create_custom_detection_rule_org_configuration_response() :: #{}.
+
+
+%% Example:
 %% create_detector_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DataSources">> => data_source_configurations(),
@@ -1025,6 +1113,25 @@
 -type default_server_side_encryption() :: #{binary() => any()}.
 
 %% Example:
+%% delete_custom_detection_rule_association_request() :: #{}
+-type delete_custom_detection_rule_association_request() :: #{}.
+
+%% Example:
+%% delete_custom_detection_rule_association_response() :: #{}
+-type delete_custom_detection_rule_association_response() :: #{}.
+
+
+%% Example:
+%% delete_custom_detection_rule_org_configuration_request() :: #{
+%%   <<"Mode">> := list(any())
+%% }
+-type delete_custom_detection_rule_org_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_custom_detection_rule_org_configuration_response() :: #{}
+-type delete_custom_detection_rule_org_configuration_response() :: #{}.
+
+%% Example:
 %% delete_detector_request() :: #{}
 -type delete_detector_request() :: #{}.
 
@@ -1190,6 +1297,43 @@
 %%   <<"Sequence">> => sequence()
 %% }
 -type detection() :: #{binary() => any()}.
+
+
+%% Example:
+%% detection_rule_filter() :: #{
+%%   <<"Condition">> => list(any()),
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type detection_rule_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% detection_rule_org_configuration() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExcludeAccountIds">> => list(string()),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"IncludeAccountIds">> => list(string()),
+%%   <<"Mode">> => list(any()),
+%%   <<"RuleId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type detection_rule_org_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% detection_rule_org_configuration_summary() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"Mode">> => list(any()),
+%%   <<"RuleId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type detection_rule_org_configuration_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1612,6 +1756,43 @@
 %%   <<"CoverageStatistics">> => coverage_statistics()
 %% }
 -type get_coverage_statistics_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_detection_rule_association_request() :: #{}
+-type get_custom_detection_rule_association_request() :: #{}.
+
+
+%% Example:
+%% get_custom_detection_rule_association_response() :: #{
+%%   <<"RuleAssociation">> => association_detail(),
+%%   <<"Tags">> => map()
+%% }
+-type get_custom_detection_rule_association_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_custom_detection_rule_org_configuration_request() :: #{
+%%   <<"Mode">> := list(any())
+%% }
+-type get_custom_detection_rule_org_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_custom_detection_rule_org_configuration_response() :: #{
+%%   <<"Configuration">> => detection_rule_org_configuration()
+%% }
+-type get_custom_detection_rule_org_configuration_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_custom_detection_rule_request() :: #{}
+-type get_custom_detection_rule_request() :: #{}.
+
+
+%% Example:
+%% get_custom_detection_rule_response() :: #{
+%%   <<"Rule">> => rule_detail()
+%% }
+-type get_custom_detection_rule_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_detector_request() :: #{}
@@ -2278,6 +2459,58 @@
 %%   <<"Resources">> => list(coverage_resource())
 %% }
 -type list_coverage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_detection_rule_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Mode">> => list(any()),
+%%   <<"NextToken">> => string(),
+%%   <<"RuleId">> => string()
+%% }
+-type list_custom_detection_rule_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_detection_rule_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RuleAssociations">> => list(association_summary())
+%% }
+-type list_custom_detection_rule_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_detection_rule_org_configurations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_custom_detection_rule_org_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_detection_rule_org_configurations_response() :: #{
+%%   <<"Configurations">> => list(detection_rule_org_configuration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_detection_rule_org_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_detection_rules_request() :: #{
+%%   <<"Filters">> => list(detection_rule_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_custom_detection_rules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_custom_detection_rules_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Rules">> => list(rule_summary())
+%% }
+-type list_custom_detection_rules_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3243,6 +3476,52 @@
 
 
 %% Example:
+%% rule_definition() :: #{
+%%   <<"Expression">> => string()
+%% }
+-type rule_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_detail() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSource">> => list(any()),
+%%   <<"Definition">> => rule_definition(),
+%%   <<"Description">> => string(),
+%%   <<"Language">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"RuleId">> => string(),
+%%   <<"Schema">> => list(any()),
+%%   <<"Service">> => string(),
+%%   <<"Severity">> => list(any()),
+%%   <<"Tactic">> => string(),
+%%   <<"Technique">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type rule_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% rule_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DataSource">> => list(any()),
+%%   <<"Description">> => string(),
+%%   <<"Language">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"RuleId">> => string(),
+%%   <<"Schema">> => list(any()),
+%%   <<"Service">> => string(),
+%%   <<"Severity">> => list(any()),
+%%   <<"Tactic">> => string(),
+%%   <<"Technique">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% runtime_context() :: #{
 %%   <<"AddressFamily">> => string(),
 %%   <<"CommandLineExample">> => string(),
@@ -3801,6 +4080,30 @@
 
 
 %% Example:
+%% update_custom_detection_rule_association_request() :: #{
+%%   <<"Mode">> := list(any())
+%% }
+-type update_custom_detection_rule_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_detection_rule_association_response() :: #{}
+-type update_custom_detection_rule_association_response() :: #{}.
+
+
+%% Example:
+%% update_custom_detection_rule_org_configuration_request() :: #{
+%%   <<"ExcludeAccountIds">> => list(string()),
+%%   <<"IncludeAccountIds">> => list(string()),
+%%   <<"Mode">> := list(any())
+%% }
+-type update_custom_detection_rule_org_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_custom_detection_rule_org_configuration_response() :: #{}
+-type update_custom_detection_rule_org_configuration_response() :: #{}.
+
+
+%% Example:
 %% update_detector_request() :: #{
 %%   <<"DataSources">> => data_source_configurations(),
 %%   <<"Enable">> => boolean(),
@@ -4106,6 +4409,20 @@
     internal_server_error_exception() | 
     bad_request_exception().
 
+-type create_custom_detection_rule_association_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type create_custom_detection_rule_org_configuration_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
 -type create_detector_errors() ::
     internal_server_error_exception() | 
     bad_request_exception().
@@ -4158,6 +4475,19 @@
 -type decline_invitations_errors() ::
     internal_server_error_exception() | 
     bad_request_exception().
+
+-type delete_custom_detection_rule_association_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type delete_custom_detection_rule_org_configuration_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type delete_detector_errors() ::
     internal_server_error_exception() | 
@@ -4240,6 +4570,24 @@
 -type get_coverage_statistics_errors() ::
     internal_server_error_exception() | 
     bad_request_exception().
+
+-type get_custom_detection_rule_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type get_custom_detection_rule_association_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type get_custom_detection_rule_org_configuration_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type get_detector_errors() ::
     internal_server_error_exception() | 
@@ -4329,6 +4677,21 @@
 -type list_coverage_errors() ::
     internal_server_error_exception() | 
     bad_request_exception().
+
+-type list_custom_detection_rule_associations_errors() ::
+    internal_server_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type list_custom_detection_rule_org_configurations_errors() ::
+    internal_server_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type list_custom_detection_rules_errors() ::
+    internal_server_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_detectors_errors() ::
     internal_server_error_exception() | 
@@ -4422,6 +4785,20 @@
 
 -type untag_resource_errors() ::
     internal_server_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type update_custom_detection_rule_association_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type update_custom_detection_rule_org_configuration_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
     bad_request_exception() | 
     access_denied_exception().
 
@@ -4570,6 +4947,80 @@ archive_findings(Client, DetectorId, Input) ->
 archive_findings(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/findings/archive"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Enables a custom detection rule for your account by creating an
+%% association.
+%%
+%% You specify the rule and the mode in which it operates.
+-spec create_custom_detection_rule_association(aws_client:aws_client(), create_custom_detection_rule_association_request()) ->
+    {ok, create_custom_detection_rule_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_detection_rule_association_errors(), tuple()}.
+create_custom_detection_rule_association(Client, Input) ->
+    create_custom_detection_rule_association(Client, Input, []).
+
+-spec create_custom_detection_rule_association(aws_client:aws_client(), create_custom_detection_rule_association_request(), proplists:proplist()) ->
+    {ok, create_custom_detection_rule_association_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_detection_rule_association_errors(), tuple()}.
+create_custom_detection_rule_association(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/custom-detection-rule/association"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an organization-level configuration that enables a custom
+%% detection rule across your organization.
+%%
+%% This operation is available only to the delegated administrator account.
+-spec create_custom_detection_rule_org_configuration(aws_client:aws_client(), create_custom_detection_rule_org_configuration_request()) ->
+    {ok, create_custom_detection_rule_org_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_detection_rule_org_configuration_errors(), tuple()}.
+create_custom_detection_rule_org_configuration(Client, Input) ->
+    create_custom_detection_rule_org_configuration(Client, Input, []).
+
+-spec create_custom_detection_rule_org_configuration(aws_client:aws_client(), create_custom_detection_rule_org_configuration_request(), proplists:proplist()) ->
+    {ok, create_custom_detection_rule_org_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_custom_detection_rule_org_configuration_errors(), tuple()}.
+create_custom_detection_rule_org_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/custom-detection-rule/org-configuration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5127,6 +5578,80 @@ decline_invitations(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disables a custom detection rule by deleting its association.
+%%
+%% This operation is idempotent.
+-spec delete_custom_detection_rule_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_custom_detection_rule_association_request()) ->
+    {ok, delete_custom_detection_rule_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_detection_rule_association_errors(), tuple()}.
+delete_custom_detection_rule_association(Client, AssociationId, RuleId, Input) ->
+    delete_custom_detection_rule_association(Client, AssociationId, RuleId, Input, []).
+
+-spec delete_custom_detection_rule_association(aws_client:aws_client(), binary() | list(), binary() | list(), delete_custom_detection_rule_association_request(), proplists:proplist()) ->
+    {ok, delete_custom_detection_rule_association_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_detection_rule_association_errors(), tuple()}.
+delete_custom_detection_rule_association(Client, AssociationId, RuleId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/custom-detection-rule/rule/", aws_util:encode_uri(RuleId), "/association/", aws_util:encode_uri(AssociationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the organization-level configuration for a custom detection
+%% rule.
+%%
+%% This operation is available only to the delegated administrator account.
+-spec delete_custom_detection_rule_org_configuration(aws_client:aws_client(), binary() | list(), delete_custom_detection_rule_org_configuration_request()) ->
+    {ok, delete_custom_detection_rule_org_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_detection_rule_org_configuration_errors(), tuple()}.
+delete_custom_detection_rule_org_configuration(Client, RuleId, Input) ->
+    delete_custom_detection_rule_org_configuration(Client, RuleId, Input, []).
+
+-spec delete_custom_detection_rule_org_configuration(aws_client:aws_client(), binary() | list(), delete_custom_detection_rule_org_configuration_request(), proplists:proplist()) ->
+    {ok, delete_custom_detection_rule_org_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_custom_detection_rule_org_configuration_errors(), tuple()}.
+delete_custom_detection_rule_org_configuration(Client, RuleId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/custom-detection-rule/org-configuration/", aws_util:encode_uri(RuleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"mode">>, <<"Mode">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes an Amazon GuardDuty detector that is specified by the
@@ -5942,6 +6467,123 @@ get_coverage_statistics(Client, DetectorId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns details for a custom detection rule in GuardDuty, including
+%% its detection logic.
+-spec get_custom_detection_rule(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_custom_detection_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_detection_rule_errors(), tuple()}.
+get_custom_detection_rule(Client, RuleId)
+  when is_map(Client) ->
+    get_custom_detection_rule(Client, RuleId, #{}, #{}).
+
+-spec get_custom_detection_rule(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_custom_detection_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_detection_rule_errors(), tuple()}.
+get_custom_detection_rule(Client, RuleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_custom_detection_rule(Client, RuleId, QueryMap, HeadersMap, []).
+
+-spec get_custom_detection_rule(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_custom_detection_rule_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_detection_rule_errors(), tuple()}.
+get_custom_detection_rule(Client, RuleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/custom-detection-rule/rule/", aws_util:encode_uri(RuleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns details for a custom detection rule association.
+-spec get_custom_detection_rule_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_custom_detection_rule_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_detection_rule_association_errors(), tuple()}.
+get_custom_detection_rule_association(Client, AssociationId, RuleId)
+  when is_map(Client) ->
+    get_custom_detection_rule_association(Client, AssociationId, RuleId, #{}, #{}).
+
+-spec get_custom_detection_rule_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_custom_detection_rule_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_detection_rule_association_errors(), tuple()}.
+get_custom_detection_rule_association(Client, AssociationId, RuleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_custom_detection_rule_association(Client, AssociationId, RuleId, QueryMap, HeadersMap, []).
+
+-spec get_custom_detection_rule_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_custom_detection_rule_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_detection_rule_association_errors(), tuple()}.
+get_custom_detection_rule_association(Client, AssociationId, RuleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/custom-detection-rule/rule/", aws_util:encode_uri(RuleId), "/association/", aws_util:encode_uri(AssociationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the organization-level configuration for a custom detection
+%% rule.
+-spec get_custom_detection_rule_org_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_custom_detection_rule_org_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_detection_rule_org_configuration_errors(), tuple()}.
+get_custom_detection_rule_org_configuration(Client, RuleId, Mode)
+  when is_map(Client) ->
+    get_custom_detection_rule_org_configuration(Client, RuleId, Mode, #{}, #{}).
+
+-spec get_custom_detection_rule_org_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_custom_detection_rule_org_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_detection_rule_org_configuration_errors(), tuple()}.
+get_custom_detection_rule_org_configuration(Client, RuleId, Mode, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_custom_detection_rule_org_configuration(Client, RuleId, Mode, QueryMap, HeadersMap, []).
+
+-spec get_custom_detection_rule_org_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_custom_detection_rule_org_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_custom_detection_rule_org_configuration_errors(), tuple()}.
+get_custom_detection_rule_org_configuration(Client, RuleId, Mode, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/custom-detection-rule/org-configuration/", aws_util:encode_uri(RuleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"mode">>, Mode}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a GuardDuty detector specified by the detectorId.
 %%
@@ -6798,6 +7440,135 @@ list_coverage(Client, DetectorId, Input) ->
 list_coverage(Client, DetectorId, Input0, Options0) ->
     Method = post,
     Path = ["/detector/", aws_util:encode_uri(DetectorId), "/coverage"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns all custom detection rule associations for your account.
+%%
+%% You can filter by rule ID and mode.
+-spec list_custom_detection_rule_associations(aws_client:aws_client()) ->
+    {ok, list_custom_detection_rule_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_detection_rule_associations_errors(), tuple()}.
+list_custom_detection_rule_associations(Client)
+  when is_map(Client) ->
+    list_custom_detection_rule_associations(Client, #{}, #{}).
+
+-spec list_custom_detection_rule_associations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_custom_detection_rule_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_detection_rule_associations_errors(), tuple()}.
+list_custom_detection_rule_associations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_custom_detection_rule_associations(Client, QueryMap, HeadersMap, []).
+
+-spec list_custom_detection_rule_associations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_custom_detection_rule_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_detection_rule_associations_errors(), tuple()}.
+list_custom_detection_rule_associations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/custom-detection-rule/association"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"mode">>, maps:get(<<"mode">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"ruleId">>, maps:get(<<"ruleId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns all organization-level configurations for custom detection
+%% rules.
+%%
+%% You can filter the results by status.
+-spec list_custom_detection_rule_org_configurations(aws_client:aws_client()) ->
+    {ok, list_custom_detection_rule_org_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_detection_rule_org_configurations_errors(), tuple()}.
+list_custom_detection_rule_org_configurations(Client)
+  when is_map(Client) ->
+    list_custom_detection_rule_org_configurations(Client, #{}, #{}).
+
+-spec list_custom_detection_rule_org_configurations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_custom_detection_rule_org_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_detection_rule_org_configurations_errors(), tuple()}.
+list_custom_detection_rule_org_configurations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_custom_detection_rule_org_configurations(Client, QueryMap, HeadersMap, []).
+
+-spec list_custom_detection_rule_org_configurations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_custom_detection_rule_org_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_detection_rule_org_configurations_errors(), tuple()}.
+list_custom_detection_rule_org_configurations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/custom-detection-rule/org-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns all available custom detection rules in GuardDuty.
+%%
+%% You can filter the results by data source, severity, tactic, technique,
+%% and service.
+-spec list_custom_detection_rules(aws_client:aws_client(), list_custom_detection_rules_request()) ->
+    {ok, list_custom_detection_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_detection_rules_errors(), tuple()}.
+list_custom_detection_rules(Client, Input) ->
+    list_custom_detection_rules(Client, Input, []).
+
+-spec list_custom_detection_rules(aws_client:aws_client(), list_custom_detection_rules_request(), proplists:proplist()) ->
+    {ok, list_custom_detection_rules_response(), tuple()} |
+    {error, any()} |
+    {error, list_custom_detection_rules_errors(), tuple()}.
+list_custom_detection_rules(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/custom-detection-rule/rule"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -7741,6 +8512,75 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the mode of an existing custom detection rule association.
+-spec update_custom_detection_rule_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_custom_detection_rule_association_request()) ->
+    {ok, update_custom_detection_rule_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_custom_detection_rule_association_errors(), tuple()}.
+update_custom_detection_rule_association(Client, AssociationId, RuleId, Input) ->
+    update_custom_detection_rule_association(Client, AssociationId, RuleId, Input, []).
+
+-spec update_custom_detection_rule_association(aws_client:aws_client(), binary() | list(), binary() | list(), update_custom_detection_rule_association_request(), proplists:proplist()) ->
+    {ok, update_custom_detection_rule_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_custom_detection_rule_association_errors(), tuple()}.
+update_custom_detection_rule_association(Client, AssociationId, RuleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/custom-detection-rule/rule/", aws_util:encode_uri(RuleId), "/association/", aws_util:encode_uri(AssociationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the organization-level configuration for a custom detection
+%% rule, including the mode and include/exclude account lists.
+-spec update_custom_detection_rule_org_configuration(aws_client:aws_client(), binary() | list(), update_custom_detection_rule_org_configuration_request()) ->
+    {ok, update_custom_detection_rule_org_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_custom_detection_rule_org_configuration_errors(), tuple()}.
+update_custom_detection_rule_org_configuration(Client, RuleId, Input) ->
+    update_custom_detection_rule_org_configuration(Client, RuleId, Input, []).
+
+-spec update_custom_detection_rule_org_configuration(aws_client:aws_client(), binary() | list(), update_custom_detection_rule_org_configuration_request(), proplists:proplist()) ->
+    {ok, update_custom_detection_rule_org_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_custom_detection_rule_org_configuration_errors(), tuple()}.
+update_custom_detection_rule_org_configuration(Client, RuleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/custom-detection-rule/org-configuration/", aws_util:encode_uri(RuleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the GuardDuty detector specified by the detector ID.
