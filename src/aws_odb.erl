@@ -145,6 +145,8 @@
          list_exadb_vm_clusters/3,
          list_exascale_db_storage_vaults/2,
          list_exascale_db_storage_vaults/3,
+         list_flex_components/2,
+         list_flex_components/3,
          list_gi_minor_versions/2,
          list_gi_minor_versions/3,
          list_gi_versions/2,
@@ -1845,6 +1847,22 @@
 -type failover_autonomous_database_output() :: #{binary() => any()}.
 
 %% Example:
+%% flex_component_summary() :: #{
+%%   <<"availableCoreCount">> => [integer()],
+%%   <<"availableDbStorageInGBs">> => [integer()],
+%%   <<"availableLocalStorageInGBs">> => [integer()],
+%%   <<"availableMemoryInGBs">> => [integer()],
+%%   <<"computeModel">> => list(any()),
+%%   <<"descriptionSummary">> => [string()],
+%%   <<"hardwareType">> => list(any()),
+%%   <<"minimumCoreCount">> => [integer()],
+%%   <<"name">> => [string()],
+%%   <<"runtimeMinimumCoreCount">> => [integer()],
+%%   <<"shape">> => [string()]
+%% }
+-type flex_component_summary() :: #{binary() => any()}.
+
+%% Example:
 %% get_autonomous_database_backup_input() :: #{
 
 %% }
@@ -2292,6 +2310,21 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_exascale_db_storage_vaults_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_flex_components_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"shape">> => [string()]
+%% }
+-type list_flex_components_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_flex_components_output() :: #{
+%%   <<"flexComponents">> => list(flex_component_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_flex_components_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_gi_minor_versions_input() :: #{
@@ -3443,6 +3476,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_flex_components_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_gi_minor_versions_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -4576,6 +4615,24 @@ list_exascale_db_storage_vaults(Client, Input)
 list_exascale_db_storage_vaults(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListExascaleDbStorageVaults">>, Input, Options).
+
+%% @doc Returns information about the flex components that are available for
+%% an Exadata infrastructure.
+-spec list_flex_components(aws_client:aws_client(), list_flex_components_input()) ->
+    {ok, list_flex_components_output(), tuple()} |
+    {error, any()} |
+    {error, list_flex_components_errors(), tuple()}.
+list_flex_components(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_flex_components(Client, Input, []).
+
+-spec list_flex_components(aws_client:aws_client(), list_flex_components_input(), proplists:proplist()) ->
+    {ok, list_flex_components_output(), tuple()} |
+    {error, any()} |
+    {error, list_flex_components_errors(), tuple()}.
+list_flex_components(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFlexComponents">>, Input, Options).
 
 %% @doc Returns a list of the Oracle Grid Infrastructure (GI) minor versions
 %% for the specified major version.

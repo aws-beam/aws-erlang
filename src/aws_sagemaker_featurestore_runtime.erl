@@ -36,7 +36,9 @@
          list_records/3,
          list_records/4,
          put_record/3,
-         put_record/4]).
+         put_record/4,
+         update_record/3,
+         update_record/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -131,6 +133,13 @@
 
 
 %% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_record_request() :: #{
 %%   <<"DeletionMode">> => list(any()),
 %%   <<"EventTime">> := string(),
@@ -222,6 +231,16 @@
 
 
 %% Example:
+%% update_record_request() :: #{
+%%   <<"Features">> := list(feature_value()),
+%%   <<"RecordIdentifierValueAsString">> := string(),
+%%   <<"TargetStores">> => list(list(any())()),
+%%   <<"TtlDuration">> => ttl_duration()
+%% }
+-type update_record_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_error() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -264,6 +283,14 @@
     validation_error() | 
     service_unavailable() | 
     internal_failure() | 
+    access_forbidden().
+
+-type update_record_errors() ::
+    validation_error() | 
+    service_unavailable() | 
+    resource_not_found() | 
+    internal_failure() | 
+    conflict_exception() | 
     access_forbidden().
 
 %%====================================================================
@@ -554,6 +581,65 @@ put_record(Client, FeatureGroupName, Input) ->
 put_record(Client, FeatureGroupName, Input0, Options0) ->
     Method = put,
     Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates one or more feature values for an existing record in the
+%% specified
+%% feature group.
+%%
+%% Features that you do not include in the request remain unchanged.
+%% You can update up to 100 features per call.
+%%
+%% This operation is available only for feature groups that use the
+%% `Standard_V2' or `InMemory' online store type.
+%%
+%% The record must already exist. If the record does not exist or has been
+%% soft-deleted, the operation returns a `ResourceNotFound' error. To
+%% create
+%% a record, use `PutRecord'.
+%%
+%% If you provide an `EventTime' that is older than the record's
+%% current
+%% `EventTime', the service rejects the update with a
+%% `ConflictException'. If the `EventTime' is equal to or newer
+%% than the current value, the service applies the update. If you omit
+%% `EventTime', the service keeps the record's existing
+%% `EventTime' and applies the update.
+%%
+%% If you specify a `TtlDuration', you must also provide an
+%% `EventTime' in the request. Otherwise, the operation returns a
+%% `ValidationError'.
+-spec update_record(aws_client:aws_client(), binary() | list(), update_record_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_record_errors(), tuple()}.
+update_record(Client, FeatureGroupName, Input) ->
+    update_record(Client, FeatureGroupName, Input, []).
+
+-spec update_record(aws_client:aws_client(), binary() | list(), update_record_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_record_errors(), tuple()}.
+update_record(Client, FeatureGroupName, Input0, Options0) ->
+    Method = post,
+    Path = ["/FeatureGroup/", aws_util:encode_uri(FeatureGroupName), "/Record"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

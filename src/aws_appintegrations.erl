@@ -136,6 +136,13 @@
 
 
 %% Example:
+%% conflict_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_handling() :: #{
 %%   <<"Scope">> => list(any())
 %% }
@@ -261,9 +268,12 @@
 %% }
 -type data_integration_summary() :: #{binary() => any()}.
 
+
 %% Example:
-%% delete_application_request() :: #{}
--type delete_application_request() :: #{}.
+%% delete_application_request() :: #{
+%%   <<"Force">> => boolean()
+%% }
+-type delete_application_request() :: #{binary() => any()}.
 
 %% Example:
 %% delete_application_response() :: #{}
@@ -826,6 +836,7 @@
     resource_not_found_exception() | 
     invalid_request_exception() | 
     internal_service_error() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type update_data_integration_errors() ::
@@ -1003,10 +1014,12 @@ create_event_integration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes the Application.
+%% @doc Deletes an application.
 %%
-%% Only Applications that don't have any Application Associations
-%% can be deleted.
+%% If the application has associations, you must delete them first.
+%% Alternatively, use the `force' option to delete the application and
+%% remove its
+%% associations.
 -spec delete_application(aws_client:aws_client(), binary() | list(), delete_application_request()) ->
     {ok, delete_application_response(), tuple()} |
     {error, any()} |
@@ -1035,9 +1048,10 @@ delete_application(Client, Arn, Input0, Options0) ->
     CustomHeaders = [],
     Input2 = Input1,
 
-    Query_ = [],
-    Input = Input2,
-
+    QueryMapping = [
+                     {<<"force">>, <<"Force">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the DataIntegration.

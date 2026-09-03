@@ -3418,7 +3418,8 @@
 %%   <<"Tags">> => list(tag()),
 %%   <<"Tenancy">> => list(any()),
 %%   <<"TotalInstanceCount">> => integer(),
-%%   <<"UnusedReservationBillingOwnerId">> => string()
+%%   <<"UnusedReservationBillingOwnerId">> => string(),
+%%   <<"ZeroSizePreference">> => list(any())
 %% }
 -type capacity_reservation() :: #{binary() => any()}.
 
@@ -4587,7 +4588,8 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceCount">> := integer(),
-%%   <<"TagSpecifications">> => list(tag_specification())
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"ZeroSizePreference">> => list(any())
 %% }
 -type create_interruptible_capacity_reservation_allocation_request() :: #{binary() => any()}.
 
@@ -15693,7 +15695,8 @@
 %%   <<"InterruptibleCapacityReservationId">> => string(),
 %%   <<"InterruptionType">> => list(any()),
 %%   <<"Status">> => list(any()),
-%%   <<"TargetInstanceCount">> => integer()
+%%   <<"TargetInstanceCount">> => integer(),
+%%   <<"ZeroSizePreference">> => list(any())
 %% }
 -type interruptible_capacity_allocation() :: #{binary() => any()}.
 
@@ -15874,6 +15877,7 @@
 %%   <<"OwnerId">> => string(),
 %%   <<"Rir">> => list(any()),
 %%   <<"State">> => list(any()),
+%%   <<"StateMessage">> => string(),
 %%   <<"Tags">> => list(tag())
 %% }
 -type ipam_internet_registry_association() :: #{binary() => any()}.
@@ -23230,7 +23234,8 @@
 %% update_interruptible_capacity_reservation_allocation_request() :: #{
 %%   <<"CapacityReservationId">> := string(),
 %%   <<"DryRun">> => boolean(),
-%%   <<"TargetInstanceCount">> := integer()
+%%   <<"TargetInstanceCount">> => integer(),
+%%   <<"ZeroSizePreference">> => list(any())
 %% }
 -type update_interruptible_capacity_reservation_allocation_request() :: #{binary() => any()}.
 

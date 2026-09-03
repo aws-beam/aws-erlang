@@ -11403,6 +11403,7 @@
 
 %% Example:
 %% online_store_config_update() :: #{
+%%   <<"StorageType">> => list(any()),
 %%   <<"TtlDuration">> => ttl_duration()
 %% }
 -type online_store_config_update() :: #{binary() => any()}.

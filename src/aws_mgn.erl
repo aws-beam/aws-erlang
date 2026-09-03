@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The Application Migration Service service.
+%% @doc Application Migration Service.
 -module(aws_mgn).
 
 -export([archive_application/2,
@@ -310,6 +310,14 @@
 
 
 %% Example:
+%% cidr_mapping() :: #{
+%%   <<"originalCidr">> => string(),
+%%   <<"updatedCidr">> => string()
+%% }
+-type cidr_mapping() :: #{binary() => any()}.
+
+
+%% Example:
 %% code_generation_output_format_status_details() :: #{
 %%   <<"status">> => string(),
 %%   <<"statusDetailList">> => string()
@@ -394,6 +402,7 @@
 
 %% Example:
 %% create_network_migration_definition_request() :: #{
+%%   <<"cidrMappings">> => list(cidr_mapping()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"scopeTags">> => map(),
@@ -401,7 +410,8 @@
 %%   <<"tags">> => map(),
 %%   <<"targetDeployment">> => string(),
 %%   <<"targetNetwork">> := target_network(),
-%%   <<"targetS3Configuration">> := target_s3_configuration()
+%%   <<"targetS3Configuration">> := target_s3_configuration(),
+%%   <<"vpcProvisioningStrategy">> => string()
 %% }
 -type create_network_migration_definition_request() :: #{binary() => any()}.
 
@@ -1871,6 +1881,7 @@
 %% Example:
 %% network_migration_definition() :: #{
 %%   <<"arn">> => string(),
+%%   <<"cidrMappings">> => list(cidr_mapping()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
@@ -1881,7 +1892,8 @@
 %%   <<"targetDeployment">> => string(),
 %%   <<"targetNetwork">> => target_network(),
 %%   <<"targetS3Configuration">> => target_s3_configuration(),
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"vpcProvisioningStrategy">> => string()
 %% }
 -type network_migration_definition() :: #{binary() => any()}.
 
@@ -2744,6 +2756,7 @@
 
 %% Example:
 %% update_network_migration_definition_request() :: #{
+%%   <<"cidrMappings">> => list(cidr_mapping()),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"networkMigrationDefinitionID">> := string(),
@@ -2751,7 +2764,8 @@
 %%   <<"sourceConfigurations">> => list(source_configuration()),
 %%   <<"targetDeployment">> => string(),
 %%   <<"targetNetwork">> => target_network_update(),
-%%   <<"targetS3Configuration">> => target_s3_configuration_update()
+%%   <<"targetS3Configuration">> => target_s3_configuration_update(),
+%%   <<"vpcProvisioningStrategy">> => string()
 %% }
 -type update_network_migration_definition_request() :: #{binary() => any()}.
 
@@ -4147,8 +4161,8 @@ describe_job_log_items(Client, Input0, Options0) ->
 
 %% @doc Returns a list of Jobs.
 %%
-%% Use the JobsID and fromDate and toData filters to limit which jobs are
-%% returned. The response is sorted by creationDataTime - latest date first.
+%% Use the jobIDs and fromDate and toDate filters to limit which jobs are
+%% returned. The response is sorted by creationDateTime - latest date first.
 %% Jobs are normally created by the StartTest, StartCutover, and
 %% TerminateTargetInstances APIs. Jobs are also created by DiagnosticLaunch
 %% and TerminateDiagnosticInstances, which are APIs available only to
@@ -4221,8 +4235,8 @@ describe_launch_configuration_templates(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Lists all ReplicationConfigurationTemplates, filtered by Source
-%% Server IDs.
+%% @doc Lists all ReplicationConfigurationTemplates, filtered by replication
+%% configuration template IDs.
 -spec describe_replication_configuration_templates(aws_client:aws_client(), describe_replication_configuration_templates_request()) ->
     {ok, describe_replication_configuration_templates_response(), tuple()} |
     {error, any()} |
@@ -4407,9 +4421,9 @@ disassociate_source_servers(Client, Input0, Options0) ->
 %% Application Migration Service for enabling the replication of these source
 %% servers will be terminated / deleted within 90 minutes. Launched Test or
 %% Cutover instances will NOT be terminated. If the agent on the source
-%% server has not been prevented from communicating with the Application
-%% Migration Service service, then it will receive a command to uninstall
-%% itself (within approximately 10 minutes). The following properties of the
+%% server has not been prevented from communicating with Application
+%% Migration Service, then it will receive a command to uninstall itself
+%% (within approximately 10 minutes). The following properties of the
 %% SourceServer will be changed immediately:
 %% dataReplicationInfo.dataReplicationState will be set to DISCONNECTED; The
 %% totalStorageBytes property for each of dataReplicationInfo.replicatedDisks
@@ -4457,7 +4471,7 @@ disconnect_from_service(Client, Input0, Options0) ->
 %% itself (within 10 minutes). The following properties of the SourceServer
 %% will be changed immediately: dataReplicationInfo.dataReplicationState will
 %% be changed to DISCONNECTED; The SourceServer.lifeCycle.state will be
-%% changed to CUTOVER; The totalStorageBytes property fo each of
+%% changed to CUTOVER; The totalStorageBytes property for each of
 %% dataReplicationInfo.replicatedDisks will be set to zero;
 %% dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration will
 %% be nullified.
@@ -5502,7 +5516,7 @@ list_waves(Client, Input0, Options0) ->
 %% SourceServer.isArchived property to true for specified SourceServers by
 %% ID.
 %%
-%% This command only works for SourceServers with a lifecycle. state which
+%% This command only works for SourceServers with a lifecycle state that
 %% equals DISCONNECTED or CUTOVER.
 -spec mark_as_archived(aws_client:aws_client(), mark_as_archived_request()) ->
     {ok, source_server(), tuple()} |
@@ -6454,7 +6468,7 @@ update_connector(Client, Input0, Options0) ->
 
 %% @doc Updates multiple LaunchConfigurations by Source Server ID.
 %%
-%% bootMode valid values are `LEGACY_BIOS | UEFI'
+%% bootMode valid values are `LEGACY_BIOS | UEFI | USE_SOURCE'
 -spec update_launch_configuration(aws_client:aws_client(), update_launch_configuration_request()) ->
     {ok, launch_configuration(), tuple()} |
     {error, any()} |
@@ -6627,7 +6641,7 @@ update_replication_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates multiple ReplicationConfigurationTemplates by ID.
+%% @doc Updates a ReplicationConfigurationTemplate by ID.
 -spec update_replication_configuration_template(aws_client:aws_client(), update_replication_configuration_template_request()) ->
     {ok, replication_configuration_template(), tuple()} |
     {error, any()} |

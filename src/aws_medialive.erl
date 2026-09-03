@@ -317,6 +317,15 @@
 
 
 %% Example:
+%% ab_watermarking_custom_profile() :: #{
+%%   <<"EmbeddingFrequency">> => float(),
+%%   <<"SceneCut">> => float(),
+%%   <<"TargetPsnr">> => float()
+%% }
+-type ab_watermarking_custom_profile() :: #{binary() => any()}.
+
+
+%% Example:
 %% ac3_settings() :: #{
 %%   <<"AttenuationControl">> => list(any()),
 %%   <<"Bitrate">> => float(),
@@ -1098,6 +1107,20 @@
 
 
 %% Example:
+%% cmaf_ingest_ab_watermarker_irdeto_settings() :: #{
+%%   <<"AdditionalDestinationsAlternateDestinations">> => list(output_location_ref()),
+%%   <<"AlternateDestination">> => output_location_ref(),
+%%   <<"CustomProfile">> => ab_watermarking_custom_profile(),
+%%   <<"License">> => string(),
+%%   <<"OperatorId">> => integer(),
+%%   <<"PolyPeriod">> => integer(),
+%%   <<"Profile">> => list(any()),
+%%   <<"WatermarkIdLength">> => list(any())
+%% }
+-type cmaf_ingest_ab_watermarker_irdeto_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% cmaf_ingest_caption_language_mapping() :: #{
 %%   <<"CaptionChannel">> => integer(),
 %%   <<"LanguageCode">> => string()
@@ -1123,7 +1146,8 @@
 %%   <<"SendDelayMs">> => integer(),
 %%   <<"TimedMetadataId3Frame">> => list(any()),
 %%   <<"TimedMetadataId3Period">> => integer(),
-%%   <<"TimedMetadataPassthrough">> => list(any())
+%%   <<"TimedMetadataPassthrough">> => list(any()),
+%%   <<"WatermarkingSettings">> => cmaf_ingest_watermarking_settings()
 %% }
 -type cmaf_ingest_group_settings() :: #{binary() => any()}.
 
@@ -1133,6 +1157,13 @@
 %%   <<"NameModifier">> => string()
 %% }
 -type cmaf_ingest_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% cmaf_ingest_watermarking_settings() :: #{
+%%   <<"CmafIngestAbWatermarkerIrdetoSettings">> => cmaf_ingest_ab_watermarker_irdeto_settings()
+%% }
+-type cmaf_ingest_watermarking_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4079,6 +4110,20 @@
 
 
 %% Example:
+%% media_package_v2_ab_watermarker_irdeto_settings() :: #{
+%%   <<"AdditionalDestinationsAlternateDestinations">> => list(output_location_ref()),
+%%   <<"AlternateDestination">> => output_location_ref(),
+%%   <<"CustomProfile">> => ab_watermarking_custom_profile(),
+%%   <<"License">> => string(),
+%%   <<"OperatorId">> => integer(),
+%%   <<"PolyPeriod">> => integer(),
+%%   <<"Profile">> => list(any()),
+%%   <<"WatermarkIdLength">> => list(any())
+%% }
+-type media_package_v2_ab_watermarker_irdeto_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% media_package_v2_destination_settings() :: #{
 %%   <<"AudioGroupId">> => string(),
 %%   <<"AudioRenditionSets">> => string(),
@@ -4100,9 +4145,17 @@
 %%   <<"SegmentLengthUnits">> => list(any()),
 %%   <<"TimedMetadataId3Frame">> => list(any()),
 %%   <<"TimedMetadataId3Period">> => integer(),
-%%   <<"TimedMetadataPassthrough">> => list(any())
+%%   <<"TimedMetadataPassthrough">> => list(any()),
+%%   <<"WatermarkingSettings">> => media_package_v2_watermarking_settings()
 %% }
 -type media_package_v2_group_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% media_package_v2_watermarking_settings() :: #{
+%%   <<"MediaPackageV2AbWatermarkerIrdetoSettings">> => media_package_v2_ab_watermarker_irdeto_settings()
+%% }
+-type media_package_v2_watermarking_settings() :: #{binary() => any()}.
 
 
 %% Example:
