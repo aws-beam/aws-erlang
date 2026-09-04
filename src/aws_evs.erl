@@ -32,6 +32,8 @@
          delete_environment_host/3,
          disassociate_eip_from_vlan/2,
          disassociate_eip_from_vlan/3,
+         get_account_settings/2,
+         get_account_settings/3,
          get_depot_url/2,
          get_depot_url/3,
          get_environment/2,
@@ -50,6 +52,8 @@
          list_tags_for_resource/3,
          list_vm_entitlements/2,
          list_vm_entitlements/3,
+         put_account_settings/2,
+         put_account_settings/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -59,6 +63,13 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+%% Example:
+%% account_setting() :: #{
+%%   <<"name">> => string(),
+%%   <<"value">> => string()
+%% }
+-type account_setting() :: #{binary() => any()}.
 
 %% Example:
 %% associate_eip_to_vlan_request() :: #{
@@ -313,6 +324,18 @@
 -type error_detail() :: #{binary() => any()}.
 
 %% Example:
+%% get_account_settings_request() :: #{
+
+%% }
+-type get_account_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_account_settings_response() :: #{
+%%   <<"settings">> => list(account_setting())
+%% }
+-type get_account_settings_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_depot_url_request() :: #{
 %%   <<"rotate">> => [boolean()]
 %% }
@@ -511,6 +534,18 @@
 %%   <<"networkInterfaceId">> => string()
 %% }
 -type network_interface() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_settings_request() :: #{
+%%   <<"settings">> := list(account_setting())
+%% }
+-type put_account_settings_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_settings_response() :: #{
+%%   <<"settings">> => list(account_setting())
+%% }
+-type put_account_settings_response() :: #{binary() => any()}.
 
 %% Example:
 %% resource_not_found_exception() :: #{
@@ -712,6 +747,11 @@
     throttling_exception() | 
     resource_not_found_exception().
 
+-type get_account_settings_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
+
 -type get_depot_url_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -746,6 +786,11 @@
 -type list_vm_entitlements_errors() ::
     validation_exception() | 
     resource_not_found_exception().
+
+-type put_account_settings_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception().
 
 -type tag_resource_errors() ::
     too_many_tags_exception() | 
@@ -1013,6 +1058,26 @@ disassociate_eip_from_vlan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateEipFromVlan">>, Input, Options).
 
+%% @doc Returns the configured EVS settings for your Amazon Web Services
+%% account in the specified Amazon Web Services Region.
+%%
+%% If no settings have been set, an empty list is returned.
+-spec get_account_settings(aws_client:aws_client(), get_account_settings_request()) ->
+    {ok, get_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
+get_account_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_account_settings(Client, Input, []).
+
+-spec get_account_settings(aws_client:aws_client(), get_account_settings_request(), proplists:proplist()) ->
+    {ok, get_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_settings_errors(), tuple()}.
+get_account_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAccountSettings">>, Input, Options).
+
 %% @doc Returns a URL and authentication token for accessing the Amazon EVS
 %% Custom Addon depot.
 %%
@@ -1185,6 +1250,27 @@ list_vm_entitlements(Client, Input)
 list_vm_entitlements(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListVmEntitlements">>, Input, Options).
+
+%% @doc Creates or updates account-level EVS settings for your Amazon Web
+%% Services account in the specified Amazon Web Services Region.
+%%
+%% EVS settings included in the request are created or overwritten. Settings
+%% omitted from the request retain their current values.
+-spec put_account_settings(aws_client:aws_client(), put_account_settings_request()) ->
+    {ok, put_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_settings_errors(), tuple()}.
+put_account_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_account_settings(Client, Input, []).
+
+-spec put_account_settings(aws_client:aws_client(), put_account_settings_request(), proplists:proplist()) ->
+    {ok, put_account_settings_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_settings_errors(), tuple()}.
+put_account_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAccountSettings">>, Input, Options).
 
 %% @doc Associates the specified tags to an Amazon EVS resource with the
 %% specified `resourceArn'.

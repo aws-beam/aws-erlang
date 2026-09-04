@@ -27,6 +27,8 @@
          create_code_interpreter/3,
          create_configuration_bundle/2,
          create_configuration_bundle/3,
+         create_consent_portal/2,
+         create_consent_portal/3,
          create_dataset/2,
          create_dataset/3,
          create_dataset_version/3,
@@ -83,6 +85,8 @@
          delete_code_interpreter/4,
          delete_configuration_bundle/3,
          delete_configuration_bundle/4,
+         delete_consent_portal/2,
+         delete_consent_portal/3,
          delete_dataset/3,
          delete_dataset/4,
          delete_dataset_examples/3,
@@ -151,6 +155,8 @@
          get_configuration_bundle_version/3,
          get_configuration_bundle_version/5,
          get_configuration_bundle_version/6,
+         get_consent_portal/2,
+         get_consent_portal/3,
          get_dataset/2,
          get_dataset/4,
          get_dataset/5,
@@ -244,6 +250,8 @@
          list_configuration_bundle_versions/4,
          list_configuration_bundles/2,
          list_configuration_bundles/3,
+         list_consent_portals/2,
+         list_consent_portals/3,
          list_dataset_examples/2,
          list_dataset_examples/4,
          list_dataset_examples/5,
@@ -344,6 +352,8 @@
          update_capacity_provider/4,
          update_configuration_bundle/3,
          update_configuration_bundle/4,
+         update_consent_portal/2,
+         update_consent_portal/3,
          update_dataset/3,
          update_dataset/4,
          update_dataset_examples/3,
@@ -724,6 +734,7 @@
 
 %% Example:
 %% cloud_watch_logs_input_config() :: #{
+%%   <<"logGroupNamePrefixes">> => list(string()),
 %%   <<"logGroupNames">> => list(string()),
 %%   <<"serviceNames">> => list(string())
 %% }
@@ -732,7 +743,9 @@
 
 %% Example:
 %% cloud_watch_output_config() :: #{
-%%   <<"logGroupName">> => string()
+%%   <<"logGroupName">> => string(),
+%%   <<"metricsNamespace">> => string(),
+%%   <<"resultDestination">> => list(any())
 %% }
 -type cloud_watch_output_config() :: #{binary() => any()}.
 
@@ -885,6 +898,38 @@
 %%   <<"source">> => connector_source()
 %% }
 -type connector_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% consent_portal_idp_config() :: #{
+%%   <<"audience">> => string(),
+%%   <<"credentialProviderArn">> => string(),
+%%   <<"scopes">> => list(string())
+%% }
+-type consent_portal_idp_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% consent_portal_source() :: #{
+%%   <<"identifier">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type consent_portal_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% consent_portal_summary() :: #{
+%%   <<"consentPortalArn">> => string(),
+%%   <<"consentPortalId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"portalUrl">> => string(),
+%%   <<"sources">> => list(consent_portal_source()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type consent_portal_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1096,6 +1141,36 @@
 %%   <<"versionId">> => string()
 %% }
 -type create_configuration_bundle_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_consent_portal_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> := string(),
+%%   <<"idpConfig">> := consent_portal_idp_config(),
+%%   <<"name">> := string(),
+%%   <<"sources">> := list(consent_portal_source()),
+%%   <<"tags">> => map()
+%% }
+-type create_consent_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_consent_portal_response() :: #{
+%%   <<"consentPortalArn">> => string(),
+%%   <<"consentPortalId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"idpConfig">> => consent_portal_idp_config(),
+%%   <<"name">> => string(),
+%%   <<"portalUrl">> => string(),
+%%   <<"sources">> => list(consent_portal_source()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type create_consent_portal_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1403,6 +1478,7 @@
 %%   <<"evaluators">> => list(list()),
 %%   <<"insights">> => list(insight()),
 %%   <<"onlineEvaluationConfigName">> := string(),
+%%   <<"outputConfig">> => output_config(),
 %%   <<"rule">> := rule(),
 %%   <<"tags">> => map()
 %% }
@@ -1851,6 +1927,17 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_configuration_bundle_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_consent_portal_request() :: #{
+%%   <<"consentPortalIdentifier">> := string()
+%% }
+-type delete_consent_portal_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_consent_portal_response() :: #{}
+-type delete_consent_portal_response() :: #{}.
 
 
 %% Example:
@@ -2672,6 +2759,31 @@
 %%   <<"versionId">> => string()
 %% }
 -type get_configuration_bundle_version_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_consent_portal_request() :: #{
+%%   <<"consentPortalIdentifier">> := string()
+%% }
+-type get_consent_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_consent_portal_response() :: #{
+%%   <<"consentPortalArn">> => string(),
+%%   <<"consentPortalId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"idpConfig">> => consent_portal_idp_config(),
+%%   <<"name">> => string(),
+%%   <<"portalUrl">> => string(),
+%%   <<"sources">> => list(consent_portal_source()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_consent_portal_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3961,6 +4073,22 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_configuration_bundles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_consent_portals_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_consent_portals_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_consent_portals_response() :: #{
+%%   <<"consentPortals">> => list(consent_portal_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_consent_portals_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5893,6 +6021,34 @@
 
 
 %% Example:
+%% update_consent_portal_request() :: #{
+%%   <<"consentPortalIdentifier">> := string(),
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"idpConfig">> => consent_portal_idp_config()
+%% }
+-type update_consent_portal_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_consent_portal_response() :: #{
+%%   <<"consentPortalArn">> => string(),
+%%   <<"consentPortalId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"executionRoleArn">> => string(),
+%%   <<"idpConfig">> => consent_portal_idp_config(),
+%%   <<"name">> => string(),
+%%   <<"portalUrl">> => string(),
+%%   <<"sources">> => list(consent_portal_source()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_consent_portal_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_dataset_examples_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"examples">> := list(any())
@@ -6180,6 +6336,7 @@
 %%   <<"evaluators">> => list(list()),
 %%   <<"executionStatus">> => list(any()),
 %%   <<"insights">> => list(insight()),
+%%   <<"outputConfig">> => output_config(),
 %%   <<"rule">> => rule()
 %% }
 -type update_online_evaluation_config_request() :: #{binary() => any()}.
@@ -6793,6 +6950,16 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_consent_portal_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_dataset_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -7038,6 +7205,15 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type delete_consent_portal_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type delete_dataset_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -7264,6 +7440,14 @@
 
 -type get_configuration_bundle_version_errors() ::
     validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_consent_portal_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -7518,6 +7702,13 @@
 
 -type list_configuration_bundles_errors() ::
     validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_consent_portals_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     internal_server_exception() | 
     access_denied_exception().
@@ -7811,6 +8002,15 @@
 
 -type update_configuration_bundle_errors() ::
     validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_consent_portal_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -8355,6 +8555,40 @@ create_configuration_bundle(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configuration-bundles/create"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new consent portal.
+-spec create_consent_portal(aws_client:aws_client(), create_consent_portal_request()) ->
+    {ok, create_consent_portal_response(), tuple()} |
+    {error, any()} |
+    {error, create_consent_portal_errors(), tuple()}.
+create_consent_portal(Client, Input) ->
+    create_consent_portal(Client, Input, []).
+
+-spec create_consent_portal(aws_client:aws_client(), create_consent_portal_request(), proplists:proplist()) ->
+    {ok, create_consent_portal_response(), tuple()} |
+    {error, any()} |
+    {error, create_consent_portal_errors(), tuple()}.
+create_consent_portal(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/CreateConsentPortal"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -9406,6 +9640,40 @@ delete_configuration_bundle(Client, BundleId, Input0, Options0) ->
     Method = delete,
     Path = ["/configuration-bundles/", aws_util:encode_uri(BundleId), ""],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a consent portal.
+-spec delete_consent_portal(aws_client:aws_client(), delete_consent_portal_request()) ->
+    {ok, delete_consent_portal_response(), tuple()} |
+    {error, any()} |
+    {error, delete_consent_portal_errors(), tuple()}.
+delete_consent_portal(Client, Input) ->
+    delete_consent_portal(Client, Input, []).
+
+-spec delete_consent_portal(aws_client:aws_client(), delete_consent_portal_request(), proplists:proplist()) ->
+    {ok, delete_consent_portal_response(), tuple()} |
+    {error, any()} |
+    {error, delete_consent_portal_errors(), tuple()}.
+delete_consent_portal(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/DeleteConsentPortal"],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -10530,6 +10798,40 @@ get_configuration_bundle_version(Client, BundleId, VersionId, QueryMap, HeadersM
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a consent portal.
+-spec get_consent_portal(aws_client:aws_client(), get_consent_portal_request()) ->
+    {ok, get_consent_portal_response(), tuple()} |
+    {error, any()} |
+    {error, get_consent_portal_errors(), tuple()}.
+get_consent_portal(Client, Input) ->
+    get_consent_portal(Client, Input, []).
+
+-spec get_consent_portal(aws_client:aws_client(), get_consent_portal_request(), proplists:proplist()) ->
+    {ok, get_consent_portal_response(), tuple()} |
+    {error, any()} |
+    {error, get_consent_portal_errors(), tuple()}.
+get_consent_portal(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/GetConsentPortal"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves dataset metadata.
 %%
@@ -11914,6 +12216,40 @@ list_configuration_bundles(Client, Input0, Options0) ->
                      {<<"nextToken">>, <<"nextToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists all of the consent portals in your account.
+-spec list_consent_portals(aws_client:aws_client(), list_consent_portals_request()) ->
+    {ok, list_consent_portals_response(), tuple()} |
+    {error, any()} |
+    {error, list_consent_portals_errors(), tuple()}.
+list_consent_portals(Client, Input) ->
+    list_consent_portals(Client, Input, []).
+
+-spec list_consent_portals(aws_client:aws_client(), list_consent_portals_request(), proplists:proplist()) ->
+    {ok, list_consent_portals_response(), tuple()} |
+    {error, any()} |
+    {error, list_consent_portals_errors(), tuple()}.
+list_consent_portals(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/ListConsentPortals"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Returns paginated examples from the dataset.
@@ -13542,6 +13878,40 @@ update_configuration_bundle(Client, BundleId, Input0, Options0) ->
     Method = put,
     Path = ["/configuration-bundles/", aws_util:encode_uri(BundleId), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing consent portal.
+-spec update_consent_portal(aws_client:aws_client(), update_consent_portal_request()) ->
+    {ok, update_consent_portal_response(), tuple()} |
+    {error, any()} |
+    {error, update_consent_portal_errors(), tuple()}.
+update_consent_portal(Client, Input) ->
+    update_consent_portal(Client, Input, []).
+
+-spec update_consent_portal(aws_client:aws_client(), update_consent_portal_request(), proplists:proplist()) ->
+    {ok, update_consent_portal_response(), tuple()} |
+    {error, any()} |
+    {error, update_consent_portal_errors(), tuple()}.
+update_consent_portal(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/UpdateConsentPortal"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

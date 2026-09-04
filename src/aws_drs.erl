@@ -1663,6 +1663,7 @@
 
 %% Example:
 %% source_properties() :: #{
+%%   <<"architecture">> => string(),
 %%   <<"cpus">> => list(c_p_u()),
 %%   <<"disks">> => list(disk()),
 %%   <<"identificationHints">> => identification_hints(),

@@ -89,6 +89,9 @@
          get_linked_whats_app_business_account_phone_number/2,
          get_linked_whats_app_business_account_phone_number/4,
          get_linked_whats_app_business_account_phone_number/5,
+         get_whats_app_business_public_key/2,
+         get_whats_app_business_public_key/4,
+         get_whats_app_business_public_key/5,
          get_whats_app_flow/3,
          get_whats_app_flow/5,
          get_whats_app_flow/6,
@@ -123,6 +126,8 @@
          publish_whats_app_flow/3,
          put_whats_app_business_account_event_destinations/2,
          put_whats_app_business_account_event_destinations/3,
+         put_whats_app_business_public_key/2,
+         put_whats_app_business_public_key/3,
          send_whats_app_conversion_event/2,
          send_whats_app_conversion_event/3,
          send_whats_app_message/2,
@@ -191,6 +196,7 @@
 %% create_whats_app_flow_input() :: #{
 %%   <<"categories">> := list(list(any())()),
 %%   <<"cloneFlowId">> => string(),
+%%   <<"endpointUri">> => string(),
 %%   <<"flowJson">> => binary(),
 %%   <<"flowName">> := string(),
 %%   <<"id">> := string(),
@@ -354,6 +360,21 @@
 %%   <<"phoneNumber">> => whats_app_phone_number_detail()
 %% }
 -type get_linked_whats_app_business_account_phone_number_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_business_public_key_input() :: #{
+%%   <<"originationPhoneNumberId">> := string()
+%% }
+-type get_whats_app_business_public_key_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_business_public_key_output() :: #{
+%%   <<"businessPublicKey">> => string(),
+%%   <<"businessPublicKeySignatureStatus">> => string()
+%% }
+-type get_whats_app_business_public_key_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -769,6 +790,19 @@
 
 
 %% Example:
+%% put_whats_app_business_public_key_input() :: #{
+%%   <<"businessPublicKey">> => string(),
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"originationPhoneNumberId">> := string()
+%% }
+-type put_whats_app_business_public_key_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_whats_app_business_public_key_output() :: #{}
+-type put_whats_app_business_public_key_output() :: #{}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -899,9 +933,11 @@
 %% Example:
 %% update_whats_app_flow_input() :: #{
 %%   <<"categories">> => list(list(any())()),
+%%   <<"endpointUri">> => string(),
 %%   <<"flowId">> := string(),
 %%   <<"flowName">> => string(),
-%%   <<"id">> := string()
+%%   <<"id">> := string(),
+%%   <<"metaAppId">> => string()
 %% }
 -type update_whats_app_flow_input() :: #{binary() => any()}.
 
@@ -1113,6 +1149,15 @@
     internal_service_exception() | 
     dependency_exception().
 
+-type get_whats_app_business_public_key_errors() ::
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameters_exception() | 
+    internal_service_exception() | 
+    dependency_exception() | 
+    access_denied_exception() | 
+    access_denied_by_meta_exception().
+
 -type get_whats_app_flow_errors() ::
     throttled_request_exception() | 
     resource_not_found_exception() | 
@@ -1208,6 +1253,15 @@
     throttled_request_exception() | 
     invalid_parameters_exception() | 
     internal_service_exception().
+
+-type put_whats_app_business_public_key_errors() ::
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameters_exception() | 
+    internal_service_exception() | 
+    dependency_exception() | 
+    access_denied_exception() | 
+    access_denied_by_meta_exception().
 
 -type send_whats_app_conversion_event_errors() ::
     throttled_request_exception() | 
@@ -1751,6 +1805,48 @@ get_linked_whats_app_business_account_phone_number(Client, Id, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the business public key for a phone number and its
+%% signature status.
+-spec get_whats_app_business_public_key(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_whats_app_business_public_key_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_business_public_key_errors(), tuple()}.
+get_whats_app_business_public_key(Client, OriginationPhoneNumberId)
+  when is_map(Client) ->
+    get_whats_app_business_public_key(Client, OriginationPhoneNumberId, #{}, #{}).
+
+-spec get_whats_app_business_public_key(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_whats_app_business_public_key_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_business_public_key_errors(), tuple()}.
+get_whats_app_business_public_key(Client, OriginationPhoneNumberId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_whats_app_business_public_key(Client, OriginationPhoneNumberId, QueryMap, HeadersMap, []).
+
+-spec get_whats_app_business_public_key(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_whats_app_business_public_key_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_business_public_key_errors(), tuple()}.
+get_whats_app_business_public_key(Client, OriginationPhoneNumberId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/whatsapp/business-public-key"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"originationPhoneNumberId">>, OriginationPhoneNumberId}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the metadata and status of a WhatsApp Flow, including
 %% validation errors, preview information, and health status.
 -spec get_whats_app_flow(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -2285,6 +2381,41 @@ put_whats_app_business_account_event_destinations(Client, Input) ->
 put_whats_app_business_account_event_destinations(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v1/whatsapp/waba/eventdestinations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets the business public key used to encrypt the data exchanged with
+%% the endpoint of a data exchange Flow.
+-spec put_whats_app_business_public_key(aws_client:aws_client(), put_whats_app_business_public_key_input()) ->
+    {ok, put_whats_app_business_public_key_output(), tuple()} |
+    {error, any()} |
+    {error, put_whats_app_business_public_key_errors(), tuple()}.
+put_whats_app_business_public_key(Client, Input) ->
+    put_whats_app_business_public_key(Client, Input, []).
+
+-spec put_whats_app_business_public_key(aws_client:aws_client(), put_whats_app_business_public_key_input(), proplists:proplist()) ->
+    {ok, put_whats_app_business_public_key_output(), tuple()} |
+    {error, any()} |
+    {error, put_whats_app_business_public_key_errors(), tuple()}.
+put_whats_app_business_public_key(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/whatsapp/business-public-key"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

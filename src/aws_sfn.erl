@@ -2247,8 +2247,6 @@ describe_state_machine_for_execution(Client, Input, Options)
 %% seconds, the poll
 %% returns a `taskToken' with a null string.
 %%
-%% This API action isn't logged in CloudTrail.
-%%
 %% Workers should set their client side socket timeout to at least 65 seconds
 %% (5 seconds
 %% higher than the maximum time the service may hold the poll request).
@@ -2348,8 +2346,9 @@ list_activities(Client, Input, Options)
 %% https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html
 %% ARN to list the executions associated with a specific alias or version.
 %%
-%% Results are
-%% sorted by time, with the most recent execution first.
+%% Results are sorted by time, with the most recent execution first. Running
+%% executions are sorted by their `startDate' or `redriveDate', and
+%% other executions are sorted by their `stopDate'.
 %%
 %% If `nextToken' is returned, there are more results available. The
 %% value of `nextToken' is a unique pagination token for each page.
@@ -2361,7 +2360,9 @@ list_activities(Client, Input, Options)
 %% This operation is eventually consistent. The results are best effort and
 %% may not reflect very recent updates and changes.
 %%
-%% This API action is not supported by `EXPRESS' state machines.
+%% This API action is not supported by `EXPRESS' state machines. However,
+%% you may list `EXPRESS' children started by a map run using the
+%% `mapRunArn' parameter.
 -spec list_executions(aws_client:aws_client(), list_executions_input()) ->
     {ok, list_executions_output(), tuple()} |
     {error, any()} |
@@ -2784,7 +2785,8 @@ send_task_success(Client, Input, Options)
 %% response as the
 %% original request. If the execution is closed or if the input is different,
 %% it returns a
-%% `400 ExecutionAlreadyExists' error. You can reuse names after 90 days.
+%% `400 ExecutionAlreadyExists' error. You can reuse the name 90 days
+%% after it closes.
 %%
 %% `StartExecution' isn't idempotent for `EXPRESS' workflows.
 -spec start_execution(aws_client:aws_client(), start_execution_input()) ->
@@ -2816,8 +2818,6 @@ start_execution(Client, Input, Options)
 %% as permissions errors, limit errors, or issues with your state machine
 %% code and
 %% configuration.
-%%
-%% This API action isn't logged in CloudTrail.
 -spec start_sync_execution(aws_client:aws_client(), start_sync_execution_input()) ->
     {ok, start_sync_execution_output(), tuple()} |
     {error, any()} |

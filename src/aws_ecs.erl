@@ -614,6 +614,7 @@
 %%   <<"capacityProviderArns">> := list(string()),
 %%   <<"clientToken">> => string(),
 %%   <<"clusterArn">> => string(),
+%%   <<"critical">> => boolean(),
 %%   <<"daemonName">> := string(),
 %%   <<"daemonTaskDefinitionArn">> := string(),
 %%   <<"deploymentConfiguration">> => daemon_deployment_configuration(),
@@ -746,7 +747,8 @@
 %% Example:
 %% daemon_capacity_provider() :: #{
 %%   <<"arn">> => string(),
-%%   <<"runningCount">> => integer()
+%%   <<"runningCount">> => integer(),
+%%   <<"withoutDaemonCount">> => integer()
 %% }
 -type daemon_capacity_provider() :: #{binary() => any()}.
 
@@ -831,7 +833,8 @@
 %% daemon_deployment_capacity_provider() :: #{
 %%   <<"arn">> => string(),
 %%   <<"drainingInstanceCount">> => integer(),
-%%   <<"runningInstanceCount">> => integer()
+%%   <<"runningInstanceCount">> => integer(),
+%%   <<"withoutDaemonInstanceCount">> => integer()
 %% }
 -type daemon_deployment_capacity_provider() :: #{binary() => any()}.
 
@@ -848,7 +851,8 @@
 %%   <<"arn">> => string(),
 %%   <<"capacityProviders">> => list(daemon_deployment_capacity_provider()),
 %%   <<"totalDrainingInstanceCount">> => integer(),
-%%   <<"totalRunningInstanceCount">> => integer()
+%%   <<"totalRunningInstanceCount">> => integer(),
+%%   <<"totalWithoutDaemonInstanceCount">> => integer()
 %% }
 -type daemon_deployment_revision_detail() :: #{binary() => any()}.
 
@@ -905,6 +909,7 @@
 %%   <<"clusterArn">> => string(),
 %%   <<"containerImages">> => list(daemon_container_image()),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"critical">> => boolean(),
 %%   <<"daemonArn">> => string(),
 %%   <<"daemonRevisionArn">> => string(),
 %%   <<"daemonTaskDefinitionArn">> => string(),
@@ -918,7 +923,8 @@
 %% daemon_revision_detail() :: #{
 %%   <<"arn">> => string(),
 %%   <<"capacityProviders">> => list(daemon_capacity_provider()),
-%%   <<"totalRunningCount">> => integer()
+%%   <<"totalRunningCount">> => integer(),
+%%   <<"totalWithoutDaemonCount">> => integer()
 %% }
 -type daemon_revision_detail() :: #{binary() => any()}.
 
@@ -3430,6 +3436,7 @@
 %% Example:
 %% update_daemon_request() :: #{
 %%   <<"capacityProviderArns">> := list(string()),
+%%   <<"critical">> => boolean(),
 %%   <<"daemonArn">> := string(),
 %%   <<"daemonTaskDefinitionArn">> := string(),
 %%   <<"deploymentConfiguration">> => daemon_deployment_configuration(),

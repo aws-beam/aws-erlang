@@ -388,6 +388,14 @@
 
 
 %% Example:
+%% activity() :: #{
+%%   <<"Api">> => api_call(),
+%%   <<"Type">> => list(any())
+%% }
+-type activity() :: #{binary() => any()}.
+
+
+%% Example:
 %% actor() :: #{
 %%   <<"Id">> => string(),
 %%   <<"Process">> => actor_process(),
@@ -469,6 +477,16 @@
 %%   <<"Behavior">> => map()
 %% }
 -type anomaly_unusual() :: #{binary() => any()}.
+
+
+%% Example:
+%% api_call() :: #{
+%%   <<"Error">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"Service">> => string(),
+%%   <<"UserAgent">> => string()
+%% }
+-type api_call() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3889,6 +3907,7 @@
 
 %% Example:
 %% signal() :: #{
+%%   <<"Activities">> => list(activity()),
 %%   <<"ActorIds">> => list(string()),
 %%   <<"Count">> => integer(),
 %%   <<"CreatedAt">> => non_neg_integer(),

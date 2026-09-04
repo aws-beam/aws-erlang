@@ -429,7 +429,8 @@
 %% Example:
 %% cloud_watch_logs_source() :: #{
 %%   <<"filterConfig">> => cloud_watch_filter_config(),
-%%   <<"logGroupNames">> => list([string()]()),
+%%   <<"logGroupNamePrefixes">> => list(string()),
+%%   <<"logGroupNames">> => list(string()),
 %%   <<"serviceNames">> => list([string()]())
 %% }
 -type cloud_watch_logs_source() :: #{binary() => any()}.
@@ -448,8 +449,10 @@
 
 %% Example:
 %% cloud_watch_output_config() :: #{
-%%   <<"logGroupName">> => [string()],
-%%   <<"logStreamName">> => [string()]
+%%   <<"logGroupName">> => string(),
+%%   <<"logStreamName">> => string(),
+%%   <<"metricsNamespace">> => string(),
+%%   <<"resultDestination">> => list(any())
 %% }
 -type cloud_watch_output_config() :: #{binary() => any()}.
 
@@ -2835,6 +2838,7 @@
 %%   <<"evaluators">> => list(evaluator()),
 %%   <<"insights">> => list(insight()),
 %%   <<"kmsKeyArn">> => string(),
+%%   <<"outputConfig">> => list(),
 %%   <<"tags">> => map()
 %% }
 -type start_batch_evaluation_request() :: #{binary() => any()}.

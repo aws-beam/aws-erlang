@@ -3092,7 +3092,9 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"Function">> := string(),
 %%   <<"Name">> := string(),
+%%   <<"PreEvaluationFilters">> => pre_evaluation_filters(),
 %%   <<"PublishStatus">> := list(any()),
+%%   <<"Tags">> => map(),
 %%   <<"TriggerEventSource">> := rule_trigger_event_source()
 %% }
 -type create_rule_request() :: #{binary() => any()}.
@@ -8215,6 +8217,24 @@
 
 
 %% Example:
+%% pre_evaluation_filter() :: #{
+%%   <<"FilterKey">> => string(),
+%%   <<"FilterType">> => list(any()),
+%%   <<"FilterValue">> => string(),
+%%   <<"Operator">> => list(any()),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type pre_evaluation_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% pre_evaluation_filters() :: #{
+%%   <<"AndConditions">> => list(pre_evaluation_filter())
+%% }
+-type pre_evaluation_filters() :: #{binary() => any()}.
+
+
+%% Example:
 %% predefined_attribute() :: #{
 %%   <<"AttributeConfiguration">> => predefined_attribute_configuration(),
 %%   <<"LastModifiedRegion">> => string(),
@@ -9022,6 +9042,7 @@
 %%   <<"LastUpdatedBy">> => string(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
+%%   <<"PreEvaluationFilters">> => pre_evaluation_filters(),
 %%   <<"PublishStatus">> => list(any()),
 %%   <<"RuleArn">> => string(),
 %%   <<"RuleCapabilityTiers">> => list(list(any())()),
@@ -9072,6 +9093,7 @@
 %%   <<"LastUpdatedBy">> => string(),
 %%   <<"LastUpdatedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
+%%   <<"PreEvaluationFilters">> => pre_evaluation_filters(),
 %%   <<"PublishStatus">> => list(any()),
 %%   <<"RuleArn">> => string(),
 %%   <<"RuleCapabilityTiers">> => list(list(any())()),
@@ -11454,6 +11476,7 @@
 %%   <<"Actions">> := list(rule_action()),
 %%   <<"Function">> := string(),
 %%   <<"Name">> := string(),
+%%   <<"PreEvaluationFilters">> => pre_evaluation_filters(),
 %%   <<"PublishStatus">> := list(any())
 %% }
 -type update_rule_request() :: #{binary() => any()}.
