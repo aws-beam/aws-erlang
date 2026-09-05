@@ -785,7 +785,8 @@
 %%   <<"FunctionType">> => list(any()),
 %%   <<"HttpRequestConfiguration">> => http_request_configuration(),
 %%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"VastRequestConfiguration">> => vast_request_configuration()
 %% }
 -type get_function_response() :: #{binary() => any()}.
 
@@ -822,7 +823,8 @@
 %%   <<"SlateAdUrl">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"TranscodeProfileName">> => string(),
-%%   <<"VideoContentSourceUrl">> => string()
+%%   <<"VideoContentSourceUrl">> => string(),
+%%   <<"YieldOptimizationConfiguration">> => yield_optimization_configuration()
 %% }
 -type get_playback_configuration_response() :: #{binary() => any()}.
 
@@ -1115,7 +1117,8 @@
 %%   <<"FunctionType">> => list(any()),
 %%   <<"HttpRequestConfiguration">> => http_request_configuration(),
 %%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"VastRequestConfiguration">> => vast_request_configuration()
 %% }
 -type mediatailor_function() :: #{binary() => any()}.
 
@@ -1148,7 +1151,8 @@
 %%   <<"SlateAdUrl">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"TranscodeProfileName">> => string(),
-%%   <<"VideoContentSourceUrl">> => string()
+%%   <<"VideoContentSourceUrl">> => string(),
+%%   <<"YieldOptimizationConfiguration">> => yield_optimization_configuration()
 %% }
 -type playback_configuration() :: #{binary() => any()}.
 
@@ -1222,7 +1226,8 @@
 %%   <<"FunctionType">> := list(any()),
 %%   <<"HttpRequestConfiguration">> => http_request_configuration(),
 %%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"VastRequestConfiguration">> => vast_request_configuration()
 %% }
 -type put_function_request() :: #{binary() => any()}.
 
@@ -1237,7 +1242,8 @@
 %%   <<"FunctionType">> => list(any()),
 %%   <<"HttpRequestConfiguration">> => http_request_configuration(),
 %%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"VastRequestConfiguration">> => vast_request_configuration()
 %% }
 -type put_function_response() :: #{binary() => any()}.
 
@@ -1263,7 +1269,8 @@
 %%   <<"SlateAdUrl">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"TranscodeProfileName">> => string(),
-%%   <<"VideoContentSourceUrl">> => string()
+%%   <<"VideoContentSourceUrl">> => string(),
+%%   <<"YieldOptimizationConfiguration">> => yield_optimization_configuration()
 %% }
 -type put_playback_configuration_request() :: #{binary() => any()}.
 
@@ -1296,7 +1303,8 @@
 %%   <<"SlateAdUrl">> => string(),
 %%   <<"Tags">> => map(),
 %%   <<"TranscodeProfileName">> => string(),
-%%   <<"VideoContentSourceUrl">> => string()
+%%   <<"VideoContentSourceUrl">> => string(),
+%%   <<"YieldOptimizationConfiguration">> => yield_optimization_configuration()
 %% }
 -type put_playback_configuration_response() :: #{binary() => any()}.
 
@@ -1669,6 +1677,19 @@
 
 
 %% Example:
+%% vast_request_configuration() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Headers">> => map(),
+%%   <<"MethodType">> => list(any()),
+%%   <<"Output">> => map(),
+%%   <<"RequestTimeoutMilliseconds">> => integer(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"Url">> => string()
+%% }
+-type vast_request_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% vast_response() :: #{
 %%   <<"AdSequencingMode">> => list(any())
 %% }
@@ -1686,6 +1707,16 @@
 %%   <<"VodSourceName">> => string()
 %% }
 -type vod_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% yield_optimization_configuration() :: #{
+%%   <<"MinimumUnfilledDuration">> => integer(),
+%%   <<"OpenRtbTemplate">> => string(),
+%%   <<"PublisherId">> => string(),
+%%   <<"Region">> => list(any())
+%% }
+-type yield_optimization_configuration() :: #{binary() => any()}.
 
 -type list_tags_for_resource_errors() ::
     bad_request_exception().

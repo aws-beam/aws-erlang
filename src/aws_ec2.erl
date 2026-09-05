@@ -1650,6 +1650,8 @@
          update_security_group_rule_descriptions_egress/3,
          update_security_group_rule_descriptions_ingress/2,
          update_security_group_rule_descriptions_ingress/3,
+         validate_security_group_quotas_for_interface/2,
+         validate_security_group_quotas_for_interface/3,
          withdraw_byoip_cidr/2,
          withdraw_byoip_cidr/3]).
 
@@ -23339,6 +23341,19 @@
 -type v_cpu_info() :: #{binary() => any()}.
 
 %% Example:
+%% validate_security_group_quotas_for_interface_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"SecurityGroupIds">> := list(string())
+%% }
+-type validate_security_group_quotas_for_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% validate_security_group_quotas_for_interface_result() :: #{
+%%   <<"Valid">> => boolean()
+%% }
+-type validate_security_group_quotas_for_interface_result() :: #{binary() => any()}.
+
+%% Example:
 %% validation_error() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
@@ -43669,6 +43684,33 @@ update_security_group_rule_descriptions_ingress(Client, Input)
 update_security_group_rule_descriptions_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSecurityGroupRuleDescriptionsIngress">>, Input, Options).
+
+%% @doc Validates whether the specified security groups can be associated
+%% with a single
+%% network interface.
+%%
+%% The operation checks Amazon Virtual Private Cloud (Amazon VPC)
+%% quotas for inbound or outbound rules per security group and security
+%% groups per
+%% network interface. Only authorized AWS services can call this operation.
+%%
+%% For more information about security group quotas, see Amazon
+%% VPC quotas:
+%% https://docs.aws.amazon.com/vpc/latest/userguide/amazon-vpc-limits.html#vpc-limits-security-groups
+%% in the Amazon VPC User Guide.
+-spec validate_security_group_quotas_for_interface(aws_client:aws_client(), validate_security_group_quotas_for_interface_request()) ->
+    {ok, validate_security_group_quotas_for_interface_result(), tuple()} |
+    {error, any()}.
+validate_security_group_quotas_for_interface(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    validate_security_group_quotas_for_interface(Client, Input, []).
+
+-spec validate_security_group_quotas_for_interface(aws_client:aws_client(), validate_security_group_quotas_for_interface_request(), proplists:proplist()) ->
+    {ok, validate_security_group_quotas_for_interface_result(), tuple()} |
+    {error, any()}.
+validate_security_group_quotas_for_interface(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ValidateSecurityGroupQuotasForInterface">>, Input, Options).
 
 %% @doc Stops advertising an address range that is provisioned as an address
 %% pool.
