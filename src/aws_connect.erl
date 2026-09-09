@@ -3365,6 +3365,13 @@
 
 
 %% Example:
+%% cross_channel_workload_behavior() :: #{
+%%   <<"ChannelWorkloadBehaviorType">> => list(any())
+%% }
+-type cross_channel_workload_behavior() :: #{binary() => any()}.
+
+
+%% Example:
 %% current_metric() :: #{
 %%   <<"MetricId">> => string(),
 %%   <<"Name">> => list(any()),
@@ -7602,7 +7609,8 @@
 %% media_concurrency() :: #{
 %%   <<"Channel">> => list(any()),
 %%   <<"Concurrency">> => integer(),
-%%   <<"CrossChannelBehavior">> => cross_channel_behavior()
+%%   <<"CrossChannelBehavior">> => cross_channel_behavior(),
+%%   <<"WorkloadTypeConcurrencies">> => list(workload_type_concurrency())
 %% }
 -type media_concurrency() :: #{binary() => any()}.
 
@@ -12138,6 +12146,15 @@
 %%   <<"SessionArn">> => string()
 %% }
 -type wisdom_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% workload_type_concurrency() :: #{
+%%   <<"Concurrency">> => integer(),
+%%   <<"CrossChannelWorkloadBehavior">> => cross_channel_workload_behavior(),
+%%   <<"WorkloadType">> => string()
+%% }
+-type workload_type_concurrency() :: #{binary() => any()}.
 
 
 %% Example:

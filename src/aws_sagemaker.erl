@@ -8305,6 +8305,14 @@
 -type instance_pool_summary() :: #{binary() => any()}.
 
 %% Example:
+%% instance_preference() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any()),
+%%   <<"TrainingPlanArns">> => list(string())
+%% }
+-type instance_preference() :: #{binary() => any()}.
+
+%% Example:
 %% instance_requirements_eni_configuration() :: #{
 %%   <<"AdditionalEnis">> => additional_enis(),
 %%   <<"CustomerEni">> => [string()]
@@ -11803,7 +11811,10 @@
 %% Example:
 %% processing_cluster_config() :: #{
 %%   <<"InstanceCount">> => integer(),
+%%   <<"InstancePreferences">> => list(processing_instance_preference()),
 %%   <<"InstanceType">> => list(any()),
+%%   <<"SelectedInstanceCount">> => integer(),
+%%   <<"SelectedInstanceType">> => list(any()),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VolumeSizeInGB">> => integer()
 %% }
@@ -11823,6 +11834,13 @@
 %%   <<"S3Input">> => processing_s3_input()
 %% }
 -type processing_input() :: #{binary() => any()}.
+
+%% Example:
+%% processing_instance_preference() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => list(any())
+%% }
+-type processing_instance_preference() :: #{binary() => any()}.
 
 %% Example:
 %% processing_job() :: #{
@@ -12459,8 +12477,11 @@
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceGroups">> => list(instance_group()),
 %%   <<"InstancePlacementConfig">> => instance_placement_config(),
+%%   <<"InstancePreferences">> => list(instance_preference()),
 %%   <<"InstanceType">> => list(any()),
 %%   <<"KeepAlivePeriodInSeconds">> => integer(),
+%%   <<"SelectedInstanceCount">> => integer(),
+%%   <<"SelectedInstanceType">> => list(any()),
 %%   <<"TrainingPlanArn">> => string(),
 %%   <<"VolumeKmsKeyId">> => string(),
 %%   <<"VolumeSizeInGB">> => integer()

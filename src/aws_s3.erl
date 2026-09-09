@@ -680,6 +680,9 @@
 %%   <<"IfNoneMatch">> => string(),
 %%   <<"Metadata">> => map(),
 %%   <<"MetadataDirective">> => list(any()),
+%%   <<"ObjectLockEventHold">> => list(any()),
+%%   <<"ObjectLockEventHoldDurationDays">> => integer(),
+%%   <<"ObjectLockEventHoldDurationYears">> => integer(),
 %%   <<"ObjectLockLegalHoldStatus">> => list(any()),
 %%   <<"ObjectLockMode">> => list(any()),
 %%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
@@ -827,6 +830,9 @@
 %%   <<"GrantReadACP">> => string(),
 %%   <<"GrantWriteACP">> => string(),
 %%   <<"Metadata">> => map(),
+%%   <<"ObjectLockEventHold">> => list(any()),
+%%   <<"ObjectLockEventHoldDurationDays">> => integer(),
+%%   <<"ObjectLockEventHoldDurationYears">> => integer(),
 %%   <<"ObjectLockLegalHoldStatus">> => list(any()),
 %%   <<"ObjectLockMode">> => list(any()),
 %%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
@@ -893,6 +899,7 @@
 %% Example:
 %% default_retention() :: #{
 %%   <<"Days">> => integer(),
+%%   <<"DefaultEventHold">> => event_hold_duration(),
 %%   <<"Mode">> => list(any()),
 %%   <<"Years">> => integer()
 %% }
@@ -1202,6 +1209,14 @@
 %% Example:
 %% event_bridge_configuration() :: #{}
 -type event_bridge_configuration() :: #{}.
+
+
+%% Example:
+%% event_hold_duration() :: #{
+%%   <<"Days">> => integer(),
+%%   <<"Years">> => integer()
+%% }
+-type event_hold_duration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1718,6 +1733,9 @@
 %%   <<"LastModified">> => non_neg_integer(),
 %%   <<"Metadata">> => map(),
 %%   <<"MissingMeta">> => integer(),
+%%   <<"ObjectLockEventHold">> => list(any()),
+%%   <<"ObjectLockEventHoldDurationDays">> => integer(),
+%%   <<"ObjectLockEventHoldDurationYears">> => integer(),
 %%   <<"ObjectLockLegalHoldStatus">> => list(any()),
 %%   <<"ObjectLockMode">> => list(any()),
 %%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
@@ -1899,6 +1917,9 @@
 %%   <<"LastModified">> => non_neg_integer(),
 %%   <<"Metadata">> => map(),
 %%   <<"MissingMeta">> => integer(),
+%%   <<"ObjectLockEventHold">> => list(any()),
+%%   <<"ObjectLockEventHoldDurationDays">> => integer(),
+%%   <<"ObjectLockEventHoldDurationYears">> => integer(),
 %%   <<"ObjectLockLegalHoldStatus">> => list(any()),
 %%   <<"ObjectLockMode">> => list(any()),
 %%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
@@ -2711,6 +2732,8 @@
 
 %% Example:
 %% object_lock_retention() :: #{
+%%   <<"EventHold">> => list(any()),
+%%   <<"EventHoldDuration">> => event_hold_duration(),
 %%   <<"Mode">> => list(any()),
 %%   <<"RetainUntilDate">> => non_neg_integer()
 %% }
@@ -3234,6 +3257,9 @@
 %%   <<"IfMatch">> => string(),
 %%   <<"IfNoneMatch">> => string(),
 %%   <<"Metadata">> => map(),
+%%   <<"ObjectLockEventHold">> => list(any()),
+%%   <<"ObjectLockEventHoldDurationDays">> => integer(),
+%%   <<"ObjectLockEventHoldDurationYears">> => integer(),
 %%   <<"ObjectLockLegalHoldStatus">> => list(any()),
 %%   <<"ObjectLockMode">> => list(any()),
 %%   <<"ObjectLockRetainUntilDate">> => non_neg_integer(),
@@ -4721,6 +4747,9 @@ copy_object(Client, Bucket, Key, Input0, Options0) ->
                        {<<"If-Match">>, <<"IfMatch">>},
                        {<<"If-None-Match">>, <<"IfNoneMatch">>},
                        {<<"x-amz-metadata-directive">>, <<"MetadataDirective">>},
+                       {<<"x-amz-object-lock-event-hold">>, <<"ObjectLockEventHold">>},
+                       {<<"x-amz-object-lock-event-hold-duration-days">>, <<"ObjectLockEventHoldDurationDays">>},
+                       {<<"x-amz-object-lock-event-hold-duration-years">>, <<"ObjectLockEventHoldDurationYears">>},
                        {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
                        {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
                        {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
@@ -5624,6 +5653,9 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-grant-read">>, <<"GrantRead">>},
                        {<<"x-amz-grant-read-acp">>, <<"GrantReadACP">>},
                        {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
+                       {<<"x-amz-object-lock-event-hold">>, <<"ObjectLockEventHold">>},
+                       {<<"x-amz-object-lock-event-hold-duration-days">>, <<"ObjectLockEventHoldDurationDays">>},
+                       {<<"x-amz-object-lock-event-hold-duration-years">>, <<"ObjectLockEventHoldDurationYears">>},
                        {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
                        {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
                        {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
@@ -10165,6 +10197,9 @@ get_object(Client, Bucket, Key, QueryMap, HeadersMap, Options0)
             {<<"Expires">>, <<"Expires">>},
             {<<"Last-Modified">>, <<"LastModified">>},
             {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
+            {<<"x-amz-object-lock-event-hold">>, <<"ObjectLockEventHold">>},
+            {<<"x-amz-object-lock-event-hold-duration-days">>, <<"ObjectLockEventHoldDurationDays">>},
+            {<<"x-amz-object-lock-event-hold-duration-years">>, <<"ObjectLockEventHoldDurationYears">>},
             {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
             {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
             {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
@@ -11556,6 +11591,9 @@ head_object(Client, Bucket, Key, Input0, Options0) ->
             {<<"Expires">>, <<"Expires">>},
             {<<"Last-Modified">>, <<"LastModified">>},
             {<<"x-amz-missing-meta">>, <<"MissingMeta">>},
+            {<<"x-amz-object-lock-event-hold">>, <<"ObjectLockEventHold">>},
+            {<<"x-amz-object-lock-event-hold-duration-days">>, <<"ObjectLockEventHoldDurationDays">>},
+            {<<"x-amz-object-lock-event-hold-duration-years">>, <<"ObjectLockEventHoldDurationYears">>},
             {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
             {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
             {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},
@@ -15674,6 +15712,9 @@ put_object(Client, Bucket, Key, Input0, Options0) ->
                        {<<"x-amz-grant-write-acp">>, <<"GrantWriteACP">>},
                        {<<"If-Match">>, <<"IfMatch">>},
                        {<<"If-None-Match">>, <<"IfNoneMatch">>},
+                       {<<"x-amz-object-lock-event-hold">>, <<"ObjectLockEventHold">>},
+                       {<<"x-amz-object-lock-event-hold-duration-days">>, <<"ObjectLockEventHoldDurationDays">>},
+                       {<<"x-amz-object-lock-event-hold-duration-years">>, <<"ObjectLockEventHoldDurationYears">>},
                        {<<"x-amz-object-lock-legal-hold">>, <<"ObjectLockLegalHoldStatus">>},
                        {<<"x-amz-object-lock-mode">>, <<"ObjectLockMode">>},
                        {<<"x-amz-object-lock-retain-until-date">>, <<"ObjectLockRetainUntilDate">>},

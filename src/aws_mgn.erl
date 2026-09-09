@@ -1102,8 +1102,10 @@
 
 %% Example:
 %% launch_template_disk_conf() :: #{
+%%   <<"deleteOnTermination">> => [boolean()],
 %%   <<"iops">> => float(),
 %%   <<"throughput">> => float(),
+%%   <<"volumeInitializationRate">> => float(),
 %%   <<"volumeType">> => string()
 %% }
 -type launch_template_disk_conf() :: #{binary() => any()}.

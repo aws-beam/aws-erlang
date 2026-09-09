@@ -179,6 +179,8 @@
          get_protect_configuration_country_rule_set/3,
          get_resource_policy/2,
          get_resource_policy/3,
+         list_available_phone_numbers/2,
+         list_available_phone_numbers/3,
          list_notify_countries/2,
          list_notify_countries/3,
          list_pool_origination_identities/2,
@@ -1578,6 +1580,25 @@
 -type kinesis_firehose_destination() :: #{binary() => any()}.
 
 %% Example:
+%% list_available_phone_numbers_request() :: #{
+%%   <<"IsoCountryCode">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"NumberCapabilities">> := list(string()),
+%%   <<"NumberPreference">> => list(number_preference_item()),
+%%   <<"NumberType">> := string(),
+%%   <<"RegistrationId">> => string()
+%% }
+-type list_available_phone_numbers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_available_phone_numbers_result() :: #{
+%%   <<"AvailablePhoneNumbers">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_available_phone_numbers_result() :: #{binary() => any()}.
+
+%% Example:
 %% list_notify_countries_request() :: #{
 %%   <<"Channels">> => list(string()),
 %%   <<"MaxResults">> => integer(),
@@ -1663,6 +1684,13 @@
 -type list_tags_for_resource_result() :: #{binary() => any()}.
 
 %% Example:
+%% messaging_limits() :: #{
+%%   <<"DailyMessageCaps">> => map(),
+%%   <<"RateLimits">> => map()
+%% }
+-type messaging_limits() :: #{binary() => any()}.
+
+%% Example:
 %% notify_configuration_filter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(string())
@@ -1724,6 +1752,13 @@
 -type notify_template_information() :: #{binary() => any()}.
 
 %% Example:
+%% number_preference_item() :: #{
+%%   <<"Filter">> => list(string()),
+%%   <<"PreferenceType">> => list(string())
+%% }
+-type number_preference_item() :: #{binary() => any()}.
+
+%% Example:
 %% opt_out_list_information() :: #{
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
 %%   <<"OptOutListArn">> => [string()],
@@ -1770,6 +1805,7 @@
 %%   <<"InternationalSendingEnabled">> => [boolean()],
 %%   <<"IsoCountryCode">> => string(),
 %%   <<"MessageType">> => string(),
+%%   <<"MessagingLimits">> => messaging_limits(),
 %%   <<"MonthlyLeasingPrice">> => [string()],
 %%   <<"NumberCapabilities">> => list(string()),
 %%   <<"NumberType">> => string(),
@@ -1978,6 +2014,7 @@
 %% rcs_agent_information() :: #{
 %%   <<"CreatedTimestamp">> => [non_neg_integer()],
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
+%%   <<"MessagingLimits">> => messaging_limits(),
 %%   <<"OptOutListName">> => string(),
 %%   <<"PoolId">> => [string()],
 %%   <<"RcsAgentArn">> => [string()],
@@ -2357,6 +2394,7 @@
 %%   <<"IsoCountryCode">> := string(),
 %%   <<"MessageType">> := string(),
 %%   <<"NumberCapabilities">> := list(string()),
+%%   <<"NumberPreference">> => list(number_preference_item()),
 %%   <<"NumberType">> := string(),
 %%   <<"OptOutListName">> => string(),
 %%   <<"PoolId">> => string(),
@@ -2612,6 +2650,7 @@
 %%   <<"DeletionProtectionEnabled">> => [boolean()],
 %%   <<"IsoCountryCode">> => string(),
 %%   <<"MessageTypes">> => list(string()),
+%%   <<"MessagingLimits">> => messaging_limits(),
 %%   <<"MonthlyLeasingPrice">> => [string()],
 %%   <<"Registered">> => [boolean()],
 %%   <<"RegistrationId">> => [string()],
@@ -3598,6 +3637,14 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type list_available_phone_numbers_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type list_notify_countries_errors() ::
@@ -5383,6 +5430,29 @@ get_resource_policy(Client, Input)
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
+
+%% @doc Search available phone numbers from aggregator inventory, optionally
+%% filtered by pattern.
+%%
+%% If NumberPreference is omitted, returns unfiltered available numbers.
+%% Returns empty list (not an exception) when no numbers match.
+%% ResourceNotFoundException is thrown only for invalid RegistrationId
+%% (campaign not found).
+-spec list_available_phone_numbers(aws_client:aws_client(), list_available_phone_numbers_request()) ->
+    {ok, list_available_phone_numbers_result(), tuple()} |
+    {error, any()} |
+    {error, list_available_phone_numbers_errors(), tuple()}.
+list_available_phone_numbers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_available_phone_numbers(Client, Input, []).
+
+-spec list_available_phone_numbers(aws_client:aws_client(), list_available_phone_numbers_request(), proplists:proplist()) ->
+    {ok, list_available_phone_numbers_result(), tuple()} |
+    {error, any()} |
+    {error, list_available_phone_numbers_errors(), tuple()}.
+list_available_phone_numbers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAvailablePhoneNumbers">>, Input, Options).
 
 %% @doc Lists countries that support notify messaging.
 %%

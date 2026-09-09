@@ -415,6 +415,7 @@
 %%   <<"IsOrganizationTrail">> => boolean(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"RecursiveLogging">> => boolean(),
 %%   <<"S3BucketName">> := string(),
 %%   <<"S3KeyPrefix">> => string(),
 %%   <<"SnsTopicName">> => string(),
@@ -432,6 +433,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"LogFileValidationEnabled">> => boolean(),
 %%   <<"Name">> => string(),
+%%   <<"RecursiveLogging">> => boolean(),
 %%   <<"S3BucketName">> => string(),
 %%   <<"S3KeyPrefix">> => string(),
 %%   <<"SnsTopicARN">> => string(),
@@ -1883,6 +1885,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"LogFileValidationEnabled">> => boolean(),
 %%   <<"Name">> => string(),
+%%   <<"RecursiveLogging">> => boolean(),
 %%   <<"S3BucketName">> => string(),
 %%   <<"S3KeyPrefix">> => string(),
 %%   <<"SnsTopicARN">> => string(),
@@ -2005,6 +2008,7 @@
 %%   <<"IsOrganizationTrail">> => boolean(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"RecursiveLogging">> => boolean(),
 %%   <<"S3BucketName">> => string(),
 %%   <<"S3KeyPrefix">> => string(),
 %%   <<"SnsTopicName">> => string()
@@ -2021,6 +2025,7 @@
 %%   <<"KmsKeyId">> => string(),
 %%   <<"LogFileValidationEnabled">> => boolean(),
 %%   <<"Name">> => string(),
+%%   <<"RecursiveLogging">> => boolean(),
 %%   <<"S3BucketName">> => string(),
 %%   <<"S3KeyPrefix">> => string(),
 %%   <<"SnsTopicARN">> => string(),
@@ -2499,6 +2504,7 @@
     invalid_home_region_exception() | 
     insufficient_s3_bucket_policy_exception() | 
     insufficient_encryption_policy_exception() | 
+    conflict_exception() | 
     cloud_trail_arn_invalid_exception().
 
 -type put_resource_policy_errors() ::
@@ -2773,11 +2779,18 @@ add_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddTags">>, Input, Options).
 
-%% @doc Cancels a query if the query is not in a terminated state, such as
-%% `CANCELLED', `FAILED', `TIMED_OUT', or
-%% `FINISHED'.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% You must specify an ARN value for `EventDataStore'.
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Cancels a query if the query is not in a terminated state, such as
+%% `CANCELLED', `FAILED', `TIMED_OUT', or
+%% `FINISHED'. You must specify an ARN value for `EventDataStore'.
 %% The ID of the query that you want to cancel is also required. When you run
 %% `CancelQuery', the query status might show as `CANCELLED' even if
 %% the operation is not yet finished.
@@ -2797,9 +2810,17 @@ cancel_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelQuery">>, Input, Options).
 
-%% @doc Creates a channel for CloudTrail to ingest events from a partner or
-%% external source.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Creates a channel for CloudTrail to ingest events from a partner or
+%% external source.
 %% After you create a channel, a CloudTrail Lake event data store can log
 %% events
 %% from the partner or source that you specify.
@@ -2820,6 +2841,14 @@ create_channel(Client, Input, Options)
     request(Client, <<"CreateChannel">>, Input, Options).
 
 %% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
 %% Creates a custom dashboard or the Highlights dashboard.
 %%
 %% Custom dashboards - Custom dashboards allow you to query
@@ -2871,7 +2900,16 @@ create_dashboard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateDashboard">>, Input, Options).
 
-%% @doc Creates a new event data store.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Creates a new event data store.
 -spec create_event_data_store(aws_client:aws_client(), create_event_data_store_request()) ->
     {ok, create_event_data_store_response(), tuple()} |
     {error, any()} |
@@ -2906,7 +2944,16 @@ create_trail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrail">>, Input, Options).
 
-%% @doc Deletes a channel.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Deletes a channel.
 -spec delete_channel(aws_client:aws_client(), delete_channel_request()) ->
     {ok, delete_channel_response(), tuple()} |
     {error, any()} |
@@ -2924,9 +2971,16 @@ delete_channel(Client, Input, Options)
     request(Client, <<"DeleteChannel">>, Input, Options).
 
 %% @doc
-%% Deletes the specified dashboard.
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% You cannot delete a dashboard that has termination protection enabled.
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Deletes the specified dashboard. You cannot delete a dashboard that has
+%% termination protection enabled.
 -spec delete_dashboard(aws_client:aws_client(), delete_dashboard_request()) ->
     {ok, delete_dashboard_response(), tuple()} |
     {error, any()} |
@@ -2943,11 +2997,19 @@ delete_dashboard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteDashboard">>, Input, Options).
 
-%% @doc Disables the event data store specified by `EventDataStore',
-%% which accepts an
-%% event data store ARN.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% After you run `DeleteEventDataStore', the event data store
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Disables the event data store specified by `EventDataStore', which
+%% accepts an
+%% event data store ARN. After you run `DeleteEventDataStore', the event
+%% data store
 %% enters a `PENDING_DELETION' state, and is automatically deleted after
 %% a wait
 %% period of seven days. `TerminationProtectionEnabled' must be set to
@@ -3057,11 +3119,19 @@ deregister_organization_delegated_admin(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeregisterOrganizationDelegatedAdmin">>, Input, Options).
 
-%% @doc Returns metadata about a query, including query run time in
-%% milliseconds, number of
-%% events scanned and matched, and query status.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% If the query results were delivered to an S3 bucket,
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Returns metadata about a query, including query run time in milliseconds,
+%% number of
+%% events scanned and matched, and query status. If the query results were
+%% delivered to an S3 bucket,
 %% the response also provides the S3 URI and the delivery status.
 %%
 %% You must specify either `QueryId' or `QueryAlias'. Specifying the
@@ -3106,9 +3176,16 @@ describe_trails(Client, Input, Options)
     request(Client, <<"DescribeTrails">>, Input, Options).
 
 %% @doc
-%% Disables Lake query federation on the specified event data store.
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% When you disable federation, CloudTrail disables
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Disables Lake query federation on the specified event data store. When you
+%% disable federation, CloudTrail disables
 %% the integration with Glue, Lake Formation, and Amazon Athena.
 %% After disabling Lake query federation, you can no longer query your event
 %% data in Amazon Athena.
@@ -3132,8 +3209,15 @@ disable_federation(Client, Input, Options)
     request(Client, <<"DisableFederation">>, Input, Options).
 
 %% @doc
-%% Enables Lake query federation on the specified event data store.
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Enables Lake query federation on the specified event data store.
 %% Federating an event data store lets you view the metadata associated with
 %% the event data store in the Glue
 %% Data Catalog:
@@ -3174,9 +3258,16 @@ enable_federation(Client, Input, Options)
     request(Client, <<"EnableFederation">>, Input, Options).
 
 %% @doc
-%% Generates a query from a natural language prompt.
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% This operation uses generative artificial intelligence
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Generates a query from a natural language prompt. This operation uses
+%% generative artificial intelligence
 %% (generative AI) to produce a ready-to-use SQL query from the prompt.
 %%
 %% The prompt can be a question or a statement about the event data
@@ -3214,7 +3305,16 @@ generate_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GenerateQuery">>, Input, Options).
 
-%% @doc Returns information about a specific channel.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Returns information about a specific channel.
 -spec get_channel(aws_client:aws_client(), get_channel_request()) ->
     {ok, get_channel_response(), tuple()} |
     {error, any()} |
@@ -3232,6 +3332,14 @@ get_channel(Client, Input, Options)
     request(Client, <<"GetChannel">>, Input, Options).
 
 %% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
 %% Returns the specified dashboard.
 -spec get_dashboard(aws_client:aws_client(), get_dashboard_request()) ->
     {ok, get_dashboard_response(), tuple()} |
@@ -3271,8 +3379,17 @@ get_event_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEventConfiguration">>, Input, Options).
 
-%% @doc Returns information about an event data store specified as either an
-%% ARN or the ID
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Returns information about an event data store specified as either an ARN
+%% or the ID
 %% portion of the ARN.
 -spec get_event_data_store(aws_client:aws_client(), get_event_data_store_request()) ->
     {ok, get_event_data_store_response(), tuple()} |
@@ -3338,7 +3455,16 @@ get_event_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetEventSelectors">>, Input, Options).
 
-%% @doc Returns information about a specific import.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Returns information about a specific import.
 -spec get_import(aws_client:aws_client(), get_import_request()) ->
     {ok, get_import_response(), tuple()} |
     {error, any()} |
@@ -3390,9 +3516,17 @@ get_insight_selectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetInsightSelectors">>, Input, Options).
 
-%% @doc Gets event data results of a query.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% You must specify the `QueryID' value
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Gets event data results of a query. You must specify the `QueryID'
+%% value
 %% returned by the `StartQuery' operation.
 -spec get_query_results(aws_client:aws_client(), get_query_results_request()) ->
     {ok, get_query_results_response(), tuple()} |
@@ -3472,7 +3606,16 @@ get_trail_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetTrailStatus">>, Input, Options).
 
-%% @doc Lists the channels in the current account, and their source names.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Lists the channels in the current account, and their source names.
 -spec list_channels(aws_client:aws_client(), list_channels_request()) ->
     {ok, list_channels_response(), tuple()} |
     {error, any()} |
@@ -3490,6 +3633,14 @@ list_channels(Client, Input, Options)
     request(Client, <<"ListChannels">>, Input, Options).
 
 %% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
 %% Returns information about all dashboards in the account, in the current
 %% Region.
 -spec list_dashboards(aws_client:aws_client(), list_dashboards_request()) ->
@@ -3508,8 +3659,17 @@ list_dashboards(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDashboards">>, Input, Options).
 
-%% @doc Returns information about all event data stores in the account, in
-%% the current
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Returns information about all event data stores in the account, in the
+%% current
 %% Region.
 -spec list_event_data_stores(aws_client:aws_client(), list_event_data_stores_request()) ->
     {ok, list_event_data_stores_response(), tuple()} |
@@ -3527,7 +3687,16 @@ list_event_data_stores(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEventDataStores">>, Input, Options).
 
-%% @doc Returns a list of failures for the specified import.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Returns a list of failures for the specified import.
 -spec list_import_failures(aws_client:aws_client(), list_import_failures_request()) ->
     {ok, list_import_failures_response(), tuple()} |
     {error, any()} |
@@ -3544,7 +3713,16 @@ list_import_failures(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListImportFailures">>, Input, Options).
 
-%% @doc Returns information on all imports, or a select set of imports by
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Returns information on all imports, or a select set of imports by
 %% `ImportStatus' or `Destination'.
 -spec list_imports(aws_client:aws_client(), list_imports_request()) ->
     {ok, list_imports_response(), tuple()} |
@@ -3584,6 +3762,14 @@ list_imports(Client, Input, Options)
 %% The rate of ListInsightsData requests is limited to two per second, per
 %% account, per Region. If
 %% this limit is exceeded, a throttling error occurs.
+%%
+%% For data event Insights on organization trails, only the management
+%% account and delegated
+%% administrator accounts can call `ListInsightsData'. For these callers,
+%% the API returns
+%% Insights events only for the caller's own account. Member accounts
+%% cannot call this API on
+%% organization trails.
 -spec list_insights_data(aws_client:aws_client(), list_insights_data_request()) ->
     {ok, list_insights_data_response(), tuple()} |
     {error, any()} |
@@ -3636,6 +3822,14 @@ list_insights_data(Client, Input, Options)
 %% operation,
 %% you must have permissions to perform the `cloudtrail:LookupEvents'
 %% action.
+%%
+%% For data event Insights on organization trails, only the management
+%% account and delegated
+%% administrator accounts can call `ListInsightsMetricData'. For these
+%% callers, the API returns
+%% Insights metrics only for the caller's own account. Member accounts
+%% cannot call this API on
+%% organization trails.
 -spec list_insights_metric_data(aws_client:aws_client(), list_insights_metric_data_request()) ->
     {ok, list_insights_metric_data_response(), tuple()} |
     {error, any()} |
@@ -3682,9 +3876,17 @@ list_public_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPublicKeys">>, Input, Options).
 
-%% @doc Returns a list of queries and query statuses for the past seven days.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% You must specify
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Returns a list of queries and query statuses for the past seven days. You
+%% must specify
 %% an ARN value for `EventDataStore'. Optionally, to shorten the list of
 %% results,
 %% you can specify a time range, formatted as timestamps, by adding
@@ -4064,11 +4266,19 @@ remove_tags(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTags">>, Input, Options).
 
-%% @doc Restores a deleted event data store specified by
-%% `EventDataStore', which
-%% accepts an event data store ARN.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% You can only restore a deleted event data store within the
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Restores a deleted event data store specified by `EventDataStore',
+%% which
+%% accepts an event data store ARN. You can only restore a deleted event data
+%% store within the
 %% seven-day wait period after deletion. Restoring an event data store can
 %% take several
 %% minutes, depending on the size of the event data store.
@@ -4089,9 +4299,16 @@ restore_event_data_store(Client, Input, Options)
     request(Client, <<"RestoreEventDataStore">>, Input, Options).
 
 %% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
 %% Searches sample queries and returns a list of sample queries that are
 %% sorted by relevance.
-%%
 %% To search for sample queries, provide a natural language
 %% `SearchPhrase' in English.
 -spec search_sample_queries(aws_client:aws_client(), search_sample_queries_request()) ->
@@ -4111,6 +4328,14 @@ search_sample_queries(Client, Input, Options)
     request(Client, <<"SearchSampleQueries">>, Input, Options).
 
 %% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
 %% Starts a refresh of the specified dashboard.
 %%
 %% Each time a dashboard is refreshed, CloudTrail runs queries to populate
@@ -4137,11 +4362,18 @@ start_dashboard_refresh(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDashboardRefresh">>, Input, Options).
 
-%% @doc Starts the ingestion of live events on an event data store specified
-%% as either an ARN or the ID portion of the ARN.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% To start ingestion, the event data store `Status' must be
-%% `STOPPED_INGESTION'
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Starts the ingestion of live events on an event data store specified as
+%% either an ARN or the ID portion of the ARN. To start ingestion, the event
+%% data store `Status' must be `STOPPED_INGESTION'
 %% and the `eventCategory' must be `Management', `Data',
 %% `NetworkActivity', or `ConfigurationItem'.
 -spec start_event_data_store_ingestion(aws_client:aws_client(), start_event_data_store_ingestion_request()) ->
@@ -4160,11 +4392,18 @@ start_event_data_store_ingestion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEventDataStoreIngestion">>, Input, Options).
 
-%% @doc Starts an import of logged trail events from a source S3 bucket to a
-%% destination event
-%% data store.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% By default, CloudTrail only imports events contained in the S3
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Starts an import of logged trail events from a source S3 bucket to a
+%% destination event
+%% data store. By default, CloudTrail only imports events contained in the S3
 %% bucket's
 %% `CloudTrail' prefix and the prefixes inside the `CloudTrail'
 %% prefix, and does not check prefixes for other Amazon Web Services
@@ -4233,9 +4472,16 @@ start_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLogging">>, Input, Options).
 
-%% @doc Starts a CloudTrail Lake query.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% Use the `QueryStatement'
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Starts a CloudTrail Lake query. Use the `QueryStatement'
 %% parameter to provide your SQL query, enclosed in single quotation marks.
 %% Use the optional
 %% `DeliveryS3Uri' parameter to deliver the query results to an S3
@@ -4262,10 +4508,18 @@ start_query(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartQuery">>, Input, Options).
 
-%% @doc Stops the ingestion of live events on an event data store specified
-%% as either an ARN or the ID portion of the ARN.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% To stop ingestion, the event data store `Status' must be `ENABLED'
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Stops the ingestion of live events on an event data store specified as
+%% either an ARN or the ID portion of the ARN. To stop ingestion, the event
+%% data store `Status' must be `ENABLED'
 %% and the `eventCategory' must be `Management', `Data',
 %% `NetworkActivity', or `ConfigurationItem'.
 -spec stop_event_data_store_ingestion(aws_client:aws_client(), stop_event_data_store_ingestion_request()) ->
@@ -4284,7 +4538,16 @@ stop_event_data_store_ingestion(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopEventDataStoreIngestion">>, Input, Options).
 
-%% @doc Stops a specified import.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Stops a specified import.
 -spec stop_import(aws_client:aws_client(), stop_import_request()) ->
     {ok, stop_import_response(), tuple()} |
     {error, any()} |
@@ -4331,7 +4594,16 @@ stop_logging(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopLogging">>, Input, Options).
 
-%% @doc Updates a channel specified by a required channel ARN or UUID.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Updates a channel specified by a required channel ARN or UUID.
 -spec update_channel(aws_client:aws_client(), update_channel_request()) ->
     {ok, update_channel_response(), tuple()} |
     {error, any()} |
@@ -4349,6 +4621,14 @@ update_channel(Client, Input, Options)
     request(Client, <<"UpdateChannel">>, Input, Options).
 
 %% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
+%%
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
 %% Updates the specified dashboard.
 %%
 %% To set a refresh schedule, CloudTrail must be granted permissions to run
@@ -4384,9 +4664,17 @@ update_dashboard(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateDashboard">>, Input, Options).
 
-%% @doc Updates an event data store.
+%% @doc
+%% CloudTrail Lake will no longer be open to new customers starting May 31,
+%% 2026.
 %%
-%% The required `EventDataStore' value is an ARN or
+%% If you would like to use CloudTrail Lake, sign up prior to that date.
+%% Existing customers can continue to use the service as normal. For more
+%% information, see CloudTrail Lake availability change:
+%% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-lake-service-availability-change.html.
+%%
+%% Updates an event data store. The required `EventDataStore' value is an
+%% ARN or
 %% the ID portion of the ARN. Other parameters are optional, but at least one
 %% optional
 %% parameter must be specified, or CloudTrail throws an error.

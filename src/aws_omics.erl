@@ -846,6 +846,7 @@
 %%   <<"runGroupId">> => string(),
 %%   <<"runTags">> => map(),
 %%   <<"scratchStorageMode">> => string(),
+%%   <<"sessionPolicy">> => string(),
 %%   <<"storageCapacity">> => [integer()],
 %%   <<"storageType">> => string(),
 %%   <<"workflowId">> => string(),
@@ -1423,6 +1424,7 @@
 %%   <<"runId">> => string(),
 %%   <<"runOutputUri">> => string(),
 %%   <<"scratchStorageMode">> => string(),
+%%   <<"sessionPolicy">> => string(),
 %%   <<"startTime">> => non_neg_integer(),
 %%   <<"startedBy">> => string(),
 %%   <<"status">> => string(),
@@ -2828,6 +2830,7 @@
 %%   <<"runGroupId">> => string(),
 %%   <<"runId">> => string(),
 %%   <<"scratchStorageMode">> => string(),
+%%   <<"sessionPolicy">> => string(),
 %%   <<"storageCapacity">> => [integer()],
 %%   <<"storageType">> => string(),
 %%   <<"tags">> => map(),
@@ -4871,7 +4874,8 @@ create_sequence_store(Client, Input0, Options0) ->
 %% @doc Creates a cross-account shared resource.
 %%
 %% The resource owner makes an offer to share the resource with the principal
-%% subscriber (an AWS user with a different account than the resource owner).
+%% subscriber (an Amazon Web Services user with a different account than the
+%% resource owner).
 %%
 %% The following resources support cross-account sharing:
 %%
@@ -5161,10 +5165,11 @@ delete_annotation_store_versions(Client, Name, Input0, Options0) ->
 %% runs, call `DeleteRunBatch' before calling `DeleteBatch'.
 %%
 %% `DeleteBatch' requires the batch to be in a terminal state:
-%% `PROCESSED', `FAILED', `CANCELLED', or `RUNS_DELETED'.
-%% After `DeleteBatch' completes, the batch metadata is no longer
-%% accessible. You cannot call `GetBatch', `ListRunsInBatch',
-%% `DeleteRunBatch', or `CancelRunBatch' on a deleted batch.
+%% `PROCESSED', `FAILED', `CANCELLED', `RUNS_DELETE_FAILED',
+%% or `RUNS_DELETED'. After `DeleteBatch' completes, the batch
+%% metadata is no longer accessible. You cannot call `GetBatch',
+%% `ListRunsInBatch', `DeleteRunBatch', or `CancelRunBatch' on a
+%% deleted batch.
 -spec delete_batch(aws_client:aws_client(), binary() | list(), delete_batch_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -7969,9 +7974,9 @@ start_annotation_import_job(Client, Input0, Options0) ->
 %% @doc Activates an archived read set and returns its metadata in a JSON
 %% formatted output.
 %%
-%% AWS HealthOmics automatically archives unused read sets after 30 days. To
-%% monitor the status of your read set activation job, use the
-%% `GetReadSetActivationJob' operation.
+%% Amazon Web Services HealthOmics automatically archives unused read sets
+%% after 30 days. To monitor the status of your read set activation job, use
+%% the `GetReadSetActivationJob' operation.
 %%
 %% To learn more, see Activating read sets:
 %% https://docs.aws.amazon.com/omics/latest/dev/activating-read-sets.html in

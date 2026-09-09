@@ -325,6 +325,7 @@
 %% Example:
 %% connector_o_auth_request() :: #{
 %%   <<"authCode">> => string(),
+%%   <<"codeVerifier">> => string(),
 %%   <<"redirectUri">> => string()
 %% }
 -type connector_o_auth_request() :: #{binary() => any()}.
@@ -1600,6 +1601,7 @@
 %% Example:
 %% snowflake_connector_profile_credentials() :: #{
 %%   <<"password">> => string(),
+%%   <<"privateKey">> => string(),
 %%   <<"username">> => string()
 %% }
 -type snowflake_connector_profile_credentials() :: #{binary() => any()}.
