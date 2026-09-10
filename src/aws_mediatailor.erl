@@ -263,6 +263,21 @@
 
 
 %% Example:
+%% aws_service_request_configuration() :: #{
+%%   <<"Body">> => string(),
+%%   <<"Headers">> => map(),
+%%   <<"MethodType">> => list(any()),
+%%   <<"Output">> => map(),
+%%   <<"RequestTimeoutMilliseconds">> => integer(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"TargetRegion">> => string(),
+%%   <<"TargetService">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type aws_service_request_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -778,6 +793,7 @@
 %% Example:
 %% get_function_response() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"AwsServiceRequestConfiguration">> => aws_service_request_configuration(),
 %%   <<"ConcurrentExecutorConfiguration">> => concurrent_executor_configuration(),
 %%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
 %%   <<"Description">> => string(),
@@ -1110,6 +1126,7 @@
 %% Example:
 %% mediatailor_function() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"AwsServiceRequestConfiguration">> => aws_service_request_configuration(),
 %%   <<"ConcurrentExecutorConfiguration">> => concurrent_executor_configuration(),
 %%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
 %%   <<"Description">> => string(),
@@ -1220,6 +1237,7 @@
 
 %% Example:
 %% put_function_request() :: #{
+%%   <<"AwsServiceRequestConfiguration">> => aws_service_request_configuration(),
 %%   <<"ConcurrentExecutorConfiguration">> => concurrent_executor_configuration(),
 %%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
 %%   <<"Description">> => string(),
@@ -1235,6 +1253,7 @@
 %% Example:
 %% put_function_response() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"AwsServiceRequestConfiguration">> => aws_service_request_configuration(),
 %%   <<"ConcurrentExecutorConfiguration">> => concurrent_executor_configuration(),
 %%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
 %%   <<"Description">> => string(),

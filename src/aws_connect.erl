@@ -523,6 +523,9 @@
          list_default_vocabularies/4,
          list_entity_security_profiles/3,
          list_entity_security_profiles/4,
+         list_evaluation_form_a_i_versions/3,
+         list_evaluation_form_a_i_versions/5,
+         list_evaluation_form_a_i_versions/6,
          list_evaluation_form_versions/3,
          list_evaluation_form_versions/5,
          list_evaluation_form_versions/6,
@@ -2777,6 +2780,7 @@
 
 %% Example:
 %% create_evaluation_form_request() :: #{
+%%   <<"AIVersion">> => string(),
 %%   <<"AsDraft">> => boolean(),
 %%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"ClientToken">> => string(),
@@ -4804,6 +4808,7 @@
 
 %% Example:
 %% evaluation_form() :: #{
+%%   <<"AIVersion">> => string(),
 %%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"CreatedBy">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -4829,6 +4834,23 @@
 
 
 %% Example:
+%% evaluation_form_a_i_version_lifecycle() :: #{
+%%   <<"EndOfLifeTime">> => non_neg_integer(),
+%%   <<"StartOfLifeTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type evaluation_form_a_i_version_lifecycle() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_form_a_i_version_summary() :: #{
+%%   <<"AIVersionLifecycle">> => evaluation_form_a_i_version_lifecycle(),
+%%   <<"AIVersionName">> => string()
+%% }
+-type evaluation_form_a_i_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_form_auto_evaluation_configuration() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
@@ -4837,6 +4859,7 @@
 
 %% Example:
 %% evaluation_form_content() :: #{
+%%   <<"AIVersion">> => string(),
 %%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"Description">> => string(),
 %%   <<"EvaluationFormArn">> => string(),
@@ -4902,6 +4925,14 @@
 
 
 %% Example:
+%% evaluation_form_metric_configuration() :: #{
+%%   <<"MetricName">> => string(),
+%%   <<"MetricType">> => list(any())
+%% }
+-type evaluation_form_metric_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation_form_multi_select_question_automation() :: #{
 %%   <<"AnswerSource">> => evaluation_form_question_automation_answer_source(),
 %%   <<"DefaultOptionRefIds">> => list(string()),
@@ -4957,6 +4988,7 @@
 %% evaluation_form_question() :: #{
 %%   <<"Enablement">> => evaluation_form_item_enablement_configuration(),
 %%   <<"Instructions">> => string(),
+%%   <<"MetricConfiguration">> => evaluation_form_metric_configuration(),
 %%   <<"NotApplicableEnabled">> => boolean(),
 %%   <<"QuestionType">> => list(any()),
 %%   <<"QuestionTypeProperties">> => list(),
@@ -5023,6 +5055,7 @@
 
 %% Example:
 %% evaluation_form_search_summary() :: #{
+%%   <<"AIVersion">> => string(),
 %%   <<"ActiveVersion">> => integer(),
 %%   <<"AutoEvaluationEnabled">> => boolean(),
 %%   <<"ContactInteractionType">> => list(any()),
@@ -6752,6 +6785,23 @@
 %%   <<"SecurityProfiles">> => list(security_profile_item())
 %% }
 -type list_entity_security_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluation_form_a_i_versions_request() :: #{
+%%   <<"ContactInteractionType">> := list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_evaluation_form_a_i_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_evaluation_form_a_i_versions_response() :: #{
+%%   <<"AIVersionSummaries">> => list(evaluation_form_a_i_version_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_evaluation_form_a_i_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11193,6 +11243,7 @@
 
 %% Example:
 %% update_evaluation_form_request() :: #{
+%%   <<"AIVersion">> => string(),
 %%   <<"AsDraft">> => boolean(),
 %%   <<"AutoEvaluationConfiguration">> => evaluation_form_auto_evaluation_configuration(),
 %%   <<"ClientToken">> => string(),
@@ -13946,6 +13997,12 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
+-type list_evaluation_form_a_i_versions_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_exception() | 
     internal_service_exception().
 
@@ -24221,6 +24278,50 @@ list_entity_security_profiles(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists the available AI versions for evaluation forms in the specified
+%% Connect Customer instance.
+-spec list_evaluation_form_a_i_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_evaluation_form_a_i_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_evaluation_form_a_i_versions_errors(), tuple()}.
+list_evaluation_form_a_i_versions(Client, InstanceId, ContactInteractionType)
+  when is_map(Client) ->
+    list_evaluation_form_a_i_versions(Client, InstanceId, ContactInteractionType, #{}, #{}).
+
+-spec list_evaluation_form_a_i_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_evaluation_form_a_i_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_evaluation_form_a_i_versions_errors(), tuple()}.
+list_evaluation_form_a_i_versions(Client, InstanceId, ContactInteractionType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_evaluation_form_a_i_versions(Client, InstanceId, ContactInteractionType, QueryMap, HeadersMap, []).
+
+-spec list_evaluation_form_a_i_versions(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_evaluation_form_a_i_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_evaluation_form_a_i_versions_errors(), tuple()}.
+list_evaluation_form_a_i_versions(Client, InstanceId, ContactInteractionType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/instances/", aws_util:encode_uri(InstanceId), "/evaluation-form-ai-versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"contactInteractionType">>, ContactInteractionType},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists versions of an evaluation form in the specified Connect
 %% Customer instance.
 -spec list_evaluation_form_versions(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -28249,9 +28350,6 @@ start_contact_conversational_analytics_job(Client, ContactId, InstanceId, Input0
 %% the currently
 %% activated version. If no version is activated for the evaluation form, the
 %% contact evaluation cannot be started.
-%%
-%% Evaluations created through the public API do not contain answer values
-%% suggested from automation.
 -spec start_contact_evaluation(aws_client:aws_client(), binary() | list(), start_contact_evaluation_request()) ->
     {ok, start_contact_evaluation_response(), tuple()} |
     {error, any()} |

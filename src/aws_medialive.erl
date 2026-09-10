@@ -1976,6 +1976,7 @@
 %% Example:
 %% describe_inference_settings() :: #{
 %%   <<"AudioFeedInputs">> => list(audio_feed_input()),
+%%   <<"EnrichmentMethods">> => list(list(any())()),
 %%   <<"FeedArn">> => string()
 %% }
 -type describe_inference_settings() :: #{binary() => any()}.
@@ -2405,9 +2406,20 @@
 %% }
 -type ebu_tt_d_destination_settings() :: #{binary() => any()}.
 
+
 %% Example:
-%% embedded_destination_settings() :: #{}
--type embedded_destination_settings() :: #{}.
+%% embedded_caption_position_settings() :: #{
+%%   <<"YPositionLine">> => integer()
+%% }
+-type embedded_caption_position_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% embedded_destination_settings() :: #{
+%%   <<"Position">> => embedded_caption_position_settings(),
+%%   <<"StyleControl">> => list(any())
+%% }
+-type embedded_destination_settings() :: #{binary() => any()}.
 
 %% Example:
 %% embedded_plus_scte20_destination_settings() :: #{}
@@ -3068,6 +3080,7 @@
 %% Example:
 %% inference_settings() :: #{
 %%   <<"AudioFeedInputs">> => list(audio_feed_input()),
+%%   <<"EnrichmentMethods">> => list(list(any())()),
 %%   <<"FeedArn">> => string()
 %% }
 -type inference_settings() :: #{binary() => any()}.
@@ -4128,7 +4141,8 @@
 %%   <<"AudioGroupId">> => string(),
 %%   <<"AudioRenditionSets">> => string(),
 %%   <<"HlsAutoSelect">> => list(any()),
-%%   <<"HlsDefault">> => list(any())
+%%   <<"HlsDefault">> => list(any()),
+%%   <<"OutputUsage">> => list(list(any())())
 %% }
 -type media_package_v2_destination_settings() :: #{binary() => any()}.
 
@@ -5716,6 +5730,13 @@
 
 
 %% Example:
+%% text_caption_position_settings() :: #{
+%%   <<"YPositionPercentage">> => integer()
+%% }
+-type text_caption_position_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% thumbnail() :: #{
 %%   <<"Body">> => string(),
 %%   <<"ContentType">> => string(),
@@ -5796,6 +5817,7 @@
 
 %% Example:
 %% ttml_destination_settings() :: #{
+%%   <<"Position">> => text_caption_position_settings(),
 %%   <<"StyleControl">> => list(any())
 %% }
 -type ttml_destination_settings() :: #{binary() => any()}.
@@ -6277,6 +6299,7 @@
 
 %% Example:
 %% video_description() :: #{
+%%   <<"Border">> => integer(),
 %%   <<"CodecSettings">> => video_codec_settings(),
 %%   <<"CropRectangle">> => video_position_rectangle(),
 %%   <<"Height">> => integer(),
@@ -6369,6 +6392,7 @@
 
 %% Example:
 %% webvtt_destination_settings() :: #{
+%%   <<"Position">> => text_caption_position_settings(),
 %%   <<"StyleControl">> => list(any())
 %% }
 -type webvtt_destination_settings() :: #{binary() => any()}.

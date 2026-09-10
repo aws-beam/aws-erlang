@@ -146,12 +146,14 @@
 %% Example:
 %% channel_list_configuration() :: #{
 %%   <<"Arn">> => [string()],
+%%   <<"AttachedMultiviewChannels">> => list(string()),
 %%   <<"ChannelGroupName">> => [string()],
 %%   <<"ChannelName">> => [string()],
 %%   <<"CreatedAt">> => [non_neg_integer()],
 %%   <<"Description">> => string(),
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MultiviewConfiguration">> => multiview_configuration(),
 %%   <<"OutputLockingMode">> => list(any())
 %% }
 -type channel_list_configuration() :: #{binary() => any()}.
@@ -196,6 +198,7 @@
 %%   <<"Description">> => string(),
 %%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
 %%   <<"InputType">> => list(any()),
+%%   <<"MultiviewConfiguration">> => multiview_configuration(),
 %%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
 %%   <<"OutputLockingMode">> => list(any()),
 %%   <<"Tags">> => map()
@@ -206,6 +209,7 @@
 %% Example:
 %% create_channel_response() :: #{
 %%   <<"Arn">> => [string()],
+%%   <<"AttachedMultiviewChannels">> => list(string()),
 %%   <<"ChannelGroupName">> => [string()],
 %%   <<"ChannelName">> => [string()],
 %%   <<"CreatedAt">> => [non_neg_integer()],
@@ -215,6 +219,7 @@
 %%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MultiviewConfiguration">> => multiview_configuration(),
 %%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
 %%   <<"OutputLockingMode">> => list(any()),
 %%   <<"Tags">> => map()
@@ -567,6 +572,7 @@
 %% Example:
 %% get_channel_response() :: #{
 %%   <<"Arn">> => [string()],
+%%   <<"AttachedMultiviewChannels">> => list(string()),
 %%   <<"ChannelGroupName">> => [string()],
 %%   <<"ChannelName">> => [string()],
 %%   <<"CreatedAt">> => [non_neg_integer()],
@@ -576,6 +582,7 @@
 %%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MultiviewConfiguration">> => multiview_configuration(),
 %%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
 %%   <<"OutputLockingMode">> => list(any()),
 %%   <<"ResetAt">> => [non_neg_integer()],
@@ -918,6 +925,14 @@
 
 
 %% Example:
+%% multiview_configuration() :: #{
+%%   <<"AvailableLayouts">> => list(list(any())()),
+%%   <<"AvailableSources">> => list(string())
+%% }
+-type multiview_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% origin_endpoint_list_configuration() :: #{
 %%   <<"Arn">> => [string()],
 %%   <<"ChannelGroupName">> => string(),
@@ -1127,6 +1142,7 @@
 %%   <<"Description">> => string(),
 %%   <<"ETag">> => string(),
 %%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
+%%   <<"MultiviewConfiguration">> => multiview_configuration(),
 %%   <<"OutputHeaderConfiguration">> => output_header_configuration()
 %% }
 -type update_channel_request() :: #{binary() => any()}.
@@ -1135,6 +1151,7 @@
 %% Example:
 %% update_channel_response() :: #{
 %%   <<"Arn">> => [string()],
+%%   <<"AttachedMultiviewChannels">> => list(string()),
 %%   <<"ChannelGroupName">> => [string()],
 %%   <<"ChannelName">> => [string()],
 %%   <<"CreatedAt">> => [non_neg_integer()],
@@ -1144,6 +1161,7 @@
 %%   <<"InputSwitchConfiguration">> => input_switch_configuration(),
 %%   <<"InputType">> => list(any()),
 %%   <<"ModifiedAt">> => [non_neg_integer()],
+%%   <<"MultiviewConfiguration">> => multiview_configuration(),
 %%   <<"OutputHeaderConfiguration">> => output_header_configuration(),
 %%   <<"OutputLockingMode">> => list(any()),
 %%   <<"Tags">> => map()

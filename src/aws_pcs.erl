@@ -183,6 +183,7 @@
 
 %% Example:
 %% compute_node_group_slurm_configuration() :: #{
+%%   <<"gresCustomSettings">> => list(map()),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
@@ -190,6 +191,7 @@
 
 %% Example:
 %% compute_node_group_slurm_configuration_request() :: #{
+%%   <<"gresCustomSettings">> => list(map()),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
@@ -747,6 +749,7 @@
 
 %% Example:
 %% update_compute_node_group_slurm_configuration_request() :: #{
+%%   <<"gresCustomSettings">> => list(map()),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }

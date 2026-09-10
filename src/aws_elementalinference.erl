@@ -22,6 +22,8 @@
          delete_dictionary/4,
          delete_feed/3,
          delete_feed/4,
+         delete_feed_policy/3,
+         delete_feed_policy/4,
          disassociate_feed/3,
          disassociate_feed/4,
          export_dictionary_entries/2,
@@ -33,6 +35,9 @@
          get_feed/2,
          get_feed/4,
          get_feed/5,
+         get_feed_policy/2,
+         get_feed_policy/4,
+         get_feed_policy/5,
          get_fixture/2,
          get_fixture/4,
          get_fixture/5,
@@ -45,6 +50,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         put_feed_policy/3,
+         put_feed_policy/4,
          search_fixtures/2,
          search_fixtures/3,
          tag_resource/3,
@@ -113,6 +120,13 @@
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% contextual_metadata_config() :: #{
+%%   <<"summaryGeneration">> => list(any())
+%% }
+-type contextual_metadata_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -198,6 +212,10 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_dictionary_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_feed_policy_request() :: #{}
+-type delete_feed_policy_request() :: #{}.
 
 %% Example:
 %% delete_feed_request() :: #{}
@@ -305,6 +323,17 @@
 -type get_dictionary_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_feed_policy_request() :: #{}
+-type get_feed_policy_request() :: #{}.
+
+
+%% Example:
+%% get_feed_policy_response() :: #{
+%%   <<"policy">> => string()
+%% }
+-type get_feed_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_feed_request() :: #{}
 -type get_feed_request() :: #{}.
 
@@ -399,6 +428,17 @@
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_feed_policy_request() :: #{
+%%   <<"policy">> := string()
+%% }
+-type put_feed_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_feed_policy_response() :: #{}
+-type put_feed_policy_response() :: #{}.
 
 
 %% Example:
@@ -593,6 +633,13 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type delete_feed_policy_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
 -type disassociate_feed_errors() ::
     validation_exception() | 
     too_many_request_exception() | 
@@ -616,6 +663,13 @@
     access_denied_exception().
 
 -type get_feed_errors() ::
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
+-type get_feed_policy_errors() ::
+    validation_exception() | 
     too_many_request_exception() | 
     resource_not_found_exception() | 
     internal_server_error_exception() | 
@@ -648,6 +702,14 @@
     too_many_request_exception() | 
     resource_not_found_exception() | 
     internal_server_error_exception() | 
+    access_denied_exception().
+
+-type put_feed_policy_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type search_fixtures_errors() ::
@@ -911,6 +973,43 @@ delete_feed(Client, Id, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the resource-based policy attached to the specified feed.
+%%
+%% After you delete the policy, the operation revokes the cross-account
+%% access that the policy granted.
+-spec delete_feed_policy(aws_client:aws_client(), binary() | list(), delete_feed_policy_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_feed_policy_errors(), tuple()}.
+delete_feed_policy(Client, Id, Input) ->
+    delete_feed_policy(Client, Id, Input, []).
+
+-spec delete_feed_policy(aws_client:aws_client(), binary() | list(), delete_feed_policy_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_feed_policy_errors(), tuple()}.
+delete_feed_policy(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/feed/", aws_util:encode_uri(Id), "/policy"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Releases the resource (the source media) that is associated with this
 %% feed.
 %%
@@ -1046,6 +1145,43 @@ get_feed(Client, Id, QueryMap, HeadersMap)
 get_feed(Client, Id, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/feed/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the resource-based policy attached to the specified feed.
+-spec get_feed_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_feed_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_feed_policy_errors(), tuple()}.
+get_feed_policy(Client, Id)
+  when is_map(Client) ->
+    get_feed_policy(Client, Id, #{}, #{}).
+
+-spec get_feed_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_feed_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_feed_policy_errors(), tuple()}.
+get_feed_policy(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_feed_policy(Client, Id, QueryMap, HeadersMap, []).
+
+-spec get_feed_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_feed_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_feed_policy_errors(), tuple()}.
+get_feed_policy(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/feed/", aws_util:encode_uri(Id), "/policy"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1221,6 +1357,42 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Attaches or replaces a resource-based policy on the specified feed.
+%%
+%% A resource-based policy grants cross-account access to the feed.
+-spec put_feed_policy(aws_client:aws_client(), binary() | list(), put_feed_policy_request()) ->
+    {ok, put_feed_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_feed_policy_errors(), tuple()}.
+put_feed_policy(Client, Id, Input) ->
+    put_feed_policy(Client, Id, Input, []).
+
+-spec put_feed_policy(aws_client:aws_client(), binary() | list(), put_feed_policy_request(), proplists:proplist()) ->
+    {ok, put_feed_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_feed_policy_errors(), tuple()}.
+put_feed_policy(Client, Id, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/feed/", aws_util:encode_uri(Id), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Searches for the fixtures (sports events, such as a specific
 %% basketball game) that are available for a sport in a date window.
