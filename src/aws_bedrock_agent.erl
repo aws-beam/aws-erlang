@@ -1,7 +1,16 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Describes the API operations for creating and managing Amazon Bedrock
+%% @doc Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no
+%% longer open to new customers.
+%%
+%% For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock
+%% AgentCore. Existing customers can continue to use the service as normal.
+%% For more information, see Amazon Bedrock Agents Classic availability
+%% change:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/agents-classic-maintenance-mode.html.
+%%
+%% Describes the API operations for creating and managing Amazon Bedrock
 %% agents.
 -module(aws_bedrock_agent).
 
@@ -500,6 +509,7 @@
 %%   <<"audio">> => list(audio_configuration()),
 %%   <<"dimensions">> => integer(),
 %%   <<"embeddingDataType">> => list(any()),
+%%   <<"modelConfiguration">> => [any()],
 %%   <<"video">> => list(video_configuration())
 %% }
 -type bedrock_embedding_model_configuration() :: #{binary() => any()}.
@@ -2162,7 +2172,8 @@
 %%   <<"embeddingModelArn">> => string(),
 %%   <<"embeddingModelConfiguration">> => embedding_model_configuration(),
 %%   <<"embeddingModelType">> => list(any()),
-%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration()
+%%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
+%%   <<"supplementalDataStorageConfiguration">> => supplemental_data_storage_configuration()
 %% }
 -type managed_knowledge_base_configuration() :: #{binary() => any()}.
 
@@ -4192,9 +4203,18 @@ associate_agent_knowledge_base(Client, AgentId, AgentVersion, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates an agent that orchestrates interactions between foundation
-%% models, data sources, software applications, user conversations, and APIs
-%% to carry out tasks to help customers.
+%% @doc Amazon Bedrock Agents (now Amazon Bedrock Agents Classic) is no
+%% longer open to new customers.
+%%
+%% For capabilities similar to Bedrock Agents Classic, explore Amazon Bedrock
+%% AgentCore. Existing customers can continue to use the service as normal.
+%% For more information, see Amazon Bedrock Agents Classic availability
+%% change:
+%% https://docs.aws.amazon.com/bedrock/latest/userguide/agents-classic-maintenance-mode.html.
+%%
+%% Creates an agent that orchestrates interactions between foundation models,
+%% data sources, software applications, user conversations, and APIs to carry
+%% out tasks to help customers.
 %%
 %% Specify the following fields for security purposes.
 %%

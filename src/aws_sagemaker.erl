@@ -18,6 +18,8 @@
          add_tags/3,
          associate_trial_component/2,
          associate_trial_component/3,
+         attach_cluster_node_network_interface/2,
+         attach_cluster_node_network_interface/3,
          attach_cluster_node_volume/2,
          attach_cluster_node_volume/3,
          batch_add_cluster_nodes/2,
@@ -1388,6 +1390,23 @@
 %%   <<"WorkGroup">> => string()
 %% }
 -type athena_dataset_definition() :: #{binary() => any()}.
+
+%% Example:
+%% attach_cluster_node_network_interface_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"NetworkInterfaceId">> := string(),
+%%   <<"NodeId">> := string()
+%% }
+-type attach_cluster_node_network_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_cluster_node_network_interface_response() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"ClusterArn">> => string(),
+%%   <<"NetworkInterfaceId">> => string(),
+%%   <<"NodeId">> => string()
+%% }
+-type attach_cluster_node_network_interface_response() :: #{binary() => any()}.
 
 %% Example:
 %% attach_cluster_node_volume_request() :: #{
@@ -14879,6 +14898,10 @@
     resource_not_found() | 
     resource_limit_exceeded().
 
+-type attach_cluster_node_network_interface_errors() ::
+    resource_not_found() | 
+    resource_limit_exceeded().
+
 -type attach_cluster_node_volume_errors() ::
     resource_not_found().
 
@@ -15978,6 +16001,27 @@ associate_trial_component(Client, Input)
 associate_trial_component(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateTrialComponent">>, Input, Options).
+
+%% @doc Attaches an elastic network interface (ENI) to a node in a HyperPod
+%% cluster.
+%%
+%% To use this operation, you must have the
+%% `sagemaker:AttachClusterNodeNetworkInterface' permission.
+-spec attach_cluster_node_network_interface(aws_client:aws_client(), attach_cluster_node_network_interface_request()) ->
+    {ok, attach_cluster_node_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, attach_cluster_node_network_interface_errors(), tuple()}.
+attach_cluster_node_network_interface(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    attach_cluster_node_network_interface(Client, Input, []).
+
+-spec attach_cluster_node_network_interface(aws_client:aws_client(), attach_cluster_node_network_interface_request(), proplists:proplist()) ->
+    {ok, attach_cluster_node_network_interface_response(), tuple()} |
+    {error, any()} |
+    {error, attach_cluster_node_network_interface_errors(), tuple()}.
+attach_cluster_node_network_interface(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AttachClusterNodeNetworkInterface">>, Input, Options).
 
 %% @doc Attaches your Amazon Elastic Block Store (Amazon EBS) volume to a
 %% node in your EKS orchestrated HyperPod cluster.

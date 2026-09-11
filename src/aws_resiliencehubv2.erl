@@ -127,9 +127,15 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_test_run_dependencies/3,
+         list_test_run_dependencies/5,
+         list_test_run_dependencies/6,
          list_test_run_events/3,
          list_test_run_events/5,
          list_test_run_events/6,
+         list_test_run_source_events/4,
+         list_test_run_source_events/6,
+         list_test_run_source_events/7,
          list_test_run_sources/3,
          list_test_run_sources/5,
          list_test_run_sources/6,
@@ -198,6 +204,15 @@
 %%   <<"multiRegionRtoRpo">> => list(any())
 %% }
 -type achievability() :: #{binary() => any()}.
+
+
+%% Example:
+%% alarm_state_change_detail() :: #{
+%%   <<"previousState">> => list(any()),
+%%   <<"reason">> => [string()],
+%%   <<"state">> => list(any())
+%% }
+-type alarm_state_change_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -695,8 +710,26 @@
 
 
 %% Example:
+%% eks_label_selector() :: #{
+%%   <<"matchExpressions">> => list(eks_label_selector_requirement()),
+%%   <<"matchLabels">> => map()
+%% }
+-type eks_label_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_label_selector_requirement() :: #{
+%%   <<"key">> => string(),
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type eks_label_selector_requirement() :: #{binary() => any()}.
+
+
+%% Example:
 %% eks_source() :: #{
 %%   <<"clusterArn">> => string(),
+%%   <<"labelSelector">> => eks_label_selector(),
 %%   <<"namespaces">> => list(string())
 %% }
 -type eks_source() :: #{binary() => any()}.
@@ -1252,6 +1285,23 @@
 
 
 %% Example:
+%% list_test_run_dependencies_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string()
+%% }
+-type list_test_run_dependencies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_run_dependencies_response() :: #{
+%%   <<"dependencies">> => list(test_run_dependency_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_test_run_dependencies_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_test_run_events_request() :: #{
 %%   <<"endedAt">> => [non_neg_integer()],
 %%   <<"maxResults">> => integer(),
@@ -1268,6 +1318,24 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_test_run_events_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_run_source_events_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"serviceArn">> := string(),
+%%   <<"sourceArn">> := string()
+%% }
+-type list_test_run_source_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_test_run_source_events_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"testRunSourceEvents">> => list(test_run_source_event())
+%% }
+-type list_test_run_source_events_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2120,6 +2188,20 @@
 
 
 %% Example:
+%% test_run_dependency_summary() :: #{
+%%   <<"criticality">> => list(any()),
+%%   <<"dependencyId">> => string(),
+%%   <<"dependencyName">> => [string()],
+%%   <<"dnsName">> => [string()],
+%%   <<"location">> => [string()],
+%%   <<"provider">> => [string()],
+%%   <<"source">> => list(any()),
+%%   <<"sourceRegions">> => list(string())
+%% }
+-type test_run_dependency_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% test_run_event() :: #{
 %%   <<"attributes">> => map(),
 %%   <<"eventId">> => [string()],
@@ -2157,6 +2239,24 @@
 %%   <<"reportOutput">> => list(list())
 %% }
 -type test_run_report_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_run_source_event() :: #{
+%%   <<"detail">> => list(),
+%%   <<"eventType">> => list(any()),
+%%   <<"sourceArn">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type test_run_source_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_run_source_event_error() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => [string()]
+%% }
+-type test_run_source_event_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2770,7 +2870,19 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_test_run_dependencies_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_test_run_events_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_test_run_source_events_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -4729,6 +4841,53 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the dependencies that a test run blocked.
+%%
+%% Each dependency reflects the discovered classification captured when the
+%% run started, so results do not change if a dependency is reclassified
+%% after the run.
+-spec list_test_run_dependencies(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_test_run_dependencies_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_dependencies_errors(), tuple()}.
+list_test_run_dependencies(Client, TestRunId, ServiceArn)
+  when is_map(Client) ->
+    list_test_run_dependencies(Client, TestRunId, ServiceArn, #{}, #{}).
+
+-spec list_test_run_dependencies(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_test_run_dependencies_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_dependencies_errors(), tuple()}.
+list_test_run_dependencies(Client, TestRunId, ServiceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_test_run_dependencies(Client, TestRunId, ServiceArn, QueryMap, HeadersMap, []).
+
+-spec list_test_run_dependencies(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_test_run_dependencies_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_dependencies_errors(), tuple()}.
+list_test_run_dependencies(Client, TestRunId, ServiceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/test-runs/", aws_util:encode_uri(TestRunId), "/dependencies"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"serviceArn">>, ServiceArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the events in a test run's timeline.
 -spec list_test_run_events(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_test_run_events_response(), tuple()} |
@@ -4769,6 +4928,53 @@ list_test_run_events(Client, TestRunId, ServiceArn, QueryMap, HeadersMap, Option
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"serviceArn">>, ServiceArn},
         {<<"startedAt">>, maps:get(<<"startedAt">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the state-change events observed for a test run monitoring
+%% source.
+%%
+%% Events are returned for one source per call, in chronological order.
+-spec list_test_run_source_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_test_run_source_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_source_events_errors(), tuple()}.
+list_test_run_source_events(Client, TestRunId, ServiceArn, SourceArn)
+  when is_map(Client) ->
+    list_test_run_source_events(Client, TestRunId, ServiceArn, SourceArn, #{}, #{}).
+
+-spec list_test_run_source_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_test_run_source_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_source_events_errors(), tuple()}.
+list_test_run_source_events(Client, TestRunId, ServiceArn, SourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_test_run_source_events(Client, TestRunId, ServiceArn, SourceArn, QueryMap, HeadersMap, []).
+
+-spec list_test_run_source_events(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_test_run_source_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_test_run_source_events_errors(), tuple()}.
+list_test_run_source_events(Client, TestRunId, ServiceArn, SourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/test-runs/", aws_util:encode_uri(TestRunId), "/source-events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"serviceArn">>, ServiceArn},
+        {<<"sourceArn">>, SourceArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

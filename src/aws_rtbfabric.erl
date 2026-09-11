@@ -298,6 +298,7 @@
 
 %% Example:
 %% create_responder_gateway_request() :: #{
+%%   <<"clientRoutingPolicy">> => list(any()),
 %%   <<"clientToken">> := [string()],
 %%   <<"description">> => [string()],
 %%   <<"domainName">> => string(),
@@ -317,6 +318,7 @@
 
 %% Example:
 %% create_responder_gateway_response() :: #{
+%%   <<"clientRoutingPolicy">> => list(any()),
 %%   <<"externalInboundEndpoint">> => string(),
 %%   <<"gatewayId">> => string(),
 %%   <<"listenerConfig">> => listener_config(),
@@ -575,6 +577,7 @@
 %% Example:
 %% get_responder_gateway_response() :: #{
 %%   <<"activeLinksCount">> => [integer()],
+%%   <<"clientRoutingPolicy">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => [string()],
 %%   <<"domainName">> => string(),
@@ -1000,6 +1003,7 @@
 
 %% Example:
 %% update_responder_gateway_request() :: #{
+%%   <<"clientRoutingPolicy">> => list(any()),
 %%   <<"clientToken">> := [string()],
 %%   <<"description">> => [string()],
 %%   <<"domainName">> => string(),
@@ -1014,6 +1018,7 @@
 
 %% Example:
 %% update_responder_gateway_response() :: #{
+%%   <<"clientRoutingPolicy">> => list(any()),
 %%   <<"gatewayId">> => string(),
 %%   <<"status">> => list(any())
 %% }
@@ -2593,7 +2598,16 @@ update_requester_gateway(Client, GatewayId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a responder gateway.
+%% @doc Updates the description, Auto Scaling group managed endpoint
+%% configuration, trust store configuration, and client routing policy of a
+%% responder gateway.
+%%
+%% This operation also updates the `protocols' list in the listener
+%% configuration.
+%%
+%% You cannot change the `domainName', `port', and `protocol'
+%% values that you set when you create a responder gateway. To change any of
+%% them, delete the gateway and create a new one.
 -spec update_responder_gateway(aws_client:aws_client(), binary() | list(), update_responder_gateway_request()) ->
     {ok, update_responder_gateway_response(), tuple()} |
     {error, any()} |

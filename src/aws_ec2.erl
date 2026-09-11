@@ -4489,6 +4489,7 @@
 %% Example:
 %% create_image_request() :: #{
 %%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
+%%   <<"BootModeOverride">> => list(any()),
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"InstanceId">> := string(),
