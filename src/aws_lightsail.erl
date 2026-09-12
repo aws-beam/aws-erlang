@@ -1111,8 +1111,11 @@
 %%   <<"cacheBehaviorSettings">> => cache_settings(),
 %%   <<"cacheBehaviors">> => list(cache_behavior_per_path()),
 %%   <<"certificateName">> => string(),
+%%   <<"customErrorResponses">> => list(distribution_custom_error_response()),
 %%   <<"defaultCacheBehavior">> := cache_behavior(),
+%%   <<"defaultRootObject">> => string(),
 %%   <<"distributionName">> := string(),
+%%   <<"enablePrivateOriginAccess">> => boolean(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"origin">> := input_origin(),
 %%   <<"tags">> => list(tag()),
@@ -1742,6 +1745,15 @@
 %%   <<"transferPerMonthInGb">> => integer()
 %% }
 -type distribution_bundle() :: #{binary() => any()}.
+
+%% Example:
+%% distribution_custom_error_response() :: #{
+%%   <<"errorCachingMinTTL">> => float(),
+%%   <<"errorCode">> => integer(),
+%%   <<"responseCode">> => string(),
+%%   <<"responsePagePath">> => string()
+%% }
+-type distribution_custom_error_response() :: #{binary() => any()}.
 
 %% Example:
 %% dns_record_creation_state() :: #{
@@ -2998,7 +3010,9 @@
 %%   <<"cacheBehaviors">> => list(cache_behavior_per_path()),
 %%   <<"certificateName">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customErrorResponses">> => list(distribution_custom_error_response()),
 %%   <<"defaultCacheBehavior">> => cache_behavior(),
+%%   <<"defaultRootObject">> => string(),
 %%   <<"domainName">> => string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"isEnabled">> => boolean(),
@@ -3208,6 +3222,7 @@
 %% Example:
 %% origin() :: #{
 %%   <<"ipAddressType">> => list(any()),
+%%   <<"isPrivateOriginAccessEnabled">> => boolean(),
 %%   <<"name">> => string(),
 %%   <<"protocolPolicy">> => list(any()),
 %%   <<"regionName">> => list(any()),
@@ -3924,8 +3939,11 @@
 %%   <<"cacheBehaviorSettings">> => cache_settings(),
 %%   <<"cacheBehaviors">> => list(cache_behavior_per_path()),
 %%   <<"certificateName">> => string(),
+%%   <<"customErrorResponses">> => list(distribution_custom_error_response()),
 %%   <<"defaultCacheBehavior">> => cache_behavior(),
+%%   <<"defaultRootObject">> => string(),
 %%   <<"distributionName">> := string(),
+%%   <<"enablePrivateOriginAccess">> => boolean(),
 %%   <<"isEnabled">> => boolean(),
 %%   <<"origin">> => input_origin(),
 %%   <<"useDefaultCertificate">> => boolean(),

@@ -638,6 +638,7 @@
 %% create_express_gateway_service_request() :: #{
 %%   <<"cluster">> => string(),
 %%   <<"cpu">> => string(),
+%%   <<"cpuArchitecture">> => list(any()),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"healthCheckPath">> => string(),
 %%   <<"infrastructureRoleArn">> := string(),
@@ -1617,6 +1618,7 @@
 %% Example:
 %% express_gateway_service_configuration() :: #{
 %%   <<"cpu">> => string(),
+%%   <<"cpuArchitecture">> => list(any()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"healthCheckPath">> => string(),
@@ -3459,6 +3461,7 @@
 %% Example:
 %% update_express_gateway_service_request() :: #{
 %%   <<"cpu">> => string(),
+%%   <<"cpuArchitecture">> => list(any()),
 %%   <<"executionRoleArn">> => string(),
 %%   <<"healthCheckPath">> => string(),
 %%   <<"memory">> => string(),

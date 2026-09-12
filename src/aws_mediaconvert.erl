@@ -649,6 +649,8 @@
 %%   <<"CodedFrameRate">> => frame_rate(),
 %%   <<"ColorPrimaries">> => list(any()),
 %%   <<"ContentLightLevel">> => content_light_level(),
+%%   <<"DisplayAspectRatio">> => aspect_ratio(),
+%%   <<"DolbyVision">> => dolby_vision_metadata(),
 %%   <<"FieldOrder">> => string(),
 %%   <<"Hdr10PlusPresence">> => list(any()),
 %%   <<"Height">> => integer(),
@@ -656,6 +658,7 @@
 %%   <<"MatrixCoefficients">> => list(any()),
 %%   <<"Profile">> => string(),
 %%   <<"Rotation">> => integer(),
+%%   <<"SampleAspectRatio">> => aspect_ratio(),
 %%   <<"ScanType">> => string(),
 %%   <<"TransferCharacteristics">> => list(any()),
 %%   <<"Width">> => integer()
@@ -999,6 +1002,17 @@
 %%   <<"MaxFall">> => integer()
 %% }
 -type dolby_vision_level6_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% dolby_vision_metadata() :: #{
+%%   <<"BaseLayer">> => list(any()),
+%%   <<"EnhancementLayer">> => list(any()),
+%%   <<"Level">> => integer(),
+%%   <<"Profile">> => integer(),
+%%   <<"Rpu">> => list(any())
+%% }
+-type dolby_vision_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2980,6 +2994,13 @@
 
 
 %% Example:
+%% unprocessable_entity_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type unprocessable_entity_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"TagKeys">> => list(string())
 %% }
@@ -3610,6 +3631,7 @@
     bad_request_exception().
 
 -type probe_errors() ::
+    unprocessable_entity_exception() | 
     too_many_requests_exception() | 
     service_quota_exceeded_exception() | 
     not_found_exception() | 

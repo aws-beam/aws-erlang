@@ -28,6 +28,8 @@
 
 -export([cancel_job/2,
          cancel_job/3,
+         cancel_jobs/2,
+         cancel_jobs/3,
          create_compute_environment/2,
          create_compute_environment/3,
          create_consumable_resource/2,
@@ -99,8 +101,12 @@
          tag_resource/4,
          terminate_job/2,
          terminate_job/3,
+         terminate_jobs/2,
+         terminate_jobs/3,
          terminate_service_job/2,
          terminate_service_job/3,
+         terminate_service_jobs/2,
+         terminate_service_jobs/3,
          untag_resource/3,
          untag_resource/4,
          update_compute_environment/2,
@@ -202,6 +208,31 @@
 %% Example:
 %% cancel_job_response() :: #{}
 -type cancel_job_response() :: #{}.
+
+
+%% Example:
+%% cancel_jobs_error_detail() :: #{
+%%   <<"code">> => string(),
+%%   <<"job">> => string(),
+%%   <<"message">> => string()
+%% }
+-type cancel_jobs_error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_jobs_request() :: #{
+%%   <<"jobs">> := list(string()),
+%%   <<"reason">> := string()
+%% }
+-type cancel_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancel_jobs_response() :: #{
+%%   <<"errors">> => list(cancel_jobs_error_detail()),
+%%   <<"successful">> => list(string())
+%% }
+-type cancel_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1420,6 +1451,8 @@
 %%   <<"capacityUsage">> => list(job_capacity_usage_summary()),
 %%   <<"container">> => container_summary(),
 %%   <<"createdAt">> => float(),
+%%   <<"isCancelled">> => boolean(),
+%%   <<"isTerminated">> => boolean(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobDefinition">> => string(),
 %%   <<"jobId">> => string(),
@@ -2039,6 +2072,7 @@
 %% service_job_summary() :: #{
 %%   <<"capacityUsage">> => list(service_job_capacity_usage_summary()),
 %%   <<"createdAt">> => float(),
+%%   <<"isTerminated">> => boolean(),
 %%   <<"jobArn">> => string(),
 %%   <<"jobId">> => string(),
 %%   <<"jobName">> => string(),
@@ -2240,6 +2274,31 @@
 
 
 %% Example:
+%% terminate_jobs_error_detail() :: #{
+%%   <<"code">> => string(),
+%%   <<"job">> => string(),
+%%   <<"message">> => string()
+%% }
+-type terminate_jobs_error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_jobs_request() :: #{
+%%   <<"jobs">> := list(string()),
+%%   <<"reason">> := string()
+%% }
+-type terminate_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_jobs_response() :: #{
+%%   <<"errors">> => list(terminate_jobs_error_detail()),
+%%   <<"successful">> => list(string())
+%% }
+-type terminate_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% terminate_service_job_request() :: #{
 %%   <<"jobId">> := string(),
 %%   <<"reason">> := string()
@@ -2249,6 +2308,31 @@
 %% Example:
 %% terminate_service_job_response() :: #{}
 -type terminate_service_job_response() :: #{}.
+
+
+%% Example:
+%% terminate_service_jobs_error_detail() :: #{
+%%   <<"code">> => string(),
+%%   <<"job">> => string(),
+%%   <<"message">> => string()
+%% }
+-type terminate_service_jobs_error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_service_jobs_request() :: #{
+%%   <<"jobs">> := list(string()),
+%%   <<"reason">> := string()
+%% }
+-type terminate_service_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% terminate_service_jobs_response() :: #{
+%%   <<"errors">> => list(terminate_service_jobs_error_detail()),
+%%   <<"successful">> => list(string())
+%% }
+-type terminate_service_jobs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2439,6 +2523,10 @@
     server_exception() | 
     client_exception().
 
+-type cancel_jobs_errors() ::
+    server_exception() | 
+    client_exception().
+
 -type create_compute_environment_errors() ::
     server_exception() | 
     client_exception().
@@ -2579,7 +2667,15 @@
     server_exception() | 
     client_exception().
 
+-type terminate_jobs_errors() ::
+    server_exception() | 
+    client_exception().
+
 -type terminate_service_job_errors() ::
+    server_exception() | 
+    client_exception().
+
+-type terminate_service_jobs_errors() ::
     server_exception() | 
     client_exception().
 
@@ -2624,23 +2720,23 @@
 %% Jobs that are in a `SUBMITTED', `PENDING', or `RUNNABLE' state
 %% are cancelled and the job status is updated to `FAILED'.
 %%
-%% A `PENDING' job is canceled after all dependency jobs are completed.
-%% Therefore, it may take longer than expected to cancel a job in
+%% A `PENDING' job is cancelled after all dependency jobs are completed.
+%% Therefore, it might take longer than expected to cancel a job in
 %% `PENDING'
 %% status.
 %%
 %% When you try to cancel an array parent job in `PENDING', Batch
 %% attempts to
-%% cancel all child jobs. The array parent job is canceled when all child
+%% cancel all child jobs. The array parent job is cancelled when all child
 %% jobs are
 %% completed.
 %%
 %% Jobs that progressed to the `STARTING' or
-%% `RUNNING' state aren't canceled. However, the API operation still
+%% `RUNNING' state aren't cancelled. However, the API operation still
 %% succeeds, even
-%% if no job is canceled. These jobs must be terminated with the
-%% `TerminateJob'
-%% operation.
+%% if no job is cancelled. These jobs must be terminated with the
+%% `TerminateJob' or
+%% `TerminateJobs' operation.
 -spec cancel_job(aws_client:aws_client(), cancel_job_request()) ->
     {ok, cancel_job_response(), tuple()} |
     {error, any()} |
@@ -2655,6 +2751,72 @@ cancel_job(Client, Input) ->
 cancel_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/canceljob"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels up to 50 jobs in an Batch job queue.
+%%
+%% This is a bulk version of `CancelJob'. Jobs that are in a
+%% `SUBMITTED', `PENDING', or `RUNNABLE' state are cancelled
+%% and the job status is updated to `FAILED'.
+%%
+%% A `PENDING' job is cancelled after all dependency jobs are completed.
+%% Therefore, it might take longer than expected to cancel a job in
+%% `PENDING'
+%% status.
+%%
+%% When you try to cancel an array parent job in `PENDING', Batch
+%% attempts to
+%% cancel all child jobs. The array parent job is cancelled when all child
+%% jobs are
+%% completed.
+%%
+%% Jobs that progressed to the `STARTING' or `RUNNING' state
+%% aren't
+%% cancelled. These jobs must be terminated with the `TerminateJob' or
+%% `TerminateJobs' operation.
+%%
+%% Batch reports the result for each job individually in the response. Jobs
+%% that
+%% were processed successfully are reported in the `successful' list.
+%% Jobs that
+%% encountered errors are reported in the `errors' list. The response
+%% returns an
+%% HTTP status code of `200' even when some jobs encountered errors, so
+%% check the
+%% `errors' list. Jobs that can't be found are treated as
+%% successfully
+%% processed.
+-spec cancel_jobs(aws_client:aws_client(), cancel_jobs_request()) ->
+    {ok, cancel_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_jobs_errors(), tuple()}.
+cancel_jobs(Client, Input) ->
+    cancel_jobs(Client, Input, []).
+
+-spec cancel_jobs(aws_client:aws_client(), cancel_jobs_request(), proplists:proplist()) ->
+    {ok, cancel_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_jobs_errors(), tuple()}.
+cancel_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/canceljobs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4047,6 +4209,59 @@ terminate_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Terminates up to 50 jobs in a job queue.
+%%
+%% This is a bulk version of `TerminateJob'. Jobs that are in the
+%% `STARTING' or
+%% `RUNNING' state are terminated, which causes them to transition to
+%% `FAILED'. Jobs that have not progressed to the `STARTING' state
+%% are
+%% cancelled.
+%%
+%% Batch reports the result for each job individually in the response. Jobs
+%% that
+%% were processed successfully are reported in the `successful' list.
+%% Jobs that
+%% encountered errors are reported in the `errors' list. The response
+%% returns an
+%% HTTP status code of `200' even when some jobs encountered errors, so
+%% check the
+%% `errors' list. Jobs that can't be found are treated as
+%% successfully
+%% processed.
+-spec terminate_jobs(aws_client:aws_client(), terminate_jobs_request()) ->
+    {ok, terminate_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_jobs_errors(), tuple()}.
+terminate_jobs(Client, Input) ->
+    terminate_jobs(Client, Input, []).
+
+-spec terminate_jobs(aws_client:aws_client(), terminate_jobs_request(), proplists:proplist()) ->
+    {ok, terminate_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_jobs_errors(), tuple()}.
+terminate_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/terminatejobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Terminates a service job in a job queue.
 -spec terminate_service_job(aws_client:aws_client(), terminate_service_job_request()) ->
     {ok, terminate_service_job_response(), tuple()} |
@@ -4062,6 +4277,50 @@ terminate_service_job(Client, Input) ->
 terminate_service_job(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/terminateservicejob"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Terminates up to 50 service jobs in a job queue.
+%%
+%% This is a bulk version of `TerminateServiceJob'.
+%%
+%% Batch reports the result for each service job individually in the
+%% response. Service jobs that were processed successfully are reported in
+%% the `successful' list. Service jobs that encountered errors are
+%% reported in the `errors' list. The response returns an HTTP status
+%% code of `200' even when some service jobs encountered errors, so check
+%% the `errors' list. Service jobs that can't be found are treated as
+%% successfully processed.
+-spec terminate_service_jobs(aws_client:aws_client(), terminate_service_jobs_request()) ->
+    {ok, terminate_service_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_service_jobs_errors(), tuple()}.
+terminate_service_jobs(Client, Input) ->
+    terminate_service_jobs(Client, Input, []).
+
+-spec terminate_service_jobs(aws_client:aws_client(), terminate_service_jobs_request(), proplists:proplist()) ->
+    {ok, terminate_service_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, terminate_service_jobs_errors(), tuple()}.
+terminate_service_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/terminateservicejobs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

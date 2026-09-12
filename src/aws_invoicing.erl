@@ -92,6 +92,10 @@
          list_invoice_units/3,
          list_procurement_portal_preferences/2,
          list_procurement_portal_preferences/3,
+         list_procurement_portal_suppliers/2,
+         list_procurement_portal_suppliers/3,
+         list_procurement_portals/2,
+         list_procurement_portals/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_procurement_portal_preference/2,
@@ -281,6 +285,12 @@
 -type entity() :: #{binary() => any()}.
 
 %% Example:
+%% feature_configurations() :: #{
+%%   <<"InvoiceConfiguration">> => invoice_configuration()
+%% }
+-type feature_configurations() :: #{binary() => any()}.
+
+%% Example:
 %% fees_breakdown() :: #{
 %%   <<"Breakdown">> => list(fees_breakdown_amount()),
 %%   <<"TotalAmount">> => string()
@@ -353,6 +363,13 @@
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invoice_configuration() :: #{
+%%   <<"AttachmentTypes">> => list(list(any())()),
+%%   <<"DocumentTypes">> => list(list(any())())
+%% }
+-type invoice_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% invoice_currency_amount() :: #{
@@ -491,6 +508,35 @@
 -type list_procurement_portal_preferences_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_procurement_portal_suppliers_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PortalIdentifier">> := string()
+%% }
+-type list_procurement_portal_suppliers_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_procurement_portal_suppliers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProcurementPortalSuppliers">> => list(procurement_portal_supplier())
+%% }
+-type list_procurement_portal_suppliers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_procurement_portals_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_procurement_portals_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_procurement_portals_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ProcurementPortals">> => list(procurement_portal())
+%% }
+-type list_procurement_portals_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"ResourceArn">> := string()
 %% }
@@ -501,6 +547,15 @@
 %%   <<"ResourceTags">> => list(resource_tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% procurement_portal() :: #{
+%%   <<"DefaultFeatureConfigurations">> => feature_configurations(),
+%%   <<"PortalDisplayName">> => string(),
+%%   <<"PortalIdentifier">> => string(),
+%%   <<"PortalName">> => list(any())
+%% }
+-type procurement_portal() :: #{binary() => any()}.
 
 %% Example:
 %% procurement_portal_preference() :: #{
@@ -558,6 +613,15 @@
 %%   <<"Version">> => [float()]
 %% }
 -type procurement_portal_preference_summary() :: #{binary() => any()}.
+
+%% Example:
+%% procurement_portal_supplier() :: #{
+%%   <<"CountryCode">> => string(),
+%%   <<"Environment">> => list(any()),
+%%   <<"SellerOfRecord">> => string(),
+%%   <<"SupplierIdentifier">> => string()
+%% }
+-type procurement_portal_supplier() :: #{binary() => any()}.
 
 %% Example:
 %% purchase_order_data_source() :: #{
@@ -856,6 +920,19 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type list_procurement_portal_suppliers_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_procurement_portals_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1147,6 +1224,48 @@ list_procurement_portal_preferences(Client, Input)
 list_procurement_portal_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProcurementPortalPreferences">>, Input, Options).
+
+%% @doc Returns the suppliers configured for a specified procurement portal,
+%% including supplier identifiers and associated metadata.
+%%
+%% For faster, more reliable responses, use pagination.
+-spec list_procurement_portal_suppliers(aws_client:aws_client(), list_procurement_portal_suppliers_request()) ->
+    {ok, list_procurement_portal_suppliers_response(), tuple()} |
+    {error, any()} |
+    {error, list_procurement_portal_suppliers_errors(), tuple()}.
+list_procurement_portal_suppliers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_procurement_portal_suppliers(Client, Input, []).
+
+-spec list_procurement_portal_suppliers(aws_client:aws_client(), list_procurement_portal_suppliers_request(), proplists:proplist()) ->
+    {ok, list_procurement_portal_suppliers_response(), tuple()} |
+    {error, any()} |
+    {error, list_procurement_portal_suppliers_errors(), tuple()}.
+list_procurement_portal_suppliers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProcurementPortalSuppliers">>, Input, Options).
+
+%% @doc Returns the Amazon Web Services-supported procurement portals for
+%% e-invoice delivery and purchase order retrieval.
+%%
+%% Each entry includes the portal identifier, name, and default feature
+%% configurations, which define the supported document and attachment types.
+%% For faster, more reliable responses, use pagination.
+-spec list_procurement_portals(aws_client:aws_client(), list_procurement_portals_request()) ->
+    {ok, list_procurement_portals_response(), tuple()} |
+    {error, any()} |
+    {error, list_procurement_portals_errors(), tuple()}.
+list_procurement_portals(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_procurement_portals(Client, Input, []).
+
+-spec list_procurement_portals(aws_client:aws_client(), list_procurement_portals_request(), proplists:proplist()) ->
+    {ok, list_procurement_portals_response(), tuple()} |
+    {error, any()} |
+    {error, list_procurement_portals_errors(), tuple()}.
+list_procurement_portals(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProcurementPortals">>, Input, Options).
 
 %% @doc Lists the tags for a resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
