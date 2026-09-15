@@ -1,8 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc EC2 Image Builder is a fully managed Amazon Web Services service that
-%% makes it easier to automate the
+%% @doc EC2 Image Builder automates the
 %% creation, management, and deployment of customized, secure, and up-to-date
 %% &quot;golden&quot; server images that are pre-installed and pre-configured
 %% with software
@@ -319,6 +318,17 @@
 
 
 %% Example:
+%% component_failure_context() :: #{
+%%   <<"action">> => string(),
+%%   <<"componentArn">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"phaseName">> => string(),
+%%   <<"stepName">> => string()
+%% }
+-type component_failure_context() :: #{binary() => any()}.
+
+
+%% Example:
 %% component_parameter() :: #{
 %%   <<"name">> => string(),
 %%   <<"value">> => list(string())
@@ -472,6 +482,7 @@
 %%   <<"description">> => string(),
 %%   <<"dockerfileTemplateData">> => string(),
 %%   <<"dockerfileTemplateUri">> => string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"imageOsVersionOverride">> => string(),
 %%   <<"instanceConfiguration">> => instance_configuration(),
 %%   <<"kmsKeyId">> => string(),
@@ -501,6 +512,7 @@
 %%   <<"clientToken">> := string(),
 %%   <<"description">> => string(),
 %%   <<"distributions">> := list(distribution()),
+%%   <<"dryRun">> => boolean(),
 %%   <<"name">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -522,6 +534,7 @@
 %%   <<"containerRecipeArn">> => string(),
 %%   <<"description">> => string(),
 %%   <<"distributionConfigurationArn">> => string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"enhancedImageMetadataEnabled">> => boolean(),
 %%   <<"executionRole">> => string(),
 %%   <<"imageRecipeArn">> => string(),
@@ -557,6 +570,7 @@
 %%   <<"clientToken">> := string(),
 %%   <<"components">> => list(component_configuration()),
 %%   <<"description">> => string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"name">> := string(),
 %%   <<"parentImage">> := string(),
 %%   <<"semanticVersion">> := string(),
@@ -608,6 +622,7 @@
 %% create_infrastructure_configuration_request() :: #{
 %%   <<"clientToken">> := string(),
 %%   <<"description">> => string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"instanceMetadataOptions">> => instance_metadata_options(),
 %%   <<"instanceProfileName">> := string(),
 %%   <<"instanceTypes">> => list(string()),
@@ -638,6 +653,7 @@
 %% create_lifecycle_policy_request() :: #{
 %%   <<"clientToken">> := string(),
 %%   <<"description">> => string(),
+%%   <<"dryRun">> => boolean(),
 %%   <<"executionRole">> := string(),
 %%   <<"name">> := string(),
 %%   <<"policyDetails">> := list(lifecycle_policy_detail()),
@@ -905,6 +921,14 @@
 %%   <<"tags">> => map()
 %% }
 -type distribution_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution_failure_context() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"regionFailures">> => list(region_failure())
+%% }
+-type distribution_failure_context() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1245,10 +1269,12 @@
 %% Example:
 %% get_workflow_step_execution_response() :: #{
 %%   <<"action">> => string(),
+%%   <<"attemptNumber">> => integer(),
 %%   <<"description">> => string(),
 %%   <<"endTime">> => string(),
 %%   <<"imageBuildVersionArn">> => string(),
 %%   <<"inputs">> => string(),
+%%   <<"maxAttempts">> => integer(),
 %%   <<"message">> => string(),
 %%   <<"name">> => string(),
 %%   <<"onFailure">> => string(),
@@ -1311,6 +1337,19 @@
 %%   <<"severityCounts">> => severity_counts()
 %% }
 -type image_aggregation() :: #{binary() => any()}.
+
+
+%% Example:
+%% image_failure_context() :: #{
+%%   <<"componentFailure">> => component_failure_context(),
+%%   <<"distributionFailure">> => distribution_failure_context(),
+%%   <<"failedStep">> => string(),
+%%   <<"imageStatus">> => list(any()),
+%%   <<"stepExecutionId">> => string(),
+%%   <<"workflowArn">> => string(),
+%%   <<"workflowExecutionId">> => string()
+%% }
+-type image_failure_context() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1457,6 +1496,7 @@
 
 %% Example:
 %% image_state() :: #{
+%%   <<"failureContext">> => image_failure_context(),
 %%   <<"reason">> => string(),
 %%   <<"status">> => list(any())
 %% }
@@ -2433,6 +2473,17 @@
 
 
 %% Example:
+%% region_failure() :: #{
+%%   <<"errorMessage">> => string(),
+%%   <<"imageConfigurationStep">> => list(any()),
+%%   <<"region">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"targetAccountId">> => string()
+%% }
+-type region_failure() :: #{binary() => any()}.
+
+
+%% Example:
 %% register_image_options() :: #{
 %%   <<"secureBootEnabled">> => boolean(),
 %%   <<"uefiData">> => string()
@@ -2914,9 +2965,11 @@
 %% Example:
 %% workflow_step_metadata() :: #{
 %%   <<"action">> => string(),
+%%   <<"attemptNumber">> => integer(),
 %%   <<"description">> => string(),
 %%   <<"endTime">> => string(),
 %%   <<"inputs">> => string(),
+%%   <<"maxAttempts">> => integer(),
 %%   <<"message">> => string(),
 %%   <<"name">> => string(),
 %%   <<"outputs">> => string(),
@@ -3000,6 +3053,7 @@
     invalid_request_exception() | 
     idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
+    dry_run_operation_exception() | 
     client_exception() | 
     call_rate_limit_exceeded_exception().
 
@@ -3013,6 +3067,7 @@
     invalid_parameter_combination_exception() | 
     idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
+    dry_run_operation_exception() | 
     client_exception() | 
     call_rate_limit_exceeded_exception().
 
@@ -3036,6 +3091,7 @@
     invalid_request_exception() | 
     idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
+    dry_run_operation_exception() | 
     client_exception() | 
     call_rate_limit_exceeded_exception().
 
@@ -3049,6 +3105,7 @@
     invalid_request_exception() | 
     idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
+    dry_run_operation_exception() | 
     client_exception() | 
     call_rate_limit_exceeded_exception().
 
@@ -3061,6 +3118,7 @@
     invalid_request_exception() | 
     idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
+    dry_run_operation_exception() | 
     client_exception() | 
     call_rate_limit_exceeded_exception().
 
@@ -3073,6 +3131,7 @@
     invalid_request_exception() | 
     idempotent_parameter_mismatch_exception() | 
     forbidden_exception() | 
+    dry_run_operation_exception() | 
     client_exception() | 
     call_rate_limit_exceeded_exception().
 
@@ -3681,7 +3740,7 @@
 %% API
 %%====================================================================
 
-%% @doc CancelImageCreation cancels the creation of Image.
+%% @doc Cancels the creation of an image.
 %%
 %% This operation can only be used on
 %% images in a non-terminal state.
@@ -3718,7 +3777,7 @@ cancel_image_creation(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Cancel a specific image lifecycle policy runtime instance.
+%% @doc Cancels a specific image lifecycle policy runtime instance.
 -spec cancel_lifecycle_execution(aws_client:aws_client(), cancel_lifecycle_execution_request()) ->
     {ok, cancel_lifecycle_execution_response(), tuple()} |
     {error, any()} |
@@ -3871,13 +3930,12 @@ create_distribution_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new image.
+%% @doc Creates a new image along with all configured output resources
+%% defined in the
+%% distribution configuration.
 %%
-%% This request will create a new image along with all of the
-%% configured output resources defined in the distribution configuration. You
-%% must specify
-%% exactly one recipe for your image, using either a ContainerRecipeArn or an
-%% ImageRecipeArn.
+%% You must specify exactly one recipe for your image, using
+%% either a ContainerRecipeArn or an ImageRecipeArn.
 -spec create_image(aws_client:aws_client(), create_image_request()) ->
     {ok, create_image_response(), tuple()} |
     {error, any()} |
@@ -3913,7 +3971,7 @@ create_image(Client, Input0, Options0) ->
 
 %% @doc Creates a new image pipeline.
 %%
-%% Image pipelines enable you to automate the creation and
+%% Use image pipelines to automate the creation and
 %% distribution of images.
 -spec create_image_pipeline(aws_client:aws_client(), create_image_pipeline_request()) ->
     {ok, create_image_pipeline_response(), tuple()} |
@@ -4022,7 +4080,7 @@ create_infrastructure_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a lifecycle policy resource.
+%% @doc Creates a lifecycle policy resource.
 -spec create_lifecycle_policy(aws_client:aws_client(), create_lifecycle_policy_request()) ->
     {ok, create_lifecycle_policy_response(), tuple()} |
     {error, any()} |
@@ -4056,7 +4114,7 @@ create_lifecycle_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Create a new workflow or a new version of an existing workflow.
+%% @doc Creates a new workflow or a new version of an existing workflow.
 -spec create_workflow(aws_client:aws_client(), create_workflow_request()) ->
     {ok, create_workflow_response(), tuple()} |
     {error, any()} |
@@ -4361,7 +4419,7 @@ delete_infrastructure_configuration(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete the specified lifecycle policy resource.
+%% @doc Deletes the specified lifecycle policy resource.
 -spec delete_lifecycle_policy(aws_client:aws_client(), delete_lifecycle_policy_request()) ->
     {ok, delete_lifecycle_policy_response(), tuple()} |
     {error, any()} |
@@ -4470,7 +4528,7 @@ distribute_image(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Gets a component object.
+%% @doc Retrieves a component object.
 -spec get_component(aws_client:aws_client(), binary() | list()) ->
     {ok, get_component_response(), tuple()} |
     {error, any()} |
@@ -4511,7 +4569,7 @@ get_component(Client, ComponentBuildVersionArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a component policy.
+%% @doc Retrieves a component policy.
 -spec get_component_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_component_policy_response(), tuple()} |
     {error, any()} |
@@ -4634,7 +4692,7 @@ get_container_recipe_policy(Client, ContainerRecipeArn, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets a distribution configuration.
+%% @doc Retrieves a distribution configuration.
 -spec get_distribution_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_distribution_configuration_response(), tuple()} |
     {error, any()} |
@@ -4675,7 +4733,7 @@ get_distribution_configuration(Client, DistributionConfigurationArn, QueryMap, H
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an image.
+%% @doc Retrieves an image.
 -spec get_image(aws_client:aws_client(), binary() | list()) ->
     {ok, get_image_response(), tuple()} |
     {error, any()} |
@@ -4716,7 +4774,7 @@ get_image(Client, ImageBuildVersionArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an image pipeline.
+%% @doc Retrieves an image pipeline.
 -spec get_image_pipeline(aws_client:aws_client(), binary() | list()) ->
     {ok, get_image_pipeline_response(), tuple()} |
     {error, any()} |
@@ -4757,7 +4815,7 @@ get_image_pipeline(Client, ImagePipelineArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an image policy.
+%% @doc Retrieves an image policy.
 -spec get_image_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_image_policy_response(), tuple()} |
     {error, any()} |
@@ -4798,7 +4856,7 @@ get_image_policy(Client, ImageArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an image recipe.
+%% @doc Retrieves an image recipe.
 -spec get_image_recipe(aws_client:aws_client(), binary() | list()) ->
     {ok, get_image_recipe_response(), tuple()} |
     {error, any()} |
@@ -4839,7 +4897,7 @@ get_image_recipe(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an image recipe policy.
+%% @doc Retrieves an image recipe policy.
 -spec get_image_recipe_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_image_recipe_policy_response(), tuple()} |
     {error, any()} |
@@ -4880,7 +4938,7 @@ get_image_recipe_policy(Client, ImageRecipeArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets an infrastructure configuration.
+%% @doc Retrieves an infrastructure configuration.
 -spec get_infrastructure_configuration(aws_client:aws_client(), binary() | list()) ->
     {ok, get_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
@@ -4921,8 +4979,8 @@ get_infrastructure_configuration(Client, InfrastructureConfigurationArn, QueryMa
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get the runtime information that was logged for a specific runtime
-%% instance of the lifecycle policy.
+%% @doc Retrieves the runtime information for a specific runtime instance of
+%% the lifecycle policy.
 -spec get_lifecycle_execution(aws_client:aws_client(), binary() | list()) ->
     {ok, get_lifecycle_execution_response(), tuple()} |
     {error, any()} |
@@ -4963,7 +5021,7 @@ get_lifecycle_execution(Client, LifecycleExecutionId, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get details for the specified image lifecycle policy.
+%% @doc Retrieves details for the specified image lifecycle policy.
 -spec get_lifecycle_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_lifecycle_policy_response(), tuple()} |
     {error, any()} |
@@ -5004,8 +5062,8 @@ get_lifecycle_policy(Client, LifecyclePolicyArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Verify the subscription and perform resource dependency checks on the
-%% requested
+%% @doc Verifies the subscription and performs resource dependency checks on
+%% the requested
 %% Amazon Web Services Marketplace resource.
 %%
 %% For Amazon Web Services Marketplace components, the response contains
@@ -5044,7 +5102,7 @@ get_marketplace_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get a workflow resource object.
+%% @doc Retrieves a workflow resource object.
 -spec get_workflow(aws_client:aws_client(), binary() | list()) ->
     {ok, get_workflow_response(), tuple()} |
     {error, any()} |
@@ -5085,8 +5143,7 @@ get_workflow(Client, WorkflowBuildVersionArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get the runtime information that was logged for a specific runtime
-%% instance
+%% @doc Retrieves runtime information for a specific runtime instance
 %% of the workflow.
 -spec get_workflow_execution(aws_client:aws_client(), binary() | list()) ->
     {ok, get_workflow_execution_response(), tuple()} |
@@ -5128,8 +5185,7 @@ get_workflow_execution(Client, WorkflowExecutionId, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get the runtime information that was logged for a specific runtime
-%% instance of
+%% @doc Retrieves runtime information for a specific runtime instance of
 %% the workflow step.
 -spec get_workflow_step_execution(aws_client:aws_client(), binary() | list()) ->
     {ok, get_workflow_step_execution_response(), tuple()} |
@@ -5206,8 +5262,8 @@ import_component(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Import a Windows operating system image from a verified Microsoft ISO
-%% disk
+%% @doc Imports a Windows operating system image from a verified Microsoft
+%% ISO disk
 %% file.
 %%
 %% The following disk images are supported:
@@ -5341,13 +5397,11 @@ list_component_build_versions(Client, Input0, Options0) ->
 %% The semantic version has four nodes: ../.
 %% You can assign values for the first three, and can filter on all of them.
 %%
-%% Filtering: With semantic versioning, you have the flexibility to use
-%% wildcards (x)
-%% to specify the most recent versions or nodes when selecting the base image
-%% or components for your
-%% recipe. When you use a wildcard in any node, all nodes to the right of the
-%% first wildcard must also be
-%% wildcards.
+%% Filtering: You can use wildcards (x) to specify the most recent versions
+%% or nodes when
+%% selecting the base image or components for your recipe. When you use a
+%% wildcard in any node, all nodes
+%% to the right of the first wildcard must also be wildcards.
 -spec list_components(aws_client:aws_client(), list_components_request()) ->
     {ok, list_components_response(), tuple()} |
     {error, any()} |
@@ -5483,8 +5537,8 @@ list_image_build_versions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List the Packages that are associated with an Image Build Version, as
-%% determined by
+%% @doc Lists the packages that are associated with an image build version,
+%% as determined by
 %% Amazon Web Services Systems Manager Inventory at build time.
 -spec list_image_packages(aws_client:aws_client(), list_image_packages_request()) ->
     {ok, list_image_packages_response(), tuple()} |
@@ -5779,7 +5833,7 @@ list_infrastructure_configurations(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc List resources that the runtime instance of the image lifecycle
+%% @doc Lists resources that the runtime instance of the image lifecycle
 %% identified for lifecycle actions.
 -spec list_lifecycle_execution_resources(aws_client:aws_client(), list_lifecycle_execution_resources_request()) ->
     {ok, list_lifecycle_execution_resources_response(), tuple()} |
@@ -5814,7 +5868,7 @@ list_lifecycle_execution_resources(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get the lifecycle runtime history for the specified resource.
+%% @doc Retrieves the lifecycle runtime history for the specified resource.
 -spec list_lifecycle_executions(aws_client:aws_client(), list_lifecycle_executions_request()) ->
     {ok, list_lifecycle_executions_response(), tuple()} |
     {error, any()} |
@@ -5848,7 +5902,8 @@ list_lifecycle_executions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Get a list of lifecycle policies in your Amazon Web Services account.
+%% @doc Retrieves a list of lifecycle policies in your Amazon Web Services
+%% account.
 -spec list_lifecycle_policies(aws_client:aws_client(), list_lifecycle_policies_request()) ->
     {ok, list_lifecycle_policies_response(), tuple()} |
     {error, any()} |
@@ -5919,7 +5974,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Get a list of workflow steps that are waiting for action for
+%% @doc Retrieves a list of workflow steps that are waiting for action for
 %% workflows
 %% in your Amazon Web Services account.
 -spec list_waiting_workflow_steps(aws_client:aws_client(), list_waiting_workflow_steps_request()) ->
@@ -6097,13 +6152,12 @@ list_workflows(Client, Input0, Options0) ->
 
 %% @doc Applies a policy to a component.
 %%
-%% We recommend that you call the RAM API CreateResourceShare:
-%% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html
-%% to share resources. If you call the Image Builder API
-%% `PutComponentPolicy', you must also call the RAM API
+%% To share resources, call the RAM API CreateResourceShare:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html.
+%% If you call this API, you must also call the RAM API
 %% PromoteResourceShareCreatedFromPolicy:
 %% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
-%% in order for the resource to be
+%% so that the resource is
 %% visible to all principals with whom the resource is shared.
 -spec put_component_policy(aws_client:aws_client(), put_component_policy_request()) ->
     {ok, put_component_policy_response(), tuple()} |
@@ -6140,17 +6194,13 @@ put_component_policy(Client, Input0, Options0) ->
 
 %% @doc Applies a policy to a container image.
 %%
-%% We recommend that you call the RAM API
-%% CreateResourceShare
-%% (https://docs.aws.amazon.com//ram/latest/APIReference/API_CreateResourceShare.html)
-%% to share
-%% resources. If you call the Image Builder API
-%% `PutContainerImagePolicy', you must also
-%% call the RAM API PromoteResourceShareCreatedFromPolicy
-%% (https://docs.aws.amazon.com//ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
-%%
-%% in order for the resource to be visible to all principals with whom the
-%% resource is
+%% To share resources, call the RAM API CreateResourceShare:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html.
+%% If you call this API, you must also
+%% call the RAM API PromoteResourceShareCreatedFromPolicy:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
+%% so that the resource is visible to all principals with whom the resource
+%% is
 %% shared.
 -spec put_container_recipe_policy(aws_client:aws_client(), put_container_recipe_policy_request()) ->
     {ok, put_container_recipe_policy_response(), tuple()} |
@@ -6187,13 +6237,12 @@ put_container_recipe_policy(Client, Input0, Options0) ->
 
 %% @doc Applies a policy to an image.
 %%
-%% We recommend that you call the RAM API CreateResourceShare:
-%% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html
-%% to share resources. If you call the Image Builder API
-%% `PutImagePolicy', you must also call the RAM API
+%% To share resources, call the RAM API CreateResourceShare:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html.
+%% If you call this API, you must also call the RAM API
 %% PromoteResourceShareCreatedFromPolicy:
 %% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
-%% in order for the resource to be
+%% so that the resource is
 %% visible to all principals with whom the resource is shared.
 -spec put_image_policy(aws_client:aws_client(), put_image_policy_request()) ->
     {ok, put_image_policy_response(), tuple()} |
@@ -6230,13 +6279,12 @@ put_image_policy(Client, Input0, Options0) ->
 
 %% @doc Applies a policy to an image recipe.
 %%
-%% We recommend that you call the RAM API CreateResourceShare:
-%% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html
-%% to share resources. If you call the Image Builder API
-%% `PutImageRecipePolicy', you must also call the RAM API
+%% To share resources, call the RAM API CreateResourceShare:
+%% https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html.
+%% If you call this API, you must also call the RAM API
 %% PromoteResourceShareCreatedFromPolicy:
 %% https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html
-%% in order for the resource to be
+%% so that the resource is
 %% visible to all principals with whom the resource is shared.
 -spec put_image_recipe_policy(aws_client:aws_client(), put_image_recipe_policy_request()) ->
     {ok, put_image_recipe_policy_response(), tuple()} |
@@ -6271,8 +6319,7 @@ put_image_recipe_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc RetryImage retries an image distribution without rebuilding the
-%% image.
+%% @doc Retries an image distribution or test without rebuilding the image.
 -spec retry_image(aws_client:aws_client(), retry_image_request()) ->
     {ok, retry_image_response(), tuple()} |
     {error, any()} |
@@ -6375,7 +6422,8 @@ start_image_pipeline_execution(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Begin asynchronous resource state update for lifecycle changes to the
+%% @doc Begins an asynchronous resource state update for lifecycle changes to
+%% the
 %% specified image resources.
 -spec start_resource_state_update(aws_client:aws_client(), start_resource_state_update_request()) ->
     {ok, start_resource_state_update_response(), tuple()} |
@@ -6479,7 +6527,7 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a new distribution configuration.
+%% @doc Updates a distribution configuration.
 %%
 %% Distribution configurations define and
 %% configure the outputs of your pipeline.
@@ -6518,7 +6566,7 @@ update_distribution_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates an image pipeline.
 %%
-%% Image pipelines enable you to automate the creation and
+%% Use image pipelines to automate the creation and
 %% distribution of images. You must specify exactly one recipe for your
 %% image, using either
 %% a `containerRecipeArn' or an `imageRecipeArn'.
@@ -6560,10 +6608,10 @@ update_image_pipeline(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a new infrastructure configuration.
+%% @doc Updates an infrastructure configuration.
 %%
 %% An infrastructure configuration defines
-%% the environment in which your image will be built and tested.
+%% the environment in which Image Builder builds and tests your image.
 -spec update_infrastructure_configuration(aws_client:aws_client(), update_infrastructure_configuration_request()) ->
     {ok, update_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
@@ -6597,7 +6645,7 @@ update_infrastructure_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Update the specified lifecycle policy.
+%% @doc Updates the specified lifecycle policy.
 -spec update_lifecycle_policy(aws_client:aws_client(), update_lifecycle_policy_request()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |

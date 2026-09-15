@@ -3,14 +3,49 @@
 
 %% @doc Security Token Service
 %%
-%% Security Token Service (STS) enables you to request temporary,
-%% limited-privilege
-%% credentials for users.
+%% Amazon Web Services provides Security Token Service (STS) as a web service
+%% that enables you to request temporary,
+%% limited-privilege credentials for users.
 %%
-%% This guide provides descriptions of the STS API. For
-%% more information about using this service, see Temporary Security
-%% Credentials:
-%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html.
+%% This guide describes the STS API. For more
+%% information, see Temporary Security Credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html
+%% in the IAM User Guide.
+%%
+%% As an alternative to using the API, you can use one of the Amazon Web
+%% Services SDKs, which consist of
+%% libraries and sample code for various programming languages and platforms
+%% such as Java,
+%% Ruby, .NET, iOS, Android, and others. The SDKs provide a convenient way to
+%% create
+%% programmatic access to STS. For example, the SDKs can cryptographically
+%% sign requests,
+%% manage errors, and retry requests automatically. For information about the
+%% Amazon Web Services SDKs, see
+%% Tools to Build on Amazon Web Services: http://aws.amazon.com/tools/.
+%%
+%% For information about setting up signatures and authorization through the
+%% API, see Signing Amazon Web Services
+%% API Requests:
+%% https://docs.aws.amazon.com/general/latest/gr/signing_aws_api_requests.html
+%% in the Amazon Web Services General Reference. For general information
+%% about the Query API, see Making Query Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html in
+%% the
+%% IAM User Guide. For information about using security tokens with
+%% other Amazon Web Services products, see Amazon Web Services Services
+%% That Work with IAM:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html
+%% in the IAM User Guide.
+%%
+%% For information about STS endpoints, see STS Regions and
+%% endpoints:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_region-endpoints.html
+%% in the IAM User Guide. For information about
+%% logging STS API calls, see Logging IAM and STS API calls
+%% with CloudTrail:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/cloudtrail-integration.html
+%% in the IAM User Guide.
 -module(aws_sts).
 
 -export([assume_role/2,
@@ -43,6 +78,7 @@
 %% assume_role_request() :: #{
 %%   <<"DurationSeconds">> => integer(),
 %%   <<"ExternalId">> => string(),
+%%   <<"MinimumSessionTokenSize">> => integer(),
 %%   <<"Policy">> => string(),
 %%   <<"PolicyArns">> => list(policy_descriptor_type()),
 %%   <<"ProvidedContexts">> => list(provided_context()),
@@ -61,6 +97,8 @@
 %%   <<"AssumedRoleUser">> => assumed_role_user(),
 %%   <<"Credentials">> => credentials(),
 %%   <<"PackedPolicySize">> => integer(),
+%%   <<"SessionTokenSize">> => integer(),
+%%   <<"SessionTokenUtilization">> => integer(),
 %%   <<"SourceIdentity">> => string()
 %% }
 -type assume_role_response() :: #{binary() => any()}.
@@ -68,6 +106,7 @@
 %% Example:
 %% assume_role_with_saml_request() :: #{
 %%   <<"DurationSeconds">> => integer(),
+%%   <<"MinimumSessionTokenSize">> => integer(),
 %%   <<"Policy">> => string(),
 %%   <<"PolicyArns">> => list(policy_descriptor_type()),
 %%   <<"PrincipalArn">> := string(),
@@ -84,6 +123,8 @@
 %%   <<"Issuer">> => string(),
 %%   <<"NameQualifier">> => string(),
 %%   <<"PackedPolicySize">> => integer(),
+%%   <<"SessionTokenSize">> => integer(),
+%%   <<"SessionTokenUtilization">> => integer(),
 %%   <<"SourceIdentity">> => string(),
 %%   <<"Subject">> => string(),
 %%   <<"SubjectType">> => string()
@@ -93,6 +134,7 @@
 %% Example:
 %% assume_role_with_web_identity_request() :: #{
 %%   <<"DurationSeconds">> => integer(),
+%%   <<"MinimumSessionTokenSize">> => integer(),
 %%   <<"Policy">> => string(),
 %%   <<"PolicyArns">> => list(policy_descriptor_type()),
 %%   <<"ProviderId">> => string(),
@@ -109,6 +151,8 @@
 %%   <<"Credentials">> => credentials(),
 %%   <<"PackedPolicySize">> => integer(),
 %%   <<"Provider">> => string(),
+%%   <<"SessionTokenSize">> => integer(),
+%%   <<"SessionTokenUtilization">> => integer(),
 %%   <<"SourceIdentity">> => string(),
 %%   <<"SubjectFromWebIdentityToken">> => string()
 %% }
@@ -117,6 +161,7 @@
 %% Example:
 %% assume_root_request() :: #{
 %%   <<"DurationSeconds">> => integer(),
+%%   <<"MinimumSessionTokenSize">> => integer(),
 %%   <<"TargetPrincipal">> := string(),
 %%   <<"TaskPolicyArn">> := policy_descriptor_type()
 %% }
@@ -125,6 +170,8 @@
 %% Example:
 %% assume_root_response() :: #{
 %%   <<"Credentials">> => credentials(),
+%%   <<"SessionTokenSize">> => integer(),
+%%   <<"SessionTokenUtilization">> => integer(),
 %%   <<"SourceIdentity">> => string()
 %% }
 -type assume_root_response() :: #{binary() => any()}.
@@ -219,6 +266,7 @@
 %% Example:
 %% get_federation_token_request() :: #{
 %%   <<"DurationSeconds">> => integer(),
+%%   <<"MinimumSessionTokenSize">> => integer(),
 %%   <<"Name">> := string(),
 %%   <<"Policy">> => string(),
 %%   <<"PolicyArns">> => list(policy_descriptor_type()),
@@ -230,13 +278,16 @@
 %% get_federation_token_response() :: #{
 %%   <<"Credentials">> => credentials(),
 %%   <<"FederatedUser">> => federated_user(),
-%%   <<"PackedPolicySize">> => integer()
+%%   <<"PackedPolicySize">> => integer(),
+%%   <<"SessionTokenSize">> => integer(),
+%%   <<"SessionTokenUtilization">> => integer()
 %% }
 -type get_federation_token_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_session_token_request() :: #{
 %%   <<"DurationSeconds">> => integer(),
+%%   <<"MinimumSessionTokenSize">> => integer(),
 %%   <<"SerialNumber">> => string(),
 %%   <<"TokenCode">> => string()
 %% }
@@ -244,7 +295,9 @@
 
 %% Example:
 %% get_session_token_response() :: #{
-%%   <<"Credentials">> => credentials()
+%%   <<"Credentials">> => credentials(),
+%%   <<"SessionTokenSize">> => integer(),
+%%   <<"SessionTokenUtilization">> => integer()
 %% }
 -type get_session_token_response() :: #{binary() => any()}.
 
@@ -1503,6 +1556,9 @@ get_session_token(Client, Input, Options)
 %% support OIDC discovery.
 %% The token is signed by Amazon Web Services STS and can be publicly
 %% verified using the verification keys published at the issuer's JWKS
+%% endpoint.
+%%
+%% The `GetWebIdentityToken' API is not available on the STS Global
 %% endpoint.
 -spec get_web_identity_token(aws_client:aws_client(), get_web_identity_token_request()) ->
     {ok, get_web_identity_token_response(), tuple()} |

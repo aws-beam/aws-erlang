@@ -372,6 +372,7 @@
 
 %% Example:
 %% create_tiering_input() :: #{
+%%   <<"CustomTiers">> => list(custom_tier()),
 %%   <<"FreeTier">> => create_free_tier_config()
 %% }
 -type create_tiering_input() :: #{binary() => any()}.
@@ -449,6 +450,15 @@
 %%   <<"StartTime">> => float()
 %% }
 -type custom_line_item_version_list_element() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_tier() :: #{
+%%   <<"BeginRangeInclusive">> => float(),
+%%   <<"EndRangeExclusive">> => float(),
+%%   <<"RateValue">> => float()
+%% }
+-type custom_tier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -993,6 +1003,7 @@
 
 %% Example:
 %% tiering() :: #{
+%%   <<"CustomTiers">> => list(custom_tier()),
 %%   <<"FreeTier">> => free_tier_config()
 %% }
 -type tiering() :: #{binary() => any()}.
@@ -1152,6 +1163,7 @@
 
 %% Example:
 %% update_tiering_input() :: #{
+%%   <<"CustomTiers">> => list(custom_tier()),
 %%   <<"FreeTier">> => update_free_tier_config()
 %% }
 -type update_tiering_input() :: #{binary() => any()}.

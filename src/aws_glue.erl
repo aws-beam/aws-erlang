@@ -424,6 +424,8 @@
          list_glossary_terms/3,
          list_integration_resource_properties/2,
          list_integration_resource_properties/3,
+         list_integration_table_properties/2,
+         list_integration_table_properties/3,
          list_iterable_forms/2,
          list_iterable_forms/3,
          list_jobs/2,
@@ -6116,6 +6118,22 @@
 -type integration_resource_property_filter() :: #{binary() => any()}.
 
 %% Example:
+%% integration_table_properties() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"SourceTableConfig">> => source_table_config(),
+%%   <<"TableName">> => string(),
+%%   <<"TargetTableConfig">> => target_table_config()
+%% }
+-type integration_table_properties() :: #{binary() => any()}.
+
+%% Example:
+%% integration_table_properties_filter() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type integration_table_properties_filter() :: #{binary() => any()}.
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -6784,6 +6802,21 @@
 %%   <<"Marker">> => string()
 %% }
 -type list_integration_resource_properties_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_integration_table_properties_request() :: #{
+%%   <<"Filters">> => list(integration_table_properties_filter()),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer()
+%% }
+-type list_integration_table_properties_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_integration_table_properties_response() :: #{
+%%   <<"IntegrationTablePropertiesList">> => list(integration_table_properties()),
+%%   <<"Marker">> => string()
+%% }
+-type list_integration_table_properties_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_iterable_forms_request() :: #{
@@ -9328,6 +9361,7 @@
 
 %% Example:
 %% target_table_config() :: #{
+%%   <<"IntegrationArn">> => string(),
 %%   <<"PartitionSpec">> => list(integration_partition()),
 %%   <<"TargetTableName">> => string(),
 %%   <<"UnnestSpec">> => list(any())
@@ -11690,6 +11724,15 @@
     access_denied_exception().
 
 -type list_integration_resource_properties_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    internal_server_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
+
+-type list_integration_table_properties_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
     invalid_input_exception() | 
@@ -16391,6 +16434,25 @@ list_integration_resource_properties(Client, Input)
 list_integration_resource_properties(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIntegrationResourceProperties">>, Input, Options).
+
+%% @doc Lists the integration table properties in your account.
+%%
+%% This operation supports filtering and pagination.
+-spec list_integration_table_properties(aws_client:aws_client(), list_integration_table_properties_request()) ->
+    {ok, list_integration_table_properties_response(), tuple()} |
+    {error, any()} |
+    {error, list_integration_table_properties_errors(), tuple()}.
+list_integration_table_properties(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_integration_table_properties(Client, Input, []).
+
+-spec list_integration_table_properties(aws_client:aws_client(), list_integration_table_properties_request(), proplists:proplist()) ->
+    {ok, list_integration_table_properties_response(), tuple()} |
+    {error, any()} |
+    {error, list_integration_table_properties_errors(), tuple()}.
+list_integration_table_properties(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListIntegrationTableProperties">>, Input, Options).
 
 %% @doc Lists the items in an iterable form on an asset in Glue Data Catalog.
 %%

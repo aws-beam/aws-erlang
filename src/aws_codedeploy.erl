@@ -678,6 +678,7 @@
 %%   <<"deploymentConfigName">> => string(),
 %%   <<"deploymentGroupName">> => string(),
 %%   <<"deploymentId">> => string(),
+%%   <<"deploymentMode">> => list(any()),
 %%   <<"deploymentOverview">> => deployment_overview(),
 %%   <<"deploymentStatusMessages">> => list(string()),
 %%   <<"deploymentStyle">> => deployment_style(),
