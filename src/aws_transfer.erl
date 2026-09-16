@@ -1420,10 +1420,17 @@
 %% protocol_details() :: #{
 %%   <<"As2Transports">> => list(list(any())()),
 %%   <<"PassiveIp">> => string(),
+%%   <<"ProxyConfig">> => proxy_config(),
 %%   <<"SetStatOption">> => list(any()),
 %%   <<"TlsSessionResumptionMode">> => list(any())
 %% }
 -type protocol_details() :: #{binary() => any()}.
+
+%% Example:
+%% proxy_config() :: #{
+%%   <<"SftpMode">> => list(any())
+%% }
+-type proxy_config() :: #{binary() => any()}.
 
 %% Example:
 %% resource_exists_exception() :: #{

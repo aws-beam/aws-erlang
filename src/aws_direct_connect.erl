@@ -30,6 +30,8 @@
          allocate_transit_virtual_interface/3,
          associate_connection_with_lag/2,
          associate_connection_with_lag/3,
+         associate_connections_to_resiliency_group/2,
+         associate_connections_to_resiliency_group/3,
          associate_hosted_connection/2,
          associate_hosted_connection/3,
          associate_mac_sec_key/2,
@@ -64,6 +66,8 @@
          create_private_virtual_interface/3,
          create_public_virtual_interface/2,
          create_public_virtual_interface/3,
+         create_resiliency_group/2,
+         create_resiliency_group/3,
          create_transit_virtual_interface/2,
          create_transit_virtual_interface/3,
          delete_bgp_peer/2,
@@ -80,6 +84,8 @@
          delete_interconnect/3,
          delete_lag/2,
          delete_lag/3,
+         delete_resiliency_group/2,
+         delete_resiliency_group/3,
          delete_virtual_interface/2,
          delete_virtual_interface/3,
          describe_connection_loa/2,
@@ -120,8 +126,16 @@
          describe_virtual_interfaces/3,
          disassociate_connection_from_lag/2,
          disassociate_connection_from_lag/3,
+         disassociate_connections_from_resiliency_group/2,
+         disassociate_connections_from_resiliency_group/3,
          disassociate_mac_sec_key/2,
          disassociate_mac_sec_key/3,
+         get_resiliency_group/2,
+         get_resiliency_group/3,
+         list_resiliency_group_associations/2,
+         list_resiliency_group_associations/3,
+         list_resiliency_groups/2,
+         list_resiliency_groups/3,
          list_virtual_interface_routes/2,
          list_virtual_interface_routes/3,
          list_virtual_interface_test_history/2,
@@ -136,12 +150,16 @@
          untag_resource/3,
          update_connection/2,
          update_connection/3,
+         update_connections_billing_mode/2,
+         update_connections_billing_mode/3,
          update_direct_connect_gateway/2,
          update_direct_connect_gateway/3,
          update_direct_connect_gateway_association/2,
          update_direct_connect_gateway_association/3,
          update_lag/2,
          update_lag/3,
+         update_resiliency_group/2,
+         update_resiliency_group/3,
          update_virtual_interface_attributes/2,
          update_virtual_interface_attributes/3]).
 
@@ -229,6 +247,20 @@
 -type associate_connection_with_lag_request() :: #{binary() => any()}.
 
 %% Example:
+%% associate_connections_to_resiliency_group_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"connectionIdentifiers">> := list(string()),
+%%   <<"resiliencyGroupId">> := string()
+%% }
+-type associate_connections_to_resiliency_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_connections_to_resiliency_group_result() :: #{
+%%   <<"resiliencyGroupAssociations">> => list(resiliency_group_association())
+%% }
+-type associate_connections_to_resiliency_group_result() :: #{binary() => any()}.
+
+%% Example:
 %% associate_hosted_connection_request() :: #{
 %%   <<"connectionId">> := string(),
 %%   <<"parentConnectionId">> := string()
@@ -274,6 +306,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type associated_gateway() :: #{binary() => any()}.
+
+%% Example:
+%% available_billing_mode() :: #{
+%%   <<"availablePortSpeeds">> => list(string()),
+%%   <<"billingMode">> => list(any()),
+%%   <<"includedRegions">> => list(string())
+%% }
+-type available_billing_mode() :: #{binary() => any()}.
 
 %% Example:
 %% bgp_peer() :: #{
@@ -360,6 +400,7 @@
 %%   <<"awsDeviceV2">> => string(),
 %%   <<"awsLogicalDeviceId">> => string(),
 %%   <<"bandwidth">> => string(),
+%%   <<"billingMode">> => list(any()),
 %%   <<"connectionId">> => string(),
 %%   <<"connectionName">> => string(),
 %%   <<"connectionState">> => list(any()),
@@ -410,6 +451,7 @@
 %% Example:
 %% create_connection_request() :: #{
 %%   <<"bandwidth">> := string(),
+%%   <<"billingMode">> => list(any()),
 %%   <<"connectionName">> := string(),
 %%   <<"lagId">> => string(),
 %%   <<"location">> := string(),
@@ -478,6 +520,7 @@
 
 %% Example:
 %% create_lag_request() :: #{
+%%   <<"billingMode">> => list(any()),
 %%   <<"childConnectionTags">> => list(tag()),
 %%   <<"connectionId">> => string(),
 %%   <<"connectionsBandwidth">> := string(),
@@ -503,6 +546,21 @@
 %%   <<"newPublicVirtualInterface">> := new_public_virtual_interface()
 %% }
 -type create_public_virtual_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resiliency_group_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"intendedResiliencyModel">> := list(any()),
+%%   <<"resiliencyGroupName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_resiliency_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resiliency_group_result() :: #{
+%%   <<"resiliencyGroup">> => resiliency_group()
+%% }
+-type create_resiliency_group_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_transit_virtual_interface_request() :: #{
@@ -601,6 +659,18 @@
 %%   <<"lagId">> := string()
 %% }
 -type delete_lag_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resiliency_group_request() :: #{
+%%   <<"resiliencyGroupId">> := string()
+%% }
+-type delete_resiliency_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resiliency_group_result() :: #{
+%%   <<"resiliencyGroup">> => resiliency_group()
+%% }
+-type delete_resiliency_group_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_virtual_interface_request() :: #{
@@ -871,6 +941,20 @@
 -type disassociate_connection_from_lag_request() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_connections_from_resiliency_group_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"connectionIdentifiers">> := list(string()),
+%%   <<"resiliencyGroupId">> := string()
+%% }
+-type disassociate_connections_from_resiliency_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_connections_from_resiliency_group_result() :: #{
+%%   <<"resiliencyGroupAssociations">> => list(resiliency_group_association())
+%% }
+-type disassociate_connections_from_resiliency_group_result() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_mac_sec_key_request() :: #{
 %%   <<"connectionId">> := string(),
 %%   <<"secretARN">> := string()
@@ -889,6 +973,18 @@
 %%   <<"message">> => string()
 %% }
 -type duplicate_tag_keys_exception() :: #{binary() => any()}.
+
+%% Example:
+%% get_resiliency_group_request() :: #{
+%%   <<"resiliencyGroupId">> := string()
+%% }
+-type get_resiliency_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_resiliency_group_result() :: #{
+%%   <<"resiliencyGroup">> => resiliency_group()
+%% }
+-type get_resiliency_group_result() :: #{binary() => any()}.
 
 %% Example:
 %% interconnect() :: #{
@@ -927,6 +1023,7 @@
 %%   <<"awsDevice">> => string(),
 %%   <<"awsDeviceV2">> => string(),
 %%   <<"awsLogicalDeviceId">> => string(),
+%%   <<"billingMode">> => list(any()),
 %%   <<"connections">> => list(connection()),
 %%   <<"connectionsBandwidth">> => string(),
 %%   <<"encryptionMode">> => string(),
@@ -964,6 +1061,35 @@
 %%   <<"message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_resiliency_group_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resiliencyGroupId">> := string()
+%% }
+-type list_resiliency_group_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resiliency_group_associations_result() :: #{
+%%   <<"items">> => list(resiliency_group_association()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resiliency_group_associations_result() :: #{binary() => any()}.
+
+%% Example:
+%% list_resiliency_groups_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resiliency_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resiliency_groups_result() :: #{
+%%   <<"items">> => list(resiliency_group_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_resiliency_groups_result() :: #{binary() => any()}.
 
 %% Example:
 %% list_virtual_interface_routes_request() :: #{
@@ -1009,6 +1135,7 @@
 
 %% Example:
 %% location() :: #{
+%%   <<"availableBillingModes">> => list(available_billing_mode()),
 %%   <<"availableMacSecPortSpeeds">> => list(string()),
 %%   <<"availablePortSpeeds">> => list(string()),
 %%   <<"availableProviders">> => list(string()),
@@ -1159,6 +1286,37 @@
 -type rate_limiter_status() :: #{binary() => any()}.
 
 %% Example:
+%% resiliency_group() :: #{
+%%   <<"ownerAccount">> => string(),
+%%   <<"resiliencyGroupArn">> => string(),
+%%   <<"resiliencyGroupId">> => string(),
+%%   <<"resiliencyGroupName">> => string(),
+%%   <<"resiliencyGroupType">> => list(any()),
+%%   <<"state">> => list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type resiliency_group() :: #{binary() => any()}.
+
+%% Example:
+%% resiliency_group_association() :: #{
+%%   <<"connectionArn">> => string(),
+%%   <<"resiliencyGroupId">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type resiliency_group_association() :: #{binary() => any()}.
+
+%% Example:
+%% resiliency_group_summary() :: #{
+%%   <<"ownerAccount">> => string(),
+%%   <<"resiliencyGroupArn">> => string(),
+%%   <<"resiliencyGroupId">> => string(),
+%%   <<"resiliencyGroupName">> => string(),
+%%   <<"resiliencyGroupType">> => list(any()),
+%%   <<"state">> => list(any())
+%% }
+-type resiliency_group_summary() :: #{binary() => any()}.
+
+%% Example:
 %% resource_tag() :: #{
 %%   <<"resourceArn">> => string(),
 %%   <<"tags">> => list(tag())
@@ -1278,6 +1436,20 @@
 -type update_connection_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_connections_billing_mode_request() :: #{
+%%   <<"billingMode">> := list(any()),
+%%   <<"connectionIds">> := list(string())
+%% }
+-type update_connections_billing_mode_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_connections_billing_mode_response() :: #{
+%%   <<"billingMode">> => list(any()),
+%%   <<"connections">> => list(connection())
+%% }
+-type update_connections_billing_mode_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_direct_connect_gateway_association_request() :: #{
 %%   <<"addAllowedPrefixesToDirectConnectGateway">> => list(route_filter_prefix()),
 %%   <<"associationId">> => string(),
@@ -1312,6 +1484,20 @@
 %%   <<"minimumLinks">> => integer()
 %% }
 -type update_lag_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resiliency_group_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"resiliencyGroupId">> := string(),
+%%   <<"resiliencyGroupName">> := string()
+%% }
+-type update_resiliency_group_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_resiliency_group_result() :: #{
+%%   <<"resiliencyGroup">> => resiliency_group()
+%% }
+-type update_resiliency_group_result() :: #{binary() => any()}.
 
 %% Example:
 %% update_virtual_interface_attributes_request() :: #{
@@ -1433,6 +1619,11 @@
     direct_connect_server_exception() | 
     direct_connect_client_exception().
 
+-type associate_connections_to_resiliency_group_errors() ::
+    limit_exceeded_exception() | 
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
 -type associate_hosted_connection_errors() ::
     direct_connect_server_exception() | 
     direct_connect_client_exception().
@@ -1513,6 +1704,13 @@
     direct_connect_server_exception() | 
     direct_connect_client_exception().
 
+-type create_resiliency_group_errors() ::
+    too_many_tags_exception() | 
+    limit_exceeded_exception() | 
+    duplicate_tag_keys_exception() | 
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
 -type create_transit_virtual_interface_errors() ::
     too_many_tags_exception() | 
     limit_exceeded_exception() | 
@@ -1545,6 +1743,10 @@
     direct_connect_client_exception().
 
 -type delete_lag_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type delete_resiliency_group_errors() ::
     direct_connect_server_exception() | 
     direct_connect_client_exception().
 
@@ -1628,7 +1830,23 @@
     direct_connect_server_exception() | 
     direct_connect_client_exception().
 
+-type disassociate_connections_from_resiliency_group_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
 -type disassociate_mac_sec_key_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type get_resiliency_group_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type list_resiliency_group_associations_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type list_resiliency_groups_errors() ::
     direct_connect_server_exception() | 
     direct_connect_client_exception().
 
@@ -1662,6 +1880,10 @@
     direct_connect_server_exception() | 
     direct_connect_client_exception().
 
+-type update_connections_billing_mode_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
 -type update_direct_connect_gateway_errors() ::
     direct_connect_server_exception() | 
     direct_connect_client_exception().
@@ -1671,6 +1893,10 @@
     direct_connect_client_exception().
 
 -type update_lag_errors() ::
+    direct_connect_server_exception() | 
+    direct_connect_client_exception().
+
+-type update_resiliency_group_errors() ::
     direct_connect_server_exception() | 
     direct_connect_client_exception().
 
@@ -1882,6 +2108,29 @@ associate_connection_with_lag(Client, Input)
 associate_connection_with_lag(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateConnectionWithLag">>, Input, Options).
+
+%% @doc Associates one or more connections with the specified resiliency
+%% group.
+%%
+%% This operation is
+%% atomic: either all of the specified connections are associated, or the
+%% operation fails and no
+%% changes are made.
+-spec associate_connections_to_resiliency_group(aws_client:aws_client(), associate_connections_to_resiliency_group_request()) ->
+    {ok, associate_connections_to_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, associate_connections_to_resiliency_group_errors(), tuple()}.
+associate_connections_to_resiliency_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_connections_to_resiliency_group(Client, Input, []).
+
+-spec associate_connections_to_resiliency_group(aws_client:aws_client(), associate_connections_to_resiliency_group_request(), proplists:proplist()) ->
+    {ok, associate_connections_to_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, associate_connections_to_resiliency_group_errors(), tuple()}.
+associate_connections_to_resiliency_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateConnectionsToResiliencyGroup">>, Input, Options).
 
 %% @doc Associates a hosted connection and its virtual interfaces with a link
 %% aggregation
@@ -2399,6 +2648,26 @@ create_public_virtual_interface(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePublicVirtualInterface">>, Input, Options).
 
+%% @doc Creates a resiliency group.
+%%
+%% A resiliency group lets you group Direct Connect connections together
+%% and manage them as a single unit to meet a target resiliency model.
+-spec create_resiliency_group(aws_client:aws_client(), create_resiliency_group_request()) ->
+    {ok, create_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, create_resiliency_group_errors(), tuple()}.
+create_resiliency_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_resiliency_group(Client, Input, []).
+
+-spec create_resiliency_group(aws_client:aws_client(), create_resiliency_group_request(), proplists:proplist()) ->
+    {ok, create_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, create_resiliency_group_errors(), tuple()}.
+create_resiliency_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateResiliencyGroup">>, Input, Options).
+
 %% @doc Creates a transit virtual interface.
 %%
 %% A transit virtual interface should be used to access one or more transit
@@ -2585,6 +2854,29 @@ delete_lag(Client, Input)
 delete_lag(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteLag">>, Input, Options).
+
+%% @doc Deletes the specified resiliency group.
+%%
+%% Deletion is asynchronous: the resiliency group
+%% transitions through the `deleting' state before it reaches the
+%% `deleted' state. The response returns the resiliency group so you can
+%% observe its
+%% current state without a subsequent `GetResiliencyGroup' call.
+-spec delete_resiliency_group(aws_client:aws_client(), delete_resiliency_group_request()) ->
+    {ok, delete_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, delete_resiliency_group_errors(), tuple()}.
+delete_resiliency_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resiliency_group(Client, Input, []).
+
+-spec delete_resiliency_group(aws_client:aws_client(), delete_resiliency_group_request(), proplists:proplist()) ->
+    {ok, delete_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, delete_resiliency_group_errors(), tuple()}.
+delete_resiliency_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResiliencyGroup">>, Input, Options).
 
 %% @doc Deletes a virtual interface.
 -spec delete_virtual_interface(aws_client:aws_client(), delete_virtual_interface_request()) ->
@@ -3083,6 +3375,29 @@ disassociate_connection_from_lag(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateConnectionFromLag">>, Input, Options).
 
+%% @doc Disassociates one or more connections from the specified resiliency
+%% group.
+%%
+%% This operation
+%% is atomic: either all of the specified connections are disassociated, or
+%% the operation fails
+%% and no changes are made.
+-spec disassociate_connections_from_resiliency_group(aws_client:aws_client(), disassociate_connections_from_resiliency_group_request()) ->
+    {ok, disassociate_connections_from_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_connections_from_resiliency_group_errors(), tuple()}.
+disassociate_connections_from_resiliency_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_connections_from_resiliency_group(Client, Input, []).
+
+-spec disassociate_connections_from_resiliency_group(aws_client:aws_client(), disassociate_connections_from_resiliency_group_request(), proplists:proplist()) ->
+    {ok, disassociate_connections_from_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, disassociate_connections_from_resiliency_group_errors(), tuple()}.
+disassociate_connections_from_resiliency_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateConnectionsFromResiliencyGroup">>, Input, Options).
+
 %% @doc Removes the association between a MAC Security (MACsec) security key
 %% and a Direct Connect connection.
 -spec disassociate_mac_sec_key(aws_client:aws_client(), disassociate_mac_sec_key_request()) ->
@@ -3100,6 +3415,59 @@ disassociate_mac_sec_key(Client, Input)
 disassociate_mac_sec_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateMacSecKey">>, Input, Options).
+
+%% @doc Gets information about the specified resiliency group.
+-spec get_resiliency_group(aws_client:aws_client(), get_resiliency_group_request()) ->
+    {ok, get_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, get_resiliency_group_errors(), tuple()}.
+get_resiliency_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resiliency_group(Client, Input, []).
+
+-spec get_resiliency_group(aws_client:aws_client(), get_resiliency_group_request(), proplists:proplist()) ->
+    {ok, get_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, get_resiliency_group_errors(), tuple()}.
+get_resiliency_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResiliencyGroup">>, Input, Options).
+
+%% @doc Lists the connection associations for the specified resiliency group.
+-spec list_resiliency_group_associations(aws_client:aws_client(), list_resiliency_group_associations_request()) ->
+    {ok, list_resiliency_group_associations_result(), tuple()} |
+    {error, any()} |
+    {error, list_resiliency_group_associations_errors(), tuple()}.
+list_resiliency_group_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resiliency_group_associations(Client, Input, []).
+
+-spec list_resiliency_group_associations(aws_client:aws_client(), list_resiliency_group_associations_request(), proplists:proplist()) ->
+    {ok, list_resiliency_group_associations_result(), tuple()} |
+    {error, any()} |
+    {error, list_resiliency_group_associations_errors(), tuple()}.
+list_resiliency_group_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResiliencyGroupAssociations">>, Input, Options).
+
+%% @doc Lists the resiliency groups owned by your Amazon Web Services account
+%% in the current
+%% Amazon Web Services Region.
+-spec list_resiliency_groups(aws_client:aws_client(), list_resiliency_groups_request()) ->
+    {ok, list_resiliency_groups_result(), tuple()} |
+    {error, any()} |
+    {error, list_resiliency_groups_errors(), tuple()}.
+list_resiliency_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resiliency_groups(Client, Input, []).
+
+-spec list_resiliency_groups(aws_client:aws_client(), list_resiliency_groups_request(), proplists:proplist()) ->
+    {ok, list_resiliency_groups_result(), tuple()} |
+    {error, any()} |
+    {error, list_resiliency_groups_errors(), tuple()}.
+list_resiliency_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResiliencyGroups">>, Input, Options).
 
 %% @doc Lists the routes for the specified virtual interface.
 %%
@@ -3255,6 +3623,27 @@ update_connection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnection">>, Input, Options).
 
+%% @doc Updates the billing mode for the specified Direct Connect
+%% connections.
+%%
+%% You can update the billing
+%% mode for up to 200 connections in a single request.
+-spec update_connections_billing_mode(aws_client:aws_client(), update_connections_billing_mode_request()) ->
+    {ok, update_connections_billing_mode_response(), tuple()} |
+    {error, any()} |
+    {error, update_connections_billing_mode_errors(), tuple()}.
+update_connections_billing_mode(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_connections_billing_mode(Client, Input, []).
+
+-spec update_connections_billing_mode(aws_client:aws_client(), update_connections_billing_mode_request(), proplists:proplist()) ->
+    {ok, update_connections_billing_mode_response(), tuple()} |
+    {error, any()} |
+    {error, update_connections_billing_mode_errors(), tuple()}.
+update_connections_billing_mode(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateConnectionsBillingMode">>, Input, Options).
+
 %% @doc Updates the name of a current Direct Connect gateway.
 -spec update_direct_connect_gateway(aws_client:aws_client(), update_direct_connect_gateway_request()) ->
     {ok, update_direct_connect_gateway_response(), tuple()} |
@@ -3328,6 +3717,23 @@ update_lag(Client, Input)
 update_lag(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateLag">>, Input, Options).
+
+%% @doc Updates the name of the specified resiliency group.
+-spec update_resiliency_group(aws_client:aws_client(), update_resiliency_group_request()) ->
+    {ok, update_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, update_resiliency_group_errors(), tuple()}.
+update_resiliency_group(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_resiliency_group(Client, Input, []).
+
+-spec update_resiliency_group(aws_client:aws_client(), update_resiliency_group_request(), proplists:proplist()) ->
+    {ok, update_resiliency_group_result(), tuple()} |
+    {error, any()} |
+    {error, update_resiliency_group_errors(), tuple()}.
+update_resiliency_group(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateResiliencyGroup">>, Input, Options).
 
 %% @doc Updates the specified attributes of the specified virtual private
 %% interface.
