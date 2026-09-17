@@ -1,15 +1,15 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Elastic Beanstalk
+%% @doc Elastic Beanstalk
 %%
-%% AWS Elastic Beanstalk makes it easy for you to create, deploy, and manage
-%% scalable,
-%% fault-tolerant applications running on the Amazon Web Services cloud.
+%% Elastic Beanstalk makes it easy for you to create, deploy, and manage
+%% scalable, fault-tolerant applications running on
+%% the Amazon Web Services Cloud.
 %%
-%% For more information about this product, go to the AWS Elastic Beanstalk:
+%% For more information about this product, go to the Elastic Beanstalk:
 %% http://aws.amazon.com/elasticbeanstalk/ details page. The location of the
-%% latest AWS Elastic Beanstalk WSDL is
+%% latest Elastic Beanstalk WSDL is
 %% [https://elasticbeanstalk.s3.amazonaws.com/doc/2010-12-01/AWSElasticBeanstalk.wsdl].
 %% To install the Software Development Kits (SDKs), Integrated Development
 %% Environment (IDE)
@@ -18,8 +18,8 @@
 %%
 %% Endpoints
 %%
-%% For a list of region-specific endpoints that AWS Elastic Beanstalk
-%% supports, go to
+%% For a list of region-specific endpoints that Elastic Beanstalk supports,
+%% go to
 %% Regions and Endpoints:
 %% https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region
 %% in the Amazon Web Services
@@ -187,6 +187,9 @@
 %%   <<"DateCreated">> => non_neg_integer(),
 %%   <<"DateUpdated">> => non_neg_integer(),
 %%   <<"Description">> => string(),
+%%   <<"ImageBuildConfiguration">> => image_build_configuration(),
+%%   <<"ImageSource">> => image_source(),
+%%   <<"Process">> => boolean(),
 %%   <<"SourceBuildInformation">> => source_build_information(),
 %%   <<"SourceBundle">> => s3_location(),
 %%   <<"Status">> => list(any()),
@@ -287,6 +290,12 @@
 -type check_dns_availability_result_message() :: #{binary() => any()}.
 
 %% Example:
+%% cluster() :: #{
+%%   <<"ClusterArn">> => string()
+%% }
+-type cluster() :: #{binary() => any()}.
+
+%% Example:
 %% code_build_not_in_service_region_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -375,6 +384,7 @@
 %%   <<"AutoCreateApplication">> => boolean(),
 %%   <<"BuildConfiguration">> => build_configuration(),
 %%   <<"Description">> => string(),
+%%   <<"ImageConfiguration">> => image_configuration(),
 %%   <<"Process">> => boolean(),
 %%   <<"SourceBuildInformation">> => source_build_information(),
 %%   <<"SourceBundle">> => s3_location(),
@@ -718,6 +728,7 @@
 %% Example:
 %% environment_resource_description() :: #{
 %%   <<"AutoScalingGroups">> => list(auto_scaling_group()),
+%%   <<"Cluster">> => cluster(),
 %%   <<"EnvironmentName">> => string(),
 %%   <<"Instances">> => list(instance()),
 %%   <<"LaunchConfigurations">> => list(launch_configuration()),
@@ -768,6 +779,31 @@
 %%   <<"NextToken">> => string()
 %% }
 -type event_descriptions_message() :: #{binary() => any()}.
+
+%% Example:
+%% image_build_configuration() :: #{
+%%   <<"Architecture">> => list(any()),
+%%   <<"Buildpack">> => string(),
+%%   <<"CodeBuildServiceRole">> => string(),
+%%   <<"ComputeType">> => list(any()),
+%%   <<"DockerfileLocation">> => string(),
+%%   <<"TimeoutInMinutes">> => integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type image_build_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% image_configuration() :: #{
+%%   <<"Build">> => image_build_configuration(),
+%%   <<"Source">> => image_source()
+%% }
+-type image_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% image_source() :: #{
+%%   <<"Uri">> => string()
+%% }
+-type image_source() :: #{binary() => any()}.
 
 %% Example:
 %% instance() :: #{
@@ -1484,8 +1520,7 @@
 %%====================================================================
 
 %% @doc Cancels in-progress environment configuration update or application
-%% version
-%% deployment.
+%% version deployment.
 -spec abort_environment_update(aws_client:aws_client(), abort_environment_update_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1504,9 +1539,9 @@ abort_environment_update(Client, Input, Options)
 
 %% @doc Applies a scheduled managed action immediately.
 %%
-%% A managed action can be applied only if
-%% its status is `Scheduled'. Get the status and action ID of a managed
-%% action with
+%% A managed action can be applied only if its status is `Scheduled'. Get
+%% the status and
+%% action ID of a managed action with
 %% `DescribeEnvironmentManagedActions'.
 -spec apply_environment_managed_action(aws_client:aws_client(), apply_environment_managed_action_request()) ->
     {ok, apply_environment_managed_action_result(), tuple()} |
@@ -1524,16 +1559,14 @@ apply_environment_managed_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ApplyEnvironmentManagedAction">>, Input, Options).
 
-%% @doc Add or change the operations role used by an environment.
+%% @doc
+%% The operations role feature of Elastic Beanstalk is in beta release and is
+%% subject to change.
 %%
-%% After this call is made, Elastic Beanstalk
-%% uses the associated operations role for permissions to downstream services
-%% during subsequent
-%% calls acting on this environment. For more information, see Operations
-%% roles:
-%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html
-%% in the
-%% AWS Elastic Beanstalk Developer Guide.
+%% Add or change the operations role used by an environment. After this call
+%% is made, Elastic Beanstalk uses the associated operations role for
+%% permissions to
+%% downstream services during subsequent calls acting on this environment.
 -spec associate_environment_operations_role(aws_client:aws_client(), associate_environment_operations_role_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1566,16 +1599,14 @@ check_dns_availability(Client, Input, Options)
     request(Client, <<"CheckDNSAvailability">>, Input, Options).
 
 %% @doc Create or update a group of environments that each run a separate
-%% component of a single
-%% application.
+%% component of a single application.
 %%
-%% Takes a list of version labels that specify application source bundles for
-%% each
-%% of the environments to create or update. The name of each environment and
-%% other required
-%% information must be included in the source bundles in an environment
-%% manifest named
-%% `env.yaml'. See Compose Environments:
+%% Takes a list of version labels that specify
+%% application source bundles for each of the environments to create or
+%% update. The name of each environment and other required information must
+%% be included
+%% in the source bundles in an environment manifest named `env.yaml'. See
+%% Compose Environments:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-mgmt-compose.html
 %% for details.
 -spec compose_environments(aws_client:aws_client(), compose_environments_message()) ->
@@ -1595,8 +1626,8 @@ compose_environments(Client, Input, Options)
     request(Client, <<"ComposeEnvironments">>, Input, Options).
 
 %% @doc Creates an application that has one configuration template named
-%% `default'
-%% and no application versions.
+%% `default' and
+%% no application versions.
 -spec create_application(aws_client:aws_client(), create_application_message()) ->
     {ok, application_description_message(), tuple()} |
     {error, any()} |
@@ -1615,29 +1646,26 @@ create_application(Client, Input, Options)
 
 %% @doc Creates an application version for the specified application.
 %%
-%% You can create an
-%% application version from a source bundle in Amazon S3, a commit in AWS
-%% CodeCommit, or the
-%% output of an AWS CodeBuild build as follows:
+%% You can create an application version from a source bundle in Amazon S3, a
+%% commit in
+%% CodeCommit, or the output of an CodeBuild build as follows:
 %%
-%% Specify a commit in an AWS CodeCommit repository with
+%% Specify a commit in an CodeCommit repository with
 %% `SourceBuildInformation'.
 %%
-%% Specify a build in an AWS CodeBuild with `SourceBuildInformation' and
+%% Specify a build in an CodeBuild with `SourceBuildInformation' and
 %% `BuildConfiguration'.
 %%
-%% Specify a source bundle in S3 with `SourceBundle'
+%% Specify a source bundle in Amazon S3 with `SourceBundle'
 %%
 %% Omit both `SourceBuildInformation' and `SourceBundle' to use the
 %% default sample application.
 %%
 %% After you create an application version with a specified Amazon S3 bucket
-%% and key
-%% location, you can't change that Amazon S3 location. If you change the
-%% Amazon S3 location,
-%% you receive an exception when you attempt to launch an environment from
-%% the application
-%% version.
+%% and key location, you can't change that Amazon S3 location. If you
+%% change the Amazon S3
+%% location, you receive an exception when you attempt to launch an
+%% environment from the application version.
 -spec create_application_version(aws_client:aws_client(), create_application_version_message()) ->
     {ok, application_version_description_message(), tuple()} |
     {error, any()} |
@@ -1654,8 +1682,8 @@ create_application_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplicationVersion">>, Input, Options).
 
-%% @doc Creates an AWS Elastic Beanstalk configuration template, associated
-%% with a specific Elastic Beanstalk
+%% @doc Creates an Elastic Beanstalk configuration template, associated with
+%% a specific Elastic Beanstalk
 %% application.
 %%
 %% You define application configuration settings in a configuration template.
@@ -1691,9 +1719,8 @@ create_configuration_template(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateConfigurationTemplate">>, Input, Options).
 
-%% @doc Launches an AWS Elastic Beanstalk environment for the specified
-%% application using the specified
-%% configuration.
+%% @doc Launches an Elastic Beanstalk environment for the specified
+%% application using the specified configuration.
 -spec create_environment(aws_client:aws_client(), create_environment_message()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
@@ -1728,15 +1755,13 @@ create_platform_version(Client, Input, Options)
     request(Client, <<"CreatePlatformVersion">>, Input, Options).
 
 %% @doc Creates a bucket in Amazon S3 to store application versions, logs,
-%% and other files used
-%% by Elastic Beanstalk environments.
+%% and other files used by Elastic Beanstalk environments.
 %%
-%% The Elastic Beanstalk console and EB CLI call this API the
-%% first time you create an environment in a region. If the storage location
-%% already exists,
+%% The Elastic Beanstalk
+%% console and EB CLI call this API the first time you create an environment
+%% in a region. If the storage location already exists,
 %% `CreateStorageLocation' still returns the bucket name but does not
-%% create a new
-%% bucket.
+%% create a new bucket.
 -spec create_storage_location(aws_client:aws_client(), #{}) ->
     {ok, create_storage_location_result_message(), tuple()} |
     {error, any()} |
@@ -1754,11 +1779,9 @@ create_storage_location(Client, Input, Options)
     request(Client, <<"CreateStorageLocation">>, Input, Options).
 
 %% @doc Deletes the specified application along with all associated versions
-%% and
-%% configurations.
+%% and configurations.
 %%
-%% The application versions will not be deleted from your Amazon S3
-%% bucket.
+%% The application versions will not be deleted from your Amazon S3 bucket.
 %%
 %% You cannot delete an application that has a running environment.
 -spec delete_application(aws_client:aws_client(), delete_application_message()) ->
@@ -1864,11 +1887,32 @@ delete_platform_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePlatformVersion">>, Input, Options).
 
-%% @doc Returns attributes related to AWS Elastic Beanstalk that are
-%% associated with the calling AWS
-%% account.
+%% @doc Returns attributes related to Elastic Beanstalk that are associated
+%% with the calling Amazon Web Services account.
 %%
 %% The result currently has one set of attributes—resource quotas.
+%%
+%% This action only returns information about resources that the calling
+%% principle has IAM permissions to access. For example, consider a case
+%% where a
+%% user only has permission to access one of three resources. When the user
+%% calls the this action, the response will only include the one resource
+%% that the
+%% user has permission to access instead of all three resources. If the user
+%% doesn’t have access to any of the resources an empty result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk. For more information, see Managing Elastic
+%% Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec describe_account_attributes(aws_client:aws_client(), #{}) ->
     {ok, describe_account_attributes_result(), tuple()} |
     {error, any()} |
@@ -1886,6 +1930,28 @@ describe_account_attributes(Client, Input, Options)
     request(Client, <<"DescribeAccountAttributes">>, Input, Options).
 
 %% @doc Retrieve a list of application versions.
+%%
+%% This action only returns information about resources that the calling
+%% principle has IAM permissions to access. For example, consider a case
+%% where a
+%% user only has permission to access one of three resources. When the user
+%% calls the this action, the response will only include the one resource
+%% that the
+%% user has permission to access instead of all three resources. If the user
+%% doesn’t have access to any of the resources an empty result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk. For more information, see Managing Elastic
+%% Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec describe_application_versions(aws_client:aws_client(), describe_application_versions_message()) ->
     {ok, application_version_descriptions_message(), tuple()} |
     {error, any()}.
@@ -1901,6 +1967,29 @@ describe_application_versions(Client, Input, Options)
     request(Client, <<"DescribeApplicationVersions">>, Input, Options).
 
 %% @doc Returns the descriptions of existing applications.
+%%
+%% This action only returns information about applications that the calling
+%% principle has IAM permissions to
+%% access. For example, consider a case where a user only has permission to
+%% access two of three
+%% applications. When the user calls the DescribeApplications action, the
+%% response will only include the two applications that the user has
+%% permission to access
+%% instead of all three applications. If the user doesn’t have access to any
+%% of the applications
+%% an empty result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly managed policy allows operators to
+%% view information about resources related to Elastic Beanstalk
+%% environments. For more
+%% information, see Managing Elastic Beanstalk user
+%% policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer Guide. For detailed
+%% instructions to attach a policy to a user or group, see the section
+%% Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the same topic.
 -spec describe_applications(aws_client:aws_client(), describe_applications_message()) ->
     {ok, application_descriptions_message(), tuple()} |
     {error, any()}.
@@ -1923,6 +2012,30 @@ describe_applications(Client, Input, Options)
 %% the values the options, their default values, and an indication of the
 %% required action on a
 %% running environment if an option value is changed.
+%%
+%% This action only returns information about resources that the calling
+%% principle has IAM permissions to
+%% access. For example, consider a case where a user only has permission to
+%% access one of three
+%% resources. When the user calls the this action, the
+%% response will only include the one resource that the user has permission
+%% to access instead
+%% of all three resources. If the user doesn’t have access to any of the
+%% resources an empty
+%% result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk. For more information, see Managing Elastic
+%% Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec describe_configuration_options(aws_client:aws_client(), describe_configuration_options_message()) ->
     {ok, configuration_options_description(), tuple()} |
     {error, any()} |
@@ -1953,6 +2066,30 @@ describe_configuration_options(Client, Input, Options)
 %% environment that is either in
 %% the process of deployment or that failed to deploy.
 %%
+%% This action only returns information about resources that the calling
+%% principle has IAM permissions to
+%% access. For example, consider a case where a user only has permission to
+%% access one of three
+%% resources. When the user calls the this action, the
+%% response will only include the one resource that the user has permission
+%% to access instead
+%% of all three resources. If the user doesn’t have access to any of the
+%% resources an empty
+%% result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk. For more information, see Managing Elastic
+%% Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
+%%
 %% Related Topics
 %%
 %% `DeleteEnvironmentConfiguration'
@@ -1975,9 +2112,31 @@ describe_configuration_settings(Client, Input, Options)
 %% @doc Returns information about the overall health of the specified
 %% environment.
 %%
-%% The
-%% DescribeEnvironmentHealth operation is only available with
-%% AWS Elastic Beanstalk Enhanced Health.
+%% The DescribeEnvironmentHealth operation is
+%% only available with Elastic Beanstalk Enhanced Health.
+%%
+%% This action only returns information about environments that the calling
+%% principle has IAM permissions to access. For example, consider a case
+%% where
+%% a user only has permission to access one of three environments. When the
+%% user calls this action, the response will only include the one environment
+%% that
+%% the user has permission to access instead of all three environments. If
+%% the user doesn’t have access to any of the environments an empty result is
+%% returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk environments. For more information, see
+%% Managing Elastic Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec describe_environment_health(aws_client:aws_client(), describe_environment_health_request()) ->
     {ok, describe_environment_health_result(), tuple()} |
     {error, any()} |
@@ -2012,6 +2171,29 @@ describe_environment_managed_action_history(Client, Input, Options)
     request(Client, <<"DescribeEnvironmentManagedActionHistory">>, Input, Options).
 
 %% @doc Lists an environment's upcoming and in-progress managed actions.
+%%
+%% This action only returns information about environments that the calling
+%% principle has IAM permissions to access. For example, consider a case
+%% where
+%% a user only has permission to access one of three environments. When the
+%% user calls this action, the response will only include the one environment
+%% that
+%% the user has permission to access instead of all three environments. If
+%% the user doesn’t have access to any of the environments an empty result is
+%% returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk environments. For more information, see
+%% Managing Elastic Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec describe_environment_managed_actions(aws_client:aws_client(), describe_environment_managed_actions_request()) ->
     {ok, describe_environment_managed_actions_result(), tuple()} |
     {error, any()} |
@@ -2028,7 +2210,7 @@ describe_environment_managed_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeEnvironmentManagedActions">>, Input, Options).
 
-%% @doc Returns AWS resources for this environment.
+%% @doc Returns Amazon Web Services resources for this environment.
 -spec describe_environment_resources(aws_client:aws_client(), describe_environment_resources_message()) ->
     {ok, environment_resource_descriptions_message(), tuple()} |
     {error, any()} |
@@ -2046,6 +2228,29 @@ describe_environment_resources(Client, Input, Options)
     request(Client, <<"DescribeEnvironmentResources">>, Input, Options).
 
 %% @doc Returns descriptions for existing environments.
+%%
+%% This action only returns information about environments that the calling
+%% principle has IAM permissions to access. For example, consider a case
+%% where
+%% a user only has permission to access one of three environments. When the
+%% user calls the DescribeEnvironments action, the response
+%% will only include the one environment that the user has permission to
+%% access instead of all three environments. If the user doesn’t have access
+%% to any of
+%% the environments an empty result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk environments. For more information, see
+%% Managing Elastic Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec describe_environments(aws_client:aws_client(), describe_environments_message()) ->
     {ok, environment_descriptions_message(), tuple()} |
     {error, any()}.
@@ -2065,6 +2270,28 @@ describe_environments(Client, Input, Options)
 %%
 %% This action returns the most recent 1,000 events from the specified
 %% `NextToken'.
+%%
+%% This action only returns information about resources that the calling
+%% principle has IAM permissions to access. For example, consider a case
+%% where a
+%% user only has permission to access one of three resources. When the user
+%% calls the this action, the response will only include the one resource
+%% that the
+%% user has permission to access instead of all three resources. If the user
+%% doesn’t have access to any of the resources an empty result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk. For more information, see Managing Elastic
+%% Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec describe_events(aws_client:aws_client(), describe_events_message()) ->
     {ok, event_descriptions_message(), tuple()} |
     {error, any()}.
@@ -2080,12 +2307,33 @@ describe_events(Client, Input, Options)
     request(Client, <<"DescribeEvents">>, Input, Options).
 
 %% @doc Retrieves detailed information about the health of instances in your
-%% AWS Elastic
-%% Beanstalk.
+%% Elastic Beanstalk environments.
 %%
-%% This operation requires enhanced health
-%% reporting:
+%% This operation requires enhanced health reporting:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html.
+%%
+%% This action only returns information about environments that the calling
+%% principle has IAM permissions to access. For example, consider a case
+%% where
+%% a user only has permission to access one of three environments. When the
+%% user calls this action, the response will only include the one environment
+%% that
+%% the user has permission to access instead of all three environments. If
+%% the user doesn’t have access to any of the environments an empty result is
+%% returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk environments. For more information, see
+%% Managing Elastic Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec describe_instances_health(aws_client:aws_client(), describe_instances_health_request()) ->
     {ok, describe_instances_health_result(), tuple()} |
     {error, any()} |
@@ -2105,13 +2353,34 @@ describe_instances_health(Client, Input, Options)
 %% @doc Describes a platform version.
 %%
 %% Provides full details. Compare to `ListPlatformVersions', which
-%% provides summary information about a list of
-%% platform versions.
+%% provides summary information about a
+%% list of platform versions.
 %%
 %% For definitions of platform version and other platform-related terms, see
-%% AWS Elastic Beanstalk
-%% Platforms Glossary:
+%% Elastic Beanstalk Platforms Glossary:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html.
+%%
+%% This action only returns information about resources that the calling
+%% principle has IAM permissions to access. For example, consider a case
+%% where a
+%% user only has permission to access one of three resources. When the user
+%% calls the this action, the response will only include the one resource
+%% that the
+%% user has permission to access instead of all three resources. If the user
+%% doesn’t have access to any of the resources an empty result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk. For more information, see Managing Elastic
+%% Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec describe_platform_version(aws_client:aws_client(), describe_platform_version_request()) ->
     {ok, describe_platform_version_result(), tuple()} |
     {error, any()} |
@@ -2128,15 +2397,14 @@ describe_platform_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePlatformVersion">>, Input, Options).
 
-%% @doc Disassociate the operations role from an environment.
+%% @doc
+%% The operations role feature of Elastic Beanstalk is in beta release and is
+%% subject to change.
 %%
-%% After this call is made, Elastic Beanstalk uses
-%% the caller's permissions for permissions to downstream services during
-%% subsequent calls acting
-%% on this environment. For more information, see Operations roles:
-%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html
-%% in the
-%% AWS Elastic Beanstalk Developer Guide.
+%% Disassociate the operations role from an environment. After this call is
+%% made, Elastic Beanstalk uses the caller's permissions for permissions
+%% to downstream
+%% services during subsequent calls acting on this environment.
 -spec disassociate_environment_operations_role(aws_client:aws_client(), disassociate_environment_operations_role_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2154,8 +2422,29 @@ disassociate_environment_operations_role(Client, Input, Options)
     request(Client, <<"DisassociateEnvironmentOperationsRole">>, Input, Options).
 
 %% @doc Returns a list of the available solution stack names, with the public
-%% version first and
-%% then in reverse chronological order.
+%% version first and then in reverse chronological order.
+%%
+%% This action only returns information about resources that the calling
+%% principle has IAM permissions to access. For example, consider a case
+%% where a
+%% user only has permission to access one of three resources. When the user
+%% calls the this action, the response will only include the one resource
+%% that the
+%% user has permission to access instead of all three resources. If the user
+%% doesn’t have access to any of the resources an empty result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk. For more information, see Managing Elastic
+%% Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec list_available_solution_stacks(aws_client:aws_client(), #{}) ->
     {ok, list_available_solution_stacks_result_message(), tuple()} |
     {error, any()}.
@@ -2170,16 +2459,36 @@ list_available_solution_stacks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableSolutionStacks">>, Input, Options).
 
-%% @doc Lists the platform branches available for your account in an AWS
-%% Region.
+%% @doc Lists the platform branches available for your account in an Amazon
+%% Web Services Region.
 %%
-%% Provides
-%% summary information about each platform branch.
+%% Provides summary information about each platform branch.
 %%
 %% For definitions of platform branch and other platform-related terms, see
-%% AWS Elastic Beanstalk
-%% Platforms Glossary:
+%% Elastic Beanstalk Platforms Glossary:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html.
+%%
+%% This action only returns information about resources that the calling
+%% principle has IAM permissions to access. For example, consider a case
+%% where a
+%% user only has permission to access one of three resources. When the user
+%% calls the this action, the response will only include the one resource
+%% that the
+%% user has permission to access instead of all three resources. If the user
+%% doesn’t have access to any of the resources an empty result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk. For more information, see Managing Elastic
+%% Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec list_platform_branches(aws_client:aws_client(), list_platform_branches_request()) ->
     {ok, list_platform_branches_result(), tuple()} |
     {error, any()}.
@@ -2194,18 +2503,37 @@ list_platform_branches(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPlatformBranches">>, Input, Options).
 
-%% @doc Lists the platform versions available for your account in an AWS
-%% Region.
+%% @doc Lists the platform versions available for your account in an Amazon
+%% Web Services Region.
 %%
-%% Provides
-%% summary information about each platform version. Compare to
+%% Provides summary information about each platform version. Compare to
 %% `DescribePlatformVersion', which provides full details about a single
-%% platform
-%% version.
+%% platform version.
+%%
+%% This action only returns information about platform versions that the
+%% calling principle has IAM permissions to access. For example, consider a
+%% case
+%% where a user only has permission to access one of ten platform versions.
+%% When the user calls the ListPlatformVersions action, the
+%% response will only include the one platform version that the user has
+%% permission to access instead of all ten platform versions. If the user
+%% doesn’t have
+%% access to any of the platform versions an empty result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly managed policy allows operators to view
+%% information about resources related to Elastic Beanstalk
+%% environments. For more information, see Managing Elastic Beanstalk
+%% user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer Guide. For detailed instructions to
+%% attach a policy to a user or group, see the
+%% section Controlling access
+%% with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the same topic.
 %%
 %% For definitions of platform version and other platform-related terms, see
-%% AWS Elastic Beanstalk
-%% Platforms Glossary:
+%% Elastic Beanstalk Platforms Glossary:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html.
 -spec list_platform_versions(aws_client:aws_client(), list_platform_versions_request()) ->
     {ok, list_platform_versions_result(), tuple()} |
@@ -2223,15 +2551,35 @@ list_platform_versions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPlatformVersions">>, Input, Options).
 
-%% @doc Return the tags applied to an AWS Elastic Beanstalk resource.
+%% @doc Return the tags applied to an Elastic Beanstalk resource.
 %%
 %% The response contains a list of tag key-value pairs.
 %%
 %% Elastic Beanstalk supports tagging of all of its resources. For details
-%% about resource tagging, see
-%% Tagging Application
-%% Resources:
+%% about resource tagging, see Tagging Application Resources:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html.
+%%
+%% This action only returns information about resources that the calling
+%% principle has IAM permissions to access. For example, consider a case
+%% where a
+%% user only has permission to access one of three resources. When the user
+%% calls the this action, the response will only include the one resource
+%% that the
+%% user has permission to access instead of all three resources. If the user
+%% doesn’t have access to any of the resources an empty result is returned.
+%%
+%% The AWSElasticBeanstalkReadOnly:
+%% https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AWSElasticBeanstalkReadOnly.html
+%% managed policy allows operators to view information about resources
+%% related to Elastic Beanstalk. For more information, see Managing Elastic
+%% Beanstalk user policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html
+%% in the Elastic Beanstalk Developer
+%% Guide. For detailed instructions to attach a policy to a user or group,
+%% see the section Controlling access with managed policies:
+%% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.iam.managed-policies.html#iam-userpolicies-managed
+%% in the
+%% same topic.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_message()) ->
     {ok, resource_tags_description_message(), tuple()} |
     {error, any()} |
@@ -2248,9 +2596,10 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
-%% @doc Deletes and recreates all of the AWS resources (for example: the Auto
-%% Scaling group,
-%% load balancer, etc.) for a specified environment and forces a restart.
+%% @doc Deletes and recreates all of the Amazon Web Services resources (for
+%% example: the Auto Scaling group, load balancer, etc.) for a specified
+%% environment and forces a
+%% restart.
 -spec rebuild_environment(aws_client:aws_client(), rebuild_environment_message()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2268,22 +2617,20 @@ rebuild_environment(Client, Input, Options)
     request(Client, <<"RebuildEnvironment">>, Input, Options).
 
 %% @doc Initiates a request to compile the specified type of information of
-%% the deployed
-%% environment.
+%% the deployed environment.
 %%
-%% Setting the `InfoType' to `tail' compiles the last lines from
-%% the application server log files of every Amazon EC2 instance in your
-%% environment.
+%% Setting the `InfoType' to `tail' compiles the last lines from the
+%% application server log files of every Amazon EC2 instance in
+%% your environment.
 %%
 %% Setting the `InfoType' to `bundle' compresses the application
-%% server log files for every Amazon EC2 instance into a `.zip' file.
-%% Legacy and .NET
-%% containers do not support bundle logs.
+%% server log files for every Amazon EC2 instance into a
+%% `.zip' file. Legacy and .NET containers do not support bundle logs.
 %%
 %% Setting the `InfoType' to `analyze' collects recent events,
-%% instance health, and logs from your environment and sends them to Amazon
-%% Bedrock in your
-%% account to generate diagnostic insights and recommended next steps.
+%% instance health, and logs from your environment and sends them to
+%% Amazon Bedrock in your account to generate diagnostic insights and
+%% recommended next steps.
 %%
 %% Use `RetrieveEnvironmentInfo' to obtain the set of logs.
 %%
@@ -2305,8 +2652,7 @@ request_environment_info(Client, Input, Options)
     request(Client, <<"RequestEnvironmentInfo">>, Input, Options).
 
 %% @doc Causes the environment to restart the application container server
-%% running on each
-%% Amazon EC2 instance.
+%% running on each Amazon EC2 instance.
 -spec restart_app_server(aws_client:aws_client(), restart_app_server_message()) ->
     {ok, undefined, tuple()} |
     {error, any()}.
@@ -2322,8 +2668,7 @@ restart_app_server(Client, Input, Options)
     request(Client, <<"RestartAppServer">>, Input, Options).
 
 %% @doc Retrieves the compiled information from a
-%% `RequestEnvironmentInfo'
-%% request.
+%% `RequestEnvironmentInfo' request.
 %%
 %% Related Topics
 %%
@@ -2377,7 +2722,8 @@ terminate_environment(Client, Input, Options)
 %% @doc Updates the specified application to have the specified properties.
 %%
 %% If a property (for example, `description') is not provided, the value
-%% remains unchanged. To clear these properties, specify an empty string.
+%% remains
+%% unchanged. To clear these properties, specify an empty string.
 -spec update_application(aws_client:aws_client(), update_application_message()) ->
     {ok, application_description_message(), tuple()} |
     {error, any()}.
@@ -2413,7 +2759,8 @@ update_application_resource_lifecycle(Client, Input, Options)
 %% properties.
 %%
 %% If a property (for example, `description') is not provided, the value
-%% remains unchanged. To clear properties, specify an empty string.
+%% remains unchanged. To clear properties, specify an empty
+%% string.
 -spec update_application_version(aws_client:aws_client(), update_application_version_message()) ->
     {ok, application_version_description_message(), tuple()} |
     {error, any()}.
@@ -2456,22 +2803,17 @@ update_configuration_template(Client, Input, Options)
     request(Client, <<"UpdateConfigurationTemplate">>, Input, Options).
 
 %% @doc Updates the environment description, deploys a new application
-%% version, updates the
-%% configuration settings to an entirely new configuration template, or
-%% updates select
-%% configuration option values in the running environment.
+%% version, updates the configuration settings to an entirely new
+%% configuration template,
+%% or updates select configuration option values in the running environment.
 %%
 %% Attempting to update both the release and configuration is not allowed and
-%% AWS Elastic
-%% Beanstalk returns an `InvalidParameterCombination' error.
+%% Elastic Beanstalk returns an `InvalidParameterCombination' error.
 %%
 %% When updating the configuration settings to a new template or individual
-%% settings, a
-%% draft configuration is created and `DescribeConfigurationSettings' for
-%% this
-%% environment returns two setting descriptions with different
-%% `DeploymentStatus'
-%% values.
+%% settings, a draft configuration is created and
+%% `DescribeConfigurationSettings' for this environment returns two
+%% setting descriptions with different `DeploymentStatus' values.
 -spec update_environment(aws_client:aws_client(), update_environment_message()) ->
     {ok, environment_description(), tuple()} |
     {error, any()} |
@@ -2488,27 +2830,24 @@ update_environment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateEnvironment">>, Input, Options).
 
-%% @doc Update the list of tags applied to an AWS Elastic Beanstalk resource.
+%% @doc Update the list of tags applied to an Elastic Beanstalk resource.
 %%
-%% Two lists can be passed: `TagsToAdd'
-%% for tags to add or update, and `TagsToRemove'.
+%% Two lists can be passed: `TagsToAdd' for tags to add or update, and
+%% `TagsToRemove'.
 %%
 %% Elastic Beanstalk supports tagging of all of its resources. For details
-%% about resource tagging, see
-%% Tagging Application
-%% Resources:
+%% about resource tagging, see Tagging Application Resources:
 %% https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html.
 %%
-%% If you create a custom IAM user policy to control permission to this
-%% operation, specify
-%% one of the following two virtual actions (or both) instead of the API
+%% If you create a custom policy to control permission to this operation,
+%% specify one of the following two virtual actions (or both) instead of the
+%% API
 %% operation name:
 %%
 %% elasticbeanstalk:AddTags
 %%
 %% Controls permission to call `UpdateTagsForResource' and pass a list of
-%% tags to add in the `TagsToAdd'
-%% parameter.
+%% tags to add in the `TagsToAdd' parameter.
 %%
 %% elasticbeanstalk:RemoveTags
 %%

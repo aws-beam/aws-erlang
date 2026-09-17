@@ -2151,6 +2151,18 @@
 
 
 %% Example:
+%% contact_analysis_reference() :: #{
+%%   <<"AnalyticsMode">> => list(any()),
+%%   <<"Arn">> => string(),
+%%   <<"IsRedacted">> => boolean(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type contact_analysis_reference() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_configuration() :: #{
 %%   <<"ContactId">> => string(),
 %%   <<"IncludeRawMessage">> => boolean(),

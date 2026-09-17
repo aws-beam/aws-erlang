@@ -276,6 +276,8 @@
          put_segment_subscription/5,
          search_profiles/3,
          search_profiles/4,
+         search_recommendations/3,
+         search_recommendations/4,
          start_recommender/4,
          start_recommender/5,
          start_upload_job/4,
@@ -3085,6 +3087,22 @@
 
 
 %% Example:
+%% recommendation_metadata() :: #{
+%%   <<"Columns">> => list(string())
+%% }
+-type recommendation_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommender() :: #{
+%%   <<"Filters">> => list(recommender_filter()),
+%%   <<"Name">> => string(),
+%%   <<"PromotionalFilters">> => list(recommender_promotional_filter())
+%% }
+-type recommender() :: #{binary() => any()}.
+
+
+%% Example:
 %% recommender_config() :: #{
 %%   <<"DiversityConfig">> => diversity_config(),
 %%   <<"EventsConfig">> => events_config(),
@@ -3307,6 +3325,28 @@
 %%   <<"NextToken">> => string()
 %% }
 -type search_profiles_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_recommendations_request() :: #{
+%%   <<"CandidateIds">> => list(string()),
+%%   <<"Context">> => map(),
+%%   <<"Diversity">> => recommendation_diversity_config(),
+%%   <<"KeyName">> := string(),
+%%   <<"KeyValues">> := list(string()),
+%%   <<"MaxRecommendations">> => integer(),
+%%   <<"Metadata">> => recommendation_metadata(),
+%%   <<"Recommender">> := recommender()
+%% }
+-type search_recommendations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% search_recommendations_response() :: #{
+%%   <<"ProfileId">> => string(),
+%%   <<"Recommendations">> => list(recommendation())
+%% }
+-type search_recommendations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4436,6 +4476,13 @@
     access_denied_exception().
 
 -type search_profiles_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
+-type search_recommendations_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -8660,6 +8707,54 @@ search_profiles(Client, DomainName, Input0, Options0) ->
                      {<<"next-token">>, <<"NextToken">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves recommendations for a profile in a specific domain.
+%%
+%% The profile is identified
+%% using a search key, which consists of a `KeyName' and a
+%% `KeyValues' list.
+%% The `KeyName' can be a predefined key (for example, `_profileId',
+%% `_phone', `_email') or a custom-defined key.
+%%
+%% The search key must match exactly one profile. If no profile matches the
+%% search key, the
+%% operation returns a `ResourceNotFoundException'. If more than one
+%% profile matches
+%% the search key, the operation returns a `BadRequestException'. You can
+%% use the
+%% SearchProfiles API to review the matching profiles.
+-spec search_recommendations(aws_client:aws_client(), binary() | list(), search_recommendations_request()) ->
+    {ok, search_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, search_recommendations_errors(), tuple()}.
+search_recommendations(Client, DomainName, Input) ->
+    search_recommendations(Client, DomainName, Input, []).
+
+-spec search_recommendations(aws_client:aws_client(), binary() | list(), search_recommendations_request(), proplists:proplist()) ->
+    {ok, search_recommendations_response(), tuple()} |
+    {error, any()} |
+    {error, search_recommendations_errors(), tuple()}.
+search_recommendations(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainName), "/recommendations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a recommender that was previously stopped.

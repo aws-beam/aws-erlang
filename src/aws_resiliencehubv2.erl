@@ -51,6 +51,9 @@
          delete_test_sources/3,
          delete_user_journey/2,
          delete_user_journey/3,
+         get_dependency_insights/2,
+         get_dependency_insights/4,
+         get_dependency_insights/5,
          get_failure_mode_finding/3,
          get_failure_mode_finding/5,
          get_failure_mode_finding/6,
@@ -97,6 +100,9 @@
          list_policies/1,
          list_policies/3,
          list_policies/4,
+         list_policy_events/2,
+         list_policy_events/4,
+         list_policy_events/5,
          list_reports/1,
          list_reports/3,
          list_reports/4,
@@ -156,6 +162,8 @@
          list_user_journeys/5,
          put_test_sources/2,
          put_test_sources/3,
+         start_dependency_insights/2,
+         start_dependency_insights/3,
          start_failure_mode_assessment/2,
          start_failure_mode_assessment/3,
          start_test_run/2,
@@ -343,6 +351,7 @@
 %%   <<"multiAz">> => multi_az_targets(),
 %%   <<"multiRegion">> => multi_region_targets(),
 %%   <<"name">> := string(),
+%%   <<"sharingEnabled">> => [boolean()],
 %%   <<"tags">> => map()
 %% }
 -type create_policy_request() :: #{binary() => any()}.
@@ -662,6 +671,14 @@
 
 
 %% Example:
+%% dependency_insight() :: #{
+%%   <<"category">> => list(any()),
+%%   <<"description">> => [string()]
+%% }
+-type dependency_insight() :: #{binary() => any()}.
+
+
+%% Example:
 %% dependency_summary() :: #{
 %%   <<"comment">> => [string()],
 %%   <<"criticality">> => list(any()),
@@ -794,6 +811,25 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type finding_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dependency_insights_request() :: #{
+%%   <<"serviceArn">> := string()
+%% }
+-type get_dependency_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dependency_insights_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => [string()],
+%%   <<"insights">> => list(dependency_insight()),
+%%   <<"overview">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type get_dependency_insights_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1088,6 +1124,7 @@
 
 %% Example:
 %% list_policies_request() :: #{
+%%   <<"accountId">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -1100,6 +1137,26 @@
 %%   <<"policySummaries">> => list(policy_summary())
 %% }
 -type list_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_events_request() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"eventTypes">> => list(list(any())()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"policyArn">> := string(),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type list_policy_events_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_policy_events_response() :: #{
+%%   <<"events">> => list(policy_event()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_policy_events_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1508,11 +1565,64 @@
 %%   <<"multiAz">> => multi_az_targets(),
 %%   <<"multiRegion">> => multi_region_targets(),
 %%   <<"name">> => string(),
+%%   <<"organizationId">> => string(),
 %%   <<"policyArn">> => string(),
+%%   <<"sharingEnabled">> => [boolean()],
 %%   <<"tags">> => map(),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_attached_to_service_metadata() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"serviceArn">> => string()
+%% }
+-type policy_attached_to_service_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_deleted_metadata() :: #{
+%%   <<"affectedServiceCount">> => [integer()]
+%% }
+-type policy_deleted_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_detached_from_service_metadata() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"serviceArn">> => string()
+%% }
+-type policy_detached_from_service_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_event() :: #{
+%%   <<"actor">> => event_actor(),
+%%   <<"eventDetails">> => policy_event_details(),
+%%   <<"eventId">> => string(),
+%%   <<"eventType">> => list(any()),
+%%   <<"policyArn">> => string(),
+%%   <<"timestamp">> => [non_neg_integer()]
+%% }
+-type policy_event() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_event_details() :: #{
+%%   <<"description">> => [string()],
+%%   <<"eventMetadata">> => list(),
+%%   <<"title">> => [string()]
+%% }
+-type policy_event_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% policy_sharing_revoked_metadata() :: #{
+%%   <<"affectedServiceCount">> => [integer()]
+%% }
+-type policy_sharing_revoked_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1524,7 +1634,9 @@
 %%   <<"multiAz">> => multi_az_targets(),
 %%   <<"multiRegion">> => multi_region_targets(),
 %%   <<"name">> => string(),
+%%   <<"organizationId">> => string(),
 %%   <<"policyArn">> => string(),
+%%   <<"sharingEnabled">> => [boolean()],
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type policy_summary() :: #{binary() => any()}.
@@ -1771,7 +1883,9 @@
 %% Example:
 %% service_policy_associated_metadata() :: #{
 %%   <<"policyArn">> => string(),
-%%   <<"policyName">> => [string()]
+%%   <<"policyName">> => [string()],
+%%   <<"policyOwnerAccountId">> => [string()],
+%%   <<"policySource">> => list(any())
 %% }
 -type service_policy_associated_metadata() :: #{binary() => any()}.
 
@@ -1779,7 +1893,10 @@
 %% Example:
 %% service_policy_disassociated_metadata() :: #{
 %%   <<"policyArn">> => string(),
-%%   <<"policyName">> => [string()]
+%%   <<"policyName">> => [string()],
+%%   <<"policyOwnerAccountId">> => [string()],
+%%   <<"policySource">> => list(any()),
+%%   <<"reason">> => list(any())
 %% }
 -type service_policy_disassociated_metadata() :: #{binary() => any()}.
 
@@ -1905,6 +2022,21 @@
 %%   <<"value">> => [float()]
 %% }
 -type slo_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_dependency_insights_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"serviceArn">> := string()
+%% }
+-type start_dependency_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_dependency_insights_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type start_dependency_insights_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2418,7 +2550,8 @@
 %%   <<"description">> => string(),
 %%   <<"multiAz">> => multi_az_targets(),
 %%   <<"multiRegion">> => multi_region_targets(),
-%%   <<"policyArn">> := string()
+%%   <<"policyArn">> := string(),
+%%   <<"sharingEnabled">> => [boolean()]
 %% }
 -type update_policy_request() :: #{binary() => any()}.
 
@@ -2714,6 +2847,13 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type get_dependency_insights_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_failure_mode_finding_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
@@ -2808,6 +2948,12 @@
 
 -type list_policies_errors() ::
     validation_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_policy_events_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -2926,6 +3072,14 @@
 -type put_test_sources_errors() ::
     validation_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type start_dependency_insights_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -3724,6 +3878,54 @@ delete_user_journey(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the dependency insights generated for a service.
+%%
+%% The response reports the current generation status; insights are populated
+%% once generation has completed. If generation failed, the response includes
+%% an error code, whose possible values are listed under the response's
+%% errorCode field, and a message describing the cause. To use this
+%% operation, you must have the `resiliencehub:GetDependencyInsights'
+%% permission on the service.
+-spec get_dependency_insights(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_dependency_insights_response(), tuple()} |
+    {error, any()} |
+    {error, get_dependency_insights_errors(), tuple()}.
+get_dependency_insights(Client, ServiceArn)
+  when is_map(Client) ->
+    get_dependency_insights(Client, ServiceArn, #{}, #{}).
+
+-spec get_dependency_insights(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_dependency_insights_response(), tuple()} |
+    {error, any()} |
+    {error, get_dependency_insights_errors(), tuple()}.
+get_dependency_insights(Client, ServiceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dependency_insights(Client, ServiceArn, QueryMap, HeadersMap, []).
+
+-spec get_dependency_insights(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_dependency_insights_response(), tuple()} |
+    {error, any()} |
+    {error, get_dependency_insights_errors(), tuple()}.
+get_dependency_insights(Client, ServiceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/get-dependency-insights"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"serviceArn">>, ServiceArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a finding by findingId.
 -spec get_failure_mode_finding(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_failure_mode_finding_response(), tuple()} |
@@ -4391,8 +4593,57 @@ list_policies(Client, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"accountId">>, maps:get(<<"accountId">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists events for a resilience policy, including services that started
+%% or stopped using it, changes to cross-account sharing, and deletion of the
+%% policy.
+-spec list_policy_events(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_policy_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_events_errors(), tuple()}.
+list_policy_events(Client, PolicyArn)
+  when is_map(Client) ->
+    list_policy_events(Client, PolicyArn, #{}, #{}).
+
+-spec list_policy_events(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_policy_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_events_errors(), tuple()}.
+list_policy_events(Client, PolicyArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_policy_events(Client, PolicyArn, QueryMap, HeadersMap, []).
+
+-spec list_policy_events(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_policy_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_policy_events_errors(), tuple()}.
+list_policy_events(Client, PolicyArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/list-policy-events"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"endTime">>, maps:get(<<"endTime">>, QueryMap, undefined)},
+        {<<"eventTypes">>, maps:get(<<"eventTypes">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"policyArn">>, PolicyArn},
+        {<<"startTime">>, maps:get(<<"startTime">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -5259,6 +5510,45 @@ put_test_sources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v2/put-test-sources"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts generating dependency insights for a service.
+%%
+%% Generation runs asynchronously; the response returns the initial status,
+%% and you retrieve the results with GetDependencyInsights. To use this
+%% operation, you must have the `resiliencehub:StartDependencyInsights'
+%% permission on the service.
+-spec start_dependency_insights(aws_client:aws_client(), start_dependency_insights_request()) ->
+    {ok, start_dependency_insights_response(), tuple()} |
+    {error, any()} |
+    {error, start_dependency_insights_errors(), tuple()}.
+start_dependency_insights(Client, Input) ->
+    start_dependency_insights(Client, Input, []).
+
+-spec start_dependency_insights(aws_client:aws_client(), start_dependency_insights_request(), proplists:proplist()) ->
+    {ok, start_dependency_insights_response(), tuple()} |
+    {error, any()} |
+    {error, start_dependency_insights_errors(), tuple()}.
+start_dependency_insights(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/start-dependency-insights"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
