@@ -1241,6 +1241,7 @@
 %%   <<"AdvancedConfiguration">> => advanced_configuration(),
 %%   <<"CellTowers">> => cell_towers(),
 %%   <<"Gnss">> => gnss(),
+%%   <<"GnssMultiFrame">> => gnss_multi_frame(),
 %%   <<"Ip">> => ip(),
 %%   <<"Timestamp">> => non_neg_integer(),
 %%   <<"WiFiAccessPoints">> => list(wi_fi_access_point())
@@ -1514,6 +1515,25 @@
 %%   <<"Use2DSolver">> => boolean()
 %% }
 -type gnss() :: #{binary() => any()}.
+
+
+%% Example:
+%% gnss_capture() :: #{
+%%   <<"CaptureTime">> => float(),
+%%   <<"Payload">> => string()
+%% }
+-type gnss_capture() :: #{binary() => any()}.
+
+
+%% Example:
+%% gnss_multi_frame() :: #{
+%%   <<"AssistAltitude">> => float(),
+%%   <<"AssistPosition">> => list(float()),
+%%   <<"CaptureTimeAccuracy">> => float(),
+%%   <<"Captures">> => list(gnss_capture()),
+%%   <<"Use2DSolver">> => boolean()
+%% }
+-type gnss_multi_frame() :: #{binary() => any()}.
 
 
 %% Example:

@@ -586,6 +586,15 @@
 
 
 %% Example:
+%% bedrock_guardrail_resource() :: #{
+%%   <<"GuardrailAction">> => list(any()),
+%%   <<"GuardrailSource">> => list(any()),
+%%   <<"Version">> => string()
+%% }
+-type bedrock_guardrail_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% block_public_access() :: #{
 %%   <<"BlockPublicAcls">> => boolean(),
 %%   <<"BlockPublicPolicy">> => boolean(),
@@ -3434,6 +3443,7 @@
 %% resource_data() :: #{
 %%   <<"AccessKey">> => access_key(),
 %%   <<"AutoscalingAutoScalingGroup">> => autoscaling_auto_scaling_group(),
+%%   <<"BedrockGuardrail">> => bedrock_guardrail_resource(),
 %%   <<"CloudformationStack">> => cloudformation_stack(),
 %%   <<"Container">> => container_finding_resource(),
 %%   <<"Ec2Image">> => ec2_image(),

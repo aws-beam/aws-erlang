@@ -405,6 +405,7 @@
 %% Example:
 %% cloud_watch_filter_config() :: #{
 %%   <<"sessionIds">> => list([string()]()),
+%%   <<"sessionTraceIds">> => list(session_trace_ids()),
 %%   <<"timeRange">> => session_filter_config()
 %% }
 -type cloud_watch_filter_config() :: #{binary() => any()}.
@@ -2802,6 +2803,14 @@
 %%   <<"sessionId">> => string()
 %% }
 -type session_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_trace_ids() :: #{
+%%   <<"sessionId">> => [string()],
+%%   <<"traceIds">> => list(string())
+%% }
+-type session_trace_ids() :: #{binary() => any()}.
 
 
 %% Example:

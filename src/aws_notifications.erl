@@ -123,6 +123,8 @@
          untag_resource/4,
          update_event_rule/3,
          update_event_rule/4,
+         update_managed_notification_channel_association/2,
+         update_managed_notification_channel_association/3,
          update_notification_configuration/3,
          update_notification_configuration/4]).
 
@@ -177,6 +179,7 @@
 
 %% Example:
 %% associate_managed_notification_account_contact_request() :: #{
+%%   <<"isSensitiveEventsSubscribed">> => [boolean()],
 %%   <<"managedNotificationConfigurationArn">> := string()
 %% }
 -type associate_managed_notification_account_contact_request() :: #{binary() => any()}.
@@ -188,6 +191,7 @@
 
 %% Example:
 %% associate_managed_notification_additional_channel_request() :: #{
+%%   <<"isSensitiveEventsSubscribed">> => [boolean()],
 %%   <<"managedNotificationConfigurationArn">> := string()
 %% }
 -type associate_managed_notification_additional_channel_request() :: #{binary() => any()}.
@@ -585,6 +589,7 @@
 %% Example:
 %% list_managed_notification_events_request() :: #{
 %%   <<"endTime">> => [non_neg_integer()],
+%%   <<"includeSensitiveEvents">> => [boolean()],
 %%   <<"locale">> => string(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
@@ -714,7 +719,8 @@
 %% Example:
 %% managed_notification_channel_association_summary() :: #{
 %%   <<"channelIdentifier">> => [string()],
-%%   <<"channelType">> => string(),
+%%   <<"channelType">> => list(any()),
+%%   <<"isSensitiveEventsSubscribed">> => [boolean()],
 %%   <<"overrideOption">> => string()
 %% }
 -type managed_notification_channel_association_summary() :: #{binary() => any()}.
@@ -777,6 +783,7 @@
 %% managed_notification_event() :: #{
 %%   <<"aggregationEventType">> => string(),
 %%   <<"aggregationSummary">> => aggregation_summary(),
+%%   <<"attachments">> => list(notification_event_attachment()),
 %%   <<"endTime">> => [non_neg_integer()],
 %%   <<"eventStatus">> => string(),
 %%   <<"id">> => string(),
@@ -853,6 +860,7 @@
 %%   <<"completeDescription">> => string(),
 %%   <<"dimensions">> => list(dimension()),
 %%   <<"headline">> => string(),
+%%   <<"markupDescription">> => string(),
 %%   <<"paragraphSummary">> => string()
 %% }
 -type message_components() :: #{binary() => any()}.
@@ -876,6 +884,15 @@
 %%   <<"subtype">> => string()
 %% }
 -type notification_configuration_structure() :: #{binary() => any()}.
+
+
+%% Example:
+%% notification_event_attachment() :: #{
+%%   <<"attachmentDownloadUrl">> => string(),
+%%   <<"contentType">> => string(),
+%%   <<"displayName">> => string()
+%% }
+-type notification_event_attachment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1094,6 +1111,19 @@
 %%   <<"statusSummaryByRegion">> => map()
 %% }
 -type update_event_rule_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_managed_notification_channel_association_request() :: #{
+%%   <<"channelIdentifier">> := string(),
+%%   <<"isSensitiveEventsSubscribed">> => [boolean()],
+%%   <<"managedNotificationConfigurationArn">> := string()
+%% }
+-type update_managed_notification_channel_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_managed_notification_channel_association_response() :: #{}
+-type update_managed_notification_channel_association_response() :: #{}.
 
 
 %% Example:
@@ -1408,6 +1438,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type update_managed_notification_channel_association_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_notification_configuration_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1704,14 +1742,12 @@ delete_notification_configuration(Client, Arn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deregisters a `NotificationConfiguration' in the specified
-%% Region.
+%% @doc Deregisters a `NotificationHub' in the specified Region.
 %%
 %% You can't deregister the last `NotificationHub' in the account.
-%% `NotificationEvents' stored in the deregistered
-%% `NotificationConfiguration' are no longer be visible. Recreating a new
-%% `NotificationConfiguration' in the same Region restores access to
-%% those `NotificationEvents'.
+%% `NotificationEvents' stored in the deregistered `NotificationHub'
+%% are no longer visible. Recreating a new `NotificationHub' in the same
+%% Region restores access to those `NotificationEvents'.
 -spec deregister_notification_hub(aws_client:aws_client(), binary() | list(), deregister_notification_hub_request()) ->
     {ok, deregister_notification_hub_response(), tuple()} |
     {error, any()} |
@@ -2507,6 +2543,7 @@ list_managed_notification_events(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"endTime">>, maps:get(<<"endTime">>, QueryMap, undefined)},
+        {<<"includeSensitiveEvents">>, maps:get(<<"includeSensitiveEvents">>, QueryMap, undefined)},
         {<<"locale">>, maps:get(<<"locale">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
@@ -2803,10 +2840,10 @@ list_tags_for_resource(Client, Arn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Registers a `NotificationConfiguration' in the specified Region.
+%% @doc Registers a `NotificationHub' in the specified Region.
 %%
-%% There is a maximum of one `NotificationConfiguration' per Region. You
-%% can have a maximum of 3 `NotificationHub' resources at a time.
+%% There is a maximum of one `NotificationHub' per Region. You can have a
+%% maximum of 3 `NotificationHub' resources at a time.
 -spec register_notification_hub(aws_client:aws_client(), register_notification_hub_request()) ->
     {ok, register_notification_hub_response(), tuple()} |
     {error, any()} |
@@ -2934,6 +2971,41 @@ update_event_rule(Client, Arn, Input) ->
 update_event_rule(Client, Arn, Input0, Options0) ->
     Method = put,
     Path = ["/event-rules/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the `isSensitiveEventsSubscribed' property of a
+%% particular ManagedNotification channel association.
+-spec update_managed_notification_channel_association(aws_client:aws_client(), update_managed_notification_channel_association_request()) ->
+    {ok, update_managed_notification_channel_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_managed_notification_channel_association_errors(), tuple()}.
+update_managed_notification_channel_association(Client, Input) ->
+    update_managed_notification_channel_association(Client, Input, []).
+
+-spec update_managed_notification_channel_association(aws_client:aws_client(), update_managed_notification_channel_association_request(), proplists:proplist()) ->
+    {ok, update_managed_notification_channel_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_managed_notification_channel_association_errors(), tuple()}.
+update_managed_notification_channel_association(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/channels/update-managed-notification-channel-association"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -235,6 +235,13 @@
 
 
 %% Example:
+%% cidr_resource() :: #{
+%%   <<"cidrRanges">> => list(string())
+%% }
+-type cidr_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"message">> => [string()],
 %%   <<"resourceId">> => [string()],
@@ -1395,6 +1402,14 @@
 
 
 %% Example:
+%% payer_responsibility_entry() :: #{
+%%   <<"payerResponsibilityType">> => list(any()),
+%%   <<"scope">> => list(any())
+%% }
+-type payer_responsibility_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_auth_policy_request() :: #{
 %%   <<"policy">> := string()
 %% }
@@ -1460,6 +1475,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"id">> => string(),
+%%   <<"payerResponsibility">> => list(payer_responsibility_entry()),
 %%   <<"resourceConfigurationArn">> => string(),
 %%   <<"resourceConfigurationId">> => string(),
 %%   <<"resourceConfigurationName">> => string(),

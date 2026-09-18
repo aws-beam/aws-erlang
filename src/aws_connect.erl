@@ -8866,7 +8866,7 @@
 %% Example:
 %% replicate_instance_request() :: #{
 %%   <<"ClientToken">> => string(),
-%%   <<"ReplicaAlias">> := string(),
+%%   <<"ReplicaAlias">> => string(),
 %%   <<"ReplicaRegion">> := string()
 %% }
 -type replicate_instance_request() :: #{binary() => any()}.

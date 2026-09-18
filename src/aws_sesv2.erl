@@ -2087,7 +2087,8 @@
 %%   <<"Isp">> => list(string()),
 %%   <<"LastDeliveryEvent">> => list(list(any())()),
 %%   <<"LastEngagementEvent">> => list(list(any())()),
-%%   <<"Subject">> => list(string())
+%%   <<"Subject">> => list(string()),
+%%   <<"TenantName">> => list(string())
 %% }
 -type message_insights_filters() :: #{binary() => any()}.
 

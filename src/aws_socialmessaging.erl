@@ -92,6 +92,8 @@
          get_whats_app_business_public_key/2,
          get_whats_app_business_public_key/4,
          get_whats_app_business_public_key/5,
+         get_whats_app_call_permission/2,
+         get_whats_app_call_permission/3,
          get_whats_app_flow/3,
          get_whats_app_flow/5,
          get_whats_app_flow/6,
@@ -128,6 +130,8 @@
          put_whats_app_business_account_event_destinations/3,
          put_whats_app_business_public_key/2,
          put_whats_app_business_public_key/3,
+         send_whats_app_call_event/2,
+         send_whats_app_call_event/3,
          send_whats_app_conversion_event/2,
          send_whats_app_conversion_event/3,
          send_whats_app_message/2,
@@ -136,6 +140,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_linked_whats_app_business_account_phone_number/2,
+         update_linked_whats_app_business_account_phone_number/3,
          update_whats_app_flow/2,
          update_whats_app_flow/3,
          update_whats_app_flow_assets/2,
@@ -176,6 +182,13 @@
 %%   <<"statusCode">> => [integer()]
 %% }
 -type associate_whats_app_business_account_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type conflict_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -356,6 +369,7 @@
 
 %% Example:
 %% get_linked_whats_app_business_account_phone_number_output() :: #{
+%%   <<"callSettings">> => whats_app_call_settings(),
 %%   <<"linkedWhatsAppBusinessAccountId">> => string(),
 %%   <<"phoneNumber">> => whats_app_phone_number_detail()
 %% }
@@ -375,6 +389,23 @@
 %%   <<"businessPublicKeySignatureStatus">> => string()
 %% }
 -type get_whats_app_business_public_key_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_call_permission_input() :: #{
+%%   <<"destinationPhoneNumber">> => string(),
+%%   <<"endUserBsuid">> => string(),
+%%   <<"originationPhoneNumberId">> := string()
+%% }
+-type get_whats_app_call_permission_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_whats_app_call_permission_output() :: #{
+%%   <<"actions">> => list(whats_app_call_permission_action()),
+%%   <<"permission">> => whats_app_call_permission()
+%% }
+-type get_whats_app_call_permission_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -826,6 +857,22 @@
 
 
 %% Example:
+%% send_whats_app_call_event_input() :: #{
+%%   <<"callEvent">> := binary(),
+%%   <<"metaApiVersion">> := [string()],
+%%   <<"originationPhoneNumberId">> := string()
+%% }
+-type send_whats_app_call_event_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_whats_app_call_event_output() :: #{
+%%   <<"callId">> => [string()]
+%% }
+-type send_whats_app_call_event_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% send_whats_app_conversion_event_input() :: #{
 %%   <<"datasetId">> := string(),
 %%   <<"eventData">> := binary(),
@@ -915,6 +962,21 @@
 
 
 %% Example:
+%% update_linked_whats_app_business_account_phone_number_input() :: #{
+%%   <<"callSettings">> := whats_app_call_settings(),
+%%   <<"id">> := string()
+%% }
+-type update_linked_whats_app_business_account_phone_number_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_linked_whats_app_business_account_phone_number_output() :: #{
+%%   <<"phoneNumberId">> => string()
+%% }
+-type update_linked_whats_app_business_account_phone_number_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_whats_app_flow_assets_input() :: #{
 %%   <<"flowId">> := string(),
 %%   <<"flowJson">> := binary(),
@@ -999,6 +1061,62 @@
 
 
 %% Example:
+%% whats_app_call_hours() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"holidaySchedule">> => list(whats_app_holiday_schedule_entry()),
+%%   <<"timezone">> => string(),
+%%   <<"weeklyOperatingHours">> => list(whats_app_weekly_operating_hours_entry())
+%% }
+-type whats_app_call_hours() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_call_permission() :: #{
+%%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"status">> => string()
+%% }
+-type whats_app_call_permission() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_call_permission_action() :: #{
+%%   <<"actionName">> => string(),
+%%   <<"canPerformAction">> => [boolean()],
+%%   <<"limits">> => list(whats_app_call_permission_limit())
+%% }
+-type whats_app_call_permission_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_call_permission_limit() :: #{
+%%   <<"currentUsage">> => [integer()],
+%%   <<"limitExpirationTime">> => [non_neg_integer()],
+%%   <<"maxAllowed">> => [integer()],
+%%   <<"timePeriod">> => string()
+%% }
+-type whats_app_call_permission_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_call_settings() :: #{
+%%   <<"callEnabled">> => [boolean()],
+%%   <<"callHours">> => whats_app_call_hours(),
+%%   <<"callIconVisibility">> => string(),
+%%   <<"callbackPermissionStatus">> => string()
+%% }
+-type whats_app_call_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_holiday_schedule_entry() :: #{
+%%   <<"date">> => string(),
+%%   <<"endTime">> => whats_app_time_of_day(),
+%%   <<"startTime">> => whats_app_time_of_day()
+%% }
+-type whats_app_holiday_schedule_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% whats_app_phone_number_detail() :: #{
 %%   <<"arn">> => string(),
 %%   <<"dataLocalizationRegion">> => string(),
@@ -1050,6 +1168,23 @@
 %%   <<"linkedAccountsWithIncompleteSetup">> => map()
 %% }
 -type whats_app_signup_callback_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_time_of_day() :: #{
+%%   <<"hours">> => [integer()],
+%%   <<"minutes">> => [integer()]
+%% }
+-type whats_app_time_of_day() :: #{binary() => any()}.
+
+
+%% Example:
+%% whats_app_weekly_operating_hours_entry() :: #{
+%%   <<"closeTime">> => whats_app_time_of_day(),
+%%   <<"dayOfWeek">> => list(any()),
+%%   <<"openTime">> => whats_app_time_of_day()
+%% }
+-type whats_app_weekly_operating_hours_entry() :: #{binary() => any()}.
 
 -type associate_whats_app_business_account_errors() ::
     throttled_request_exception() | 
@@ -1158,6 +1293,14 @@
     access_denied_exception() | 
     access_denied_by_meta_exception().
 
+-type get_whats_app_call_permission_errors() ::
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameters_exception() | 
+    internal_service_exception() | 
+    dependency_exception() | 
+    access_denied_by_meta_exception().
+
 -type get_whats_app_flow_errors() ::
     throttled_request_exception() | 
     resource_not_found_exception() | 
@@ -1263,6 +1406,15 @@
     access_denied_exception() | 
     access_denied_by_meta_exception().
 
+-type send_whats_app_call_event_errors() ::
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameters_exception() | 
+    internal_service_exception() | 
+    dependency_exception() | 
+    conflict_exception() | 
+    access_denied_by_meta_exception().
+
 -type send_whats_app_conversion_event_errors() ::
     throttled_request_exception() | 
     resource_not_found_exception() | 
@@ -1287,6 +1439,14 @@
     throttled_request_exception() | 
     invalid_parameters_exception() | 
     internal_service_exception().
+
+-type update_linked_whats_app_business_account_phone_number_errors() ::
+    throttled_request_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameters_exception() | 
+    internal_service_exception() | 
+    dependency_exception() | 
+    access_denied_by_meta_exception().
 
 -type update_whats_app_flow_errors() ::
     throttled_request_exception() | 
@@ -1846,6 +2006,45 @@ get_whats_app_business_public_key(Client, OriginationPhoneNumberId, QueryMap, He
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the current calling permission for a WhatsApp end user,
+%% along with the calling actions the business is allowed to take with that
+%% user.
+%%
+%% Provide the destination phone number or the business-scoped user ID to
+%% identify the end user.
+-spec get_whats_app_call_permission(aws_client:aws_client(), get_whats_app_call_permission_input()) ->
+    {ok, get_whats_app_call_permission_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_call_permission_errors(), tuple()}.
+get_whats_app_call_permission(Client, Input) ->
+    get_whats_app_call_permission(Client, Input, []).
+
+-spec get_whats_app_call_permission(aws_client:aws_client(), get_whats_app_call_permission_input(), proplists:proplist()) ->
+    {ok, get_whats_app_call_permission_output(), tuple()} |
+    {error, any()} |
+    {error, get_whats_app_call_permission_errors(), tuple()}.
+get_whats_app_call_permission(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/call/permission/get"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the metadata and status of a WhatsApp Flow, including
 %% validation errors, preview information, and health status.
@@ -2435,6 +2634,45 @@ put_whats_app_business_public_key(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Sends a WhatsApp calling event, such as connecting or terminating a
+%% call, for a business phone number.
+%%
+%% This operation passes the event through to Meta. To use this operation,
+%% the origination phone number must belong to a WhatsApp Business Account
+%% that is linked to your Amazon Web Services account.
+-spec send_whats_app_call_event(aws_client:aws_client(), send_whats_app_call_event_input()) ->
+    {ok, send_whats_app_call_event_output(), tuple()} |
+    {error, any()} |
+    {error, send_whats_app_call_event_errors(), tuple()}.
+send_whats_app_call_event(Client, Input) ->
+    send_whats_app_call_event(Client, Input, []).
+
+-spec send_whats_app_call_event(aws_client:aws_client(), send_whats_app_call_event_input(), proplists:proplist()) ->
+    {ok, send_whats_app_call_event_output(), tuple()} |
+    {error, any()} |
+    {error, send_whats_app_call_event_errors(), tuple()}.
+send_whats_app_call_event(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/whatsapp/call/event"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Sends a conversion event to Meta's Conversions API for the
 %% specified WhatsApp Business Account dataset.
 -spec send_whats_app_conversion_event(aws_client:aws_client(), send_whats_app_conversion_event_input()) ->
@@ -2582,6 +2820,43 @@ untag_resource(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the calling settings for a linked WhatsApp business phone
+%% number, such as whether calling is enabled and the hours during which the
+%% business accepts calls.
+-spec update_linked_whats_app_business_account_phone_number(aws_client:aws_client(), update_linked_whats_app_business_account_phone_number_input()) ->
+    {ok, update_linked_whats_app_business_account_phone_number_output(), tuple()} |
+    {error, any()} |
+    {error, update_linked_whats_app_business_account_phone_number_errors(), tuple()}.
+update_linked_whats_app_business_account_phone_number(Client, Input) ->
+    update_linked_whats_app_business_account_phone_number(Client, Input, []).
+
+-spec update_linked_whats_app_business_account_phone_number(aws_client:aws_client(), update_linked_whats_app_business_account_phone_number_input(), proplists:proplist()) ->
+    {ok, update_linked_whats_app_business_account_phone_number_output(), tuple()} |
+    {error, any()} |
+    {error, update_linked_whats_app_business_account_phone_number_errors(), tuple()}.
+update_linked_whats_app_business_account_phone_number(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/whatsapp/waba/phone"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"id">>, <<"id">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the metadata of a WhatsApp Flow, such as its name or
