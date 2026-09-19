@@ -608,6 +608,9 @@
          list_security_keys/2,
          list_security_keys/4,
          list_security_keys/5,
+         list_security_profile_a_i_agents/3,
+         list_security_profile_a_i_agents/5,
+         list_security_profile_a_i_agents/6,
          list_security_profile_applications/3,
          list_security_profile_applications/5,
          list_security_profile_applications/6,
@@ -946,6 +949,14 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+
+
+%% Example:
+%% a_i_agent() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type a_i_agent() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3126,6 +3137,7 @@
 
 %% Example:
 %% create_security_profile_request() :: #{
+%%   <<"AllowedAIAgents">> => list(a_i_agent()),
 %%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
 %%   <<"AllowedAccessControlTags">> => map(),
 %%   <<"AllowedFlowModules">> => list(flow_module()),
@@ -7307,6 +7319,24 @@
 %%   <<"SecurityKeys">> => list(security_key())
 %% }
 -type list_security_keys_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profile_a_i_agents_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_security_profile_a_i_agents_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_security_profile_a_i_agents_response() :: #{
+%%   <<"AllowedAIAgents">> => list(a_i_agent()),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_security_profile_a_i_agents_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11555,6 +11585,7 @@
 
 %% Example:
 %% update_security_profile_request() :: #{
+%%   <<"AllowedAIAgents">> => list(a_i_agent()),
 %%   <<"AllowedAccessControlHierarchyGroupId">> => string(),
 %%   <<"AllowedAccessControlTags">> => map(),
 %%   <<"AllowedFlowModules">> => list(flow_module()),
@@ -14207,6 +14238,13 @@
     access_denied_exception().
 
 -type list_security_keys_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception().
+
+-type list_security_profile_a_i_agents_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_request_exception() | 
@@ -25674,6 +25712,49 @@ list_security_keys(Client, InstanceId, QueryMap, HeadersMap)
 list_security_keys(Client, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/instance/", aws_util:encode_uri(InstanceId), "/security-keys"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of the allowed AI agents in a specific security
+%% profile.
+-spec list_security_profile_a_i_agents(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_security_profile_a_i_agents_response(), tuple()} |
+    {error, any()} |
+    {error, list_security_profile_a_i_agents_errors(), tuple()}.
+list_security_profile_a_i_agents(Client, InstanceId, SecurityProfileId)
+  when is_map(Client) ->
+    list_security_profile_a_i_agents(Client, InstanceId, SecurityProfileId, #{}, #{}).
+
+-spec list_security_profile_a_i_agents(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_security_profile_a_i_agents_response(), tuple()} |
+    {error, any()} |
+    {error, list_security_profile_a_i_agents_errors(), tuple()}.
+list_security_profile_a_i_agents(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_security_profile_a_i_agents(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, []).
+
+-spec list_security_profile_a_i_agents(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_security_profile_a_i_agents_response(), tuple()} |
+    {error, any()} |
+    {error, list_security_profile_a_i_agents_errors(), tuple()}.
+list_security_profile_a_i_agents(Client, InstanceId, SecurityProfileId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/security-profiles-ai-agents/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(SecurityProfileId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

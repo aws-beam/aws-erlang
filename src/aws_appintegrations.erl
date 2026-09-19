@@ -136,6 +136,14 @@
 
 
 %% Example:
+%% auth_config() :: #{
+%%   <<"AuthType">> => list(any()),
+%%   <<"CredentialProviderIdentifier">> => string()
+%% }
+-type auth_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -154,6 +162,7 @@
 %%   <<"ApplicationConfig">> => application_config(),
 %%   <<"ApplicationSourceConfig">> := application_source_config(),
 %%   <<"ApplicationType">> => list(any()),
+%%   <<"AuthConfig">> => auth_config(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"IframeConfig">> => iframe_config(),
@@ -369,6 +378,7 @@
 %%   <<"ApplicationSourceConfig">> => application_source_config(),
 %%   <<"ApplicationType">> => list(any()),
 %%   <<"Arn">> => string(),
+%%   <<"AuthConfig">> => auth_config(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
@@ -649,6 +659,7 @@
 %%   <<"ApplicationConfig">> => application_config(),
 %%   <<"ApplicationSourceConfig">> => application_source_config(),
 %%   <<"ApplicationType">> => list(any()),
+%%   <<"AuthConfig">> => auth_config(),
 %%   <<"Description">> => string(),
 %%   <<"IframeConfig">> => iframe_config(),
 %%   <<"InitializationTimeout">> => integer(),

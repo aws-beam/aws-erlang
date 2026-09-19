@@ -43698,8 +43698,8 @@ update_security_group_rule_descriptions_ingress(Client, Input, Options)
 %% The operation checks Amazon Virtual Private Cloud (Amazon VPC)
 %% quotas. It checks inbound or outbound rules per security group and
 %% security groups
-%% per network interface. Only authorized AWS services can call this
-%% operation.
+%% per network interface. Only authorized Amazon Web Services services can
+%% call this operation.
 %%
 %% For more information about security group quotas, see Amazon
 %% VPC quotas:

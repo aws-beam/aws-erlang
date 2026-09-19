@@ -102,6 +102,8 @@
          untag_resource/3,
          update_call_analytics_category/2,
          update_call_analytics_category/3,
+         update_language_model/2,
+         update_language_model/3,
          update_medical_vocabulary/2,
          update_medical_vocabulary/3,
          update_vocabulary/2,
@@ -244,6 +246,7 @@
 %% Example:
 %% create_language_model_request() :: #{
 %%   <<"BaseModelName">> := list(any()),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"InputDataConfig">> := input_data_config(),
 %%   <<"LanguageCode">> := list(any()),
 %%   <<"Tags">> => list(tag())
@@ -281,6 +284,7 @@
 %% Example:
 %% create_vocabulary_filter_request() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"LanguageCode">> := list(any()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VocabularyFilterFileUri">> => string(),
@@ -299,6 +303,7 @@
 %% Example:
 %% create_vocabulary_request() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"LanguageCode">> := list(any()),
 %%   <<"Phrases">> => list(string()),
 %%   <<"Tags">> => list(tag()),
@@ -395,6 +400,13 @@
 -type describe_language_model_response() :: #{binary() => any()}.
 
 %% Example:
+%% encryption_configuration() :: #{
+%%   <<"KMSEncryptionContext">> => map(),
+%%   <<"KMSKey">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% get_call_analytics_category_request() :: #{
 
 %% }
@@ -479,7 +491,9 @@
 
 %% Example:
 %% get_vocabulary_filter_response() :: #{
+%%   <<"DataAccessRoleArn">> => string(),
 %%   <<"DownloadUri">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"VocabularyFilterName">> => string()
@@ -494,7 +508,9 @@
 
 %% Example:
 %% get_vocabulary_response() :: #{
+%%   <<"DataAccessRoleArn">> => string(),
 %%   <<"DownloadUri">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"FailureReason">> => string(),
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
@@ -553,6 +569,7 @@
 %% language_model() :: #{
 %%   <<"BaseModelName">> => list(any()),
 %%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"FailureReason">> => string(),
 %%   <<"InputDataConfig">> => input_data_config(),
 %%   <<"LanguageCode">> => list(any()),
@@ -1143,6 +1160,21 @@
 -type update_call_analytics_category_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_language_model_request() :: #{
+%%   <<"DataAccessRoleArn">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration()
+%% }
+-type update_language_model_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_language_model_response() :: #{
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ModelName">> => string(),
+%%   <<"ModelStatus">> => list(any())
+%% }
+-type update_language_model_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_medical_vocabulary_request() :: #{
 %%   <<"LanguageCode">> := list(any()),
 %%   <<"VocabularyFileUri">> := string()
@@ -1161,6 +1193,7 @@
 %% Example:
 %% update_vocabulary_filter_request() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"VocabularyFilterFileUri">> => string(),
 %%   <<"Words">> => list(string())
 %% }
@@ -1177,6 +1210,7 @@
 %% Example:
 %% update_vocabulary_request() :: #{
 %%   <<"DataAccessRoleArn">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"LanguageCode">> := list(any()),
 %%   <<"Phrases">> => list(string()),
 %%   <<"VocabularyFileUri">> => string()
@@ -1438,6 +1472,13 @@
     conflict_exception() | 
     bad_request_exception().
 
+-type update_language_model_errors() ::
+    not_found_exception() | 
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
 -type update_medical_vocabulary_errors() ::
     not_found_exception() | 
     limit_exceeded_exception() | 
@@ -1456,6 +1497,7 @@
     not_found_exception() | 
     limit_exceeded_exception() | 
     internal_failure_exception() | 
+    conflict_exception() | 
     bad_request_exception().
 
 %%====================================================================
@@ -2635,6 +2677,40 @@ update_call_analytics_category(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCallAnalyticsCategory">>, Input, Options).
 
+%% @doc Updates the encryption configuration for an existing custom language
+%% model.
+%%
+%% You can
+%% use this operation to change the KMS key used to encrypt your model
+%% artifacts. The model
+%% artifacts are re-encrypted in place. No model training is required.
+%%
+%% Your custom language model must not be in the `IN_PROGRESS' state when
+%% you
+%% call this operation. You cannot submit another update while a previous
+%% update is in
+%% progress. Use to check the current state of
+%% your model.
+%%
+%% Your custom language model remains available for transcription jobs while
+%% the update
+%% is being processed.
+-spec update_language_model(aws_client:aws_client(), update_language_model_request()) ->
+    {ok, update_language_model_response(), tuple()} |
+    {error, any()} |
+    {error, update_language_model_errors(), tuple()}.
+update_language_model(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_language_model(Client, Input, []).
+
+-spec update_language_model(aws_client:aws_client(), update_language_model_request(), proplists:proplist()) ->
+    {ok, update_language_model_response(), tuple()} |
+    {error, any()} |
+    {error, update_language_model_errors(), tuple()}.
+update_language_model(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateLanguageModel">>, Input, Options).
+
 %% @doc Updates an existing custom medical vocabulary with new values.
 %%
 %% This operation
@@ -2663,6 +2739,10 @@ update_medical_vocabulary(Client, Input, Options)
 %% existing information with your new values; you cannot append new terms
 %% onto an existing
 %% custom vocabulary.
+%%
+%% Your custom vocabulary must be in a terminal state (`READY' or
+%% `FAILED') before you can update it. You must include either
+%% `Phrases' or `VocabularyFileUri' in your request.
 -spec update_vocabulary(aws_client:aws_client(), update_vocabulary_request()) ->
     {ok, update_vocabulary_response(), tuple()} |
     {error, any()} |
@@ -2686,6 +2766,9 @@ update_vocabulary(Client, Input, Options)
 %% you provide overwrites all previous entries; you cannot append new terms
 %% onto an
 %% existing custom vocabulary filter.
+%%
+%% You must include either `Words' or `VocabularyFilterFileUri'
+%% in your request.
 -spec update_vocabulary_filter(aws_client:aws_client(), update_vocabulary_filter_request()) ->
     {ok, update_vocabulary_filter_response(), tuple()} |
     {error, any()} |

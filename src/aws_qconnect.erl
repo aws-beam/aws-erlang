@@ -16,9 +16,9 @@
 %% safety, security, and the responsible use of artificial intelligence (AI).
 %%
 %% Amazon Q in Connect is a generative AI customer service assistant. It is
-%% an LLM-enhanced evolution of Amazon Connect Wisdom that delivers real-time
-%% recommendations to help contact center agents resolve customer issues
-%% quickly and accurately.
+%% an LLM-enhanced evolution of Connect Customer Wisdom that delivers
+%% real-time recommendations to help contact center agents resolve customer
+%% issues quickly and accurately.
 %%
 %% Amazon Q in Connect automatically detects customer intent during calls and
 %% chats using conversational analytics and natural language understanding
@@ -33,7 +33,7 @@
 %% For more information, see Use Amazon Q in Connect for generative AI
 %% powered agent assistance in real-time:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-q-connect.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -module(aws_qconnect).
 
 -export([activate_message_template/4,
@@ -1198,6 +1198,14 @@
 %% }
 -type deactivate_message_template_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% delegate_agent_configuration() :: #{
+%%   <<"agentTarget">> => list(),
+%%   <<"instruction">> => multi_agent_instruction()
+%% }
+-type delegate_agent_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% delete_a_i_agent_request() :: #{}
 -type delete_a_i_agent_request() :: #{}.
@@ -1781,6 +1789,16 @@
 %%   <<"text">> => string()
 %% }
 -type guardrail_word_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% handoff_agent_configuration() :: #{
+%%   <<"agentTarget">> => list(),
+%%   <<"audioStreamingEnabled">> => [boolean()],
+%%   <<"immediateHandoff">> => [boolean()],
+%%   <<"instruction">> => multi_agent_instruction()
+%% }
+-type handoff_agent_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2410,6 +2428,14 @@
 
 
 %% Example:
+%% multi_agent_instruction() :: #{
+%%   <<"examples">> => list([string()]()),
+%%   <<"instruction">> => [string()]
+%% }
+-type multi_agent_instruction() :: #{binary() => any()}.
+
+
+%% Example:
 %% note_taking_a_i_agent_configuration() :: #{
 %%   <<"locale">> => string(),
 %%   <<"noteTakingAIGuardrailId">> => string(),
@@ -2459,9 +2485,12 @@
 %% Example:
 %% orchestration_a_i_agent_configuration() :: #{
 %%   <<"connectInstanceArn">> => string(),
+%%   <<"inputSchemas">> => list(any()),
 %%   <<"locale">> => string(),
+%%   <<"multiAgentConfigurations">> => list(list()),
 %%   <<"orchestrationAIGuardrailId">> => string(),
 %%   <<"orchestrationAIPromptId">> => string(),
+%%   <<"outputSchemas">> => list(any()),
 %%   <<"toolConfigurations">> => list(tool_configuration())
 %% }
 -type orchestration_a_i_agent_configuration() :: #{binary() => any()}.
@@ -3134,6 +3163,7 @@
 %%   <<"initialContactId">> => string(),
 %%   <<"inputMessages">> => list(span_message()),
 %%   <<"instanceArn">> => string(),
+%%   <<"interactionMode">> => string(),
 %%   <<"operationName">> => string(),
 %%   <<"outputMessages">> => list(span_message()),
 %%   <<"promptArn">> => string(),
@@ -3146,8 +3176,10 @@
 %%   <<"requestModel">> => string(),
 %%   <<"responseFinishReasons">> => list(string()),
 %%   <<"responseModel">> => string(),
+%%   <<"returnReason">> => string(),
 %%   <<"sessionName">> => string(),
 %%   <<"systemInstructions">> => list(list()),
+%%   <<"targetAgentId">> => string(),
 %%   <<"temperature">> => [float()],
 %%   <<"timeToFirstTokenMs">> => [integer()],
 %%   <<"topP">> => [float()],
@@ -4727,7 +4759,7 @@ create_content(Client, KnowledgeBaseId, Input0, Options0) ->
 %% For more information, see Integrate Amazon Q in Connect with step-by-step
 %% guides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec create_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), create_content_association_request()) ->
     {ok, create_content_association_response(), tuple()} |
     {error, any()} |
@@ -4980,8 +5012,8 @@ create_quick_response(Client, KnowledgeBaseId, Input0, Options0) ->
 %% @doc Creates a session.
 %%
 %% A session is a contextual container used for generating recommendations.
-%% Amazon Connect creates a new Amazon Q in Connect session for each contact
-%% on which Amazon Q in Connect is enabled.
+%% Connect Customer creates a new Amazon Q in Connect session for each
+%% contact on which Amazon Q in Connect is enabled.
 -spec create_session(aws_client:aws_client(), binary() | list(), create_session_request()) ->
     {ok, create_session_response(), tuple()} |
     {error, any()} |
@@ -5364,7 +5396,7 @@ delete_content(Client, ContentId, KnowledgeBaseId, Input0, Options0) ->
 %% For more information about content associations--what they are and when
 %% they are used--see Integrate Amazon Q in Connect with step-by-step guides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec delete_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_content_association_request()) ->
     {ok, delete_content_association_response(), tuple()} |
     {error, any()} |
@@ -5817,7 +5849,7 @@ get_content(Client, ContentId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
 %% For more information about content associations--what they are and when
 %% they are used--see Integrate Amazon Q in Connect with step-by-step guides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec get_content_association(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, get_content_association_response(), tuple()} |
     {error, any()} |
@@ -6089,7 +6121,7 @@ get_quick_response(Client, KnowledgeBaseId, QuickResponseId, QueryMap, HeadersMa
 %% @doc This API will be discontinued starting June 1, 2024.
 %%
 %% To receive generative responses after March 1, 2024, you will need to
-%% create a new Assistant in the Amazon Connect console and integrate the
+%% create a new Assistant in the Connect Customer console and integrate the
 %% Amazon Q in Connect JavaScript library (amazon-q-connectjs) into your
 %% applications.
 %%
@@ -6528,7 +6560,7 @@ list_assistants(Client, QueryMap, HeadersMap, Options0)
 %% For more information about content associations--what they are and when
 %% they are used--see Integrate Amazon Q in Connect with step-by-step guides:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/integrate-q-with-guides.html
-%% in the Amazon Connect Administrator Guide.
+%% in the Connect Customer Administrator Guide.
 -spec list_content_associations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, list_content_associations_response(), tuple()} |
     {error, any()} |
@@ -7076,7 +7108,7 @@ put_feedback(Client, AssistantId, Input0, Options0) ->
 %% @doc This API will be discontinued starting June 1, 2024.
 %%
 %% To receive generative responses after March 1, 2024, you will need to
-%% create a new Assistant in the Amazon Connect console and integrate the
+%% create a new Assistant in the Connect Customer console and integrate the
 %% Amazon Q in Connect JavaScript library (amazon-q-connectjs) into your
 %% applications.
 %%
@@ -7928,7 +7960,7 @@ update_quick_response(Client, KnowledgeBaseId, QuickResponseId, Input0, Options0
 %% @doc Updates a session.
 %%
 %% A session is a contextual container used for generating recommendations.
-%% Amazon Connect updates the existing Amazon Q in Connect session for each
+%% Connect Customer updates the existing Amazon Q in Connect session for each
 %% contact on which Amazon Q in Connect is enabled.
 -spec update_session(aws_client:aws_client(), binary() | list(), binary() | list(), update_session_request()) ->
     {ok, update_session_response(), tuple()} |

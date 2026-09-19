@@ -2,11 +2,10 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc The Amazon Interactive Video Service (IVS) real-time API is REST
-%% compatible, using a standard HTTP
-%% API and an AWS EventBridge event stream for responses.
+%% compatible, using a standard HTTP API and an AWS EventBridge event stream
+%% for responses.
 %%
-%% JSON is used for both requests and responses,
-%% including errors.
+%% JSON is used for both requests and responses, including errors.
 %%
 %% Key Concepts
 %%
@@ -18,27 +17,23 @@
 %%
 %% Participant object — Represents participants (people) in the stage and
 %% contains information about them. When a token is created, it includes a
-%% participant ID;
-%% when a participant uses that token to join a stage, the participant is
-%% associated with
-%% that participant ID. There is a 1:1 mapping between participant tokens and
-%% participants.
+%% participant ID; when a participant uses that token to join a stage, the
+%% participant is associated with that participant ID. There is a 1:1 mapping
+%% between participant tokens and participants.
 %%
 %% For server-side composition:
 %%
-%% Composition process — Composites participants
-%% of a stage into a single video and forwards it to a set of outputs (e.g.,
-%% IVS channels).
+%% Composition process — Composites participants of a stage into a single
+%% video and forwards it to a set of outputs (e.g., IVS channels).
 %% Composition operations support this process.
 %%
-%% Composition — Controls the look of the outputs,
-%% including how participants are positioned in the video.
+%% Composition — Controls the look of the outputs, including how participants
+%% are positioned in the video.
 %%
 %% For participant replication:
 %%
 %% Source stage — The stage where the participant originally joined, which is
-%% used as the source for
-%% replication.
+%% used as the source for replication.
 %%
 %% Destination stage — The stage to which the participant is replicated.
 %%
@@ -46,8 +41,7 @@
 %% one or more destination stages.
 %%
 %% Replica participant — A participant in a destination stage that is
-%% replicated from another stage
-%% (the source stage).
+%% replicated from another stage (the source stage).
 %%
 %% For more information about your IVS live stream, also see Getting Started
 %% with Amazon IVS Real-Time Streaming:
@@ -56,26 +50,23 @@
 %% Tagging
 %%
 %% A tag is a metadata label that you assign to an AWS resource. A tag
-%% comprises a key and a value, both set by you. For
-%% example, you might set a tag as `topic:nature' to label a particular
-%% video
-%% category. See Best practices and strategies:
+%% comprises a key and a value, both set by you. For example, you might set a
+%% tag as `topic:nature' to label a particular video category. See Best
+%% practices and strategies:
 %% https://docs.aws.amazon.com/tag-editor/latest/userguide/best-practices-and-strats.html
 %% in Tagging AWS Resources and Tag Editor for details, including
-%% restrictions that apply to tags and &quot;Tag naming
-%% limits and requirements&quot;; Amazon IVS stages has no service-specific
-%% constraints beyond what is documented there.
+%% restrictions that apply to tags and &quot;Tag naming limits and
+%% requirements&quot;; Amazon IVS stages has no service-specific constraints
+%% beyond what is documented there.
 %%
 %% Tags can help you identify and organize your AWS resources. For example,
-%% you can use the
-%% same tag for different resources to indicate that they are related. You
-%% can also use tags to
-%% manage access (see Access Tags:
+%% you can use the same tag for different resources to indicate that they are
+%% related. You can also use tags to manage access (see Access Tags:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html).
 %%
 %% The Amazon IVS real-time API has these tag-related operations:
-%% `TagResource', `UntagResource', and
-%% `ListTagsForResource'. The following resource supports tagging: Stage.
+%% `TagResource', `UntagResource', and `ListTagsForResource'. The
+%% following resource supports tagging: Stage.
 %%
 %% At most 50 tags can be applied to a resource.
 -module(aws_ivs_realtime).
@@ -288,7 +279,14 @@
 
 %% Example:
 %% create_ingest_configuration_response() :: #{
-%%   <<"ingestConfiguration">> => ingest_configuration()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"ingestConfiguration">> => ingest_configuration(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type create_ingest_configuration_response() :: #{binary() => any()}.
 
@@ -1279,7 +1277,14 @@
 
 %% Example:
 %% update_ingest_configuration_response() :: #{
-%%   <<"ingestConfiguration">> => ingest_configuration()
+%%   <<"accessControlAllowOrigin">> => string(),
+%%   <<"accessControlExposeHeaders">> => string(),
+%%   <<"cacheControl">> => string(),
+%%   <<"contentSecurityPolicy">> => string(),
+%%   <<"ingestConfiguration">> => ingest_configuration(),
+%%   <<"strictTransportSecurity">> => string(),
+%%   <<"xContentTypeOptions">> => string(),
+%%   <<"xFrameOptions">> => string()
 %% }
 -type update_ingest_configuration_response() :: #{binary() => any()}.
 
@@ -1643,14 +1648,34 @@ create_ingest_configuration(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Access-Control-Allow-Origin">>, <<"accessControlAllowOrigin">>},
+            {<<"Access-Control-Expose-Headers">>, <<"accessControlExposeHeaders">>},
+            {<<"Cache-Control">>, <<"cacheControl">>},
+            {<<"Content-Security-Policy">>, <<"contentSecurityPolicy">>},
+            {<<"Strict-Transport-Security">>, <<"strictTransportSecurity">>},
+            {<<"X-Content-Type-Options">>, <<"xContentTypeOptions">>},
+            {<<"X-Frame-Options">>, <<"xFrameOptions">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Creates an additional token for a specified stage.
 %%
-%% This can be done after stage creation
-%% or when tokens expire. Tokens always are scoped to the stage for which
-%% they are
-%% created.
+%% This can be done after stage creation or when tokens expire. Tokens always
+%% are scoped to the stage for which they are created.
 %%
 %% Encryption keys are owned by Amazon IVS and never used directly by your
 %% application.
@@ -1725,9 +1750,8 @@ create_stage(Client, Input0, Options0) ->
 %% Amazon S3.
 %%
 %% When a StorageConfiguration is created, IVS will modify the S3
-%% bucketPolicy of the provided bucket.
-%% This will ensure that IVS has sufficient permissions to write content to
-%% the provided bucket.
+%% bucketPolicy of the provided bucket. This will ensure that IVS has
+%% sufficient permissions to write content to the provided bucket.
 -spec create_storage_configuration(aws_client:aws_client(), create_storage_configuration_request()) ->
     {ok, create_storage_configuration_response(), tuple()} |
     {error, any()} |
@@ -1763,8 +1787,8 @@ create_storage_configuration(Client, Input0, Options0) ->
 
 %% @doc Deletes an EncoderConfiguration resource.
 %%
-%% Ensures that no Compositions are using this
-%% template; otherwise, returns an error.
+%% Ensures that no Compositions are using this template; otherwise, returns
+%% an error.
 -spec delete_encoder_configuration(aws_client:aws_client(), delete_encoder_configuration_request()) ->
     {ok, delete_encoder_configuration_response(), tuple()} |
     {error, any()} |
@@ -1877,10 +1901,9 @@ delete_public_key(Client, Input0, Options0) ->
 %% @doc Shuts down and deletes the specified stage (disconnecting all
 %% participants).
 %%
-%% This operation also
-%% removes the `stageArn' from the associated `IngestConfiguration',
-%% if there are participants
-%% using the IngestConfiguration to publish to the stage.
+%% This operation also removes the `stageArn' from the associated
+%% `IngestConfiguration', if there are participants using the
+%% IngestConfiguration to publish to the stage.
 -spec delete_stage(aws_client:aws_client(), delete_stage_request()) ->
     {ok, delete_stage_response(), tuple()} |
     {error, any()} |
@@ -1917,11 +1940,10 @@ delete_stage(Client, Input0, Options0) ->
 %% @doc Deletes the storage configuration for the specified ARN.
 %%
 %% If you try to delete a storage configuration that is used by a
-%% Composition, you will get an error (409 ConflictException).
-%% To avoid this, for all Compositions that reference the storage
-%% configuration, first use `StopComposition' and wait for it to
-%% complete,
-%% then use DeleteStorageConfiguration.
+%% Composition, you will get an error (409 ConflictException). To avoid this,
+%% for all Compositions that reference the storage configuration, first use
+%% `StopComposition' and wait for it to complete, then use
+%% DeleteStorageConfiguration.
 -spec delete_storage_configuration(aws_client:aws_client(), delete_storage_configuration_request()) ->
     {ok, delete_storage_configuration_response(), tuple()} |
     {error, any()} |
@@ -1957,10 +1979,9 @@ delete_storage_configuration(Client, Input0, Options0) ->
 
 %% @doc Disconnects a specified participant from a specified stage.
 %%
-%% If the participant is publishing using
-%% an `IngestConfiguration', DisconnectParticipant also updates the
-%% `stageArn'
-%% in the IngestConfiguration to be an empty string.
+%% If the participant is publishing using an `IngestConfiguration',
+%% DisconnectParticipant also updates the `stageArn' in the
+%% IngestConfiguration to be an empty string.
 -spec disconnect_participant(aws_client:aws_client(), disconnect_participant_request()) ->
     {ok, disconnect_participant_response(), tuple()} |
     {error, any()} |
@@ -2301,8 +2322,7 @@ import_public_key(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about all Compositions in your account, in
-%% the AWS region
-%% where the API request is processed.
+%% the AWS region where the API request is processed.
 -spec list_compositions(aws_client:aws_client(), list_compositions_request()) ->
     {ok, list_compositions_response(), tuple()} |
     {error, any()} |
@@ -2337,8 +2357,7 @@ list_compositions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about all EncoderConfigurations in your
-%% account, in the AWS
-%% region where the API request is processed.
+%% account, in the AWS region where the API request is processed.
 -spec list_encoder_configurations(aws_client:aws_client(), list_encoder_configurations_request()) ->
     {ok, list_encoder_configurations_response(), tuple()} |
     {error, any()} |
@@ -2408,8 +2427,7 @@ list_ingest_configurations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists events for a specified participant that occurred during a
-%% specified stage
-%% session.
+%% specified stage session.
 -spec list_participant_events(aws_client:aws_client(), list_participant_events_request()) ->
     {ok, list_participant_events_response(), tuple()} |
     {error, any()} |
@@ -2581,8 +2599,7 @@ list_stage_sessions(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about all stages in your account, in the AWS
-%% region where the
-%% API request is processed.
+%% region where the API request is processed.
 -spec list_stages(aws_client:aws_client(), list_stages_request()) ->
     {ok, list_stages_response(), tuple()} |
     {error, any()} |
@@ -2617,8 +2634,7 @@ list_stages(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Gets summary information about all storage configurations in your
-%% account,
-%% in the AWS region where the API request is processed.
+%% account, in the AWS region where the API request is processed.
 -spec list_storage_configurations(aws_client:aws_client(), list_storage_configurations_request()) ->
     {ok, list_storage_configurations_response(), tuple()} |
     {error, any()} |
@@ -2690,12 +2706,10 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Starts a Composition from a stage based on the configuration provided
-%% in the
-%% request.
+%% in the request.
 %%
 %% A Composition is an ephemeral resource that exists after this operation
-%% returns
-%% successfully. Composition stops and the resource is deleted:
+%% returns successfully. Composition stops and the resource is deleted:
 %%
 %% When `StopComposition' is called.
 %%
@@ -2801,8 +2815,7 @@ start_participant_replication(Client, Input0, Options0) ->
 
 %% @doc Stops and deletes a Composition resource.
 %%
-%% Any broadcast from the Composition resource
-%% is stopped.
+%% Any broadcast from the Composition resource is stopped.
 -spec stop_composition(aws_client:aws_client(), stop_composition_request()) ->
     {ok, stop_composition_response(), tuple()} |
     {error, any()} |
@@ -2996,7 +3009,29 @@ update_ingest_configuration(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
-    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Access-Control-Allow-Origin">>, <<"accessControlAllowOrigin">>},
+            {<<"Access-Control-Expose-Headers">>, <<"accessControlExposeHeaders">>},
+            {<<"Cache-Control">>, <<"cacheControl">>},
+            {<<"Content-Security-Policy">>, <<"contentSecurityPolicy">>},
+            {<<"Strict-Transport-Security">>, <<"strictTransportSecurity">>},
+            {<<"X-Content-Type-Options">>, <<"xContentTypeOptions">>},
+            {<<"X-Frame-Options">>, <<"xFrameOptions">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
 
 %% @doc Updates a stage’s configuration.
 -spec update_stage(aws_client:aws_client(), update_stage_request()) ->

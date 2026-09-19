@@ -1811,7 +1811,8 @@
 %%   <<"metadata">> => map(),
 %%   <<"name">> := string(),
 %%   <<"owningProjectIdentifier">> := string(),
-%%   <<"parameters">> => map()
+%%   <<"parameters">> => map(),
+%%   <<"type">> => list(any())
 %% }
 -type create_notebook_input() :: #{binary() => any()}.
 
@@ -1836,6 +1837,7 @@
 %%   <<"owningProjectId">> => string(),
 %%   <<"parameters">> => map(),
 %%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
@@ -3593,6 +3595,7 @@
 %%   <<"owningProjectId">> => string(),
 %%   <<"parameters">> => map(),
 %%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
@@ -4795,7 +4798,8 @@
 %%   <<"owningProjectIdentifier">> := string(),
 %%   <<"sortBy">> => list(any()),
 %%   <<"sortOrder">> => list(any()),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
 -type list_notebooks_input() :: #{binary() => any()}.
 
@@ -5270,6 +5274,7 @@
 %%   <<"name">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
@@ -7160,7 +7165,8 @@
 %%   <<"metadata">> => map(),
 %%   <<"name">> => string(),
 %%   <<"parameters">> => map(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
 -type update_notebook_input() :: #{binary() => any()}.
 
@@ -7185,6 +7191,7 @@
 %%   <<"owningProjectId">> => string(),
 %%   <<"parameters">> => map(),
 %%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"updatedBy">> => string()
 %% }
@@ -14349,7 +14356,8 @@ list_notebooks(Client, DomainIdentifier, OwningProjectIdentifier, QueryMap, Head
         {<<"owningProjectIdentifier">>, OwningProjectIdentifier},
         {<<"sortBy">>, maps:get(<<"sortBy">>, QueryMap, undefined)},
         {<<"sortOrder">>, maps:get(<<"sortOrder">>, QueryMap, undefined)},
-        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

@@ -7608,6 +7608,32 @@
 -type hub_access_config() :: #{binary() => any()}.
 
 %% Example:
+%% hub_content() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DocumentSchemaVersion">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string(),
+%%   <<"HubContentDependencies">> => list(hub_content_dependency()),
+%%   <<"HubContentDescription">> => string(),
+%%   <<"HubContentDisplayName">> => string(),
+%%   <<"HubContentDocument">> => string(),
+%%   <<"HubContentMarkdown">> => string(),
+%%   <<"HubContentName">> => string(),
+%%   <<"HubContentSearchKeywords">> => list(string()),
+%%   <<"HubContentStatus">> => list(any()),
+%%   <<"HubContentType">> => list(any()),
+%%   <<"HubContentVersion">> => string(),
+%%   <<"HubName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ReferenceMinVersion">> => string(),
+%%   <<"SageMakerPublicHubContentArn">> => string(),
+%%   <<"SupportStatus">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type hub_content() :: #{binary() => any()}.
+
+%% Example:
 %% hub_content_dependency() :: #{
 %%   <<"DependencyCopyPath">> => string(),
 %%   <<"DependencyOriginPath">> => string()
@@ -12711,6 +12737,7 @@
 %%   <<"Experiment">> => experiment(),
 %%   <<"FeatureGroup">> => feature_group(),
 %%   <<"FeatureMetadata">> => feature_metadata(),
+%%   <<"HubContent">> => hub_content(),
 %%   <<"HyperParameterTuningJob">> => hyper_parameter_tuning_job_search_entity(),
 %%   <<"Job">> => job(),
 %%   <<"Model">> => model_dashboard_model(),
