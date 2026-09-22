@@ -1399,6 +1399,7 @@
 %%   <<"environmentVariables">> => map(),
 %%   <<"executionRoleArn">> := string(),
 %%   <<"harnessName">> := string(),
+%%   <<"hooks">> => list(list()),
 %%   <<"maxIterations">> => [integer()],
 %%   <<"maxTokens">> => [integer()],
 %%   <<"memory">> => list(),
@@ -3345,6 +3346,7 @@
 %%   <<"harnessId">> => string(),
 %%   <<"harnessName">> => string(),
 %%   <<"harnessVersion">> => string(),
+%%   <<"hooks">> => list(list()),
 %%   <<"maxIterations">> => [integer()],
 %%   <<"maxTokens">> => [integer()],
 %%   <<"memory">> => list(),
@@ -3358,6 +3360,22 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type harness() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_after_invocation_hook() :: #{
+%%   <<"name">> => string(),
+%%   <<"target">> => list()
+%% }
+-type harness_after_invocation_hook() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_after_tool_call_hook() :: #{
+%%   <<"name">> => string(),
+%%   <<"target">> => list()
+%% }
+-type harness_after_tool_call_hook() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3433,6 +3451,22 @@
 %% }
 -type harness_bedrock_model_config() :: #{binary() => any()}.
 
+
+%% Example:
+%% harness_before_invocation_hook() :: #{
+%%   <<"name">> => string(),
+%%   <<"target">> => list()
+%% }
+-type harness_before_invocation_hook() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_before_tool_call_hook() :: #{
+%%   <<"name">> => string(),
+%%   <<"target">> => list()
+%% }
+-type harness_before_tool_call_hook() :: #{binary() => any()}.
+
 %% Example:
 %% harness_disabled_memory_configuration() :: #{}
 -type harness_disabled_memory_configuration() :: #{}.
@@ -3469,6 +3503,29 @@
 
 
 %% Example:
+%% harness_hook_event_bridge_target() :: #{
+%%   <<"arn">> => string()
+%% }
+-type harness_hook_event_bridge_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_hook_lambda_target() :: #{
+%%   <<"arn">> => string(),
+%%   <<"failureMode">> => list(any()),
+%%   <<"timeoutSeconds">> => [integer()]
+%% }
+-type harness_hook_lambda_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% harness_hook_sns_target() :: #{
+%%   <<"arn">> => string()
+%% }
+-type harness_hook_sns_target() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_inline_function_config() :: #{
 %%   <<"description">> => string(),
 %%   <<"inputSchema">> => any()
@@ -3502,6 +3559,7 @@
 %% Example:
 %% harness_open_ai_model_config() :: #{
 %%   <<"additionalParams">> => [any()],
+%%   <<"apiBase">> => string(),
 %%   <<"apiFormat">> => list(any()),
 %%   <<"apiKeyArn">> => string(),
 %%   <<"maxTokens">> => integer(),
@@ -6262,6 +6320,7 @@
 %%   <<"environmentArtifact">> => updated_harness_environment_artifact(),
 %%   <<"environmentVariables">> => map(),
 %%   <<"executionRoleArn">> => string(),
+%%   <<"hooks">> => list(list()),
 %%   <<"maxIterations">> => [integer()],
 %%   <<"maxTokens">> => [integer()],
 %%   <<"memory">> => updated_harness_memory_configuration(),
@@ -8083,6 +8142,7 @@
 -type update_harness_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 

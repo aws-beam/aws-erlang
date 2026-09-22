@@ -1502,6 +1502,17 @@
 
 
 %% Example:
+%% harness_hook_event() :: #{
+%%   <<"decision">> => list(any()),
+%%   <<"hookEventId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"reason">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type harness_hook_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% harness_inline_function_config() :: #{
 %%   <<"description">> => string(),
 %%   <<"inputSchema">> => any()
@@ -1555,6 +1566,7 @@
 %% Example:
 %% harness_open_ai_model_config() :: #{
 %%   <<"additionalParams">> => [any()],
+%%   <<"apiBase">> => string(),
 %%   <<"apiFormat">> => list(any()),
 %%   <<"apiKeyArn">> => string(),
 %%   <<"maxTokens">> => integer(),

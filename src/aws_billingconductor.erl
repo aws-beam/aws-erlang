@@ -55,6 +55,8 @@
          disassociate_pricing_rules/3,
          get_billing_group_cost_report/2,
          get_billing_group_cost_report/3,
+         get_billing_transfer_preference/2,
+         get_billing_transfer_preference/3,
          list_account_associations/2,
          list_account_associations/3,
          list_billing_group_cost_reports/2,
@@ -84,6 +86,8 @@
          untag_resource/4,
          update_billing_group/2,
          update_billing_group/3,
+         update_billing_transfer_preference/2,
+         update_billing_transfer_preference/3,
          update_custom_line_item/2,
          update_custom_line_item/3,
          update_pricing_plan/2,
@@ -173,6 +177,14 @@
 %%   <<"Value">> => [string()]
 %% }
 -type attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_transfer_billing_group_creation_preference() :: #{
+%%   <<"Enabled">> => [boolean()],
+%%   <<"PricingPlanArn">> => string()
+%% }
+-type auto_transfer_billing_group_creation_preference() :: #{binary() => any()}.
 
 
 %% Example:
@@ -580,6 +592,22 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_billing_group_cost_report_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_billing_transfer_preference_input() :: #{
+%%   <<"ResponsibilityTransferArn">> := string()
+%% }
+-type get_billing_transfer_preference_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_billing_transfer_preference_output() :: #{
+%%   <<"AutoBillingTransferBillingGroupCreation">> => auto_transfer_billing_group_creation_preference(),
+%%   <<"LastModifiedTime">> => float(),
+%%   <<"ResponsibilityTransferArn">> => string()
+%% }
+-type get_billing_transfer_preference_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1057,6 +1085,24 @@
 
 
 %% Example:
+%% update_billing_transfer_preference_input() :: #{
+%%   <<"AutoBillingTransferBillingGroupCreation">> := auto_transfer_billing_group_creation_preference(),
+%%   <<"ClientToken">> => string(),
+%%   <<"ResponsibilityTransferArn">> := string()
+%% }
+-type update_billing_transfer_preference_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_billing_transfer_preference_output() :: #{
+%%   <<"AutoBillingTransferBillingGroupCreation">> => auto_transfer_billing_group_creation_preference(),
+%%   <<"LastModifiedTime">> => float(),
+%%   <<"ResponsibilityTransferArn">> => string()
+%% }
+-type update_billing_transfer_preference_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_custom_line_item_charge_details() :: #{
 %%   <<"Flat">> => update_custom_line_item_flat_charge_details(),
 %%   <<"LineItemFilters">> => list(line_item_filter()),
@@ -1303,6 +1349,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_billing_transfer_preference_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_account_associations_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1392,6 +1445,14 @@
     access_denied_exception().
 
 -type update_billing_group_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_billing_transfer_preference_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -1971,6 +2032,41 @@ get_billing_group_cost_report(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the auto billing group creation preference for a billing
+%% transfer.
+-spec get_billing_transfer_preference(aws_client:aws_client(), get_billing_transfer_preference_input()) ->
+    {ok, get_billing_transfer_preference_output(), tuple()} |
+    {error, any()} |
+    {error, get_billing_transfer_preference_errors(), tuple()}.
+get_billing_transfer_preference(Client, Input) ->
+    get_billing_transfer_preference(Client, Input, []).
+
+-spec get_billing_transfer_preference(aws_client:aws_client(), get_billing_transfer_preference_input(), proplists:proplist()) ->
+    {ok, get_billing_transfer_preference_output(), tuple()} |
+    {error, any()} |
+    {error, get_billing_transfer_preference_errors(), tuple()}.
+get_billing_transfer_preference(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-billing-transfer-preference"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc This is a paginated call to list linked accounts that are linked to
 %% the payer account for the specified time period.
 %%
@@ -2465,6 +2561,53 @@ update_billing_group(Client, Input0, Options0) ->
 
     Headers = [],
     Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets the auto billing group creation preference for a billing
+%% transfer.
+%%
+%% When the preference is enabled, Billing Conductor automatically creates an
+%% indirect billing transfer billing group in your account, with the pricing
+%% plan that you specify, for each account that transfers its bill to the
+%% bill source account of this billing transfer. The preference applies only
+%% to billing groups that are created after you enable it.
+%%
+%% Enabling the preference requires the `iam:CreateServiceLinkedRole'
+%% permission. While a pricing plan is specified in an enabled preference,
+%% you can't delete that pricing plan.
+-spec update_billing_transfer_preference(aws_client:aws_client(), update_billing_transfer_preference_input()) ->
+    {ok, update_billing_transfer_preference_output(), tuple()} |
+    {error, any()} |
+    {error, update_billing_transfer_preference_errors(), tuple()}.
+update_billing_transfer_preference(Client, Input) ->
+    update_billing_transfer_preference(Client, Input, []).
+
+-spec update_billing_transfer_preference(aws_client:aws_client(), update_billing_transfer_preference_input(), proplists:proplist()) ->
+    {ok, update_billing_transfer_preference_output(), tuple()} |
+    {error, any()} |
+    {error, update_billing_transfer_preference_errors(), tuple()}.
+update_billing_transfer_preference(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/update-billing-transfer-preference"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    HeadersMapping = [
+                       {<<"X-Amzn-Client-Token">>, <<"ClientToken">>}
+                     ],
+    {Headers, Input1} = aws_request:build_headers(HeadersMapping, Input0),
 
     CustomHeaders = [],
     Input2 = Input1,

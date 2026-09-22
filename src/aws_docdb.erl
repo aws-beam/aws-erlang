@@ -252,6 +252,7 @@
 %% create_db_cluster_message() :: #{
 %%   <<"AvailabilityZones">> => list(string()),
 %%   <<"BackupRetentionPeriod">> => integer(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
 %%   <<"DBClusterIdentifier">> := string(),
 %%   <<"DBClusterParameterGroupName">> => string(),
 %%   <<"DBSubnetGroupName">> => string(),
@@ -395,6 +396,7 @@
 %%   <<"BackupRetentionPeriod">> => integer(),
 %%   <<"CloneGroupId">> => string(),
 %%   <<"ClusterCreateTime">> => non_neg_integer(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
 %%   <<"DBClusterArn">> => string(),
 %%   <<"DBClusterIdentifier">> => string(),
 %%   <<"DBClusterMembers">> => list(db_cluster_member()),
@@ -1274,6 +1276,7 @@
 %%   <<"ApplyImmediately">> => boolean(),
 %%   <<"BackupRetentionPeriod">> => integer(),
 %%   <<"CloudwatchLogsExportConfiguration">> => cloudwatch_logs_export_configuration(),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
 %%   <<"DBClusterIdentifier">> := string(),
 %%   <<"DBClusterParameterGroupName">> => string(),
 %%   <<"DeletionProtection">> => boolean(),
@@ -1542,6 +1545,7 @@
 %% Example:
 %% restore_db_cluster_from_snapshot_message() :: #{
 %%   <<"AvailabilityZones">> => list(string()),
+%%   <<"CopyTagsToSnapshot">> => boolean(),
 %%   <<"DBClusterIdentifier">> := string(),
 %%   <<"DBClusterParameterGroupName">> => string(),
 %%   <<"DBSubnetGroupName">> => string(),
@@ -1568,6 +1572,7 @@
 
 %% Example:
 %% restore_db_cluster_to_point_in_time_message() :: #{
+%%   <<"CopyTagsToSnapshot">> => boolean(),
 %%   <<"DBClusterIdentifier">> := string(),
 %%   <<"DBSubnetGroupName">> => string(),
 %%   <<"DeletionProtection">> => boolean(),
@@ -2208,17 +2213,17 @@ create_db_cluster(Client, Input, Options)
 %% you
 %% want to modify a value in it, you must first
 %% create a new parameter group:
-%% https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_group-create.html
+%% https://docs.aws.amazon.com/documentdb/latest/devguide/cluster_parameter_group-create.html
 %% or
 %% copy an existing parameter group:
-%% https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_group-copy.html,
+%% https://docs.aws.amazon.com/documentdb/latest/devguide/cluster_parameter_group-copy.html,
 %% modify it, and then apply the modified parameter group to your
 %% cluster. For the new cluster parameter group and associated settings
 %% to take effect, you must then reboot the instances in the cluster
 %% without failover. For more information,
 %% see
 %% Modifying Amazon DocumentDB Cluster Parameter Groups:
-%% https://docs.aws.amazon.com/documentdb/latest/developerguide/cluster_parameter_group-modify.html.
+%% https://docs.aws.amazon.com/documentdb/latest/devguide/cluster_parameter_group-modify.html.
 -spec create_db_cluster_parameter_group(aws_client:aws_client(), create_db_cluster_parameter_group_message()) ->
     {ok, create_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
@@ -3236,7 +3241,7 @@ restore_db_cluster_to_point_in_time(Client, Input, Options)
 %%
 %% For more information, see Stopping and
 %% Starting an Amazon DocumentDB Cluster:
-%% https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html.
+%% https://docs.aws.amazon.com/documentdb/latest/devguide/db-cluster-stop-start.html.
 -spec start_db_cluster(aws_client:aws_client(), start_db_cluster_message()) ->
     {ok, start_db_cluster_result(), tuple()} |
     {error, any()} |
@@ -3260,7 +3265,7 @@ start_db_cluster(Client, Input, Options)
 %% cluster must be in the available state. For more information, see
 %% Stopping and
 %% Starting an Amazon DocumentDB Cluster:
-%% https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html.
+%% https://docs.aws.amazon.com/documentdb/latest/devguide/db-cluster-stop-start.html.
 -spec stop_db_cluster(aws_client:aws_client(), stop_db_cluster_message()) ->
     {ok, stop_db_cluster_result(), tuple()} |
     {error, any()} |
