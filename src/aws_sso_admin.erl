@@ -737,11 +737,14 @@
 %% describe_instance_response() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"EncryptionConfigurationDetails">> => encryption_configuration_details(),
+%%   <<"IdentityStoreArn">> => string(),
 %%   <<"IdentityStoreId">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OwnerAccountId">> => string(),
 %%   <<"PermissionSetsEnabled">> => [boolean()],
+%%   <<"PrimaryRegion">> => string(),
+%%   <<"Regions">> => list(region_metadata()),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => string()
 %% }
@@ -968,6 +971,7 @@
 %% Example:
 %% instance_metadata() :: #{
 %%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"IdentityStoreArn">> => string(),
 %%   <<"IdentityStoreId">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),

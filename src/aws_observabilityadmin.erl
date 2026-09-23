@@ -23,6 +23,8 @@
 
 -export([create_centralization_rule_for_organization/2,
          create_centralization_rule_for_organization/3,
+         create_dataset_integration/2,
+         create_dataset_integration/3,
          create_s3_table_integration/2,
          create_s3_table_integration/3,
          create_telemetry_pipeline/2,
@@ -33,6 +35,8 @@
          create_telemetry_rule_for_organization/3,
          delete_centralization_rule_for_organization/2,
          delete_centralization_rule_for_organization/3,
+         delete_dataset_integration/2,
+         delete_dataset_integration/3,
          delete_s3_table_integration/2,
          delete_s3_table_integration/3,
          delete_telemetry_pipeline/2,
@@ -43,6 +47,8 @@
          delete_telemetry_rule_for_organization/3,
          get_centralization_rule_for_organization/2,
          get_centralization_rule_for_organization/3,
+         get_dataset_integration/2,
+         get_dataset_integration/3,
          get_s3_table_integration/2,
          get_s3_table_integration/3,
          get_telemetry_enrichment_status/2,
@@ -59,6 +65,8 @@
          get_telemetry_rule_for_organization/3,
          list_centralization_rules_for_organization/2,
          list_centralization_rules_for_organization/3,
+         list_dataset_integrations/2,
+         list_dataset_integrations/3,
          list_resource_telemetry/2,
          list_resource_telemetry/3,
          list_resource_telemetry_for_organization/2,
@@ -93,6 +101,8 @@
          untag_resource/3,
          update_centralization_rule_for_organization/2,
          update_centralization_rule_for_organization/3,
+         update_dataset_integration/2,
+         update_dataset_integration/3,
          update_telemetry_pipeline/2,
          update_telemetry_pipeline/3,
          update_telemetry_rule/2,
@@ -164,6 +174,7 @@
 %% centralization_rule_source() :: #{
 %%   <<"Regions">> => list(string()),
 %%   <<"Scope">> => string(),
+%%   <<"SourceContextGraphConfiguration">> => source_context_graph_configuration(),
 %%   <<"SourceLogsConfiguration">> => source_logs_configuration(),
 %%   <<"SourceMetricsConfiguration">> => source_metrics_configuration()
 %% }
@@ -172,6 +183,7 @@
 
 %% Example:
 %% centralization_rule_summary() :: #{
+%%   <<"ContextGraphStatus">> => list(any()),
 %%   <<"CreatedRegion">> => string(),
 %%   <<"CreatedTimeStamp">> => [float()],
 %%   <<"CreatorAccountId">> => [string()],
@@ -237,6 +249,24 @@
 %%   <<"RuleArn">> => string()
 %% }
 -type create_centralization_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_integration_input() :: #{
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_dataset_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_integration_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"RoleArn">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type create_dataset_integration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -312,10 +342,27 @@
 
 
 %% Example:
+%% dataset_integration_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"RoleArn">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type dataset_integration_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_centralization_rule_for_organization_input() :: #{
 %%   <<"RuleIdentifier">> := string()
 %% }
 -type delete_centralization_rule_for_organization_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_dataset_integration_input() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type delete_dataset_integration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -412,6 +459,7 @@
 %% Example:
 %% get_centralization_rule_for_organization_output() :: #{
 %%   <<"CentralizationRule">> => centralization_rule(),
+%%   <<"ContextGraphStatus">> => list(any()),
 %%   <<"CreatedRegion">> => string(),
 %%   <<"CreatedTimeStamp">> => [float()],
 %%   <<"CreatorAccountId">> => [string()],
@@ -424,6 +472,23 @@
 %%   <<"TagPropagationStatus">> => list(any())
 %% }
 -type get_centralization_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dataset_integration_input() :: #{
+%%   <<"Arn">> := string()
+%% }
+-type get_dataset_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_dataset_integration_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"RoleArn">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type get_dataset_integration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -576,6 +641,22 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_centralization_rules_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_integrations_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dataset_integrations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_integrations_output() :: #{
+%%   <<"DatasetIntegrationSummaries">> => list(dataset_integration_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_dataset_integrations_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -822,6 +903,10 @@
 %% }
 -type source() :: #{binary() => any()}.
 
+%% Example:
+%% source_context_graph_configuration() :: #{}
+-type source_context_graph_configuration() :: #{}.
+
 
 %% Example:
 %% source_logs_configuration() :: #{
@@ -1031,6 +1116,24 @@
 
 
 %% Example:
+%% update_dataset_integration_input() :: #{
+%%   <<"Arn">> := string(),
+%%   <<"RoleArn">> := string()
+%% }
+-type update_dataset_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_dataset_integration_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"RoleArn">> => string(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type update_dataset_integration_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_telemetry_pipeline_input() :: #{
 %%   <<"Configuration">> := telemetry_pipeline_configuration(),
 %%   <<"PipelineIdentifier">> := string()
@@ -1128,6 +1231,13 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_dataset_integration_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_s3_table_integration_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
@@ -1167,6 +1277,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type delete_dataset_integration_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type delete_s3_table_integration_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
@@ -1198,6 +1315,13 @@
     access_denied_exception().
 
 -type get_centralization_rule_for_organization_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_dataset_integration_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
     resource_not_found_exception() | 
@@ -1250,6 +1374,12 @@
     access_denied_exception().
 
 -type list_centralization_rules_for_organization_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_dataset_integrations_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
     internal_server_exception() | 
@@ -1363,6 +1493,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type update_dataset_integration_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type update_telemetry_pipeline_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
@@ -1417,6 +1554,48 @@ create_centralization_rule_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateCentralizationRuleForOrganization"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a dataset integration for the caller's account in the
+%% current region and returns its ARN.
+%%
+%% To use this operation, you must have permission to access the dataset
+%% integration resources through the IAM role specified in the `RoleArn'
+%% parameter.
+%%
+%% If a dataset integration already exists for the account, this operation
+%% fails with a `ConflictException'.
+-spec create_dataset_integration(aws_client:aws_client(), create_dataset_integration_input()) ->
+    {ok, create_dataset_integration_output(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_integration_errors(), tuple()}.
+create_dataset_integration(Client, Input) ->
+    create_dataset_integration(Client, Input, []).
+
+-spec create_dataset_integration(aws_client:aws_client(), create_dataset_integration_input(), proplists:proplist()) ->
+    {ok, create_dataset_integration_output(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_integration_errors(), tuple()}.
+create_dataset_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateDatasetIntegration"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1625,6 +1804,44 @@ delete_centralization_rule_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a dataset integration for the caller's account in the
+%% current region.
+%%
+%% This operation is idempotent; if you submit the same delete more than
+%% once, each call succeeds.
+-spec delete_dataset_integration(aws_client:aws_client(), delete_dataset_integration_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_dataset_integration_errors(), tuple()}.
+delete_dataset_integration(Client, Input) ->
+    delete_dataset_integration(Client, Input, []).
+
+-spec delete_dataset_integration(aws_client:aws_client(), delete_dataset_integration_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_dataset_integration_errors(), tuple()}.
+delete_dataset_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteDatasetIntegration"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an S3 Table integration and its associated data.
 %%
 %% This operation removes the connection between CloudWatch Observability
@@ -1791,6 +2008,41 @@ get_centralization_rule_for_organization(Client, Input) ->
 get_centralization_rule_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetCentralizationRuleForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the dataset integration for the caller's account in the
+%% current region.
+-spec get_dataset_integration(aws_client:aws_client(), get_dataset_integration_input()) ->
+    {ok, get_dataset_integration_output(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_integration_errors(), tuple()}.
+get_dataset_integration(Client, Input) ->
+    get_dataset_integration(Client, Input, []).
+
+-spec get_dataset_integration(aws_client:aws_client(), get_dataset_integration_input(), proplists:proplist()) ->
+    {ok, get_dataset_integration_output(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_integration_errors(), tuple()}.
+get_dataset_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetDatasetIntegration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2080,6 +2332,40 @@ list_centralization_rules_for_organization(Client, Input) ->
 list_centralization_rules_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListCentralizationRulesForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the dataset integrations in your account.
+-spec list_dataset_integrations(aws_client:aws_client(), list_dataset_integrations_input()) ->
+    {ok, list_dataset_integrations_output(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_integrations_errors(), tuple()}.
+list_dataset_integrations(Client, Input) ->
+    list_dataset_integrations(Client, Input, []).
+
+-spec list_dataset_integrations(aws_client:aws_client(), list_dataset_integrations_input(), proplists:proplist()) ->
+    {ok, list_dataset_integrations_output(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_integrations_errors(), tuple()}.
+list_dataset_integrations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListDatasetIntegrations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2697,6 +2983,44 @@ update_centralization_rule_for_organization(Client, Input) ->
 update_centralization_rule_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateCentralizationRuleForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a dataset integration for the caller's account in the
+%% current region.
+%%
+%% This operation is idempotent; if you submit the same update more than
+%% once, each call succeeds.
+-spec update_dataset_integration(aws_client:aws_client(), update_dataset_integration_input()) ->
+    {ok, update_dataset_integration_output(), tuple()} |
+    {error, any()} |
+    {error, update_dataset_integration_errors(), tuple()}.
+update_dataset_integration(Client, Input) ->
+    update_dataset_integration(Client, Input, []).
+
+-spec update_dataset_integration(aws_client:aws_client(), update_dataset_integration_input(), proplists:proplist()) ->
+    {ok, update_dataset_integration_output(), tuple()} |
+    {error, any()} |
+    {error, update_dataset_integration_errors(), tuple()}.
+update_dataset_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateDatasetIntegration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

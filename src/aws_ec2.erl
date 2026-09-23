@@ -190,6 +190,8 @@
          create_capacity_reservation_by_splitting/3,
          create_capacity_reservation_cancellation_quote/2,
          create_capacity_reservation_cancellation_quote/3,
+         create_capacity_reservation_date_change_quote/2,
+         create_capacity_reservation_date_change_quote/3,
          create_capacity_reservation_fleet/2,
          create_capacity_reservation_fleet/3,
          create_carrier_gateway/2,
@@ -650,6 +652,8 @@
          describe_capacity_reservation_billing_requests/3,
          describe_capacity_reservation_cancellation_quotes/2,
          describe_capacity_reservation_cancellation_quotes/3,
+         describe_capacity_reservation_date_change_quotes/2,
+         describe_capacity_reservation_date_change_quotes/3,
          describe_capacity_reservation_fleets/2,
          describe_capacity_reservation_fleets/3,
          describe_capacity_reservation_topology/2,
@@ -3390,6 +3394,8 @@
 
 %% Example:
 %% capacity_reservation() :: #{
+%%   <<"AdjustmentDetails">> => capacity_reservation_adjustment_details(),
+%%   <<"AdjustmentStatus">> => list(any()),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"AvailabilityZoneId">> => string(),
 %%   <<"AvailableInstanceCount">> => integer(),
@@ -3411,6 +3417,7 @@
 %%   <<"Interruptible">> => boolean(),
 %%   <<"InterruptibleCapacityAllocation">> => interruptible_capacity_allocation(),
 %%   <<"InterruptionInfo">> => interruption_info(),
+%%   <<"OriginalStartDate">> => non_neg_integer(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"PlacementGroupArn">> => string(),
@@ -3424,6 +3431,16 @@
 %%   <<"ZeroSizePreference">> => list(any())
 %% }
 -type capacity_reservation() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_adjustment_details() :: #{
+%%   <<"CommitmentDuration">> => float(),
+%%   <<"CommitmentEndDate">> => non_neg_integer(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"EndDateType">> => string(),
+%%   <<"StartDate">> => non_neg_integer()
+%% }
+-type capacity_reservation_adjustment_details() :: #{binary() => any()}.
 
 %% Example:
 %% capacity_reservation_billing_request() :: #{
@@ -3452,6 +3469,7 @@
 
 %% Example:
 %% capacity_reservation_commitment_info() :: #{
+%%   <<"CommitmentDuration">> => float(),
 %%   <<"CommitmentEndDate">> => non_neg_integer(),
 %%   <<"CommittedInstanceCount">> => integer()
 %% }
@@ -3504,6 +3522,19 @@
 %%   <<"Tenancy">> => list(any())
 %% }
 -type capacity_reservation_info() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_modification_quote() :: #{
+%%   <<"CapacityReservationId">> => string(),
+%%   <<"CapacityReservationModificationQuoteId">> => string(),
+%%   <<"CreateTime">> => non_neg_integer(),
+%%   <<"CurrentConfiguration">> => modification_quote_current_configuration(),
+%%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"ModificationTerms">> => modification_terms(),
+%%   <<"QuoteState">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type capacity_reservation_modification_quote() :: #{binary() => any()}.
 
 %% Example:
 %% capacity_reservation_options() :: #{
@@ -4139,6 +4170,22 @@
 %%   <<"CapacityReservationCancellationQuote">> => capacity_reservation_cancellation_quote()
 %% }
 -type create_capacity_reservation_cancellation_quote_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_capacity_reservation_date_change_quote_request() :: #{
+%%   <<"CapacityReservationId">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"NewStartDate">> := non_neg_integer(),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_capacity_reservation_date_change_quote_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_capacity_reservation_date_change_quote_result() :: #{
+%%   <<"CapacityReservationModificationQuote">> => capacity_reservation_modification_quote()
+%% }
+-type create_capacity_reservation_date_change_quote_result() :: #{binary() => any()}.
 
 %% Example:
 %% create_capacity_reservation_fleet_request() :: #{
@@ -8012,6 +8059,23 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_capacity_reservation_cancellation_quotes_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_reservation_date_change_quotes_request() :: #{
+%%   <<"CapacityReservationModificationQuoteIds">> => list(string()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_reservation_date_change_quotes_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_reservation_date_change_quotes_result() :: #{
+%%   <<"CapacityReservationModificationQuotes">> => list(capacity_reservation_modification_quote()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_capacity_reservation_date_change_quotes_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_capacity_reservation_fleets_request() :: #{
@@ -17250,6 +17314,29 @@
 -type metric_value() :: #{binary() => any()}.
 
 %% Example:
+%% modification_quote_current_configuration() :: #{
+%%   <<"InstanceCount">> => integer(),
+%%   <<"OriginalStartDate">> => non_neg_integer(),
+%%   <<"ReservationState">> => string(),
+%%   <<"StartDate">> => non_neg_integer()
+%% }
+-type modification_quote_current_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% modification_reservation_update() :: #{
+%%   <<"NewCommitmentDuration">> => integer(),
+%%   <<"NewCommitmentEndDate">> => non_neg_integer(),
+%%   <<"NewStartDate">> => non_neg_integer()
+%% }
+-type modification_reservation_update() :: #{binary() => any()}.
+
+%% Example:
+%% modification_terms() :: #{
+%%   <<"ReservationUpdate">> => modification_reservation_update()
+%% }
+-type modification_terms() :: #{binary() => any()}.
+
+%% Example:
 %% modify_account_vpc_encryption_control_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"EgressOnlyInternetGateway">> => list(any()),
@@ -17345,18 +17432,23 @@
 %% Example:
 %% modify_capacity_reservation_request() :: #{
 %%   <<"Accept">> => boolean(),
+%%   <<"AcceptModificationTerms">> => boolean(),
 %%   <<"AdditionalInfo">> => string(),
 %%   <<"CapacityReservationId">> := string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EndDate">> => non_neg_integer(),
 %%   <<"EndDateType">> => list(any()),
 %%   <<"InstanceCount">> => integer(),
-%%   <<"InstanceMatchCriteria">> => list(any())
+%%   <<"InstanceMatchCriteria">> => list(any()),
+%%   <<"QuoteId">> => string(),
+%%   <<"StartDate">> => non_neg_integer()
 %% }
 -type modify_capacity_reservation_request() :: #{binary() => any()}.
 
 %% Example:
 %% modify_capacity_reservation_result() :: #{
+%%   <<"AdjustmentDetails">> => capacity_reservation_adjustment_details(),
+%%   <<"AdjustmentStatus">> => list(any()),
 %%   <<"Return">> => boolean()
 %% }
 -type modify_capacity_reservation_result() :: #{binary() => any()}.
@@ -26177,6 +26269,33 @@ create_capacity_reservation_cancellation_quote(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCapacityReservationCancellationQuote">>, Input, Options).
 
+%% @doc Generates a quote for changing the start date of a future-dated
+%% Capacity Reservation
+%% that has not yet been delivered.
+%%
+%% The quote includes the new start date, the resulting
+%% commitment end date, and a quote ID. Pass the quote ID to
+%% `ModifyCapacityReservation' to apply the change.
+%%
+%% The cumulative pushout across all changes is limited to 30 days from the
+%% Capacity
+%% Reservation's original start date. Quotes are valid for 24 hours, and
+%% always expire at
+%% least one hour before the start date.
+-spec create_capacity_reservation_date_change_quote(aws_client:aws_client(), create_capacity_reservation_date_change_quote_request()) ->
+    {ok, create_capacity_reservation_date_change_quote_result(), tuple()} |
+    {error, any()}.
+create_capacity_reservation_date_change_quote(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_capacity_reservation_date_change_quote(Client, Input, []).
+
+-spec create_capacity_reservation_date_change_quote(aws_client:aws_client(), create_capacity_reservation_date_change_quote_request(), proplists:proplist()) ->
+    {ok, create_capacity_reservation_date_change_quote_result(), tuple()} |
+    {error, any()}.
+create_capacity_reservation_date_change_quote(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCapacityReservationDateChangeQuote">>, Input, Options).
+
 %% @doc Creates a Capacity Reservation Fleet.
 %%
 %% For more information, see Create a
@@ -31579,6 +31698,23 @@ describe_capacity_reservation_cancellation_quotes(Client, Input)
 describe_capacity_reservation_cancellation_quotes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeCapacityReservationCancellationQuotes">>, Input, Options).
+
+%% @doc Describes one or more Capacity Reservation date change quotes that
+%% you generated by using
+%% the `CreateCapacityReservationDateChangeQuote' operation.
+-spec describe_capacity_reservation_date_change_quotes(aws_client:aws_client(), describe_capacity_reservation_date_change_quotes_request()) ->
+    {ok, describe_capacity_reservation_date_change_quotes_result(), tuple()} |
+    {error, any()}.
+describe_capacity_reservation_date_change_quotes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_capacity_reservation_date_change_quotes(Client, Input, []).
+
+-spec describe_capacity_reservation_date_change_quotes(aws_client:aws_client(), describe_capacity_reservation_date_change_quotes_request(), proplists:proplist()) ->
+    {ok, describe_capacity_reservation_date_change_quotes_result(), tuple()} |
+    {error, any()}.
+describe_capacity_reservation_date_change_quotes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCapacityReservationDateChangeQuotes">>, Input, Options).
 
 %% @doc Describes one or more Capacity Reservation Fleets.
 -spec describe_capacity_reservation_fleets(aws_client:aws_client(), describe_capacity_reservation_fleets_request()) ->
@@ -39396,6 +39532,15 @@ modify_availability_zone_group(Client, Input, Options)
 %% `expired', `cancelled', `unsupported', or
 %% `failed' state - You can't modify the Capacity Reservation in any
 %% way.
+%%
+%% For a future-dated Capacity Reservation that has not yet been delivered,
+%% pushing out the
+%% start date requires a quote generated by
+%% `CreateCapacityReservationDateChangeQuote'. For more information, see
+%% Modify an active
+%% Capacity Reservation:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-modify.html
+%% in the Amazon EC2 User Guide.
 -spec modify_capacity_reservation(aws_client:aws_client(), modify_capacity_reservation_request()) ->
     {ok, modify_capacity_reservation_result(), tuple()} |
     {error, any()}.

@@ -9187,6 +9187,16 @@
 -type string_column_statistics_data() :: #{binary() => any()}.
 
 %% Example:
+%% sub_object_statistics() :: #{
+%%   <<"FileCount">> => float(),
+%%   <<"GlueVersionId">> => string(),
+%%   <<"PartitionCount">> => float(),
+%%   <<"SourceType">> => list(any()),
+%%   <<"TotalFileBytes">> => float()
+%% }
+-type sub_object_statistics() :: #{binary() => any()}.
+
+%% Example:
 %% supported_dialect() :: #{
 %%   <<"Dialect">> => list(any()),
 %%   <<"DialectVersion">> => string()
@@ -10186,8 +10196,10 @@
 %%   <<"LastRefreshType">> => list(any()),
 %%   <<"RefreshSeconds">> => float(),
 %%   <<"Representations">> => list(view_representation()),
+%%   <<"SparkPipelineInfo">> => map(),
 %%   <<"SubObjectVersionIds">> => list(float()),
 %%   <<"SubObjects">> => list(string()),
+%%   <<"SubObjectsStatistics">> => list(sub_object_statistics()),
 %%   <<"ViewVersionId">> => float(),
 %%   <<"ViewVersionToken">> => string()
 %% }
@@ -10200,8 +10212,10 @@
 %%   <<"LastRefreshType">> => list(any()),
 %%   <<"RefreshSeconds">> => float(),
 %%   <<"Representations">> => list(view_representation_input()),
+%%   <<"SparkPipelineInfo">> => map(),
 %%   <<"SubObjectVersionIds">> => list(float()),
 %%   <<"SubObjects">> => list(string()),
+%%   <<"SubObjectsStatistics">> => list(sub_object_statistics()),
 %%   <<"ViewVersionId">> => float(),
 %%   <<"ViewVersionToken">> => string()
 %% }
