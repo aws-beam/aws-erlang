@@ -33,6 +33,8 @@
          get_enterprise_support_contract_details/3,
          get_resource_policy/2,
          get_resource_policy/3,
+         list_billing_view_segments/2,
+         list_billing_view_segments/3,
          list_billing_views/2,
          list_billing_views/3,
          list_enterprise_support_linked_account_charges/2,
@@ -170,6 +172,23 @@
 %%   <<"sourceAccountId">> => string()
 %% }
 -type billing_view_list_element() :: #{binary() => any()}.
+
+%% Example:
+%% billing_view_segment_time_range() :: #{
+%%   <<"beginDateInclusive">> => [non_neg_integer()],
+%%   <<"endDateExclusive">> => [non_neg_integer()]
+%% }
+-type billing_view_segment_time_range() :: #{binary() => any()}.
+
+%% Example:
+%% billing_view_segments_list_element() :: #{
+%%   <<"billingGroupPrimaryAccountId">> => string(),
+%%   <<"billingTransferAccountId">> => string(),
+%%   <<"domain">> => list(any()),
+%%   <<"managementAccountId">> => string(),
+%%   <<"timeRange">> => billing_view_segment_time_range()
+%% }
+-type billing_view_segments_list_element() :: #{binary() => any()}.
 
 %% Example:
 %% charge_account() :: #{
@@ -451,6 +470,22 @@
 %%   <<"totalSupportEligibleSpend">> => [string()]
 %% }
 -type linked_account_charge() :: #{binary() => any()}.
+
+%% Example:
+%% list_billing_view_segments_request() :: #{
+%%   <<"arn">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"timeRange">> => billing_view_segment_time_range()
+%% }
+-type list_billing_view_segments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_billing_view_segments_response() :: #{
+%%   <<"items">> => list(billing_view_segments_list_element()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_billing_view_segments_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_billing_views_request() :: #{
@@ -766,6 +801,14 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_billing_view_segments_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    billing_view_health_status_exception() | 
+    access_denied_exception().
+
 -type list_billing_views_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1046,6 +1089,34 @@ get_resource_policy(Client, Input)
 get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
+
+%% @doc Lists the segments of a billing view over a given time period.
+%%
+%% Each segment identifies the billing domain (`PRO_FORMA' or
+%% `BILLABLE') and the account relationships that apply during its time
+%% range.
+%%
+%% If you don't provide an `arn', the response includes segments for
+%% the caller's `PRIMARY' billing view.
+%%
+%% If a mid-period change occurs, the response includes multiple segments,
+%% each with its own time range. The response omits hidden segments, so the
+%% segments it returns might not cover the entire requested time period.
+-spec list_billing_view_segments(aws_client:aws_client(), list_billing_view_segments_request()) ->
+    {ok, list_billing_view_segments_response(), tuple()} |
+    {error, any()} |
+    {error, list_billing_view_segments_errors(), tuple()}.
+list_billing_view_segments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_billing_view_segments(Client, Input, []).
+
+-spec list_billing_view_segments(aws_client:aws_client(), list_billing_view_segments_request(), proplists:proplist()) ->
+    {ok, list_billing_view_segments_response(), tuple()} |
+    {error, any()} |
+    {error, list_billing_view_segments_errors(), tuple()}.
+list_billing_view_segments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListBillingViewSegments">>, Input, Options).
 
 %% @doc Lists the billing views available for a given time period.
 %%

@@ -1,8 +1,47 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Lex Model Building Service provides APIs for creating,
-%% managing, and deploying conversational bots and their components.
+%% @doc This document provides detailed information about the Amazon Lex V2
+%% API actions and their parameters.
+%%
+%% For information about the IAM access control permissions you need to use
+%% this API, see
+%% Identity-based policies for Amazon Lex V2:
+%% https://docs.aws.amazon.com/lexv2/latest/dg/security_iam_service-with-iam.html.
+%%
+%% Amazon Lex V2 Model Building V2 operations let you build and manage bots.
+%%
+%% If you use a custom HTTP client to call Amazon Lex Model Building
+%% V2 operations, you must set the &quot;Content-Type&quot; HTTP header to
+%% &quot;application/x-amz-json-1.1&quot;. Otherwise, you receive an HTTP 404
+%% -
+%% UnknownOperationException in the response.
+%%
+%% Amazon Lex Model Building V2 operations return the responses with
+%% the &quot;application/x-amz-json-1.1&quot; content type.
+%%
+%% You can use Amazon Web Services SDKs: http://aws.amazon.com/tools/#sdk to
+%% access Amazon Lex V2 APIs using your favorite programming language.
+%% The SDKs automatically perform useful tasks for you, such as:
+%%
+%% Cryptographically sign your service requests
+%%
+%% Retry requests
+%%
+%% Handle error responses
+%%
+%% The following resources provide additional information about the Amazon
+%% Lex V2 Model Building API.
+%%
+%% Amazon Web Services General Reference
+%%
+%% Amazon Lex V2 Endpoints for each region:
+%% https://docs.aws.amazon.com/general/latest/gr/lex.html.
+%%
+%% Command Line Interface
+%%
+%% Amazon Lex Model Building V2 CLI commands:
+%% https://docs.aws.amazon.com/cli/latest/reference/lexv2-models/index.html.
 -module(aws_lex_models_v2).
 
 -export([batch_create_custom_vocabulary_item/5,
@@ -849,6 +888,7 @@
 %%   <<"botVersion">> => string(),
 %%   <<"localeId">> => string(),
 %%   <<"nluIntentConfidenceThreshold">> => float(),
+%%   <<"speakerDiarizationSettings">> => speaker_diarization_settings(),
 %%   <<"speechDetectionSensitivity">> => list(any()),
 %%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
 %%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
@@ -1222,6 +1262,7 @@
 %%   <<"generativeAISettings">> => generative_a_i_settings(),
 %%   <<"localeId">> := string(),
 %%   <<"nluIntentConfidenceThreshold">> := float(),
+%%   <<"speakerDiarizationSettings">> => speaker_diarization_settings(),
 %%   <<"speechDetectionSensitivity">> => list(any()),
 %%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
 %%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
@@ -1242,6 +1283,7 @@
 %%   <<"localeId">> => string(),
 %%   <<"localeName">> => string(),
 %%   <<"nluIntentConfidenceThreshold">> => float(),
+%%   <<"speakerDiarizationSettings">> => speaker_diarization_settings(),
 %%   <<"speechDetectionSensitivity">> => list(any()),
 %%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
 %%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
@@ -1857,6 +1899,7 @@
 %%   <<"nluIntentConfidenceThreshold">> => float(),
 %%   <<"recommendedActions">> => list(string()),
 %%   <<"slotTypesCount">> => integer(),
+%%   <<"speakerDiarizationSettings">> => speaker_diarization_settings(),
 %%   <<"speechDetectionSensitivity">> => list(any()),
 %%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
 %%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
@@ -3893,6 +3936,13 @@
 
 
 %% Example:
+%% speaker_diarization_settings() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type speaker_diarization_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% specifications() :: #{
 %%   <<"slotTypeId">> => string(),
 %%   <<"valueElicitationSetting">> => sub_slot_value_elicitation_setting()
@@ -4414,6 +4464,7 @@
 %%   <<"description">> => string(),
 %%   <<"generativeAISettings">> => generative_a_i_settings(),
 %%   <<"nluIntentConfidenceThreshold">> := float(),
+%%   <<"speakerDiarizationSettings">> => speaker_diarization_settings(),
 %%   <<"speechDetectionSensitivity">> => list(any()),
 %%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
 %%   <<"unifiedSpeechSettings">> => unified_speech_settings(),
@@ -4437,6 +4488,7 @@
 %%   <<"localeName">> => string(),
 %%   <<"nluIntentConfidenceThreshold">> => float(),
 %%   <<"recommendedActions">> => list(string()),
+%%   <<"speakerDiarizationSettings">> => speaker_diarization_settings(),
 %%   <<"speechDetectionSensitivity">> => list(any()),
 %%   <<"speechRecognitionSettings">> => speech_recognition_settings(),
 %%   <<"unifiedSpeechSettings">> => unified_speech_settings(),

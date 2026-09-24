@@ -94,6 +94,8 @@
          update_shard_count/3,
          update_stream_mode/2,
          update_stream_mode/3,
+         update_stream_record_distribution_strategy/2,
+         update_stream_record_distribution_strategy/3,
          update_stream_warm_throughput/2,
          update_stream_warm_throughput/3]).
 
@@ -251,6 +253,7 @@
 %% Example:
 %% create_stream_input() :: #{
 %%   <<"MaxRecordSizeInKiB">> => integer(),
+%%   <<"RecordDistributionStrategy">> => list(any()),
 %%   <<"ShardCount">> => integer(),
 %%   <<"StreamModeDetails">> => stream_mode_details(),
 %%   <<"StreamName">> := string(),
@@ -723,7 +726,7 @@
 %%   <<"Data">> := binary(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"ExplicitHashKey">> => string(),
-%%   <<"PartitionKey">> := string(),
+%%   <<"PartitionKey">> => string(),
 %%   <<"SequenceNumberForOrdering">> => string(),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamId">> => string(),
@@ -977,6 +980,7 @@
 %%   <<"KeyId">> => string(),
 %%   <<"MaxRecordSizeInKiB">> => integer(),
 %%   <<"OpenShardCount">> => integer(),
+%%   <<"RecordDistributionStrategy">> => list(any()),
 %%   <<"RetentionPeriodHours">> => integer(),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamCreationTimestamp">> => non_neg_integer(),
@@ -1121,6 +1125,14 @@
 %%   <<"WarmThroughputMiBps">> => integer()
 %% }
 -type update_stream_mode_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_stream_record_distribution_strategy_input() :: #{
+%%   <<"RecordDistributionStrategy">> := list(any()),
+%%   <<"StreamARN">> := string(),
+%%   <<"StreamId">> => string()
+%% }
+-type update_stream_record_distribution_strategy_input() :: #{binary() => any()}.
 
 %% Example:
 %% update_stream_warm_throughput_input() :: #{
@@ -1475,6 +1487,14 @@
     limit_exceeded_exception() | 
     invalid_argument_exception().
 
+-type update_stream_record_distribution_strategy_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    access_denied_exception().
+
 -type update_stream_warm_throughput_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
@@ -1687,9 +1707,9 @@ decrease_stream_retention_period(Client, Input, Options)
 %% Deleting a channel stops delivery from the source stream to the
 %% destination. Data already delivered to the destination is not deleted.
 %%
-%% A stream cannot be deleted while it has active channels. To delete the
-%% stream, first delete all channels attached to it. To find them, use
-%% `ListChannels' with a stream filter.
+%% A stream cannot be deleted while it has active channels. Use
+%% `ListChannels' with a stream filter to find the channels attached to a
+%% stream before deleting it.
 %%
 %% This operation has a call limit of 5 transactions per second (TPS) for
 %% each Amazon Web Services account. Exceeding 5 TPS results in a
@@ -3367,6 +3387,62 @@ update_stream_mode(Client, Input)
 update_stream_mode(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStreamMode">>, Input, Options).
+
+%% @doc Updates the record distribution strategy for the specified Amazon
+%% Kinesis Data Streams
+%% on-demand data stream.
+%%
+%% The record distribution strategy determines how Amazon Kinesis
+%% Data Streams distributes records across the shards in a stream.
+%%
+%% You must specify the stream using the `StreamARN' parameter.
+%%
+%% The record distribution strategy is a stream-level setting. You can switch
+%% between the
+%% following strategies at any time, and the change takes effect immediately
+%% without
+%% downtime, data loss, or disruption to producer or consumer applications:
+%%
+%% `AUTO' – Amazon Kinesis Data Streams distributes records evenly
+%% across shards using service-managed algorithms, and ignores any partition
+%% key
+%% and `ExplicitHashKey' that a producer provides. Use this strategy for
+%% stateless workloads that do not require partition-key ordering.
+%%
+%% `USER_PARTITION_KEY' – Producers must provide a partition key, and
+%% Amazon Kinesis Data Streams uses the partition key to determine shard
+%% placement.
+%% Records that share a partition key are sent to the same shard. This is the
+%% default strategy.
+%%
+%% This operation is only supported for data streams that use the on-demand
+%% capacity
+%% mode. Provisioned capacity mode streams do not support the record
+%% distribution strategy
+%% setting. Attempting to set `AUTO' on a provisioned stream results in
+%% an
+%% `InvalidArgumentException'.
+%%
+%% New records that arrive after the change are distributed according to the
+%% new
+%% strategy. Records already in the stream keep their original shard
+%% assignments and are
+%% not redistributed.
+-spec update_stream_record_distribution_strategy(aws_client:aws_client(), update_stream_record_distribution_strategy_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_stream_record_distribution_strategy_errors(), tuple()}.
+update_stream_record_distribution_strategy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_stream_record_distribution_strategy(Client, Input, []).
+
+-spec update_stream_record_distribution_strategy(aws_client:aws_client(), update_stream_record_distribution_strategy_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, update_stream_record_distribution_strategy_errors(), tuple()}.
+update_stream_record_distribution_strategy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateStreamRecordDistributionStrategy">>, Input, Options).
 
 %% @doc Updates the warm throughput configuration for the specified Amazon
 %% Kinesis Data Streams on-demand data stream.

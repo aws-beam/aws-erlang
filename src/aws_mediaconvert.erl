@@ -297,6 +297,7 @@
 %%   <<"ProgramSelection">> => integer(),
 %%   <<"RemixSettings">> => remix_settings(),
 %%   <<"SelectorType">> => list(any()),
+%%   <<"Smpte337Passthrough">> => list(any()),
 %%   <<"Streams">> => list(integer()),
 %%   <<"Tracks">> => list(integer())
 %% }
@@ -1889,6 +1890,7 @@
 %%   <<"Inputs">> => list(input()),
 %%   <<"KantarWatermark">> => kantar_watermark_settings(),
 %%   <<"MotionImageInserter">> => motion_image_inserter(),
+%%   <<"MotionImageInserters">> => list(motion_image_inserter()),
 %%   <<"NielsenConfiguration">> => nielsen_configuration(),
 %%   <<"NielsenNonLinearWatermark">> => nielsen_non_linear_watermark_settings(),
 %%   <<"OutputGroups">> => list(output_group()),
@@ -1928,6 +1930,7 @@
 %%   <<"Inputs">> => list(input_template()),
 %%   <<"KantarWatermark">> => kantar_watermark_settings(),
 %%   <<"MotionImageInserter">> => motion_image_inserter(),
+%%   <<"MotionImageInserters">> => list(motion_image_inserter()),
 %%   <<"NielsenConfiguration">> => nielsen_configuration(),
 %%   <<"NielsenNonLinearWatermark">> => nielsen_non_linear_watermark_settings(),
 %%   <<"OutputGroups">> => list(output_group()),
@@ -2557,6 +2560,8 @@
 %% Example:
 %% passthrough_settings() :: #{
 %%   <<"FrameControl">> => list(any()),
+%%   <<"GopsPerSegment">> => integer(),
+%%   <<"SegmentationMode">> => list(any()),
 %%   <<"VideoSelectorMode">> => list(any())
 %% }
 -type passthrough_settings() :: #{binary() => any()}.
@@ -4686,7 +4691,12 @@ list_versions(Client, QueryMap, HeadersMap, Options0)
 %% Probe returns a JSON that includes container, codec, frame rate,
 %% resolution, track count, audio layout, captions, and more. You can use
 %% this information to learn more about your media files, or to help make
-%% decisions while automating your transcoding workflow.
+%% decisions while automating your transcoding workflow. Probe supports the
+%% following input container formats: MP4, QuickTime (MOV), 3GP, 3G2,
+%% Matroska (MKV), WebM, MXF, MPEG-TS, MPEG-PS, AVI, WAV, MP3, FLAC, Ogg, and
+%% ASF (Windows Media / WMA). The fields that Probe returns vary by container
+%% and codec. A field isn't returned when the source doesn't contain
+%% it, or when it isn't available for that container and codec.
 -spec probe(aws_client:aws_client(), probe_request()) ->
     {ok, probe_response(), tuple()} |
     {error, any()} |

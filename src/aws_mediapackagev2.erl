@@ -168,6 +168,13 @@
 
 
 %% Example:
+%% content_key_period_configuration() :: #{
+%%   <<"ContentKeyPeriodTiming">> => list(any())
+%% }
+-type content_key_period_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_channel_group_request() :: #{
 %%   <<"ChannelGroupName">> := string(),
 %%   <<"ClientToken">> => string(),
@@ -1077,10 +1084,12 @@
 %% Example:
 %% speke_key_provider() :: #{
 %%   <<"CertificateArn">> => [string()],
+%%   <<"ContentKeyPeriodConfiguration">> => content_key_period_configuration(),
 %%   <<"DrmSystems">> => list(list(any())()),
 %%   <<"EncryptionContractConfiguration">> => encryption_contract_configuration(),
 %%   <<"ResourceId">> => [string()],
 %%   <<"RoleArn">> => [string()],
+%%   <<"SpekeVersion">> => list(any()),
 %%   <<"Url">> => [string()]
 %% }
 -type speke_key_provider() :: #{binary() => any()}.
