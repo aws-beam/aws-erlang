@@ -69,6 +69,8 @@
 
 -export([associate_dataset_kms_key/2,
          associate_dataset_kms_key/3,
+         create_resource_metrics_configuration/2,
+         create_resource_metrics_configuration/3,
          delete_alarm_mute_rule/2,
          delete_alarm_mute_rule/3,
          delete_alarms/2,
@@ -81,6 +83,8 @@
          delete_insight_rules/3,
          delete_metric_stream/2,
          delete_metric_stream/3,
+         delete_resource_metrics_configuration/2,
+         delete_resource_metrics_configuration/3,
          describe_alarm_contributors/2,
          describe_alarm_contributors/3,
          describe_alarm_history/2,
@@ -121,6 +125,8 @@
          get_metric_widget_image/3,
          get_o_tel_enrichment/2,
          get_o_tel_enrichment/3,
+         get_resource_metrics_configuration/2,
+         get_resource_metrics_configuration/3,
          list_alarm_mute_rules/2,
          list_alarm_mute_rules/3,
          list_dashboards/2,
@@ -166,7 +172,11 @@
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
-         untag_resource/3]).
+         untag_resource/3,
+         update_o_tel_enrichment/2,
+         update_o_tel_enrichment/3,
+         update_resource_metrics_configuration/2,
+         update_resource_metrics_configuration/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -283,6 +293,19 @@
 -type conflict_exception() :: #{binary() => any()}.
 
 %% Example:
+%% create_resource_metrics_configuration_input() :: #{
+%%   <<"MetricSelections">> => list(resource_metric_selection()),
+%%   <<"ResourceArn">> := string()
+%% }
+-type create_resource_metrics_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_metrics_configuration_output() :: #{
+%%   <<"ResourceMetricsConfiguration">> => resource_metrics_configuration()
+%% }
+-type create_resource_metrics_configuration_output() :: #{binary() => any()}.
+
+%% Example:
 %% dashboard_entry() :: #{
 %%   <<"DashboardArn">> => string(),
 %%   <<"DashboardName">> => string(),
@@ -389,6 +412,18 @@
 
 %% }
 -type delete_metric_stream_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_metrics_configuration_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type delete_resource_metrics_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_metrics_configuration_output() :: #{
+
+%% }
+-type delete_resource_metrics_configuration_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_alarm_contributors_input() :: #{
@@ -732,9 +767,25 @@
 
 %% Example:
 %% get_o_tel_enrichment_output() :: #{
-%%   <<"Status">> => list(any())
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExcludeFilters">> => list(o_tel_enrichment_metric_selector()),
+%%   <<"IncludeFilters">> => list(o_tel_enrichment_metric_selector()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type get_o_tel_enrichment_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_metrics_configuration_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type get_resource_metrics_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_resource_metrics_configuration_output() :: #{
+%%   <<"ResourceMetricsConfiguration">> => resource_metrics_configuration()
+%% }
+-type get_resource_metrics_configuration_output() :: #{binary() => any()}.
 
 %% Example:
 %% insight_rule() :: #{
@@ -1140,6 +1191,13 @@
 -type mute_targets() :: #{binary() => any()}.
 
 %% Example:
+%% o_tel_enrichment_metric_selector() :: #{
+%%   <<"MetricNames">> => list(string()),
+%%   <<"Namespace">> => string()
+%% }
+-type o_tel_enrichment_metric_selector() :: #{binary() => any()}.
+
+%% Example:
 %% partial_failure() :: #{
 %%   <<"ExceptionType">> => string(),
 %%   <<"FailureCode">> => string(),
@@ -1332,6 +1390,21 @@
 -type resource_conflict() :: #{binary() => any()}.
 
 %% Example:
+%% resource_metric_selection() :: #{
+%%   <<"IncludeMetrics">> => list(string())
+%% }
+-type resource_metric_selection() :: #{binary() => any()}.
+
+%% Example:
+%% resource_metrics_configuration() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"MetricSelections">> => list(resource_metric_selection()),
+%%   <<"ResourceArn">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type resource_metrics_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1418,13 +1491,17 @@
 
 %% Example:
 %% start_o_tel_enrichment_input() :: #{
-
+%%   <<"ExcludeFilters">> => list(o_tel_enrichment_metric_selector()),
+%%   <<"IncludeFilters">> => list(o_tel_enrichment_metric_selector())
 %% }
 -type start_o_tel_enrichment_input() :: #{binary() => any()}.
 
 %% Example:
 %% start_o_tel_enrichment_output() :: #{
-
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExcludeFilters">> => list(o_tel_enrichment_metric_selector()),
+%%   <<"IncludeFilters">> => list(o_tel_enrichment_metric_selector()),
+%%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type start_o_tel_enrichment_output() :: #{binary() => any()}.
 
@@ -1495,6 +1572,41 @@
 -type untag_resource_output() :: #{binary() => any()}.
 
 %% Example:
+%% update_o_tel_enrichment_input() :: #{
+%%   <<"ExcludeFilters">> => list(o_tel_enrichment_metric_selector()),
+%%   <<"IncludeFilters">> => list(o_tel_enrichment_metric_selector())
+%% }
+-type update_o_tel_enrichment_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_o_tel_enrichment_output() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExcludeFilters">> => list(o_tel_enrichment_metric_selector()),
+%%   <<"IncludeFilters">> => list(o_tel_enrichment_metric_selector()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type update_o_tel_enrichment_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_metrics_configuration_input() :: #{
+%%   <<"MetricSelections">> => list(resource_metric_selection()),
+%%   <<"ResourceArn">> := string()
+%% }
+-type update_resource_metrics_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_resource_metrics_configuration_output() :: #{
+%%   <<"ResourceMetricsConfiguration">> => resource_metrics_configuration()
+%% }
+-type update_resource_metrics_configuration_output() :: #{binary() => any()}.
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+%% Example:
 %% wall_clock_window() :: #{
 %%   <<"Timezone">> => string()
 %% }
@@ -1512,6 +1624,10 @@
     kms_key_not_found_exception() | 
     kms_key_disabled_exception() | 
     kms_access_denied_exception() | 
+    conflict_exception().
+
+-type create_resource_metrics_configuration_errors() ::
+    resource_not_found_exception() | 
     conflict_exception().
 
 -type delete_alarms_errors() ::
@@ -1538,6 +1654,9 @@
     missing_required_parameter_exception() | 
     invalid_parameter_value_exception() | 
     internal_service_fault().
+
+-type delete_resource_metrics_configuration_errors() ::
+    resource_not_found_exception().
 
 -type describe_alarm_contributors_errors() ::
     resource_not_found_exception() | 
@@ -1602,6 +1721,9 @@
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
     internal_service_fault().
+
+-type get_resource_metrics_configuration_errors() ::
+    resource_not_found_exception().
 
 -type list_alarm_mute_rules_errors() ::
     resource_not_found_exception() | 
@@ -1687,6 +1809,9 @@
     invalid_parameter_value_exception() | 
     internal_service_fault().
 
+-type start_o_tel_enrichment_errors() ::
+    validation_exception().
+
 -type stop_metric_streams_errors() ::
     missing_required_parameter_exception() | 
     invalid_parameter_value_exception() | 
@@ -1705,6 +1830,13 @@
     internal_service_fault() | 
     conflict_exception() | 
     concurrent_modification_exception().
+
+-type update_o_tel_enrichment_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
+-type update_resource_metrics_configuration_errors() ::
+    resource_not_found_exception().
 
 %%====================================================================
 %% API
@@ -1809,6 +1941,54 @@ associate_dataset_kms_key(Client, Input)
 associate_dataset_kms_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateDatasetKmsKey">>, Input, Options).
+
+%% @doc Creates a resource metrics configuration for an Amazon Web Services
+%% resource.
+%%
+%% After you
+%% create a configuration, Amazon CloudWatch collects detailed metrics for
+%% that
+%% resource.
+%%
+%% Each Amazon Web Services resource can have only one resource metrics
+%% configuration. If a
+%% configuration already exists for the specified resource ARN, this
+%% operation returns a
+%% `ConflictException'. To modify an existing configuration, use
+%% UpdateResourceMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_UpdateResourceMetricsConfiguration.html.
+%%
+%% If the Amazon Web Services resource that you specify in `ResourceArn'
+%% does
+%% not exist, this operation returns a `ResourceNotFoundException'.
+%% Verify that
+%% the resource ARN is correct and that the resource exists before you retry
+%% the
+%% request.
+%%
+%% To create a resource metrics configuration, you must have the
+%% `cloudwatch:CreateResourceMetricsConfiguration' permission. For
+%% information about scoping
+%% this permission to specific resources, see Condition keys for resource
+%% metrics configuration access:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-cw-condition-keys-resource-arn.html
+%% in the
+%% Amazon CloudWatch User Guide.
+-spec create_resource_metrics_configuration(aws_client:aws_client(), create_resource_metrics_configuration_input()) ->
+    {ok, create_resource_metrics_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, create_resource_metrics_configuration_errors(), tuple()}.
+create_resource_metrics_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_resource_metrics_configuration(Client, Input, []).
+
+-spec create_resource_metrics_configuration(aws_client:aws_client(), create_resource_metrics_configuration_input(), proplists:proplist()) ->
+    {ok, create_resource_metrics_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, create_resource_metrics_configuration_errors(), tuple()}.
+create_resource_metrics_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateResourceMetricsConfiguration">>, Input, Options).
 
 %% @doc Deletes a specific alarm mute rule.
 %%
@@ -1977,6 +2157,46 @@ delete_metric_stream(Client, Input)
 delete_metric_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteMetricStream">>, Input, Options).
+
+%% @doc Deletes the resource metrics configuration for an Amazon Web Services
+%% resource.
+%%
+%% After
+%% you delete the configuration, Amazon CloudWatch stops collecting detailed
+%% metrics
+%% for the resource. Metric data that Amazon CloudWatch already collected for
+%% the
+%% resource is not deleted.
+%%
+%% This operation returns a `ResourceNotFoundException' if no resource
+%% metrics
+%% configuration exists for the specified resource ARN. Verify that the
+%% resource ARN is
+%% correct.
+%%
+%% To delete a resource metrics configuration, you must have the
+%% `cloudwatch:DeleteResourceMetricsConfiguration' permission. For
+%% information about scoping
+%% this permission to specific resources, see Condition keys for resource
+%% metrics configuration access:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-cw-condition-keys-resource-arn.html
+%% in the
+%% Amazon CloudWatch User Guide.
+-spec delete_resource_metrics_configuration(aws_client:aws_client(), delete_resource_metrics_configuration_input()) ->
+    {ok, delete_resource_metrics_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_metrics_configuration_errors(), tuple()}.
+delete_resource_metrics_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_resource_metrics_configuration(Client, Input, []).
+
+-spec delete_resource_metrics_configuration(aws_client:aws_client(), delete_resource_metrics_configuration_input(), proplists:proplist()) ->
+    {ok, delete_resource_metrics_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_metrics_configuration_errors(), tuple()}.
+delete_resource_metrics_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteResourceMetricsConfiguration">>, Input, Options).
 
 %% @doc Returns the information of the current alarm contributors that are in
 %% `ALARM' state.
@@ -2312,6 +2532,20 @@ get_alarm_mute_rule(Client, Input, Options)
 %% returned within `DashboardBody' as the template for the new dashboard
 %% when
 %% you call `PutDashboard' to create the copy.
+%%
+%% You might have recently enabled an opt-in Region (Region that is disabled
+%% by default):
+%% https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#optinregion
+%% for your account. In
+%% that Region, `GetDashboard' can return an access denied error for up
+%% to 24
+%% hours after you enable the Region. This delay occurs while dashboard data
+%% propagates.
+%% The error does not
+%% indicate a problem with your permissions. Because dashboards are global,
+%% you can call
+%% `GetDashboard' in any other enabled Region, or retry after propagation
+%% completes.
 -spec get_dashboard(aws_client:aws_client(), get_dashboard_input()) ->
     {ok, get_dashboard_output(), tuple()} |
     {error, any()} |
@@ -2451,10 +2685,13 @@ get_insight_rule_report(Client, Input, Options)
 %% operation can
 %% include only one query. But the same `GetMetricData' operation can
 %% also
-%% retrieve other metrics. Metrics Insights queries can query only the most
-%% recent three
-%% hours of metric data. For more information about Metrics Insights, see
-%% Query your metrics with CloudWatch Metrics Insights:
+%% retrieve other metrics. Metrics Insights queries can query the most recent
+%% two weeks of
+%% metric data. For alarm condition evaluations, Metrics Insights queries can
+%% query only
+%% the most recent three hours of metric data. For more information about
+%% Metrics Insights,
+%% see Query your metrics with CloudWatch Metrics Insights:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/query_with_cloudwatch-metrics-insights.html.
 %%
 %% Calls to the `GetMetricData' API have a different pricing structure
@@ -2702,6 +2939,44 @@ get_o_tel_enrichment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOTelEnrichment">>, Input, Options).
 
+%% @doc Retrieves the current resource metrics configuration for an Amazon
+%% Web Services
+%% resource.
+%%
+%% The response includes the resource ARN, any metric selections, and the
+%% times
+%% at which the configuration was created and last updated.
+%%
+%% This operation returns a `ResourceNotFoundException' if no resource
+%% metrics
+%% configuration exists for the specified resource ARN. To create a
+%% configuration, use CreateResourceMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_CreateResourceMetricsConfiguration.html.
+%%
+%% To retrieve a resource metrics configuration, you must have the
+%% `cloudwatch:GetResourceMetricsConfiguration' permission. For
+%% information
+%% about scoping this permission to specific resources, see Condition keys
+%% for resource metrics configuration access:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-cw-condition-keys-resource-arn.html
+%% in the
+%% Amazon CloudWatch User Guide.
+-spec get_resource_metrics_configuration(aws_client:aws_client(), get_resource_metrics_configuration_input()) ->
+    {ok, get_resource_metrics_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_metrics_configuration_errors(), tuple()}.
+get_resource_metrics_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_resource_metrics_configuration(Client, Input, []).
+
+-spec get_resource_metrics_configuration(aws_client:aws_client(), get_resource_metrics_configuration_input(), proplists:proplist()) ->
+    {ok, get_resource_metrics_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_resource_metrics_configuration_errors(), tuple()}.
+get_resource_metrics_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetResourceMetricsConfiguration">>, Input, Options).
+
 %% @doc Lists alarm mute rules in your Amazon Web Services account and
 %% region.
 %%
@@ -2747,6 +3022,21 @@ list_alarm_mute_rules(Client, Input, Options)
 %% the value you received for `NextToken' in the first call, to receive
 %% the next
 %% 1000 results.
+%%
+%% You might have recently enabled an opt-in Region (Region that is disabled
+%% by default):
+%% https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#optinregion
+%% for your account. In
+%% that Region, `ListDashboards' can return an access denied error for up
+%% to 24
+%% hours after you enable the Region. This delay occurs while dashboard data
+%% propagates.
+%% The error does not
+%% indicate a problem with your permissions. Because dashboards are global,
+%% you can call
+%% `ListDashboards' in any other enabled Region, or retry after
+%% propagation
+%% completes.
 -spec list_dashboards(aws_client:aws_client(), list_dashboards_input()) ->
     {ok, list_dashboards_output(), tuple()} |
     {error, any()} |
@@ -3538,16 +3828,28 @@ start_metric_streams(Client, Input, Options)
 %% account. For more information, see Enable
 %% resource tags on telemetry:
 %% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/EnableResourceTagsOnTelemetry.html.
+%%
+%% Optionally, `IncludeFilters' and `ExcludeFilters' limit
+%% enrichment to a subset of the account's metrics. These filters are
+%% stored only when this
+%% operation starts enrichment. Calling `StartOTelEnrichment' for an
+%% account
+%% where enrichment is already running has no effect and does not modify the
+%% filters that
+%% are applied. To change them, use UpdateOTelEnrichment:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_UpdateOTelEnrichment.html.
 -spec start_o_tel_enrichment(aws_client:aws_client(), start_o_tel_enrichment_input()) ->
     {ok, start_o_tel_enrichment_output(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, start_o_tel_enrichment_errors(), tuple()}.
 start_o_tel_enrichment(Client, Input)
   when is_map(Client), is_map(Input) ->
     start_o_tel_enrichment(Client, Input, []).
 
 -spec start_o_tel_enrichment(aws_client:aws_client(), start_o_tel_enrichment_input(), proplists:proplist()) ->
     {ok, start_o_tel_enrichment_output(), tuple()} |
-    {error, any()}.
+    {error, any()} |
+    {error, start_o_tel_enrichment_errors(), tuple()}.
 start_o_tel_enrichment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartOTelEnrichment">>, Input, Options).
@@ -3656,6 +3958,83 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Replaces the filters that determine which CloudWatch vended metrics
+%% are enriched
+%% with resource ARN and resource tag labels for the account.
+%%
+%% Enrichment must already be
+%% running for the account. If it is not, this operation returns a
+%% `ResourceNotFoundException'. To start enrichment, use
+%% StartOTelEnrichment:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_StartOTelEnrichment.html.
+%%
+%% The filters in the request completely replace the stored filters; they are
+%% not
+%% merged with them. `IncludeFilters' and `ExcludeFilters' are
+%% replaced as a pair, so a request that specifies only `IncludeFilters'
+%% also
+%% clears the stored `ExcludeFilters', and a request that specifies
+%% neither
+%% clears both.
+-spec update_o_tel_enrichment(aws_client:aws_client(), update_o_tel_enrichment_input()) ->
+    {ok, update_o_tel_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, update_o_tel_enrichment_errors(), tuple()}.
+update_o_tel_enrichment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_o_tel_enrichment(Client, Input, []).
+
+-spec update_o_tel_enrichment(aws_client:aws_client(), update_o_tel_enrichment_input(), proplists:proplist()) ->
+    {ok, update_o_tel_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, update_o_tel_enrichment_errors(), tuple()}.
+update_o_tel_enrichment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateOTelEnrichment">>, Input, Options).
+
+%% @doc Updates the resource metrics configuration for an Amazon Web Services
+%% resource.
+%%
+%% The
+%% `MetricSelections' value that you provide replaces any existing metric
+%% selections for the resource; it is not merged with them.
+%%
+%% If you omit `MetricSelections', Amazon CloudWatch removes any existing
+%% metric selection filter and collects all available detailed metrics for
+%% the
+%% resource.
+%%
+%% This operation returns a `ResourceNotFoundException' if no resource
+%% metrics
+%% configuration exists for the specified resource ARN. To create a
+%% configuration, use
+%% CreateResourceMetricsConfiguration:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_CreateResourceMetricsConfiguration.html.
+%%
+%% To update a resource metrics configuration, you must have the
+%% `cloudwatch:UpdateResourceMetricsConfiguration' permission. For
+%% information about scoping
+%% this permission to specific resources, see Condition keys for resource
+%% metrics configuration access:
+%% https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/iam-cw-condition-keys-resource-arn.html
+%% in the
+%% Amazon CloudWatch User Guide.
+-spec update_resource_metrics_configuration(aws_client:aws_client(), update_resource_metrics_configuration_input()) ->
+    {ok, update_resource_metrics_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_resource_metrics_configuration_errors(), tuple()}.
+update_resource_metrics_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_resource_metrics_configuration(Client, Input, []).
+
+-spec update_resource_metrics_configuration(aws_client:aws_client(), update_resource_metrics_configuration_input(), proplists:proplist()) ->
+    {ok, update_resource_metrics_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_resource_metrics_configuration_errors(), tuple()}.
+update_resource_metrics_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateResourceMetricsConfiguration">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

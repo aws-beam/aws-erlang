@@ -731,6 +731,7 @@
 %%   <<"KmsKeyIdentifier">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"LogConfig">> => log_config(),
+%%   <<"ManagedBy">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Policy">> => string()
 %% }
@@ -874,6 +875,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ManagedBy">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"Policy">> => string()
 %% }
@@ -3002,8 +3004,8 @@ list_targets_by_rule(Client, Input, Options)
 %% to rules.
 %%
 %% You can batch multiple event entries into one request for efficiency.
-%% However, the total entry size must be less than 256KB. You can calculate
-%% the entry size before you send the events.
+%% However, the total entry size must be less than 1MB. You can calculate the
+%% entry size before you send the events.
 %% For more information, see Calculating PutEvents event entry
 %% size:
 %% https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-putevents.html#eb-putevent-size

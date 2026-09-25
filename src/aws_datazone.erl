@@ -1563,6 +1563,7 @@
 
 %% Example:
 %% create_environment_blueprint_input() :: #{
+%%   <<"blueprintCategory">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"provisioningProperties">> := list(),
@@ -1573,6 +1574,7 @@
 
 %% Example:
 %% create_environment_blueprint_output() :: #{
+%%   <<"blueprintCategory">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"deploymentProperties">> => deployment_properties(),
 %%   <<"description">> => string(),
@@ -2708,6 +2710,7 @@
 
 %% Example:
 %% environment_blueprint_summary() :: #{
+%%   <<"blueprintCategory">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"id">> => string(),
@@ -3256,6 +3259,7 @@
 
 %% Example:
 %% get_environment_blueprint_output() :: #{
+%%   <<"blueprintCategory">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"deploymentProperties">> => deployment_properties(),
 %%   <<"description">> => string(),
@@ -4105,7 +4109,8 @@
 
 %% Example:
 %% iam_properties_input() :: #{
-%%   <<"glueLineageSyncEnabled">> => [boolean()]
+%%   <<"glueLineageSyncEnabled">> => [boolean()],
+%%   <<"roleArn">> => string()
 %% }
 -type iam_properties_input() :: #{binary() => any()}.
 
@@ -6994,6 +6999,7 @@
 
 %% Example:
 %% update_environment_blueprint_input() :: #{
+%%   <<"blueprintCategory">> => list(any()),
 %%   <<"description">> => [string()],
 %%   <<"provisioningProperties">> => list(),
 %%   <<"userParameters">> => list(custom_parameter())
@@ -7003,6 +7009,7 @@
 
 %% Example:
 %% update_environment_blueprint_output() :: #{
+%%   <<"blueprintCategory">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"deploymentProperties">> => deployment_properties(),
 %%   <<"description">> => string(),

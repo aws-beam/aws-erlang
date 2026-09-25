@@ -2325,8 +2325,8 @@
 %%
 %% If the rule group contains any rule configured with the
 %% `PartnerThreatProtection' rule type, the calling account must hold an
-%% active AWS Marketplace subscription to the named partner. If the
-%% subscription is missing, the association request is rejected.
+%% active Amazon Web Services Marketplace subscription to the named partner.
+%% If the subscription is missing, the association request is rejected.
 -spec associate_firewall_rule_group(aws_client:aws_client(), associate_firewall_rule_group_request()) ->
     {ok, associate_firewall_rule_group_response(), tuple()} |
     {error, any()} |
@@ -2503,8 +2503,8 @@ create_firewall_domain_list(Client, Input, Options)
 %% source must be supplied through the matching request field — they are
 %% mutually exclusive:
 %%
-%% `FirewallDomainListId' — match a customer-managed or AWS-managed
-%% domain list.
+%% `FirewallDomainListId' — match a customer-managed or Amazon Web
+%% Services-managed domain list.
 %%
 %% `DnsThreatProtection' — match a built-in DNS Firewall Advanced threat
 %% detector (`DGA', `DNS_TUNNELING', or `DICTIONARY_DGA').
@@ -2513,8 +2513,8 @@ create_firewall_domain_list(Client, Input, Options)
 %% `ListFirewallRuleTypes': `FirewallAdvancedContentCategory',
 %% `FirewallAdvancedThreatCategory', `DnsThreatProtection', or
 %% `PartnerThreatProtection'. The `PartnerThreatProtection' variant
-%% requires an active AWS Marketplace subscription to the named partner
-%% product.
+%% requires an active Amazon Web Services Marketplace subscription to the
+%% named partner product.
 %%
 %% For rules that require asynchronous provisioning (today, the
 %% `PartnerThreatProtection' rule type), the rule's `Status'
@@ -2561,6 +2561,11 @@ create_firewall_rule_group(Client, Input, Options)
     request(Client, <<"CreateFirewallRuleGroup">>, Input, Options).
 
 %% @doc Creates a Route 53 Resolver on an Outpost.
+%%
+%% This operation applies to first-generation Outposts only. On
+%% second-generation Outposts, Resolver
+%% is enabled by default and managed automatically by Amazon Web Services, so
+%% you don't need to create it.
 -spec create_outpost_resolver(aws_client:aws_client(), create_outpost_resolver_request()) ->
     {ok, create_outpost_resolver_response(), tuple()} |
     {error, any()} |
@@ -2718,6 +2723,12 @@ delete_firewall_rule_group(Client, Input, Options)
     request(Client, <<"DeleteFirewallRuleGroup">>, Input, Options).
 
 %% @doc Deletes a Resolver on the Outpost.
+%%
+%% This operation applies to first-generation Outposts only. On
+%% second-generation Outposts, Resolver
+%% is managed automatically by Amazon Web Services and can't be deleted
+%% directly. To opt out of Resolver on
+%% second-generation Outposts, contact Amazon Web Services Support.
 -spec delete_outpost_resolver(aws_client:aws_client(), delete_outpost_resolver_request()) ->
     {ok, delete_outpost_resolver_response(), tuple()} |
     {error, any()} |
@@ -3363,9 +3374,10 @@ list_firewall_rule_groups(Client, Input, Options)
 %% `PartnerThreatProtection'. When a returned definition's variant
 %% requires an external subscription (currently only
 %% `PartnerThreatProtection'), the response also includes a
-%% `SubscriptionInfo' identifying the AWS Marketplace product that backs
-%% it; absence of `SubscriptionInfo' means the variant is fully managed
-%% by AWS and requires no separate subscription.
+%% `SubscriptionInfo' identifying the Amazon Web Services Marketplace
+%% product that backs it; absence of `SubscriptionInfo' means the variant
+%% is fully managed by Amazon Web Services and requires no separate
+%% subscription.
 -spec list_firewall_rule_types(aws_client:aws_client(), list_firewall_rule_types_request()) ->
     {ok, list_firewall_rule_types_response(), tuple()} |
     {error, any()} |
@@ -3771,6 +3783,11 @@ update_firewall_rule_group_association(Client, Input, Options)
 
 %% @doc You can use `UpdateOutpostResolver' to update the instance count,
 %% type, or name of a Resolver on an Outpost.
+%%
+%% This operation applies to first-generation Outposts only. On
+%% second-generation Outposts, Resolver
+%% is managed automatically by Amazon Web Services and can't be updated
+%% directly.
 -spec update_outpost_resolver(aws_client:aws_client(), update_outpost_resolver_request()) ->
     {ok, update_outpost_resolver_response(), tuple()} |
     {error, any()} |

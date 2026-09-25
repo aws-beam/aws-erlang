@@ -38,7 +38,20 @@
 
 
 %% Example:
+%% amazon_machine_image_ebs_volume() :: #{
+%%   <<"iops">> => [integer()],
+%%   <<"volumeTypes">> => list([string()]())
+%% }
+-type amazon_machine_image_ebs_volume() :: #{binary() => any()}.
+
+
+%% Example:
 %% amazon_machine_image_fulfillment_option() :: #{
+%%   <<"accessUrlTemplate">> => [string()],
+%%   <<"amiAlias">> => [string()],
+%%   <<"architecture">> => [string()],
+%%   <<"availableFromTime">> => [non_neg_integer()],
+%%   <<"ebsVolume">> => amazon_machine_image_ebs_volume(),
 %%   <<"fulfillmentOptionDisplayName">> => [string()],
 %%   <<"fulfillmentOptionId">> => [string()],
 %%   <<"fulfillmentOptionName">> => [string()],
@@ -47,6 +60,7 @@
 %%   <<"operatingSystems">> => list(amazon_machine_image_operating_system()),
 %%   <<"recommendation">> => amazon_machine_image_recommendation(),
 %%   <<"releaseNotes">> => [string()],
+%%   <<"shortDescription">> => [string()],
 %%   <<"usageInstructions">> => [string()]
 %% }
 -type amazon_machine_image_fulfillment_option() :: #{binary() => any()}.
@@ -63,9 +77,20 @@
 
 %% Example:
 %% amazon_machine_image_recommendation() :: #{
-%%   <<"instanceType">> => [string()]
+%%   <<"instanceType">> => [string()],
+%%   <<"securityGroups">> => list(amazon_machine_image_security_group())
 %% }
 -type amazon_machine_image_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% amazon_machine_image_security_group() :: #{
+%%   <<"cidrIpAddresses">> => list([string()]()),
+%%   <<"fromPort">> => [integer()],
+%%   <<"protocol">> => [string()],
+%%   <<"toPort">> => [integer()]
+%% }
+-type amazon_machine_image_security_group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -106,12 +131,15 @@
 
 %% Example:
 %% cloud_formation_fulfillment_option() :: #{
+%%   <<"availableFromTime">> => [non_neg_integer()],
 %%   <<"fulfillmentOptionDisplayName">> => [string()],
 %%   <<"fulfillmentOptionId">> => [string()],
 %%   <<"fulfillmentOptionName">> => [string()],
 %%   <<"fulfillmentOptionType">> => list(any()),
 %%   <<"fulfillmentOptionVersion">> => [string()],
+%%   <<"longDescription">> => [string()],
 %%   <<"releaseNotes">> => [string()],
+%%   <<"shortDescription">> => [string()],
 %%   <<"usageInstructions">> => [string()]
 %% }
 -type cloud_formation_fulfillment_option() :: #{binary() => any()}.
@@ -282,7 +310,8 @@
 
 %% Example:
 %% get_listing_input() :: #{
-%%   <<"listingId">> := string()
+%%   <<"listingId">> := string(),
+%%   <<"locale">> => string()
 %% }
 -type get_listing_input() :: #{binary() => any()}.
 
@@ -298,6 +327,7 @@
 %%   <<"integrationGuide">> => string(),
 %%   <<"listingId">> => string(),
 %%   <<"listingName">> => string(),
+%%   <<"locale">> => string(),
 %%   <<"logoThumbnailUrl">> => string(),
 %%   <<"longDescription">> => string(),
 %%   <<"pricingModels">> => list(pricing_model()),
@@ -315,6 +345,7 @@
 
 %% Example:
 %% get_offer_input() :: #{
+%%   <<"locale">> => string(),
 %%   <<"offerId">> := string()
 %% }
 -type get_offer_input() :: #{binary() => any()}.
@@ -328,6 +359,7 @@
 %%   <<"badges">> => list(purchase_option_badge()),
 %%   <<"catalog">> => string(),
 %%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"locale">> => string(),
 %%   <<"offerId">> => string(),
 %%   <<"offerName">> => string(),
 %%   <<"pricingModel">> => pricing_model(),
@@ -339,6 +371,7 @@
 
 %% Example:
 %% get_offer_set_input() :: #{
+%%   <<"locale">> => string(),
 %%   <<"offerSetId">> := string()
 %% }
 -type get_offer_set_input() :: #{binary() => any()}.
@@ -352,6 +385,7 @@
 %%   <<"buyerNotes">> => string(),
 %%   <<"catalog">> => string(),
 %%   <<"expirationTime">> => [non_neg_integer()],
+%%   <<"locale">> => string(),
 %%   <<"offerSetId">> => string(),
 %%   <<"offerSetName">> => string(),
 %%   <<"sellerOfRecord">> => seller_information()
@@ -361,6 +395,7 @@
 
 %% Example:
 %% get_offer_terms_input() :: #{
+%%   <<"locale">> => string(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
 %%   <<"offerId">> := string()
@@ -370,6 +405,7 @@
 
 %% Example:
 %% get_offer_terms_output() :: #{
+%%   <<"locale">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"offerTerms">> => list(list())
 %% }
@@ -378,6 +414,7 @@
 
 %% Example:
 %% get_product_input() :: #{
+%%   <<"locale">> => string(),
 %%   <<"productId">> := string()
 %% }
 -type get_product_input() :: #{binary() => any()}.
@@ -390,6 +427,8 @@
 %%   <<"deployedOnAws">> => list(any()),
 %%   <<"fulfillmentOptionSummaries">> => list(fulfillment_option_summary()),
 %%   <<"highlights">> => list(string()),
+%%   <<"listingId">> => string(),
+%%   <<"locale">> => string(),
 %%   <<"logoThumbnailUrl">> => string(),
 %%   <<"longDescription">> => string(),
 %%   <<"manufacturer">> => seller_information(),
@@ -456,6 +495,7 @@
 
 %% Example:
 %% list_fulfillment_options_input() :: #{
+%%   <<"locale">> => string(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
 %%   <<"productId">> := string()
@@ -466,6 +506,7 @@
 %% Example:
 %% list_fulfillment_options_output() :: #{
 %%   <<"fulfillmentOptions">> => list(list()),
+%%   <<"locale">> => string(),
 %%   <<"nextToken">> => string()
 %% }
 -type list_fulfillment_options_output() :: #{binary() => any()}.
@@ -474,6 +515,7 @@
 %% Example:
 %% list_purchase_options_input() :: #{
 %%   <<"filters">> => list(purchase_option_filter()),
+%%   <<"locale">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -784,10 +826,13 @@
 
 %% Example:
 %% saas_fulfillment_option() :: #{
+%%   <<"availableFromTime">> => [non_neg_integer()],
 %%   <<"fulfillmentOptionDisplayName">> => [string()],
 %%   <<"fulfillmentOptionId">> => [string()],
 %%   <<"fulfillmentOptionType">> => list(any()),
 %%   <<"fulfillmentUrl">> => [string()],
+%%   <<"launchUrl">> => string(),
+%%   <<"quickLaunch">> => list(any()),
 %%   <<"usageInstructions">> => [string()]
 %% }
 -type saas_fulfillment_option() :: #{binary() => any()}.
@@ -823,6 +868,8 @@
 %%   <<"fulfillmentOptionVersion">> => [string()],
 %%   <<"recommendation">> => sage_maker_model_recommendation(),
 %%   <<"releaseNotes">> => [string()],
+%%   <<"supportedContentTypes">> => list([string()]()),
+%%   <<"supportedResponseMimeTypes">> => list([string()]()),
 %%   <<"usageInstructions">> => [string()]
 %% }
 -type sage_maker_model_fulfillment_option() :: #{binary() => any()}.
@@ -848,6 +895,7 @@
 %% search_facets_input() :: #{
 %%   <<"facetTypes">> => list(list(any())()),
 %%   <<"filters">> => list(search_filter()),
+%%   <<"locale">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"searchText">> => string()
 %% }
@@ -874,6 +922,7 @@
 %% Example:
 %% search_listings_input() :: #{
 %%   <<"filters">> => list(search_filter()),
+%%   <<"locale">> => string(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"searchText">> => string(),
