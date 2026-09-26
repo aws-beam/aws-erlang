@@ -1988,6 +1988,10 @@
 %% }
 -type public_router_network_interface_rule() :: #{binary() => any()}.
 
+%% Example:
+%% public_tls_encryption_configuration() :: #{}
+-type public_tls_encryption_configuration() :: #{}.
+
 
 %% Example:
 %% purchase_offering_request() :: #{
@@ -2300,6 +2304,17 @@
 %%   <<"Message">> => [string()]
 %% }
 -type router_output_service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% rtmp_push_router_output_configuration() :: #{
+%%   <<"ApplicationName">> => [string()],
+%%   <<"DestinationAddress">> => [string()],
+%%   <<"DestinationPort">> => [integer()],
+%%   <<"StreamName">> => [string()],
+%%   <<"TlsEncryption">> => tls_encryption()
+%% }
+-type rtmp_push_router_output_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2626,6 +2641,14 @@
 %%   <<"Timestamp">> => [non_neg_integer()]
 %% }
 -type thumbnail_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% tls_encryption() :: #{
+%%   <<"EncryptionConfiguration">> => list(),
+%%   <<"EncryptionType">> => list(any())
+%% }
+-type tls_encryption() :: #{binary() => any()}.
 
 
 %% Example:

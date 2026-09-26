@@ -265,7 +265,8 @@
 
 %% Example:
 %% a_i_agent_configuration_data() :: #{
-%%   <<"aiAgentId">> => string()
+%%   <<"aiAgentId">> => string(),
+%%   <<"enabled">> => [boolean()]
 %% }
 -type a_i_agent_configuration_data() :: #{binary() => any()}.
 
@@ -2527,6 +2528,13 @@
 
 
 %% Example:
+%% proactive_recommendation_data_details() :: #{
+%%   <<"nextMessageToken">> => string()
+%% }
+-type proactive_recommendation_data_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% push_a_p_n_s_message_template_content() :: #{
 %%   <<"action">> => string(),
 %%   <<"body">> => list(),
@@ -2886,6 +2894,15 @@
 
 
 %% Example:
+%% retrieve_error() :: #{
+%%   <<"associationId">> => string(),
+%%   <<"code">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type retrieve_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% retrieve_request() :: #{
 %%   <<"retrievalConfiguration">> := retrieval_configuration(),
 %%   <<"retrievalQuery">> := string()
@@ -2895,6 +2912,7 @@
 
 %% Example:
 %% retrieve_response() :: #{
+%%   <<"errors">> => list(retrieve_error()),
 %%   <<"results">> => list(retrieve_result())
 %% }
 -type retrieve_response() :: #{binary() => any()}.

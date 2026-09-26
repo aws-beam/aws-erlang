@@ -112,6 +112,8 @@
          import_security_requirements/3,
          initiate_provider_registration/2,
          initiate_provider_registration/3,
+         list_actor_messages/2,
+         list_actor_messages/3,
          list_agent_spaces/2,
          list_agent_spaces/3,
          list_applications/2,
@@ -223,6 +225,16 @@
 %%   <<"uris">> => list([string()]())
 %% }
 -type actor() :: #{binary() => any()}.
+
+
+%% Example:
+%% actor_message() :: #{
+%%   <<"body">> => string(),
+%%   <<"receivedAt">> => [non_neg_integer()],
+%%   <<"sender">> => string(),
+%%   <<"subject">> => string()
+%% }
+-type actor_message() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1776,6 +1788,25 @@
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actor_messages_input() :: #{
+%%   <<"actorIdentifier">> := [string()],
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"pentestId">> := [string()]
+%% }
+-type list_actor_messages_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_actor_messages_output() :: #{
+%%   <<"messages">> => list(actor_message()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_actor_messages_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5014,6 +5045,39 @@ initiate_provider_registration(Client, Input) ->
 initiate_provider_registration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/oauth2/provider/register"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of the email MFA messages received for an
+%% actor at its server-generated email address, most recent first.
+-spec list_actor_messages(aws_client:aws_client(), list_actor_messages_input()) ->
+    {ok, list_actor_messages_output(), tuple()} |
+    {error, any()}.
+list_actor_messages(Client, Input) ->
+    list_actor_messages(Client, Input, []).
+
+-spec list_actor_messages(aws_client:aws_client(), list_actor_messages_input(), proplists:proplist()) ->
+    {ok, list_actor_messages_output(), tuple()} |
+    {error, any()}.
+list_actor_messages(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListActorMessages"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

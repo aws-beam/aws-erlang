@@ -38,6 +38,8 @@
          create_prompt/3,
          create_prompt_version/3,
          create_prompt_version/4,
+         create_vpc_configuration/3,
+         create_vpc_configuration/4,
          delete_agent/3,
          delete_agent/4,
          delete_agent_action_group/5,
@@ -62,6 +64,8 @@
          delete_prompt/4,
          delete_resource_policy/3,
          delete_resource_policy/4,
+         delete_vpc_configuration/4,
+         delete_vpc_configuration/5,
          disassociate_agent_collaborator/5,
          disassociate_agent_collaborator/6,
          disassociate_agent_knowledge_base/5,
@@ -110,6 +114,9 @@
          get_resource_policy/2,
          get_resource_policy/4,
          get_resource_policy/5,
+         get_vpc_configuration/3,
+         get_vpc_configuration/5,
+         get_vpc_configuration/6,
          ingest_knowledge_base_documents/4,
          ingest_knowledge_base_documents/5,
          list_agent_action_groups/4,
@@ -147,6 +154,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_vpc_configurations/2,
+         list_vpc_configurations/4,
+         list_vpc_configurations/5,
          prepare_agent/3,
          prepare_agent/4,
          prepare_flow/3,
@@ -870,6 +880,31 @@
 
 
 %% Example:
+%% create_vpc_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"hostHeader">> => string(),
+%%   <<"name">> => string(),
+%%   <<"port">> := integer(),
+%%   <<"protocol">> := list(any()),
+%%   <<"resolutionMode">> := list(any()),
+%%   <<"resourceTarget">> := string(),
+%%   <<"subnetIds">> := list(string()),
+%%   <<"tlsServerName">> => string(),
+%%   <<"vpcId">> := string()
+%% }
+-type create_vpc_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_vpc_configuration_response() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"vpcConfigurationId">> => string()
+%% }
+-type create_vpc_configuration_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% curated_query() :: #{
 %%   <<"naturalLanguage">> => string(),
 %%   <<"sql">> => string()
@@ -1135,6 +1170,18 @@
 %%   <<"revisionId">> => string()
 %% }
 -type delete_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_vpc_configuration_request() :: #{}
+-type delete_vpc_configuration_request() :: #{}.
+
+
+%% Example:
+%% delete_vpc_configuration_response() :: #{
+%%   <<"status">> => list(any()),
+%%   <<"vpcConfigurationId">> => string()
+%% }
+-type delete_vpc_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1594,6 +1641,17 @@
 %%   <<"revisionId">> => string()
 %% }
 -type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_vpc_configuration_request() :: #{}
+-type get_vpc_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_vpc_configuration_response() :: #{
+%%   <<"vpcConfiguration">> => vpc_configuration()
+%% }
+-type get_vpc_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2119,6 +2177,23 @@
 %%   <<"tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"statusFilter">> => list(any())
+%% }
+-type list_vpc_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_vpc_configurations_response() :: #{
+%%   <<"items">> => list(vpc_configuration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_vpc_configurations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3504,6 +3579,46 @@
 
 
 %% Example:
+%% vpc_configuration() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"hostHeader">> => string(),
+%%   <<"name">> => string(),
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => list(any()),
+%%   <<"resolutionMode">> => list(any()),
+%%   <<"resourceTarget">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"tlsServerName">> => string(),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"vpcConfigurationId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_configuration_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"hostHeader">> => string(),
+%%   <<"name">> => string(),
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => list(any()),
+%%   <<"resolutionMode">> => list(any()),
+%%   <<"resourceTarget">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusMessage">> => string(),
+%%   <<"tlsServerName">> => string(),
+%%   <<"vpcConfigurationId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type vpc_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% web_crawler_configuration() :: #{
 %%   <<"crawlerLimits">> => web_crawler_limits(),
 %%   <<"exclusionFilters">> => list(string()),
@@ -3648,6 +3763,15 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_vpc_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type delete_agent_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -3736,6 +3860,14 @@
     access_denied_exception().
 
 -type delete_resource_policy_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_vpc_configuration_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3865,6 +3997,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_vpc_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type ingest_knowledge_base_documents_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -3970,6 +4109,13 @@
     access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_vpc_configurations_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -4690,6 +4836,45 @@ create_prompt_version(Client, PromptIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a VPC configuration that lets a knowledge base connect to a
+%% resource in your private VPC.
+%%
+%% This operation is asynchronous: it returns a `vpcConfigurationId' with
+%% status `CREATING'. Poll `GetVpcConfiguration' until the status
+%% becomes `CREATED' or `CREATE_FAILED'.
+-spec create_vpc_configuration(aws_client:aws_client(), binary() | list(), create_vpc_configuration_request()) ->
+    {ok, create_vpc_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_configuration_errors(), tuple()}.
+create_vpc_configuration(Client, KnowledgeBaseId, Input) ->
+    create_vpc_configuration(Client, KnowledgeBaseId, Input, []).
+
+-spec create_vpc_configuration(aws_client:aws_client(), binary() | list(), create_vpc_configuration_request(), proplists:proplist()) ->
+    {ok, create_vpc_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_vpc_configuration_errors(), tuple()}.
+create_vpc_configuration(Client, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/vpcconfigurations/"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an agent.
 -spec delete_agent(aws_client:aws_client(), binary() | list(), delete_agent_request()) ->
     {ok, delete_agent_response(), tuple()} |
@@ -5124,6 +5309,45 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
                      {<<"expectedRevisionId">>, <<"expectedRevisionId">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a VPC configuration.
+%%
+%% This operation is asynchronous: it returns status `DELETING'. Poll
+%% `GetVpcConfiguration' until it returns a
+%% `ResourceNotFoundException', indicating the configuration is deleted.
+%% Delete requests are idempotent and safe to retry.
+-spec delete_vpc_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vpc_configuration_request()) ->
+    {ok, delete_vpc_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_configuration_errors(), tuple()}.
+delete_vpc_configuration(Client, KnowledgeBaseId, VpcConfigurationId, Input) ->
+    delete_vpc_configuration(Client, KnowledgeBaseId, VpcConfigurationId, Input, []).
+
+-spec delete_vpc_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), delete_vpc_configuration_request(), proplists:proplist()) ->
+    {ok, delete_vpc_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_vpc_configuration_errors(), tuple()}.
+delete_vpc_configuration(Client, KnowledgeBaseId, VpcConfigurationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/vpcconfigurations/", aws_util:encode_uri(VpcConfigurationId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates an agent collaborator.
@@ -5788,6 +6012,46 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the details and current status of a single VPC configuration.
+%%
+%% Use this operation to poll for the outcome of an asynchronous create or
+%% delete.
+-spec get_vpc_configuration(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_vpc_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_vpc_configuration_errors(), tuple()}.
+get_vpc_configuration(Client, KnowledgeBaseId, VpcConfigurationId)
+  when is_map(Client) ->
+    get_vpc_configuration(Client, KnowledgeBaseId, VpcConfigurationId, #{}, #{}).
+
+-spec get_vpc_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_vpc_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_vpc_configuration_errors(), tuple()}.
+get_vpc_configuration(Client, KnowledgeBaseId, VpcConfigurationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_vpc_configuration(Client, KnowledgeBaseId, VpcConfigurationId, QueryMap, HeadersMap, []).
+
+-spec get_vpc_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_vpc_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_vpc_configuration_errors(), tuple()}.
+get_vpc_configuration(Client, KnowledgeBaseId, VpcConfigurationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/vpcconfigurations/", aws_util:encode_uri(VpcConfigurationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Ingests documents directly into the knowledge base that is connected
 %% to the data source.
 %%
@@ -6400,6 +6664,53 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a paginated list of the VPC configurations for a knowledge
+%% base.
+%%
+%% You can optionally filter by status. Use the `nextToken' parameter to
+%% retrieve additional results.
+-spec list_vpc_configurations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_vpc_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_vpc_configurations_errors(), tuple()}.
+list_vpc_configurations(Client, KnowledgeBaseId)
+  when is_map(Client) ->
+    list_vpc_configurations(Client, KnowledgeBaseId, #{}, #{}).
+
+-spec list_vpc_configurations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_vpc_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_vpc_configurations_errors(), tuple()}.
+list_vpc_configurations(Client, KnowledgeBaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_vpc_configurations(Client, KnowledgeBaseId, QueryMap, HeadersMap, []).
+
+-spec list_vpc_configurations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_vpc_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_vpc_configurations_errors(), tuple()}.
+list_vpc_configurations(Client, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/knowledgebases/", aws_util:encode_uri(KnowledgeBaseId), "/vpcconfigurations/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

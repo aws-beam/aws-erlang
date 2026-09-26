@@ -330,6 +330,8 @@
          list_workload_identities/3,
          put_resource_policy/3,
          put_resource_policy/4,
+         rotate_payment_connector_credentials/4,
+         rotate_payment_connector_credentials/5,
          set_token_vault_cm_k/2,
          set_token_vault_cm_k/3,
          start_policy_generation/3,
@@ -811,6 +813,13 @@
 %%   <<"walletSecretSource">> => list(any())
 %% }
 -type coinbase_cdp_configuration_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% coinbase_cdp_rotation_targets() :: #{
+%%   <<"secrets">> => list(list(any())())
+%% }
+-type coinbase_cdp_rotation_targets() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3039,10 +3048,12 @@
 %%   <<"authorizationUrl">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialProviderConfigurations">> => list(list()),
+%%   <<"credentialsUpdatedAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"paymentConnectorId">> => string(),
+%%   <<"provisionMode">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
@@ -5009,6 +5020,7 @@
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"paymentConnectorId">> => string(),
+%%   <<"provisionMode">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"type">> => list(any())
 %% }
@@ -5330,6 +5342,24 @@
 %%   <<"volumeType">> => list(any())
 %% }
 -type root_volume_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rotate_payment_connector_credentials_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"credentialsToRotate">> := list()
+%% }
+-type rotate_payment_connector_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% rotate_payment_connector_credentials_response() :: #{
+%%   <<"lastUpdatedAt">> => non_neg_integer(),
+%%   <<"paymentConnectorId">> => string(),
+%%   <<"paymentManagerId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type rotate_payment_connector_credentials_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7971,6 +8001,14 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type rotate_payment_connector_credentials_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type set_token_vault_cm_k_errors() ::
@@ -13521,6 +13559,58 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Replaces the service-managed credentials of a payment connector with
+%% newly issued credentials.
+%%
+%% Use this operation only for payment connectors with a `provisionMode'
+%% of `QUICK_CREATE'. For payment connectors with a `provisionMode'
+%% of `MANUAL', call `UpdatePaymentCredentialProvider' instead after
+%% rotating credentials with the payment provider directly.
+%%
+%% The rotation finishes before the response is returned, and only one
+%% rotation runs at a time for a given payment connector. When it succeeds,
+%% the new credential is in effect and the payment connector stays in the
+%% `READY' state. When it fails, an error is returned, the payment
+%% connector and its existing credential are left unchanged, and you can
+%% retry the request.
+%%
+%% Rotation replaces the credential on the connector's credential
+%% provider, so every payment connector that uses that provider is affected.
+%% Replace any copy of the previous credential that you use outside
+%% AgentCore.
+-spec rotate_payment_connector_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), rotate_payment_connector_credentials_request()) ->
+    {ok, rotate_payment_connector_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, rotate_payment_connector_credentials_errors(), tuple()}.
+rotate_payment_connector_credentials(Client, PaymentConnectorId, PaymentManagerId, Input) ->
+    rotate_payment_connector_credentials(Client, PaymentConnectorId, PaymentManagerId, Input, []).
+
+-spec rotate_payment_connector_credentials(aws_client:aws_client(), binary() | list(), binary() | list(), rotate_payment_connector_credentials_request(), proplists:proplist()) ->
+    {ok, rotate_payment_connector_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, rotate_payment_connector_credentials_errors(), tuple()}.
+rotate_payment_connector_credentials(Client, PaymentConnectorId, PaymentManagerId, Input0, Options0) ->
+    Method = post,
+    Path = ["/payments/managers/", aws_util:encode_uri(PaymentManagerId), "/connectors/", aws_util:encode_uri(PaymentConnectorId), "/rotate-credentials"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

@@ -46,6 +46,8 @@
          list_route53_health_checks/3,
          list_route53_health_checks_in_region/2,
          list_route53_health_checks_in_region/3,
+         list_service_quota_warnings/2,
+         list_service_quota_warnings/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          start_plan_execution/2,
@@ -209,6 +211,7 @@
 %%   <<"recoveryTimeObjectiveMinutes">> => [integer()],
 %%   <<"regions">> := list(string()),
 %%   <<"reportConfiguration">> => report_configuration(),
+%%   <<"serviceQuotaChecksEnabled">> => [boolean()],
 %%   <<"tags">> => map(),
 %%   <<"triggers">> => list(trigger()),
 %%   <<"workflows">> := list(workflow())
@@ -267,7 +270,8 @@
 %%   <<"capacityMonitoringApproach">> => list(any()),
 %%   <<"targetPercent">> => [integer()],
 %%   <<"timeoutMinutes">> => [integer()],
-%%   <<"ungraceful">> => ec2_ungraceful()
+%%   <<"ungraceful">> => ec2_ungraceful(),
+%%   <<"waitELBTargetGroupHealthy">> => list(any())
 %% }
 -type ec2_asg_capacity_increase_configuration() :: #{binary() => any()}.
 
@@ -283,7 +287,8 @@
 %%   <<"services">> => list(service()),
 %%   <<"targetPercent">> => [integer()],
 %%   <<"timeoutMinutes">> => [integer()],
-%%   <<"ungraceful">> => ecs_ungraceful()
+%%   <<"ungraceful">> => ecs_ungraceful(),
+%%   <<"waitELBTargetGroupHealthy">> => list(any())
 %% }
 -type ecs_capacity_increase_configuration() :: #{binary() => any()}.
 
@@ -613,6 +618,21 @@
 -type list_route53_health_checks_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_service_quota_warnings_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"planArns">> => list(string())
+%% }
+-type list_service_quota_warnings_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_service_quota_warnings_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceQuotaWarningSummaries">> => list(service_quota_warning_summary())
+%% }
+-type list_service_quota_warnings_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"arn">> := string()
 %% }
@@ -668,6 +688,7 @@
 %%   <<"recoveryTimeObjectiveMinutes">> => [integer()],
 %%   <<"regions">> => list(string()),
 %%   <<"reportConfiguration">> => report_configuration(),
+%%   <<"serviceQuotaChecksEnabled">> => [boolean()],
 %%   <<"triggers">> => list(trigger()),
 %%   <<"updatedAt">> => [non_neg_integer()],
 %%   <<"version">> => [string()],
@@ -790,6 +811,23 @@
 %%   <<"serviceArn">> => string()
 %% }
 -type service() :: #{binary() => any()}.
+
+%% Example:
+%% service_quota_warning_summary() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"caseId">> => [string()],
+%%   <<"lastCheckedAt">> => [non_neg_integer()],
+%%   <<"planArn">> => string(),
+%%   <<"quotaCode">> => [string()],
+%%   <<"quotaName">> => [string()],
+%%   <<"quotaRegion">> => string(),
+%%   <<"requestId">> => [string()],
+%%   <<"serviceCode">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"warningCreatedAt">> => [non_neg_integer()],
+%%   <<"warningMessage">> => [string()]
+%% }
+-type service_quota_warning_summary() :: #{binary() => any()}.
 
 %% Example:
 %% start_plan_execution_request() :: #{
@@ -915,6 +953,7 @@
 %%   <<"executionRole">> := string(),
 %%   <<"recoveryTimeObjectiveMinutes">> => [integer()],
 %%   <<"reportConfiguration">> => report_configuration(),
+%%   <<"serviceQuotaChecksEnabled">> => [boolean()],
 %%   <<"triggers">> => list(trigger()),
 %%   <<"workflows">> := list(workflow())
 %% }
@@ -983,6 +1022,10 @@
     resource_not_found_exception() | 
     internal_server_exception() | 
     illegal_argument_exception() | 
+    access_denied_exception().
+
+-type list_service_quota_warnings_errors() ::
+    internal_server_exception() | 
     access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
@@ -1297,6 +1340,34 @@ list_route53_health_checks_in_region(Client, Input)
 list_route53_health_checks_in_region(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRoute53HealthChecksInRegion">>, Input, Options).
+
+%% @doc Lists the service quota warnings for the plans that you can access.
+%%
+%% Region switch creates a warning when the applied quota value in one Region
+%% of a plan is lower than the value required for the matching resource in
+%% another Region or account in the plan.
+%%
+%% Returns the warnings for the plans that you own and for plans that are
+%% shared with your account through AWS Resource Access Manager (AWS RAM). To
+%% return warnings for specific plans, provide a list of plan Amazon Resource
+%% Names (ARNs). Region switch ignores any plan ARN that you can't
+%% access. If you don't provide any plan ARNs, Region switch returns the
+%% warnings for all of your accessible plans.
+-spec list_service_quota_warnings(aws_client:aws_client(), list_service_quota_warnings_request()) ->
+    {ok, list_service_quota_warnings_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_quota_warnings_errors(), tuple()}.
+list_service_quota_warnings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_service_quota_warnings(Client, Input, []).
+
+-spec list_service_quota_warnings(aws_client:aws_client(), list_service_quota_warnings_request(), proplists:proplist()) ->
+    {ok, list_service_quota_warnings_response(), tuple()} |
+    {error, any()} |
+    {error, list_service_quota_warnings_errors(), tuple()}.
+list_service_quota_warnings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListServiceQuotaWarnings">>, Input, Options).
 
 %% @doc Lists the tags attached to a Region switch resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->

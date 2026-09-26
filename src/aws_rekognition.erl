@@ -1,17 +1,22 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc This is the API Reference for Amazon Rekognition Image:
-%% https://docs.aws.amazon.com/rekognition/latest/dg/images.html, Amazon
-%% Rekognition Custom Labels:
+%% @doc This is the API Reference for
+%% Amazon Rekognition Image:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/images.html,
+%% Amazon Rekognition Bulk Image Analysis:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/bulk-analysis.html,
+%% Amazon Rekognition Custom Labels:
 %% https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/what-is.html,
-%% Amazon Rekognition Stored
-%% Video: https://docs.aws.amazon.com/rekognition/latest/dg/video.html,
+%% Amazon Rekognition Stored Video:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/video.html,
+%% Amazon Rekognition Face Liveness:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/face-liveness.html,
 %% Amazon Rekognition Streaming Video:
 %% https://docs.aws.amazon.com/rekognition/latest/dg/streaming-video.html.
 %%
-%% It provides descriptions of actions, data types, common
-%% parameters, and common errors.
+%% It provides descriptions of actions, data types, common parameters, and
+%% common errors.
 %%
 %% Amazon Rekognition Image
 %%
@@ -60,17 +65,11 @@
 %% GetCelebrityInfo:
 %% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetCelebrityInfo.html
 %%
-%% GetMediaAnalysisJob:
-%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetMediaAnalysisJob.html
-%%
 %% IndexFaces:
 %% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_IndexFaces.html
 %%
 %% ListCollections:
 %% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListCollections.html
-%%
-%% ListMediaAnalysisJob:
-%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListMediaAnalysisJob.html
 %%
 %% ListFaces:
 %% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListFaces.html
@@ -92,6 +91,14 @@
 %%
 %% SearchUsersByImage:
 %% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_SearchUsersByImage.html
+%%
+%% Amazon Rekognition Bulk Image Analysis
+%%
+%% GetMediaAnalysisJob:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetMediaAnalysisJob.html
+%%
+%% ListMediaAnalysisJob:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_ListMediaAnalysisJob.html
 %%
 %% StartMediaAnalysisJob:
 %% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartMediaAnalysisJob.html
@@ -158,7 +165,7 @@
 %% UpdateDatasetEntries:
 %% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_UpdateDatasetEntries.html
 %%
-%% Amazon Rekognition Video Stored Video
+%% Amazon Rekognition Stored Video
 %%
 %% GetCelebrityRecognition:
 %% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetCelebrityRecognition.html
@@ -208,7 +215,18 @@
 %% StartTextDetection:
 %% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_StartTextDetection.html
 %%
-%% Amazon Rekognition Video Streaming Video
+%% Amazon Rekognition Face Liveness
+%%
+%% CreateFaceLivenessSession:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CreateFaceLivenessSession.html
+%%
+%% GetFaceLivenessSessionResults:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_GetFaceLivenessSessionResults.html
+%%
+%% StartFaceLivenessSession:
+%% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_rekognitionstreaming_StartFaceLivenessSession.html
+%%
+%% Amazon Rekognition Streaming Video
 %%
 %% CreateStreamProcessor:
 %% https://docs.aws.amazon.com/rekognition/latest/APIReference/API_CreateStreamProcessor.html
@@ -1335,6 +1353,13 @@
 -type face_search_settings() :: #{binary() => any()}.
 
 %% Example:
+%% feedback_item() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string()
+%% }
+-type feedback_item() :: #{binary() => any()}.
+
+%% Example:
 %% gender() :: #{
 %%   <<"Confidence">> => float(),
 %%   <<"Value">> => list(any())
@@ -1457,6 +1482,8 @@
 %%   <<"AuditImages">> => list(audit_image()),
 %%   <<"Challenge">> => challenge(),
 %%   <<"Confidence">> => float(),
+%%   <<"Feedback">> => list(feedback_item()),
+%%   <<"Metadata">> => session_metadata(),
 %%   <<"ReferenceImage">> => audit_image(),
 %%   <<"SessionId">> => string(),
 %%   <<"Status">> => list(any())
@@ -2441,6 +2468,12 @@
 %%   <<"Message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% session_metadata() :: #{
+%%   <<"SDKType">> => string()
+%% }
+-type session_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% session_not_found_exception() :: #{
@@ -4022,6 +4055,19 @@ create_dataset(Client, Input, Options)
 %% default, it is set to 0. The limit is best effort and based on the
 %% duration of the
 %% selfie-video.
+%%
+%% You can use the `ChallengePreferences' option in the `Settings'
+%% parameter to choose between the
+%% 'FaceMovementAndLightChallenge' or FaceMovementChallenge'
+%% settings. See the
+%% Shared Responsibility:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/face-liveness-shared-responsibility-model.html
+%% page for details on guidance for which setting to choose between these two
+%% settings depending on
+%% your use case and preferences. This parameter is optional and if no
+%% parameter is provided, then
+%% the 'FaceMovementAndLightChallenge' settings is applied by
+%% default.
 -spec create_face_liveness_session(aws_client:aws_client(), create_face_liveness_session_request()) ->
     {ok, create_face_liveness_session_response(), tuple()} |
     {error, any()} |
@@ -4123,8 +4169,19 @@ create_project_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateProjectVersion">>, Input, Options).
 
-%% @doc Creates an Amazon Rekognition stream processor that you can use to
-%% detect and recognize faces or to detect labels in a streaming video.
+%% @doc
+%% Service availability notice: Streaming Video and Bulk Image Analysis is no
+%% longer available to new customers.
+%%
+%% For more information, see
+%% Rekognition feature availability changes:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html.
+%%
+%% This change does not impact the availability of other Amazon Rekognition
+%% features.
+%%
+%% Creates an Amazon Rekognition stream processor that you can use to detect
+%% and recognize faces or to detect labels in a streaming video.
 %%
 %% Amazon Rekognition Video is a consumer of live video from Amazon Kinesis
 %% Video Streams. There are two different settings for stream processors in
@@ -4387,10 +4444,19 @@ delete_project_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteProjectVersion">>, Input, Options).
 
-%% @doc Deletes the stream processor identified by `Name'.
+%% @doc
+%% Service availability notice: Streaming Video and Bulk Image Analysis is no
+%% longer available to new customers.
 %%
-%% You assign the value for `Name' when you create the stream processor
-%% with
+%% For more information, see
+%% Rekognition feature availability changes:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html.
+%%
+%% This change does not impact the availability of other Amazon Rekognition
+%% features.
+%%
+%% Deletes the stream processor identified by `Name'. You assign the
+%% value for `Name' when you create the stream processor with
 %% `CreateStreamProcessor'. You might not be able to use the same name
 %% for a stream processor for a few seconds after calling
 %% `DeleteStreamProcessor'.
@@ -4532,11 +4598,21 @@ describe_projects(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeProjects">>, Input, Options).
 
-%% @doc Provides information about a stream processor created by
-%% `CreateStreamProcessor'.
+%% @doc
+%% Service availability notice: Streaming Video and Bulk Image Analysis is no
+%% longer available to new customers.
 %%
-%% You can get information about the input and output streams, the input
-%% parameters for the face recognition being performed,
+%% For more information, see
+%% Rekognition feature availability changes:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html.
+%%
+%% This change does not impact the availability of other Amazon Rekognition
+%% features.
+%%
+%% Provides information about a stream processor created by
+%% `CreateStreamProcessor'. You can get information about the input and
+%% output streams, the input parameters for the face recognition being
+%% performed,
 %% and the current status of the stream processor.
 -spec describe_stream_processor(aws_client:aws_client(), describe_stream_processor_request()) ->
     {ok, describe_stream_processor_response(), tuple()} |
@@ -5305,6 +5381,13 @@ get_face_detection(Client, Input, Options)
 %% defined by the `AuditImagesLimit' paramater when calling
 %% `CreateFaceLivenessSession'. Reference images are always returned when
 %% possible.
+%%
+%% For a session that has completed, the response can also include a
+%% `Feedback'
+%% list describing conditions that were detected in the selfie-video, such as
+%% low lighting or an
+%% obstructed face, and `Metadata' about the client that streamed the
+%% session.
 -spec get_face_liveness_session_results(aws_client:aws_client(), get_face_liveness_session_results_request()) ->
     {ok, get_face_liveness_session_results_response(), tuple()} |
     {error, any()} |
@@ -5491,8 +5574,18 @@ get_label_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLabelDetection">>, Input, Options).
 
-%% @doc Retrieves the results for a given media analysis job.
+%% @doc
+%% Service availability notice: Streaming Video and Bulk Image Analysis is no
+%% longer available to new customers.
 %%
+%% For more information, see
+%% Rekognition feature availability changes:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html.
+%%
+%% This change does not impact the availability of other Amazon Rekognition
+%% features.
+%%
+%% Retrieves the results for a given media analysis job.
 %% Takes a `JobId' returned by StartMediaAnalysisJob.
 -spec get_media_analysis_job(aws_client:aws_client(), get_media_analysis_job_request()) ->
     {ok, get_media_analysis_job_response(), tuple()} |
@@ -5960,9 +6053,19 @@ list_faces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFaces">>, Input, Options).
 
-%% @doc Returns a list of media analysis jobs.
+%% @doc
+%% Service availability notice: Streaming Video and Bulk Image Analysis is no
+%% longer available to new customers.
 %%
-%% Results are sorted by `CreationTimestamp' in descending order.
+%% For more information, see
+%% Rekognition feature availability changes:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html.
+%%
+%% This change does not impact the availability of other Amazon Rekognition
+%% features.
+%%
+%% Returns a list of media analysis jobs. Results are sorted by
+%% `CreationTimestamp' in descending order.
 -spec list_media_analysis_jobs(aws_client:aws_client(), list_media_analysis_jobs_request()) ->
     {ok, list_media_analysis_jobs_response(), tuple()} |
     {error, any()} |
@@ -6005,7 +6108,18 @@ list_project_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListProjectPolicies">>, Input, Options).
 
-%% @doc Gets a list of stream processors that you have created with
+%% @doc
+%% Service availability notice: Streaming Video and Bulk Image Analysis is no
+%% longer available to new customers.
+%%
+%% For more information, see
+%% Rekognition feature availability changes:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html.
+%%
+%% This change does not impact the availability of other Amazon Rekognition
+%% features.
+%%
+%% Gets a list of stream processors that you have created with
 %% `CreateStreamProcessor'.
 -spec list_stream_processors(aws_client:aws_client(), list_stream_processors_request()) ->
     {ok, list_stream_processors_response(), tuple()} |
@@ -6567,9 +6681,19 @@ start_label_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLabelDetection">>, Input, Options).
 
-%% @doc Initiates a new media analysis job.
+%% @doc
+%% Service availability notice: Streaming Video and Bulk Image Analysis is no
+%% longer available to new customers.
 %%
-%% Accepts a manifest file in an Amazon S3 bucket. The
+%% For more information, see
+%% Rekognition feature availability changes:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html.
+%%
+%% This change does not impact the availability of other Amazon Rekognition
+%% features.
+%%
+%% Initiates a new media analysis job. Accepts a manifest file in an Amazon
+%% S3 bucket. The
 %% output is a manifest file and a summary of the manifest stored in the
 %% Amazon S3 bucket.
 -spec start_media_analysis_job(aws_client:aws_client(), start_media_analysis_job_request()) ->
@@ -6710,9 +6834,19 @@ start_segment_detection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartSegmentDetection">>, Input, Options).
 
-%% @doc Starts processing a stream processor.
+%% @doc
+%% Service availability notice: Streaming Video and Bulk Image Analysis is no
+%% longer available to new customers.
 %%
-%% You create a stream processor by calling `CreateStreamProcessor'.
+%% For more information, see
+%% Rekognition feature availability changes:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html.
+%%
+%% This change does not impact the availability of other Amazon Rekognition
+%% features.
+%%
+%% Starts processing a stream processor. You create a stream processor by
+%% calling `CreateStreamProcessor'.
 %% To tell `StartStreamProcessor' which stream processor to start, use
 %% the value of the `Name' field specified in the call to
 %% `CreateStreamProcessor'.
@@ -6794,7 +6928,18 @@ stop_project_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopProjectVersion">>, Input, Options).
 
-%% @doc Stops a running stream processor that was created by
+%% @doc
+%% Service availability notice: Streaming Video and Bulk Image Analysis is no
+%% longer available to new customers.
+%%
+%% For more information, see
+%% Rekognition feature availability changes:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html.
+%%
+%% This change does not impact the availability of other Amazon Rekognition
+%% features.
+%%
+%% Stops a running stream processor that was created by
 %% `CreateStreamProcessor'.
 -spec stop_stream_processor(aws_client:aws_client(), stop_stream_processor_request()) ->
     {ok, stop_stream_processor_response(), tuple()} |
@@ -6917,10 +7062,18 @@ update_dataset_entries(Client, Input, Options)
     request(Client, <<"UpdateDatasetEntries">>, Input, Options).
 
 %% @doc
-%% Allows you to update a stream processor.
+%% Service availability notice: Streaming Video and Bulk Image Analysis is no
+%% longer available to new customers.
 %%
-%% You can change some settings and regions of interest and delete certain
-%% parameters.
+%% For more information, see
+%% Rekognition feature availability changes:
+%% https://docs.aws.amazon.com/rekognition/latest/dg/rekognition-availability-changes.html.
+%%
+%% This change does not impact the availability of other Amazon Rekognition
+%% features.
+%%
+%% Allows you to update a stream processor. You can change some settings and
+%% regions of interest and delete certain parameters.
 -spec update_stream_processor(aws_client:aws_client(), update_stream_processor_request()) ->
     {ok, update_stream_processor_response(), tuple()} |
     {error, any()} |

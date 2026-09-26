@@ -5453,6 +5453,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"QueryAsOfTime">> => non_neg_integer(),
+%%   <<"ResourceShareType">> => list(any()),
 %%   <<"TransactionId">> => string()
 %% }
 -type get_tables_request() :: #{binary() => any()}.
@@ -9253,6 +9254,7 @@
 %% Example:
 %% table_input() :: #{
 %%   <<"Description">> => string(),
+%%   <<"FederatedTable">> => federated_table(),
 %%   <<"LastAccessTime">> => non_neg_integer(),
 %%   <<"LastAnalyzedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
