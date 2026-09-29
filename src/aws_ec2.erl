@@ -408,6 +408,8 @@
          delete_carrier_gateway/3,
          delete_client_vpn_endpoint/2,
          delete_client_vpn_endpoint/3,
+         delete_client_vpn_endpoint_authorization_policy/2,
+         delete_client_vpn_endpoint_authorization_policy/3,
          delete_client_vpn_route/2,
          delete_client_vpn_route/3,
          delete_coip_cidr/2,
@@ -1172,6 +1174,8 @@
          get_capacity_manager_monitored_tag_keys/3,
          get_capacity_reservation_usage/2,
          get_capacity_reservation_usage/3,
+         get_client_vpn_endpoint_authorization_policy/2,
+         get_client_vpn_endpoint_authorization_policy/3,
          get_coip_pool_usage/2,
          get_coip_pool_usage/3,
          get_console_output/2,
@@ -1340,6 +1344,8 @@
          modify_capacity_reservation_fleet/3,
          modify_client_vpn_endpoint/2,
          modify_client_vpn_endpoint/3,
+         modify_client_vpn_endpoint_authorization_policy/2,
+         modify_client_vpn_endpoint_authorization_policy/3,
          modify_default_credit_specification/2,
          modify_default_credit_specification/3,
          modify_ebs_default_kms_key_id/2,
@@ -3745,6 +3751,7 @@
 
 %% Example:
 %% client_vpn_connection() :: #{
+%%   <<"AuthorizationPolicyLastEvaluatedTime">> => string(),
 %%   <<"ClientIp">> => string(),
 %%   <<"ClientIpv6Address">> => string(),
 %%   <<"ClientVpnEndpointId">> => string(),
@@ -3783,6 +3790,7 @@
 %%   <<"CreationTime">> => string(),
 %%   <<"DeletionTime">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"DevicePostureOptions">> => device_posture_response_options(),
 %%   <<"DisconnectOnSessionTimeout">> => boolean(),
 %%   <<"DnsName">> => string(),
 %%   <<"DnsServers">> => list(string()),
@@ -3836,6 +3844,22 @@
 %%   <<"Message">> => string()
 %% }
 -type client_vpn_route_status() :: #{binary() => any()}.
+
+%% Example:
+%% client_vpn_trust_provider() :: #{
+%%   <<"PublicSigningKeyUrl">> => string(),
+%%   <<"TenantId">> => string(),
+%%   <<"TrustProviderType">> => list(any())
+%% }
+-type client_vpn_trust_provider() :: #{binary() => any()}.
+
+%% Example:
+%% client_vpn_trust_provider_request() :: #{
+%%   <<"PublicSigningKeyUrl">> => string(),
+%%   <<"TenantId">> => string(),
+%%   <<"TrustProviderType">> => list(any())
+%% }
+-type client_vpn_trust_provider_request() :: #{binary() => any()}.
 
 %% Example:
 %% cloud_watch_log_options() :: #{
@@ -3905,7 +3929,8 @@
 %% connection_log_options() :: #{
 %%   <<"CloudwatchLogGroup">> => string(),
 %%   <<"CloudwatchLogStream">> => string(),
-%%   <<"Enabled">> => boolean()
+%%   <<"Enabled">> => boolean(),
+%%   <<"IncludeAuthorizationPolicyContext">> => boolean()
 %% }
 -type connection_log_options() :: #{binary() => any()}.
 
@@ -3913,7 +3938,8 @@
 %% connection_log_response_options() :: #{
 %%   <<"CloudwatchLogGroup">> => string(),
 %%   <<"CloudwatchLogStream">> => string(),
-%%   <<"Enabled">> => boolean()
+%%   <<"Enabled">> => boolean(),
+%%   <<"IncludeAuthorizationPolicyContext">> => boolean()
 %% }
 -type connection_log_response_options() :: #{binary() => any()}.
 
@@ -4272,6 +4298,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"ConnectionLogOptions">> := connection_log_options(),
 %%   <<"Description">> => string(),
+%%   <<"DevicePostureOptions">> => device_posture_options(),
 %%   <<"DisconnectOnSessionTimeout">> => boolean(),
 %%   <<"DnsServers">> => list(string()),
 %%   <<"DryRun">> => boolean(),
@@ -6375,6 +6402,19 @@
 %%   <<"CarrierGateway">> => carrier_gateway()
 %% }
 -type delete_carrier_gateway_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_client_vpn_endpoint_authorization_policy_request() :: #{
+%%   <<"ClientVpnEndpointId">> := string(),
+%%   <<"DryRun">> => boolean()
+%% }
+-type delete_client_vpn_endpoint_authorization_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_client_vpn_endpoint_authorization_policy_result() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type delete_client_vpn_endpoint_authorization_policy_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_client_vpn_endpoint_request() :: #{
@@ -11113,6 +11153,19 @@
 -type device_options() :: #{binary() => any()}.
 
 %% Example:
+%% device_posture_options() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"TrustProviders">> => list(client_vpn_trust_provider_request())
+%% }
+-type device_posture_options() :: #{binary() => any()}.
+
+%% Example:
+%% device_posture_response_options() :: #{
+%%   <<"TrustProviders">> => list(client_vpn_trust_provider())
+%% }
+-type device_posture_response_options() :: #{binary() => any()}.
+
+%% Example:
 %% dhcp_configuration() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Values">> => list(attribute_value())
@@ -13186,6 +13239,23 @@
 %%   <<"TotalInstanceCount">> => integer()
 %% }
 -type get_capacity_reservation_usage_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_client_vpn_endpoint_authorization_policy_request() :: #{
+%%   <<"ClientVpnEndpointId">> := string(),
+%%   <<"DryRun">> => boolean()
+%% }
+-type get_client_vpn_endpoint_authorization_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_client_vpn_endpoint_authorization_policy_result() :: #{
+%%   <<"ClientVpnEndpointId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"PolicyDocument">> => string(),
+%%   <<"ShadowMode">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type get_client_vpn_endpoint_authorization_policy_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_coip_pool_usage_request() :: #{
@@ -17454,6 +17524,23 @@
 -type modify_capacity_reservation_result() :: #{binary() => any()}.
 
 %% Example:
+%% modify_client_vpn_endpoint_authorization_policy_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ClientVpnEndpointId">> := string(),
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"PolicyDocument">> => string(),
+%%   <<"ShadowMode">> => list(any())
+%% }
+-type modify_client_vpn_endpoint_authorization_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_client_vpn_endpoint_authorization_policy_result() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type modify_client_vpn_endpoint_authorization_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% modify_client_vpn_endpoint_request() :: #{
 %%   <<"ClientConnectOptions">> => client_connect_options(),
 %%   <<"ClientLoginBannerOptions">> => client_login_banner_options(),
@@ -17461,6 +17548,7 @@
 %%   <<"ClientVpnEndpointId">> := string(),
 %%   <<"ConnectionLogOptions">> => connection_log_options(),
 %%   <<"Description">> => string(),
+%%   <<"DevicePostureOptions">> => device_posture_options(),
 %%   <<"DisconnectOnSessionTimeout">> => boolean(),
 %%   <<"DnsServers">> => dns_servers_options_modify_structure(),
 %%   <<"DryRun">> => boolean(),
@@ -29223,6 +29311,21 @@ delete_client_vpn_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteClientVpnEndpoint">>, Input, Options).
 
+%% @doc Deletes the authorization policy for a Client VPN endpoint.
+-spec delete_client_vpn_endpoint_authorization_policy(aws_client:aws_client(), delete_client_vpn_endpoint_authorization_policy_request()) ->
+    {ok, delete_client_vpn_endpoint_authorization_policy_result(), tuple()} |
+    {error, any()}.
+delete_client_vpn_endpoint_authorization_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_client_vpn_endpoint_authorization_policy(Client, Input, []).
+
+-spec delete_client_vpn_endpoint_authorization_policy(aws_client:aws_client(), delete_client_vpn_endpoint_authorization_policy_request(), proplists:proplist()) ->
+    {ok, delete_client_vpn_endpoint_authorization_policy_result(), tuple()} |
+    {error, any()}.
+delete_client_vpn_endpoint_authorization_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteClientVpnEndpointAuthorizationPolicy">>, Input, Options).
+
 %% @doc Deletes a route from a Client VPN endpoint.
 %%
 %% You can only delete routes that you manually added using
@@ -37686,6 +37789,21 @@ get_capacity_reservation_usage(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCapacityReservationUsage">>, Input, Options).
 
+%% @doc Describes the authorization policy for a Client VPN endpoint.
+-spec get_client_vpn_endpoint_authorization_policy(aws_client:aws_client(), get_client_vpn_endpoint_authorization_policy_request()) ->
+    {ok, get_client_vpn_endpoint_authorization_policy_result(), tuple()} |
+    {error, any()}.
+get_client_vpn_endpoint_authorization_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_client_vpn_endpoint_authorization_policy(Client, Input, []).
+
+-spec get_client_vpn_endpoint_authorization_policy(aws_client:aws_client(), get_client_vpn_endpoint_authorization_policy_request(), proplists:proplist()) ->
+    {ok, get_client_vpn_endpoint_authorization_policy_result(), tuple()} |
+    {error, any()}.
+get_client_vpn_endpoint_authorization_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetClientVpnEndpointAuthorizationPolicy">>, Input, Options).
+
 %% @doc Describes the allocations from the specified customer-owned address
 %% pool.
 -spec get_coip_pool_usage(aws_client:aws_client(), get_coip_pool_usage_request()) ->
@@ -39596,6 +39714,27 @@ modify_client_vpn_endpoint(Client, Input)
 modify_client_vpn_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyClientVpnEndpoint">>, Input, Options).
+
+%% @doc Creates or updates the authorization policy for a Client VPN
+%% endpoint.
+%%
+%% A Client VPN endpoint can have one authorization policy. If a policy
+%% already exists for the endpoint, the values that you specify replace the
+%% corresponding values in the existing policy, and values that you do not
+%% specify remain unchanged.
+-spec modify_client_vpn_endpoint_authorization_policy(aws_client:aws_client(), modify_client_vpn_endpoint_authorization_policy_request()) ->
+    {ok, modify_client_vpn_endpoint_authorization_policy_result(), tuple()} |
+    {error, any()}.
+modify_client_vpn_endpoint_authorization_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_client_vpn_endpoint_authorization_policy(Client, Input, []).
+
+-spec modify_client_vpn_endpoint_authorization_policy(aws_client:aws_client(), modify_client_vpn_endpoint_authorization_policy_request(), proplists:proplist()) ->
+    {ok, modify_client_vpn_endpoint_authorization_policy_result(), tuple()} |
+    {error, any()}.
+modify_client_vpn_endpoint_authorization_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyClientVpnEndpointAuthorizationPolicy">>, Input, Options).
 
 %% @doc Modifies the default credit option for CPU usage of burstable
 %% performance instances.

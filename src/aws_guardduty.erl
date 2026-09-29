@@ -3390,7 +3390,8 @@
 %% Example:
 %% remote_account_details() :: #{
 %%   <<"AccountId">> => string(),
-%%   <<"Affiliated">> => boolean()
+%%   <<"Affiliated">> => boolean(),
+%%   <<"AwsServiceName">> => string()
 %% }
 -type remote_account_details() :: #{binary() => any()}.
 

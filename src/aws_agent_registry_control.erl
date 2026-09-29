@@ -166,6 +166,7 @@
 %% Example:
 %% create_registry_record_request() :: #{
 %%   <<"clientToken">> => string(),
+%%   <<"customMetadata">> => any(),
 %%   <<"description">> => string(),
 %%   <<"descriptors">> := descriptors(),
 %%   <<"displayName">> => string(),
@@ -191,6 +192,7 @@
 %%   <<"approvalConfiguration">> => approval_configuration(),
 %%   <<"autoDetectionConfiguration">> => auto_detection_configuration(),
 %%   <<"clientToken">> => string(),
+%%   <<"customMetadataSchemaConfiguration">> => custom_metadata_schema_configuration(),
 %%   <<"description">> => string(),
 %%   <<"discoveryConfiguration">> => discovery_configuration(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
@@ -234,6 +236,14 @@
 %%   <<"privateEndpointOverrides">> => list(private_endpoint_override())
 %% }
 -type custom_j_w_t_authorizer_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_metadata_schema_configuration() :: #{
+%%   <<"defaultSchema">> => string(),
+%%   <<"recordTypeSchemaOverrides">> => list(record_type_schema_override())
+%% }
+-type custom_metadata_schema_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% delete_registry_record_request() :: #{}
@@ -306,6 +316,8 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"createdByAutoDetection">> => [boolean()],
+%%   <<"customMetadata">> => any(),
+%%   <<"customMetadataSchemaComplianceStatus">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"descriptors">> => descriptors(),
 %%   <<"displayName">> => string(),
@@ -332,6 +344,7 @@
 %%   <<"approvalConfiguration">> => approval_configuration(),
 %%   <<"autoDetection">> => auto_detection(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customMetadataSchemaConfiguration">> => custom_metadata_schema_configuration(),
 %%   <<"description">> => string(),
 %%   <<"discoveryConfiguration">> => discovery_configuration(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
@@ -469,6 +482,14 @@
 
 
 %% Example:
+%% record_type_schema_override() :: #{
+%%   <<"recordType">> => list(any()),
+%%   <<"schema">> => string()
+%% }
+-type record_type_schema_override() :: #{binary() => any()}.
+
+
+%% Example:
 %% registry_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"values">> => list(string())
@@ -516,6 +537,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"createdByAutoDetection">> => [boolean()],
+%%   <<"customMetadataSchemaComplianceStatus">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"name">> => string(),
@@ -607,6 +629,7 @@
 
 %% Example:
 %% update_registry_record_request() :: #{
+%%   <<"customMetadata">> => updated_custom_metadata_map(),
 %%   <<"description">> => updated_description(),
 %%   <<"descriptors">> => updated_descriptors(),
 %%   <<"displayName">> => updated_display_name(),
@@ -624,6 +647,8 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"createdByAutoDetection">> => [boolean()],
+%%   <<"customMetadata">> => any(),
+%%   <<"customMetadataSchemaComplianceStatus">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"descriptors">> => descriptors(),
 %%   <<"displayName">> => string(),
@@ -665,6 +690,7 @@
 %% update_registry_request() :: #{
 %%   <<"approvalConfiguration">> => updated_approval_configuration(),
 %%   <<"autoDetectionConfiguration">> => updated_auto_detection_configuration(),
+%%   <<"customMetadataSchemaConfiguration">> => updated_custom_metadata_schema_configuration(),
 %%   <<"description">> => updated_description(),
 %%   <<"discoveryConfiguration">> => updated_discovery_configuration(),
 %%   <<"name">> => string()
@@ -677,6 +703,7 @@
 %%   <<"approvalConfiguration">> => approval_configuration(),
 %%   <<"autoDetection">> => auto_detection(),
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customMetadataSchemaConfiguration">> => custom_metadata_schema_configuration(),
 %%   <<"description">> => string(),
 %%   <<"discoveryConfiguration">> => discovery_configuration(),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
@@ -799,6 +826,20 @@
 %%   <<"data">> => updated_descriptor_data()
 %% }
 -type updated_custom_descriptor_fields() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_custom_metadata_map() :: #{
+%%   <<"optionalValue">> => any()
+%% }
+-type updated_custom_metadata_map() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_custom_metadata_schema_configuration() :: #{
+%%   <<"optionalValue">> => custom_metadata_schema_configuration()
+%% }
+-type updated_custom_metadata_schema_configuration() :: #{binary() => any()}.
 
 
 %% Example:

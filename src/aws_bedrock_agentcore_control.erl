@@ -4636,6 +4636,7 @@
 
 %% Example:
 %% m_c_p_gateway_configuration() :: #{
+%%   <<"disableMcpListToolsPagination">> => [boolean()],
 %%   <<"instructions">> => string(),
 %%   <<"searchType">> => list(any()),
 %%   <<"sessionConfiguration">> => session_configuration(),

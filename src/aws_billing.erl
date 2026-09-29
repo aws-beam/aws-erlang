@@ -37,6 +37,10 @@
          list_billing_view_segments/3,
          list_billing_views/2,
          list_billing_views/3,
+         list_business_support_account_charges/2,
+         list_business_support_account_charges/3,
+         list_business_support_subscription_history/2,
+         list_business_support_subscription_history/3,
          list_enterprise_support_linked_account_charges/2,
          list_enterprise_support_linked_account_charges/3,
          list_source_views_for_billing_view/2,
@@ -189,6 +193,57 @@
 %%   <<"timeRange">> => billing_view_segment_time_range()
 %% }
 -type billing_view_segments_list_element() :: #{binary() => any()}.
+
+%% Example:
+%% business_support_account_charge() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"supportDiscount">> => business_support_discount(),
+%%   <<"supportEligibleSpendByService">> => list(business_support_service_spend()),
+%%   <<"supportPlanName">> => [string()],
+%%   <<"tierCharges">> => list(business_support_tier_charge()),
+%%   <<"totalCharge">> => [string()],
+%%   <<"totalUsageBasis">> => [string()]
+%% }
+-type business_support_account_charge() :: #{binary() => any()}.
+
+%% Example:
+%% business_support_discount() :: #{
+%%   <<"discountAmount">> => [string()],
+%%   <<"discountPercentage">> => [string()],
+%%   <<"discountSource">> => [string()],
+%%   <<"discountType">> => [string()]
+%% }
+-type business_support_discount() :: #{binary() => any()}.
+
+%% Example:
+%% business_support_service_spend() :: #{
+%%   <<"chargeAmount">> => [string()],
+%%   <<"contributingService">> => [string()],
+%%   <<"currency">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"itemType">> => [string()]
+%% }
+-type business_support_service_spend() :: #{binary() => any()}.
+
+%% Example:
+%% business_support_subscription_contract() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"contractEndDate">> => [non_neg_integer()],
+%%   <<"contractStartDate">> => [non_neg_integer()],
+%%   <<"planName">> => [string()]
+%% }
+-type business_support_subscription_contract() :: #{binary() => any()}.
+
+%% Example:
+%% business_support_tier_charge() :: #{
+%%   <<"chargePeriodEndDate">> => [non_neg_integer()],
+%%   <<"chargePeriodStartDate">> => [non_neg_integer()],
+%%   <<"tierCharge">> => [string()],
+%%   <<"tierDescription">> => [string()],
+%%   <<"tierRate">> => [string()],
+%%   <<"usageSlice">> => [string()]
+%% }
+-type business_support_tier_charge() :: #{binary() => any()}.
 
 %% Example:
 %% charge_account() :: #{
@@ -508,6 +563,45 @@
 -type list_billing_views_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_business_support_account_charges_request() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"billingMonth">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_business_support_account_charges_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_business_support_account_charges_response() :: #{
+%%   <<"accountCharges">> => list(business_support_account_charge()),
+%%   <<"accountCount">> => [integer()],
+%%   <<"billingMonth">> => string(),
+%%   <<"isEstimated">> => [boolean()],
+%%   <<"nextToken">> => string(),
+%%   <<"totalSupportCharge">> => [string()],
+%%   <<"totalSupportEligibleSpend">> => [string()]
+%% }
+-type list_business_support_account_charges_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_business_support_subscription_history_request() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"billingMonth">> => string(),
+%%   <<"endDate">> => [non_neg_integer()],
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"startDate">> => [non_neg_integer()]
+%% }
+-type list_business_support_subscription_history_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_business_support_subscription_history_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"subscriptionContracts">> => list(business_support_subscription_contract())
+%% }
+-type list_business_support_subscription_history_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_enterprise_support_linked_account_charges_request() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"billingMonth">> := string(),
@@ -812,6 +906,20 @@
 -type list_billing_views_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_business_support_account_charges_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_business_support_subscription_history_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -1139,6 +1247,42 @@ list_billing_views(Client, Input)
 list_billing_views(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBillingViews">>, Input, Options).
+
+%% @doc Returns Business Support charges broken down at the linked account
+%% level for a given billing month.
+-spec list_business_support_account_charges(aws_client:aws_client(), list_business_support_account_charges_request()) ->
+    {ok, list_business_support_account_charges_response(), tuple()} |
+    {error, any()} |
+    {error, list_business_support_account_charges_errors(), tuple()}.
+list_business_support_account_charges(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_business_support_account_charges(Client, Input, []).
+
+-spec list_business_support_account_charges(aws_client:aws_client(), list_business_support_account_charges_request(), proplists:proplist()) ->
+    {ok, list_business_support_account_charges_response(), tuple()} |
+    {error, any()} |
+    {error, list_business_support_account_charges_errors(), tuple()}.
+list_business_support_account_charges(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListBusinessSupportAccountCharges">>, Input, Options).
+
+%% @doc Returns the history of Business Support subscription contracts across
+%% accounts.
+-spec list_business_support_subscription_history(aws_client:aws_client(), list_business_support_subscription_history_request()) ->
+    {ok, list_business_support_subscription_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_business_support_subscription_history_errors(), tuple()}.
+list_business_support_subscription_history(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_business_support_subscription_history(Client, Input, []).
+
+-spec list_business_support_subscription_history(aws_client:aws_client(), list_business_support_subscription_history_request(), proplists:proplist()) ->
+    {ok, list_business_support_subscription_history_response(), tuple()} |
+    {error, any()} |
+    {error, list_business_support_subscription_history_errors(), tuple()}.
+list_business_support_subscription_history(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListBusinessSupportSubscriptionHistory">>, Input, Options).
 
 %% @doc Returns Support-eligible spend broken down at linked account level.
 -spec list_enterprise_support_linked_account_charges(aws_client:aws_client(), list_enterprise_support_linked_account_charges_request()) ->

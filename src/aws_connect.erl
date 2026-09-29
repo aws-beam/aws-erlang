@@ -2093,6 +2093,14 @@
 
 
 %% Example:
+%% connection_credentials() :: #{
+%%   <<"ConnectionToken">> => string(),
+%%   <<"Expiry">> => string()
+%% }
+-type connection_credentials() :: #{binary() => any()}.
+
+
+%% Example:
 %% connection_data() :: #{
 %%   <<"Attendee">> => attendee(),
 %%   <<"Meeting">> => meeting()
@@ -10191,7 +10199,9 @@
 %% start_chat_contact_request() :: #{
 %%   <<"Attributes">> => map(),
 %%   <<"ChatDurationInMinutes">> => integer(),
+%%   <<"ChatStreamingConfiguration">> => chat_streaming_configuration(),
 %%   <<"ClientToken">> => string(),
+%%   <<"ConnectionTypes">> => list(list(any())()),
 %%   <<"ContactFlowId">> := string(),
 %%   <<"CustomerId">> => string(),
 %%   <<"DisconnectOnCustomerExit">> => list(list(any())()),
@@ -10209,10 +10219,13 @@
 
 %% Example:
 %% start_chat_contact_response() :: #{
+%%   <<"ConnectionCredentials">> => connection_credentials(),
 %%   <<"ContactId">> => string(),
 %%   <<"ContinuedFromContactId">> => string(),
 %%   <<"ParticipantId">> => string(),
-%%   <<"ParticipantToken">> => string()
+%%   <<"ParticipantToken">> => string(),
+%%   <<"StreamingId">> => string(),
+%%   <<"Websocket">> => websocket()
 %% }
 -type start_chat_contact_response() :: #{binary() => any()}.
 
@@ -12224,6 +12237,14 @@
 %%   <<"SourceCampaign">> => source_campaign()
 %% }
 -type web_notification_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% websocket() :: #{
+%%   <<"ConnectionExpiry">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type websocket() :: #{binary() => any()}.
 
 
 %% Example:
@@ -28325,6 +28346,12 @@ start_attached_file_upload(Client, InstanceId, Input0, Options0) ->
 %% CreateParticipantConnection:
 %% https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html
 %% with WEBSOCKET and CONNECTION_CREDENTIALS.
+%%
+%% To receive connection information directly in the response, set
+%% `ConnectionTypes' on the request. To
+%% initiate real-time message streaming when the chat is created, set
+%% `ChatStreamingConfiguration' on the
+%% request. Both parameters are optional.
 %%
 %% A 429 error occurs in the following situations:
 %%

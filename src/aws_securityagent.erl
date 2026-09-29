@@ -763,6 +763,13 @@
 
 
 %% Example:
+%% ci_cd_configuration() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type ci_cd_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% cloud_watch_log() :: #{
 %%   <<"logGroup">> => [string()],
 %%   <<"logStream">> => [string()]
@@ -1072,6 +1079,7 @@
 %% create_pentest_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"assets">> => assets(),
+%%   <<"cicdConfiguration">> => ci_cd_configuration(),
 %%   <<"codeRemediationStrategy">> => list(any()),
 %%   <<"disableManagedSkills">> => list(list(any())()),
 %%   <<"excludeRiskTypes">> => list(list(any())()),
@@ -1091,6 +1099,7 @@
 %% create_pentest_output() :: #{
 %%   <<"agentSpaceId">> => [string()],
 %%   <<"assets">> => assets(),
+%%   <<"cicdConfiguration">> => ci_cd_configuration(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"excludeRiskTypes">> => list(list(any())()),
 %%   <<"logConfig">> => cloud_watch_log(),
@@ -2034,6 +2043,7 @@
 %% Example:
 %% list_pentest_jobs_for_pentest_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
+%%   <<"jobType">> => list(any()),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
 %%   <<"pentestId">> := [string()]
@@ -2267,6 +2277,7 @@
 %% pentest() :: #{
 %%   <<"agentSpaceId">> => [string()],
 %%   <<"assets">> => assets(),
+%%   <<"cicdConfiguration">> => ci_cd_configuration(),
 %%   <<"cleanUpStrategy">> => list(any()),
 %%   <<"codeRemediationStrategy">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -2290,6 +2301,7 @@
 %% pentest_job() :: #{
 %%   <<"actors">> => list(actor()),
 %%   <<"allowedDomains">> => list(endpoint()),
+%%   <<"cicdConfiguration">> => ci_cd_configuration(),
 %%   <<"cleanUpStrategy">> => list(any()),
 %%   <<"codeRemediationStrategy">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -2309,6 +2321,9 @@
 %%   <<"pentestId">> => [string()],
 %%   <<"pentestJobId">> => [string()],
 %%   <<"reportDestination">> => report_destination(),
+%%   <<"reportUrl">> => [string()],
+%%   <<"scopeChanges">> => list(scope_change()),
+%%   <<"scopeResult">> => scope_result(),
 %%   <<"selectedFindingIds">> => list([string()]()),
 %%   <<"serviceRole">> => string(),
 %%   <<"sourceCode">> => list(source_code_repository()),
@@ -2325,8 +2340,10 @@
 %% Example:
 %% pentest_job_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"jobType">> => list(any()),
 %%   <<"pentestId">> => [string()],
 %%   <<"pentestJobId">> => [string()],
+%%   <<"reportUrl">> => [string()],
 %%   <<"status">> => list(any()),
 %%   <<"title">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()]
@@ -2391,6 +2408,25 @@
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% scope_change() :: #{
+%%   <<"baseCommitSha">> => [string()],
+%%   <<"headCommitSha">> => [string()],
+%%   <<"integrationId">> => [string()],
+%%   <<"providerResourceId">> => [string()],
+%%   <<"triggerRunId">> => [string()]
+%% }
+-type scope_change() :: #{binary() => any()}.
+
+
+%% Example:
+%% scope_result() :: #{
+%%   <<"decision">> => list(any()),
+%%   <<"reason">> => [string()]
+%% }
+-type scope_result() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2505,6 +2541,7 @@
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"jobType">> => list(any()),
 %%   <<"pentestId">> := [string()],
+%%   <<"scopeChanges">> => list(scope_change()),
 %%   <<"selectedFindingIds">> => list([string()]())
 %% }
 -type start_pentest_job_input() :: #{binary() => any()}.
@@ -2956,6 +2993,7 @@
 %% update_pentest_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"assets">> => assets(),
+%%   <<"cicdConfiguration">> => ci_cd_configuration(),
 %%   <<"codeRemediationStrategy">> => list(any()),
 %%   <<"disableManagedSkills">> => list(list(any())()),
 %%   <<"excludeRiskTypes">> => list(list(any())()),
@@ -2976,6 +3014,7 @@
 %% update_pentest_output() :: #{
 %%   <<"agentSpaceId">> => [string()],
 %%   <<"assets">> => assets(),
+%%   <<"cicdConfiguration">> => ci_cd_configuration(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"excludeRiskTypes">> => list(list(any())()),
 %%   <<"logConfig">> => cloud_watch_log(),

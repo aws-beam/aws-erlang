@@ -207,6 +207,7 @@
 %% Example:
 %% registry_record_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customMetadata">> => any(),
 %%   <<"description">> => string(),
 %%   <<"descriptors">> => descriptors(),
 %%   <<"displayName">> => string(),
