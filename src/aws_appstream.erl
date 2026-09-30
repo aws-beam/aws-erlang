@@ -1562,6 +1562,7 @@
 %%   <<"ImageErrors">> => list(resource_error()),
 %%   <<"ImagePermissions">> => image_permissions(),
 %%   <<"ImageSharedWithOthers">> => list(any()),
+%%   <<"ImageSoftwareMetadata">> => image_software_metadata(),
 %%   <<"ImageType">> => list(any()),
 %%   <<"LatestAppstreamAgentVersion">> => list(any()),
 %%   <<"ManagedSoftwareIncluded">> => boolean(),
@@ -1614,6 +1615,12 @@
 %%   <<"allowImageBuilder">> => boolean()
 %% }
 -type image_permissions() :: #{binary() => any()}.
+
+%% Example:
+%% image_software_metadata() :: #{
+%%   <<"nvidiaGridDriverVersion">> => string()
+%% }
+-type image_software_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% image_state_change_reason() :: #{

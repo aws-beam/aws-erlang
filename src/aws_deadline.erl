@@ -393,6 +393,7 @@
 %% assigned_session() :: #{
 %%   <<"jobId">> => string(),
 %%   <<"logConfiguration">> => log_configuration(),
+%%   <<"metadata">> => map(),
 %%   <<"queueId">> => string(),
 %%   <<"sessionActions">> => list(assigned_session_action())
 %% }
@@ -1535,7 +1536,9 @@
 %% Example:
 %% environment_details_entity() :: #{
 %%   <<"environmentId">> => string(),
+%%   <<"extensions">> => list(string()),
 %%   <<"jobId">> => string(),
+%%   <<"resolvedSymbolTable">> => string(),
 %%   <<"schemaVersion">> => string(),
 %%   <<"template">> => any()
 %% }
@@ -1672,6 +1675,13 @@
 %%   <<"principalType">> => list(any())
 %% }
 -type fleet_member() :: #{binary() => any()}.
+
+
+%% Example:
+%% fleet_software_add_on() :: #{
+%%   <<"name">> => list(any())
+%% }
+-type fleet_software_add_on() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2216,6 +2226,7 @@
 
 %% Example:
 %% job_details_entity() :: #{
+%%   <<"extensions">> => list(string()),
 %%   <<"jobAttachmentSettings">> => job_details_job_attachment_settings(),
 %%   <<"jobId">> => string(),
 %%   <<"jobRunAsUser">> => job_run_as_user(),
@@ -3199,6 +3210,7 @@
 %%   <<"memoryMiB">> => memory_mi_b_range(),
 %%   <<"osFamily">> => list(any()),
 %%   <<"rootEbsVolume">> => ec2_ebs_volume(),
+%%   <<"softwareAddOns">> => list(fleet_software_add_on()),
 %%   <<"vCpuCount">> => v_cpu_count_range()
 %% }
 -type service_managed_ec2_instance_capabilities() :: #{binary() => any()}.
@@ -3340,7 +3352,9 @@
 %% Example:
 %% step_details_entity() :: #{
 %%   <<"dependencies">> => list(string()),
+%%   <<"extensions">> => list(string()),
 %%   <<"jobId">> => string(),
+%%   <<"resolvedSymbolTable">> => string(),
 %%   <<"schemaVersion">> => string(),
 %%   <<"stepId">> => string(),
 %%   <<"template">> => any()
@@ -9181,6 +9195,14 @@ update_farm(Client, FarmId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a fleet.
+%%
+%% Workers that are running when you call `UpdateFleet' keep the instance
+%% type and capabilities that they launched with until they scale in.
+%% Deadline Cloud can schedule jobs that you submit after the update on these
+%% existing workers, so the new configuration might not take effect
+%% immediately. To make sure that all workers use the new configuration, set
+%% `maxWorkerCount' to 0, use the `ListWorkers' operation to confirm
+%% that the fleet has no workers, and then restore `maxWorkerCount'.
 -spec update_fleet(aws_client:aws_client(), binary() | list(), binary() | list(), update_fleet_request()) ->
     {ok, update_fleet_response(), tuple()} |
     {error, any()} |

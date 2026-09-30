@@ -285,6 +285,13 @@
 
 
 %% Example:
+%% beaconing_configuration() :: #{
+%%   <<"ClientSide">> => client_side_beaconing_configuration()
+%% }
+-type beaconing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% bumper() :: #{
 %%   <<"EndUrl">> => string(),
 %%   <<"StartUrl">> => string()
@@ -316,6 +323,14 @@
 %%   <<"Tier">> => string()
 %% }
 -type channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_side_beaconing_configuration() :: #{
+%%   <<"AdditionalEventTypes">> => list(list(any())()),
+%%   <<"ReportingMode">> => list(any())
+%% }
+-type client_side_beaconing_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -819,6 +834,7 @@
 %%   <<"AdsPersonalizationConcurrency">> => ads_personalization_concurrency(),
 %%   <<"AdsPersonalizationTimeouts">> => ads_personalization_timeouts(),
 %%   <<"AvailSuppression">> => avail_suppression(),
+%%   <<"BeaconingConfiguration">> => beaconing_configuration(),
 %%   <<"Bumper">> => bumper(),
 %%   <<"CdnConfiguration">> => cdn_configuration(),
 %%   <<"ConfigurationAliases">> => map(),
@@ -1148,6 +1164,7 @@
 %%   <<"AdsPersonalizationConcurrency">> => ads_personalization_concurrency(),
 %%   <<"AdsPersonalizationTimeouts">> => ads_personalization_timeouts(),
 %%   <<"AvailSuppression">> => avail_suppression(),
+%%   <<"BeaconingConfiguration">> => beaconing_configuration(),
 %%   <<"Bumper">> => bumper(),
 %%   <<"CdnConfiguration">> => cdn_configuration(),
 %%   <<"ConfigurationAliases">> => map(),
@@ -1275,6 +1292,7 @@
 %%   <<"AdsPersonalizationConcurrency">> => ads_personalization_concurrency(),
 %%   <<"AdsPersonalizationTimeouts">> => ads_personalization_timeouts(),
 %%   <<"AvailSuppression">> => avail_suppression(),
+%%   <<"BeaconingConfiguration">> => beaconing_configuration(),
 %%   <<"Bumper">> => bumper(),
 %%   <<"CdnConfiguration">> => cdn_configuration(),
 %%   <<"ConfigurationAliases">> => map(),
@@ -1302,6 +1320,7 @@
 %%   <<"AdsPersonalizationConcurrency">> => ads_personalization_concurrency(),
 %%   <<"AdsPersonalizationTimeouts">> => ads_personalization_timeouts(),
 %%   <<"AvailSuppression">> => avail_suppression(),
+%%   <<"BeaconingConfiguration">> => beaconing_configuration(),
 %%   <<"Bumper">> => bumper(),
 %%   <<"CdnConfiguration">> => cdn_configuration(),
 %%   <<"ConfigurationAliases">> => map(),

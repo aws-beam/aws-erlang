@@ -784,6 +784,7 @@
 %%   <<"TargetDBParameterGroupName">> => string(),
 %%   <<"TargetEngineVersion">> => string(),
 %%   <<"TargetIops">> => integer(),
+%%   <<"TargetResourceConfigurations">> => list(target_resource_configuration()),
 %%   <<"TargetStorageThroughput">> => integer(),
 %%   <<"TargetStorageType">> => string(),
 %%   <<"UpgradeTargetStorageConfig">> => boolean()
@@ -5681,6 +5682,13 @@
 %%   <<"State">> => list(any())
 %% }
 -type target_health() :: #{binary() => any()}.
+
+%% Example:
+%% target_resource_configuration() :: #{
+%%   <<"SourceArn">> => string(),
+%%   <<"TargetKmsKeyId">> => string()
+%% }
+-type target_resource_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% tenant_database() :: #{

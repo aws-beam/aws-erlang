@@ -3423,6 +3423,7 @@
 %%   <<"Interruptible">> => boolean(),
 %%   <<"InterruptibleCapacityAllocation">> => interruptible_capacity_allocation(),
 %%   <<"InterruptionInfo">> => interruption_info(),
+%%   <<"LaunchStatus">> => list(any()),
 %%   <<"OriginalStartDate">> => non_neg_integer(),
 %%   <<"OutpostArn">> => string(),
 %%   <<"OwnerId">> => string(),

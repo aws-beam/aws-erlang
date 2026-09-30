@@ -1,21 +1,37 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The Identity Store service used by IAM Identity Center provides a
-%% single place to retrieve all of your identities (users and groups).
+%% @doc IAM Identity Center uses the `sso', `sso-directory', and
+%% `identitystore' API namespaces.
 %%
-%% For more information, see the IAM Identity Center User Guide:
-%% https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html.
+%% The `sso-directory' and `identitystore' namespaces authorize
+%% access to data in the Identity Store. Make sure your policies with IAM
+%% actions from these two namespaces are consistent to avoid conflicting
+%% authorization to the same data.
 %%
-%% This reference guide describes the identity store operations that you can
-%% call programmatically and includes detailed information about data types
-%% and errors.
+%% The Identity Store service used by IAM Identity Center provides a single
+%% place to retrieve all of your identities (users and groups). You can use
+%% the identity store API operations in this guide to manage your identity
+%% data programmatically. The scope of these APIs allows you to create, read,
+%% update, delete, and list users, groups, and memberships.
 %%
-%% IAM Identity Center uses the `sso', `sso-directory', and
-%% `identitystore' API namespaces. The `sso-directory' and
-%% `identitystore' namespaces authorize access to data in the Identity
-%% Store. Make sure your policies with IAM actions from these two namespaces
-%% are consistent to avoid conflicting authorization to the same data.
+%% This guide also describes identity store operations that you can call and
+%% includes detailed information about data types and errors.
+%%
+%% If you use an external identity provider or Active Directory as your
+%% identity source, we recommend that you use the `Create', `Update',
+%% and `Delete' APIs with caution. Because IAM Identity Center
+%% doesn't support outbound synchronization, your identity source
+%% won't automatically update with the changes that you make to users or
+%% groups using these APIs.
+%%
+%% Amazon Web Services provides SDKs that consist of libraries and sample
+%% code for various programming languages and platforms (Java, Ruby, .Net,
+%% iOS, Android, and more). The SDKs provide a convenient way to
+%% programmatically access the identity store and other Amazon Web Services
+%% services. For more information about the Amazon Web Services SDKs,
+%% including how to download and install them, see Amazon Web Services
+%% Builder Center Toolbox: http://aws.amazon.com/tools/.
 -module(aws_identitystore).
 
 -export([create_group/2,
@@ -34,6 +50,8 @@
          describe_group/3,
          describe_group_membership/2,
          describe_group_membership/3,
+         describe_identity_store/2,
+         describe_identity_store/3,
          describe_user/2,
          describe_user/3,
          get_group_id/2,
@@ -50,10 +68,14 @@
          list_group_memberships_for_member/3,
          list_groups/2,
          list_groups/3,
+         list_identity_stores/2,
+         list_identity_stores/3,
          list_users/2,
          list_users/3,
          update_group/2,
          update_group/3,
+         update_identity_store/2,
+         update_identity_store/3,
          update_user/2,
          update_user/3]).
 
@@ -106,8 +128,9 @@
 
 %% Example:
 %% create_group_membership_response() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MembershipId">> := string()
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"MembershipArn">> => string(),
+%%   <<"MembershipId">> => string()
 %% }
 -type create_group_membership_response() :: #{binary() => any()}.
 
@@ -121,8 +144,10 @@
 
 %% Example:
 %% create_group_response() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string()
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupId">> => string(),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"Revision">> => string()
 %% }
 -type create_group_response() :: #{binary() => any()}.
 
@@ -152,8 +177,10 @@
 
 %% Example:
 %% create_user_response() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"UserId">> := string()
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"Revision">> => string(),
+%%   <<"UserArn">> => string(),
+%%   <<"UserId">> => string()
 %% }
 -type create_user_response() :: #{binary() => any()}.
 
@@ -173,7 +200,8 @@
 %% Example:
 %% delete_group_request() :: #{
 %%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string()
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"Revision">> => string()
 %% }
 -type delete_group_request() :: #{binary() => any()}.
 
@@ -186,6 +214,7 @@
 %% Example:
 %% delete_user_request() :: #{
 %%   <<"IdentityStoreId">> := string(),
+%%   <<"Revision">> => string(),
 %%   <<"UserId">> := string()
 %% }
 -type delete_user_request() :: #{binary() => any()}.
@@ -207,10 +236,11 @@
 %% describe_group_membership_response() :: #{
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"CreatedBy">> => string(),
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MemberId">> := list(),
-%%   <<"MembershipId">> := string(),
+%%   <<"GroupId">> => string(),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"MemberId">> => list(),
+%%   <<"MembershipArn">> => string(),
+%%   <<"MembershipId">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer(),
 %%   <<"UpdatedBy">> => string()
 %% }
@@ -230,12 +260,28 @@
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"ExternalIds">> => list(external_id()),
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string(),
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupId">> => string(),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"Revision">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer(),
 %%   <<"UpdatedBy">> => string()
 %% }
 -type describe_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_store_request() :: #{
+%%   <<"IdentityStoreId">> := string()
+%% }
+-type describe_identity_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_identity_store_response() :: #{
+%%   <<"IdentityStoreArn">> => string(),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"NetworkConfiguration">> => network_configuration_details()
+%% }
+-type describe_identity_store_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_user_request() :: #{
@@ -255,7 +301,7 @@
 %%   <<"Emails">> => list(email()),
 %%   <<"Extensions">> => map(),
 %%   <<"ExternalIds">> => list(external_id()),
-%%   <<"IdentityStoreId">> := string(),
+%%   <<"IdentityStoreId">> => string(),
 %%   <<"Locale">> => string(),
 %%   <<"Name">> => name(),
 %%   <<"NickName">> => string(),
@@ -263,12 +309,14 @@
 %%   <<"Photos">> => list(photo()),
 %%   <<"PreferredLanguage">> => string(),
 %%   <<"ProfileUrl">> => string(),
+%%   <<"Revision">> => string(),
 %%   <<"Roles">> => list(role()),
 %%   <<"Timezone">> => string(),
 %%   <<"Title">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer(),
 %%   <<"UpdatedBy">> => string(),
-%%   <<"UserId">> := string(),
+%%   <<"UserArn">> => string(),
+%%   <<"UserId">> => string(),
 %%   <<"UserName">> => string(),
 %%   <<"UserStatus">> => list(any()),
 %%   <<"UserType">> => string(),
@@ -307,8 +355,9 @@
 
 %% Example:
 %% get_group_id_response() :: #{
-%%   <<"GroupId">> := string(),
-%%   <<"IdentityStoreId">> := string()
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupId">> => string(),
+%%   <<"IdentityStoreId">> => string()
 %% }
 -type get_group_id_response() :: #{binary() => any()}.
 
@@ -322,8 +371,9 @@
 
 %% Example:
 %% get_group_membership_id_response() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"MembershipId">> := string()
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"MembershipArn">> => string(),
+%%   <<"MembershipId">> => string()
 %% }
 -type get_group_membership_id_response() :: #{binary() => any()}.
 
@@ -336,8 +386,9 @@
 
 %% Example:
 %% get_user_id_response() :: #{
-%%   <<"IdentityStoreId">> := string(),
-%%   <<"UserId">> := string()
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"UserArn">> => string(),
+%%   <<"UserId">> => string()
 %% }
 -type get_user_id_response() :: #{binary() => any()}.
 
@@ -348,8 +399,10 @@
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"ExternalIds">> => list(external_id()),
+%%   <<"GroupArn">> => string(),
 %%   <<"GroupId">> => string(),
 %%   <<"IdentityStoreId">> => string(),
+%%   <<"Revision">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer(),
 %%   <<"UpdatedBy">> => string()
 %% }
@@ -362,6 +415,7 @@
 %%   <<"GroupId">> => string(),
 %%   <<"IdentityStoreId">> => string(),
 %%   <<"MemberId">> => list(),
+%%   <<"MembershipArn">> => string(),
 %%   <<"MembershipId">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer(),
 %%   <<"UpdatedBy">> => string()
@@ -375,6 +429,13 @@
 %%   <<"MembershipExists">> => boolean()
 %% }
 -type group_membership_existence_result() :: #{binary() => any()}.
+
+%% Example:
+%% identity_store() :: #{
+%%   <<"IdentityStoreArn">> => string(),
+%%   <<"IdentityStoreId">> => string()
+%% }
+-type identity_store() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -394,7 +455,7 @@
 
 %% Example:
 %% is_member_in_groups_response() :: #{
-%%   <<"Results">> := list(group_membership_existence_result())
+%%   <<"Results">> => list(group_membership_existence_result())
 %% }
 -type is_member_in_groups_response() :: #{binary() => any()}.
 
@@ -409,7 +470,7 @@
 
 %% Example:
 %% list_group_memberships_for_member_response() :: #{
-%%   <<"GroupMemberships">> := list(group_membership()),
+%%   <<"GroupMemberships">> => list(group_membership()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_group_memberships_for_member_response() :: #{binary() => any()}.
@@ -425,7 +486,7 @@
 
 %% Example:
 %% list_group_memberships_response() :: #{
-%%   <<"GroupMemberships">> := list(group_membership()),
+%%   <<"GroupMemberships">> => list(group_membership()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_group_memberships_response() :: #{binary() => any()}.
@@ -441,10 +502,24 @@
 
 %% Example:
 %% list_groups_response() :: #{
-%%   <<"Groups">> := list(group()),
+%%   <<"Groups">> => list(group()),
 %%   <<"NextToken">> => string()
 %% }
 -type list_groups_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_stores_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_stores_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_identity_stores_response() :: #{
+%%   <<"IdentityStores">> => list(identity_store()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_identity_stores_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_users_request() :: #{
@@ -459,7 +534,7 @@
 %% Example:
 %% list_users_response() :: #{
 %%   <<"NextToken">> => string(),
-%%   <<"Users">> := list(user())
+%%   <<"Users">> => list(user())
 %% }
 -type list_users_response() :: #{binary() => any()}.
 
@@ -473,6 +548,24 @@
 %%   <<"MiddleName">> => string()
 %% }
 -type name() :: #{binary() => any()}.
+
+%% Example:
+%% network_configuration() :: #{
+%%   <<"ApiAllowSourceIps">> => list(string()),
+%%   <<"ApiRestrictSourceVpcs">> => list(string()),
+%%   <<"ScimAllowSourceIps">> => list(string()),
+%%   <<"VpceAccessRequired">> => boolean()
+%% }
+-type network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% network_configuration_details() :: #{
+%%   <<"ApiAllowSourceIps">> => list(string()),
+%%   <<"ApiRestrictSourceVpcs">> => list(string()),
+%%   <<"ScimAllowSourceIps">> => list(string()),
+%%   <<"VpceAccessRequired">> => boolean()
+%% }
+-type network_configuration_details() :: #{binary() => any()}.
 
 %% Example:
 %% phone_number() :: #{
@@ -536,27 +629,49 @@
 %% update_group_request() :: #{
 %%   <<"GroupId">> := string(),
 %%   <<"IdentityStoreId">> := string(),
-%%   <<"Operations">> := list(attribute_operation())
+%%   <<"Operations">> := list(attribute_operation()),
+%%   <<"Revision">> => string()
 %% }
 -type update_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_group_response() :: #{
-
+%%   <<"GroupArn">> => string(),
+%%   <<"GroupId">> => string(),
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"Revision">> => string()
 %% }
 -type update_group_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_identity_store_request() :: #{
+%%   <<"IdentityStoreId">> := string(),
+%%   <<"NetworkConfiguration">> => network_configuration()
+%% }
+-type update_identity_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_identity_store_response() :: #{
+%%   <<"IdentityStoreArn">> => string(),
+%%   <<"IdentityStoreId">> => string()
+%% }
+-type update_identity_store_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_user_request() :: #{
 %%   <<"IdentityStoreId">> := string(),
 %%   <<"Operations">> := list(attribute_operation()),
+%%   <<"Revision">> => string(),
 %%   <<"UserId">> := string()
 %% }
 -type update_user_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_user_response() :: #{
-
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"Revision">> => string(),
+%%   <<"UserArn">> => string(),
+%%   <<"UserId">> => string()
 %% }
 -type update_user_response() :: #{binary() => any()}.
 
@@ -578,11 +693,13 @@
 %%   <<"Photos">> => list(photo()),
 %%   <<"PreferredLanguage">> => string(),
 %%   <<"ProfileUrl">> => string(),
+%%   <<"Revision">> => string(),
 %%   <<"Roles">> => list(role()),
 %%   <<"Timezone">> => string(),
 %%   <<"Title">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer(),
 %%   <<"UpdatedBy">> => string(),
+%%   <<"UserArn">> => string(),
 %%   <<"UserId">> => string(),
 %%   <<"UserName">> => string(),
 %%   <<"UserStatus">> => list(any()),
@@ -640,6 +757,10 @@
     validation_exception() | 
     resource_not_found_exception().
 
+-type describe_identity_store_errors() ::
+    validation_exception() | 
+    resource_not_found_exception().
+
 -type describe_user_errors() ::
     validation_exception() | 
     resource_not_found_exception().
@@ -672,6 +793,9 @@
     validation_exception() | 
     resource_not_found_exception().
 
+-type list_identity_stores_errors() ::
+    validation_exception().
+
 -type list_users_errors() ::
     validation_exception() | 
     resource_not_found_exception().
@@ -679,6 +803,11 @@
 -type update_group_errors() ::
     validation_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
+-type update_identity_store_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     conflict_exception().
 
@@ -844,6 +973,24 @@ describe_group_membership(Client, Input)
 describe_group_membership(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeGroupMembership">>, Input, Options).
+
+%% @doc Retrieves details about the specified identity store, including its
+%% Amazon Resource Name (ARN) and network configuration.
+-spec describe_identity_store(aws_client:aws_client(), describe_identity_store_request()) ->
+    {ok, describe_identity_store_response(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_store_errors(), tuple()}.
+describe_identity_store(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_identity_store(Client, Input, []).
+
+-spec describe_identity_store(aws_client:aws_client(), describe_identity_store_request(), proplists:proplist()) ->
+    {ok, describe_identity_store_response(), tuple()} |
+    {error, any()} |
+    {error, describe_identity_store_errors(), tuple()}.
+describe_identity_store(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeIdentityStore">>, Input, Options).
 
 %% @doc Retrieves the user metadata and attributes from the `UserId' in
 %% an identity store.
@@ -1039,6 +1186,30 @@ list_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListGroups">>, Input, Options).
 
+%% @doc Lists the identity stores that you have access to.
+%%
+%% This operation returns only the identity store ID and Amazon Resource Name
+%% (ARN) of each identity store. To obtain additional information about an
+%% identity store, call `DescribeIdentityStore'.
+%%
+%% This operation returns results in paginated form. Use the `NextToken'
+%% parameter to retrieve additional pages of results.
+-spec list_identity_stores(aws_client:aws_client(), list_identity_stores_request()) ->
+    {ok, list_identity_stores_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_stores_errors(), tuple()}.
+list_identity_stores(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_identity_stores(Client, Input, []).
+
+-spec list_identity_stores(aws_client:aws_client(), list_identity_stores_request(), proplists:proplist()) ->
+    {ok, list_identity_stores_response(), tuple()} |
+    {error, any()} |
+    {error, list_identity_stores_errors(), tuple()}.
+list_identity_stores(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListIdentityStores">>, Input, Options).
+
 %% @doc Lists all users in the identity store.
 %%
 %% Returns a paginated list of complete `User' objects. Filtering for a
@@ -1083,6 +1254,24 @@ update_group(Client, Input)
 update_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGroup">>, Input, Options).
+
+%% @doc Updates the configuration of the specified identity store, including
+%% its network configuration.
+-spec update_identity_store(aws_client:aws_client(), update_identity_store_request()) ->
+    {ok, update_identity_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_identity_store_errors(), tuple()}.
+update_identity_store(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_identity_store(Client, Input, []).
+
+-spec update_identity_store(aws_client:aws_client(), update_identity_store_request(), proplists:proplist()) ->
+    {ok, update_identity_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_identity_store_errors(), tuple()}.
+update_identity_store(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateIdentityStore">>, Input, Options).
 
 %% @doc Updates the specified user metadata and attributes in the specified
 %% identity store.

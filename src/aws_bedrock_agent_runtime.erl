@@ -1128,6 +1128,7 @@
 %% Example:
 %% foundation_model_configuration() :: #{
 %%   <<"bedrockFoundationModelConfiguration">> => bedrock_foundation_model_configuration(),
+%%   <<"mantleFoundationModelConfiguration">> => mantle_foundation_model_configuration(),
 %%   <<"type">> => list(any())
 %% }
 -type foundation_model_configuration() :: #{binary() => any()}.
@@ -1918,6 +1919,21 @@
 %%   <<"type">> => list(any())
 %% }
 -type managed_search_reranking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% mantle_foundation_model_configuration() :: #{
+%%   <<"modelConfiguration">> => mantle_foundation_model_model_configuration()
+%% }
+-type mantle_foundation_model_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% mantle_foundation_model_model_configuration() :: #{
+%%   <<"modelArn">> => string(),
+%%   <<"projectId">> => string()
+%% }
+-type mantle_foundation_model_model_configuration() :: #{binary() => any()}.
 
 
 %% Example:

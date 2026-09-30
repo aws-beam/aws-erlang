@@ -189,6 +189,8 @@
          update_finding/3,
          update_integrated_resources/2,
          update_integrated_resources/3,
+         update_integration/2,
+         update_integration/3,
          update_pentest/2,
          update_pentest/3,
          update_private_connection_certificate/2,
@@ -346,6 +348,44 @@
 %%   <<"vpcs">> => list(vpc_config())
 %% }
 -type aws_resources() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_dev_ops_integration_input() :: #{
+%%   <<"code">> => string(),
+%%   <<"organizationName">> => [string()],
+%%   <<"state">> => string()
+%% }
+-type azure_dev_ops_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_dev_ops_repository_metadata() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"organization">> => string(),
+%%   <<"project">> => [string()],
+%%   <<"projectId">> => [string()],
+%%   <<"providerResourceId">> => string()
+%% }
+-type azure_dev_ops_repository_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_dev_ops_repository_resource() :: #{
+%%   <<"name">> => string(),
+%%   <<"organization">> => string(),
+%%   <<"project">> => [string()]
+%% }
+-type azure_dev_ops_repository_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_dev_ops_resource_capabilities() :: #{
+%%   <<"leaveComments">> => [boolean()],
+%%   <<"remediateCode">> => [boolean()]
+%% }
+-type azure_dev_ops_resource_capabilities() :: #{binary() => any()}.
 
 
 %% Example:
@@ -716,6 +756,15 @@
 %%   <<"updatedSecurityRequirementNames">> => list(string())
 %% }
 -type batch_update_security_requirements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% bitbucket_data_center_integration_input() :: #{
+%%   <<"code">> => string(),
+%%   <<"state">> => string(),
+%%   <<"targetUrl">> => string()
+%% }
+-type bitbucket_data_center_integration_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1597,7 +1646,8 @@
 %%   <<"privateConnectionName">> => string(),
 %%   <<"provider">> => list(any()),
 %%   <<"providerType">> => list(any()),
-%%   <<"targetUrl">> => string()
+%%   <<"targetUrl">> => string(),
+%%   <<"webhookUrl">> => [string()]
 %% }
 -type get_integration_output() :: #{binary() => any()}.
 
@@ -1732,7 +1782,11 @@
 
 %% Example:
 %% initiate_provider_registration_input() :: #{
-%%   <<"provider">> := list(any())
+%%   <<"clientId">> => string(),
+%%   <<"clientSecret">> => string(),
+%%   <<"organizationName">> => [string()],
+%%   <<"provider">> := list(any()),
+%%   <<"targetUrl">> => string()
 %% }
 -type initiate_provider_registration_input() :: #{binary() => any()}.
 
@@ -1787,7 +1841,8 @@
 %%   <<"privateConnectionName">> => string(),
 %%   <<"provider">> => list(any()),
 %%   <<"providerType">> => list(any()),
-%%   <<"targetUrl">> => string()
+%%   <<"targetUrl">> => string(),
+%%   <<"webhookUrl">> => [string()]
 %% }
 -type integration_summary() :: #{binary() => any()}.
 
@@ -2990,6 +3045,23 @@
 
 
 %% Example:
+%% update_integration_input() :: #{
+%%   <<"integrationId">> := string(),
+%%   <<"webhookAction">> := list(any())
+%% }
+-type update_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_integration_output() :: #{
+%%   <<"integrationId">> => string(),
+%%   <<"secret">> => string(),
+%%   <<"webhookUrl">> => [string()]
+%% }
+-type update_integration_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_pentest_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
 %%   <<"assets">> => assets(),
@@ -3459,6 +3531,14 @@
     access_denied_exception().
 
 -type update_integrated_resources_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_integration_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -6350,6 +6430,44 @@ update_integrated_resources(Client, Input) ->
 update_integrated_resources(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateIntegratedResources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an integration's webhook, or rotates the HMAC signing
+%% secret of an existing one.
+%%
+%% The secret is returned only once, in this response, and cannot be
+%% retrieved again.
+-spec update_integration(aws_client:aws_client(), update_integration_input()) ->
+    {ok, update_integration_output(), tuple()} |
+    {error, any()} |
+    {error, update_integration_errors(), tuple()}.
+update_integration(Client, Input) ->
+    update_integration(Client, Input, []).
+
+-spec update_integration(aws_client:aws_client(), update_integration_input(), proplists:proplist()) ->
+    {ok, update_integration_output(), tuple()} |
+    {error, any()} |
+    {error, update_integration_errors(), tuple()}.
+update_integration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateIntegration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

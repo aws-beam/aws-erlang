@@ -152,9 +152,8 @@
          get_suppressed_destination/5,
          get_tenant/2,
          get_tenant/3,
-         list_configuration_sets/1,
+         list_configuration_sets/2,
          list_configuration_sets/3,
-         list_configuration_sets/4,
          list_contact_lists/1,
          list_contact_lists/3,
          list_contact_lists/4,
@@ -172,9 +171,8 @@
          list_domain_deliverability_campaigns/4,
          list_domain_deliverability_campaigns/6,
          list_domain_deliverability_campaigns/7,
-         list_email_identities/1,
+         list_email_identities/2,
          list_email_identities/3,
-         list_email_identities/4,
          list_email_identity_certificates/2,
          list_email_identity_certificates/3,
          list_email_templates/1,
@@ -1679,6 +1677,7 @@
 
 %% Example:
 %% list_configuration_sets_request() :: #{
+%%   <<"Filter">> => map(),
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => integer()
 %% }
@@ -1802,6 +1801,7 @@
 
 %% Example:
 %% list_email_identities_request() :: #{
+%%   <<"Filter">> => map(),
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => integer()
 %% }
@@ -2013,6 +2013,7 @@
 
 %% Example:
 %% list_tenants_request() :: #{
+%%   <<"Filter">> => map(),
 %%   <<"NextToken">> => string(),
 %%   <<"PageSize">> => integer()
 %% }
@@ -2823,6 +2824,7 @@
 %% Example:
 %% tenant_info() :: #{
 %%   <<"CreatedTimestamp">> => non_neg_integer(),
+%%   <<"SendingStatus">> => list(any()),
 %%   <<"TenantArn">> => string(),
 %%   <<"TenantId">> => string(),
 %%   <<"TenantName">> => string()
@@ -6118,46 +6120,38 @@ get_tenant(Client, Input0, Options0) ->
 %% configuration set to
 %% an email, all of the rules in that configuration set are applied to the
 %% email.
--spec list_configuration_sets(aws_client:aws_client()) ->
+-spec list_configuration_sets(aws_client:aws_client(), list_configuration_sets_request()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_sets_errors(), tuple()}.
-list_configuration_sets(Client)
-  when is_map(Client) ->
-    list_configuration_sets(Client, #{}, #{}).
+list_configuration_sets(Client, Input) ->
+    list_configuration_sets(Client, Input, []).
 
--spec list_configuration_sets(aws_client:aws_client(), map(), map()) ->
+-spec list_configuration_sets(aws_client:aws_client(), list_configuration_sets_request(), proplists:proplist()) ->
     {ok, list_configuration_sets_response(), tuple()} |
     {error, any()} |
     {error, list_configuration_sets_errors(), tuple()}.
-list_configuration_sets(Client, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_configuration_sets(Client, QueryMap, HeadersMap, []).
-
--spec list_configuration_sets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
-    {ok, list_configuration_sets_response(), tuple()} |
-    {error, any()} |
-    {error, list_configuration_sets_errors(), tuple()}.
-list_configuration_sets(Client, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v2/email/configuration-sets"],
+list_configuration_sets(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/list-configuration-sets"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
                | Options2],
 
     Headers = [],
+    Input1 = Input0,
 
-    Query0_ =
-      [
-        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
-        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all of the contact lists available.
 %%
@@ -6442,46 +6436,38 @@ list_domain_deliverability_campaigns(Client, SubscribedDomain, EndDate, StartDat
 %% identities that are verified as well as those that aren't. This
 %% operation returns
 %% identities that are associated with Amazon SES and Amazon Pinpoint.
--spec list_email_identities(aws_client:aws_client()) ->
+-spec list_email_identities(aws_client:aws_client(), list_email_identities_request()) ->
     {ok, list_email_identities_response(), tuple()} |
     {error, any()} |
     {error, list_email_identities_errors(), tuple()}.
-list_email_identities(Client)
-  when is_map(Client) ->
-    list_email_identities(Client, #{}, #{}).
+list_email_identities(Client, Input) ->
+    list_email_identities(Client, Input, []).
 
--spec list_email_identities(aws_client:aws_client(), map(), map()) ->
+-spec list_email_identities(aws_client:aws_client(), list_email_identities_request(), proplists:proplist()) ->
     {ok, list_email_identities_response(), tuple()} |
     {error, any()} |
     {error, list_email_identities_errors(), tuple()}.
-list_email_identities(Client, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_email_identities(Client, QueryMap, HeadersMap, []).
-
--spec list_email_identities(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
-    {ok, list_email_identities_response(), tuple()} |
-    {error, any()} |
-    {error, list_email_identities_errors(), tuple()}.
-list_email_identities(Client, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/v2/email/identities"],
+list_email_identities(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/list-identities"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
                | Options2],
 
     Headers = [],
+    Input1 = Input0,
 
-    Query0_ =
-      [
-        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
-        {<<"PageSize">>, maps:get(<<"PageSize">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the S/MIME certificates that are associated with the specified
 %% email identity.

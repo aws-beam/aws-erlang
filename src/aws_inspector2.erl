@@ -3232,7 +3232,10 @@
 %%   <<"all">> => [float()],
 %%   <<"critical">> => [float()],
 %%   <<"high">> => [float()],
-%%   <<"medium">> => [float()]
+%%   <<"informational">> => [float()],
+%%   <<"low">> => [float()],
+%%   <<"medium">> => [float()],
+%%   <<"untriaged">> => [float()]
 %% }
 -type severity_counts() :: #{binary() => any()}.
 

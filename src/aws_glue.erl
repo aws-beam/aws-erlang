@@ -10194,6 +10194,7 @@
 %% Example:
 %% view_definition() :: #{
 %%   <<"Definer">> => string(),
+%%   <<"IsManaged">> => boolean(),
 %%   <<"IsProtected">> => boolean(),
 %%   <<"LastRefreshType">> => list(any()),
 %%   <<"RefreshSeconds">> => float(),
@@ -10210,6 +10211,7 @@
 %% Example:
 %% view_definition_input() :: #{
 %%   <<"Definer">> => string(),
+%%   <<"IsManaged">> => boolean(),
 %%   <<"IsProtected">> => boolean(),
 %%   <<"LastRefreshType">> => list(any()),
 %%   <<"RefreshSeconds">> => float(),

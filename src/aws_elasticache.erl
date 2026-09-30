@@ -752,6 +752,7 @@
 %% Example:
 %% create_serverless_cache_request() :: #{
 %%   <<"CacheUsageLimits">> => cache_usage_limits(),
+%%   <<"ConnectionType">> => list(any()),
 %%   <<"DailySnapshotTime">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Engine">> := string(),
@@ -2171,6 +2172,7 @@
 %% serverless_cache() :: #{
 %%   <<"ARN">> => string(),
 %%   <<"CacheUsageLimits">> => cache_usage_limits(),
+%%   <<"ConnectionType">> => list(any()),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"DailySnapshotTime">> => string(),
 %%   <<"Description">> => string(),

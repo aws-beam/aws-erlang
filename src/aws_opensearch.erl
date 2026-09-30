@@ -691,6 +691,7 @@
 
 %% Example:
 %% change_progress_status_details() :: #{
+%%   <<"AcceptedWarnings">> => list(string()),
 %%   <<"ChangeId">> => string(),
 %%   <<"ChangeProgressStages">> => list(change_progress_stage()),
 %%   <<"CompletedProperties">> => list(string()),
@@ -700,7 +701,8 @@
 %%   <<"PendingProperties">> => list(string()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
-%%   <<"TotalNumberOfStages">> => integer()
+%%   <<"TotalNumberOfStages">> => integer(),
+%%   <<"ValidationFailures">> => list(validation_failure())
 %% }
 -type change_progress_status_details() :: #{binary() => any()}.
 
@@ -1576,6 +1578,7 @@
 
 %% Example:
 %% dry_run_progress_status() :: #{
+%%   <<"AcceptedWarnings">> => list(string()),
 %%   <<"CreationDate">> => string(),
 %%   <<"DryRunId">> => string(),
 %%   <<"DryRunStatus">> => string(),
@@ -3137,6 +3140,7 @@
 %% Example:
 %% update_domain_config_request() :: #{
 %%   <<"AIMLOptions">> => a_i_ml_options_input(),
+%%   <<"AcceptedWarnings">> => list(string()),
 %%   <<"AccessPolicies">> => string(),
 %%   <<"AdvancedOptions">> => map(),
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
@@ -3316,7 +3320,8 @@
 %% Example:
 %% validation_failure() :: #{
 %%   <<"Code">> => string(),
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"Severity">> => list(any())
 %% }
 -type validation_failure() :: #{binary() => any()}.
 

@@ -1422,6 +1422,7 @@
 %%   <<"PassiveIp">> => string(),
 %%   <<"ProxyConfig">> => proxy_config(),
 %%   <<"SetStatOption">> => list(any()),
+%%   <<"SftpPorts">> => list(sftp_port_with_options()),
 %%   <<"TlsSessionResumptionMode">> => list(any())
 %% }
 -type protocol_details() :: #{binary() => any()}.
@@ -1518,6 +1519,13 @@
 %%   <<"HostKey">> => string()
 %% }
 -type sftp_connector_connection_details() :: #{binary() => any()}.
+
+%% Example:
+%% sftp_port_with_options() :: #{
+%%   <<"CommunicationMode">> => list(any()),
+%%   <<"SftpPort">> => integer()
+%% }
+-type sftp_port_with_options() :: #{binary() => any()}.
 
 %% Example:
 %% ssh_public_key() :: #{
