@@ -2120,6 +2120,15 @@
 -type clarify_text_config() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_accounting_database() :: #{
+%%   <<"Endpoint">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Port">> => integer(),
+%%   <<"SecretArn">> => string()
+%% }
+-type cluster_accounting_database() :: #{binary() => any()}.
+
+%% Example:
 %% cluster_auto_patch_config() :: #{
 %%   <<"DeploymentConfig">> => deployment_configuration(),
 %%   <<"PatchSchedule">> => cluster_patch_schedule(),
@@ -2434,6 +2443,7 @@
 
 %% Example:
 %% cluster_orchestrator_slurm_config() :: #{
+%%   <<"AccountingDatabase">> => cluster_accounting_database(),
 %%   <<"SlurmConfigStrategy">> => list(any())
 %% }
 -type cluster_orchestrator_slurm_config() :: #{binary() => any()}.
@@ -4205,6 +4215,14 @@
 %%   <<"S3DataSource">> => s3_data_source()
 %% }
 -type data_source() :: #{binary() => any()}.
+
+%% Example:
+%% database_configuration_metadata() :: #{
+%%   <<"Advisory">> => [string()],
+%%   <<"FailureMessage">> => [string()],
+%%   <<"RollbackStatus">> => list(any())
+%% }
+-type database_configuration_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% dataset_definition() :: #{
@@ -12921,6 +12939,14 @@
 %%   <<"Seed">> => float()
 %% }
 -type shuffle_config() :: #{binary() => any()}.
+
+%% Example:
+%% slurm_health_metadata() :: #{
+%%   <<"Component">> => list(any()),
+%%   <<"Reason">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type slurm_health_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% source_algorithm() :: #{

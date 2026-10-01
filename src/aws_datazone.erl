@@ -3624,6 +3624,7 @@
 %%   <<"metadata">> => map(),
 %%   <<"networkConfiguration">> => network_config(),
 %%   <<"notebookId">> => string(),
+%%   <<"notificationConfiguration">> => notification_config(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"parameters">> => map(),
 %%   <<"scheduleId">> => string(),
@@ -5287,6 +5288,13 @@
 
 
 %% Example:
+%% notification_config() :: #{
+%%   <<"notifyOn">> => list(list(any())())
+%% }
+-type notification_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% notification_output() :: #{
 %%   <<"actionLink">> => string(),
 %%   <<"creationTimestamp">> => [non_neg_integer()],
@@ -6390,6 +6398,7 @@
 %%   <<"metadata">> => map(),
 %%   <<"networkConfiguration">> => network_config(),
 %%   <<"notebookIdentifier">> := string(),
+%%   <<"notificationConfiguration">> => notification_config(),
 %%   <<"owningProjectIdentifier">> := string(),
 %%   <<"parameters">> => map(),
 %%   <<"scheduleIdentifier">> => string(),
@@ -6413,6 +6422,7 @@
 %%   <<"metadata">> => map(),
 %%   <<"networkConfiguration">> => network_config(),
 %%   <<"notebookId">> => string(),
+%%   <<"notificationConfiguration">> => notification_config(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"parameters">> => map(),
 %%   <<"scheduleId">> => string(),

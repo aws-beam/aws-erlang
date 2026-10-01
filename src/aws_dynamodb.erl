@@ -894,6 +894,7 @@
 %%   <<"ExportType">> => list(any()),
 %%   <<"FailureCode">> => string(),
 %%   <<"FailureMessage">> => string(),
+%%   <<"FilterSpecification">> => filter_specification(),
 %%   <<"IncrementalExportSpecification">> => incremental_export_specification(),
 %%   <<"ItemCount">> => float(),
 %%   <<"S3Bucket">> => string(),
@@ -927,6 +928,7 @@
 %%   <<"ExportFormat">> => list(any()),
 %%   <<"ExportTime">> => non_neg_integer(),
 %%   <<"ExportType">> => list(any()),
+%%   <<"FilterSpecification">> => filter_specification(),
 %%   <<"IncrementalExportSpecification">> => incremental_export_specification(),
 %%   <<"S3Bucket">> := string(),
 %%   <<"S3BucketOwner">> => string(),
@@ -949,6 +951,16 @@
 %%   <<"ExceptionName">> => string()
 %% }
 -type failure_exception() :: #{binary() => any()}.
+
+%% Example:
+%% filter_specification() :: #{
+%%   <<"ExpressionAttributeNames">> => map(),
+%%   <<"ExpressionAttributeValues">> => map(),
+%%   <<"FilterExpression">> => string(),
+%%   <<"KeyConditionExpression">> => string(),
+%%   <<"ProjectionExpression">> => string()
+%% }
+-type filter_specification() :: #{binary() => any()}.
 
 %% Example:
 %% get() :: #{

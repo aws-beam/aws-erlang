@@ -1373,6 +1373,7 @@
 
 %% Example:
 %% detector_additional_configuration_result() :: #{
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"Name">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedAt">> => non_neg_integer()
@@ -1392,6 +1393,7 @@
 %% Example:
 %% detector_feature_configuration_result() :: #{
 %%   <<"AdditionalConfiguration">> => list(detector_additional_configuration_result()),
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"Name">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedAt">> => non_neg_integer()
@@ -2940,6 +2942,7 @@
 
 %% Example:
 %% member_additional_configuration_result() :: #{
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"Name">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedAt">> => non_neg_integer()
@@ -2968,6 +2971,7 @@
 %% Example:
 %% member_features_configuration_result() :: #{
 %%   <<"AdditionalConfiguration">> => list(member_additional_configuration_result()),
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"Name">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"UpdatedAt">> => non_neg_integer()

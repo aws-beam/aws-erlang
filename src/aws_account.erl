@@ -34,8 +34,12 @@
          put_alternate_contact/3,
          put_contact_information/2,
          put_contact_information/3,
+         send_phone_number_verification/2,
+         send_phone_number_verification/3,
          start_primary_email_update/2,
-         start_primary_email_update/3]).
+         start_primary_email_update/3,
+         verify_phone_number/2,
+         verify_phone_number/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -167,7 +171,8 @@
 
 %% Example:
 %% get_contact_information_response() :: #{
-%%   <<"ContactInformation">> => contact_information()
+%%   <<"ContactInformation">> => contact_information(),
+%%   <<"VerificationStatus">> => string()
 %% }
 -type get_contact_information_response() :: #{binary() => any()}.
 
@@ -311,6 +316,20 @@
 
 
 %% Example:
+%% send_phone_number_verification_request() :: #{
+%%   <<"AccountId">> => string()
+%% }
+-type send_phone_number_verification_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_phone_number_verification_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type send_phone_number_verification_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_primary_email_update_request() :: #{
 %%   <<"AccountId">> := string(),
 %%   <<"PrimaryEmail">> := string()
@@ -348,6 +367,21 @@
 %%   <<"name">> => [string()]
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_phone_number_request() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Otp">> := string()
+%% }
+-type verify_phone_number_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% verify_phone_number_response() :: #{
+%%   <<"Status">> => string()
+%% }
+-type verify_phone_number_response() :: #{binary() => any()}.
 
 -type accept_primary_email_update_errors() ::
     validation_exception() | 
@@ -450,7 +484,23 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type send_phone_number_verification_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type start_primary_email_update_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type verify_phone_number_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
     resource_not_found_exception() | 
@@ -1045,6 +1095,48 @@ put_contact_information(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Sends a one-time passcode to the phone number in the primary contact
+%% information of an Amazon Web Services account.
+%%
+%% Use `VerifyPhoneNumber' to submit the passcode and complete the
+%% verification.
+%%
+%% For complete details about how to use the primary contact operations, see
+%% Update the primary contact for your Amazon Web Services account:
+%% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact-primary.html.
+-spec send_phone_number_verification(aws_client:aws_client(), send_phone_number_verification_request()) ->
+    {ok, send_phone_number_verification_response(), tuple()} |
+    {error, any()} |
+    {error, send_phone_number_verification_errors(), tuple()}.
+send_phone_number_verification(Client, Input) ->
+    send_phone_number_verification(Client, Input, []).
+
+-spec send_phone_number_verification(aws_client:aws_client(), send_phone_number_verification_request(), proplists:proplist()) ->
+    {ok, send_phone_number_verification_response(), tuple()} |
+    {error, any()} |
+    {error, send_phone_number_verification_errors(), tuple()}.
+send_phone_number_verification(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/sendPhoneNumberVerification"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts the process to update the primary email address for the
 %% specified account.
 -spec start_primary_email_update(aws_client:aws_client(), start_primary_email_update_request()) ->
@@ -1061,6 +1153,46 @@ start_primary_email_update(Client, Input) ->
 start_primary_email_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/startPrimaryEmailUpdate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Verifies the phone number in the primary contact information of an
+%% Amazon Web Services account by submitting the one-time passcode that
+%% `SendPhoneNumberVerification' sent to that phone number.
+%%
+%% For complete details about how to use the primary contact operations, see
+%% Update the primary contact for your Amazon Web Services account:
+%% https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact-primary.html.
+-spec verify_phone_number(aws_client:aws_client(), verify_phone_number_request()) ->
+    {ok, verify_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, verify_phone_number_errors(), tuple()}.
+verify_phone_number(Client, Input) ->
+    verify_phone_number(Client, Input, []).
+
+-spec verify_phone_number(aws_client:aws_client(), verify_phone_number_request(), proplists:proplist()) ->
+    {ok, verify_phone_number_response(), tuple()} |
+    {error, any()} |
+    {error, verify_phone_number_errors(), tuple()}.
+verify_phone_number(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/verifyPhoneNumber"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

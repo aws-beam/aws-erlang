@@ -825,6 +825,7 @@
 %%   <<"deliveryDestinationType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"outputFormat">> => list(any()),
+%%   <<"roleArn">> => string(),
 %%   <<"tags">> => map()
 %% }
 -type delivery_destination() :: #{binary() => any()}.
@@ -2321,6 +2322,7 @@
 %%   <<"deliveryDestinationType">> => list(any()),
 %%   <<"name">> := string(),
 %%   <<"outputFormat">> => list(any()),
+%%   <<"roleArn">> => string(),
 %%   <<"tags">> => map()
 %% }
 -type put_delivery_destination_request() :: #{binary() => any()}.
@@ -6335,6 +6337,13 @@ list_tags_log_group(Client, Input, Options)
 %% all log groups, a
 %% subset of log groups, or a data source name and type combination in the
 %% account.
+%%
+%% Account-level
+%% policies are Region-specific: a policy applies only to log groups in the
+%% Region where you
+%% create it. To apply a policy across multiple Regions, create the policy
+%% separately in each
+%% Region.
 %%
 %% `PutAccountPolicy' is an account-wide administrative operation
 %% intended for

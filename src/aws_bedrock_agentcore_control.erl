@@ -1347,6 +1347,7 @@
 
 %% Example:
 %% create_gateway_target_request() :: #{
+%%   <<"certificateConfigurations">> => list(list()),
 %%   <<"clientToken">> => string(),
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
@@ -1361,6 +1362,7 @@
 %% Example:
 %% create_gateway_target_response() :: #{
 %%   <<"authorizationData">> => list(),
+%%   <<"certificateConfigurations">> => list(list()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
@@ -1934,6 +1936,7 @@
 
 %% Example:
 %% delete_configuration_bundle_response() :: #{
+%%   <<"bundleArn">> => string(),
 %%   <<"bundleId">> => string(),
 %%   <<"status">> => list(any())
 %% }
@@ -2547,6 +2550,7 @@
 %% Example:
 %% gateway_target() :: #{
 %%   <<"authorizationData">> => list(),
+%%   <<"certificateConfigurations">> => list(list()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
@@ -2930,6 +2934,7 @@
 %% Example:
 %% get_gateway_target_response() :: #{
 %%   <<"authorizationData">> => list(),
+%%   <<"certificateConfigurations">> => list(list()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
@@ -5389,6 +5394,14 @@
 
 
 %% Example:
+%% s3_certificate_configuration() :: #{
+%%   <<"bucketOwnerAccountId">> => string(),
+%%   <<"uri">> => string()
+%% }
+-type s3_certificate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_configuration() :: #{
 %%   <<"bucketOwnerAccountId">> => string(),
 %%   <<"uri">> => string()
@@ -5478,6 +5491,13 @@
 %%   <<"secretId">> => string()
 %% }
 -type secret_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_certificate_configuration() :: #{
+%%   <<"secretArn">> => string()
+%% }
+-type secrets_manager_certificate_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6092,7 +6112,7 @@
 %%   <<"branchName">> => string(),
 %%   <<"bundleName">> => string(),
 %%   <<"clientToken">> => string(),
-%%   <<"commitMessage">> => [string()],
+%%   <<"commitMessage">> := [string()],
 %%   <<"components">> => map(),
 %%   <<"createdBy">> => version_created_by_source(),
 %%   <<"description">> => string(),
@@ -6294,6 +6314,7 @@
 
 %% Example:
 %% update_gateway_target_request() :: #{
+%%   <<"certificateConfigurations">> => list(list()),
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),
 %%   <<"metadataConfiguration">> => metadata_configuration(),
@@ -6307,6 +6328,7 @@
 %% Example:
 %% update_gateway_target_response() :: #{
 %%   <<"authorizationData">> => list(),
+%%   <<"certificateConfigurations">> => list(list()),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"credentialProviderConfigurations">> => list(credential_provider_configuration()),
 %%   <<"description">> => string(),

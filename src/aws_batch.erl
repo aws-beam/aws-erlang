@@ -943,6 +943,14 @@
 
 
 %% Example:
+%% eks_access_entry() :: #{
+%%   <<"desiredState">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type eks_access_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% eks_attempt_container_detail() :: #{
 %%   <<"containerID">> => string(),
 %%   <<"exitCode">> => integer(),
@@ -969,10 +977,18 @@
 
 %% Example:
 %% eks_configuration() :: #{
+%%   <<"accessEntry">> => eks_access_entry(),
 %%   <<"eksClusterArn">> => string(),
 %%   <<"kubernetesNamespace">> => string()
 %% }
 -type eks_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_configuration_update() :: #{
+%%   <<"accessEntry">> => eks_access_entry()
+%% }
+-type eks_configuration_update() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2370,6 +2386,7 @@
 %%   <<"computeResources">> => compute_resource_update(),
 %%   <<"context">> => string(),
 %%   <<"ecsSettings">> => ecs_settings(),
+%%   <<"eksConfiguration">> => eks_configuration_update(),
 %%   <<"serviceRole">> => string(),
 %%   <<"state">> => list(any()),
 %%   <<"unmanagedvCpus">> => integer(),
@@ -2803,6 +2820,13 @@ cancel_job(Client, Input0, Options0) ->
 %% `errors' list. Jobs that can't be found are treated as
 %% successfully
 %% processed.
+%%
+%% This operation requires `batch:CancelJob' permission for each job in
+%% the
+%% request. There is no separate `batch:CancelJobs' IAM action. If a
+%% caller's IAM
+%% policy grants `batch:CancelJob', they can use both the singular
+%% `CancelJob' and bulk `CancelJobs' operations.
 -spec cancel_jobs(aws_client:aws_client(), cancel_jobs_request()) ->
     {ok, cancel_jobs_response(), tuple()} |
     {error, any()} |
@@ -4229,6 +4253,13 @@ terminate_job(Client, Input0, Options0) ->
 %% `errors' list. Jobs that can't be found are treated as
 %% successfully
 %% processed.
+%%
+%% This operation requires `batch:TerminateJob' permission for each job
+%% in the
+%% request. There is no separate `batch:TerminateJobs' IAM action. If a
+%% caller's IAM
+%% policy grants `batch:TerminateJob', they can use both the singular
+%% `TerminateJob' and bulk `TerminateJobs' operations.
 -spec terminate_jobs(aws_client:aws_client(), terminate_jobs_request()) ->
     {ok, terminate_jobs_response(), tuple()} |
     {error, any()} |
@@ -4307,6 +4338,14 @@ terminate_service_job(Client, Input0, Options0) ->
 %% code of `200' even when some service jobs encountered errors, so check
 %% the `errors' list. Service jobs that can't be found are treated as
 %% successfully processed.
+%%
+%% This operation requires `batch:TerminateServiceJob' permission for
+%% each service job in the
+%% request. There is no separate `batch:TerminateServiceJobs' IAM action.
+%% If a caller's IAM
+%% policy grants `batch:TerminateServiceJob', they can use both the
+%% singular
+%% `TerminateServiceJob' and bulk `TerminateServiceJobs' operations.
 -spec terminate_service_jobs(aws_client:aws_client(), terminate_service_jobs_request()) ->
     {ok, terminate_service_jobs_response(), tuple()} |
     {error, any()} |

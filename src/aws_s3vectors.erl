@@ -43,6 +43,8 @@
          list_vector_buckets/3,
          list_vectors/2,
          list_vectors/3,
+         put_vector_bucket_default_index_mode/2,
+         put_vector_bucket_default_index_mode/3,
          put_vector_bucket_policy/2,
          put_vector_bucket_policy/3,
          put_vectors/2,
@@ -52,7 +54,9 @@
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
-         untag_resource/4]).
+         untag_resource/4,
+         update_index_mode/2,
+         update_index_mode/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -251,6 +255,7 @@
 %%   <<"distanceMetric">> => list(any()),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"indexArn">> => string(),
+%%   <<"indexMode">> => list(any()),
 %%   <<"indexName">> => string(),
 %%   <<"metadataConfiguration">> => metadata_configuration(),
 %%   <<"vectorBucketName">> => string()
@@ -406,6 +411,19 @@
 
 
 %% Example:
+%% put_vector_bucket_default_index_mode_input() :: #{
+%%   <<"defaultIndexMode">> := list(any()),
+%%   <<"vectorBucketArn">> => string(),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type put_vector_bucket_default_index_mode_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_vector_bucket_default_index_mode_output() :: #{}
+-type put_vector_bucket_default_index_mode_output() :: #{}.
+
+
+%% Example:
 %% put_vector_bucket_policy_input() :: #{
 %%   <<"policy">> := string(),
 %%   <<"vectorBucketArn">> => string(),
@@ -447,6 +465,7 @@
 %%   <<"indexArn">> => string(),
 %%   <<"indexName">> => string(),
 %%   <<"nextToken">> => string(),
+%%   <<"queryMode">> => list(any()),
 %%   <<"queryVector">> := list(),
 %%   <<"returnDistance">> => [boolean()],
 %%   <<"returnMetadata">> => [boolean()],
@@ -516,6 +535,20 @@
 
 
 %% Example:
+%% update_index_mode_input() :: #{
+%%   <<"indexArn">> => string(),
+%%   <<"indexMode">> := list(any()),
+%%   <<"indexName">> => string(),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type update_index_mode_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_index_mode_output() :: #{}
+-type update_index_mode_output() :: #{}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()]
@@ -534,6 +567,7 @@
 %% Example:
 %% vector_bucket() :: #{
 %%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"defaultIndexMode">> => list(any()),
 %%   <<"encryptionConfiguration">> => encryption_configuration(),
 %%   <<"vectorBucketArn">> => string(),
 %%   <<"vectorBucketName">> => string()
@@ -618,6 +652,10 @@
     not_found_exception() | 
     access_denied_exception().
 
+-type put_vector_bucket_default_index_mode_errors() ::
+    service_unavailable_exception() | 
+    not_found_exception().
+
 -type put_vector_bucket_policy_errors() ::
     service_unavailable_exception() | 
     not_found_exception().
@@ -649,6 +687,10 @@
     service_unavailable_exception() | 
     not_found_exception() | 
     conflict_exception().
+
+-type update_index_mode_errors() ::
+    service_unavailable_exception() | 
+    not_found_exception().
 
 %%====================================================================
 %% API
@@ -1248,6 +1290,49 @@ list_vectors(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the default index mode for a vector bucket.
+%%
+%% The updated default applies to vector indexes that you create after the
+%% request succeeds. The operation doesn't change existing vector
+%% indexes. To specify the vector bucket, you must use either the vector
+%% bucket name or the vector bucket Amazon Resource Name (ARN).
+%%
+%% Permissions You must have the
+%% `s3vectors:PutVectorBucketDefaultIndexMode' permission to use this
+%% operation.
+-spec put_vector_bucket_default_index_mode(aws_client:aws_client(), put_vector_bucket_default_index_mode_input()) ->
+    {ok, put_vector_bucket_default_index_mode_output(), tuple()} |
+    {error, any()} |
+    {error, put_vector_bucket_default_index_mode_errors(), tuple()}.
+put_vector_bucket_default_index_mode(Client, Input) ->
+    put_vector_bucket_default_index_mode(Client, Input, []).
+
+-spec put_vector_bucket_default_index_mode(aws_client:aws_client(), put_vector_bucket_default_index_mode_input(), proplists:proplist()) ->
+    {ok, put_vector_bucket_default_index_mode_output(), tuple()} |
+    {error, any()} |
+    {error, put_vector_bucket_default_index_mode_errors(), tuple()}.
+put_vector_bucket_default_index_mode(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/PutVectorBucketDefaultIndexMode"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a bucket policy for a vector bucket.
 %%
 %% To specify the bucket, you must use either the vector bucket name or the
@@ -1492,6 +1577,50 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the mode for an existing vector index.
+%%
+%% You can set the mode to `ENHANCED' for any vector index. You can set
+%% the mode to `CLASSIC' only for a vector index in a vector bucket
+%% created before September 30, 2026. This operation doesn't change the
+%% default index mode of the vector bucket or the mode of other vector
+%% indexes. Specify the vector index by using its Amazon Resource Name (ARN)
+%% or both the vector bucket name and vector index name.
+%%
+%% Permissions You must have the `s3vectors:UpdateIndexMode' permission
+%% to use this operation.
+-spec update_index_mode(aws_client:aws_client(), update_index_mode_input()) ->
+    {ok, update_index_mode_output(), tuple()} |
+    {error, any()} |
+    {error, update_index_mode_errors(), tuple()}.
+update_index_mode(Client, Input) ->
+    update_index_mode(Client, Input, []).
+
+-spec update_index_mode(aws_client:aws_client(), update_index_mode_input(), proplists:proplist()) ->
+    {ok, update_index_mode_output(), tuple()} |
+    {error, any()} |
+    {error, update_index_mode_errors(), tuple()}.
+update_index_mode(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateIndexMode"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================

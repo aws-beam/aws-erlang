@@ -836,7 +836,15 @@
 -type invalid_port_range_exception() :: #{binary() => any()}.
 
 %% Example:
+%% ip_address_detail() :: #{
+%%   <<"IpAddress">> => string(),
+%%   <<"NetworkZone">> => string()
+%% }
+-type ip_address_detail() :: #{binary() => any()}.
+
+%% Example:
 %% ip_set() :: #{
+%%   <<"IpAddressDetails">> => list(ip_address_detail()),
 %%   <<"IpAddressFamily">> => list(any()),
 %%   <<"IpAddresses">> => list(string()),
 %%   <<"IpFamily">> => string()

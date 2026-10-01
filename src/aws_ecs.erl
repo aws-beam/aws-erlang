@@ -2580,7 +2580,8 @@
 
 %% Example:
 %% resolved_configuration() :: #{
-%%   <<"loadBalancers">> => list(service_revision_load_balancer())
+%%   <<"loadBalancers">> => list(service_revision_load_balancer()),
+%%   <<"vpcLatticeConfigurations">> => list(service_revision_vpc_lattice_configuration())
 %% }
 -type resolved_configuration() :: #{binary() => any()}.
 
@@ -2974,6 +2975,13 @@
 %%   <<"runningTaskCount">> => integer()
 %% }
 -type service_revision_summary() :: #{binary() => any()}.
+
+%% Example:
+%% service_revision_vpc_lattice_configuration() :: #{
+%%   <<"productionListenerRule">> => string(),
+%%   <<"targetGroupArn">> => string()
+%% }
+-type service_revision_vpc_lattice_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% service_volume_configuration() :: #{
@@ -3622,7 +3630,16 @@
 -type volume_from() :: #{binary() => any()}.
 
 %% Example:
+%% vpc_lattice_advanced_configuration() :: #{
+%%   <<"alternateTargetGroupArn">> => string(),
+%%   <<"productionListenerRule">> => string(),
+%%   <<"testListenerRule">> => string()
+%% }
+-type vpc_lattice_advanced_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% vpc_lattice_configuration() :: #{
+%%   <<"advancedConfiguration">> => vpc_lattice_advanced_configuration(),
 %%   <<"portName">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"targetGroupArn">> => string()

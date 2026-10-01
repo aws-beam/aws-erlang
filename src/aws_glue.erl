@@ -1984,6 +1984,7 @@
 
 %% Example:
 %% crawler() :: #{
+%%   <<"CatalogId">> => string(),
 %%   <<"Classifiers">> => list(string()),
 %%   <<"Configuration">> => string(),
 %%   <<"CrawlElapsedTime">> => float(),
@@ -2160,6 +2161,7 @@
 
 %% Example:
 %% create_crawler_request() :: #{
+%%   <<"CatalogId">> => string(),
 %%   <<"Classifiers">> => list(string()),
 %%   <<"Configuration">> => string(),
 %%   <<"CrawlerSecurityConfiguration">> => string(),
@@ -3265,6 +3267,7 @@
 
 %% Example:
 %% delete_column_statistics_task_settings_request() :: #{
+%%   <<"CatalogID">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"TableName">> := string()
 %% }
@@ -4457,6 +4460,7 @@
 
 %% Example:
 %% get_column_statistics_task_runs_request() :: #{
+%%   <<"CatalogID">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -4473,6 +4477,7 @@
 
 %% Example:
 %% get_column_statistics_task_settings_request() :: #{
+%%   <<"CatalogID">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"TableName">> := string()
 %% }
@@ -8780,6 +8785,7 @@
 
 %% Example:
 %% start_column_statistics_task_run_schedule_request() :: #{
+%%   <<"CatalogID">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"TableName">> := string()
 %% }
@@ -9052,6 +9058,7 @@
 
 %% Example:
 %% stop_column_statistics_task_run_request() :: #{
+%%   <<"CatalogID">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"TableName">> := string()
 %% }
@@ -9065,6 +9072,7 @@
 
 %% Example:
 %% stop_column_statistics_task_run_schedule_request() :: #{
+%%   <<"CatalogID">> => string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"TableName">> := string()
 %% }
@@ -9699,6 +9707,7 @@
 
 %% Example:
 %% update_crawler_request() :: #{
+%%   <<"CatalogId">> => string(),
 %%   <<"Classifiers">> => list(string()),
 %%   <<"Configuration">> => string(),
 %%   <<"CrawlerSecurityConfiguration">> => string(),
