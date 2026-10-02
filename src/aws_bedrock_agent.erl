@@ -1727,6 +1727,7 @@
 %%   <<"startedAt">> => non_neg_integer(),
 %%   <<"statistics">> => ingestion_job_statistics(),
 %%   <<"status">> => list(any()),
+%%   <<"textReadyAt">> => non_neg_integer(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type ingestion_job() :: #{binary() => any()}.
@@ -1772,6 +1773,7 @@
 %%   <<"startedAt">> => non_neg_integer(),
 %%   <<"statistics">> => ingestion_job_statistics(),
 %%   <<"status">> => list(any()),
+%%   <<"textReadyAt">> => non_neg_integer(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type ingestion_job_summary() :: #{binary() => any()}.

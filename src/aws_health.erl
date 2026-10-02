@@ -103,6 +103,8 @@
          describe_events_for_organization/3,
          describe_health_service_status_for_organization/2,
          describe_health_service_status_for_organization/3,
+         describe_service_lifecycle/2,
+         describe_service_lifecycle/3,
          disable_health_service_access_for_organization/2,
          disable_health_service_access_for_organization/3,
          enable_health_service_access_for_organization/2,
@@ -320,6 +322,21 @@
 -type describe_health_service_status_for_organization_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_service_lifecycle_request() :: #{
+%%   <<"filter">> => service_lifecycle_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_service_lifecycle_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_service_lifecycle_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"serviceLifecycles">> => list(service_lifecycle())
+%% }
+-type describe_service_lifecycle_response() :: #{binary() => any()}.
+
+%% Example:
 %% entity_account_filter() :: #{
 %%   <<"awsAccountId">> => string(),
 %%   <<"eventArn">> => string(),
@@ -447,6 +464,16 @@
 -type invalid_pagination_token() :: #{binary() => any()}.
 
 %% Example:
+%% lifecycle_event() :: #{
+%%   <<"date">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"impactRisks">> => list(string()),
+%%   <<"lifecycleEventType">> => string(),
+%%   <<"regions">> => list(string())
+%% }
+-type lifecycle_event() :: #{binary() => any()}.
+
+%% Example:
 %% organization_affected_entities_error_item() :: #{
 %%   <<"awsAccountId">> => string(),
 %%   <<"errorMessage">> => string(),
@@ -518,6 +545,22 @@
 -type organization_event_filter() :: #{binary() => any()}.
 
 %% Example:
+%% service_lifecycle() :: #{
+%%   <<"lifecycleEvents">> => list(lifecycle_event()),
+%%   <<"recommendedVersion">> => string(),
+%%   <<"service">> => string(),
+%%   <<"title">> => string(),
+%%   <<"version">> => string()
+%% }
+-type service_lifecycle() :: #{binary() => any()}.
+
+%% Example:
+%% service_lifecycle_filter() :: #{
+%%   <<"service">> => string()
+%% }
+-type service_lifecycle_filter() :: #{binary() => any()}.
+
+%% Example:
 %% unsupported_locale() :: #{
 %%   <<"message">> => string()
 %% }
@@ -553,6 +596,9 @@
 
 -type describe_events_for_organization_errors() ::
     unsupported_locale() | 
+    invalid_pagination_token().
+
+-type describe_service_lifecycle_errors() ::
     invalid_pagination_token().
 
 -type disable_health_service_access_for_organization_errors() ::
@@ -998,6 +1044,25 @@ describe_health_service_status_for_organization(Client, Input)
 describe_health_service_status_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeHealthServiceStatusForOrganization">>, Input, Options).
+
+%% @doc Returns lifecycle information for Amazon Web Services services,
+%% including end-of-life dates, version recommendations, and lifecycle
+%% events.
+-spec describe_service_lifecycle(aws_client:aws_client(), describe_service_lifecycle_request()) ->
+    {ok, describe_service_lifecycle_response(), tuple()} |
+    {error, any()} |
+    {error, describe_service_lifecycle_errors(), tuple()}.
+describe_service_lifecycle(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_service_lifecycle(Client, Input, []).
+
+-spec describe_service_lifecycle(aws_client:aws_client(), describe_service_lifecycle_request(), proplists:proplist()) ->
+    {ok, describe_service_lifecycle_response(), tuple()} |
+    {error, any()} |
+    {error, describe_service_lifecycle_errors(), tuple()}.
+describe_service_lifecycle(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeServiceLifecycle">>, Input, Options).
 
 %% @doc Disables Health from working with Organizations.
 %%

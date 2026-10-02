@@ -5045,7 +5045,9 @@
 
 %% Example:
 %% databricks_parameters() :: #{
+%%   <<"AuthenticationType">> => list(any()),
 %%   <<"Host">> => string(),
+%%   <<"OAuthParameters">> => o_auth_parameters(),
 %%   <<"Port">> => integer(),
 %%   <<"SqlEndpointPath">> => string()
 %% }
@@ -5285,6 +5287,8 @@
 %% default_filter_control_options() :: #{
 %%   <<"DefaultDateTimePickerOptions">> => default_date_time_picker_control_options(),
 %%   <<"DefaultDropdownOptions">> => default_filter_drop_down_control_options(),
+%%   <<"DefaultHierarchyDropdown">> => default_hierarchy_filter_drop_down_control_options(),
+%%   <<"DefaultHierarchyList">> => default_hierarchy_filter_list_control_options(),
 %%   <<"DefaultListOptions">> => default_filter_list_control_options(),
 %%   <<"DefaultRelativeDateTimeOptions">> => default_relative_date_time_control_options(),
 %%   <<"DefaultSliderOptions">> => default_slider_control_options(),
@@ -5335,6 +5339,28 @@
 %%   <<"CanvasSizeOptions">> => grid_layout_canvas_size_options()
 %% }
 -type default_grid_layout_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_hierarchy_filter_drop_down_control_options() :: #{
+%%   <<"CommitMode">> => list(any()),
+%%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
+%%   <<"DisplayOptions">> => hierarchy_filter_drop_down_control_display_options(),
+%%   <<"Type">> => list(any())
+%% }
+-type default_hierarchy_filter_drop_down_control_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% default_hierarchy_filter_list_control_options() :: #{
+%%   <<"CommitMode">> => list(any()),
+%%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
+%%   <<"DisplayOptions">> => hierarchy_filter_list_control_display_options(),
+%%   <<"Type">> => list(any())
+%% }
+-type default_hierarchy_filter_list_control_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7479,6 +7505,7 @@
 %% Example:
 %% filter() :: #{
 %%   <<"CategoryFilter">> => category_filter(),
+%%   <<"HierarchyFilter">> => hierarchy_filter(),
 %%   <<"NestedFilter">> => nested_filter(),
 %%   <<"NumericEqualityFilter">> => numeric_equality_filter(),
 %%   <<"NumericRangeFilter">> => numeric_range_filter(),
@@ -7504,6 +7531,8 @@
 %%   <<"CrossSheet">> => filter_cross_sheet_control(),
 %%   <<"DateTimePicker">> => filter_date_time_picker_control(),
 %%   <<"Dropdown">> => filter_drop_down_control(),
+%%   <<"HierarchyDropdown">> => hierarchy_filter_drop_down_control(),
+%%   <<"HierarchyList">> => hierarchy_filter_list_control(),
 %%   <<"List">> => filter_list_control(),
 %%   <<"RelativeDateTime">> => filter_relative_date_time_control(),
 %%   <<"Slider">> => filter_slider_control(),
@@ -8798,6 +8827,88 @@
 %%   <<"VisualId">> => string()
 %% }
 -type heat_map_visual() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_filter() :: #{
+%%   <<"Column">> => column_identifier(),
+%%   <<"DefaultFilterControlConfiguration">> => default_filter_control_configuration(),
+%%   <<"FilterId">> => string(),
+%%   <<"HierarchyLevels">> => list(hierarchy_filter_level()),
+%%   <<"HierarchyTree">> => hierarchy_filter_node(),
+%%   <<"MatchOperator">> => list(any()),
+%%   <<"NullOption">> => list(any())
+%% }
+-type hierarchy_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_filter_drop_down_control() :: #{
+%%   <<"CommitMode">> => list(any()),
+%%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
+%%   <<"DisplayOptions">> => hierarchy_filter_drop_down_control_display_options(),
+%%   <<"FilterControlId">> => string(),
+%%   <<"SourceFilterId">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type hierarchy_filter_drop_down_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_filter_drop_down_control_display_options() :: #{
+%%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
+%%   <<"TitleOptions">> => label_options()
+%% }
+-type hierarchy_filter_drop_down_control_display_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_filter_level() :: #{
+%%   <<"Column">> => column_identifier()
+%% }
+-type hierarchy_filter_level() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_filter_list_control() :: #{
+%%   <<"CommitMode">> => list(any()),
+%%   <<"ControlSortConfigurations">> => list(control_sort_configuration()),
+%%   <<"ControlTitleFormatText">> => control_title_format_text(),
+%%   <<"DisplayOptions">> => hierarchy_filter_list_control_display_options(),
+%%   <<"FilterControlId">> => string(),
+%%   <<"SourceFilterId">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type hierarchy_filter_list_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_filter_list_control_display_options() :: #{
+%%   <<"InfoIconLabelOptions">> => sheet_control_info_icon_label_options(),
+%%   <<"SearchOptions">> => hierarchy_filter_list_control_search_options(),
+%%   <<"TitleOptions">> => label_options()
+%% }
+-type hierarchy_filter_list_control_display_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_filter_list_control_search_options() :: #{
+%%   <<"Visibility">> => list(any())
+%% }
+-type hierarchy_filter_list_control_search_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% hierarchy_filter_node() :: #{
+%%   <<"Children">> => list(hierarchy_filter_node()),
+%%   <<"Column">> => column_identifier(),
+%%   <<"HierarchyValues">> => list(string()),
+%%   <<"ParentValue">> => string()
+%% }
+-type hierarchy_filter_node() :: #{binary() => any()}.
 
 
 %% Example:

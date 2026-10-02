@@ -279,6 +279,8 @@
          get_recommended_policy_v2/2,
          get_recommended_policy_v2/4,
          get_recommended_policy_v2/5,
+         get_remediations_v2/2,
+         get_remediations_v2/3,
          get_resources_statistics_v2/2,
          get_resources_statistics_v2/3,
          get_resources_trends_v2/2,
@@ -313,6 +315,8 @@
          list_enabled_products_for_import/1,
          list_enabled_products_for_import/3,
          list_enabled_products_for_import/4,
+         list_exposures_by_remediation_v2/2,
+         list_exposures_by_remediation_v2/3,
          list_finding_aggregators/1,
          list_finding_aggregators/3,
          list_finding_aggregators/4,
@@ -7311,6 +7315,17 @@
 
 
 %% Example:
+%% exposure_finding() :: #{
+%%   <<"Impact">> => list(any()),
+%%   <<"MetadataUid">> => string(),
+%%   <<"PreviousSeverity">> => list(any()),
+%%   <<"ProjectedSeverity">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type exposure_finding() :: #{binary() => any()}.
+
+
+%% Example:
 %% external_integration_configuration() :: #{
 %%   <<"ConnectorArn">> => string()
 %% }
@@ -7825,6 +7840,27 @@
 
 
 %% Example:
+%% get_remediations_v2_request() :: #{
+%%   <<"Filters">> => remediation_filters(),
+%%   <<"GuidanceFormat">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetadataUid">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ShowGuidance">> => boolean(),
+%%   <<"TargetUid">> => string()
+%% }
+-type get_remediations_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_remediations_v2_response() :: #{
+%%   <<"Items">> => list(remediation_v2_item()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_remediations_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_resources_statistics_v2_request() :: #{
 %%   <<"GroupByRules">> := list(resource_group_by_rule()),
 %%   <<"MaxStatisticResults">> => integer(),
@@ -8117,6 +8153,14 @@
 
 
 %% Example:
+%% kb_article() :: #{
+%%   <<"Title">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type kb_article() :: #{binary() => any()}.
+
+
+%% Example:
 %% keyword_filter() :: #{
 %%   <<"Value">> => string()
 %% }
@@ -8264,6 +8308,27 @@
 %%   <<"ProductSubscriptions">> => list(string())
 %% }
 -type list_enabled_products_for_import_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_exposures_by_remediation_v2_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TargetUid">> := string()
+%% }
+-type list_exposures_by_remediation_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_exposures_by_remediation_v2_response() :: #{
+%%   <<"Items">> => list(exposure_finding()),
+%%   <<"NextToken">> => string(),
+%%   <<"Resource">> => remediation_resource(),
+%%   <<"TargetUid">> => string(),
+%%   <<"TotalCount">> => integer(),
+%%   <<"Trait">> => remediation_trait()
+%% }
+-type list_exposures_by_remediation_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8847,6 +8912,180 @@
 %%   <<"Recommendation">> => recommendation()
 %% }
 -type remediation() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_composite_filter() :: #{
+%%   <<"StringFilters">> => list(remediation_string_filter())
+%% }
+-type remediation_composite_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_filters() :: #{
+%%   <<"CompositeFilters">> => list(remediation_composite_filter())
+%% }
+-type remediation_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_guidance() :: #{
+%%   <<"Context">> => remediation_guidance_context(),
+%%   <<"Examples">> => remediation_guidance_examples(),
+%%   <<"Metadata">> => remediation_guidance_metadata(),
+%%   <<"Pattern">> => string(),
+%%   <<"Specification">> => remediation_guidance_specification(),
+%%   <<"TargetTypeName">> => string(),
+%%   <<"Version">> => string()
+%% }
+-type remediation_guidance() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_guidance_context() :: #{
+%%   <<"AffectedScope">> => string(),
+%%   <<"Prerequisites">> => list(string()),
+%%   <<"ProblemStatement">> => string(),
+%%   <<"RiskAssessment">> => string()
+%% }
+-type remediation_guidance_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_guidance_examples() :: #{
+%%   <<"AwsCli">> => string(),
+%%   <<"Cdk">> => string(),
+%%   <<"Cli">> => string(),
+%%   <<"CloudFormation">> => string(),
+%%   <<"IaC">> => string(),
+%%   <<"Python">> => string(),
+%%   <<"Template">> => string(),
+%%   <<"Terraform">> => string()
+%% }
+-type remediation_guidance_examples() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_guidance_metadata() :: #{
+%%   <<"AutomationLevel">> => string(),
+%%   <<"ExposureType">> => string(),
+%%   <<"FixEffect">> => string(),
+%%   <<"GeneratedAt">> => non_neg_integer(),
+%%   <<"HumanReviewRequired">> => boolean(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Reversibility">> => string(),
+%%   <<"RiskLevel">> => string(),
+%%   <<"TraitTitles">> => list(string()),
+%%   <<"VerificationStatus">> => string()
+%% }
+-type remediation_guidance_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_guidance_specification() :: #{
+%%   <<"ExpectedEndState">> => string(),
+%%   <<"Parameters">> => list(remediation_parameter()),
+%%   <<"RequiredPermissions">> => list(string()),
+%%   <<"Steps">> => list(remediation_step())
+%% }
+-type remediation_guidance_specification() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_outcome() :: #{
+%%   <<"ResolvedFindingsCount">> => integer(),
+%%   <<"SeverityReductionFindingsCount">> => integer(),
+%%   <<"SeverityUnchangedCount">> => integer()
+%% }
+-type remediation_outcome() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_parameter() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Required">> => boolean(),
+%%   <<"Type">> => string()
+%% }
+-type remediation_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_resource() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"CloudProvider">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"ResourceGuid">> => string(),
+%%   <<"ResourceOwnerAccountId">> => string(),
+%%   <<"ResourceOwnerOrgId">> => string(),
+%%   <<"ResourceRegion">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type remediation_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_step() :: #{
+%%   <<"Action">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Inverse">> => string(),
+%%   <<"Logic">> => string(),
+%%   <<"Phase">> => string(),
+%%   <<"Service">> => string(),
+%%   <<"VerifyAfter">> => string()
+%% }
+-type remediation_step() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_string_filter() :: #{
+%%   <<"FieldName">> => list(any()),
+%%   <<"Filter">> => remediation_string_filter_condition()
+%% }
+-type remediation_string_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_string_filter_condition() :: #{
+%%   <<"Value">> => string()
+%% }
+-type remediation_string_filter_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_summary_detail() :: #{
+%%   <<"Action">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"IsImmediate">> => boolean(),
+%%   <<"KbArticles">> => list(kb_article()),
+%%   <<"PostRemediationSteps">> => list(string())
+%% }
+-type remediation_summary_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_trait() :: #{
+%%   <<"Title">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type remediation_trait() :: #{binary() => any()}.
+
+
+%% Example:
+%% remediation_v2_item() :: #{
+%%   <<"Guidance">> => remediation_guidance(),
+%%   <<"Outcome">> => remediation_outcome(),
+%%   <<"Priority">> => list(any()),
+%%   <<"RemediationSummary">> => remediation_summary_detail(),
+%%   <<"Resource">> => remediation_resource(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetUid">> => string(),
+%%   <<"Trait">> => remediation_trait(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type remediation_v2_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10819,6 +11058,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_remediations_v2_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_resources_statistics_v2_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -10916,6 +11162,13 @@
     limit_exceeded_exception() | 
     invalid_access_exception() | 
     internal_exception().
+
+-type list_exposures_by_remediation_v2_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_finding_aggregators_errors() ::
     limit_exceeded_exception() | 
@@ -14446,6 +14699,47 @@ get_recommended_policy_v2(Client, MetadataUid, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves remediation targets for the account, or for all member
+%% accounts if the caller is
+%% the delegated administrator.
+%%
+%% Results are sorted by priority, highest first, and are paginated.
+%% Use `TargetUid' or `MetadataUid' to scope the request to a single
+%% target
+%% or finding.
+-spec get_remediations_v2(aws_client:aws_client(), get_remediations_v2_request()) ->
+    {ok, get_remediations_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_remediations_v2_errors(), tuple()}.
+get_remediations_v2(Client, Input) ->
+    get_remediations_v2(Client, Input, []).
+
+-spec get_remediations_v2(aws_client:aws_client(), get_remediations_v2_request(), proplists:proplist()) ->
+    {ok, get_remediations_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_remediations_v2_errors(), tuple()}.
+get_remediations_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetRemediationsV2"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Retrieves statistical information about Amazon Web Services resources
 %% and their associated security findings.
 %%
@@ -15041,6 +15335,44 @@ list_enabled_products_for_import(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the exposure findings tied to a specific remediation
+%% target.
+%%
+%% Results are sorted by
+%% previous severity, highest first, and are paginated.
+-spec list_exposures_by_remediation_v2(aws_client:aws_client(), list_exposures_by_remediation_v2_request()) ->
+    {ok, list_exposures_by_remediation_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_exposures_by_remediation_v2_errors(), tuple()}.
+list_exposures_by_remediation_v2(Client, Input) ->
+    list_exposures_by_remediation_v2(Client, Input, []).
+
+-spec list_exposures_by_remediation_v2(aws_client:aws_client(), list_exposures_by_remediation_v2_request(), proplists:proplist()) ->
+    {ok, list_exposures_by_remediation_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_exposures_by_remediation_v2_errors(), tuple()}.
+list_exposures_by_remediation_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListExposuresByRemediationV2"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc If cross-Region aggregation is enabled, then
 %% `ListFindingAggregators' returns the Amazon Resource Name (ARN)

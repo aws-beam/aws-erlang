@@ -415,6 +415,7 @@
 %%   <<"Description">> => string(),
 %%   <<"OnExceptionSteps">> => list(workflow_step()),
 %%   <<"Steps">> := list(workflow_step()),
+%%   <<"StructuredLogDestinations">> => list(string()),
 %%   <<"Tags">> => list(tag())
 %% }
 -type create_workflow_request() :: #{binary() => any()}.
@@ -926,6 +927,7 @@
 %%   <<"Description">> => string(),
 %%   <<"OnExceptionSteps">> => list(workflow_step()),
 %%   <<"Steps">> => list(workflow_step()),
+%%   <<"StructuredLogDestinations">> => list(string()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"WorkflowId">> => string()
 %% }
