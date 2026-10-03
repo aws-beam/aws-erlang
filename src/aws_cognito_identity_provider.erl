@@ -363,6 +363,12 @@
 -type account_takeover_risk_configuration_type() :: #{binary() => any()}.
 
 %% Example:
+%% acr_level_config_type() :: #{
+%%   <<"AcrValue">> => string()
+%% }
+-type acr_level_config_type() :: #{binary() => any()}.
+
+%% Example:
 %% add_custom_attributes_request() :: #{
 %%   <<"CustomAttributes">> := list(schema_attribute_type()),
 %%   <<"UserPoolId">> := string()
@@ -694,6 +700,7 @@
 %% Example:
 %% admin_respond_to_auth_challenge_response() :: #{
 %%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"AvailableChallenges">> => list(list(any())()),
 %%   <<"ChallengeName">> => list(any()),
 %%   <<"ChallengeParameters">> => map(),
 %%   <<"Session">> => string()
@@ -1064,6 +1071,7 @@
 
 %% Example:
 %% create_identity_provider_request() :: #{
+%%   <<"AcrMapping">> => map(),
 %%   <<"AttributeMapping">> => map(),
 %%   <<"IdpIdentifiers">> => list(string()),
 %%   <<"ProviderDetails">> := map(),
@@ -1212,6 +1220,7 @@
 %% Example:
 %% create_user_pool_request() :: #{
 %%   <<"AccountRecoverySetting">> => account_recovery_setting_type(),
+%%   <<"AcrConfiguration">> => map(),
 %%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
 %%   <<"AliasAttributes">> => list(list(any())()),
 %%   <<"AutoVerifiedAttributes">> => list(list(any())()),
@@ -1937,6 +1946,7 @@
 
 %% Example:
 %% identity_provider_type() :: #{
+%%   <<"AcrMapping">> => map(),
 %%   <<"AttributeMapping">> => map(),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"IdpIdentifiers">> => list(string()),
@@ -2529,6 +2539,7 @@
 %% Example:
 %% respond_to_auth_challenge_response() :: #{
 %%   <<"AuthenticationResult">> => authentication_result_type(),
+%%   <<"AvailableChallenges">> => list(list(any())()),
 %%   <<"ChallengeName">> => list(any()),
 %%   <<"ChallengeParameters">> => map(),
 %%   <<"Session">> => string()
@@ -2991,6 +3002,7 @@
 
 %% Example:
 %% update_identity_provider_request() :: #{
+%%   <<"AcrMapping">> => map(),
 %%   <<"AttributeMapping">> => map(),
 %%   <<"IdpIdentifiers">> => list(string()),
 %%   <<"ProviderDetails">> => map(),
@@ -3149,6 +3161,7 @@
 %% Example:
 %% update_user_pool_request() :: #{
 %%   <<"AccountRecoverySetting">> => account_recovery_setting_type(),
+%%   <<"AcrConfiguration">> => map(),
 %%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
 %%   <<"AutoVerifiedAttributes">> => list(list(any())()),
 %%   <<"DeletionProtection">> => list(any()),
@@ -3325,6 +3338,7 @@
 %% Example:
 %% user_pool_type() :: #{
 %%   <<"AccountRecoverySetting">> => account_recovery_setting_type(),
+%%   <<"AcrConfiguration">> => map(),
 %%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
 %%   <<"AliasAttributes">> => list(list(any())()),
 %%   <<"Arn">> => string(),
@@ -3665,7 +3679,8 @@
     invalid_parameter_exception() | 
     invalid_lambda_response_exception() | 
     invalid_email_role_access_policy_exception() | 
-    internal_error_exception().
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception().
 
 -type admin_link_provider_for_user_errors() ::
     user_not_found_exception() | 
@@ -4437,7 +4452,8 @@
     invalid_lambda_response_exception() | 
     invalid_email_role_access_policy_exception() | 
     internal_error_exception() | 
-    forbidden_exception().
+    forbidden_exception() | 
+    feature_unavailable_in_tier_exception().
 
 -type list_devices_errors() ::
     user_not_found_exception() | 
@@ -7576,11 +7592,8 @@ describe_terms(Client, Input, Options)
 %%
 %% To call `DescribeTermsByClient', you must have the
 %% `cognito-idp:DescribeTermsByClient' Identity and Access Management
-%% (IAM) permission. This
-%% operation additionally validates your permission for
-%% `cognito-idp:DescribeTerms', the action for . As a result, an IAM
-%% policy that denies
-%% `cognito-idp:DescribeTerms' also denies requests to
+%% (IAM) permission. An IAM
+%% policy that denies `cognito-idp:DescribeTerms' also denies requests to
 %% `DescribeTermsByClient'.
 %%
 %% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
@@ -7862,10 +7875,7 @@ forgot_password(Client, Input, Options)
 %% Your app client
 %% provides its client ID and secret, and receives an access token that
 %% authorizes requests
-%% to your resource servers. `GetClientToken' provides the same
-%% functionality as
-%% the OAuth2 client-credentials grant; both authorize an application rather
-%% than a user.
+%% to your resource servers.
 %%
 %% To use this operation, you must configure the app client with a client
 %% secret and

@@ -528,6 +528,7 @@
 %%   <<"DrmSettings">> => [string()],
 %%   <<"End">> => [non_neg_integer()],
 %%   <<"ManifestFilter">> => [string()],
+%%   <<"Multiview">> => multiview_filter_configuration(),
 %%   <<"Start">> => [non_neg_integer()],
 %%   <<"TimeDelaySeconds">> => [integer()]
 %% }
@@ -937,6 +938,14 @@
 %%   <<"AvailableSources">> => list(string())
 %% }
 -type multiview_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% multiview_filter_configuration() :: #{
+%%   <<"Layout">> => list(any()),
+%%   <<"Sources">> => list(string())
+%% }
+-type multiview_filter_configuration() :: #{binary() => any()}.
 
 
 %% Example:

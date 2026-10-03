@@ -1,11 +1,15 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Lambda Web Functions let you run web applications and APIs as
-%% HTTP servers on Lambda.
+%% @doc The AWS Lambda Web Functions APIs (`LambdaWeb' namespace) are
+%% experimental and for internal AWS use only.
 %%
-%% A web function has one or more immutable revisions (code and
-%% configuration) and one or more endpoints that expose it over HTTPS.
+%% They are not yet available to external customers.
+%%
+%% AWS Lambda Web Functions let you run web applications and APIs as HTTP
+%% servers on Lambda. A web function has one or more immutable revisions
+%% (code and configuration) and one or more endpoints that expose it over
+%% HTTPS.
 -module(aws_lambda_web).
 
 -export([create_web_function/2,
@@ -814,6 +818,9 @@
 %% To use this operation, you must have the `CreateWebFunction'
 %% permission on the web function. You don't need separate permissions
 %% for the initial revision or endpoint.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec create_web_function(aws_client:aws_client(), create_web_function_request()) ->
     {ok, create_web_function_response(), tuple()} |
     {error, any()} |
@@ -854,6 +861,9 @@ create_web_function(Client, Input0, Options0) ->
 %%
 %% To use this operation, you must have the `CreateWebFunctionEndpoint'
 %% permission on the web function, not on the endpoint being created.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec create_web_function_endpoint(aws_client:aws_client(), binary() | list(), create_web_function_endpoint_request()) ->
     {ok, create_web_function_endpoint_response(), tuple()} |
     {error, any()} |
@@ -894,6 +904,9 @@ create_web_function_endpoint(Client, FunctionName, Input0, Options0) ->
 %%
 %% To use this operation, you must have the `CreateWebFunctionRevision'
 %% permission on the web function, not on the revision being created.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec create_web_function_revision(aws_client:aws_client(), binary() | list(), create_web_function_revision_request()) ->
     {ok, create_web_function_revision_response(), tuple()} |
     {error, any()} |
@@ -928,6 +941,9 @@ create_web_function_revision(Client, FunctionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes the resource-based policy from a web function.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec delete_resource_policy(aws_client:aws_client(), binary() | list(), delete_resource_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -969,6 +985,9 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 %% permission on the web function. You don't need the
 %% `DeleteWebFunctionRevision' or `DeleteWebFunctionEndpoint'
 %% permission.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec delete_web_function(aws_client:aws_client(), binary() | list(), delete_web_function_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1003,6 +1022,9 @@ delete_web_function(Client, FunctionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a web function endpoint.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec delete_web_function_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), delete_web_function_endpoint_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1040,6 +1062,9 @@ delete_web_function_endpoint(Client, EndpointName, FunctionName, Input0, Options
 %%
 %% You cannot delete a revision that is currently serving traffic on an
 %% endpoint.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec delete_web_function_revision(aws_client:aws_client(), binary() | list(), binary() | list(), delete_web_function_revision_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1074,6 +1099,9 @@ delete_web_function_revision(Client, FunctionName, RevisionId, Input0, Options0)
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the resource-based policy attached to a web function.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec get_resource_policy(aws_client:aws_client(), binary() | list()) ->
     {ok, get_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -1113,6 +1141,9 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 %% @doc Retrieves details about your AWS Lambda Web Functions account
 %% settings for the current AWS Region, including the quotas that apply to
 %% web functions and your current usage.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec get_web_account_settings(aws_client:aws_client()) ->
     {ok, get_web_account_settings_response(), tuple()} |
     {error, any()} |
@@ -1151,6 +1182,9 @@ get_web_account_settings(Client, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves details about a web function, including its current state
 %% and configuration.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec get_web_function(aws_client:aws_client(), binary() | list()) ->
     {ok, get_web_function_response(), tuple()} |
     {error, any()} |
@@ -1189,6 +1223,9 @@ get_web_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
 %% @doc Retrieves details about a web function endpoint, including its
 %% current state, configuration, and domain name.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec get_web_function_endpoint(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_web_function_endpoint_response(), tuple()} |
     {error, any()} |
@@ -1227,6 +1264,9 @@ get_web_function_endpoint(Client, EndpointName, FunctionName, QueryMap, HeadersM
 
 %% @doc Retrieves details about a web function revision, including its state
 %% and configuration.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec get_web_function_revision(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_web_function_revision_response(), tuple()} |
     {error, any()} |
@@ -1264,6 +1304,9 @@ get_web_function_revision(Client, FunctionName, RevisionId, QueryMap, HeadersMap
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of tags applied to a web function.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec list_tags(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_response(), tuple()} |
     {error, any()} |
@@ -1304,6 +1347,9 @@ list_tags(Client, Resource, QueryMap, HeadersMap, Options0)
 %%
 %% We recommend using pagination to ensure that the operation returns quickly
 %% and successfully.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec list_web_function_endpoints(aws_client:aws_client(), binary() | list(), list_web_function_endpoints_request()) ->
     {ok, list_web_function_endpoints_response(), tuple()} |
     {error, any()} |
@@ -1341,6 +1387,9 @@ list_web_function_endpoints(Client, FunctionName, Input0, Options0) ->
 %%
 %% We recommend using pagination to ensure that the operation returns quickly
 %% and successfully.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec list_web_function_revisions(aws_client:aws_client(), binary() | list(), list_web_function_revisions_request()) ->
     {ok, list_web_function_revisions_response(), tuple()} |
     {error, any()} |
@@ -1378,6 +1427,9 @@ list_web_function_revisions(Client, FunctionName, Input0, Options0) ->
 %%
 %% We recommend using pagination to ensure that the operation returns quickly
 %% and successfully.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec list_web_functions(aws_client:aws_client(), list_web_functions_request()) ->
     {ok, list_web_functions_response(), tuple()} |
     {error, any()} |
@@ -1415,6 +1467,9 @@ list_web_functions(Client, Input0, Options0) ->
 %%
 %% A resource-based policy grants permissions to other AWS accounts or
 %% services to perform actions on the web function.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec put_resource_policy(aws_client:aws_client(), binary() | list(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
     {error, any()} |
@@ -1452,6 +1507,9 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
 %%
 %% If a tag key already exists, the existing value is overwritten with the
 %% new value.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1486,6 +1544,9 @@ tag_resource(Client, Resource, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Removes tags from a web function.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1524,6 +1585,9 @@ untag_resource(Client, Resource, Input0, Options0) ->
 %%
 %% You can modify the authorization type, auto-deployment mode, revision
 %% weights, scaling, and throttling settings.
+%%
+%% This API is experimental and for internal AWS use only. It is not yet
+%% available to external customers.
 -spec update_web_function_endpoint(aws_client:aws_client(), binary() | list(), binary() | list(), update_web_function_endpoint_request()) ->
     {ok, update_web_function_endpoint_response(), tuple()} |
     {error, any()} |

@@ -192,6 +192,8 @@
 %%   <<"Contacts">> := list(contact()),
 %%   <<"EinvoiceDeliveryEnabled">> := [boolean()],
 %%   <<"EinvoiceDeliveryPreference">> => einvoice_delivery_preference(),
+%%   <<"MarketplacePunchOutEnabled">> => [boolean()],
+%%   <<"MarketplacePunchOutPreference">> => marketplace_punch_out_preference(),
 %%   <<"ProcurementPortalInstanceEndpoint">> => string(),
 %%   <<"ProcurementPortalName">> := list(any()),
 %%   <<"ProcurementPortalSharedSecret">> => string(),
@@ -549,6 +551,12 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% marketplace_punch_out_preference() :: #{
+%%   <<"ApprovalRequestRedirectUrl">> => string()
+%% }
+-type marketplace_punch_out_preference() :: #{binary() => any()}.
+
+%% Example:
 %% procurement_portal() :: #{
 %%   <<"DefaultFeatureConfigurations">> => feature_configurations(),
 %%   <<"PortalDisplayName">> => string(),
@@ -569,6 +577,8 @@
 %%   <<"EinvoiceDeliveryPreferenceStatus">> => list(any()),
 %%   <<"EinvoiceDeliveryPreferenceStatusReason">> => string(),
 %%   <<"LastUpdateDate">> => [non_neg_integer()],
+%%   <<"MarketplacePunchOutEnabled">> => [boolean()],
+%%   <<"MarketplacePunchOutPreference">> => marketplace_punch_out_preference(),
 %%   <<"ProcurementPortalInstanceEndpoint">> => string(),
 %%   <<"ProcurementPortalName">> => list(any()),
 %%   <<"ProcurementPortalPreferenceArn">> => string(),
@@ -602,6 +612,7 @@
 %%   <<"EinvoiceDeliveryPreferenceStatus">> => list(any()),
 %%   <<"EinvoiceDeliveryPreferenceStatusReason">> => string(),
 %%   <<"LastUpdateDate">> => [non_neg_integer()],
+%%   <<"MarketplacePunchOutEnabled">> => [boolean()],
 %%   <<"ProcurementPortalName">> => list(any()),
 %%   <<"ProcurementPortalPreferenceArn">> => string(),
 %%   <<"PurchaseOrderRetrievalEnabled">> => [boolean()],
@@ -636,6 +647,8 @@
 %%   <<"Contacts">> := list(contact()),
 %%   <<"EinvoiceDeliveryEnabled">> := [boolean()],
 %%   <<"EinvoiceDeliveryPreference">> => einvoice_delivery_preference(),
+%%   <<"MarketplacePunchOutEnabled">> => [boolean()],
+%%   <<"MarketplacePunchOutPreference">> => marketplace_punch_out_preference(),
 %%   <<"ProcurementPortalInstanceEndpoint">> => string(),
 %%   <<"ProcurementPortalPreferenceArn">> := string(),
 %%   <<"ProcurementPortalSharedSecret">> => string(),
@@ -874,6 +887,7 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type get_invoice_p_d_f_errors() ::

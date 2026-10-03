@@ -330,6 +330,7 @@
 
 %% Example:
 %% carrier_lookup_request() :: #{
+%%   <<"EnableCleansing">> => [boolean()],
 %%   <<"PhoneNumber">> := string()
 %% }
 -type carrier_lookup_request() :: #{binary() => any()}.
@@ -343,6 +344,7 @@
 %%   <<"IsoCountryCode">> => string(),
 %%   <<"MCC">> => string(),
 %%   <<"MNC">> => string(),
+%%   <<"OriginalPhoneNumber">> => string(),
 %%   <<"PhoneNumberType">> => string()
 %% }
 -type carrier_lookup_result() :: #{binary() => any()}.
@@ -5431,13 +5433,15 @@ get_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetResourcePolicy">>, Input, Options).
 
-%% @doc Search available phone numbers from aggregator inventory, optionally
-%% filtered by pattern.
+%% @doc Retrieves a list of phone numbers that are available to request,
+%% based on the country, capabilities, and number type that you specify.
 %%
-%% If NumberPreference is omitted, returns unfiltered available numbers.
-%% Returns empty list (not an exception) when no numbers match.
-%% ResourceNotFoundException is thrown only for invalid RegistrationId
-%% (campaign not found).
+%% You can optionally provide a number preference to return only numbers that
+%% match a specific digit pattern.
+%%
+%% If no numbers match your search, this operation returns an empty list
+%% rather than an error. This operation currently supports only `TEN_DLC'
+%% number types in the `US'.
 -spec list_available_phone_numbers(aws_client:aws_client(), list_available_phone_numbers_request()) ->
     {ok, list_available_phone_numbers_result(), tuple()} |
     {error, any()} |

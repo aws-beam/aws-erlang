@@ -383,7 +383,8 @@
 %% Example:
 %% azure_dev_ops_resource_capabilities() :: #{
 %%   <<"leaveComments">> => [boolean()],
-%%   <<"remediateCode">> => [boolean()]
+%%   <<"remediateCode">> => [boolean()],
+%%   <<"triggerFilterGroups">> => list(trigger_filter_group())
 %% }
 -type azure_dev_ops_resource_capabilities() :: #{binary() => any()}.
 
@@ -798,7 +799,8 @@
 %% Example:
 %% bitbucket_resource_capabilities() :: #{
 %%   <<"leaveComments">> => [boolean()],
-%%   <<"remediateCode">> => [boolean()]
+%%   <<"remediateCode">> => [boolean()],
+%%   <<"triggerFilterGroups">> => list(trigger_filter_group())
 %% }
 -type bitbucket_resource_capabilities() :: #{binary() => any()}.
 
@@ -1707,7 +1709,8 @@
 %% Example:
 %% git_hub_resource_capabilities() :: #{
 %%   <<"leaveComments">> => [boolean()],
-%%   <<"remediateCode">> => [boolean()]
+%%   <<"remediateCode">> => [boolean()],
+%%   <<"triggerFilterGroups">> => list(trigger_filter_group())
 %% }
 -type git_hub_resource_capabilities() :: #{binary() => any()}.
 
@@ -1743,7 +1746,8 @@
 %% Example:
 %% git_lab_resource_capabilities() :: #{
 %%   <<"leaveComments">> => [boolean()],
-%%   <<"remediateCode">> => [boolean()]
+%%   <<"remediateCode">> => [boolean()],
+%%   <<"triggerFilterGroups">> => list(trigger_filter_group())
 %% }
 -type git_lab_resource_capabilities() :: #{binary() => any()}.
 
@@ -2912,6 +2916,23 @@
 %%   <<"serviceCode">> => [string()]
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% trigger_filter() :: #{
+%%   <<"matchMode">> => list(any()),
+%%   <<"patterns">> => list(string()),
+%%   <<"type">> => list(any())
+%% }
+-type trigger_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% trigger_filter_group() :: #{
+%%   <<"events">> => list(list(any())()),
+%%   <<"filters">> => list(trigger_filter())
+%% }
+-type trigger_filter_group() :: #{binary() => any()}.
 
 
 %% Example:
