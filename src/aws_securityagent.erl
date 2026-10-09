@@ -1561,6 +1561,7 @@
 %%   <<"pentestId">> => [string()],
 %%   <<"pentestJobId">> => [string()],
 %%   <<"reasoning">> => [string()],
+%%   <<"remediationCode">> => [string()],
 %%   <<"revalidationJobIds">> => list([string()]()),
 %%   <<"riskLevel">> => list(any()),
 %%   <<"riskScore">> => [string()],

@@ -641,6 +641,7 @@
 %%   <<"Dimensions">> => dimension_values(),
 %%   <<"Not">> => expression(),
 %%   <<"Or">> => list(expression()),
+%%   <<"ProductAttributes">> => product_attribute_values(),
 %%   <<"Tags">> => tag_values()
 %% }
 -type expression() :: #{binary() => any()}.
@@ -883,6 +884,7 @@
 %%   <<"BillingViewArn">> => string(),
 %%   <<"Context">> => list(any()),
 %%   <<"Dimension">> := list(any()),
+%%   <<"DimensionKey">> => string(),
 %%   <<"Filter">> => expression(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextPageToken">> => string(),
@@ -1299,6 +1301,14 @@
 %%   <<"NetworkPacketsOutPerSecond">> => string()
 %% }
 -type network_resource_utilization() :: #{binary() => any()}.
+
+%% Example:
+%% product_attribute_values() :: #{
+%%   <<"Key">> => string(),
+%%   <<"MatchOptions">> => list(list(any())()),
+%%   <<"Values">> => list(string())
+%% }
+-type product_attribute_values() :: #{binary() => any()}.
 
 %% Example:
 %% provide_anomaly_feedback_request() :: #{

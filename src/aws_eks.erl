@@ -245,6 +245,22 @@
 
 
 %% Example:
+%% ack_config_request() :: #{
+%%   <<"disabledServices">> => list(string()),
+%%   <<"enableCrossNamespace">> => boolean()
+%% }
+-type ack_config_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% ack_config_response() :: #{
+%%   <<"disabledServices">> => list(string()),
+%%   <<"enableCrossNamespace">> => boolean()
+%% }
+-type ack_config_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% activate_certificate_authority_request() :: #{
 %%   <<"clientRequestToken">> => string()
 %% }
@@ -560,6 +576,7 @@
 
 %% Example:
 %% capability_configuration_request() :: #{
+%%   <<"ack">> => ack_config_request(),
 %%   <<"argoCd">> => argo_cd_config_request()
 %% }
 -type capability_configuration_request() :: #{binary() => any()}.
@@ -567,6 +584,7 @@
 
 %% Example:
 %% capability_configuration_response() :: #{
+%%   <<"ack">> => ack_config_response(),
 %%   <<"argoCd">> => argo_cd_config_response()
 %% }
 -type capability_configuration_response() :: #{binary() => any()}.
@@ -2607,6 +2625,14 @@
 
 
 %% Example:
+%% update_ack_config() :: #{
+%%   <<"disabledServices">> => list(string()),
+%%   <<"enableCrossNamespace">> => boolean()
+%% }
+-type update_ack_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_addon_request() :: #{
 %%   <<"addonVersion">> => string(),
 %%   <<"clientRequestToken">> => string(),
@@ -2635,6 +2661,7 @@
 
 %% Example:
 %% update_capability_configuration() :: #{
+%%   <<"ack">> => update_ack_config(),
 %%   <<"argoCd">> => update_argo_cd_config()
 %% }
 -type update_capability_configuration() :: #{binary() => any()}.

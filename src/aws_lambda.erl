@@ -3591,7 +3591,10 @@
     e_f_s_mount_timeout_exception() | 
     e_f_s_mount_failure_exception() | 
     e_f_s_mount_connectivity_exception() | 
-    e_f_s_i_o_exception().
+    e_f_s_i_o_exception() | 
+    code_artifact_user_pending_exception() | 
+    code_artifact_user_failed_exception() | 
+    code_artifact_user_deleted_exception().
 
 -type list_aliases_errors() ::
     too_many_requests_exception() | 

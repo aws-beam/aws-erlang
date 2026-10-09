@@ -502,6 +502,17 @@
 
 
 %% Example:
+%% cron_schedule() :: #{
+%%   <<"expression">> => string()
+%% }
+-type cron_schedule() :: #{binary() => any()}.
+
+%% Example:
+%% daily_recurrence() :: #{}
+-type daily_recurrence() :: #{}.
+
+
+%% Example:
 %% datadog_service_details() :: #{
 %%   <<"authorizationConfig">> => list(),
 %%   <<"description">> => string(),
@@ -835,6 +846,7 @@
 %%   <<"instanceIdentifier">> => [string()],
 %%   <<"owner">> => [string()],
 %%   <<"ownerType">> => list(any()),
+%%   <<"releaseManagementAssociationId">> => string(),
 %%   <<"repoId">> => [string()],
 %%   <<"repoName">> => [string()],
 %%   <<"runtimeRoleArn">> => string()
@@ -847,6 +859,7 @@
 %%   <<"instanceIdentifier">> => [string()],
 %%   <<"projectId">> => [string()],
 %%   <<"projectPath">> => [string()],
+%%   <<"releaseManagementAssociationId">> => string(),
 %%   <<"runtimeRoleArn">> => string()
 %% }
 -type git_lab_configuration() :: #{binary() => any()}.
@@ -1413,6 +1426,13 @@
 
 
 %% Example:
+%% monthly_recurrence() :: #{
+%%   <<"dayOfMonth">> => [integer()]
+%% }
+-type monthly_recurrence() :: #{binary() => any()}.
+
+
+%% Example:
 %% new_relic_api_key_config() :: #{
 %%   <<"accountId">> => [string()],
 %%   <<"alertPolicyIds">> => list([string()]()),
@@ -1493,6 +1513,14 @@
 %%   <<"vpcId">> => string()
 %% }
 -type private_connection_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% private_network_access() :: #{
+%%   <<"privateConnectionName">> => string(),
+%%   <<"runtimeRoleArn">> => string()
+%% }
+-type private_network_access() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1707,6 +1735,14 @@
 
 
 %% Example:
+%% release_management_configuration() :: #{
+%%   <<"name">> => string(),
+%%   <<"networkAccess">> => list()
+%% }
+-type release_management_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% remote_agent_api_key_config() :: #{
 %%   <<"apiKeyHeader">> => [string()],
 %%   <<"apiKeyName">> => [string()],
@@ -1782,7 +1818,8 @@
 
 %% Example:
 %% schedule_condition() :: #{
-%%   <<"expression">> => string()
+%%   <<"expression">> => string(),
+%%   <<"spec">> => list()
 %% }
 -type schedule_condition() :: #{binary() => any()}.
 
@@ -2073,6 +2110,15 @@
 
 
 %% Example:
+%% time_range_schedule() :: #{
+%%   <<"recurrence">> => list(),
+%%   <<"startAfter">> => string(),
+%%   <<"startBefore">> => string()
+%% }
+-type time_range_schedule() :: #{binary() => any()}.
+
+
+%% Example:
 %% trigger() :: #{
 %%   <<"action">> => any(),
 %%   <<"agentSpaceId">> => string(),
@@ -2337,9 +2383,15 @@
 %% }
 -type webhook() :: #{binary() => any()}.
 
+
+%% Example:
+%% weekly_recurrence() :: #{
+%%   <<"dayOfWeek">> => list(any())
+%% }
+-type weekly_recurrence() :: #{binary() => any()}.
+
 -type associate_service_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     invalid_parameter_exception() | 
     internal_server_exception() | 
@@ -2347,7 +2399,6 @@
 
 -type create_agent_space_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     service_quota_exceeded_exception() | 
     invalid_parameter_exception() | 
     internal_server_exception() | 
@@ -2385,7 +2436,6 @@
 
 -type create_private_connection_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     invalid_parameter_exception() | 
     internal_server_exception() | 
     access_denied_exception().
@@ -2400,7 +2450,6 @@
 
 -type delete_agent_space_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception().
@@ -2422,7 +2471,6 @@
 
 -type delete_private_connection_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
@@ -2437,33 +2485,28 @@
 
 -type deregister_service_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception().
 
 -type describe_private_connection_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
 -type disable_operator_app_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     internal_server_exception() | 
     identity_center_service_exception().
 
 -type disassociate_service_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
 
 -type enable_operator_app_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     internal_server_exception() | 
     identity_center_service_exception().
 
@@ -2476,7 +2519,6 @@
 
 -type get_agent_space_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
 
@@ -2503,7 +2545,6 @@
 
 -type get_association_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
 
@@ -2517,7 +2558,6 @@
 
 -type get_operator_app_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     internal_server_exception().
 
 -type get_recommendation_errors() ::
@@ -2529,7 +2569,6 @@
 
 -type get_service_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
 
@@ -2542,7 +2581,6 @@
 
 -type list_agent_spaces_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     internal_server_exception().
 
 -type list_asset_files_errors() ::
@@ -2573,7 +2611,6 @@
 
 -type list_associations_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
 
@@ -2618,7 +2655,6 @@
 
 -type list_private_connections_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -2630,7 +2666,6 @@
 
 -type list_services_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     internal_server_exception().
 
 -type list_tags_for_resource_errors() ::
@@ -2648,7 +2683,6 @@
 
 -type list_webhooks_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
 
@@ -2680,7 +2714,6 @@
 
 -type update_agent_space_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception().
@@ -2713,7 +2746,6 @@
 
 -type update_association_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
 
@@ -2735,13 +2767,11 @@
 
 -type update_operator_app_idp_config_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
 
 -type update_private_connection_certificate_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
@@ -2763,7 +2793,6 @@
 
 -type validate_aws_associations_errors() ::
     validation_exception() | 
-    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
 

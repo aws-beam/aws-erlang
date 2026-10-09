@@ -4287,6 +4287,16 @@ create_email_template(Client, Input0, Options0) ->
 
 %% @doc Creates an export job for a data source and destination.
 %%
+%% Export jobs run asynchronously. This operation returns a `JobId'. Call
+%% `GetExportJob' with that ID until `JobStatus' is
+%% `COMPLETED', `FAILED', or `CANCELLED'. When the
+%% status is `COMPLETED', download the export file from the pre-signed
+%% URL in
+%% `ExportDestination.S3Url'. When the status is `FAILED', see
+%% `FailureInfo'. To store a copy in your own bucket, upload the
+%% downloaded
+%% file to your bucket. Do not include `S3Url' in the request.
+%%
 %% You can execute this operation no more than once per second.
 -spec create_export_job(aws_client:aws_client(), create_export_job_request()) ->
     {ok, create_export_job_response(), tuple()} |
@@ -5821,6 +5831,10 @@ get_email_template(Client, TemplateName, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Provides information about an export job.
+%%
+%% When the job status is `COMPLETED', the response includes a pre-signed
+%% URL in `ExportDestination.S3Url' that you use to download the export
+%% file.
 -spec get_export_job(aws_client:aws_client(), binary() | list()) ->
     {ok, get_export_job_response(), tuple()} |
     {error, any()} |

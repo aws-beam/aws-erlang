@@ -579,6 +579,7 @@
 %%   <<"Dimensions">> => expression_dimension_values(),
 %%   <<"Not">> => expression(),
 %%   <<"Or">> => list(expression()),
+%%   <<"ProductAttributes">> => product_attribute_values(),
 %%   <<"Tags">> => tag_values()
 %% }
 -type expression() :: #{binary() => any()}.
@@ -667,6 +668,14 @@
 %%   <<"Subscribers">> => list(subscriber())
 %% }
 -type notification_with_subscribers() :: #{binary() => any()}.
+
+%% Example:
+%% product_attribute_values() :: #{
+%%   <<"Key">> => string(),
+%%   <<"MatchOptions">> => list(list(any())()),
+%%   <<"Values">> => list(string())
+%% }
+-type product_attribute_values() :: #{binary() => any()}.
 
 %% Example:
 %% resource_locked_exception() :: #{

@@ -5966,6 +5966,21 @@
 
 
 %% Example:
+%% s3_file() :: #{
+%%   <<"key">> => string()
+%% }
+-type s3_file() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_files_location() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"fileList">> => list(s3_file())
+%% }
+-type s3_files_location() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_properties_input() :: #{
 %%   <<"registerS3AccessGrantLocation">> => [boolean()],
 %%   <<"s3AccessGrantLocationId">> => string(),
@@ -6371,7 +6386,8 @@
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"owningProjectIdentifier">> := string(),
-%%   <<"sourceLocation">> := list()
+%%   <<"sourceLocation">> := list(),
+%%   <<"type">> => list(any())
 %% }
 -type start_notebook_import_input() :: #{binary() => any()}.
 
@@ -6386,7 +6402,8 @@
 %%   <<"notebookId">> => string(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"sourceLocation">> => list(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
 %% }
 -type start_notebook_import_output() :: #{binary() => any()}.
 

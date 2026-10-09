@@ -291,6 +291,7 @@
 
 %% Example:
 %% get_resource_dashboard_request() :: #{
+%%   <<"accessSystemProfileLogs">> => [boolean()],
 %%   <<"resourceId">> := string(),
 %%   <<"resourceType">> := string()
 %% }
@@ -1286,6 +1287,7 @@ get_resource_dashboard(Client, ApplicationId, ResourceId, ResourceType, QueryMap
 
     Query0_ =
       [
+        {<<"accessSystemProfileLogs">>, maps:get(<<"accessSystemProfileLogs">>, QueryMap, undefined)},
         {<<"resourceId">>, ResourceId},
         {<<"resourceType">>, ResourceType}
       ],

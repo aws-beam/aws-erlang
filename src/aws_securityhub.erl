@@ -133,6 +133,8 @@
          batch_update_findings_v2/3,
          batch_update_standards_control_associations/2,
          batch_update_standards_control_associations/3,
+         cancel_export_job_v2/3,
+         cancel_export_job_v2/4,
          create_action_target/2,
          create_action_target/3,
          create_aggregator_v2/2,
@@ -250,6 +252,9 @@
          get_connector_v2/5,
          get_enabled_standards/2,
          get_enabled_standards/3,
+         get_export_job_v2/2,
+         get_export_job_v2/4,
+         get_export_job_v2/5,
          get_finding_aggregator/2,
          get_finding_aggregator/4,
          get_finding_aggregator/5,
@@ -315,6 +320,9 @@
          list_enabled_products_for_import/1,
          list_enabled_products_for_import/3,
          list_enabled_products_for_import/4,
+         list_export_jobs_v2/1,
+         list_export_jobs_v2/3,
+         list_export_jobs_v2/4,
          list_exposures_by_remediation_v2/2,
          list_exposures_by_remediation_v2/3,
          list_finding_aggregators/1,
@@ -346,6 +354,8 @@
          start_configuration_policy_association/3,
          start_configuration_policy_disassociation/2,
          start_configuration_policy_disassociation/3,
+         start_export_job_v2/2,
+         start_export_job_v2/3,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -6415,6 +6425,18 @@
 %% }
 -type boolean_filter() :: #{binary() => any()}.
 
+%% Example:
+%% cancel_export_job_v2_request() :: #{}
+-type cancel_export_job_v2_request() :: #{}.
+
+
+%% Example:
+%% cancel_export_job_v2_response() :: #{
+%%   <<"ExportJobId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type cancel_export_job_v2_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% cell() :: #{
@@ -7315,6 +7337,30 @@
 
 
 %% Example:
+%% export_scopes() :: #{
+%%   <<"AwsOrganizations">> => list(aws_organization_scope())
+%% }
+-type export_scopes() :: #{binary() => any()}.
+
+
+%% Example:
+%% export_summary() :: #{
+%%   <<"DataType">> => list(any()),
+%%   <<"Destination">> => list(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"ExportJobId">> => string(),
+%%   <<"FailureCode">> => list(any()),
+%%   <<"FailureMessage">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputConfiguration">> => list(),
+%%   <<"Scopes">> => export_scopes(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type export_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% exposure_finding() :: #{
 %%   <<"Impact">> => list(any()),
 %%   <<"MetadataUid">> => string(),
@@ -7410,6 +7456,22 @@
 %%   <<"AwsOrganizations">> => list(aws_organization_scope())
 %% }
 -type finding_scopes() :: #{binary() => any()}.
+
+
+%% Example:
+%% findings_output() :: #{
+%%   <<"Filters">> => ocsf_finding_filters(),
+%%   <<"Format">> => list(any()),
+%%   <<"SelectedFields">> => list(list(any())())
+%% }
+-type findings_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% findings_output_summary() :: #{
+%%   <<"Format">> => list(any())
+%% }
+-type findings_output_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7645,6 +7707,27 @@
 %%   <<"StandardsSubscriptions">> => list(standards_subscription())
 %% }
 -type get_enabled_standards_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_export_job_v2_request() :: #{}
+-type get_export_job_v2_request() :: #{}.
+
+
+%% Example:
+%% get_export_job_v2_response() :: #{
+%%   <<"DataType">> => list(any()),
+%%   <<"Destination">> => list(),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"ExportJobId">> => string(),
+%%   <<"FailureCode">> => list(any()),
+%%   <<"FailureMessage">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"OutputConfiguration">> => list(),
+%%   <<"Scopes">> => export_scopes(),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_export_job_v2_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_finding_aggregator_request() :: #{}
@@ -8308,6 +8391,24 @@
 %%   <<"ProductSubscriptions">> => list(string())
 %% }
 -type list_enabled_products_for_import_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_export_jobs_v2_request() :: #{
+%%   <<"DataType">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_export_jobs_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_export_jobs_v2_response() :: #{
+%%   <<"Items">> => list(export_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_export_jobs_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9630,6 +9731,15 @@
 
 
 %% Example:
+%% s3_export_destination() :: #{
+%%   <<"BucketArn">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"ObjectPrefix">> => string()
+%% }
+-type s3_export_destination() :: #{binary() => any()}.
+
+
+%% Example:
 %% security_control() :: #{
 %%   <<"Description">> => string(),
 %%   <<"LastUpdateReason">> => string(),
@@ -9987,6 +10097,24 @@
 %% Example:
 %% start_configuration_policy_disassociation_response() :: #{}
 -type start_configuration_policy_disassociation_response() :: #{}.
+
+
+%% Example:
+%% start_export_job_v2_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Destination">> := list(),
+%%   <<"Name">> => string(),
+%%   <<"OutputConfiguration">> := list(),
+%%   <<"Scopes">> => export_scopes()
+%% }
+-type start_export_job_v2_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_export_job_v2_response() :: #{
+%%   <<"ExportJobId">> => string()
+%% }
+-type start_export_job_v2_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10592,6 +10720,14 @@
     internal_exception() | 
     access_denied_exception().
 
+-type cancel_export_job_v2_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_action_target_errors() ::
     resource_conflict_exception() | 
     limit_exceeded_exception() | 
@@ -10972,6 +11108,13 @@
     invalid_access_exception() | 
     internal_exception().
 
+-type get_export_job_v2_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_finding_aggregator_errors() ::
     resource_not_found_exception() | 
     limit_exceeded_exception() | 
@@ -11163,6 +11306,12 @@
     invalid_access_exception() | 
     internal_exception().
 
+-type list_export_jobs_v2_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_exposures_by_remediation_v2_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -11241,6 +11390,16 @@
     invalid_input_exception() | 
     invalid_access_exception() | 
     internal_exception() | 
+    access_denied_exception().
+
+-type start_export_job_v2_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    organizational_unit_not_found_exception() | 
+    organization_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type tag_resource_errors() ::
@@ -12018,6 +12177,55 @@ batch_update_standards_control_associations(Client, Input) ->
 batch_update_standards_control_associations(Client, Input0, Options0) ->
     Method = patch,
     Path = ["/associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels a findings export job that is in progress.
+%%
+%% Security Hub transitions a running job to the `CANCELLED' state and
+%% returns the `ExportJobId' and its new `Status'. Canceling a job
+%% that is already in the `CANCELLED' state succeeds and returns the same
+%% result, so you can safely retry a cancel request.
+%%
+%% You can't cancel an export job that has already reached a terminal
+%% `SUCCEEDED' or `FAILED' state; in that case, this operation
+%% returns a `ConflictException'. If no export job matches the
+%% `ExportJobId' that you provide, this operation returns a
+%% `ResourceNotFoundException'.
+%%
+%% The `Status' value returned by this operation reflects the
+%% cancellation immediately, even though the job can take a short time to
+%% stop completely.
+-spec cancel_export_job_v2(aws_client:aws_client(), binary() | list(), cancel_export_job_v2_request()) ->
+    {ok, cancel_export_job_v2_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_export_job_v2_errors(), tuple()}.
+cancel_export_job_v2(Client, ExportJobId, Input) ->
+    cancel_export_job_v2(Client, ExportJobId, Input, []).
+
+-spec cancel_export_job_v2(aws_client:aws_client(), binary() | list(), cancel_export_job_v2_request(), proplists:proplist()) ->
+    {ok, cancel_export_job_v2_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_export_job_v2_errors(), tuple()}.
+cancel_export_job_v2(Client, ExportJobId, Input0, Options0) ->
+    Method = post,
+    Path = ["/exportjobsv2/", aws_util:encode_uri(ExportJobId), "/cancel"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -14173,6 +14381,57 @@ get_enabled_standards(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the details of a single findings export job, including its
+%% current `Status', the `Destination' it writes to, the
+%% `OutputConfiguration' it was started with, and its `StartedAt' and
+%% `EndedAt' timestamps.
+%%
+%% Use this operation to poll an export job that you started with
+%% `StartExportJobV2' until it reaches a terminal state (`SUCCEEDED',
+%% `FAILED', or `CANCELLED').
+%%
+%% If the job failed, the response includes a `FailureCode' and
+%% `FailureMessage' that describe the reason. Input values such as
+%% `Scopes' and `Filters' are echoed back as they were submitted,
+%% with relative date ranges returned unresolved. If no export job matches
+%% the `ExportJobId' that you provide, this operation returns a
+%% `ResourceNotFoundException'.
+-spec get_export_job_v2(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_export_job_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_export_job_v2_errors(), tuple()}.
+get_export_job_v2(Client, ExportJobId)
+  when is_map(Client) ->
+    get_export_job_v2(Client, ExportJobId, #{}, #{}).
+
+-spec get_export_job_v2(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_export_job_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_export_job_v2_errors(), tuple()}.
+get_export_job_v2(Client, ExportJobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_export_job_v2(Client, ExportJobId, QueryMap, HeadersMap, []).
+
+-spec get_export_job_v2(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_export_job_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_export_job_v2_errors(), tuple()}.
+get_export_job_v2(Client, ExportJobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/exportjobsv2/", aws_util:encode_uri(ExportJobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc
 %% The aggregation Region is now called the home Region.
 %%
@@ -15336,6 +15595,61 @@ list_enabled_products_for_import(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the findings export jobs in your account as a paginated list
+%% of `ExportSummary' objects.
+%%
+%% You can filter the results by job `Status' or `DataType'.
+%%
+%% To page through the results, use the `MaxResults' and `NextToken'
+%% parameters. If the response includes a `NextToken' value, pass it in a
+%% subsequent request to retrieve the next page of results.
+%%
+%% Each `ExportSummary' reports the output `Format' of the job but
+%% not its full `OutputConfiguration'. To retrieve the filters and
+%% selected fields that a job was started with, call `GetExportJobV2'.
+-spec list_export_jobs_v2(aws_client:aws_client()) ->
+    {ok, list_export_jobs_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_export_jobs_v2_errors(), tuple()}.
+list_export_jobs_v2(Client)
+  when is_map(Client) ->
+    list_export_jobs_v2(Client, #{}, #{}).
+
+-spec list_export_jobs_v2(aws_client:aws_client(), map(), map()) ->
+    {ok, list_export_jobs_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_export_jobs_v2_errors(), tuple()}.
+list_export_jobs_v2(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_export_jobs_v2(Client, QueryMap, HeadersMap, []).
+
+-spec list_export_jobs_v2(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_export_jobs_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_export_jobs_v2_errors(), tuple()}.
+list_export_jobs_v2(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/exportjobsv2"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"DataType">>, maps:get(<<"DataType">>, QueryMap, undefined)},
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"Status">>, maps:get(<<"Status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the exposure findings tied to a specific remediation
 %% target.
 %%
@@ -15843,6 +16157,77 @@ start_configuration_policy_disassociation(Client, Input0, Options0) ->
     Method = post,
     Path = ["/configurationPolicyAssociation/disassociate"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an ad hoc export job that writes Security Hub findings to an
+%% Amazon Simple Storage Service (Amazon S3) bucket that you own.
+%%
+%% Because the export runs asynchronously, this operation returns only the
+%% `ExportJobId' of the new job; it doesn't wait for the export to
+%% finish. Use `GetExportJobV2' to poll the job, and
+%% `ListExportJobsV2' to view the export jobs in your account.
+%%
+%% Security Hub allows only one export job in the `RUNNING' state per
+%% account at a time. If an export job is already running, this operation
+%% returns a `ServiceQuotaExceededException'. Wait for the running job to
+%% finish, or cancel it with `CancelExportJobV2', before you start a new
+%% one.
+%%
+%% Specify the destination bucket and Amazon Web Services Key Management
+%% Service (Amazon Web Services KMS) key in the `Destination' parameter,
+%% and the output format (`CSV' or `OCSF_JSON'), optional filters,
+%% and field selection in the `OutputConfiguration' parameter. Before you
+%% call this operation, you must grant Security Hub permission to write to
+%% your bucket and use your Amazon Web Services KMS key by adding the bucket
+%% policy and key policy statements shown in the Examples section.
+%%
+%% Two identities use your Amazon Web Services KMS key, and each needs its
+%% own permission. Security Hub uses the key when it writes the export
+%% objects to your bucket. The IAM principal that calls
+%% `StartExportJobV2' must also have `kms:GenerateDataKey' and
+%% `kms:Decrypt' permissions on the key. The Examples section shows both
+%% grants.
+%%
+%% A delegated administrator can use the optional `Scopes' parameter to
+%% export findings for specific organizations or organizational units (OUs).
+%%
+%% To make the request idempotent, provide a `ClientToken'. If you retry
+%% a `StartExportJobV2' request with the same `ClientToken' and the
+%% same request parameters, Security Hub returns the `ExportJobId' of the
+%% original job instead of starting a new one. If you reuse a
+%% `ClientToken' with different request parameters, this operation
+%% returns a `ConflictException'.
+-spec start_export_job_v2(aws_client:aws_client(), start_export_job_v2_request()) ->
+    {ok, start_export_job_v2_response(), tuple()} |
+    {error, any()} |
+    {error, start_export_job_v2_errors(), tuple()}.
+start_export_job_v2(Client, Input) ->
+    start_export_job_v2(Client, Input, []).
+
+-spec start_export_job_v2(aws_client:aws_client(), start_export_job_v2_request(), proplists:proplist()) ->
+    {ok, start_export_job_v2_response(), tuple()} |
+    {error, any()} |
+    {error, start_export_job_v2_errors(), tuple()}.
+start_export_job_v2(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/exportjobsv2"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

@@ -25,6 +25,9 @@
          get_case_attachment_download_url/6,
          get_case_attachment_upload_url/3,
          get_case_attachment_upload_url/4,
+         get_finding_metrics/4,
+         get_finding_metrics/6,
+         get_finding_metrics/7,
          get_membership/2,
          get_membership/4,
          get_membership/5,
@@ -260,6 +263,31 @@
 %%   <<"watchers">> => list(watcher())
 %% }
 -type get_case_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_metrics_request() :: #{
+%%   <<"endDate">> := [non_neg_integer()],
+%%   <<"startDate">> := [non_neg_integer()]
+%% }
+-type get_finding_metrics_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_finding_metrics_response() :: #{
+%%   <<"findingsEscalated">> => [float()],
+%%   <<"findingsEscalatedFalsePositive">> => [float()],
+%%   <<"findingsEscalatedInProgress">> => [float()],
+%%   <<"findingsIngestedGuardDuty">> => [float()],
+%%   <<"findingsIngestedSecurityHub">> => [float()],
+%%   <<"findingsInvestigated">> => [float()],
+%%   <<"findingsInvestigatedFalsePositive">> => [float()],
+%%   <<"findingsInvestigatedInProgress">> => [float()],
+%%   <<"findingsTriaged">> => [float()],
+%%   <<"findingsTriagedFalsePositive">> => [float()],
+%%   <<"findingsTruePositive">> => [float()]
+%% }
+-type get_finding_metrics_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1019,6 +1047,45 @@ get_case_attachment_upload_url(Client, CaseId, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns finding-lifecycle metrics for a membership over a date range.
+-spec get_finding_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_finding_metrics_response(), tuple()} |
+    {error, any()}.
+get_finding_metrics(Client, MembershipId, EndDate, StartDate)
+  when is_map(Client) ->
+    get_finding_metrics(Client, MembershipId, EndDate, StartDate, #{}, #{}).
+
+-spec get_finding_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_finding_metrics_response(), tuple()} |
+    {error, any()}.
+get_finding_metrics(Client, MembershipId, EndDate, StartDate, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_finding_metrics(Client, MembershipId, EndDate, StartDate, QueryMap, HeadersMap, []).
+
+-spec get_finding_metrics(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_finding_metrics_response(), tuple()} |
+    {error, any()}.
+get_finding_metrics(Client, MembershipId, EndDate, StartDate, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/membership/", aws_util:encode_uri(MembershipId), "/finding-metrics"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"endDate">>, EndDate},
+        {<<"startDate">>, StartDate}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the attributes of a membership.
 -spec get_membership(aws_client:aws_client(), binary() | list()) ->

@@ -390,6 +390,7 @@
 %% Example:
 %% continue_update_rollback_input() :: #{
 %%   <<"ClientRequestToken">> => string(),
+%%   <<"ForceRollback">> => boolean(),
 %%   <<"ResourcesToSkip">> => list(string()),
 %%   <<"RoleARN">> => string(),
 %%   <<"StackName">> := string()
@@ -3229,6 +3230,9 @@ cancel_update_stack(Client, Input, Options)
 %% information for troubleshooting a failed update rollback, see Update
 %% rollback failed:
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed.
+%%
+%% `ForceRollback' and `ResourcesToSkip' are mutually exclusive.
+%% For details, see `ContinueUpdateRollbackInput$ForceRollback'.
 -spec continue_update_rollback(aws_client:aws_client(), continue_update_rollback_input()) ->
     {ok, continue_update_rollback_output(), tuple()} |
     {error, any()} |

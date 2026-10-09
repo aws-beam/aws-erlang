@@ -1626,6 +1626,7 @@
 %% Example:
 %% encryption_at_rest_options() :: #{
 %%   <<"Enabled">> => boolean(),
+%%   <<"EncryptionMode">> => list(any()),
 %%   <<"KmsKeyId">> => string()
 %% }
 -type encryption_at_rest_options() :: #{binary() => any()}.

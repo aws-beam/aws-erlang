@@ -348,6 +348,10 @@
          get_session_endpoint/3,
          get_statement/2,
          get_statement/3,
+         get_system_logs_for_job_run/2,
+         get_system_logs_for_job_run/3,
+         get_system_logs_for_session/2,
+         get_system_logs_for_session/3,
          get_table/2,
          get_table/3,
          get_table_optimizer/2,
@@ -5375,6 +5379,31 @@
 %%   <<"Statement">> => statement()
 %% }
 -type get_statement_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_system_logs_for_job_run_request() :: #{
+%%   <<"JobName">> := string(),
+%%   <<"RunId">> := string()
+%% }
+-type get_system_logs_for_job_run_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_system_logs_for_job_run_response() :: #{
+%%   <<"SystemLogsUrl">> => string()
+%% }
+-type get_system_logs_for_job_run_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_system_logs_for_session_request() :: #{
+%%   <<"Id">> := string()
+%% }
+-type get_system_logs_for_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_system_logs_for_session_response() :: #{
+%%   <<"SystemLogsUrl">> => string()
+%% }
+-type get_system_logs_for_session_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_table_optimizer_request() :: #{
@@ -11526,6 +11555,19 @@
     entity_not_found_exception() | 
     access_denied_exception().
 
+-type get_system_logs_for_job_run_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
+
+-type get_system_logs_for_session_errors() ::
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
+
 -type get_table_errors() ::
     resource_not_ready_exception() | 
     operation_timeout_exception() | 
@@ -15750,6 +15792,40 @@ get_statement(Client, Input)
 get_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetStatement">>, Input, Options).
+
+%% @doc Retrieves the system logs for a job run.
+-spec get_system_logs_for_job_run(aws_client:aws_client(), get_system_logs_for_job_run_request()) ->
+    {ok, get_system_logs_for_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_system_logs_for_job_run_errors(), tuple()}.
+get_system_logs_for_job_run(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_system_logs_for_job_run(Client, Input, []).
+
+-spec get_system_logs_for_job_run(aws_client:aws_client(), get_system_logs_for_job_run_request(), proplists:proplist()) ->
+    {ok, get_system_logs_for_job_run_response(), tuple()} |
+    {error, any()} |
+    {error, get_system_logs_for_job_run_errors(), tuple()}.
+get_system_logs_for_job_run(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSystemLogsForJobRun">>, Input, Options).
+
+%% @doc Retrieves the system logs for an interactive session.
+-spec get_system_logs_for_session(aws_client:aws_client(), get_system_logs_for_session_request()) ->
+    {ok, get_system_logs_for_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_system_logs_for_session_errors(), tuple()}.
+get_system_logs_for_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_system_logs_for_session(Client, Input, []).
+
+-spec get_system_logs_for_session(aws_client:aws_client(), get_system_logs_for_session_request(), proplists:proplist()) ->
+    {ok, get_system_logs_for_session_response(), tuple()} |
+    {error, any()} |
+    {error, get_system_logs_for_session_errors(), tuple()}.
+get_system_logs_for_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSystemLogsForSession">>, Input, Options).
 
 %% @doc Retrieves the `Table' definition in a Data Catalog for
 %% a specified table.
