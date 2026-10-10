@@ -215,6 +215,9 @@
          list_limits/2,
          list_limits/4,
          list_limits/5,
+         list_memberships/2,
+         list_memberships/4,
+         list_memberships/5,
          list_metered_products/2,
          list_metered_products/4,
          list_metered_products/5,
@@ -2546,6 +2549,26 @@
 
 
 %% Example:
+%% list_memberships_request() :: #{
+%%   <<"identityCenterRegion">> => string(),
+%%   <<"identityStoreId">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principalId">> := string(),
+%%   <<"resourceTypes">> => list(list(any())())
+%% }
+-type list_memberships_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_memberships_response() :: #{
+%%   <<"memberships">> => list(list()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_memberships_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_metered_products_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -4575,6 +4598,13 @@
     access_denied_exception().
 
 -type list_limits_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
+-type list_memberships_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -8034,6 +8064,54 @@ list_limits(Client, FarmId, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the Deadline Cloud resource memberships associated with a
+%% specified IAM Identity Center principal, optionally filtered by the
+%% requested resource types.
+-spec list_memberships(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_memberships_errors(), tuple()}.
+list_memberships(Client, PrincipalId)
+  when is_map(Client) ->
+    list_memberships(Client, PrincipalId, #{}, #{}).
+
+-spec list_memberships(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_memberships_errors(), tuple()}.
+list_memberships(Client, PrincipalId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_memberships(Client, PrincipalId, QueryMap, HeadersMap, []).
+
+-spec list_memberships(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_memberships_response(), tuple()} |
+    {error, any()} |
+    {error, list_memberships_errors(), tuple()}.
+list_memberships(Client, PrincipalId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2023-10-12/memberships"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"identityCenterRegion">>, maps:get(<<"identityCenterRegion">>, QueryMap, undefined)},
+        {<<"identityStoreId">>, maps:get(<<"identityStoreId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"principalId">>, PrincipalId},
+        {<<"resourceTypes">>, maps:get(<<"resourceTypes">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

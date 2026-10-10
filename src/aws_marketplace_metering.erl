@@ -248,6 +248,12 @@
 -type invalid_usage_dimension_exception() :: #{binary() => any()}.
 
 %% Example:
+%% metadata() :: #{
+%%   <<"AgreementId">> => string()
+%% }
+-type metadata() :: #{binary() => any()}.
+
+%% Example:
 %% meter_usage_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
@@ -297,6 +303,7 @@
 %%   <<"CustomerAWSAccountId">> => string(),
 %%   <<"CustomerIdentifier">> => string(),
 %%   <<"LicenseArn">> => string(),
+%%   <<"Metadata">> => metadata(),
 %%   <<"ProductCode">> => string()
 %% }
 -type resolve_customer_result() :: #{binary() => any()}.
@@ -435,8 +442,25 @@
 %%
 %% `BatchMeterUsage' can process up to 25
 %% `UsageRecords' at a time, and each request must be less than
-%% 1 MB in size. Optionally, you can have multiple usage allocations for
-%% usage data that's split into buckets according to predefined tags.
+%% 1 MB in size.
+%%
+%% Vendor-metered tagging
+%%
+%% `BatchMeterUsage' supports vendor-metered tagging. Optionally, you can
+%% split the usage in a `UsageRecord' into buckets by including
+%% `UsageAllocations', where each `UsageAllocation' has a set of
+%% `Tags' that you define. Vendor-metered tagging doesn't change the
+%% price,
+%% dimensions, or the total usage that you report. It gives buyers a more
+%% granular view of
+%% their usage of your product so they can perform cost allocation in the
+%% Amazon Web Services Billing and
+%% Cost Management console. For more information, see Vendor-metered tagging:
+%% https://docs.aws.amazon.com/marketplace/latest/userguide/metering-for-usage.html#saas-vendor-metered-tagging
+%% and BatchMeterUsage with usage allocation tagging code example:
+%% https://docs.aws.amazon.com/marketplace/latest/userguide/saas-code-examples.html#saas-batchmeterusage-tagging
+%% in the
+%% Amazon Web Services Marketplace Seller Guide.
 %%
 %% `BatchMeterUsage' returns a list of
 %% `UsageRecordResult' objects, which have each

@@ -265,6 +265,7 @@
 %% Example:
 %% aws_service_request_configuration() :: #{
 %%   <<"Body">> => string(),
+%%   <<"Cache">> => http_request_cache_configuration(),
 %%   <<"Headers">> => map(),
 %%   <<"MethodType">> => list(any()),
 %%   <<"Output">> => map(),
@@ -923,8 +924,18 @@
 
 
 %% Example:
+%% http_request_cache_configuration() :: #{
+%%   <<"Key">> => string(),
+%%   <<"TtlMaximumSeconds">> => integer(),
+%%   <<"TtlMinimumSeconds">> => integer()
+%% }
+-type http_request_cache_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% http_request_configuration() :: #{
 %%   <<"Body">> => string(),
+%%   <<"Cache">> => http_request_cache_configuration(),
 %%   <<"Headers">> => map(),
 %%   <<"MethodType">> => list(any()),
 %%   <<"Output">> => map(),
@@ -1717,6 +1728,7 @@
 %% Example:
 %% vast_request_configuration() :: #{
 %%   <<"Body">> => string(),
+%%   <<"Cache">> => http_request_cache_configuration(),
 %%   <<"Headers">> => map(),
 %%   <<"MethodType">> => list(any()),
 %%   <<"Output">> => map(),

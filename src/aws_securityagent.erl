@@ -1140,6 +1140,7 @@
 %%   <<"reportDestination">> => report_destination(),
 %%   <<"reportFilters">> => report_filters(),
 %%   <<"serviceRole">> => string(),
+%%   <<"testScope">> => test_scope(),
 %%   <<"title">> := [string()],
 %%   <<"vpcConfig">> => vpc_config()
 %% }
@@ -1158,6 +1159,7 @@
 %%   <<"reportDestination">> => report_destination(),
 %%   <<"reportFilters">> => report_filters(),
 %%   <<"serviceRole">> => string(),
+%%   <<"testScope">> => test_scope(),
 %%   <<"title">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
@@ -2350,6 +2352,7 @@
 %%   <<"reportDestination">> => report_destination(),
 %%   <<"reportFilters">> => report_filters(),
 %%   <<"serviceRole">> => string(),
+%%   <<"testScope">> => test_scope(),
 %%   <<"title">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()],
 %%   <<"vpcConfig">> => vpc_config()
@@ -2389,6 +2392,7 @@
 %%   <<"sourceCode">> => list(source_code_repository()),
 %%   <<"status">> => list(any()),
 %%   <<"steps">> => list(step()),
+%%   <<"testScope">> => test_scope(),
 %%   <<"title">> => [string()],
 %%   <<"trustedCaCertificates">> => list(trusted_ca_certificate()),
 %%   <<"updatedAt">> => [non_neg_integer()],
@@ -2757,6 +2761,13 @@
 
 
 %% Example:
+%% test_scope() :: #{
+%%   <<"type">> => list(any())
+%% }
+-type test_scope() :: #{binary() => any()}.
+
+
+%% Example:
 %% threat() :: #{
 %%   <<"anchor">> => threat_anchor_shape(),
 %%   <<"comments">> => [string()],
@@ -3098,6 +3109,7 @@
 %%   <<"reportDestination">> => report_destination(),
 %%   <<"reportFilters">> => report_filters(),
 %%   <<"serviceRole">> => string(),
+%%   <<"testScope">> => test_scope(),
 %%   <<"title">> => [string()],
 %%   <<"vpcConfig">> => vpc_config()
 %% }
@@ -3116,6 +3128,7 @@
 %%   <<"reportDestination">> => report_destination(),
 %%   <<"reportFilters">> => report_filters(),
 %%   <<"serviceRole">> => string(),
+%%   <<"testScope">> => test_scope(),
 %%   <<"title">> => [string()],
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
