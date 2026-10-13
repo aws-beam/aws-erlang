@@ -164,6 +164,8 @@
          create_training_job/3,
          create_training_plan/2,
          create_training_plan/3,
+         create_training_session/2,
+         create_training_session/3,
          create_transform_job/2,
          create_transform_job/3,
          create_trial/2,
@@ -290,6 +292,8 @@
          delete_tags/3,
          delete_training_job/2,
          delete_training_job/3,
+         delete_training_session/2,
+         delete_training_session/3,
          delete_trial/2,
          delete_trial/3,
          delete_trial_component/2,
@@ -442,6 +446,8 @@
          describe_training_plan/3,
          describe_training_plan_extension_history/2,
          describe_training_plan_extension_history/3,
+         describe_training_session/2,
+         describe_training_session/3,
          describe_transform_job/2,
          describe_transform_job/3,
          describe_trial/2,
@@ -644,6 +650,8 @@
          list_training_jobs_for_hyper_parameter_tuning_job/3,
          list_training_plans/2,
          list_training_plans/3,
+         list_training_sessions/2,
+         list_training_sessions/3,
          list_transform_jobs/2,
          list_transform_jobs/3,
          list_trial_components/2,
@@ -728,6 +736,8 @@
          stop_processing_job/3,
          stop_training_job/2,
          stop_training_job/3,
+         stop_training_session/2,
+         stop_training_session/3,
          stop_transform_job/2,
          stop_transform_job/3,
          update_action/2,
@@ -1860,6 +1870,14 @@
 %%   <<"Report">> => metrics_source()
 %% }
 -type bias() :: #{binary() => any()}.
+
+%% Example:
+%% billable_token_usage() :: #{
+%%   <<"PrefillTokenCount">> => float(),
+%%   <<"SampleTokenCount">> => float(),
+%%   <<"TrainingTokenCount">> => float()
+%% }
+-type billable_token_usage() :: #{binary() => any()}.
 
 %% Example:
 %% blue_green_update_policy() :: #{
@@ -4008,6 +4026,25 @@
 -type create_training_plan_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_training_session_request() :: #{
+%%   <<"LoraConfig">> := lora_config(),
+%%   <<"ModelConfig">> := training_session_model_config(),
+%%   <<"ModelPackageGroupArn">> => string(),
+%%   <<"OutputConfig">> := training_session_output_config(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrainingSessionName">> := string(),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type create_training_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_training_session_response() :: #{
+%%   <<"TrainingSessionArn">> => string()
+%% }
+-type create_training_session_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_transform_job_request() :: #{
 %%   <<"BatchStrategy">> => list(any()),
 %%   <<"DataCaptureConfig">> => batch_data_capture_config(),
@@ -4779,6 +4816,18 @@
 %%   <<"TrainingJobName">> := string()
 %% }
 -type delete_training_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_training_session_request() :: #{
+%%   <<"TrainingSessionName">> := string()
+%% }
+-type delete_training_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_training_session_response() :: #{
+
+%% }
+-type delete_training_session_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_trial_component_request() :: #{
@@ -6613,6 +6662,18 @@
 %%   <<"UpfrontFee">> => string()
 %% }
 -type describe_training_plan_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_session_request() :: #{
+%%   <<"TrainingSessionName">> := string()
+%% }
+-type describe_training_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_training_session_response() :: #{
+%%   <<"TrainingSessionDetail">> => training_session_detail()
+%% }
+-type describe_training_session_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_transform_job_request() :: #{
@@ -10315,6 +10376,24 @@
 -type list_training_plans_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_training_sessions_request() :: #{
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NameContains">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusEquals">> => list(any())
+%% }
+-type list_training_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_training_sessions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TrainingSessionSummaries">> => list(training_session_summary())
+%% }
+-type list_training_sessions_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_transform_jobs_request() :: #{
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
 %%   <<"CreationTimeBefore">> => non_neg_integer(),
@@ -10443,6 +10522,13 @@
 %%   <<"Workteams">> => list(workteam())
 %% }
 -type list_workteams_response() :: #{binary() => any()}.
+
+%% Example:
+%% lora_config() :: #{
+%%   <<"Alpha">> => integer(),
+%%   <<"Rank">> => integer()
+%% }
+-type lora_config() :: #{binary() => any()}.
 
 %% Example:
 %% managed_configuration() :: #{
@@ -13300,6 +13386,18 @@
 -type stop_training_job_request() :: #{binary() => any()}.
 
 %% Example:
+%% stop_training_session_request() :: #{
+%%   <<"TrainingSessionName">> := string()
+%% }
+-type stop_training_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_training_session_response() :: #{
+
+%% }
+-type stop_training_session_response() :: #{binary() => any()}.
+
+%% Example:
 %% stop_transform_job_request() :: #{
 %%   <<"TransformJobName">> := string()
 %% }
@@ -13707,6 +13805,56 @@
 %%   <<"TrainingRepositoryCredentialsProviderArn">> => string()
 %% }
 -type training_repository_auth_config() :: #{binary() => any()}.
+
+%% Example:
+%% training_session_detail() :: #{
+%%   <<"BillableTokenUsage">> => billable_token_usage(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"ErrorDetails">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"LastReceivedSequenceNumber">> => integer(),
+%%   <<"LoraConfig">> => lora_config(),
+%%   <<"ModelConfig">> => training_session_model_config(),
+%%   <<"ModelPackageGroupArn">> => string(),
+%%   <<"OutputConfig">> => training_session_output_config(),
+%%   <<"RoleArn">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TrainingSessionArn">> => string(),
+%%   <<"TrainingSessionName">> => string(),
+%%   <<"TrainingSessionStatus">> => list(any()),
+%%   <<"VpcConfig">> => vpc_config()
+%% }
+-type training_session_detail() :: #{binary() => any()}.
+
+%% Example:
+%% training_session_model_config() :: #{
+%%   <<"AcceptEula">> => boolean(),
+%%   <<"BaseModelArn">> => string()
+%% }
+-type training_session_model_config() :: #{binary() => any()}.
+
+%% Example:
+%% training_session_output_config() :: #{
+%%   <<"S3Location">> => training_session_s3_location()
+%% }
+-type training_session_output_config() :: #{binary() => any()}.
+
+%% Example:
+%% training_session_s3_location() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"Path">> => string()
+%% }
+-type training_session_s3_location() :: #{binary() => any()}.
+
+%% Example:
+%% training_session_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"TrainingSessionArn">> => string(),
+%%   <<"TrainingSessionStatus">> => list(any())
+%% }
+-type training_session_summary() :: #{binary() => any()}.
 
 %% Example:
 %% training_specification() :: #{
@@ -15206,6 +15354,11 @@
     resource_limit_exceeded() | 
     resource_in_use().
 
+-type create_training_session_errors() ::
+    resource_not_found() | 
+    resource_limit_exceeded() | 
+    resource_in_use().
+
 -type create_transform_job_errors() ::
     resource_not_found() | 
     resource_limit_exceeded() | 
@@ -15384,6 +15537,9 @@
 -type delete_training_job_errors() ::
     resource_not_found() | 
     resource_in_use().
+
+-type delete_training_session_errors() ::
+    resource_not_found().
 
 -type delete_trial_errors() ::
     resource_not_found().
@@ -15570,6 +15726,9 @@
     resource_not_found().
 
 -type describe_training_plan_extension_history_errors() ::
+    resource_not_found().
+
+-type describe_training_session_errors() ::
     resource_not_found().
 
 -type describe_transform_job_errors() ::
@@ -15785,6 +15944,9 @@
     resource_not_found().
 
 -type stop_training_job_errors() ::
+    resource_not_found().
+
+-type stop_training_session_errors() ::
     resource_not_found().
 
 -type stop_transform_job_errors() ::
@@ -18248,6 +18410,38 @@ create_training_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTrainingPlan">>, Input, Options).
 
+%% @doc Creates a training session in Amazon SageMaker.
+%%
+%% A training session provisions compute resources for fine-tuning a
+%% foundation model using Low-Rank Adaptation (LoRA). After the session is
+%% created, you can submit training operations and sample inference requests
+%% through the Amazon SageMaker Training Session Runtime API.
+%%
+%% The following operations are related to `CreateTrainingSession':
+%%
+%% `DescribeTrainingSession'
+%%
+%% `ListTrainingSessions'
+%%
+%% `StopTrainingSession'
+%%
+%% `DeleteTrainingSession'
+-spec create_training_session(aws_client:aws_client(), create_training_session_request()) ->
+    {ok, create_training_session_response(), tuple()} |
+    {error, any()} |
+    {error, create_training_session_errors(), tuple()}.
+create_training_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_training_session(Client, Input, []).
+
+-spec create_training_session(aws_client:aws_client(), create_training_session_request(), proplists:proplist()) ->
+    {ok, create_training_session_response(), tuple()} |
+    {error, any()} |
+    {error, create_training_session_errors(), tuple()}.
+create_training_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTrainingSession">>, Input, Options).
+
 %% @doc Starts a transform job.
 %%
 %% A transform job uses a trained model to get inferences on a dataset and
@@ -19553,6 +19747,34 @@ delete_training_job(Client, Input)
 delete_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTrainingJob">>, Input, Options).
+
+%% @doc Deletes a training session.
+%%
+%% You must stop a running session before deleting it. Use the
+%% `StopTrainingSession' operation to stop the session first.
+%%
+%% The following operations are related to `DeleteTrainingSession':
+%%
+%% `CreateTrainingSession'
+%%
+%% `DescribeTrainingSession'
+%%
+%% `StopTrainingSession'
+-spec delete_training_session(aws_client:aws_client(), delete_training_session_request()) ->
+    {ok, delete_training_session_response(), tuple()} |
+    {error, any()} |
+    {error, delete_training_session_errors(), tuple()}.
+delete_training_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_training_session(Client, Input, []).
+
+-spec delete_training_session(aws_client:aws_client(), delete_training_session_request(), proplists:proplist()) ->
+    {ok, delete_training_session_response(), tuple()} |
+    {error, any()} |
+    {error, delete_training_session_errors(), tuple()}.
+delete_training_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTrainingSession">>, Input, Options).
 
 %% @doc Deletes the specified trial.
 %%
@@ -20959,6 +21181,35 @@ describe_training_plan_extension_history(Client, Input)
 describe_training_plan_extension_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTrainingPlanExtensionHistory">>, Input, Options).
+
+%% @doc Retrieves detailed information about a training session, including
+%% its current status, model configuration, Low-Rank Adaptation (LoRA)
+%% parameters, and timestamps.
+%%
+%% The following operations are related to `DescribeTrainingSession':
+%%
+%% `CreateTrainingSession'
+%%
+%% `ListTrainingSessions'
+%%
+%% `StopTrainingSession'
+%%
+%% `DeleteTrainingSession'
+-spec describe_training_session(aws_client:aws_client(), describe_training_session_request()) ->
+    {ok, describe_training_session_response(), tuple()} |
+    {error, any()} |
+    {error, describe_training_session_errors(), tuple()}.
+describe_training_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_training_session(Client, Input, []).
+
+-spec describe_training_session(aws_client:aws_client(), describe_training_session_request(), proplists:proplist()) ->
+    {ok, describe_training_session_response(), tuple()} |
+    {error, any()} |
+    {error, describe_training_session_errors(), tuple()}.
+describe_training_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTrainingSession">>, Input, Options).
 
 %% @doc Returns information about a transform job.
 -spec describe_transform_job(aws_client:aws_client(), describe_transform_job_request()) ->
@@ -22710,6 +22961,31 @@ list_training_plans(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTrainingPlans">>, Input, Options).
 
+%% @doc Lists training sessions in your account.
+%%
+%% You can filter results by creation time, name, and status. The operation
+%% paginates results. To retrieve additional results, use the `NextToken'
+%% parameter.
+%%
+%% The following operations are related to `ListTrainingSessions':
+%%
+%% `CreateTrainingSession'
+%%
+%% `DescribeTrainingSession'
+-spec list_training_sessions(aws_client:aws_client(), list_training_sessions_request()) ->
+    {ok, list_training_sessions_response(), tuple()} |
+    {error, any()}.
+list_training_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_training_sessions(Client, Input, []).
+
+-spec list_training_sessions(aws_client:aws_client(), list_training_sessions_request(), proplists:proplist()) ->
+    {ok, list_training_sessions_response(), tuple()} |
+    {error, any()}.
+list_training_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListTrainingSessions">>, Input, Options).
+
 %% @doc Lists transform jobs.
 -spec list_transform_jobs(aws_client:aws_client(), list_transform_jobs_request()) ->
     {ok, list_transform_jobs_response(), tuple()} |
@@ -23570,6 +23846,35 @@ stop_training_job(Client, Input)
 stop_training_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopTrainingJob">>, Input, Options).
+
+%% @doc Stops a running training session and sets the session status to
+%% `Stopping'.
+%%
+%% After the session stops, the status changes to `Stopped'. To delete a
+%% stopped session, use the `DeleteTrainingSession' operation.
+%%
+%% The following operations are related to `StopTrainingSession':
+%%
+%% `CreateTrainingSession'
+%%
+%% `DescribeTrainingSession'
+%%
+%% `DeleteTrainingSession'
+-spec stop_training_session(aws_client:aws_client(), stop_training_session_request()) ->
+    {ok, stop_training_session_response(), tuple()} |
+    {error, any()} |
+    {error, stop_training_session_errors(), tuple()}.
+stop_training_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_training_session(Client, Input, []).
+
+-spec stop_training_session(aws_client:aws_client(), stop_training_session_request(), proplists:proplist()) ->
+    {ok, stop_training_session_response(), tuple()} |
+    {error, any()} |
+    {error, stop_training_session_errors(), tuple()}.
+stop_training_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopTrainingSession">>, Input, Options).
 
 %% @doc Stops a batch transform job.
 %%

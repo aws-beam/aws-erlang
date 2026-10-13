@@ -269,6 +269,7 @@
 %% Example:
 %% batch_create_memory_records_input() :: #{
 %%   <<"clientToken">> => [string()],
+%%   <<"recordExpirySpecification">> => list(),
 %%   <<"records">> := list(memory_record_create_input())
 %% }
 -type batch_create_memory_records_input() :: #{binary() => any()}.
@@ -324,6 +325,7 @@
 
 %% Example:
 %% batch_update_memory_records_input() :: #{
+%%   <<"recordExpirySpecification">> => list(),
 %%   <<"records">> := list(memory_record_update_input())
 %% }
 -type batch_update_memory_records_input() :: #{binary() => any()}.
@@ -2233,10 +2235,12 @@
 %% memory_record() :: #{
 %%   <<"content">> => list(),
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"expiresAt">> => [non_neg_integer()],
 %%   <<"memoryRecordId">> => string(),
 %%   <<"memoryStrategyId">> => string(),
 %%   <<"metadata">> => map(),
-%%   <<"namespaces">> => list(string())
+%%   <<"namespaces">> => list(string()),
+%%   <<"timestamp">> => [non_neg_integer()]
 %% }
 -type memory_record() :: #{binary() => any()}.
 
@@ -2280,7 +2284,8 @@
 %%   <<"memoryStrategyId">> => string(),
 %%   <<"metadata">> => map(),
 %%   <<"namespaces">> => list(string()),
-%%   <<"score">> => [float()]
+%%   <<"score">> => [float()],
+%%   <<"timestamp">> => [non_neg_integer()]
 %% }
 -type memory_record_summary() :: #{binary() => any()}.
 

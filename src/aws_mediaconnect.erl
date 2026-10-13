@@ -414,6 +414,7 @@
 %%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration_request()),
 %%   <<"MinLatency">> => [integer()],
 %%   <<"Name">> => [string()],
+%%   <<"NdiAudioReferenceLevel">> => integer(),
 %%   <<"NdiOutputTimecodeSource">> => list(any()),
 %%   <<"NdiProgramName">> => [string()],
 %%   <<"NdiSpeedHqQuality">> => [integer()],
@@ -611,6 +612,15 @@
 %%   <<"NetworkSource">> => bridge_network_source()
 %% }
 -type bridge_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% color_information() :: #{
+%%   <<"Colorimetry">> => list(any()),
+%%   <<"MatrixCoefficients">> => list(any()),
+%%   <<"TransferCharacteristics">> => list(any())
+%% }
+-type color_information() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1886,6 +1896,7 @@
 %% ndi_media_stream_info() :: #{
 %%   <<"Channels">> => [integer()],
 %%   <<"Codec">> => [string()],
+%%   <<"Color">> => color_information(),
 %%   <<"FrameRate">> => [string()],
 %%   <<"FrameResolution">> => frame_resolution(),
 %%   <<"SampleRate">> => [integer()],
@@ -1915,6 +1926,7 @@
 
 %% Example:
 %% ndi_source_settings() :: #{
+%%   <<"AudioReferenceLevel">> => integer(),
 %%   <<"SourceName">> => [string()]
 %% }
 -type ndi_source_settings() :: #{binary() => any()}.
@@ -2665,6 +2677,7 @@
 %%   <<"MaxLatency">> => [integer()],
 %%   <<"MaxSyncBuffer">> => [integer()],
 %%   <<"MinLatency">> => [integer()],
+%%   <<"NdiAudioReferenceLevel">> => integer(),
 %%   <<"NdiOutputTimecodeSource">> => list(any()),
 %%   <<"NdiProgramName">> => [string()],
 %%   <<"NdiSourceSettings">> => ndi_source_settings(),
@@ -2683,7 +2696,8 @@
 
 %% Example:
 %% transport_media_info() :: #{
-%%   <<"Programs">> => list(transport_stream_program())
+%%   <<"Programs">> => list(transport_stream_program()),
+%%   <<"TsId">> => [integer()]
 %% }
 -type transport_media_info() :: #{binary() => any()}.
 
@@ -2692,6 +2706,7 @@
 %% transport_stream() :: #{
 %%   <<"Channels">> => [integer()],
 %%   <<"Codec">> => [string()],
+%%   <<"Color">> => color_information(),
 %%   <<"FrameRate">> => [string()],
 %%   <<"FrameResolution">> => frame_resolution(),
 %%   <<"Pid">> => [integer()],
@@ -2897,6 +2912,7 @@
 %%   <<"MaxLatency">> => [integer()],
 %%   <<"MediaStreamOutputConfigurations">> => list(media_stream_output_configuration_request()),
 %%   <<"MinLatency">> => [integer()],
+%%   <<"NdiAudioReferenceLevel">> => integer(),
 %%   <<"NdiOutputTimecodeSource">> => list(any()),
 %%   <<"NdiProgramName">> => [string()],
 %%   <<"NdiSpeedHqQuality">> => [integer()],

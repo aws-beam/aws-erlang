@@ -17,6 +17,13 @@
 %% https://docs.aws.amazon.com/lambda/latest/dg/welcome.html in the Lambda
 %% Developer Guide.
 %%
+%% Lambda Event Functions, previously known as Lambda functions, run your
+%% code in response to events and API calls. Event Functions is a
+%% documentation name only. In this API, the Amazon Web Services SDKs, and
+%% the CLI, Event Functions are still called functions, for example in
+%% `CreateFunction' and `Invoke'. You don't need to change any
+%% code.
+%%
 %% The Lambda API Reference provides information about each of the API
 %% methods, including details about the parameters in each API request and
 %% response.
@@ -4045,7 +4052,7 @@ checkpoint_durable_execution(Client, DurableExecutionArn, Input0, Options0) ->
 
 %% @doc Creates an alias:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html
-%% for a Lambda function version.
+%% for a Lambda Event Function version.
 %%
 %% Use aliases to provide clients with a function identifier that you can
 %% update to invoke a different version.
@@ -4087,7 +4094,7 @@ create_alias(Client, FunctionName, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a capacity provider that manages compute resources for Lambda
-%% functions
+%% Event Functions
 -spec create_capacity_provider(aws_client:aws_client(), create_capacity_provider_request()) ->
     {ok, create_capacity_provider_response(), tuple()} |
     {error, any()} |
@@ -4161,7 +4168,8 @@ create_code_signing_config(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a mapping between an event source and an Lambda function.
+%% @doc Creates a mapping between an event source and an Lambda Event
+%% Function.
 %%
 %% Lambda reads items from the event source and invokes the function.
 %%
@@ -4268,7 +4276,7 @@ create_event_source_mapping(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a Lambda function.
+%% @doc Creates a Lambda Event Function.
 %%
 %% To create a function, you need a deployment package:
 %% https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html
@@ -4409,7 +4417,7 @@ create_function_url_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Lambda function alias:
+%% @doc Deletes a Lambda Event Function alias:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
 -spec delete_alias(aws_client:aws_client(), binary() | list(), binary() | list(), delete_alias_request()) ->
     {ok, undefined, tuple()} |
@@ -4559,7 +4567,7 @@ delete_event_source_mapping(Client, UUID, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a Lambda function.
+%% @doc Deletes a Lambda Event Function.
 %%
 %% To delete a specific function version, use the `Qualifier' parameter.
 %% Otherwise, all versions and aliases are deleted. This doesn't require
@@ -4901,7 +4909,7 @@ get_account_settings(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns details about a Lambda function alias:
+%% @doc Returns details about a Lambda Event Function alias:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
 -spec get_alias(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, alias_configuration(), tuple()} |
@@ -5330,7 +5338,7 @@ get_function_concurrency(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns the version-specific settings of a Lambda function or
+%% @doc Returns the version-specific settings of a Lambda Event Function or
 %% version.
 %%
 %% The output includes only options that can vary between versions of a
@@ -5839,7 +5847,7 @@ get_runtime_management_config(Client, FunctionName, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Invokes a Lambda function.
+%% @doc Invokes a Lambda Event Function.
 %%
 %% You can invoke a function synchronously (and wait for the response), or
 %% asynchronously. By default, Lambda invokes your function synchronously
@@ -5997,8 +6005,8 @@ invoke_async(Client, FunctionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Configure your Lambda functions to stream response payloads back to
-%% clients.
+%% @doc Configure your Lambda Event Functions to stream response payloads
+%% back to clients.
 %%
 %% For more information, see Configuring a Lambda function to stream
 %% responses:
@@ -6067,7 +6075,7 @@ invoke_with_response_stream(Client, FunctionName, Input0, Options0) ->
 
 %% @doc Returns a list of aliases:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html
-%% for a Lambda function.
+%% for a Lambda Event Function.
 -spec list_aliases(aws_client:aws_client(), binary() | list()) ->
     {ok, list_aliases_response(), tuple()} |
     {error, any()} |
@@ -6430,7 +6438,7 @@ list_function_versions_by_capacity_provider(Client, CapacityProviderName, QueryM
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of Lambda functions, with the version-specific
+%% @doc Returns a list of Lambda Event Functions, with the version-specific
 %% configuration of each.
 %%
 %% Lambda returns up to 50 functions per call.
@@ -7515,7 +7523,7 @@ untag_resource(Client, Resource, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the configuration of a Lambda function alias:
+%% @doc Updates the configuration of a Lambda Event Function alias:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html.
 -spec update_alias(aws_client:aws_client(), binary() | list(), binary() | list(), update_alias_request()) ->
     {ok, alias_configuration(), tuple()} |
@@ -7729,7 +7737,7 @@ update_event_source_mapping(Client, UUID, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates a Lambda function's code.
+%% @doc Updates a Lambda Event Function's code.
 %%
 %% If code signing is enabled for the function, the code package must be
 %% signed by a trusted publisher. For more information, see Configuring code
@@ -7791,7 +7799,7 @@ update_function_code(Client, FunctionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Modify the version-specific settings of a Lambda function.
+%% @doc Modifies the version-specific settings of a Lambda Event Function.
 %%
 %% When you update a function, Lambda provisions an instance of the function
 %% and its supporting resources. If your function connects to a VPC, this

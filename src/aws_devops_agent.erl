@@ -704,6 +704,7 @@
 %% Example:
 %% get_account_usage_output() :: #{
 %%   <<"monthlyAccountEvaluationHours">> => usage_metric(),
+%%   <<"monthlyAccountGraderHours">> => usage_metric(),
 %%   <<"monthlyAccountInvestigationHours">> => usage_metric(),
 %%   <<"monthlyAccountOnDemandHours">> => usage_metric(),
 %%   <<"monthlyAccountSystemLearningHours">> => usage_metric(),
@@ -712,9 +713,12 @@
 %% }
 -type get_account_usage_output() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_agent_space_input() :: #{}
--type get_agent_space_input() :: #{}.
+%% get_agent_space_input() :: #{
+%%   <<"includedData">> => list(any())
+%% }
+-type get_agent_space_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -996,6 +1000,7 @@
 
 %% Example:
 %% list_agent_spaces_input() :: #{
+%%   <<"includedData">> => list(any()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string()
 %% }
@@ -1323,6 +1328,13 @@
 
 
 %% Example:
+%% m_c_p_server_custom_headers_config() :: #{
+%%   <<"headers">> => map()
+%% }
+-type m_c_p_server_custom_headers_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% m_c_p_server_datadog_configuration() :: #{
 %%   <<"enabledElevatedTools">> => list(m_c_p_tool_detail())
 %% }
@@ -1644,6 +1656,7 @@
 %% registered_m_c_p_server_details() :: #{
 %%   <<"apiKeyHeader">> => [string()],
 %%   <<"authorizationMethod">> => list(any()),
+%%   <<"customHeaderNames">> => list(string()),
 %%   <<"description">> => string(),
 %%   <<"endpoint">> => [string()],
 %%   <<"name">> => [string()]
@@ -2747,7 +2760,8 @@
 -type update_association_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    conflict_exception().
 
 -type update_backlog_task_errors() ::
     validation_exception() | 
@@ -3503,7 +3517,11 @@ get_agent_space(Client, AgentSpaceId, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"includedData">>, maps:get(<<"includedData">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -3887,6 +3905,7 @@ list_agent_spaces(Client, Input0, Options0) ->
     Input2 = Input1,
 
     QueryMapping = [
+                     {<<"includedData">>, <<"includedData">>},
                      {<<"maxResults">>, <<"maxResults">>},
                      {<<"nextToken">>, <<"nextToken">>}
                    ],

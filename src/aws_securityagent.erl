@@ -28,6 +28,10 @@
          batch_delete_security_requirements/3,
          batch_delete_threat_models/2,
          batch_delete_threat_models/3,
+         batch_disassociate_finding_issue/2,
+         batch_disassociate_finding_issue/3,
+         batch_export_findings/2,
+         batch_export_findings/3,
          batch_get_agent_spaces/2,
          batch_get_agent_spaces/3,
          batch_get_artifact_metadata/2,
@@ -481,6 +485,68 @@
 %%   <<"failed">> => list(delete_threat_model_failure())
 %% }
 -type batch_delete_threat_models_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_finding_issue_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"findingId">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type batch_disassociate_finding_issue_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_finding_issue_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"findingIds">> := list([string()]()),
+%%   <<"pentestJobId">> => [string()]
+%% }
+-type batch_disassociate_finding_issue_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_disassociate_finding_issue_output() :: #{
+%%   <<"errors">> => list(batch_disassociate_finding_issue_error())
+%% }
+-type batch_disassociate_finding_issue_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_export_finding_error() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"findingId">> => [string()],
+%%   <<"message">> => [string()]
+%% }
+-type batch_export_finding_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_export_finding_result() :: #{
+%%   <<"findingId">> => [string()],
+%%   <<"linkedIssue">> => linked_issue()
+%% }
+-type batch_export_finding_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_export_findings_input() :: #{
+%%   <<"agentSpaceId">> := [string()],
+%%   <<"codeReviewJobId">> => [string()],
+%%   <<"findingIds">> := list([string()]()),
+%%   <<"issueDestination">> := issue_destination(),
+%%   <<"pentestJobId">> => [string()]
+%% }
+-type batch_export_findings_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_export_findings_output() :: #{
+%%   <<"errors">> => list(batch_export_finding_error()),
+%%   <<"results">> => list(batch_export_finding_result())
+%% }
+-type batch_export_findings_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1558,6 +1624,7 @@
 %%   <<"description">> => [string()],
 %%   <<"findingId">> => [string()],
 %%   <<"lastUpdatedBy">> => [string()],
+%%   <<"linkedIssue">> => linked_issue(),
 %%   <<"name">> => [string()],
 %%   <<"originalFindingId">> => [string()],
 %%   <<"pentestId">> => [string()],
@@ -1651,6 +1718,7 @@
 %%   <<"privateConnectionName">> => string(),
 %%   <<"provider">> => list(any()),
 %%   <<"providerType">> => list(any()),
+%%   <<"siteUrl">> => string(),
 %%   <<"targetUrl">> => string(),
 %%   <<"webhookUrl">> => [string()]
 %% }
@@ -1859,6 +1927,66 @@
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% issue_destination() :: #{
+%%   <<"integrationId">> => [string()],
+%%   <<"projectKey">> => [string()]
+%% }
+-type issue_destination() :: #{binary() => any()}.
+
+
+%% Example:
+%% jira_integration_input() :: #{
+%%   <<"code">> => string(),
+%%   <<"installationId">> => string(),
+%%   <<"siteUrl">> => string(),
+%%   <<"state">> => string()
+%% }
+-type jira_integration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% jira_project_metadata() :: #{
+%%   <<"name">> => string(),
+%%   <<"projectId">> => [string()],
+%%   <<"projectKey">> => [string()],
+%%   <<"projectName">> => [string()],
+%%   <<"providerResourceId">> => string()
+%% }
+-type jira_project_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% jira_project_resource() :: #{
+%%   <<"name">> => string(),
+%%   <<"projectId">> => [string()],
+%%   <<"projectKey">> => [string()],
+%%   <<"projectName">> => [string()]
+%% }
+-type jira_project_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% jira_resource_capabilities() :: #{
+%%   <<"commentIssue">> => [boolean()],
+%%   <<"createIssue">> => [boolean()]
+%% }
+-type jira_resource_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
+%% linked_issue() :: #{
+%%   <<"integrationId">> => [string()],
+%%   <<"issueId">> => [string()],
+%%   <<"issueKey">> => [string()],
+%%   <<"issueUrl">> => [string()],
+%%   <<"projectKey">> => [string()],
+%%   <<"provider">> => list(any()),
+%%   <<"siteUrl">> => [string()]
+%% }
+-type linked_issue() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3403,6 +3531,24 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type batch_disassociate_finding_issue_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type batch_export_findings_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type batch_get_artifact_metadata_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -3783,6 +3929,74 @@ batch_delete_threat_models(Client, Input) ->
 batch_delete_threat_models(Client, Input0, Options0) ->
     Method = post,
     Path = ["/BatchDeleteThreatModels"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates a batch of findings from their linked issues.
+-spec batch_disassociate_finding_issue(aws_client:aws_client(), batch_disassociate_finding_issue_input()) ->
+    {ok, batch_disassociate_finding_issue_output(), tuple()} |
+    {error, any()} |
+    {error, batch_disassociate_finding_issue_errors(), tuple()}.
+batch_disassociate_finding_issue(Client, Input) ->
+    batch_disassociate_finding_issue(Client, Input, []).
+
+-spec batch_disassociate_finding_issue(aws_client:aws_client(), batch_disassociate_finding_issue_input(), proplists:proplist()) ->
+    {ok, batch_disassociate_finding_issue_output(), tuple()} |
+    {error, any()} |
+    {error, batch_disassociate_finding_issue_errors(), tuple()}.
+batch_disassociate_finding_issue(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchDisassociateFindingIssue"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Exports a batch of findings to the connected issue tracker as issues.
+-spec batch_export_findings(aws_client:aws_client(), batch_export_findings_input()) ->
+    {ok, batch_export_findings_output(), tuple()} |
+    {error, any()} |
+    {error, batch_export_findings_errors(), tuple()}.
+batch_export_findings(Client, Input) ->
+    batch_export_findings(Client, Input, []).
+
+-spec batch_export_findings(aws_client:aws_client(), batch_export_findings_input(), proplists:proplist()) ->
+    {ok, batch_export_findings_output(), tuple()} |
+    {error, any()} |
+    {error, batch_export_findings_errors(), tuple()}.
+batch_export_findings(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/BatchExportFindings"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

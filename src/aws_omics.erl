@@ -3185,7 +3185,8 @@
 %% Example:
 %% vpc_config() :: #{
 %%   <<"securityGroupIds">> => list(string()),
-%%   <<"subnetIds">> => list(string())
+%%   <<"subnetIds">> => list(string()),
+%%   <<"vpcOwnerAccountId">> => string()
 %% }
 -type vpc_config() :: #{binary() => any()}.
 
@@ -3194,7 +3195,8 @@
 %% vpc_config_response() :: #{
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"subnetIds">> => list(string()),
-%%   <<"vpcId">> => string()
+%%   <<"vpcId">> => string(),
+%%   <<"vpcOwnerAccountId">> => string()
 %% }
 -type vpc_config_response() :: #{binary() => any()}.
 

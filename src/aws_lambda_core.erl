@@ -1,18 +1,42 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc AWS Lambda Core is a set of APIs for managing shared infrastructure
-%% resources used by AWS Lambda.
+%% @doc Lambda
+%%
+%% Overview
+%%
+%% AWS Lambda Core is a set of APIs for managing shared infrastructure
+%% resources used by Lambda.
 %%
 %% The Lambda Core API provides operations for creating and managing network
-%% connectors that enable Lambda MicroVMs to access resources in your Amazon
-%% Virtual Private Cloud (Amazon VPC).
+%% connectors that enable Lambda compute resources to access resources in
+%% your Amazon Virtual Private Cloud (Amazon VPC).
 %%
 %% Network connectors provision elastic network interfaces (ENIs) in your VPC
 %% subnets, providing a managed network path from Lambda compute environments
 %% to private resources such as Amazon RDS databases, Amazon ElastiCache
 %% clusters, and internal APIs. You create a network connector once and
-%% attach it to one or more Lambda MicroVMs at run time.
+%% attach it to one or more Lambda compute resources at run time.
+%%
+%% The Lambda Core API Reference provides information about each of the API
+%% methods, including details about the parameters in each API request and
+%% response.
+%%
+%% You can use Software Development Kits (SDKs), Integrated Development
+%% Environment (IDE) Toolkits, and command line tools to access the API. For
+%% installation instructions, see Tools for Amazon Web Services:
+%% http://aws.amazon.com/tools/.
+%%
+%% For a list of Region-specific endpoints that Lambda supports, see Lambda
+%% endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/lambda-service.html in the
+%% Amazon Web Services General Reference.
+%%
+%% When making the API calls, you will need to authenticate your request by
+%% providing a signature. Lambda supports signature version 4. For more
+%% information, see Signature Version 4 signing process:
+%% https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html in
+%% the Amazon Web Services General Reference.
 -module(aws_lambda_core).
 
 -export([create_network_connector/2,
@@ -22,6 +46,9 @@
          get_network_connector/2,
          get_network_connector/4,
          get_network_connector/5,
+         list_network_connector_versions/2,
+         list_network_connector_versions/4,
+         list_network_connector_versions/5,
          list_network_connectors/1,
          list_network_connectors/3,
          list_network_connectors/4,
@@ -50,7 +77,9 @@
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OperatorRole">> => string(),
-%%   <<"State">> => list(any())
+%%   <<"State">> => list(any()),
+%%   <<"Version">> => float(),
+%%   <<"VersionArn">> => string()
 %% }
 -type create_network_connector_response() :: #{binary() => any()}.
 
@@ -66,7 +95,9 @@
 %%   <<"Id">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OperatorRole">> => string(),
-%%   <<"State">> => list(any())
+%%   <<"State">> => list(any()),
+%%   <<"Version">> => float(),
+%%   <<"VersionArn">> => string()
 %% }
 -type delete_network_connector_response() :: #{binary() => any()}.
 
@@ -84,12 +115,15 @@
 %%   <<"LastUpdateStatus">> => list(any()),
 %%   <<"LastUpdateStatusReason">> => string(),
 %%   <<"LastUpdateStatusReasonCode">> => list(any()),
+%%   <<"LatestVersion">> => float(),
+%%   <<"LatestVersionArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OperatorRole">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"StateReason">> => string(),
 %%   <<"StateReasonCode">> => list(any()),
-%%   <<"Version">> => float()
+%%   <<"Version">> => float(),
+%%   <<"VersionArn">> => string()
 %% }
 -type get_network_connector_response() :: #{binary() => any()}.
 
@@ -100,6 +134,23 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_parameter_value_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_connector_versions_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => integer(),
+%%   <<"State">> => list(any())
+%% }
+-type list_network_connector_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_connector_versions_response() :: #{
+%%   <<"NetworkConnectorVersions">> => list(network_connector_version_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_network_connector_versions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -132,11 +183,28 @@
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"LastModified">> => non_neg_integer(),
+%%   <<"LatestVersion">> => float(),
+%%   <<"LatestVersionArn">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
 -type network_connector_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_connector_version_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"LastModified">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StateReason">> => string(),
+%%   <<"StateReasonCode">> => list(any()),
+%%   <<"Version">> => float(),
+%%   <<"VersionArn">> => string()
+%% }
+-type network_connector_version_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -202,7 +270,9 @@
 %%   <<"LastUpdateStatusReason">> => string(),
 %%   <<"Name">> => string(),
 %%   <<"OperatorRole">> => string(),
-%%   <<"State">> => list(any())
+%%   <<"State">> => list(any()),
+%%   <<"Version">> => float(),
+%%   <<"VersionArn">> => string()
 %% }
 -type update_network_connector_response() :: #{binary() => any()}.
 
@@ -226,6 +296,12 @@
     resource_not_found_exception() | 
     invalid_parameter_value_exception().
 
+-type list_network_connector_versions_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception().
+
 -type list_network_connectors_errors() ::
     too_many_requests_exception() | 
     service_exception() | 
@@ -236,6 +312,7 @@
     service_exception() | 
     resource_not_found_exception() | 
     resource_conflict_exception() | 
+    network_connector_limit_exceeded_exception() | 
     invalid_parameter_value_exception().
 
 %%====================================================================
@@ -253,8 +330,9 @@
 %% `PENDING' state while ENIs are provisioned in your VPC (provisioning
 %% typically takes up to 10 minutes). Use `GetNetworkConnector' to poll
 %% the connector state until it reaches `ACTIVE'. Once active, you can
-%% attach the connector to Lambda MicroVMs at run time using the
-%% `egressNetworkConnectors' parameter on `RunMicroVm'.
+%% attach the connector to supported Lambda compute resources — such as
+%% MicroVMs and WebFunctions — at run time. For how to attach a connector,
+%% see the documentation for the specific compute type.
 %%
 %% This operation is idempotent when you provide a `ClientToken' — if you
 %% retry a request that completed successfully using the same client token,
@@ -302,8 +380,14 @@ create_network_connector(Client, Input0, Options0) ->
 %% This operation is idempotent — calling delete on a connector that is
 %% already deleting or has been deleted succeeds without error. You can
 %% delete connectors in `ACTIVE' or `FAILED' states. Before deleting
-%% a connector, ensure that no Lambda MicroVMs are using it, as they will
-%% lose VPC egress connectivity immediately.
+%% a connector, ensure that no Lambda compute resources are using it, as they
+%% will lose VPC egress connectivity immediately.
+%%
+%% Deleting with an unqualified identifier removes the connector and all of
+%% its versions. To remove a single historical version, supply its
+%% version-qualified ARN; the connector and its remaining versions are
+%% unaffected. You can't delete the latest version on its own — delete
+%% the connector to remove it.
 -spec delete_network_connector(aws_client:aws_client(), binary() | list(), delete_network_connector_request()) ->
     {ok, delete_network_connector_response(), tuple()} |
     {error, any()} |
@@ -384,6 +468,60 @@ get_network_connector(Client, Identifier, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a paginated list of the versions of a network connector.
+%%
+%% Each configuration update creates a new immutable version; this operation
+%% lists those versions for the connector you specify. You can optionally
+%% filter results by version state. Use the `Marker' parameter from a
+%% previous response to retrieve the next page of results.
+%%
+%% Each item in the response includes the version-qualified ARN, version
+%% number, current state, and last modified timestamp for that version. To
+%% retrieve the current (latest) configuration of the connector, use
+%% `GetNetworkConnector'; to inspect a specific version, call
+%% `GetNetworkConnector' with a version-qualified identifier.
+-spec list_network_connector_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_network_connector_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_connector_versions_errors(), tuple()}.
+list_network_connector_versions(Client, Identifier)
+  when is_map(Client) ->
+    list_network_connector_versions(Client, Identifier, #{}, #{}).
+
+-spec list_network_connector_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_network_connector_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_connector_versions_errors(), tuple()}.
+list_network_connector_versions(Client, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_network_connector_versions(Client, Identifier, QueryMap, HeadersMap, []).
+
+-spec list_network_connector_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_network_connector_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_connector_versions_errors(), tuple()}.
+list_network_connector_versions(Client, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2026-04-04/network-connectors/", aws_util:encode_uri(Identifier), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"Marker">>, maps:get(<<"Marker">>, QueryMap, undefined)},
+        {<<"MaxItems">>, maps:get(<<"MaxItems">>, QueryMap, undefined)},
+        {<<"State">>, maps:get(<<"State">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a paginated list of network connectors in your account for
 %% the current Region.
 %%
@@ -450,6 +588,12 @@ list_network_connectors(Client, QueryMap, HeadersMap, Options0)
 %% `LastUpdateStatusReasonCode' field provides a specific error code for
 %% troubleshooting. This operation is idempotent when you provide a
 %% `ClientToken'.
+%%
+%% Each successful configuration change creates a new immutable version. A
+%% connector can have a limited number of versions; once that limit is
+%% reached, further updates fail with
+%% `NetworkConnectorLimitExceededException' until you delete older
+%% versions.
 -spec update_network_connector(aws_client:aws_client(), binary() | list(), update_network_connector_request()) ->
     {ok, update_network_connector_response(), tuple()} |
     {error, any()} |

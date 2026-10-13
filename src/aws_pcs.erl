@@ -562,6 +562,7 @@
 %%   <<"endpoints">> => list(endpoint()),
 %%   <<"nodeID">> => [string()],
 %%   <<"nodeLifecycleActions">> => node_lifecycle_actions(),
+%%   <<"schedulerVersion">> => [string()],
 %%   <<"sharedSecret">> => string()
 %% }
 -type register_compute_node_group_instance_response() :: #{binary() => any()}.

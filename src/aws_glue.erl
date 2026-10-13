@@ -26,6 +26,8 @@
          batch_get_custom_entity_types/3,
          batch_get_data_quality_result/2,
          batch_get_data_quality_result/3,
+         batch_get_data_quality_result_v2/2,
+         batch_get_data_quality_result_v2/3,
          batch_get_data_quality_ruleset_evaluation_run/2,
          batch_get_data_quality_ruleset_evaluation_run/3,
          batch_get_dev_endpoints/2,
@@ -264,6 +266,8 @@
          get_data_quality_model_result/3,
          get_data_quality_result/2,
          get_data_quality_result/3,
+         get_data_quality_result_v2/2,
+         get_data_quality_result_v2/3,
          get_data_quality_rule_recommendation_run/2,
          get_data_quality_rule_recommendation_run/3,
          get_data_quality_ruleset/2,
@@ -406,6 +410,8 @@
          list_custom_entity_types/3,
          list_data_quality_results/2,
          list_data_quality_results/3,
+         list_data_quality_results_v2/2,
+         list_data_quality_results_v2/3,
          list_data_quality_rule_recommendation_runs/2,
          list_data_quality_rule_recommendation_runs/3,
          list_data_quality_ruleset_evaluation_runs/2,
@@ -458,6 +464,8 @@
          list_workflows/3,
          modify_integration/2,
          modify_integration/3,
+         publish_data_quality_result_v2/2,
+         publish_data_quality_result_v2/3,
          put_asset/2,
          put_asset/3,
          put_asset_type/2,
@@ -989,6 +997,19 @@
 %%   <<"ResultsNotFound">> => list(string())
 %% }
 -type batch_get_data_quality_result_response() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_data_quality_result_v2_request() :: #{
+%%   <<"ResultIds">> := list(string())
+%% }
+-type batch_get_data_quality_result_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% batch_get_data_quality_result_v2_response() :: #{
+%%   <<"Results">> => list(data_quality_result_v2_item()),
+%%   <<"ResultsNotFound">> => list(string())
+%% }
+-type batch_get_data_quality_result_v2_response() :: #{binary() => any()}.
 
 %% Example:
 %% batch_get_data_quality_ruleset_evaluation_run_request() :: #{
@@ -2879,6 +2900,13 @@
 -type data_quality_analyzer_result() :: #{binary() => any()}.
 
 %% Example:
+%% data_quality_configuration_v2() :: #{
+%%   <<"ObservationMode">> => list(any()),
+%%   <<"ObservationsEnabled">> => list(any())
+%% }
+-type data_quality_configuration_v2() :: #{binary() => any()}.
+
+%% Example:
 %% data_quality_encryption() :: #{
 %%   <<"DataQualityEncryptionMode">> => list(any()),
 %%   <<"KmsKeyArn">> => string()
@@ -2966,6 +2994,47 @@
 %%   <<"StartedBefore">> => non_neg_integer()
 %% }
 -type data_quality_result_filter_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_result_v2_item() :: #{
+%%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
+%%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()),
+%%   <<"DataSource">> => data_source(),
+%%   <<"Descriptors">> => map(),
+%%   <<"Dimensions">> => map(),
+%%   <<"EvaluationContext">> => string(),
+%%   <<"ExecutionCompletedOn">> => non_neg_integer(),
+%%   <<"ExecutionStartedOn">> => non_neg_integer(),
+%%   <<"Observations">> => list(data_quality_observation()),
+%%   <<"ResultId">> => string(),
+%%   <<"ResultPublishedOn">> => non_neg_integer(),
+%%   <<"RuleResults">> => list(data_quality_rule_result()),
+%%   <<"RulesetName">> => string(),
+%%   <<"Score">> => float(),
+%%   <<"Tags">> => map()
+%% }
+-type data_quality_result_v2_item() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_results_v2_description() :: #{
+%%   <<"DataSource">> => data_source(),
+%%   <<"Descriptors">> => map(),
+%%   <<"Dimensions">> => map(),
+%%   <<"EvaluationContext">> => string(),
+%%   <<"ResultId">> => string(),
+%%   <<"ResultPublishedOn">> => non_neg_integer()
+%% }
+-type data_quality_results_v2_description() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_results_v2_filter_criteria() :: #{
+%%   <<"DataSource">> => data_source(),
+%%   <<"Dimensions">> => map(),
+%%   <<"EvaluationContext">> => string(),
+%%   <<"PublishedAfter">> => non_neg_integer(),
+%%   <<"PublishedBefore">> => non_neg_integer()
+%% }
+-type data_quality_results_v2_filter_criteria() :: #{binary() => any()}.
 
 %% Example:
 %% data_quality_rule_recommendation_run_additional_run_options() :: #{
@@ -3081,6 +3150,17 @@
 %%   <<"TableName">> => string()
 %% }
 -type data_quality_target_table() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_telemetry() :: #{
+%%   <<"Engine">> => list(any()),
+%%   <<"FlagsEnabled">> => map(),
+%%   <<"HostRuntimeVersion">> => string(),
+%%   <<"LibraryVersion">> => string(),
+%%   <<"SparkVersion">> => string(),
+%%   <<"VcpuHours">> => float()
+%% }
+-type data_quality_telemetry() :: #{binary() => any()}.
 
 %% Example:
 %% data_source() :: #{
@@ -4686,6 +4766,33 @@
 %%   <<"StartedOn">> => non_neg_integer()
 %% }
 -type get_data_quality_result_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_quality_result_v2_request() :: #{
+%%   <<"ResultId">> := string()
+%% }
+-type get_data_quality_result_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_quality_result_v2_response() :: #{
+%%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
+%%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()),
+%%   <<"DataSource">> => data_source(),
+%%   <<"Descriptors">> => map(),
+%%   <<"Dimensions">> => map(),
+%%   <<"EvaluationContext">> => string(),
+%%   <<"ExecutionCompletedOn">> => non_neg_integer(),
+%%   <<"ExecutionStartedOn">> => non_neg_integer(),
+%%   <<"Observations">> => list(data_quality_observation()),
+%%   <<"ProfileId">> => string(),
+%%   <<"ResultId">> => string(),
+%%   <<"ResultPublishedOn">> => non_neg_integer(),
+%%   <<"RuleResults">> => list(data_quality_rule_result()),
+%%   <<"RulesetName">> => string(),
+%%   <<"Score">> => float(),
+%%   <<"Tags">> => map()
+%% }
+-type get_data_quality_result_v2_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_data_quality_rule_recommendation_run_request() :: #{
@@ -6670,6 +6777,21 @@
 -type list_data_quality_results_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_data_quality_results_v2_request() :: #{
+%%   <<"Filter">> => data_quality_results_v2_filter_criteria(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_quality_results_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_results_v2_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(data_quality_results_v2_description())
+%% }
+-type list_data_quality_results_v2_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_data_quality_rule_recommendation_runs_request() :: #{
 %%   <<"Filter">> => data_quality_rule_recommendation_run_filter(),
 %%   <<"MaxResults">> => integer(),
@@ -7592,6 +7714,34 @@
 -type property_predicate() :: #{binary() => any()}.
 
 %% Example:
+%% publish_data_quality_result_v2_request() :: #{
+%%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
+%%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()),
+%%   <<"ClientToken">> => string(),
+%%   <<"DataQualitySecurityConfiguration">> => string(),
+%%   <<"Descriptors">> => map(),
+%%   <<"Dimensions">> := map(),
+%%   <<"EvaluationContext">> := string(),
+%%   <<"ExecutionCompletedOn">> => non_neg_integer(),
+%%   <<"ExecutionStartedOn">> => non_neg_integer(),
+%%   <<"Observations">> => list(data_quality_observation()),
+%%   <<"RuleResults">> := list(data_quality_rule_result()),
+%%   <<"RulesetName">> => string(),
+%%   <<"RunConfiguration">> => data_quality_configuration_v2(),
+%%   <<"Score">> := float(),
+%%   <<"Statistics">> => list(statistic_summary()),
+%%   <<"Tags">> => map(),
+%%   <<"Telemetry">> => data_quality_telemetry()
+%% }
+-type publish_data_quality_result_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% publish_data_quality_result_v2_response() :: #{
+%%   <<"ResultId">> => string()
+%% }
+-type publish_data_quality_result_v2_response() :: #{binary() => any()}.
+
+%% Example:
 %% put_asset_request() :: #{
 %%   <<"AssetTypeId">> := string(),
 %%   <<"ClientToken">> => string(),
@@ -7786,6 +7936,12 @@
 %%   <<"QueryStartTime">> => non_neg_integer()
 %% }
 -type query_session_context() :: #{binary() => any()}.
+
+%% Example:
+%% r_l_s_properties() :: #{
+%%   <<"DefaultRLSPolicy">> => string()
+%% }
+-type r_l_s_properties() :: #{binary() => any()}.
 
 %% Example:
 %% recipe() :: #{
@@ -9259,6 +9415,7 @@
 %%   <<"Owner">> => string(),
 %%   <<"Parameters">> => map(),
 %%   <<"PartitionKeys">> => list(column()),
+%%   <<"RLSProperties">> => r_l_s_properties(),
 %%   <<"Retention">> => integer(),
 %%   <<"Status">> => table_status(),
 %%   <<"StorageDescriptor">> => storage_descriptor(),
@@ -10419,6 +10576,11 @@
     invalid_input_exception() | 
     internal_service_exception().
 
+-type batch_get_data_quality_result_v2_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
 -type batch_get_data_quality_ruleset_evaluation_run_errors() ::
     operation_timeout_exception() | 
     invalid_input_exception() | 
@@ -11271,6 +11433,12 @@
     internal_service_exception() | 
     entity_not_found_exception().
 
+-type get_data_quality_result_v2_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception().
+
 -type get_data_quality_rule_recommendation_run_errors() ::
     operation_timeout_exception() | 
     invalid_input_exception() | 
@@ -11741,6 +11909,11 @@
     invalid_input_exception() | 
     internal_service_exception().
 
+-type list_data_quality_results_v2_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception().
+
 -type list_data_quality_rule_recommendation_runs_errors() ::
     operation_timeout_exception() | 
     invalid_input_exception() | 
@@ -11909,6 +12082,13 @@
     entity_not_found_exception() | 
     conflict_exception() | 
     access_denied_exception().
+
+-type publish_data_quality_result_v2_errors() ::
+    resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    idempotent_parameter_mismatch_exception().
 
 -type put_asset_errors() ::
     throttling_exception() | 
@@ -12668,6 +12848,26 @@ batch_get_data_quality_result(Client, Input)
 batch_get_data_quality_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetDataQualityResult">>, Input, Options).
+
+%% @doc Retrieves a list of data quality results for the specified result
+%% IDs.
+%%
+%% You can specify up to 100 result IDs in a single request.
+-spec batch_get_data_quality_result_v2(aws_client:aws_client(), batch_get_data_quality_result_v2_request()) ->
+    {ok, batch_get_data_quality_result_v2_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_data_quality_result_v2_errors(), tuple()}.
+batch_get_data_quality_result_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    batch_get_data_quality_result_v2(Client, Input, []).
+
+-spec batch_get_data_quality_result_v2(aws_client:aws_client(), batch_get_data_quality_result_v2_request(), proplists:proplist()) ->
+    {ok, batch_get_data_quality_result_v2_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_data_quality_result_v2_errors(), tuple()}.
+batch_get_data_quality_result_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"BatchGetDataQualityResultV2">>, Input, Options).
 
 %% @doc Retrieves the details of multiple evaluation runs in a single
 %% request.
@@ -14969,6 +15169,24 @@ get_data_quality_result(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataQualityResult">>, Input, Options).
 
+%% @doc Retrieves the result of a data quality rule evaluation published from
+%% any supported data platform.
+-spec get_data_quality_result_v2(aws_client:aws_client(), get_data_quality_result_v2_request()) ->
+    {ok, get_data_quality_result_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_quality_result_v2_errors(), tuple()}.
+get_data_quality_result_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_data_quality_result_v2(Client, Input, []).
+
+-spec get_data_quality_result_v2(aws_client:aws_client(), get_data_quality_result_v2_request(), proplists:proplist()) ->
+    {ok, get_data_quality_result_v2_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_quality_result_v2_errors(), tuple()}.
+get_data_quality_result_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDataQualityResultV2">>, Input, Options).
+
 %% @doc Gets the specified recommendation run that was used to generate
 %% rules.
 -spec get_data_quality_rule_recommendation_run(aws_client:aws_client(), get_data_quality_rule_recommendation_run_request()) ->
@@ -16343,6 +16561,26 @@ list_data_quality_results(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDataQualityResults">>, Input, Options).
 
+%% @doc Returns a paginated list of data quality execution results for your
+%% account, filtered by the specified criteria.
+%%
+%% Use the `NextToken' parameter to retrieve additional results.
+-spec list_data_quality_results_v2(aws_client:aws_client(), list_data_quality_results_v2_request()) ->
+    {ok, list_data_quality_results_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_quality_results_v2_errors(), tuple()}.
+list_data_quality_results_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_data_quality_results_v2(Client, Input, []).
+
+-spec list_data_quality_results_v2(aws_client:aws_client(), list_data_quality_results_v2_request(), proplists:proplist()) ->
+    {ok, list_data_quality_results_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_quality_results_v2_errors(), tuple()}.
+list_data_quality_results_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDataQualityResultsV2">>, Input, Options).
+
 %% @doc Lists the recommendation runs meeting the filter criteria.
 -spec list_data_quality_rule_recommendation_runs(aws_client:aws_client(), list_data_quality_rule_recommendation_runs_request()) ->
     {ok, list_data_quality_rule_recommendation_runs_response(), tuple()} |
@@ -16845,6 +17083,29 @@ modify_integration(Client, Input)
 modify_integration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyIntegration">>, Input, Options).
+
+%% @doc
+%% This operation is intended for internal use.
+%%
+%% Do not call it directly.
+%%
+%% AWS Glue Data Quality uses this operation to publish a data quality
+%% result.
+-spec publish_data_quality_result_v2(aws_client:aws_client(), publish_data_quality_result_v2_request()) ->
+    {ok, publish_data_quality_result_v2_response(), tuple()} |
+    {error, any()} |
+    {error, publish_data_quality_result_v2_errors(), tuple()}.
+publish_data_quality_result_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    publish_data_quality_result_v2(Client, Input, []).
+
+-spec publish_data_quality_result_v2(aws_client:aws_client(), publish_data_quality_result_v2_request(), proplists:proplist()) ->
+    {ok, publish_data_quality_result_v2_response(), tuple()} |
+    {error, any()} |
+    {error, publish_data_quality_result_v2_errors(), tuple()}.
+publish_data_quality_result_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PublishDataQualityResultV2">>, Input, Options).
 
 %% @doc Creates or updates an asset in Glue Data Catalog.
 %%

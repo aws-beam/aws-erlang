@@ -1748,7 +1748,8 @@
 %%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string())
+%%   <<"namespaces">> => list(string()),
+%%   <<"recordExpirySpecification">> => list()
 %% }
 -type custom_memory_strategy_input() :: #{binary() => any()}.
 
@@ -2363,6 +2364,7 @@
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string()),
+%%   <<"recordExpirySpecification">> => list(),
 %%   <<"reflectionConfiguration">> => episodic_reflection_configuration_input()
 %% }
 -type episodic_memory_strategy_input() :: #{binary() => any()}.
@@ -4750,6 +4752,7 @@
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
 %%   <<"namespaces">> => list(string()),
+%%   <<"recordExpiryDurationDays">> => integer(),
 %%   <<"status">> => list(any()),
 %%   <<"strategyId">> => string(),
 %%   <<"type">> => list(any()),
@@ -4860,7 +4863,8 @@
 %%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"memoryStrategyId">> => [string()],
 %%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string())
+%%   <<"namespaces">> => list(string()),
+%%   <<"recordExpirySpecification">> => list()
 %% }
 -type modify_memory_strategy_input() :: #{binary() => any()}.
 
@@ -5547,7 +5551,8 @@
 %%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string())
+%%   <<"namespaces">> => list(string()),
+%%   <<"recordExpirySpecification">> => list()
 %% }
 -type semantic_memory_strategy_input() :: #{binary() => any()}.
 
@@ -5825,7 +5830,8 @@
 %%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string())
+%%   <<"namespaces">> => list(string()),
+%%   <<"recordExpirySpecification">> => list()
 %% }
 -type summary_memory_strategy_input() :: #{binary() => any()}.
 
@@ -6850,7 +6856,8 @@
 %%   <<"memoryRecordSchema">> => memory_record_schema(),
 %%   <<"name">> => string(),
 %%   <<"namespaceTemplates">> => list(string()),
-%%   <<"namespaces">> => list(string())
+%%   <<"namespaces">> => list(string()),
+%%   <<"recordExpirySpecification">> => list()
 %% }
 -type user_preference_memory_strategy_input() :: #{binary() => any()}.
 
