@@ -10,6 +10,8 @@
          add_l_f_tags_to_resource/3,
          assume_decorated_role_with_saml/2,
          assume_decorated_role_with_saml/3,
+         attach_r_l_s_policy/2,
+         attach_r_l_s_policy/3,
          batch_grant_permissions/2,
          batch_grant_permissions/3,
          batch_revoke_permissions/2,
@@ -28,6 +30,8 @@
          create_lake_formation_identity_center_configuration/3,
          create_lake_formation_opt_in/2,
          create_lake_formation_opt_in/3,
+         create_r_l_s_policy/2,
+         create_r_l_s_policy/3,
          delete_data_cells_filter/2,
          delete_data_cells_filter/3,
          delete_l_f_tag/2,
@@ -40,6 +44,8 @@
          delete_lake_formation_opt_in/3,
          delete_objects_on_cancel/2,
          delete_objects_on_cancel/3,
+         delete_r_l_s_policy/2,
+         delete_r_l_s_policy/3,
          deregister_resource/2,
          deregister_resource/3,
          describe_lake_formation_identity_center_configuration/2,
@@ -48,6 +54,8 @@
          describe_resource/3,
          describe_transaction/2,
          describe_transaction/3,
+         detach_r_l_s_policy/2,
+         detach_r_l_s_policy/3,
          extend_transaction/2,
          extend_transaction/3,
          get_data_cells_filter/2,
@@ -66,6 +74,8 @@
          get_query_state/3,
          get_query_statistics/2,
          get_query_statistics/3,
+         get_r_l_s_policy/2,
+         get_r_l_s_policy/3,
          get_resource_l_f_tags/2,
          get_resource_l_f_tags/3,
          get_table_objects/2,
@@ -92,6 +102,10 @@
          list_lake_formation_opt_ins/3,
          list_permissions/2,
          list_permissions/3,
+         list_r_l_s_policies/2,
+         list_r_l_s_policies/3,
+         list_r_l_s_policy_attachments/2,
+         list_r_l_s_policy_attachments/3,
          list_resources/2,
          list_resources/3,
          list_table_storage_optimizers/2,
@@ -122,6 +136,8 @@
          update_l_f_tag_expression/3,
          update_lake_formation_identity_center_configuration/2,
          update_lake_formation_identity_center_configuration/3,
+         update_r_l_s_policy/2,
+         update_r_l_s_policy/3,
          update_resource/2,
          update_resource/3,
          update_table_objects/2,
@@ -198,6 +214,21 @@
 
 
 %% Example:
+%% attach_r_l_s_policy_request() :: #{
+%%   <<"Condition">> => condition(),
+%%   <<"Name">> := string(),
+%%   <<"Principal">> => data_lake_principal(),
+%%   <<"Resource">> := resource(),
+%%   <<"SetDefault">> => boolean()
+%% }
+-type attach_r_l_s_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% attach_r_l_s_policy_response() :: #{}
+-type attach_r_l_s_policy_response() :: #{}.
+
+
+%% Example:
 %% audit_context() :: #{
 %%   <<"AdditionalAuditContext">> => string()
 %% }
@@ -270,6 +301,14 @@
 %%   <<"Id">> => string()
 %% }
 -type catalog_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% column() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type column() :: #{binary() => any()}.
 
 
 %% Example:
@@ -389,6 +428,19 @@
 %% Example:
 %% create_lake_formation_opt_in_response() :: #{}
 -type create_lake_formation_opt_in_response() :: #{}.
+
+
+%% Example:
+%% create_r_l_s_policy_request() :: #{
+%%   <<"AttachmentColumns">> := list(column()),
+%%   <<"FilterExpression">> := string(),
+%%   <<"Name">> := string()
+%% }
+-type create_r_l_s_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_r_l_s_policy_response() :: #{}
+-type create_r_l_s_policy_response() :: #{}.
 
 
 %% Example:
@@ -541,6 +593,17 @@
 
 
 %% Example:
+%% delete_r_l_s_policy_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_r_l_s_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_r_l_s_policy_response() :: #{}
+-type delete_r_l_s_policy_response() :: #{}.
+
+
+%% Example:
 %% deregister_resource_request() :: #{
 %%   <<"ResourceArn">> := string()
 %% }
@@ -597,6 +660,21 @@
 %%   <<"TransactionDescription">> => transaction_description()
 %% }
 -type describe_transaction_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% detach_r_l_s_policy_request() :: #{
+%%   <<"Condition">> => condition(),
+%%   <<"Name">> := string(),
+%%   <<"Principal">> => data_lake_principal(),
+%%   <<"RemoveDefault">> => boolean(),
+%%   <<"Resource">> := resource()
+%% }
+-type detach_r_l_s_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% detach_r_l_s_policy_response() :: #{}
+-type detach_r_l_s_policy_response() :: #{}.
 
 
 %% Example:
@@ -789,6 +867,20 @@
 %%   <<"QuerySubmissionTime">> => non_neg_integer()
 %% }
 -type get_query_statistics_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_r_l_s_policy_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_r_l_s_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_r_l_s_policy_response() :: #{
+%%   <<"RLSPolicy">> => r_l_s_policy()
+%% }
+-type get_r_l_s_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1132,6 +1224,41 @@
 
 
 %% Example:
+%% list_r_l_s_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_r_l_s_policies_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_r_l_s_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RLSPolicies">> => list(r_l_s_policy())
+%% }
+-type list_r_l_s_policies_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_r_l_s_policy_attachments_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"Principal">> => data_lake_principal(),
+%%   <<"Resource">> => resource()
+%% }
+-type list_r_l_s_policy_attachments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_r_l_s_policy_attachments_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"RLSPolicyAttachments">> => list(r_l_s_policy_attachment())
+%% }
+-type list_r_l_s_policy_attachments_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_resources_request() :: #{
 %%   <<"FilterConditionList">> => list(filter_condition()),
 %%   <<"MaxResults">> => integer(),
@@ -1282,6 +1409,36 @@
 
 
 %% Example:
+%% r_l_s_policy() :: #{
+%%   <<"AttachmentColumns">> => list(column()),
+%%   <<"CatalogId">> => string(),
+%%   <<"FilterExpression">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type r_l_s_policy() :: #{binary() => any()}.
+
+
+%% Example:
+%% r_l_s_policy_attachment() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Condition">> => condition(),
+%%   <<"DefaultRLSPolicy">> => boolean(),
+%%   <<"PolicyName">> => string(),
+%%   <<"Principal">> => data_lake_principal(),
+%%   <<"Resource">> => resource()
+%% }
+-type r_l_s_policy_attachment() :: #{binary() => any()}.
+
+
+%% Example:
+%% r_l_s_policy_resource() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type r_l_s_policy_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% redshift_connect() :: #{
 %%   <<"Authorization">> => list(any())
 %% }
@@ -1330,6 +1487,7 @@
 %%   <<"LFTag">> => l_f_tag_key_resource(),
 %%   <<"LFTagExpression">> => l_f_tag_expression_resource(),
 %%   <<"LFTagPolicy">> => l_f_tag_policy_resource(),
+%%   <<"RLSPolicy">> => r_l_s_policy_resource(),
 %%   <<"Table">> => table_resource(),
 %%   <<"TableWithColumns">> => table_with_columns_resource()
 %% }
@@ -1626,6 +1784,18 @@
 
 
 %% Example:
+%% update_r_l_s_policy_request() :: #{
+%%   <<"FilterExpression">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type update_r_l_s_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_r_l_s_policy_response() :: #{}
+-type update_r_l_s_policy_response() :: #{}.
+
+
+%% Example:
 %% update_resource_request() :: #{
 %%   <<"ExpectedResourceOwnerAccount">> => string(),
 %%   <<"HybridAccessEnabled">> => boolean(),
@@ -1718,6 +1888,16 @@
     entity_not_found_exception() | 
     access_denied_exception().
 
+-type attach_r_l_s_policy_errors() ::
+    resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception() | 
+    access_denied_exception().
+
 -type batch_grant_permissions_errors() ::
     operation_timeout_exception() | 
     invalid_input_exception().
@@ -1785,6 +1965,15 @@
     concurrent_modification_exception() | 
     access_denied_exception().
 
+-type create_r_l_s_policy_errors() ::
+    resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    concurrent_modification_exception() | 
+    already_exists_exception() | 
+    access_denied_exception().
+
 -type delete_data_cells_filter_errors() ::
     operation_timeout_exception() | 
     invalid_input_exception() | 
@@ -1832,6 +2021,14 @@
     entity_not_found_exception() | 
     concurrent_modification_exception().
 
+-type delete_r_l_s_policy_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
+
 -type deregister_resource_errors() ::
     operation_timeout_exception() | 
     invalid_input_exception() | 
@@ -1856,6 +2053,14 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     entity_not_found_exception().
+
+-type detach_r_l_s_policy_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type extend_transaction_errors() ::
     transaction_committed_exception() | 
@@ -1914,6 +2119,13 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     expired_exception() | 
+    access_denied_exception().
+
+-type get_r_l_s_policy_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
     access_denied_exception().
 
 -type get_resource_l_f_tags_errors() ::
@@ -2007,6 +2219,20 @@
     operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception().
+
+-type list_r_l_s_policies_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
+
+-type list_r_l_s_policy_attachments_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type list_resources_errors() ::
     operation_timeout_exception() | 
@@ -2102,6 +2328,15 @@
     access_denied_exception().
 
 -type update_lake_formation_identity_center_configuration_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
+
+-type update_r_l_s_policy_errors() ::
+    resource_number_limit_exceeded_exception() | 
     operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -2213,6 +2448,44 @@ assume_decorated_role_with_saml(Client, Input) ->
 assume_decorated_role_with_saml(Client, Input0, Options0) ->
     Method = post,
     Path = ["/AssumeDecoratedRoleWithSAML"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Attaches a row-level security policy to a resource for a principal.
+%%
+%% When the principal queries the resource, Lake Formation applies the
+%% policy's filter expression so that only the permitted rows are
+%% returned.
+-spec attach_r_l_s_policy(aws_client:aws_client(), attach_r_l_s_policy_request()) ->
+    {ok, attach_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, attach_r_l_s_policy_errors(), tuple()}.
+attach_r_l_s_policy(Client, Input) ->
+    attach_r_l_s_policy(Client, Input, []).
+
+-spec attach_r_l_s_policy(aws_client:aws_client(), attach_r_l_s_policy_request(), proplists:proplist()) ->
+    {ok, attach_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, attach_r_l_s_policy_errors(), tuple()}.
+attach_r_l_s_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/AttachRLSPolicy"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2561,6 +2834,46 @@ create_lake_formation_opt_in(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a row-level security (RLS) policy.
+%%
+%% A row-level security policy defines a filter expression that Lake
+%% Formation evaluates to determine which rows of a table a principal is
+%% allowed to see. The policy is created independently of any resource, and
+%% is later associated with a resource and principal using
+%% `AttachRLSPolicy'.
+-spec create_r_l_s_policy(aws_client:aws_client(), create_r_l_s_policy_request()) ->
+    {ok, create_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_r_l_s_policy_errors(), tuple()}.
+create_r_l_s_policy(Client, Input) ->
+    create_r_l_s_policy(Client, Input, []).
+
+-spec create_r_l_s_policy(aws_client:aws_client(), create_r_l_s_policy_request(), proplists:proplist()) ->
+    {ok, create_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_r_l_s_policy_errors(), tuple()}.
+create_r_l_s_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateRLSPolicy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a data cell filter.
 -spec delete_data_cells_filter(aws_client:aws_client(), delete_data_cells_filter_request()) ->
     {ok, delete_data_cells_filter_response(), tuple()} |
@@ -2791,6 +3104,43 @@ delete_objects_on_cancel(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a row-level security policy.
+%%
+%% Any active attachments of the policy are automatically removed as part of
+%% the deletion, so you do not need to detach the policy first.
+-spec delete_r_l_s_policy(aws_client:aws_client(), delete_r_l_s_policy_request()) ->
+    {ok, delete_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_r_l_s_policy_errors(), tuple()}.
+delete_r_l_s_policy(Client, Input) ->
+    delete_r_l_s_policy(Client, Input, []).
+
+-spec delete_r_l_s_policy(aws_client:aws_client(), delete_r_l_s_policy_request(), proplists:proplist()) ->
+    {ok, delete_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_r_l_s_policy_errors(), tuple()}.
+delete_r_l_s_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteRLSPolicy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deregisters the resource as managed by the Data Catalog.
 %%
 %% When you deregister a path, Lake Formation removes the path from the
@@ -2912,6 +3262,43 @@ describe_transaction(Client, Input) ->
 describe_transaction(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DescribeTransaction"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Detaches a row-level security policy from a resource for a principal.
+%%
+%% After the policy is detached, its filter expression is no longer applied
+%% to the principal's queries on that resource.
+-spec detach_r_l_s_policy(aws_client:aws_client(), detach_r_l_s_policy_request()) ->
+    {ok, detach_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, detach_r_l_s_policy_errors(), tuple()}.
+detach_r_l_s_policy(Client, Input) ->
+    detach_r_l_s_policy(Client, Input, []).
+
+-spec detach_r_l_s_policy(aws_client:aws_client(), detach_r_l_s_policy_request(), proplists:proplist()) ->
+    {ok, detach_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, detach_r_l_s_policy_errors(), tuple()}.
+detach_r_l_s_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DetachRLSPolicy"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3236,6 +3623,41 @@ get_query_statistics(Client, Input) ->
 get_query_statistics(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetQueryStatistics"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the definition of a row-level security policy, including its
+%% attachment columns and filter expression.
+-spec get_r_l_s_policy(aws_client:aws_client(), get_r_l_s_policy_request()) ->
+    {ok, get_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_r_l_s_policy_errors(), tuple()}.
+get_r_l_s_policy(Client, Input) ->
+    get_r_l_s_policy(Client, Input, []).
+
+-spec get_r_l_s_policy(aws_client:aws_client(), get_r_l_s_policy_request(), proplists:proplist()) ->
+    {ok, get_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_r_l_s_policy_errors(), tuple()}.
+get_r_l_s_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetRLSPolicy"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3752,6 +4174,76 @@ list_permissions(Client, Input) ->
 list_permissions(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListPermissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the row-level security policies in the Data Catalog.
+-spec list_r_l_s_policies(aws_client:aws_client(), list_r_l_s_policies_request()) ->
+    {ok, list_r_l_s_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_r_l_s_policies_errors(), tuple()}.
+list_r_l_s_policies(Client, Input) ->
+    list_r_l_s_policies(Client, Input, []).
+
+-spec list_r_l_s_policies(aws_client:aws_client(), list_r_l_s_policies_request(), proplists:proplist()) ->
+    {ok, list_r_l_s_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_r_l_s_policies_errors(), tuple()}.
+list_r_l_s_policies(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListRLSPolicies"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the row-level security policy attachments in the Data Catalog.
+%%
+%% You can filter the results by resource, principal, or policy name.
+-spec list_r_l_s_policy_attachments(aws_client:aws_client(), list_r_l_s_policy_attachments_request()) ->
+    {ok, list_r_l_s_policy_attachments_response(), tuple()} |
+    {error, any()} |
+    {error, list_r_l_s_policy_attachments_errors(), tuple()}.
+list_r_l_s_policy_attachments(Client, Input) ->
+    list_r_l_s_policy_attachments(Client, Input, []).
+
+-spec list_r_l_s_policy_attachments(aws_client:aws_client(), list_r_l_s_policy_attachments_request(), proplists:proplist()) ->
+    {ok, list_r_l_s_policy_attachments_response(), tuple()} |
+    {error, any()} |
+    {error, list_r_l_s_policy_attachments_errors(), tuple()}.
+list_r_l_s_policy_attachments(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListRLSPolicyAttachments"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4337,6 +4829,43 @@ update_lake_formation_identity_center_configuration(Client, Input) ->
 update_lake_formation_identity_center_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateLakeFormationIdentityCenterConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the filter expression of an existing row-level security
+%% policy.
+%%
+%% The change applies to all attachments of the policy.
+-spec update_r_l_s_policy(aws_client:aws_client(), update_r_l_s_policy_request()) ->
+    {ok, update_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_r_l_s_policy_errors(), tuple()}.
+update_r_l_s_policy(Client, Input) ->
+    update_r_l_s_policy(Client, Input, []).
+
+-spec update_r_l_s_policy(aws_client:aws_client(), update_r_l_s_policy_request(), proplists:proplist()) ->
+    {ok, update_r_l_s_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_r_l_s_policy_errors(), tuple()}.
+update_r_l_s_policy(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateRLSPolicy"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

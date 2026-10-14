@@ -34,6 +34,8 @@
          get_contact_reachability_status/3,
          get_domain_detail/2,
          get_domain_detail/3,
+         get_domain_prices/2,
+         get_domain_prices/3,
          get_domain_suggestions/2,
          get_domain_suggestions/3,
          get_operation_detail/2,
@@ -135,7 +137,8 @@
 
 %% Example:
 %% check_domain_availability_response() :: #{
-%%   <<"Availability">> => list(any())
+%%   <<"Availability">> => list(any()),
+%%   <<"Price">> => price_with_currency()
 %% }
 -type check_domain_availability_response() :: #{binary() => any()}.
 
@@ -149,6 +152,7 @@
 %% Example:
 %% check_domain_transferability_response() :: #{
 %%   <<"Message">> => string(),
+%%   <<"Price">> => price_with_currency(),
 %%   <<"Transferability">> => domain_transferability()
 %% }
 -type check_domain_transferability_response() :: #{binary() => any()}.
@@ -287,7 +291,8 @@
 %% Example:
 %% domain_suggestion() :: #{
 %%   <<"Availability">> => string(),
-%%   <<"DomainName">> => string()
+%%   <<"DomainName">> => string(),
+%%   <<"Price">> => price_with_currency()
 %% }
 -type domain_suggestion() :: #{binary() => any()}.
 
@@ -401,9 +406,22 @@
 -type get_domain_detail_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_domain_prices_request() :: #{
+%%   <<"DomainName">> := string()
+%% }
+-type get_domain_prices_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_domain_prices_response() :: #{
+%%   <<"DomainPrice">> => domain_price()
+%% }
+-type get_domain_prices_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_domain_suggestions_request() :: #{
 %%   <<"DomainName">> := string(),
 %%   <<"OnlyAvailable">> := boolean(),
+%%   <<"OnlyStandardPrices">> => boolean(),
 %%   <<"SuggestionCount">> := integer()
 %% }
 -type get_domain_suggestions_request() :: #{binary() => any()}.
@@ -530,7 +548,8 @@
 %% Example:
 %% price_with_currency() :: #{
 %%   <<"Currency">> => string(),
-%%   <<"Price">> => float()
+%%   <<"Price">> => float(),
+%%   <<"PriceType">> => list(any())
 %% }
 -type price_with_currency() :: #{binary() => any()}.
 
@@ -546,6 +565,7 @@
 %%   <<"AdminContact">> := contact_detail(),
 %%   <<"AutoRenew">> => boolean(),
 %%   <<"BillingContact">> => contact_detail(),
+%%   <<"Consent">> => consent(),
 %%   <<"DomainName">> := string(),
 %%   <<"DurationInYears">> := integer(),
 %%   <<"IdnLangCode">> => string(),
@@ -578,6 +598,7 @@
 
 %% Example:
 %% renew_domain_request() :: #{
+%%   <<"Consent">> => consent(),
 %%   <<"CurrentExpiryYear">> := integer(),
 %%   <<"DomainName">> := string(),
 %%   <<"DurationInYears">> => integer()
@@ -655,6 +676,7 @@
 %%   <<"AuthCode">> => string(),
 %%   <<"AutoRenew">> => boolean(),
 %%   <<"BillingContact">> => contact_detail(),
+%%   <<"Consent">> => consent(),
 %%   <<"DomainName">> := string(),
 %%   <<"DurationInYears">> => integer(),
 %%   <<"IdnLangCode">> => string(),
@@ -847,6 +869,11 @@
 
 -type get_domain_detail_errors() ::
     unsupported_t_l_d() | 
+    invalid_input().
+
+-type get_domain_prices_errors() ::
+    unsupported_t_l_d() | 
+    t_l_d_in_maintenance() | 
     invalid_input().
 
 -type get_domain_suggestions_errors() ::
@@ -1335,6 +1362,43 @@ get_domain_detail(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDomainDetail">>, Input, Options).
 
+%% @doc Returns the following prices for the specified domain:
+%%
+%% Registration
+%%
+%% Transfer
+%%
+%% Owner change
+%%
+%% Renewal
+%%
+%% Restoration
+%%
+%% For most domains, the prices match the standard prices for the TLD that
+%% the ListPrices:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListPrices.html
+%% operation returns.
+%%
+%% For a premium domain, the registry sets the
+%% price individually. Premium prices might differ from the standard prices
+%% and can change
+%% over time.
+-spec get_domain_prices(aws_client:aws_client(), get_domain_prices_request()) ->
+    {ok, get_domain_prices_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_prices_errors(), tuple()}.
+get_domain_prices(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_domain_prices(Client, Input, []).
+
+-spec get_domain_prices(aws_client:aws_client(), get_domain_prices_request(), proplists:proplist()) ->
+    {ok, get_domain_prices_response(), tuple()} |
+    {error, any()} |
+    {error, get_domain_prices_errors(), tuple()}.
+get_domain_prices(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDomainPrices">>, Input, Options).
+
 %% @doc The GetDomainSuggestions operation returns a list of suggested domain
 %% names.
 -spec get_domain_suggestions(aws_client:aws_client(), get_domain_suggestions_request()) ->
@@ -1422,9 +1486,17 @@ list_operations(Client, Input, Options)
 %%
 %% Owner change
 %%
-%% Domain renewal
+%% Renewal
 %%
-%% Domain restoration
+%% Restoration
+%%
+%% The prices that `ListPrices' returns are the standard rates for a TLD.
+%%
+%% `ListPrices' doesn't return registry premium prices, which apply
+%% to
+%% individual domain names rather than to a TLD. To get accurate pricing for
+%% a specific
+%% domain name, including premium prices, call `GetDomainPrices'.
 -spec list_prices(aws_client:aws_client(), list_prices_request()) ->
     {ok, list_prices_response(), tuple()} |
     {error, any()} |

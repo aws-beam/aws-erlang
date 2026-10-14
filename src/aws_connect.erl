@@ -113,6 +113,8 @@
          create_contact/3,
          create_contact_flow/3,
          create_contact_flow/4,
+         create_contact_flow_alias/4,
+         create_contact_flow_alias/5,
          create_contact_flow_module/3,
          create_contact_flow_module/4,
          create_contact_flow_module_alias/4,
@@ -195,6 +197,8 @@
          delete_contact_evaluation/5,
          delete_contact_flow/4,
          delete_contact_flow/5,
+         delete_contact_flow_alias/5,
+         delete_contact_flow_alias/6,
          delete_contact_flow_module/4,
          delete_contact_flow_module/5,
          delete_contact_flow_module_alias/5,
@@ -285,6 +289,9 @@
          describe_contact_flow/3,
          describe_contact_flow/5,
          describe_contact_flow/6,
+         describe_contact_flow_alias/4,
+         describe_contact_flow_alias/6,
+         describe_contact_flow_alias/7,
          describe_contact_flow_module/3,
          describe_contact_flow_module/5,
          describe_contact_flow_module/6,
@@ -492,6 +499,9 @@
          list_contact_evaluations/3,
          list_contact_evaluations/5,
          list_contact_evaluations/6,
+         list_contact_flow_aliases/3,
+         list_contact_flow_aliases/5,
+         list_contact_flow_aliases/6,
          list_contact_flow_module_aliases/3,
          list_contact_flow_module_aliases/5,
          list_contact_flow_module_aliases/6,
@@ -820,6 +830,8 @@
          update_contact_attributes/3,
          update_contact_evaluation/4,
          update_contact_evaluation/5,
+         update_contact_flow_alias/5,
+         update_contact_flow_alias/6,
          update_contact_flow_content/4,
          update_contact_flow_content/5,
          update_contact_flow_metadata/4,
@@ -2286,6 +2298,33 @@
 
 
 %% Example:
+%% contact_flow_alias_info() :: #{
+%%   <<"AliasId">> => string(),
+%%   <<"ContactFlowArn">> => string(),
+%%   <<"ContactFlowId">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Name">> => string(),
+%%   <<"Version">> => float()
+%% }
+-type contact_flow_alias_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_flow_alias_summary() :: #{
+%%   <<"AliasDescription">> => string(),
+%%   <<"AliasId">> => string(),
+%%   <<"AliasName">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Version">> => float()
+%% }
+-type contact_flow_alias_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_flow_attribute_and_condition() :: #{
 %%   <<"ContactFlowTypeCondition">> => contact_flow_type_condition(),
 %%   <<"TagConditions">> => list(tag_condition())
@@ -2434,6 +2473,8 @@
 %% Example:
 %% contact_flow_version_summary() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"LastModifiedRegion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Version">> => float(),
 %%   <<"VersionDescription">> => string()
 %% }
@@ -2625,6 +2666,23 @@
 %%   <<"TemplateId">> => string()
 %% }
 -type create_case_action_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_alias_request() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"ContactFlowVersion">> := float(),
+%%   <<"Description">> => string()
+%% }
+-type create_contact_flow_alias_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_contact_flow_alias_response() :: #{
+%%   <<"ContactFlowArn">> => string(),
+%%   <<"Id">> => string()
+%% }
+-type create_contact_flow_alias_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3699,6 +3757,14 @@
 -type delete_contact_evaluation_request() :: #{}.
 
 %% Example:
+%% delete_contact_flow_alias_request() :: #{}
+-type delete_contact_flow_alias_request() :: #{}.
+
+%% Example:
+%% delete_contact_flow_alias_response() :: #{}
+-type delete_contact_flow_alias_response() :: #{}.
+
+%% Example:
 %% delete_contact_flow_module_alias_request() :: #{}
 -type delete_contact_flow_module_alias_request() :: #{}.
 
@@ -3998,6 +4064,17 @@
 %%   <<"EvaluationForm">> => evaluation_form_content()
 %% }
 -type describe_contact_evaluation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_contact_flow_alias_request() :: #{}
+-type describe_contact_flow_alias_request() :: #{}.
+
+
+%% Example:
+%% describe_contact_flow_alias_response() :: #{
+%%   <<"ContactFlowAlias">> => contact_flow_alias_info()
+%% }
+-type describe_contact_flow_alias_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_contact_flow_module_alias_request() :: #{}
@@ -6615,6 +6692,22 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_contact_evaluations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flow_aliases_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_aliases_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contact_flow_aliases_response() :: #{
+%%   <<"ContactFlowAliasSummaryList">> => list(contact_flow_alias_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contact_flow_aliases_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -11097,6 +11190,19 @@
 
 
 %% Example:
+%% update_contact_flow_alias_request() :: #{
+%%   <<"ContactFlowVersion">> => float(),
+%%   <<"Description">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type update_contact_flow_alias_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_contact_flow_alias_response() :: #{}
+-type update_contact_flow_alias_response() :: #{}.
+
+
+%% Example:
 %% update_contact_flow_content_request() :: #{
 %%   <<"Content">> := string()
 %% }
@@ -12726,6 +12832,16 @@
     internal_service_exception() | 
     duplicate_resource_exception().
 
+-type create_contact_flow_alias_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    access_denied_exception().
+
 -type create_contact_flow_module_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -13101,6 +13217,14 @@
     internal_service_exception() | 
     access_denied_exception().
 
+-type delete_contact_flow_alias_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
 -type delete_contact_flow_module_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -13419,6 +13543,14 @@
     invalid_parameter_exception() | 
     internal_service_exception() | 
     contact_flow_not_published_exception().
+
+-type describe_contact_flow_alias_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type describe_contact_flow_module_errors() ::
     throttling_exception() | 
@@ -13983,6 +14115,14 @@
     resource_not_found_exception() | 
     invalid_parameter_exception() | 
     internal_service_exception().
+
+-type list_contact_flow_aliases_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_contact_flow_module_aliases_errors() ::
     throttling_exception() | 
@@ -14998,6 +15138,16 @@
     resource_conflict_exception() | 
     invalid_parameter_exception() | 
     internal_service_exception().
+
+-type update_contact_flow_alias_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    duplicate_resource_exception() | 
+    conditional_operation_failed_exception() | 
+    access_denied_exception().
 
 -type update_contact_flow_content_errors() ::
     throttling_exception() | 
@@ -17143,6 +17293,40 @@ create_contact_flow(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a named alias that points to a specific version of a flow.
+-spec create_contact_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), create_contact_flow_alias_request()) ->
+    {ok, create_contact_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, create_contact_flow_alias_errors(), tuple()}.
+create_contact_flow_alias(Client, ContactFlowId, InstanceId, Input) ->
+    create_contact_flow_alias(Client, ContactFlowId, InstanceId, Input, []).
+
+-spec create_contact_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), create_contact_flow_alias_request(), proplists:proplist()) ->
+    {ok, create_contact_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, create_contact_flow_alias_errors(), tuple()}.
+create_contact_flow_alias(Client, ContactFlowId, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/alias"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a flow module for the specified Connect Customer instance.
 -spec create_contact_flow_module(aws_client:aws_client(), binary() | list(), create_contact_flow_module_request()) ->
     {ok, create_contact_flow_module_response(), tuple()} |
@@ -17253,9 +17437,7 @@ create_contact_flow_module_version(Client, ContactFlowModuleId, InstanceId, Inpu
 %% Versions are immutable and monotonically increasing. If the
 %% `FlowContentSha256' provided is different from the
 %% `FlowContentSha256' of the
-%% `$LATEST' published flow content, then an error is returned. This API
-%% only supports creating versions for
-%% flows of type `Campaign'.
+%% `$LATEST' published flow content, then an error is returned.
 -spec create_contact_flow_version(aws_client:aws_client(), binary() | list(), binary() | list(), create_contact_flow_version_request()) ->
     {ok, create_contact_flow_version_response(), tuple()} |
     {error, any()} |
@@ -18797,6 +18979,41 @@ delete_contact_flow(Client, ContactFlowId, InstanceId, Input) ->
 delete_contact_flow(Client, ContactFlowId, InstanceId, Input0, Options0) ->
     Method = delete,
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an alias from a flow without deleting the version that the
+%% alias points to.
+-spec delete_contact_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_contact_flow_alias_request()) ->
+    {ok, delete_contact_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, delete_contact_flow_alias_errors(), tuple()}.
+delete_contact_flow_alias(Client, AliasId, ContactFlowId, InstanceId, Input) ->
+    delete_contact_flow_alias(Client, AliasId, ContactFlowId, InstanceId, Input, []).
+
+-spec delete_contact_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_contact_flow_alias_request(), proplists:proplist()) ->
+    {ok, delete_contact_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, delete_contact_flow_alias_errors(), tuple()}.
+delete_contact_flow_alias(Client, AliasId, ContactFlowId, InstanceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/alias/", aws_util:encode_uri(AliasId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -20427,6 +20644,44 @@ describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap)
 describe_contact_flow(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a specific flow alias, including the
+%% version that it points to.
+-spec describe_contact_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_contact_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_contact_flow_alias_errors(), tuple()}.
+describe_contact_flow_alias(Client, AliasId, ContactFlowId, InstanceId)
+  when is_map(Client) ->
+    describe_contact_flow_alias(Client, AliasId, ContactFlowId, InstanceId, #{}, #{}).
+
+-spec describe_contact_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_contact_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_contact_flow_alias_errors(), tuple()}.
+describe_contact_flow_alias(Client, AliasId, ContactFlowId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_contact_flow_alias(Client, AliasId, ContactFlowId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec describe_contact_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_contact_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, describe_contact_flow_alias_errors(), tuple()}.
+describe_contact_flow_alias(Client, AliasId, ContactFlowId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/alias/", aws_util:encode_uri(AliasId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -23841,6 +24096,49 @@ list_contact_evaluations(Client, InstanceId, ContactId, QueryMap, HeadersMap, Op
     Query0_ =
       [
         {<<"contactId">>, ContactId},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the aliases associated with a flow, including the version that
+%% each alias points to.
+-spec list_contact_flow_aliases(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_contact_flow_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_aliases_errors(), tuple()}.
+list_contact_flow_aliases(Client, ContactFlowId, InstanceId)
+  when is_map(Client) ->
+    list_contact_flow_aliases(Client, ContactFlowId, InstanceId, #{}, #{}).
+
+-spec list_contact_flow_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_contact_flow_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_aliases_errors(), tuple()}.
+list_contact_flow_aliases(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_contact_flow_aliases(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, []).
+
+-spec list_contact_flow_aliases(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_contact_flow_aliases_response(), tuple()} |
+    {error, any()} |
+    {error, list_contact_flow_aliases_errors(), tuple()}.
+list_contact_flow_aliases(Client, ContactFlowId, InstanceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/aliases"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -29856,6 +30154,41 @@ update_contact_evaluation(Client, EvaluationId, InstanceId, Input) ->
 update_contact_evaluation(Client, EvaluationId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/contact-evaluations/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the name, description, or flow version associated with an
+%% alias.
+-spec update_contact_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_contact_flow_alias_request()) ->
+    {ok, update_contact_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, update_contact_flow_alias_errors(), tuple()}.
+update_contact_flow_alias(Client, AliasId, ContactFlowId, InstanceId, Input) ->
+    update_contact_flow_alias(Client, AliasId, ContactFlowId, InstanceId, Input, []).
+
+-spec update_contact_flow_alias(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_contact_flow_alias_request(), proplists:proplist()) ->
+    {ok, update_contact_flow_alias_response(), tuple()} |
+    {error, any()} |
+    {error, update_contact_flow_alias_errors(), tuple()}.
+update_contact_flow_alias(Client, AliasId, ContactFlowId, InstanceId, Input0, Options0) ->
+    Method = post,
+    Path = ["/contact-flows/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(ContactFlowId), "/alias/", aws_util:encode_uri(AliasId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

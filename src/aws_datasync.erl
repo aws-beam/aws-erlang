@@ -972,6 +972,7 @@
 %%   <<"Gid">> => list(any()),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Mtime">> => list(any()),
+%%   <<"ObjectMetadata">> => list(any()),
 %%   <<"ObjectTags">> => list(any()),
 %%   <<"OverwriteMode">> => list(any()),
 %%   <<"PosixPermissions">> => list(any()),

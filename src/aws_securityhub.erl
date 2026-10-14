@@ -619,6 +619,7 @@
 %% automation_rules_action_v2() :: #{
 %%   <<"ExternalIntegrationConfiguration">> => external_integration_configuration(),
 %%   <<"FindingFieldsUpdate">> => automation_rules_finding_fields_update_v2(),
+%%   <<"ResourceFieldsUpdate">> => automation_rules_resource_fields_update_v2(),
 %%   <<"Type">> => list(any())
 %% }
 -type automation_rules_action_v2() :: #{binary() => any()}.
@@ -740,6 +741,13 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type automation_rules_metadata_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% automation_rules_resource_fields_update_v2() :: #{
+%%   <<"Criticality">> => list(any())
+%% }
+-type automation_rules_resource_fields_update_v2() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6826,6 +6834,14 @@
 
 
 %% Example:
+%% criticality_source() :: #{
+%%   <<"Reason">> => string(),
+%%   <<"Source">> => list(any())
+%% }
+-type criticality_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% cspm_connector_summary() :: #{
 %%   <<"ConnectorArn">> => string(),
 %%   <<"ConnectorId">> => string(),
@@ -9389,6 +9405,7 @@
 %% resource_result() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"AccountName">> => string(),
+%%   <<"CriticalitySources">> => list(criticality_source()),
 %%   <<"DiscoveryType">> => list(any()),
 %%   <<"FindingsSummary">> => list(resource_findings_summary()),
 %%   <<"Region">> => string(),
@@ -9396,6 +9413,7 @@
 %%   <<"ResourceCloudPartition">> => string(),
 %%   <<"ResourceConfig">> => any(),
 %%   <<"ResourceCreationTimeDt">> => string(),
+%%   <<"ResourceCriticality">> => list(any()),
 %%   <<"ResourceDetailCaptureTimeDt">> => string(),
 %%   <<"ResourceGuid">> => string(),
 %%   <<"ResourceId">> => string(),

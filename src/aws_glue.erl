@@ -6201,7 +6201,8 @@
 %% integration_config() :: #{
 %%   <<"ContinuousSync">> => boolean(),
 %%   <<"RefreshInterval">> => string(),
-%%   <<"SourceProperties">> => map()
+%%   <<"SourceProperties">> => map(),
+%%   <<"TargetNamespace">> => string()
 %% }
 -type integration_config() :: #{binary() => any()}.
 

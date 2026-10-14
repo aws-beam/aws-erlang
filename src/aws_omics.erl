@@ -2439,6 +2439,7 @@
 
 %% Example:
 %% registry_mapping() :: #{
+%%   <<"credentialArn">> => string(),
 %%   <<"ecrAccountId">> => string(),
 %%   <<"ecrRepositoryPrefix">> => string(),
 %%   <<"upstreamRegistryUrl">> => string(),

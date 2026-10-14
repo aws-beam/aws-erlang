@@ -137,6 +137,7 @@
 
 %% Example:
 %% auth_config() :: #{
+%%   <<"AudienceOverride">> => string(),
 %%   <<"AuthType">> => list(any()),
 %%   <<"CredentialProviderIdentifier">> => string()
 %% }

@@ -830,6 +830,39 @@
 -type service_quota_warning_summary() :: #{binary() => any()}.
 
 %% Example:
+%% ssm_document_config() :: #{
+%%   <<"crossAccountRole">> => string(),
+%%   <<"documentArn">> => string(),
+%%   <<"documentVersion">> => string(),
+%%   <<"externalId">> => [string()],
+%%   <<"parameters">> => map(),
+%%   <<"targets">> => list(ssm_target())
+%% }
+-type ssm_document_config() :: #{binary() => any()}.
+
+%% Example:
+%% ssm_send_command_configuration() :: #{
+%%   <<"regionDocuments">> => map(),
+%%   <<"retryIntervalMinutes">> => [float()],
+%%   <<"timeoutMinutes">> => [integer()],
+%%   <<"ungraceful">> => ssm_send_command_ungraceful()
+%% }
+-type ssm_send_command_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% ssm_send_command_ungraceful() :: #{
+%%   <<"behavior">> => list(any())
+%% }
+-type ssm_send_command_ungraceful() :: #{binary() => any()}.
+
+%% Example:
+%% ssm_target() :: #{
+%%   <<"key">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type ssm_target() :: #{binary() => any()}.
+
+%% Example:
 %% start_plan_execution_request() :: #{
 %%   <<"action">> := list(any()),
 %%   <<"clientToken">> => [string()],
@@ -1348,11 +1381,11 @@ list_route53_health_checks_in_region(Client, Input, Options)
 %% another Region or account in the plan.
 %%
 %% Returns the warnings for the plans that you own and for plans that are
-%% shared with your account through AWS Resource Access Manager (AWS RAM). To
-%% return warnings for specific plans, provide a list of plan Amazon Resource
-%% Names (ARNs). Region switch ignores any plan ARN that you can't
-%% access. If you don't provide any plan ARNs, Region switch returns the
-%% warnings for all of your accessible plans.
+%% shared with your account through Resource Access Manager (RAM). To return
+%% warnings for specific plans, provide a list of plan Amazon Resource Names
+%% (ARNs). Region switch ignores any plan ARN that you can't access. If
+%% you don't provide any plan ARNs, Region switch returns the warnings
+%% for all of your accessible plans.
 -spec list_service_quota_warnings(aws_client:aws_client(), list_service_quota_warnings_request()) ->
     {ok, list_service_quota_warnings_response(), tuple()} |
     {error, any()} |

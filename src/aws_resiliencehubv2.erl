@@ -422,6 +422,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"dependencyDiscovery">> => list(any()),
 %%   <<"description">> => string(),
+%%   <<"devOpsAgentConfiguration">> => dev_ops_agent_configuration(),
 %%   <<"kmsKeyId">> => string(),
 %%   <<"name">> := string(),
 %%   <<"permissionModel">> := permission_model(),
@@ -696,6 +697,37 @@
 
 
 %% Example:
+%% dev_ops_agent_configuration() :: #{
+%%   <<"agentSpaceArn">> => string()
+%% }
+-type dev_ops_agent_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% dev_ops_agent_configuration_view() :: #{
+%%   <<"agentSpaceArn">> => string(),
+%%   <<"agentSpaceId">> => string(),
+%%   <<"connectedAt">> => [non_neg_integer()],
+%%   <<"operatorAppUrl">> => [string()],
+%%   <<"region">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type dev_ops_agent_configuration_view() :: #{binary() => any()}.
+
+
+%% Example:
+%% dev_ops_agent_investigation() :: #{
+%%   <<"confidence">> => list(any()),
+%%   <<"deepLink">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"summary">> => [string()],
+%%   <<"verdict">> => list(any())
+%% }
+-type dev_ops_agent_investigation() :: #{binary() => any()}.
+
+
+%% Example:
 %% disaster_recovery_source() :: #{
 %%   <<"policyName">> => string(),
 %%   <<"source">> => list(any()),
@@ -785,6 +817,7 @@
 %%   <<"failureCategory">> => list(any()),
 %%   <<"findingId">> => string(),
 %%   <<"infrastructureAndCodeRecommendations">> => list(infrastructure_and_code_recommendation()),
+%%   <<"investigationDeepLink">> => [string()],
 %%   <<"name">> => [string()],
 %%   <<"observabilityRecommendations">> => list(observability_recommendation()),
 %%   <<"policyComponent">> => list(any()),
@@ -803,6 +836,7 @@
 %%   <<"description">> => string(),
 %%   <<"failureCategory">> => list(any()),
 %%   <<"findingId">> => string(),
+%%   <<"investigationDeepLink">> => [string()],
 %%   <<"name">> => [string()],
 %%   <<"policyComponent">> => list(any()),
 %%   <<"serviceArn">> => string(),
@@ -1698,9 +1732,13 @@
 
 %% Example:
 %% resource() :: #{
+%%   <<"availabilityZoneId">> => [string()],
+%%   <<"availabilityZoneName">> => [string()],
 %%   <<"awsAccountId">> => string(),
 %%   <<"awsRegion">> => string(),
+%%   <<"containmentParentId">> => [string()],
 %%   <<"identifier">> => [string()],
+%%   <<"logicalResourceGroupId">> => [string()],
 %%   <<"resourceType">> => [string()]
 %% }
 -type resource() :: #{binary() => any()}.
@@ -1757,6 +1795,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"dependencyDiscovery">> => dependency_discovery_config(),
 %%   <<"description">> => string(),
+%%   <<"devOpsAgentConfiguration">> => dev_ops_agent_configuration_view(),
 %%   <<"effectivePolicyValues">> => effective_policy_values(),
 %%   <<"estimatedAssessmentCost">> => assessment_cost(),
 %%   <<"kmsKeyId">> => string(),
@@ -1964,6 +2003,8 @@
 %%   <<"associatedSystems">> => list(associated_system()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"dependencyDiscovery">> => dependency_discovery_config(),
+%%   <<"devOpsAgentSpaceArn">> => string(),
+%%   <<"devOpsAgentStatus">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"openFindingsCount">> => [integer()],
 %%   <<"organizationId">> => string(),
@@ -2294,6 +2335,7 @@
 %% Example:
 %% test_run() :: #{
 %%   <<"accountTargeting">> => list(any()),
+%%   <<"devOpsAgentInvestigation">> => dev_ops_agent_investigation(),
 %%   <<"endedAt">> => [non_neg_integer()],
 %%   <<"errorMessage">> => [string()],
 %%   <<"eventCount">> => [integer()],
@@ -2586,6 +2628,7 @@
 %%   <<"associatedSystems">> => list(associated_system()),
 %%   <<"dependencyDiscovery">> => list(any()),
 %%   <<"description">> => string(),
+%%   <<"devOpsAgentConfiguration">> => dev_ops_agent_configuration(),
 %%   <<"permissionModel">> => permission_model(),
 %%   <<"policyArn">> => string(),
 %%   <<"regions">> => list(string()),
@@ -2904,6 +2947,7 @@
 
 -type import_app_errors() ::
     validation_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -2911,6 +2955,7 @@
 
 -type import_policy_errors() ::
     validation_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 

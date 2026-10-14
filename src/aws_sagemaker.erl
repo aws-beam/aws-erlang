@@ -1402,6 +1402,13 @@
 -type athena_dataset_definition() :: #{binary() => any()}.
 
 %% Example:
+%% athena_step_metadata() :: #{
+%%   <<"QueryExecutionId">> => string(),
+%%   <<"S3OutputLocation">> => string()
+%% }
+-type athena_step_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% attach_cluster_node_network_interface_request() :: #{
 %%   <<"ClusterName">> := string(),
 %%   <<"NetworkInterfaceId">> := string(),
@@ -2136,6 +2143,22 @@
 %%   <<"Language">> => list(any())
 %% }
 -type clarify_text_config() :: #{binary() => any()}.
+
+%% Example:
+%% cleanup_failure() :: #{
+%%   <<"ErrorCode">> => list(any()),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"StepName">> => string()
+%% }
+-type cleanup_failure() :: #{binary() => any()}.
+
+%% Example:
+%% cleanup_step_metadata() :: #{
+%%   <<"CleanedSteps">> => list(string()),
+%%   <<"FailedSteps">> => list(cleanup_failure()),
+%%   <<"SkippedSteps">> => list(string())
+%% }
+-type cleanup_step_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_accounting_database() :: #{
@@ -7166,6 +7189,15 @@
 -type emr_serverless_settings() :: #{binary() => any()}.
 
 %% Example:
+%% emr_serverless_step_metadata() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"JobRunId">> => string(),
+%%   <<"JobRunName">> => string(),
+%%   <<"LogFilePath">> => string()
+%% }
+-type emr_serverless_step_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% emr_settings() :: #{
 %%   <<"AssumableRoleArns">> => list(string()),
 %%   <<"ExecutionRoleArns">> => list(string())
@@ -7555,6 +7587,25 @@
 %%   <<"FlowDefinitionStatus">> => list(any())
 %% }
 -type flow_definition_summary() :: #{binary() => any()}.
+
+%% Example:
+%% for_each_selector_result() :: #{
+%%   <<"Index">> => integer(),
+%%   <<"StepName">> => string()
+%% }
+-type for_each_selector_result() :: #{binary() => any()}.
+
+%% Example:
+%% for_each_step_metadata() :: #{
+%%   <<"FailedStepCount">> => integer(),
+%%   <<"InputItemCount">> => integer(),
+%%   <<"Selector">> => for_each_selector_result(),
+%%   <<"Status">> => list(any()),
+%%   <<"StoppedStepCount">> => integer(),
+%%   <<"SucceededStepCount">> => integer(),
+%%   <<"TotalStepCount">> => integer()
+%% }
+-type for_each_step_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% generative_ai_settings() :: #{
@@ -8458,6 +8509,14 @@
 %%   <<"MinValue">> => string()
 %% }
 -type integer_parameter_range_specification() :: #{binary() => any()}.
+
+%% Example:
+%% iteration_context() :: #{
+%%   <<"Index">> => integer(),
+%%   <<"Item">> => string(),
+%%   <<"ParentStepName">> => string()
+%% }
+-type iteration_context() :: #{binary() => any()}.
 
 %% Example:
 %% job() :: #{
@@ -11827,6 +11886,7 @@
 %%   <<"CacheHitResult">> => cache_hit_result(),
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"FailureReason">> => string(),
+%%   <<"IterationContext">> => iteration_context(),
 %%   <<"Metadata">> => pipeline_execution_step_metadata(),
 %%   <<"SelectiveExecutionResult">> => selective_execution_result(),
 %%   <<"StartTime">> => non_neg_integer(),
@@ -11839,6 +11899,7 @@
 
 %% Example:
 %% pipeline_execution_step_metadata() :: #{
+%%   <<"Athena">> => athena_step_metadata(),
 %%   <<"AutoMLJob">> => auto_ml_job_step_metadata(),
 %%   <<"BedrockCustomModel">> => bedrock_custom_model_metadata(),
 %%   <<"BedrockCustomModelDeployment">> => bedrock_custom_model_deployment_metadata(),
@@ -11846,11 +11907,14 @@
 %%   <<"BedrockProvisionedModelThroughput">> => bedrock_provisioned_model_throughput_metadata(),
 %%   <<"Callback">> => callback_step_metadata(),
 %%   <<"ClarifyCheck">> => clarify_check_step_metadata(),
+%%   <<"Cleanup">> => cleanup_step_metadata(),
 %%   <<"Condition">> => condition_step_metadata(),
 %%   <<"EMR">> => emr_step_metadata(),
+%%   <<"EMRServerless">> => emr_serverless_step_metadata(),
 %%   <<"Endpoint">> => endpoint_step_metadata(),
 %%   <<"EndpointConfig">> => endpoint_config_step_metadata(),
 %%   <<"Fail">> => fail_step_metadata(),
+%%   <<"ForEach">> => for_each_step_metadata(),
 %%   <<"InferenceComponent">> => inference_component_metadata(),
 %%   <<"Job">> => job_step_metadata(),
 %%   <<"Lambda">> => lambda_step_metadata(),
