@@ -401,11 +401,29 @@
 %%====================================================================
 
 %% @doc
+%% The Amazon Web Services Marketplace AI Metering Agent Skill
+%% (`aws-marketplace-metering') helps an AI
+%% coding agent integrate your SaaS product's usage reporting with the
+%% `BatchMeterUsage' API.
+%%
+%% The skill is a curated package of instructions and
+%% reference material that guides your AI coding agent through building,
+%% deploying, and
+%% testing the metering integration. To get the skill on demand without
+%% checking it out
+%% locally, install the Amazon Web Services MCP Server:
+%% https://docs.aws.amazon.com/agent-toolkit/latest/userguide/mcp-server.html
+%% in your coding agent; the agent then discovers and loads
+%% the skill at runtime. The skill source is also available on GitHub:
+%% https://github.com/aws/agent-toolkit-for-aws/blob/main/skills/specialized-skills/aws-marketplace-skills/aws-marketplace-metering.
+%% For more information, see Get started with the Amazon Web Services
+%% Marketplace AI Metering Agent Skill:
+%% https://aws.amazon.com/blogs/awsmarketplace/build-aws-marketplace-saas-metering-with-the-metering-agent-skill/
+%% on the Amazon Web Services Marketplace blog.
+%%
 %% Amazon Web Services Marketplace is introducing Concurrent Agreements,
 %% enabling buyers to make multiple purchases per Amazon Web Services
-%% account.
-%%
-%% Starting June 1, 2026, new SaaS products must use
+%% account. Starting June 1, 2026, new SaaS products must use
 %% `CustomerAWSAccountId' (instead of `CustomerIdentifier'),
 %% `LicenseArn' (instead of `ProductCode') to support this feature.
 %% `BatchMeterUsage' does not support `CustomerIdentifier' for new

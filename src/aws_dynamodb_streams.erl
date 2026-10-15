@@ -78,7 +78,8 @@
 %%   <<"SequenceNumber">> => string(),
 %%   <<"ShardId">> := string(),
 %%   <<"ShardIteratorType">> := list(any()),
-%%   <<"StreamArn">> := string()
+%%   <<"StreamArn">> := string(),
+%%   <<"Timestamp">> => non_neg_integer()
 %% }
 -type get_shard_iterator_input() :: #{binary() => any()}.
 

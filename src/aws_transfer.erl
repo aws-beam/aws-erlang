@@ -349,6 +349,7 @@
 %%   <<"EndpointDetails">> => endpoint_details(),
 %%   <<"EndpointType">> => list(any()),
 %%   <<"HostKey">> => string(),
+%%   <<"HostKeyStorageType">> => list(any()),
 %%   <<"IdentityProviderDetails">> => identity_provider_details(),
 %%   <<"IdentityProviderType">> => list(any()),
 %%   <<"IpAddressType">> => list(any()),
@@ -807,6 +808,8 @@
 %%   <<"Description">> => string(),
 %%   <<"HostKeyFingerprint">> => string(),
 %%   <<"HostKeyId">> => string(),
+%%   <<"SecretId">> => string(),
+%%   <<"StorageType">> => list(any()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"Type">> => string()
 %% }
@@ -1027,7 +1030,9 @@
 %% import_host_key_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"HostKeyBody">> := string(),
+%%   <<"KmsKey">> => string(),
 %%   <<"ServerId">> := string(),
+%%   <<"StorageType">> => list(any()),
 %%   <<"Tags">> => list(tag())
 %% }
 -type import_host_key_request() :: #{binary() => any()}.
@@ -1348,6 +1353,8 @@
 %%   <<"Description">> => string(),
 %%   <<"Fingerprint">> => string(),
 %%   <<"HostKeyId">> => string(),
+%%   <<"SecretId">> => string(),
+%%   <<"StorageType">> => list(any()),
 %%   <<"Type">> => string()
 %% }
 -type listed_host_key() :: #{binary() => any()}.
@@ -1764,9 +1771,11 @@
 
 %% Example:
 %% update_host_key_request() :: #{
-%%   <<"Description">> := string(),
+%%   <<"Description">> => string(),
 %%   <<"HostKeyId">> := string(),
-%%   <<"ServerId">> := string()
+%%   <<"KmsKey">> => string(),
+%%   <<"ServerId">> := string(),
+%%   <<"StorageType">> => list(any())
 %% }
 -type update_host_key_request() :: #{binary() => any()}.
 
@@ -3881,8 +3890,17 @@ update_connector(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateConnector">>, Input, Options).
 
-%% @doc Updates the description for the host key that's specified by the
-%% `ServerId' and `HostKeyId' parameters.
+%% @doc Updates the host key that's specified by the `ServerId' and
+%% `HostKeyId' parameters.
+%%
+%% You can update the description of the host key, change where the host key
+%% is stored by specifying the `StorageType', and specify the KMS key
+%% used to encrypt the host key when it's stored in Secrets Manager.
+%%
+%% To change a host key's storage type from `SERVICE_MANAGED' to
+%% `SECRETS_MANAGER', you must have the `transfer:ExportHostKey'
+%% permission. `transfer:ExportHostKey' is a permission-only action that
+%% has no corresponding API operation.
 -spec update_host_key(aws_client:aws_client(), update_host_key_request()) ->
     {ok, update_host_key_response(), tuple()} |
     {error, any()} |

@@ -554,7 +554,8 @@
 %% Example:
 %% chained_invoke_options() :: #{
 %%   <<"FunctionName">> => string(),
-%%   <<"TenantId">> => string()
+%%   <<"TenantId">> => string(),
+%%   <<"XAmznTraceId">> => string()
 %% }
 -type chained_invoke_options() :: #{binary() => any()}.
 

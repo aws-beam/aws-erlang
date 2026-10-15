@@ -518,7 +518,8 @@
 %% lambdas() :: #{
 %%   <<"arn">> => string(),
 %%   <<"crossAccountRole">> => string(),
-%%   <<"externalId">> => [string()]
+%%   <<"externalId">> => [string()],
+%%   <<"payload">> => string()
 %% }
 -type lambdas() :: #{binary() => any()}.
 

@@ -249,6 +249,14 @@
 
 
 %% Example:
+%% auto_scaling_group_configuration() :: #{
+%%   <<"capacityWaitTimeoutSeconds">> => integer(),
+%%   <<"name">> => string()
+%% }
+-type auto_scaling_group_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% call_rate_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -639,12 +647,14 @@
 %%   <<"keyPair">> => string(),
 %%   <<"logging">> => logging(),
 %%   <<"name">> := string(),
+%%   <<"parentInstance">> => parent_instance_configuration(),
 %%   <<"placement">> => placement(),
 %%   <<"resourceTags">> => map(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"snsTopicArn">> => string(),
 %%   <<"subnetId">> => string(),
 %%   <<"tags">> => map(),
+%%   <<"terminateInstanceOnCompletion">> => boolean(),
 %%   <<"terminateInstanceOnFailure">> => boolean()
 %% }
 -type create_infrastructure_configuration_request() :: #{binary() => any()}.
@@ -1649,12 +1659,14 @@
 %%   <<"keyPair">> => string(),
 %%   <<"logging">> => logging(),
 %%   <<"name">> => string(),
+%%   <<"parentInstance">> => parent_instance_configuration(),
 %%   <<"placement">> => placement(),
 %%   <<"resourceTags">> => map(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"snsTopicArn">> => string(),
 %%   <<"subnetId">> => string(),
 %%   <<"tags">> => map(),
+%%   <<"terminateInstanceOnCompletion">> => boolean(),
 %%   <<"terminateInstanceOnFailure">> => boolean()
 %% }
 -type infrastructure_configuration() :: #{binary() => any()}.
@@ -2393,6 +2405,13 @@
 
 
 %% Example:
+%% parent_instance_configuration() :: #{
+%%   <<"autoScalingGroup">> => auto_scaling_group_configuration()
+%% }
+-type parent_instance_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% pipeline_logging_configuration() :: #{
 %%   <<"imageLogGroupName">> => string(),
 %%   <<"pipelineLogGroupName">> => string()
@@ -2814,11 +2833,13 @@
 %%   <<"instanceTypes">> => list(string()),
 %%   <<"keyPair">> => string(),
 %%   <<"logging">> => logging(),
+%%   <<"parentInstance">> => parent_instance_configuration(),
 %%   <<"placement">> => placement(),
 %%   <<"resourceTags">> => map(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"snsTopicArn">> => string(),
 %%   <<"subnetId">> => string(),
+%%   <<"terminateInstanceOnCompletion">> => boolean(),
 %%   <<"terminateInstanceOnFailure">> => boolean()
 %% }
 -type update_infrastructure_configuration_request() :: #{binary() => any()}.

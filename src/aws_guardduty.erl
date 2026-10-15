@@ -1327,6 +1327,27 @@
 
 
 %% Example:
+%% detection_rule_ec2_requirements() :: #{
+%%   <<"MinAgentVersion">> => string()
+%% }
+-type detection_rule_ec2_requirements() :: #{binary() => any()}.
+
+
+%% Example:
+%% detection_rule_ecs_fargate_requirements() :: #{
+%%   <<"MinAgentVersion">> => string()
+%% }
+-type detection_rule_ecs_fargate_requirements() :: #{binary() => any()}.
+
+
+%% Example:
+%% detection_rule_eks_requirements() :: #{
+%%   <<"MinAgentVersion">> => string()
+%% }
+-type detection_rule_eks_requirements() :: #{binary() => any()}.
+
+
+%% Example:
 %% detection_rule_filter() :: #{
 %%   <<"Condition">> => list(any()),
 %%   <<"Name">> => list(any()),
@@ -1361,6 +1382,22 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type detection_rule_org_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% detection_rule_runtime_monitoring_details() :: #{
+%%   <<"Platforms">> => detection_rule_runtime_platforms()
+%% }
+-type detection_rule_runtime_monitoring_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% detection_rule_runtime_platforms() :: #{
+%%   <<"Ec2">> => detection_rule_ec2_requirements(),
+%%   <<"EcsFargate">> => detection_rule_ecs_fargate_requirements(),
+%%   <<"Eks">> => detection_rule_eks_requirements()
+%% }
+-type detection_rule_runtime_platforms() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1695,6 +1732,7 @@
 %%   <<"AssociatedAttackSequenceArn">> => string(),
 %%   <<"Confidence">> => float(),
 %%   <<"CreatedAt">> => string(),
+%%   <<"CustomDetectionRuleName">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"Partition">> => string(),
@@ -3525,6 +3563,7 @@
 %%   <<"Language">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"RuleId">> => string(),
+%%   <<"RuntimeMonitoringDetails">> => detection_rule_runtime_monitoring_details(),
 %%   <<"Schema">> => list(any()),
 %%   <<"Service">> => string(),
 %%   <<"Severity">> => list(any()),
