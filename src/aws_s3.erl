@@ -18475,8 +18475,12 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, De
                      end,
             {ok, Result, {StatusCode, ResponseHeaders, Client}}
     end;
-handle_response({ok, StatusCode, _ResponseHeaders, _Client}, _, _DecodeBody)
+handle_response({ok, StatusCode, _ResponseHeaders, Client}, _, _DecodeBody)
   when StatusCode =:= 503 ->
+  %% It turns out that we still would need to read the body,
+  %% otherwise the checkoout of the hackney pool never happens, and the pool is soon
+  %% exhausted.
+  hackney:skip_body(Client),
   %% Retriable error if retries are enabled
   {error, service_unavailable};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
