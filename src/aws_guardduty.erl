@@ -1313,6 +1313,7 @@
 %% Example:
 %% destination_properties() :: #{
 %%   <<"DestinationArn">> => string(),
+%%   <<"ExpectedBucketOwner">> => string(),
 %%   <<"KmsKeyArn">> => string()
 %% }
 -type destination_properties() :: #{binary() => any()}.

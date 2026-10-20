@@ -1,9 +1,11 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc CodeCommit
+%% @doc
+%% CodeCommit
 %%
-%% This is the CodeCommit API Reference.
+%% This is the
+%% CodeCommit API Reference.
 %%
 %% This reference provides descriptions of the operations and data types for
 %% CodeCommit API along with usage examples.
@@ -299,8 +301,8 @@
 %% repository trigger
 %% by sending data to the trigger target.
 %%
-%% For information about how to use CodeCommit, see the CodeCommit User
-%% Guide:
+%% For information about how to use CodeCommit, see the
+%% CodeCommit User Guide:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html.
 -module(aws_codecommit).
 
@@ -5651,10 +5653,11 @@ list_repositories_for_approval_rule_template(Client, Input, Options)
 %% @doc Gets information about Amazon Web Servicestags for a specified Amazon
 %% Resource Name (ARN) in CodeCommit.
 %%
-%% For a list of valid resources in CodeCommit, see CodeCommit Resources and
-%% Operations:
+%% For a list of valid resources in CodeCommit, see
+%% CodeCommit Resources and Operations:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
-%% in the CodeCommit User
+%% in the
+%% CodeCommit User
 %% Guide.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
@@ -5921,9 +5924,11 @@ put_repository_triggers(Client, Input, Options)
 %% @doc Adds or updates tags for a resource in CodeCommit.
 %%
 %% For a list of valid resources
-%% in CodeCommit, see CodeCommit Resources and Operations:
+%% in CodeCommit, see
+%% CodeCommit Resources and Operations:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
-%% in the CodeCommit User
+%% in the
+%% CodeCommit User
 %% Guide.
 -spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
@@ -5966,10 +5971,11 @@ test_repository_triggers(Client, Input, Options)
 
 %% @doc Removes tags for a resource in CodeCommit.
 %%
-%% For a list of valid resources in CodeCommit, see CodeCommit Resources and
-%% Operations:
+%% For a list of valid resources in CodeCommit, see
+%% CodeCommit Resources and Operations:
 %% https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats
-%% in the CodeCommit User
+%% in the
+%% CodeCommit User
 %% Guide.
 -spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, undefined, tuple()} |

@@ -548,6 +548,8 @@
 %% linked_whats_app_business_account() :: #{
 %%   <<"arn">> => string(),
 %%   <<"datasetId">> => string(),
+%%   <<"directSendEnforcementStatus">> => string(),
+%%   <<"directSendEnforcementStatusExpiresAt">> => non_neg_integer(),
 %%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()),
 %%   <<"id">> => string(),
 %%   <<"linkDate">> => non_neg_integer(),
@@ -574,6 +576,8 @@
 %% linked_whats_app_business_account_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"datasetId">> => string(),
+%%   <<"directSendEnforcementStatus">> => string(),
+%%   <<"directSendEnforcementStatusExpiresAt">> => non_neg_integer(),
 %%   <<"eventDestinations">> => list(whats_app_business_account_event_destination()),
 %%   <<"id">> => string(),
 %%   <<"linkDate">> => non_neg_integer(),
@@ -929,11 +933,13 @@
 
 %% Example:
 %% template_summary() :: #{
+%%   <<"correctCategory">> => string(),
 %%   <<"metaTemplateId">> => string(),
 %%   <<"templateCategory">> => string(),
 %%   <<"templateLanguage">> => string(),
 %%   <<"templateName">> => string(),
 %%   <<"templateQualityScore">> => string(),
+%%   <<"templateSource">> => string(),
 %%   <<"templateStatus">> => string()
 %% }
 -type template_summary() :: #{binary() => any()}.

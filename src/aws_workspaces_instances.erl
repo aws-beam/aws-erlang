@@ -28,6 +28,8 @@
          list_tags_for_resource/3,
          list_workspace_instances/2,
          list_workspace_instances/3,
+         modify_volume/2,
+         modify_volume/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -461,6 +463,27 @@
 -type managed_instance_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_volume_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Iops">> => integer(),
+%%   <<"SizeInGB">> => integer(),
+%%   <<"Throughput">> => integer(),
+%%   <<"VolumeId">> := string(),
+%%   <<"VolumeType">> => list(any())
+%% }
+-type modify_volume_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_volume_response() :: #{
+%%   <<"TargetIops">> => integer(),
+%%   <<"TargetSize">> => integer(),
+%%   <<"TargetThroughput">> => integer(),
+%%   <<"TargetVolumeType">> => list(any()),
+%%   <<"VolumeId">> => string()
+%% }
+-type modify_volume_response() :: #{binary() => any()}.
+
+%% Example:
 %% placement() :: #{
 %%   <<"Affinity">> => string(),
 %%   <<"AvailabilityZone">> => string(),
@@ -602,6 +625,14 @@
 -type validation_exception_field() :: #{binary() => any()}.
 
 %% Example:
+%% volume_modification_rate_exceeded_exception() :: #{
+%%   <<"Message">> => [string()],
+%%   <<"ResourceId">> => [string()],
+%%   <<"ResourceType">> => [string()]
+%% }
+-type volume_modification_rate_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
 %% workspace_instance() :: #{
 %%   <<"EC2ManagedInstance">> => ec2_managed_instance(),
 %%   <<"ProvisionState">> => list(any()),
@@ -694,6 +725,16 @@
     validation_exception() | 
     throttling_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type modify_volume_errors() ::
+    volume_modification_rate_exceeded_exception() | 
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type tag_resource_errors() ::
@@ -906,6 +947,46 @@ list_workspace_instances(Client, Input)
 list_workspace_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkspaceInstances">>, Input, Options).
+
+%% @doc Modifies the size, volume type, IOPS (input/output operations per
+%% second), or throughput of a volume.
+%%
+%% When you modify a volume, you must specify at least one of these
+%% parameters. You can modify a volume only after any previous modification
+%% for that volume has finished.
+%%
+%% To track the progress of a modification, use the Amazon EC2
+%% DescribeVolumesModifications:
+%% https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVolumesModifications.html
+%% operation. For more information, see Monitor the progress of Amazon EBS
+%% volume modifications:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/monitoring-volume-modifications.html
+%% in the Amazon EBS User Guide.
+%%
+%% After you increase the size of a volume, you must extend the partition and
+%% file system to use the new storage capacity. For more information, see
+%% Extend the file system after resizing an Amazon EBS volume:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/recognize-expanded-volume-linux.html
+%% in the Amazon EBS User Guide, which covers both Linux:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/recognize-expanded-volume-linux.html#extend-linux
+%% and Windows:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/recognize-expanded-volume-linux.html#extend-windows
+%% instances.
+-spec modify_volume(aws_client:aws_client(), modify_volume_request()) ->
+    {ok, modify_volume_response(), tuple()} |
+    {error, any()} |
+    {error, modify_volume_errors(), tuple()}.
+modify_volume(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_volume(Client, Input, []).
+
+-spec modify_volume(aws_client:aws_client(), modify_volume_request(), proplists:proplist()) ->
+    {ok, modify_volume_response(), tuple()} |
+    {error, any()} |
+    {error, modify_volume_errors(), tuple()}.
+modify_volume(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyVolume">>, Input, Options).
 
 %% @doc Adds tags to a WorkSpace Instance.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->

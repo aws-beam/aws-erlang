@@ -1,8 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon EMR on EKS provides a deployment option for Amazon EMR that
-%% allows
+%% @doc
+%% Amazon EMR on EKS provides a deployment option for Amazon EMR that allows
 %% you to run open-source big data frameworks on Amazon Elastic Kubernetes
 %% Service (Amazon EKS).
 %%
@@ -11,7 +11,8 @@
 %% open-source applications.
 %% For more information about Amazon EMR on EKS concepts and tasks, see What
 %% is
-%% Amazon EMR on EKS:
+%% Amazon EMR on EKS
+%% :
 %% https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/emr-eks.html.
 %%
 %% Amazon EMR containers is the API name for Amazon EMR on EKS. The
@@ -24,11 +25,13 @@
 %% It is the prefix before IAM policy actions for Amazon EMR on EKS. For
 %% example, `&quot;Action&quot;: [
 %% &quot;emr-containers:StartJobRun&quot;]'. For more
-%% information, see Policy actions for Amazon EMR on EKS:
+%% information, see Policy actions for Amazon EMR on EKS
+%% :
 %% https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions.
 %%
 %% It is the prefix used in Amazon EMR on EKS service endpoints. For example,
 %% `emr-containers.us-east-2.amazonaws.com'. For more information, see
+%%
 %% Amazon EMR on EKSService Endpoints:
 %% https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/service-quotas.html#service-endpoints.
 -module(aws_emr_containers).

@@ -54,8 +54,8 @@
 %% `UntagResource', which removes a tag from a notification rule in
 %% your account.
 %%
-%% For information about how to use CodeStar Notifications, see the Amazon
-%% Web Services Developer Tools Console User Guide:
+%% For information about how to use CodeStar Notifications, see the
+%% Amazon Web Services Developer Tools Console User Guide:
 %% https://docs.aws.amazon.com/dtconsole/latest/userguide/what-is-dtconsole.html.
 -module(aws_codestar_notifications).
 

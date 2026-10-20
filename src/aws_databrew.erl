@@ -1,7 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Glue DataBrew is a visual, cloud-scale data-preparation service.
+%% @doc
+%% Glue DataBrew is a visual, cloud-scale data-preparation service.
 %%
 %% DataBrew
 %% simplifies data preparation tasks, targeting data issues that are hard to

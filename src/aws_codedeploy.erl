@@ -461,6 +461,7 @@
 %%   <<"deploymentConfigName">> => string(),
 %%   <<"deploymentGroupName">> := string(),
 %%   <<"deploymentStyle">> => deployment_style(),
+%%   <<"ec2DeploymentOptions">> => ec2_deployment_options(),
 %%   <<"ec2TagFilters">> => list(ec2_tag_filter()),
 %%   <<"ec2TagSet">> => ec2_tag_set(),
 %%   <<"ecsServices">> => list(e_c_s_service()),
@@ -489,6 +490,7 @@
 %%   <<"deploymentGroupName">> => string(),
 %%   <<"deploymentMode">> => list(any()),
 %%   <<"description">> => string(),
+%%   <<"ec2DeploymentOptions">> => ec2_deployment_options(),
 %%   <<"fileExistsBehavior">> => list(any()),
 %%   <<"ignoreApplicationStopFailures">> => boolean(),
 %%   <<"overrideAlarmConfiguration">> => alarm_configuration(),
@@ -631,6 +633,7 @@
 %%   <<"deploymentGroupId">> => string(),
 %%   <<"deploymentGroupName">> => string(),
 %%   <<"deploymentStyle">> => deployment_style(),
+%%   <<"ec2DeploymentOptions">> => ec2_deployment_options(),
 %%   <<"ec2TagFilters">> => list(ec2_tag_filter()),
 %%   <<"ec2TagSet">> => ec2_tag_set(),
 %%   <<"ecsServices">> => list(e_c_s_service()),
@@ -683,6 +686,7 @@
 %%   <<"deploymentStatusMessages">> => list(string()),
 %%   <<"deploymentStyle">> => deployment_style(),
 %%   <<"description">> => string(),
+%%   <<"ec2DeploymentOptions">> => ec2_deployment_options(),
 %%   <<"errorInformation">> => error_information(),
 %%   <<"externalId">> => string(),
 %%   <<"fileExistsBehavior">> => list(any()),
@@ -836,6 +840,12 @@
 %%   <<"name">> => string()
 %% }
 -type e_lb_info() :: #{binary() => any()}.
+
+%% Example:
+%% ec2_deployment_options() :: #{
+%%   <<"autoScalingGroupProcessesToSuspend">> => list(list(any())())
+%% }
+-type ec2_deployment_options() :: #{binary() => any()}.
 
 %% Example:
 %% ec2_tag_filter() :: #{
@@ -1119,6 +1129,12 @@
 %%   <<"message">> => string()
 %% }
 -type invalid_auto_scaling_group_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_auto_scaling_group_process_to_suspend_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_auto_scaling_group_process_to_suspend_exception() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_blue_green_deployment_configuration_exception() :: #{
@@ -1959,6 +1975,7 @@
 %%   <<"currentDeploymentGroupName">> := string(),
 %%   <<"deploymentConfigName">> => string(),
 %%   <<"deploymentStyle">> => deployment_style(),
+%%   <<"ec2DeploymentOptions">> => ec2_deployment_options(),
 %%   <<"ec2TagFilters">> => list(ec2_tag_filter()),
 %%   <<"ec2TagSet">> => ec2_tag_set(),
 %%   <<"ecsServices">> => list(e_c_s_service()),
@@ -2086,6 +2103,7 @@
     invalid_deployment_group_name_exception() | 
     invalid_deployment_config_name_exception() | 
     invalid_compute_platform_exception() | 
+    invalid_auto_scaling_group_process_to_suspend_exception() | 
     invalid_auto_scaling_group_exception() | 
     invalid_auto_rollback_config_exception() | 
     invalid_application_name_exception() | 
@@ -2131,6 +2149,7 @@
     invalid_deployment_group_name_exception() | 
     invalid_deployment_config_name_exception() | 
     invalid_blue_green_deployment_configuration_exception() | 
+    invalid_auto_scaling_group_process_to_suspend_exception() | 
     invalid_auto_scaling_group_exception() | 
     invalid_auto_rollback_config_exception() | 
     invalid_application_name_exception() | 
@@ -2409,6 +2428,7 @@
     invalid_deployment_group_name_exception() | 
     invalid_deployment_config_name_exception() | 
     invalid_blue_green_deployment_configuration_exception() | 
+    invalid_auto_scaling_group_process_to_suspend_exception() | 
     invalid_auto_scaling_group_exception() | 
     invalid_auto_rollback_config_exception() | 
     invalid_application_name_exception() | 

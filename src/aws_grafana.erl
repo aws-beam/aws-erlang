@@ -1006,13 +1006,15 @@ create_workspace(Client, Input0, Options0) ->
 %% @doc Creates a Grafana API key for the workspace.
 %%
 %% This key can be used to authenticate requests sent to the workspace's
-%% HTTP API. See
-%% [https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html]
-%% for available APIs and example requests.
+%% HTTP API. See for available APIs and example requests.:
+%% https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html
 %%
 %% In workspaces compatible with Grafana version 9 or above, use workspace
 %% service accounts instead of API keys. API keys will be removed in a future
 %% release.
+%%
+%% :
+%% https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html
 -spec create_workspace_api_key(aws_client:aws_client(), binary() | list(), create_workspace_api_key_request()) ->
     {ok, create_workspace_api_key_response(), tuple()} |
     {error, any()} |

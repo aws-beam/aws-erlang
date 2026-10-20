@@ -38,6 +38,10 @@
          create_prompt/3,
          create_prompt_version/3,
          create_prompt_version/4,
+         create_retrieval_instruction/2,
+         create_retrieval_instruction/3,
+         create_retrieval_instruction_version/3,
+         create_retrieval_instruction_version/4,
          create_vpc_configuration/3,
          create_vpc_configuration/4,
          delete_agent/3,
@@ -64,6 +68,8 @@
          delete_prompt/4,
          delete_resource_policy/3,
          delete_resource_policy/4,
+         delete_retrieval_instruction/3,
+         delete_retrieval_instruction/4,
          delete_vpc_configuration/4,
          delete_vpc_configuration/5,
          disassociate_agent_collaborator/5,
@@ -114,6 +120,9 @@
          get_resource_policy/2,
          get_resource_policy/4,
          get_resource_policy/5,
+         get_retrieval_instruction/2,
+         get_retrieval_instruction/4,
+         get_retrieval_instruction/5,
          get_vpc_configuration/3,
          get_vpc_configuration/5,
          get_vpc_configuration/6,
@@ -151,6 +160,12 @@
          list_prompts/1,
          list_prompts/3,
          list_prompts/4,
+         list_retrieval_instruction_versions/2,
+         list_retrieval_instruction_versions/4,
+         list_retrieval_instruction_versions/5,
+         list_retrieval_instructions/1,
+         list_retrieval_instructions/3,
+         list_retrieval_instructions/4,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -191,6 +206,8 @@
          update_knowledge_base/4,
          update_prompt/3,
          update_prompt/4,
+         update_retrieval_instruction/3,
+         update_retrieval_instruction/4,
          validate_flow_definition/2,
          validate_flow_definition/3]).
 
@@ -880,6 +897,50 @@
 
 
 %% Example:
+%% create_retrieval_instruction_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"instruction">> := retrieval_instruction_content(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map()
+%% }
+-type create_retrieval_instruction_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_retrieval_instruction_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastTransitionStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"retrievalInstructionArn">> => string(),
+%%   <<"retrievalInstructionId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type create_retrieval_instruction_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_retrieval_instruction_version_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string()
+%% }
+-type create_retrieval_instruction_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_retrieval_instruction_version_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"retrievalInstructionArn">> => string(),
+%%   <<"retrievalInstructionId">> => string(),
+%%   <<"version">> => string()
+%% }
+-type create_retrieval_instruction_version_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_vpc_configuration_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -1170,6 +1231,22 @@
 %%   <<"revisionId">> => string()
 %% }
 -type delete_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_retrieval_instruction_request() :: #{
+%%   <<"retrievalInstructionVersion">> => string()
+%% }
+-type delete_retrieval_instruction_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_retrieval_instruction_response() :: #{
+%%   <<"retrievalInstructionArn">> => string(),
+%%   <<"retrievalInstructionId">> => string(),
+%%   <<"version">> => string()
+%% }
+-type delete_retrieval_instruction_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_vpc_configuration_request() :: #{}
@@ -1641,6 +1718,32 @@
 %%   <<"revisionId">> => string()
 %% }
 -type get_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_retrieval_instruction_request() :: #{
+%%   <<"retrievalInstructionVersion">> => string()
+%% }
+-type get_retrieval_instruction_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_retrieval_instruction_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"customerEncryptionKeyArn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"instruction">> => retrieval_instruction_content(),
+%%   <<"lastTransitionStatus">> => list(any()),
+%%   <<"lastTransitionStatusReasons">> => list(retrieval_instruction_failure_reason()),
+%%   <<"latestVersion">> => string(),
+%%   <<"name">> => string(),
+%%   <<"retrievalInstructionArn">> => string(),
+%%   <<"retrievalInstructionId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type get_retrieval_instruction_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_vpc_configuration_request() :: #{}
@@ -2168,6 +2271,39 @@
 %%   <<"promptSummaries">> => list(prompt_summary())
 %% }
 -type list_prompts_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrieval_instruction_versions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_retrieval_instruction_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrieval_instruction_versions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"retrievalInstructionVersionSummaries">> => list(retrieval_instruction_version_summary())
+%% }
+-type list_retrieval_instruction_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrieval_instructions_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_retrieval_instructions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_retrieval_instructions_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"retrievalInstructionSummaries">> => list(retrieval_instruction_summary())
+%% }
+-type list_retrieval_instructions_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
@@ -2891,6 +3027,47 @@
 
 
 %% Example:
+%% retrieval_instruction_content() :: #{
+%%   <<"answerFormat">> => string(),
+%%   <<"answerPolicy">> => string(),
+%%   <<"persona">> => string(),
+%%   <<"retrievalGuidance">> => string()
+%% }
+-type retrieval_instruction_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_instruction_failure_reason() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"fieldName">> => list(any()),
+%%   <<"message">> => [string()]
+%% }
+-type retrieval_instruction_failure_reason() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_instruction_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"description">> => string(),
+%%   <<"lastTransitionStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"retrievalInstructionArn">> => string(),
+%%   <<"retrievalInstructionId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type retrieval_instruction_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% retrieval_instruction_version_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"version">> => string()
+%% }
+-type retrieval_instruction_version_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_content() :: #{
 %%   <<"s3Location">> => s3_location()
 %% }
@@ -3479,6 +3656,27 @@
 
 
 %% Example:
+%% update_retrieval_instruction_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"instruction">> := retrieval_instruction_content()
+%% }
+-type update_retrieval_instruction_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_retrieval_instruction_response() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"lastTransitionStatus">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"retrievalInstructionArn">> => string(),
+%%   <<"retrievalInstructionId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_retrieval_instruction_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% url_configuration() :: #{
 %%   <<"seedUrls">> => list(seed_url())
 %% }
@@ -3765,6 +3963,23 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_retrieval_instruction_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_retrieval_instruction_version_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_vpc_configuration_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -3862,6 +4077,14 @@
     access_denied_exception().
 
 -type delete_resource_policy_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_retrieval_instruction_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3999,6 +4222,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_retrieval_instruction_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_vpc_configuration_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -4107,6 +4337,19 @@
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_retrieval_instruction_versions_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_retrieval_instructions_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -4264,6 +4507,14 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_retrieval_instruction_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -4838,6 +5089,83 @@ create_prompt_version(Client, PromptIdentifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new retrieval instruction.
+%%
+%% The retrieval instruction is usable once its status becomes ACTIVE. Use
+%% GetRetrievalInstruction to check whether it is ready.
+-spec create_retrieval_instruction(aws_client:aws_client(), create_retrieval_instruction_request()) ->
+    {ok, create_retrieval_instruction_response(), tuple()} |
+    {error, any()} |
+    {error, create_retrieval_instruction_errors(), tuple()}.
+create_retrieval_instruction(Client, Input) ->
+    create_retrieval_instruction(Client, Input, []).
+
+-spec create_retrieval_instruction(aws_client:aws_client(), create_retrieval_instruction_request(), proplists:proplist()) ->
+    {ok, create_retrieval_instruction_response(), tuple()} |
+    {error, any()} |
+    {error, create_retrieval_instruction_errors(), tuple()}.
+create_retrieval_instruction(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/retrievalinstructions/"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an immutable numbered version from the retrieval
+%% instruction's current reviewed content.
+%%
+%% The service creates the version synchronously.
+%%
+%% The service numbers versions from 1 and assigns them in order, never
+%% reusing a number.
+-spec create_retrieval_instruction_version(aws_client:aws_client(), binary() | list(), create_retrieval_instruction_version_request()) ->
+    {ok, create_retrieval_instruction_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_retrieval_instruction_version_errors(), tuple()}.
+create_retrieval_instruction_version(Client, RetrievalInstructionId, Input) ->
+    create_retrieval_instruction_version(Client, RetrievalInstructionId, Input, []).
+
+-spec create_retrieval_instruction_version(aws_client:aws_client(), binary() | list(), create_retrieval_instruction_version_request(), proplists:proplist()) ->
+    {ok, create_retrieval_instruction_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_retrieval_instruction_version_errors(), tuple()}.
+create_retrieval_instruction_version(Client, RetrievalInstructionId, Input0, Options0) ->
+    Method = post,
+    Path = ["/retrievalinstructions/", aws_util:encode_uri(RetrievalInstructionId), "/versions"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a VPC configuration that lets a knowledge base connect to a
 %% resource in your private VPC.
 %%
@@ -5309,6 +5637,48 @@ delete_resource_policy(Client, ResourceArn, Input0, Options0) ->
 
     QueryMapping = [
                      {<<"expectedRevisionId">>, <<"expectedRevisionId">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a retrieval instruction or a single version of it.
+%%
+%% Omit retrievalInstructionVersion to delete the retrieval instruction
+%% itself; the service rejects that request with ConflictException while the
+%% retrieval instruction has versions or while lastTransitionStatus is
+%% CREATING or UPDATING. Specify retrievalInstructionVersion to delete only
+%% that version; the retrieval instruction and its other versions are
+%% unaffected.
+-spec delete_retrieval_instruction(aws_client:aws_client(), binary() | list(), delete_retrieval_instruction_request()) ->
+    {ok, delete_retrieval_instruction_response(), tuple()} |
+    {error, any()} |
+    {error, delete_retrieval_instruction_errors(), tuple()}.
+delete_retrieval_instruction(Client, RetrievalInstructionId, Input) ->
+    delete_retrieval_instruction(Client, RetrievalInstructionId, Input, []).
+
+-spec delete_retrieval_instruction(aws_client:aws_client(), binary() | list(), delete_retrieval_instruction_request(), proplists:proplist()) ->
+    {ok, delete_retrieval_instruction_response(), tuple()} |
+    {error, any()} |
+    {error, delete_retrieval_instruction_errors(), tuple()}.
+delete_retrieval_instruction(Client, RetrievalInstructionId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/retrievalinstructions/", aws_util:encode_uri(RetrievalInstructionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"retrievalInstructionVersion">>, <<"retrievalInstructionVersion">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
@@ -6014,6 +6384,50 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets a retrieval instruction.
+%%
+%% Also used to poll the terminal reporting of an asynchronous create or
+%% update.
+-spec get_retrieval_instruction(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_retrieval_instruction_response(), tuple()} |
+    {error, any()} |
+    {error, get_retrieval_instruction_errors(), tuple()}.
+get_retrieval_instruction(Client, RetrievalInstructionId)
+  when is_map(Client) ->
+    get_retrieval_instruction(Client, RetrievalInstructionId, #{}, #{}).
+
+-spec get_retrieval_instruction(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_retrieval_instruction_response(), tuple()} |
+    {error, any()} |
+    {error, get_retrieval_instruction_errors(), tuple()}.
+get_retrieval_instruction(Client, RetrievalInstructionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_retrieval_instruction(Client, RetrievalInstructionId, QueryMap, HeadersMap, []).
+
+-spec get_retrieval_instruction(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_retrieval_instruction_response(), tuple()} |
+    {error, any()} |
+    {error, get_retrieval_instruction_errors(), tuple()}.
+get_retrieval_instruction(Client, RetrievalInstructionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/retrievalinstructions/", aws_util:encode_uri(RetrievalInstructionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"retrievalInstructionVersion">>, maps:get(<<"retrievalInstructionVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns the details and current status of a single VPC configuration.
 %%
 %% Use this operation to poll for the outcome of an asynchronous create or
@@ -6627,6 +7041,98 @@ list_prompts(Client, QueryMap, HeadersMap, Options0)
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"promptIdentifier">>, maps:get(<<"promptIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the numbered versions of a retrieval instruction, newest first.
+%%
+%% DRAFT is not listed; read it with GetRetrievalInstruction without
+%% retrievalInstructionVersion. Results are paginated. Use the nextToken
+%% parameter to retrieve additional results.
+-spec list_retrieval_instruction_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_retrieval_instruction_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_retrieval_instruction_versions_errors(), tuple()}.
+list_retrieval_instruction_versions(Client, RetrievalInstructionId)
+  when is_map(Client) ->
+    list_retrieval_instruction_versions(Client, RetrievalInstructionId, #{}, #{}).
+
+-spec list_retrieval_instruction_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_retrieval_instruction_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_retrieval_instruction_versions_errors(), tuple()}.
+list_retrieval_instruction_versions(Client, RetrievalInstructionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_retrieval_instruction_versions(Client, RetrievalInstructionId, QueryMap, HeadersMap, []).
+
+-spec list_retrieval_instruction_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_retrieval_instruction_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_retrieval_instruction_versions_errors(), tuple()}.
+list_retrieval_instruction_versions(Client, RetrievalInstructionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/retrievalinstructions/", aws_util:encode_uri(RetrievalInstructionId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the retrieval instructions in the caller's account.
+%%
+%% Results are paginated. Use the nextToken parameter to retrieve additional
+%% results.
+-spec list_retrieval_instructions(aws_client:aws_client()) ->
+    {ok, list_retrieval_instructions_response(), tuple()} |
+    {error, any()} |
+    {error, list_retrieval_instructions_errors(), tuple()}.
+list_retrieval_instructions(Client)
+  when is_map(Client) ->
+    list_retrieval_instructions(Client, #{}, #{}).
+
+-spec list_retrieval_instructions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_retrieval_instructions_response(), tuple()} |
+    {error, any()} |
+    {error, list_retrieval_instructions_errors(), tuple()}.
+list_retrieval_instructions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_retrieval_instructions(Client, QueryMap, HeadersMap, []).
+
+-spec list_retrieval_instructions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_retrieval_instructions_response(), tuple()} |
+    {error, any()} |
+    {error, list_retrieval_instructions_errors(), tuple()}.
+list_retrieval_instructions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/retrievalinstructions/"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7338,6 +7844,45 @@ update_prompt(Client, PromptIdentifier, Input0, Options0) ->
     Method = put,
     Path = ["/prompts/", aws_util:encode_uri(PromptIdentifier), "/"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the content of a retrieval instruction.
+%%
+%% The update is processed asynchronously; the stored content is a candidate
+%% until content review passes, and the served content does not change while
+%% the update is in flight. The service rejects the request with
+%% ConflictException while lastTransitionStatus is CREATING or UPDATING.
+-spec update_retrieval_instruction(aws_client:aws_client(), binary() | list(), update_retrieval_instruction_request()) ->
+    {ok, update_retrieval_instruction_response(), tuple()} |
+    {error, any()} |
+    {error, update_retrieval_instruction_errors(), tuple()}.
+update_retrieval_instruction(Client, RetrievalInstructionId, Input) ->
+    update_retrieval_instruction(Client, RetrievalInstructionId, Input, []).
+
+-spec update_retrieval_instruction(aws_client:aws_client(), binary() | list(), update_retrieval_instruction_request(), proplists:proplist()) ->
+    {ok, update_retrieval_instruction_response(), tuple()} |
+    {error, any()} |
+    {error, update_retrieval_instruction_errors(), tuple()}.
+update_retrieval_instruction(Client, RetrievalInstructionId, Input0, Options0) ->
+    Method = put,
+    Path = ["/retrievalinstructions/", aws_util:encode_uri(RetrievalInstructionId), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

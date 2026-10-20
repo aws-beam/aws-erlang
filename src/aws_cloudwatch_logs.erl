@@ -897,6 +897,7 @@
 
 %% Example:
 %% describe_deliveries_request() :: #{
+%%   <<"deliverySourceNames">> => list(string()),
 %%   <<"limit">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -912,6 +913,7 @@
 %% Example:
 %% describe_delivery_destinations_request() :: #{
 %%   <<"limit">> => integer(),
+%%   <<"names">> => list(string()),
 %%   <<"nextToken">> => string()
 %% }
 -type describe_delivery_destinations_request() :: #{binary() => any()}.
@@ -926,7 +928,8 @@
 %% Example:
 %% describe_delivery_sources_request() :: #{
 %%   <<"limit">> => integer(),
-%%   <<"nextToken">> => string()
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArns">> => list(string())
 %% }
 -type describe_delivery_sources_request() :: #{binary() => any()}.
 
@@ -7556,7 +7559,7 @@ put_query_definition(Client, Input, Options)
 %%
 %% Supported principals - Policy only applies when
 %% operations are invoked by Amazon Web Services service principals (not IAM
-%% users, roles, or cross-account principals
+%% users, roles, or cross-account principals)
 %%
 %% Policy limits - An account can have a maximum of 10
 %% policies without resourceARN and one per LogGroup resourceARN

@@ -1161,6 +1161,7 @@
 %%   <<"evaluators">> => list(evaluator()),
 %%   <<"executionSummaryResult">> => execution_summary_clustering_result_content(),
 %%   <<"failureAnalysisResult">> => failure_analysis_result_content(),
+%%   <<"insightResults">> => list(insight_result()),
 %%   <<"insights">> => list(insight()),
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"outputConfig">> => list(),
@@ -1756,6 +1757,30 @@
 %%   <<"insightId">> => string()
 %% }
 -type insight() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_result() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"rootCauses">> => list(insight_root_cause()),
+%%   <<"sampleSessions">> => list(sample_session()),
+%%   <<"type">> => list(any())
+%% }
+-type insight_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% insight_root_cause() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"explanation">> => string(),
+%%   <<"name">> => string(),
+%%   <<"sampleSessions">> => list(sample_session()),
+%%   <<"suggestedFix">> => string()
+%% }
+-type insight_root_cause() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2689,6 +2714,15 @@
 
 
 %% Example:
+%% sample_session() :: #{
+%%   <<"findings">> => list(session_finding()),
+%%   <<"lastSeenAt">> => [non_neg_integer()],
+%%   <<"sessionId">> => string()
+%% }
+-type sample_session() :: #{binary() => any()}.
+
+
+%% Example:
 %% save_browser_session_profile_request() :: #{
 %%   <<"browserIdentifier">> := [string()],
 %%   <<"clientToken">> => string(),
@@ -2794,6 +2828,17 @@
 %%   <<"startTime">> => [non_neg_integer()]
 %% }
 -type session_filter_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% session_finding() :: #{
+%%   <<"category">> => [string()],
+%%   <<"confidence">> => [float()],
+%%   <<"description">> => string(),
+%%   <<"targetId">> => string(),
+%%   <<"targetType">> => list(any())
+%% }
+-type session_finding() :: #{binary() => any()}.
 
 
 %% Example:

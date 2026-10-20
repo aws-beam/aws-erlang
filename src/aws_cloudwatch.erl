@@ -182,6 +182,12 @@
 
 
 %% Example:
+%% action_configuration() :: #{
+%%   <<"AlarmTagsPropagation">> => alarm_tags_propagation()
+%% }
+-type action_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% alarm_contributor() :: #{
 %%   <<"ContributorAttributes">> => map(),
 %%   <<"ContributorId">> => string(),
@@ -222,6 +228,14 @@
 -type alarm_prom_q_l_criteria() :: #{binary() => any()}.
 
 %% Example:
+%% alarm_tags_propagation() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"ExcludedTagKeys">> => list(string()),
+%%   <<"IncludedTagKeys">> => list(string())
+%% }
+-type alarm_tags_propagation() :: #{binary() => any()}.
+
+%% Example:
 %% anomaly_detector() :: #{
 %%   <<"AnomalyDetectorId">> => string(),
 %%   <<"Configuration">> => anomaly_detector_configuration(),
@@ -258,6 +272,7 @@
 
 %% Example:
 %% composite_alarm() :: #{
+%%   <<"ActionConfiguration">> => action_configuration(),
 %%   <<"ActionsEnabled">> => boolean(),
 %%   <<"ActionsSuppressedBy">> => list(any()),
 %%   <<"ActionsSuppressedReason">> => string(),
@@ -985,6 +1000,7 @@
 
 %% Example:
 %% log_alarm() :: #{
+%%   <<"ActionConfiguration">> => action_configuration(),
 %%   <<"ActionLogLineCount">> => integer(),
 %%   <<"ActionLogLineRoleArn">> => string(),
 %%   <<"ActionsEnabled">> => boolean(),
@@ -1051,6 +1067,7 @@
 
 %% Example:
 %% metric_alarm() :: #{
+%%   <<"ActionConfiguration">> => action_configuration(),
 %%   <<"ActionsEnabled">> => boolean(),
 %%   <<"AlarmActions">> => list(string()),
 %%   <<"AlarmArn">> => string(),
@@ -1239,6 +1256,7 @@
 
 %% Example:
 %% put_composite_alarm_input() :: #{
+%%   <<"ActionConfiguration">> => action_configuration(),
 %%   <<"ActionsEnabled">> => boolean(),
 %%   <<"ActionsSuppressor">> => string(),
 %%   <<"ActionsSuppressorExtensionPeriod">> => integer(),
@@ -1285,6 +1303,7 @@
 
 %% Example:
 %% put_log_alarm_input() :: #{
+%%   <<"ActionConfiguration">> => action_configuration(),
 %%   <<"ActionLogLineCount">> => integer(),
 %%   <<"ActionLogLineRoleArn">> => string(),
 %%   <<"ActionsEnabled">> => boolean(),
@@ -1318,6 +1337,7 @@
 
 %% Example:
 %% put_metric_alarm_input() :: #{
+%%   <<"ActionConfiguration">> => action_configuration(),
 %%   <<"ActionsEnabled">> => boolean(),
 %%   <<"AlarmActions">> => list(string()),
 %%   <<"AlarmDescription">> => string(),
@@ -2891,6 +2911,15 @@ get_metric_stream(Client, Input, Options)
 %% could also retrieve images regularly, such as every minute, and create
 %% your own custom
 %% live dashboard.
+%%
+%% `GetMetricWidgetImage' is not available in the Amazon Web Services
+%% GovCloud (US) Regions. In those Regions, calls to this operation fail. For
+%% the list
+%% of Amazon CloudWatch features that are not available in Amazon Web
+%% Services
+%% GovCloud (US), see Amazon CloudWatch in
+%% Amazon Web Services GovCloud (US):
+%% https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-cw.html.
 %%
 %% The graph you retrieve can include all CloudWatch metric graph features,
 %% including

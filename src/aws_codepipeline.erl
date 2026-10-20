@@ -1,7 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc CodePipeline
+%% @doc
+%% CodePipeline
 %%
 %% Overview
 %%
@@ -11,7 +12,8 @@
 %% of the actions and data types for CodePipeline. Some functionality for
 %% your
 %% pipeline can only be configured through the API. For more information, see
-%% the CodePipeline User Guide:
+%% the
+%% CodePipeline User Guide:
 %% https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html.
 %%
 %% You can use the CodePipeline API to work with pipelines, stages, actions,
@@ -74,7 +76,8 @@
 %% status of stages in the pipeline, or `GetPipeline', which returns the
 %% entire structure of the pipeline, including the stages of that pipeline.
 %% For more
-%% information about the structure of stages and actions, see CodePipeline
+%% information about the structure of stages and actions, see
+%% CodePipeline
 %% Pipeline Structure Reference:
 %% https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html.
 %%
@@ -2791,7 +2794,8 @@ list_rule_executions(Client, Input, Options)
 %% and How do
 %% stage conditions work?:
 %% https://docs.aws.amazon.com/codepipeline/latest/userguide/concepts-how-it-works-conditions.html.For
-%% more information about rules, see the CodePipeline rule reference:
+%% more information about rules, see the
+%% CodePipeline rule reference:
 %% https://docs.aws.amazon.com/codepipeline/latest/userguide/rule-reference.html.
 -spec list_rule_types(aws_client:aws_client(), list_rule_types_input()) ->
     {ok, list_rule_types_output(), tuple()} |

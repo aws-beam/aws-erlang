@@ -192,6 +192,14 @@
 
 
 %% Example:
+%% agentic_retrieve_applied_instruction() :: #{
+%%   <<"id">> => string(),
+%%   <<"version">> => string()
+%% }
+-type agentic_retrieve_applied_instruction() :: #{binary() => any()}.
+
+
+%% Example:
 %% agentic_retrieve_bedrock_guardrail_configuration() :: #{
 %%   <<"guardrailId">> => [string()],
 %%   <<"guardrailVersion">> => [string()]
@@ -271,6 +279,14 @@
 %%   <<"version">> => [string()]
 %% }
 -type agentic_retrieve_guardrail_warning() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_instruction_configuration() :: #{
+%%   <<"retrievalInstructionId">> => string(),
+%%   <<"version">> => string()
+%% }
+-type agentic_retrieve_instruction_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -399,6 +415,7 @@
 %%   <<"messages">> := list(agentic_retrieve_message()),
 %%   <<"nextToken">> => string(),
 %%   <<"policyConfiguration">> => agentic_retrieve_policy_configuration(),
+%%   <<"retrievalInstructionConfiguration">> => agentic_retrieve_instruction_configuration(),
 %%   <<"retrievers">> := list(agentic_retriever()),
 %%   <<"userContext">> => user_context()
 %% }
@@ -424,6 +441,7 @@
 %% Example:
 %% agentic_retrieve_trace_event_attributes() :: #{
 %%   <<"actions">> => list(agentic_retrieve_action()),
+%%   <<"appliedInstruction">> => agentic_retrieve_applied_instruction(),
 %%   <<"failures">> => list(agentic_retrieve_failure()),
 %%   <<"message">> => [string()],
 %%   <<"retrievalMetadata">> => list(agentic_retrieve_source_metadata()),

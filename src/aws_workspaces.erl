@@ -1366,6 +1366,7 @@
 %%   <<"ImageDescription">> := string(),
 %%   <<"ImageName">> := string(),
 %%   <<"ImageSource">> := list(),
+%%   <<"ImageValidationMode">> => list(any()),
 %%   <<"InfrastructureConfigurationArn">> := string(),
 %%   <<"OsVersion">> := list(any()),
 %%   <<"Platform">> := list(any()),

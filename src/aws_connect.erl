@@ -5711,6 +5711,7 @@
 %% Example:
 %% get_attached_file_request() :: #{
 %%   <<"AssociatedResourceArn">> := string(),
+%%   <<"UrlContentDisposition">> => list(any()),
 %%   <<"UrlExpiryInSeconds">> => integer()
 %% }
 -type get_attached_file_request() :: #{binary() => any()}.
@@ -22832,6 +22833,7 @@ get_attached_file(Client, FileId, InstanceId, AssociatedResourceArn, QueryMap, H
     Query0_ =
       [
         {<<"associatedResourceArn">>, AssociatedResourceArn},
+        {<<"urlContentDisposition">>, maps:get(<<"urlContentDisposition">>, QueryMap, undefined)},
         {<<"urlExpiryInSeconds">>, maps:get(<<"urlExpiryInSeconds">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],

@@ -2754,6 +2754,7 @@
 %% Example:
 %% service_connect_configuration() :: #{
 %%   <<"accessLogConfiguration">> => service_connect_access_log_configuration(),
+%%   <<"containerConfigurations">> => list(list()),
 %%   <<"enabled">> => boolean(),
 %%   <<"logConfiguration">> => log_configuration(),
 %%   <<"namespace">> => string(),

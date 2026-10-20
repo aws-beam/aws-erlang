@@ -151,6 +151,13 @@
 
 
 %% Example:
+%% cloud_watch_logs_configuration() :: #{
+%%   <<"SpansLogGroupKmsKeyId">> => string()
+%% }
+-type cloud_watch_logs_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_group_request() :: #{
 %%   <<"FilterExpression">> => string(),
 %%   <<"GroupName">> := string(),
@@ -1403,6 +1410,7 @@
 
 %% Example:
 %% update_trace_segment_destination_request() :: #{
+%%   <<"CloudWatchLogsConfiguration">> => cloud_watch_logs_configuration(),
 %%   <<"Destination">> => list(any())
 %% }
 -type update_trace_segment_destination_request() :: #{binary() => any()}.
