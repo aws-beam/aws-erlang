@@ -812,6 +812,13 @@
 -type describe_time_to_live_output() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_replication_group_member_action() :: #{
+%%   <<"DisassociationMode">> => list(any()),
+%%   <<"RegionName">> => string()
+%% }
+-type disassociate_replication_group_member_action() :: #{binary() => any()}.
+
+%% Example:
 %% duplicate_item_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1752,6 +1759,7 @@
 %% replication_group_update() :: #{
 %%   <<"Create">> => create_replication_group_member_action(),
 %%   <<"Delete">> => delete_replication_group_member_action(),
+%%   <<"Disassociate">> => disassociate_replication_group_member_action(),
 %%   <<"Update">> => update_replication_group_member_action()
 %% }
 -type replication_group_update() :: #{binary() => any()}.
@@ -1993,6 +2001,7 @@
 %%   <<"BillingModeSummary">> => billing_mode_summary(),
 %%   <<"CreationDateTime">> => non_neg_integer(),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
+%%   <<"DisassociationProtectionEnabled">> => boolean(),
 %%   <<"GlobalSecondaryIndexes">> => list(global_secondary_index_description()),
 %%   <<"GlobalTableSettingsReplicationMode">> => list(any()),
 %%   <<"GlobalTableVersion">> => string(),
@@ -2301,6 +2310,7 @@
 %%   <<"AttributeDefinitions">> => list(attribute_definition()),
 %%   <<"BillingMode">> => list(any()),
 %%   <<"DeletionProtectionEnabled">> => boolean(),
+%%   <<"DisassociationProtectionEnabled">> => boolean(),
 %%   <<"GlobalSecondaryIndexUpdates">> => list(global_secondary_index_update()),
 %%   <<"GlobalTableSettingsReplicationMode">> => list(any()),
 %%   <<"GlobalTableWitnessUpdates">> => list(global_table_witness_group_update()),
@@ -5015,8 +5025,8 @@ update_kinesis_streaming_destination(Client, Input, Options)
     request(Client, <<"UpdateKinesisStreamingDestination">>, Input, Options).
 
 %% @doc Modifies the provisioned throughput settings, global secondary
-%% indexes, or DynamoDB
-%% Streams settings for a given table.
+%% indexes, DynamoDB
+%% Streams settings, or global table replica settings for a given table.
 %%
 %% You can only perform one of the following operations at once:
 %%
@@ -5028,12 +5038,40 @@ update_kinesis_streaming_destination(Client, Input, Options)
 %% backfilling, you can use `UpdateTable' to perform other
 %% operations.
 %%
+%% Enable or disable disassociation protection for the local global table
+%% replica.
+%%
+%% Disassociate the local global table replica and keep it as a standalone
+%% regional table. The `Disassociate' action must be the only
+%% replica update in the request. If the request includes any other update,
+%% `UpdateTable' fails with a `ValidationException' and
+%% the disassociation does not start.
+%%
 %% `UpdateTable' is an asynchronous operation; while it's executing,
 %% the table
 %% status changes from `ACTIVE' to `UPDATING'. While it's
 %% `UPDATING', you can't issue another `UpdateTable' request.
-%% When the table returns to the `ACTIVE' state, the `UpdateTable'
-%% operation is complete.
+%% Use `DescribeTable' to monitor the table's status.
+%%
+%% To use this operation to disassociate a local replica, you must have the
+%% `dynamodb:UpdateTable' and `dynamodb:DisassociateTableReplica'
+%% IAM permissions on the local replica. Send disassociation and
+%% disassociation
+%% protection requests to the replica's Region using credentials for the
+%% account that
+%% owns the replica. For prerequisites and the procedure, see
+%% Disassociating a global table replica:
+%% https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables-disassociate.html
+%% in the Amazon DynamoDB
+%% Developer Guide.
+%%
+%% To confirm successful disassociation, call `DescribeTable' in the
+%% replica's Region and verify that `TableStatus' is `ACTIVE'
+%% and `Replicas' is absent or empty. If `TableStatus' returns to
+%% `ACTIVE' but the response still includes a `Replicas' list, the
+%% disassociation did not complete. Check `ReplicaStatus' for a
+%% replication-permission or encryption-access problem, resolve it, and
+%% retry.
 -spec update_table(aws_client:aws_client(), update_table_input()) ->
     {ok, update_table_output(), tuple()} |
     {error, any()} |

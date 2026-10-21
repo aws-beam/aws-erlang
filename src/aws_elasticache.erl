@@ -154,6 +154,8 @@
          modify_user/3,
          modify_user_group/2,
          modify_user_group/3,
+         prepare_migration/2,
+         prepare_migration/3,
          purchase_reserved_cache_nodes_offering/2,
          purchase_reserved_cache_nodes_offering/3,
          rebalance_slots_in_global_replication_group/2,
@@ -168,6 +170,8 @@
          revoke_cache_security_group_ingress/3,
          start_migration/2,
          start_migration/3,
+         stop_migration/2,
+         stop_migration/3,
          test_failover/2,
          test_failover/3,
          test_migration/2,
@@ -548,13 +552,15 @@
 %% Example:
 %% complete_migration_message() :: #{
 %%   <<"Force">> => boolean(),
-%%   <<"ReplicationGroupId">> := string()
+%%   <<"ReplicationGroupId">> => string(),
+%%   <<"ServerlessCacheName">> => string()
 %% }
 -type complete_migration_message() :: #{binary() => any()}.
 
 %% Example:
 %% complete_migration_response() :: #{
-%%   <<"ReplicationGroup">> => replication_group()
+%%   <<"ReplicationGroup">> => replication_group(),
+%%   <<"ServerlessCache">> => serverless_cache()
 %% }
 -type complete_migration_response() :: #{binary() => any()}.
 
@@ -1571,6 +1577,20 @@
 -type log_delivery_configuration_request() :: #{binary() => any()}.
 
 %% Example:
+%% migration_health_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type migration_health_fault() :: #{binary() => any()}.
+
+%% Example:
+%% migration_summary() :: #{
+%%   <<"CutoverMode">> => string(),
+%%   <<"MigrationEndpoint">> => endpoint(),
+%%   <<"Status">> => string()
+%% }
+-type migration_summary() :: #{binary() => any()}.
+
+%% Example:
 %% modify_cache_cluster_message() :: #{
 %%   <<"AZMode">> => list(any()),
 %%   <<"ApplyImmediately">> => boolean(),
@@ -1894,6 +1914,21 @@
 -type pending_modified_values() :: #{binary() => any()}.
 
 %% Example:
+%% prepare_migration_request() :: #{
+%%   <<"CustomerNodeEndpointList">> := list(customer_node_endpoint()),
+%%   <<"ServerlessCacheName">> := string(),
+%%   <<"SourceAuthenticationConfiguration">> => source_authentication_configuration(),
+%%   <<"SourceTlsConfiguration">> => source_tls_configuration()
+%% }
+-type prepare_migration_request() :: #{binary() => any()}.
+
+%% Example:
+%% prepare_migration_response() :: #{
+%%   <<"ServerlessCache">> => serverless_cache()
+%% }
+-type prepare_migration_response() :: #{binary() => any()}.
+
+%% Example:
 %% processed_update_action() :: #{
 %%   <<"CacheClusterId">> => string(),
 %%   <<"ReplicationGroupId">> => string(),
@@ -2162,6 +2197,12 @@
 -type scale_config() :: #{binary() => any()}.
 
 %% Example:
+%% secret_manager_auth_config() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type secret_manager_auth_config() :: #{binary() => any()}.
+
+%% Example:
 %% security_group_membership() :: #{
 %%   <<"SecurityGroupId">> => string(),
 %%   <<"Status">> => string()
@@ -2181,6 +2222,7 @@
 %%   <<"FullEngineVersion">> => string(),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MajorEngineVersion">> => string(),
+%%   <<"Migration">> => migration_summary(),
 %%   <<"NetworkType">> => list(any()),
 %%   <<"ReaderEndpoint">> => endpoint(),
 %%   <<"SecurityGroupIds">> => list(string()),
@@ -2200,6 +2242,12 @@
 -type serverless_cache_already_exists_fault() :: #{binary() => any()}.
 
 %% Example:
+%% serverless_cache_already_under_migration_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type serverless_cache_already_under_migration_fault() :: #{binary() => any()}.
+
+%% Example:
 %% serverless_cache_configuration() :: #{
 %%   <<"Engine">> => string(),
 %%   <<"MajorEngineVersion">> => string(),
@@ -2212,6 +2260,12 @@
 %%   <<"message">> => string()
 %% }
 -type serverless_cache_not_found_fault() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_cache_not_under_migration_fault() :: #{
+%%   <<"message">> => string()
+%% }
+-type serverless_cache_not_under_migration_fault() :: #{binary() => any()}.
 
 %% Example:
 %% serverless_cache_quota_for_customer_exceeded_fault() :: #{
@@ -2352,17 +2406,46 @@
 -type snapshot_quota_exceeded_fault() :: #{binary() => any()}.
 
 %% Example:
+%% source_authentication_configuration() :: #{
+%%   <<"SecretManagerConfig">> => secret_manager_auth_config()
+%% }
+-type source_authentication_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% source_tls_configuration() :: #{
+%%   <<"SourceTlsCertificate">> => string(),
+%%   <<"SourceTlsMode">> => list(any())
+%% }
+-type source_tls_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% start_migration_message() :: #{
-%%   <<"CustomerNodeEndpointList">> := list(customer_node_endpoint()),
-%%   <<"ReplicationGroupId">> := string()
+%%   <<"AutoCutover">> => boolean(),
+%%   <<"ClearTargetCacheData">> => boolean(),
+%%   <<"CustomerNodeEndpointList">> => list(customer_node_endpoint()),
+%%   <<"ReplicationGroupId">> => string(),
+%%   <<"ServerlessCacheName">> => string()
 %% }
 -type start_migration_message() :: #{binary() => any()}.
 
 %% Example:
 %% start_migration_response() :: #{
-%%   <<"ReplicationGroup">> => replication_group()
+%%   <<"ReplicationGroup">> => replication_group(),
+%%   <<"ServerlessCache">> => serverless_cache()
 %% }
 -type start_migration_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_migration_request() :: #{
+%%   <<"ServerlessCacheName">> := string()
+%% }
+-type stop_migration_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_migration_response() :: #{
+%%   <<"ServerlessCache">> => serverless_cache()
+%% }
+-type stop_migration_response() :: #{binary() => any()}.
 
 %% Example:
 %% subnet() :: #{
@@ -2615,9 +2698,16 @@
     invalid_parameter_value_exception().
 
 -type complete_migration_errors() ::
+    serverless_cache_not_under_migration_fault() | 
+    serverless_cache_not_found_fault() | 
     replication_group_not_under_migration_fault() | 
     replication_group_not_found_fault() | 
-    invalid_replication_group_state_fault().
+    migration_health_fault() | 
+    invalid_serverless_cache_state_fault() | 
+    invalid_replication_group_state_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_cache_cluster_state_fault().
 
 -type copy_serverless_cache_snapshot_errors() ::
     tag_quota_per_resource_exceeded() | 
@@ -3091,6 +3181,12 @@
     duplicate_user_name_fault() | 
     default_user_required().
 
+-type prepare_migration_errors() ::
+    serverless_cache_not_found_fault() | 
+    serverless_cache_already_under_migration_fault() | 
+    invalid_serverless_cache_state_fault() | 
+    invalid_parameter_value_exception().
+
 -type purchase_reserved_cache_nodes_offering_errors() ::
     tag_quota_per_resource_exceeded() | 
     reserved_cache_nodes_offering_not_found_fault() | 
@@ -3143,9 +3239,21 @@
     authorization_not_found_fault().
 
 -type start_migration_errors() ::
+    serverless_cache_not_under_migration_fault() | 
+    serverless_cache_not_found_fault() | 
     replication_group_not_found_fault() | 
     replication_group_already_under_migration_fault() | 
+    migration_health_fault() | 
+    invalid_serverless_cache_state_fault() | 
     invalid_replication_group_state_fault() | 
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_cache_cluster_state_fault().
+
+-type stop_migration_errors() ::
+    serverless_cache_not_under_migration_fault() | 
+    serverless_cache_not_found_fault() | 
+    invalid_serverless_cache_state_fault() | 
     invalid_parameter_value_exception().
 
 -type test_failover_errors() ::
@@ -3163,7 +3271,9 @@
     replication_group_not_found_fault() | 
     replication_group_already_under_migration_fault() | 
     invalid_replication_group_state_fault() | 
-    invalid_parameter_value_exception().
+    invalid_parameter_value_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_cache_cluster_state_fault().
 
 %%====================================================================
 %% API
@@ -3279,7 +3389,7 @@ batch_stop_update_action(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchStopUpdateAction">>, Input, Options).
 
-%% @doc Complete the migration of data.
+%% @doc Completes the migration of data.
 -spec complete_migration(aws_client:aws_client(), complete_migration_message()) ->
     {ok, complete_migration_response(), tuple()} |
     {error, any()} |
@@ -4819,6 +4929,24 @@ modify_user_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyUserGroup">>, Input, Options).
 
+%% @doc Prepares the serverless cache for data migration by validating the
+%% configuration and setting up the migration resources.
+-spec prepare_migration(aws_client:aws_client(), prepare_migration_request()) ->
+    {ok, prepare_migration_response(), tuple()} |
+    {error, any()} |
+    {error, prepare_migration_errors(), tuple()}.
+prepare_migration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    prepare_migration(Client, Input, []).
+
+-spec prepare_migration(aws_client:aws_client(), prepare_migration_request(), proplists:proplist()) ->
+    {ok, prepare_migration_response(), tuple()} |
+    {error, any()} |
+    {error, prepare_migration_errors(), tuple()}.
+prepare_migration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PrepareMigration">>, Input, Options).
+
 %% @doc Allows you to purchase a reserved cache node offering.
 %%
 %% Reserved nodes are not eligible
@@ -4974,7 +5102,7 @@ revoke_cache_security_group_ingress(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeCacheSecurityGroupIngress">>, Input, Options).
 
-%% @doc Start the migration of data.
+%% @doc Starts the migration of data.
 -spec start_migration(aws_client:aws_client(), start_migration_message()) ->
     {ok, start_migration_response(), tuple()} |
     {error, any()} |
@@ -4990,6 +5118,30 @@ start_migration(Client, Input)
 start_migration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartMigration">>, Input, Options).
+
+%% @doc Stops an ongoing data sync between the source and the serverless
+%% cache.
+%%
+%% The migration remains
+%% open and the data sync can be restarted. This operation is valid only
+%% while the migration is
+%% syncing; during cutover it returns
+%% `InvalidServerlessCacheStateFault'.
+-spec stop_migration(aws_client:aws_client(), stop_migration_request()) ->
+    {ok, stop_migration_response(), tuple()} |
+    {error, any()} |
+    {error, stop_migration_errors(), tuple()}.
+stop_migration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_migration(Client, Input, []).
+
+-spec stop_migration(aws_client:aws_client(), stop_migration_request(), proplists:proplist()) ->
+    {ok, stop_migration_response(), tuple()} |
+    {error, any()} |
+    {error, stop_migration_errors(), tuple()}.
+stop_migration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopMigration">>, Input, Options).
 
 %% @doc Represents the input of a `TestFailover' operation which tests
 %% automatic

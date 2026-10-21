@@ -1023,6 +1023,7 @@
 %%   <<"name">> => string(),
 %%   <<"selectedAnalysisMethods">> => list(list(any())()),
 %%   <<"tableReference">> => list(),
+%%   <<"tableType">> => list(any()),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type configured_table() :: #{binary() => any()}.
@@ -1127,6 +1128,7 @@
 %%   <<"id">> => string(),
 %%   <<"name">> => string(),
 %%   <<"selectedAnalysisMethods">> => list(list(any())()),
+%%   <<"tableType">> => list(any()),
 %%   <<"updateTime">> => [non_neg_integer()]
 %% }
 -type configured_table_summary() :: #{binary() => any()}.
@@ -1451,6 +1453,24 @@
 %%   <<"preserveNulls">> => [boolean()]
 %% }
 -type data_encryption_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% databricks_delta_sharing_connection() :: #{
+%%   <<"deltaShareEndpoint">> => string(),
+%%   <<"shareName">> => string()
+%% }
+-type databricks_delta_sharing_connection() :: #{binary() => any()}.
+
+
+%% Example:
+%% databricks_table_reference() :: #{
+%%   <<"connectionType">> => list(),
+%%   <<"schemaName">> => string(),
+%%   <<"tableName">> => string(),
+%%   <<"workspaceUrl">> => string()
+%% }
+-type databricks_table_reference() :: #{binary() => any()}.
 
 %% Example:
 %% delete_analysis_template_input() :: #{}

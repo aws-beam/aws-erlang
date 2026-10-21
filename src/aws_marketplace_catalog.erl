@@ -519,6 +519,7 @@
 %%   <<"EntityArn">> => string(),
 %%   <<"EntityId">> => string(),
 %%   <<"EntityType">> => string(),
+%%   <<"ExpressPrivateOfferConfigurationSummary">> => express_private_offer_configuration_summary(),
 %%   <<"LastModifiedDate">> => string(),
 %%   <<"MachineLearningProductSummary">> => machine_learning_product_summary(),
 %%   <<"Name">> => string(),
@@ -545,6 +546,52 @@
 %%   <<"Value">> => string()
 %% }
 -type error_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% express_private_offer_configuration_entity_id_filter() :: #{
+%%   <<"ValueList">> => list(string())
+%% }
+-type express_private_offer_configuration_entity_id_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% express_private_offer_configuration_filters() :: #{
+%%   <<"EntityId">> => express_private_offer_configuration_entity_id_filter(),
+%%   <<"ProductId">> => express_private_offer_configuration_product_id_filter(),
+%%   <<"State">> => express_private_offer_configuration_state_filter()
+%% }
+-type express_private_offer_configuration_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% express_private_offer_configuration_product_id_filter() :: #{
+%%   <<"ValueList">> => list(string())
+%% }
+-type express_private_offer_configuration_product_id_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% express_private_offer_configuration_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type express_private_offer_configuration_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% express_private_offer_configuration_state_filter() :: #{
+%%   <<"ValueList">> => list(list(any())())
+%% }
+-type express_private_offer_configuration_state_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% express_private_offer_configuration_summary() :: #{
+%%   <<"ProductId">> => string(),
+%%   <<"State">> => list(any())
+%% }
+-type express_private_offer_configuration_summary() :: #{binary() => any()}.
 
 
 %% Example:

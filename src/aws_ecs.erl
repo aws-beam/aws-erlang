@@ -24,7 +24,9 @@
 %% don't need to worry about scaling your management infrastructure.
 -module(aws_ecs).
 
--export([continue_service_deployment/2,
+-export([associate_gateway_with_cluster/2,
+         associate_gateway_with_cluster/3,
+         continue_service_deployment/2,
          continue_service_deployment/3,
          create_capacity_provider/2,
          create_capacity_provider/3,
@@ -34,6 +36,8 @@
          create_daemon/3,
          create_express_gateway_service/2,
          create_express_gateway_service/3,
+         create_gateway/2,
+         create_gateway/3,
          create_service/2,
          create_service/3,
          create_task_set/2,
@@ -52,6 +56,8 @@
          delete_daemon_task_definition/3,
          delete_express_gateway_service/2,
          delete_express_gateway_service/3,
+         delete_gateway/2,
+         delete_gateway/3,
          delete_service/2,
          delete_service/3,
          delete_task_definitions/2,
@@ -78,6 +84,12 @@
          describe_daemon_task_definition/3,
          describe_express_gateway_service/2,
          describe_express_gateway_service/3,
+         describe_gateway/2,
+         describe_gateway/3,
+         describe_gateway_resources/2,
+         describe_gateway_resources/3,
+         describe_gateway_route/2,
+         describe_gateway_route/3,
          describe_service_deployments/2,
          describe_service_deployments/3,
          describe_service_revisions/2,
@@ -90,6 +102,8 @@
          describe_task_sets/3,
          describe_tasks/2,
          describe_tasks/3,
+         disassociate_gateway_from_cluster/2,
+         disassociate_gateway_from_cluster/3,
          discover_poll_endpoint/2,
          discover_poll_endpoint/3,
          execute_command/2,
@@ -110,6 +124,12 @@
          list_daemon_task_definitions/3,
          list_daemons/2,
          list_daemons/3,
+         list_gateway_cluster_associations/2,
+         list_gateway_cluster_associations/3,
+         list_gateway_routes/2,
+         list_gateway_routes/3,
+         list_gateways/2,
+         list_gateways/3,
          list_service_deployments/2,
          list_service_deployments/3,
          list_services/2,
@@ -170,6 +190,8 @@
          update_daemon/3,
          update_express_gateway_service/2,
          update_express_gateway_service/3,
+         update_gateway/2,
+         update_gateway/3,
          update_service/2,
          update_service/3,
          update_service_primary_task_set/2,
@@ -210,6 +232,21 @@
 %%   <<"testListenerRule">> => string()
 %% }
 -type advanced_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% associate_gateway_with_cluster_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"gateway">> := string()
+%% }
+-type associate_gateway_with_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_gateway_with_cluster_response() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type associate_gateway_with_cluster_response() :: #{binary() => any()}.
 
 %% Example:
 %% attachment() :: #{
@@ -660,6 +697,26 @@
 -type create_express_gateway_service_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_gateway_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"deletionProtection">> => boolean(),
+%%   <<"infrastructureRoleArn">> := string(),
+%%   <<"name">> := string(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_gateway_response() :: #{
+%%   <<"gatewayArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_gateway_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_managed_instances_provider_configuration() :: #{
 %%   <<"autoRepairConfiguration">> => auto_repair_configuration(),
 %%   <<"infrastructureOptimization">> => infrastructure_optimization(),
@@ -680,6 +737,7 @@
 %%   <<"desiredCount">> => integer(),
 %%   <<"enableECSManagedTags">> => boolean(),
 %%   <<"enableExecuteCommand">> => boolean(),
+%%   <<"gatewayConnectors">> => list(gateway_connector()),
 %%   <<"healthCheckGracePeriodSeconds">> => integer(),
 %%   <<"launchType">> => list(any()),
 %%   <<"loadBalancers">> => list(load_balancer()),
@@ -1076,6 +1134,20 @@
 -type delete_express_gateway_service_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_gateway_request() :: #{
+%%   <<"gateway">> := string()
+%% }
+-type delete_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_gateway_response() :: #{
+%%   <<"gatewayArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_gateway_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_service_request() :: #{
 %%   <<"cluster">> => string(),
 %%   <<"force">> => boolean(),
@@ -1361,6 +1433,60 @@
 -type describe_express_gateway_service_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_gateway_alb_configuration() :: #{
+%%   <<"accessLogs">> => gateway_elb_access_log_configuration(),
+%%   <<"currentAlbCount">> => integer(),
+%%   <<"httpDesync">> => list(any()),
+%%   <<"maxAlbCount">> => integer(),
+%%   <<"networkConfiguration">> => gateway_elb_network_configuration(),
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => list(any()),
+%%   <<"scheme">> => list(any()),
+%%   <<"testTrafficRules">> => gateway_alb_test_traffic_rules(),
+%%   <<"webACLArn">> => string()
+%% }
+-type describe_gateway_alb_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_request() :: #{
+%%   <<"gateway">> := string()
+%% }
+-type describe_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_resources_request() :: #{
+%%   <<"gateway">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_gateway_resources_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_resources_response() :: #{
+%%   <<"gatewayResources">> => gateway_resources(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_gateway_resources_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_response() :: #{
+%%   <<"gateway">> => gateway()
+%% }
+-type describe_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_route_request() :: #{
+%%   <<"gatewayRouteArn">> := string()
+%% }
+-type describe_gateway_route_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_gateway_route_response() :: #{
+%%   <<"gatewayRoute">> => gateway_route()
+%% }
+-type describe_gateway_route_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_service_deployments_request() :: #{
 %%   <<"serviceDeploymentArns">> := list(string())
 %% }
@@ -1455,6 +1581,21 @@
 -type device() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_gateway_from_cluster_request() :: #{
+%%   <<"cluster">> := string(),
+%%   <<"gateway">> := string()
+%% }
+-type disassociate_gateway_from_cluster_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_gateway_from_cluster_response() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type disassociate_gateway_from_cluster_response() :: #{binary() => any()}.
+
+%% Example:
 %% discover_poll_endpoint_request() :: #{
 %%   <<"cluster">> => string(),
 %%   <<"containerInstance">> => string()
@@ -1497,6 +1638,7 @@
 %% Example:
 %% e_c_s_managed_resources() :: #{
 %%   <<"autoScaling">> => managed_auto_scaling(),
+%%   <<"gatewayConnections">> => list(gateway_connection()),
 %%   <<"ingressPaths">> => list(managed_ingress_path()),
 %%   <<"logGroups">> => list(managed_log_group()),
 %%   <<"metricAlarms">> => list(managed_metric_alarm()),
@@ -1528,6 +1670,15 @@
 %%   <<"tags">> => list(tag())
 %% }
 -type ebs_tag_specification() :: #{binary() => any()}.
+
+%% Example:
+%% elb_gateway_resources() :: #{
+%%   <<"gatewayRouteArns">> => list(string()),
+%%   <<"listenerArn">> => string(),
+%%   <<"loadBalancerArn">> => string(),
+%%   <<"securityGroup">> => string()
+%% }
+-type elb_gateway_resources() :: #{binary() => any()}.
 
 %% Example:
 %% environment_file() :: #{
@@ -1678,6 +1829,203 @@
 -type firelens_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% gateway() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"deletionProtection">> => boolean(),
+%%   <<"failures">> => list(gateway_resource_failure()),
+%%   <<"gatewayArn">> => string(),
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"propagateTags">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => list(tag()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type gateway() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_alb_test_traffic_rules() :: #{
+%%   <<"header">> => gateway_test_traffic_header()
+%% }
+-type gateway_alb_test_traffic_rules() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_cluster_association_summary() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type gateway_cluster_association_summary() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_connection() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"gatewayArn">> => string(),
+%%   <<"gatewayRouteArn">> => string(),
+%%   <<"portName">> => string(),
+%%   <<"resources">> => list(),
+%%   <<"serviceUrl">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type gateway_connection() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_connection_alb_resources() :: #{
+%%   <<"acmCertificateArn">> => string(),
+%%   <<"alternateTargetGroupArn">> => string(),
+%%   <<"listenerArn">> => string(),
+%%   <<"listenerRuleArn">> => string(),
+%%   <<"loadBalancerArn">> => string(),
+%%   <<"loadBalancerSecurityGroupArns">> => list(string()),
+%%   <<"targetGroupArn">> => string(),
+%%   <<"testListenerRuleArn">> => string()
+%% }
+-type gateway_connection_alb_resources() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_connector() :: #{
+%%   <<"filters">> => gateway_connector_filters(),
+%%   <<"healthCheck">> => gateway_connector_health_check(),
+%%   <<"portName">> => string()
+%% }
+-type gateway_connector() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_connector_filters() :: #{
+%%   <<"accessTypes">> => list(list(any())())
+%% }
+-type gateway_connector_filters() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_connector_health_check() :: #{
+%%   <<"healthCheckIntervalSeconds">> => integer(),
+%%   <<"healthCheckPath">> => string(),
+%%   <<"healthCheckPort">> => integer(),
+%%   <<"healthCheckProtocol">> => list(any()),
+%%   <<"healthCheckTimeoutSeconds">> => integer(),
+%%   <<"healthyThresholdCount">> => integer(),
+%%   <<"matcher">> => gateway_connector_health_check_matcher(),
+%%   <<"unhealthyThresholdCount">> => integer()
+%% }
+-type gateway_connector_health_check() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_connector_health_check_matcher() :: #{
+%%   <<"grpcCode">> => string(),
+%%   <<"httpCode">> => string()
+%% }
+-type gateway_connector_health_check_matcher() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_elb_access_log_configuration() :: #{
+%%   <<"destination">> => list()
+%% }
+-type gateway_elb_access_log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_elb_access_log_s3_destination() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"prefix">> => string()
+%% }
+-type gateway_elb_access_log_s3_destination() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_elb_network_configuration() :: #{
+%%   <<"inboundSecurityGroup">> => string(),
+%%   <<"ipAddressType">> => list(any()),
+%%   <<"subnets">> => list(string())
+%% }
+-type gateway_elb_network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type gateway_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_operation_error() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"operation">> => string()
+%% }
+-type gateway_operation_error() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_resource_failure() :: #{
+%%   <<"arn">> => string(),
+%%   <<"errors">> => list(gateway_operation_error())
+%% }
+-type gateway_resource_failure() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_resources() :: #{
+%%   <<"gatewayArn">> => string(),
+%%   <<"resources">> => list()
+%% }
+-type gateway_resources() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_route() :: #{
+%%   <<"gatewayRouteArn">> => string(),
+%%   <<"resources">> => list(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceContainerPortName">> => string(),
+%%   <<"serviceUrl">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type gateway_route() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_route_alb_resources() :: #{
+%%   <<"acmCertificateArn">> => string(),
+%%   <<"listenerArn">> => string(),
+%%   <<"listenerRuleArn">> => string(),
+%%   <<"loadBalancerArn">> => string(),
+%%   <<"loadBalancerSecurityGroups">> => list(gateway_route_load_balancer_security_group()),
+%%   <<"serviceSecurityGroupArn">> => string(),
+%%   <<"testListenerRuleArns">> => list(string())
+%% }
+-type gateway_route_alb_resources() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_route_load_balancer_security_group() :: #{
+%%   <<"arn">> => string(),
+%%   <<"ruleArns">> => list(string())
+%% }
+-type gateway_route_load_balancer_security_group() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_route_summary() :: #{
+%%   <<"clusterArn">> => string(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"gatewayRouteArn">> => string(),
+%%   <<"serviceArn">> => string(),
+%%   <<"serviceContainerPortName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type gateway_route_summary() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_summary() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"gatewayArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type gateway_summary() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_test_traffic_header() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type gateway_test_traffic_header() :: #{binary() => any()}.
+
+%% Example:
 %% get_task_protection_request() :: #{
 %%   <<"cluster">> := string(),
 %%   <<"tasks">> => list(string())
@@ -1707,6 +2055,20 @@
 %%   <<"ipAddress">> => string()
 %% }
 -type host_entry() :: #{binary() => any()}.
+
+%% Example:
+%% host_shared_alb_configuration() :: #{
+%%   <<"accessLogs">> => gateway_elb_access_log_configuration(),
+%%   <<"httpDesync">> => list(any()),
+%%   <<"maxAlbCount">> => integer(),
+%%   <<"networkConfiguration">> => gateway_elb_network_configuration(),
+%%   <<"port">> => integer(),
+%%   <<"protocol">> => list(any()),
+%%   <<"scheme">> => list(any()),
+%%   <<"testTrafficRules">> => gateway_alb_test_traffic_rules(),
+%%   <<"webACLArn">> => string()
+%% }
+-type host_shared_alb_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% host_volume_properties() :: #{
@@ -1971,6 +2333,58 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_daemons_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_gateway_cluster_associations_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"gateway">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(list(any())())
+%% }
+-type list_gateway_cluster_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_gateway_cluster_associations_response() :: #{
+%%   <<"gatewayClusterAssociations">> => list(gateway_cluster_association_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateway_cluster_associations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_gateway_routes_request() :: #{
+%%   <<"cluster">> => string(),
+%%   <<"gateway">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"service">> => string(),
+%%   <<"serviceContainerPortName">> => string(),
+%%   <<"status">> => list(list(any())())
+%% }
+-type list_gateway_routes_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_gateway_routes_response() :: #{
+%%   <<"gatewayRoutes">> => list(gateway_route_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateway_routes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_gateways_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"names">> => list(string()),
+%%   <<"nextToken">> => string(),
+%%   <<"status">> => list(list(any())())
+%% }
+-type list_gateways_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_gateways_response() :: #{
+%%   <<"gateways">> => list(gateway_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_gateways_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_service_deployments_request() :: #{
@@ -2934,6 +3348,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"ecsManagedResources">> => e_c_s_managed_resources(),
 %%   <<"fargateEphemeralStorage">> => deployment_ephemeral_storage(),
+%%   <<"gatewayConnectors">> => list(gateway_connector()),
 %%   <<"guardDutyEnabled">> => boolean(),
 %%   <<"launchType">> => list(any()),
 %%   <<"loadBalancers">> => list(load_balancer()),
@@ -3490,6 +3905,41 @@
 -type update_express_gateway_service_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_gateway_alb_configuration() :: #{
+%%   <<"accessLogs">> => gateway_elb_access_log_configuration(),
+%%   <<"httpDesync">> => list(any()),
+%%   <<"maxAlbCount">> => integer(),
+%%   <<"networkConfiguration">> => update_gateway_network_configuration(),
+%%   <<"testTrafficRules">> => gateway_alb_test_traffic_rules(),
+%%   <<"webACLArn">> => string()
+%% }
+-type update_gateway_alb_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_network_configuration() :: #{
+%%   <<"inboundSecurityGroup">> => string()
+%% }
+-type update_gateway_network_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_request() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"deletionProtection">> => boolean(),
+%%   <<"gateway">> := string(),
+%%   <<"infrastructureRoleArn">> => string(),
+%%   <<"propagateTags">> => list(any())
+%% }
+-type update_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_gateway_response() :: #{
+%%   <<"gatewayArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_gateway_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_in_progress_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -3530,6 +3980,7 @@
 %%   <<"enableECSManagedTags">> => boolean(),
 %%   <<"enableExecuteCommand">> => boolean(),
 %%   <<"forceNewDeployment">> => boolean(),
+%%   <<"gatewayConnectors">> => list(gateway_connector()),
 %%   <<"healthCheckGracePeriodSeconds">> => integer(),
 %%   <<"loadBalancers">> => list(load_balancer()),
 %%   <<"monitoring">> => monitoring_configuration(),
@@ -3647,6 +4098,15 @@
 %% }
 -type vpc_lattice_configuration() :: #{binary() => any()}.
 
+-type associate_gateway_with_cluster_errors() ::
+    unsupported_feature_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    gateway_not_found_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
 -type continue_service_deployment_errors() ::
     unsupported_feature_exception() | 
     service_deployment_not_found_exception() | 
@@ -3688,6 +4148,13 @@
     platform_task_definition_incompatibility_exception() | 
     invalid_parameter_exception() | 
     cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type create_gateway_errors() ::
+    unsupported_feature_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
     client_exception() | 
     access_denied_exception().
 
@@ -3774,6 +4241,14 @@
     server_exception() | 
     invalid_parameter_exception() | 
     cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type delete_gateway_errors() ::
+    unsupported_feature_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    gateway_not_found_exception() | 
     client_exception() | 
     access_denied_exception().
 
@@ -3877,6 +4352,30 @@
     client_exception() | 
     access_denied_exception().
 
+-type describe_gateway_errors() ::
+    unsupported_feature_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    gateway_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type describe_gateway_resources_errors() ::
+    unsupported_feature_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    gateway_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type describe_gateway_route_errors() ::
+    unsupported_feature_exception() | 
+    server_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
 -type describe_service_deployments_errors() ::
     unsupported_feature_exception() | 
     service_not_found_exception() | 
@@ -3921,6 +4420,16 @@
 -type describe_tasks_errors() ::
     server_exception() | 
     invalid_parameter_exception() | 
+    cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type disassociate_gateway_from_cluster_errors() ::
+    unsupported_feature_exception() | 
+    server_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_exception() | 
+    gateway_not_found_exception() | 
     cluster_not_found_exception() | 
     client_exception() | 
     access_denied_exception().
@@ -3993,6 +4502,28 @@
     server_exception() | 
     invalid_parameter_exception() | 
     cluster_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type list_gateway_cluster_associations_errors() ::
+    unsupported_feature_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type list_gateway_routes_errors() ::
+    unsupported_feature_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    gateway_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
+-type list_gateways_errors() ::
+    unsupported_feature_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
     client_exception() | 
     access_denied_exception().
 
@@ -4234,6 +4765,14 @@
     client_exception() | 
     access_denied_exception().
 
+-type update_gateway_errors() ::
+    unsupported_feature_exception() | 
+    server_exception() | 
+    invalid_parameter_exception() | 
+    gateway_not_found_exception() | 
+    client_exception() | 
+    access_denied_exception().
+
 -type update_service_errors() ::
     unsupported_feature_exception() | 
     service_not_found_exception() | 
@@ -4282,6 +4821,28 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associates a gateway with an Amazon ECS cluster.
+%%
+%% After a cluster is associated with a gateway, services in that cluster can
+%% use the gateway for ingress. No changes take effect until you update a
+%% service in the cluster to use the gateway. A single cluster can be
+%% associated with up to 5 gateways.
+-spec associate_gateway_with_cluster(aws_client:aws_client(), associate_gateway_with_cluster_request()) ->
+    {ok, associate_gateway_with_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, associate_gateway_with_cluster_errors(), tuple()}.
+associate_gateway_with_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_gateway_with_cluster(Client, Input, []).
+
+-spec associate_gateway_with_cluster(aws_client:aws_client(), associate_gateway_with_cluster_request(), proplists:proplist()) ->
+    {ok, associate_gateway_with_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, associate_gateway_with_cluster_errors(), tuple()}.
+associate_gateway_with_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateGatewayWithCluster">>, Input, Options).
 
 %% @doc Continues or rolls back an Amazon ECS service deployment that is
 %% paused at a lifecycle hook.
@@ -4431,6 +4992,34 @@ create_express_gateway_service(Client, Input)
 create_express_gateway_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateExpressGatewayService">>, Input, Options).
+
+%% @doc Creates a gateway.
+%%
+%% A gateway defines and dynamically manages ingress paths for your Amazon
+%% ECS services, handling traffic routing and infrastructure across multiple
+%% services while optimizing infrastructure usage. `CreateGateway' is a
+%% synchronous operation and the gateway is returned with a status of
+%% `ACTIVE'. The load balancers and other infrastructure that a gateway
+%% manages aren't created until a service in an associated cluster begins
+%% using the gateway.
+%%
+%% To use this operation, you must have the `iam:PassRole' permission for
+%% the infrastructure role that you specify in `infrastructureRoleArn'.
+-spec create_gateway(aws_client:aws_client(), create_gateway_request()) ->
+    {ok, create_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, create_gateway_errors(), tuple()}.
+create_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_gateway(Client, Input, []).
+
+-spec create_gateway(aws_client:aws_client(), create_gateway_request(), proplists:proplist()) ->
+    {ok, create_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, create_gateway_errors(), tuple()}.
+create_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateGateway">>, Input, Options).
 
 %% @doc Runs and maintains your desired number of tasks from a specified task
 %% definition.
@@ -4857,6 +5446,30 @@ delete_express_gateway_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteExpressGatewayService">>, Input, Options).
 
+%% @doc Deletes a gateway.
+%%
+%% Before you can delete a gateway, deletion protection must be disabled and
+%% the gateway must not have any cluster associations that are in the
+%% `ACTIVE' or `DISASSOCIATING' state. If associations exist, the
+%% operation fails; disassociate all clusters first. `DeleteGateway' is a
+%% synchronous operation. After you delete a gateway, subsequent requests for
+%% it return a `GatewayNotFoundException'.
+-spec delete_gateway(aws_client:aws_client(), delete_gateway_request()) ->
+    {ok, delete_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, delete_gateway_errors(), tuple()}.
+delete_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_gateway(Client, Input, []).
+
+-spec delete_gateway(aws_client:aws_client(), delete_gateway_request(), proplists:proplist()) ->
+    {ok, delete_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, delete_gateway_errors(), tuple()}.
+delete_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteGateway">>, Input, Options).
+
 %% @doc Deletes a specified service within a cluster.
 %%
 %% You can delete a service if you have no running tasks in it and the
@@ -5206,6 +5819,69 @@ describe_express_gateway_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeExpressGatewayService">>, Input, Options).
 
+%% @doc Describes a gateway, including its configuration, status, and the
+%% type-specific infrastructure settings that it uses.
+-spec describe_gateway(aws_client:aws_client(), describe_gateway_request()) ->
+    {ok, describe_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_errors(), tuple()}.
+describe_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_gateway(Client, Input, []).
+
+-spec describe_gateway(aws_client:aws_client(), describe_gateway_request(), proplists:proplist()) ->
+    {ok, describe_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_errors(), tuple()}.
+describe_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeGateway">>, Input, Options).
+
+%% @doc Returns the infrastructure that a gateway has created and manages, so
+%% that you can follow the traffic path from top-level shared resources, such
+%% as load balancers, to the service-specific resources represented as
+%% gateway routes.
+%%
+%% Responses include only the Amazon Resource Names (ARNs) of gateway-managed
+%% infrastructure. For the current state of a resource, describe it with the
+%% corresponding Amazon Web Services service (Elastic Load Balancing, Amazon
+%% EC2, or Amazon Web Services Certificate Manager). The results are
+%% paginated.
+-spec describe_gateway_resources(aws_client:aws_client(), describe_gateway_resources_request()) ->
+    {ok, describe_gateway_resources_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_resources_errors(), tuple()}.
+describe_gateway_resources(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_gateway_resources(Client, Input, []).
+
+-spec describe_gateway_resources(aws_client:aws_client(), describe_gateway_resources_request(), proplists:proplist()) ->
+    {ok, describe_gateway_resources_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_resources_errors(), tuple()}.
+describe_gateway_resources(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeGatewayResources">>, Input, Options).
+
+%% @doc Describes a gateway route, including its status, the service it
+%% routes traffic to, and the service-specific infrastructure, such as target
+%% groups and listener rules, that the gateway manages for it.
+-spec describe_gateway_route(aws_client:aws_client(), describe_gateway_route_request()) ->
+    {ok, describe_gateway_route_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_route_errors(), tuple()}.
+describe_gateway_route(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_gateway_route(Client, Input, []).
+
+-spec describe_gateway_route(aws_client:aws_client(), describe_gateway_route_request(), proplists:proplist()) ->
+    {ok, describe_gateway_route_response(), tuple()} |
+    {error, any()} |
+    {error, describe_gateway_route_errors(), tuple()}.
+describe_gateway_route(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeGatewayRoute">>, Input, Options).
+
 %% @doc Describes one or more of your service deployments.
 %%
 %% A service deployment happens when you release a software update for the
@@ -5341,6 +6017,29 @@ describe_tasks(Client, Input)
 describe_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTasks">>, Input, Options).
+
+%% @doc Removes the association between a gateway and an Amazon ECS cluster.
+%%
+%% The association remains in the `DISASSOCIATING' state until you remove
+%% all of the gateway routes for the cluster by updating the associated
+%% services. You can use `ListGatewayRoutes' with a cluster filter to
+%% determine which routes are preventing disassociation. No infrastructure
+%% changes are made until the affected services are updated.
+-spec disassociate_gateway_from_cluster(aws_client:aws_client(), disassociate_gateway_from_cluster_request()) ->
+    {ok, disassociate_gateway_from_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_gateway_from_cluster_errors(), tuple()}.
+disassociate_gateway_from_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_gateway_from_cluster(Client, Input, []).
+
+-spec disassociate_gateway_from_cluster(aws_client:aws_client(), disassociate_gateway_from_cluster_request(), proplists:proplist()) ->
+    {ok, disassociate_gateway_from_cluster_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_gateway_from_cluster_errors(), tuple()}.
+disassociate_gateway_from_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateGatewayFromCluster">>, Input, Options).
 
 %% @doc This action is only used by the Amazon ECS agent, and it is not
 %% intended for use outside of the agent.
@@ -5546,6 +6245,71 @@ list_daemons(Client, Input)
 list_daemons(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListDaemons">>, Input, Options).
+
+%% @doc Returns a list of the associations between gateways and clusters.
+%%
+%% You can filter the results by gateway, cluster, and status. The results
+%% are paginated. We recommend that you use pagination to ensure that the
+%% operation returns quickly and successfully.
+-spec list_gateway_cluster_associations(aws_client:aws_client(), list_gateway_cluster_associations_request()) ->
+    {ok, list_gateway_cluster_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateway_cluster_associations_errors(), tuple()}.
+list_gateway_cluster_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_gateway_cluster_associations(Client, Input, []).
+
+-spec list_gateway_cluster_associations(aws_client:aws_client(), list_gateway_cluster_associations_request(), proplists:proplist()) ->
+    {ok, list_gateway_cluster_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateway_cluster_associations_errors(), tuple()}.
+list_gateway_cluster_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGatewayClusterAssociations">>, Input, Options).
+
+%% @doc Returns a list of gateway routes.
+%%
+%% A gateway route represents the association between a service and a gateway
+%% and the service-specific infrastructure the gateway manages for it. You
+%% can filter the results by gateway, cluster, service, container port name,
+%% and status. The results are paginated. We recommend that you use
+%% pagination to ensure that the operation returns quickly and successfully.
+-spec list_gateway_routes(aws_client:aws_client(), list_gateway_routes_request()) ->
+    {ok, list_gateway_routes_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateway_routes_errors(), tuple()}.
+list_gateway_routes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_gateway_routes(Client, Input, []).
+
+-spec list_gateway_routes(aws_client:aws_client(), list_gateway_routes_request(), proplists:proplist()) ->
+    {ok, list_gateway_routes_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateway_routes_errors(), tuple()}.
+list_gateway_routes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGatewayRoutes">>, Input, Options).
+
+%% @doc Returns a list of gateways in your account.
+%%
+%% You can filter the results by gateway name and status. The results are
+%% paginated. We recommend that you use pagination to ensure that the
+%% operation returns quickly and successfully.
+-spec list_gateways(aws_client:aws_client(), list_gateways_request()) ->
+    {ok, list_gateways_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateways_errors(), tuple()}.
+list_gateways(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_gateways(Client, Input, []).
+
+-spec list_gateways(aws_client:aws_client(), list_gateways_request(), proplists:proplist()) ->
+    {ok, list_gateways_response(), tuple()} |
+    {error, any()} |
+    {error, list_gateways_errors(), tuple()}.
+list_gateways(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGateways">>, Input, Options).
 
 %% @doc This operation lists all the service deployments that meet the
 %% specified filter criteria.
@@ -6422,6 +7186,38 @@ update_express_gateway_service(Client, Input)
 update_express_gateway_service(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExpressGatewayService">>, Input, Options).
+
+%% @doc Modifies the configuration of a gateway.
+%%
+%% You can change only the properties that can be applied without
+%% interrupting traffic, and the configuration variant that you provide must
+%% match the gateway's type. `UpdateGateway' is an asynchronous
+%% operation: the changes are applied to each load balancer the gateway
+%% manages, and the gateway reports a status of `UPDATE_IN_PROGRESS'
+%% until the update completes. If Amazon ECS can't update one or more
+%% resources, it makes a best effort to update the rest and the gateway
+%% status changes to `UPDATE_FAILED'. Use `DescribeGateway' to
+%% inspect the gateway's `statusReason' and failures list, which
+%% gives the ARN of each load balancer that was not updated and the
+%% operation, error code, and message for each failure.
+%%
+%% If you specify `infrastructureRoleArn', you must have the
+%% `iam:PassRole' permission for that role.
+-spec update_gateway(aws_client:aws_client(), update_gateway_request()) ->
+    {ok, update_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_errors(), tuple()}.
+update_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_gateway(Client, Input, []).
+
+-spec update_gateway(aws_client:aws_client(), update_gateway_request(), proplists:proplist()) ->
+    {ok, update_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, update_gateway_errors(), tuple()}.
+update_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateGateway">>, Input, Options).
 
 %% @doc Modifies the parameters of a service.
 %%

@@ -252,8 +252,10 @@
 
 %% Example:
 %% anomaly_detector_configuration() :: #{
+%%   <<"AdaptationSpeed">> => list(any()),
 %%   <<"ExcludedTimeRanges">> => list(range()),
-%%   <<"MetricTimezone">> => string()
+%%   <<"MetricTimezone">> => string(),
+%%   <<"OutlierFilteringStrength">> => list(any())
 %% }
 -type anomaly_detector_configuration() :: #{binary() => any()}.
 

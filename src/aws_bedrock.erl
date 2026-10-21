@@ -2527,16 +2527,32 @@
 
 %% Example:
 %% guardrail_contextual_grounding_policy() :: #{
-%%   <<"filters">> => list(guardrail_contextual_grounding_filter())
+%%   <<"filters">> => list(guardrail_contextual_grounding_filter()),
+%%   <<"tier">> => guardrail_contextual_grounding_tier()
 %% }
 -type guardrail_contextual_grounding_policy() :: #{binary() => any()}.
 
 
 %% Example:
 %% guardrail_contextual_grounding_policy_config() :: #{
-%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config())
+%%   <<"filtersConfig">> => list(guardrail_contextual_grounding_filter_config()),
+%%   <<"tierConfig">> => guardrail_contextual_grounding_tier_config()
 %% }
 -type guardrail_contextual_grounding_policy_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_tier() :: #{
+%%   <<"tierName">> => list(any())
+%% }
+-type guardrail_contextual_grounding_tier() :: #{binary() => any()}.
+
+
+%% Example:
+%% guardrail_contextual_grounding_tier_config() :: #{
+%%   <<"tierName">> => list(any())
+%% }
+-type guardrail_contextual_grounding_tier_config() :: #{binary() => any()}.
 
 
 %% Example:
