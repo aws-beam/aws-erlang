@@ -2164,6 +2164,18 @@
 -type analysis_security_group_rule() :: #{binary() => any()}.
 
 %% Example:
+%% analysis_transit_gateway_policy_table_entry() :: #{
+%%   <<"DestinationCidr">> => string(),
+%%   <<"DestinationPortRange">> => port_range(),
+%%   <<"Protocol">> => string(),
+%%   <<"RuleNumber">> => integer(),
+%%   <<"SourceCidr">> => string(),
+%%   <<"SourcePortRange">> => port_range(),
+%%   <<"TargetRouteTableId">> => string()
+%% }
+-type analysis_transit_gateway_policy_table_entry() :: #{binary() => any()}.
+
+%% Example:
 %% application_status() :: #{
 %%   <<"Details">> => list(application_status_detail()),
 %%   <<"ResumeAt">> => non_neg_integer(),
@@ -12549,6 +12561,8 @@
 %%   <<"SubnetRouteTable">> => analysis_component(),
 %%   <<"TransitGateway">> => analysis_component(),
 %%   <<"TransitGatewayAttachment">> => analysis_component(),
+%%   <<"TransitGatewayPolicyTable">> => analysis_component(),
+%%   <<"TransitGatewayPolicyTableEntry">> => analysis_transit_gateway_policy_table_entry(),
 %%   <<"TransitGatewayRouteTable">> => analysis_component(),
 %%   <<"TransitGatewayRouteTableRoute">> => transit_gateway_route_table_route(),
 %%   <<"Vpc">> => analysis_component(),
@@ -15671,6 +15685,7 @@
 %%   <<"InstanceStatus">> => instance_status_summary(),
 %%   <<"Operator">> => operator_response(),
 %%   <<"OutpostArn">> => string(),
+%%   <<"PerformanceStatus">> => performance_status_summary(),
 %%   <<"SystemStatus">> => instance_status_summary()
 %% }
 -type instance_status() :: #{binary() => any()}.
@@ -19512,6 +19527,7 @@
 %%   <<"SourceVpc">> => analysis_component(),
 %%   <<"Subnet">> => analysis_component(),
 %%   <<"TransitGateway">> => analysis_component(),
+%%   <<"TransitGatewayPolicyTableEntry">> => analysis_transit_gateway_policy_table_entry(),
 %%   <<"TransitGatewayRouteTableRoute">> => transit_gateway_route_table_route(),
 %%   <<"Vpc">> => analysis_component()
 %% }
@@ -19608,6 +19624,14 @@
 %%   <<"InstanceFamily">> => string()
 %% }
 -type performance_factor_reference_request() :: #{binary() => any()}.
+
+%% Example:
+%% performance_status_summary() :: #{
+%%   <<"ImpairedSince">> => non_neg_integer(),
+%%   <<"Remediation">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type performance_status_summary() :: #{binary() => any()}.
 
 %% Example:
 %% phase1_d_h_group_numbers_list_value() :: #{

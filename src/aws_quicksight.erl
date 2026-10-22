@@ -5178,7 +5178,10 @@
 %%   <<"CredentialPair">> => credential_pair(),
 %%   <<"KeyPairCredentials">> => key_pair_credentials(),
 %%   <<"OAuthClientCredentials">> => o_auth_client_credentials(),
+%%   <<"OneDriveClientCredentials">> => one_drive_client_credentials(),
 %%   <<"SecretArn">> => string(),
+%%   <<"ServiceAccountCredentials">> => service_account_credentials(),
+%%   <<"SharePointClientCredentials">> => share_point_client_credentials(),
 %%   <<"WebProxyCredentials">> => web_proxy_credentials()
 %% }
 -type data_source_credentials() :: #{binary() => any()}.
@@ -11354,6 +11357,14 @@
 
 
 %% Example:
+%% one_drive_client_credentials() :: #{
+%%   <<"CertThumbprint">> => string(),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type one_drive_client_credentials() :: #{binary() => any()}.
+
+
+%% Example:
 %% one_drive_parameters() :: #{
 %%   <<"AuthType">> => list(any()),
 %%   <<"ClientId">> => string(),
@@ -13381,6 +13392,15 @@
 
 
 %% Example:
+%% service_account_credentials() :: #{
+%%   <<"AdminAccountEmail">> => string(),
+%%   <<"ClientEmail">> => string(),
+%%   <<"ServiceAccountPrivateKey">> => string()
+%% }
+-type service_account_credentials() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_now_parameters() :: #{
 %%   <<"SiteBaseUrl">> => string()
 %% }
@@ -13416,6 +13436,14 @@
 %%   <<"BackgroundColor">> => conditional_formatting_color()
 %% }
 -type shape_conditional_format() :: #{binary() => any()}.
+
+
+%% Example:
+%% share_point_client_credentials() :: #{
+%%   <<"CertThumbprint">> => string(),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type share_point_client_credentials() :: #{binary() => any()}.
 
 
 %% Example:

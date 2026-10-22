@@ -63,6 +63,8 @@
          delete_warm_pool/3,
          describe_account_limits/2,
          describe_account_limits/3,
+         describe_account_settings/2,
+         describe_account_settings/3,
          describe_adjustment_types/2,
          describe_adjustment_types/3,
          describe_auto_scaling_groups/2,
@@ -125,6 +127,8 @@
          get_predictive_scaling_forecast/3,
          launch_instances/2,
          launch_instances/3,
+         put_account_setting/2,
+         put_account_setting/3,
          put_lifecycle_hook/2,
          put_lifecycle_hook/3,
          put_notification_configuration/2,
@@ -172,6 +176,17 @@
 %%   <<"Min">> => integer()
 %% }
 -type accelerator_total_memory_mi_b_request() :: #{binary() => any()}.
+
+%% Example:
+%% account_setting() :: #{
+%%   <<"DefaultValue">> => string(),
+%%   <<"EnforcedValue">> => string(),
+%%   <<"EnforcementDate">> => non_neg_integer(),
+%%   <<"EnforcementType">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type account_setting() :: #{binary() => any()}.
 
 %% Example:
 %% active_instance_refresh_not_found_fault() :: #{
@@ -638,6 +653,21 @@
 %%   <<"NumberOfLaunchConfigurations">> => integer()
 %% }
 -type describe_account_limits_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_settings_answer() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Settings">> => list(account_setting())
+%% }
+-type describe_account_settings_answer() :: #{binary() => any()}.
+
+%% Example:
+%% describe_account_settings_type() :: #{
+%%   <<"MaxRecords">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_account_settings_type() :: #{binary() => any()}.
 
 %% Example:
 %% describe_adjustment_types_answer() :: #{
@@ -1517,6 +1547,19 @@
 -type processes_type() :: #{binary() => any()}.
 
 %% Example:
+%% put_account_setting_answer() :: #{
+
+%% }
+-type put_account_setting_answer() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_setting_type() :: #{
+%%   <<"Name">> := string(),
+%%   <<"Value">> := string()
+%% }
+-type put_account_setting_type() :: #{binary() => any()}.
+
+%% Example:
 %% put_lifecycle_hook_answer() :: #{
 
 %% }
@@ -2025,6 +2068,9 @@
 
 -type describe_account_limits_errors() ::
     resource_contention_fault().
+
+-type describe_account_settings_errors() ::
+    invalid_next_token().
 
 -type describe_adjustment_types_errors() ::
     resource_contention_fault().
@@ -2861,6 +2907,30 @@ describe_account_limits(Client, Input)
 describe_account_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAccountLimits">>, Input, Options).
+
+%% @doc
+%% Describes the current Amazon EC2 Auto Scaling account settings for your
+%% account.
+%%
+%% Account settings are a framework that allows you to enable or disable
+%% features for your account. The framework also gives you visibility into
+%% features that will be enforced by a given date, providing a time window to
+%% prepare for backwards-incompatible changes.
+-spec describe_account_settings(aws_client:aws_client(), describe_account_settings_type()) ->
+    {ok, describe_account_settings_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_account_settings_errors(), tuple()}.
+describe_account_settings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_account_settings(Client, Input, []).
+
+-spec describe_account_settings(aws_client:aws_client(), describe_account_settings_type(), proplists:proplist()) ->
+    {ok, describe_account_settings_answer(), tuple()} |
+    {error, any()} |
+    {error, describe_account_settings_errors(), tuple()}.
+describe_account_settings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeAccountSettings">>, Input, Options).
 
 %% @doc Describes the available adjustment types for step scaling and simple
 %% scaling
@@ -3790,6 +3860,30 @@ launch_instances(Client, Input)
 launch_instances(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"LaunchInstances">>, Input, Options).
+
+%% @doc
+%% Modifies an account setting for your account.
+%%
+%% You can use this operation to opt in or opt out of features provided
+%% through account settings when permitted. Account settings give you control
+%% over features that might have backwards-incompatible changes. When Amazon
+%% EC2 Auto Scaling introduces such changes, account settings allow you to
+%% test and adopt new features. Some account settings are enforced after a
+%% specified date. This means that after the enforcement date, you can no
+%% longer modify the setting.
+-spec put_account_setting(aws_client:aws_client(), put_account_setting_type()) ->
+    {ok, put_account_setting_answer(), tuple()} |
+    {error, any()}.
+put_account_setting(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_account_setting(Client, Input, []).
+
+-spec put_account_setting(aws_client:aws_client(), put_account_setting_type(), proplists:proplist()) ->
+    {ok, put_account_setting_answer(), tuple()} |
+    {error, any()}.
+put_account_setting(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutAccountSetting">>, Input, Options).
 
 %% @doc Creates or updates a lifecycle hook for the specified Auto Scaling
 %% group.

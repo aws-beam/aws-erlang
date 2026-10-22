@@ -50,6 +50,8 @@
          create_data_product_revision/5,
          create_data_source/3,
          create_data_source/4,
+         create_designation/3,
+         create_designation/4,
          create_domain/2,
          create_domain/3,
          create_domain_unit/3,
@@ -106,6 +108,8 @@
          delete_data_product/5,
          delete_data_source/4,
          delete_data_source/5,
+         delete_designation/4,
+         delete_designation/5,
          delete_domain/3,
          delete_domain/4,
          delete_domain_unit/4,
@@ -179,6 +183,9 @@
          get_data_source_run/3,
          get_data_source_run/5,
          get_data_source_run/6,
+         get_designation/3,
+         get_designation/5,
+         get_designation/6,
          get_domain/2,
          get_domain/4,
          get_domain/5,
@@ -295,6 +302,9 @@
          list_data_sources/3,
          list_data_sources/5,
          list_data_sources/6,
+         list_designations/2,
+         list_designations/4,
+         list_designations/5,
          list_domain_units_for_parent/3,
          list_domain_units_for_parent/5,
          list_domain_units_for_parent/6,
@@ -429,6 +439,8 @@
          update_connection/5,
          update_data_source/4,
          update_data_source/5,
+         update_designation/4,
+         update_designation/5,
          update_domain/3,
          update_domain/4,
          update_domain_unit/4,
@@ -1475,6 +1487,32 @@
 
 
 %% Example:
+%% create_designation_input() :: #{
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"policy">> := string()
+%% }
+-type create_designation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_designation_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"designationType">> => list(any()),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"policy">> => string()
+%% }
+-type create_designation_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_domain_input() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"description">> => [string()],
@@ -1873,7 +1911,8 @@
 %% Example:
 %% create_project_membership_input() :: #{
 %%   <<"designation">> := list(any()),
-%%   <<"member">> := list()
+%%   <<"member">> := list(),
+%%   <<"userCreatedDesignationId">> => string()
 %% }
 -type create_project_membership_input() :: #{binary() => any()}.
 
@@ -2362,6 +2401,14 @@
 %% }
 -type delete_data_source_output() :: #{binary() => any()}.
 
+%% Example:
+%% delete_designation_input() :: #{}
+-type delete_designation_input() :: #{}.
+
+%% Example:
+%% delete_designation_output() :: #{}
+-type delete_designation_output() :: #{}.
+
 
 %% Example:
 %% delete_domain_input() :: #{
@@ -2569,6 +2616,21 @@
 %%   <<"startTimeoutMinutes">> => [integer()]
 %% }
 -type deployment_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% designation_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"designationType">> => list(any()),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type designation_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3166,6 +3228,26 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type get_data_source_run_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_designation_input() :: #{}
+-type get_designation_input() :: #{}.
+
+
+%% Example:
+%% get_designation_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"designationType">> => list(any()),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"policy">> => string()
+%% }
+-type get_designation_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_domain_input() :: #{}
@@ -4555,6 +4637,22 @@
 
 
 %% Example:
+%% list_designations_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_designations_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_designations_output() :: #{
+%%   <<"items">> => list(designation_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_designations_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_domain_units_for_parent_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -5489,7 +5587,8 @@
 %% Example:
 %% project_member() :: #{
 %%   <<"designation">> => list(any()),
-%%   <<"memberDetails">> => list()
+%%   <<"memberDetails">> => list(),
+%%   <<"userCreatedDesignationId">> => string()
 %% }
 -type project_member() :: #{binary() => any()}.
 
@@ -5497,7 +5596,8 @@
 %% Example:
 %% project_membership_assignment() :: #{
 %%   <<"designation">> => list(any()),
-%%   <<"member">> => list()
+%%   <<"member">> => list(),
+%%   <<"userCreatedDesignationId">> => string()
 %% }
 -type project_membership_assignment() :: #{binary() => any()}.
 
@@ -5506,7 +5606,8 @@
 %% project_policy_grant_principal() :: #{
 %%   <<"projectDesignation">> => list(any()),
 %%   <<"projectGrantFilter">> => list(),
-%%   <<"projectIdentifier">> => string()
+%%   <<"projectIdentifier">> => string(),
+%%   <<"userCreatedDesignationId">> => string()
 %% }
 -type project_policy_grant_principal() :: #{binary() => any()}.
 
@@ -6954,6 +7055,32 @@
 
 
 %% Example:
+%% update_designation_input() :: #{
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"policy">> => string()
+%% }
+-type update_designation_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_designation_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => string(),
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"designationType">> => list(any()),
+%%   <<"domainId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"policy">> => string()
+%% }
+-type update_designation_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_domain_input() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"description">> => [string()],
@@ -7702,6 +7829,15 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_designation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_domain_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -7924,6 +8060,14 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_designation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -8168,6 +8312,13 @@
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type get_designation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 -type get_domain_errors() ::
@@ -8444,6 +8595,13 @@
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type list_designations_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 -type list_domain_units_for_parent_errors() ::
@@ -8823,6 +8981,14 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_designation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -9748,6 +9914,43 @@ create_data_source(Client, DomainIdentifier, Input) ->
 create_data_source(Client, DomainIdentifier, Input0, Options0) ->
     Method = post,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-sources"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new user-defined designation with a Cedar permit policy.
+%%
+%% The designation defines a named role that can be assigned to project
+%% members.
+-spec create_designation(aws_client:aws_client(), binary() | list(), create_designation_input()) ->
+    {ok, create_designation_output(), tuple()} |
+    {error, any()} |
+    {error, create_designation_errors(), tuple()}.
+create_designation(Client, DomainIdentifier, Input) ->
+    create_designation(Client, DomainIdentifier, Input, []).
+
+-spec create_designation(aws_client:aws_client(), binary() | list(), create_designation_input(), proplists:proplist()) ->
+    {ok, create_designation_output(), tuple()} |
+    {error, any()} |
+    {error, create_designation_errors(), tuple()}.
+create_designation(Client, DomainIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/designations"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -10852,6 +11055,43 @@ delete_data_source(Client, DomainIdentifier, Identifier, Input0, Options0) ->
                      {<<"retainPermissionsOnRevokeFailure">>, <<"retainPermissionsOnRevokeFailure">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a designation.
+%%
+%% Managed designations cannot be deleted.
+%% This operation is idempotent.
+-spec delete_designation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_designation_input()) ->
+    {ok, delete_designation_output(), tuple()} |
+    {error, any()} |
+    {error, delete_designation_errors(), tuple()}.
+delete_designation(Client, DomainIdentifier, Identifier, Input) ->
+    delete_designation(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec delete_designation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_designation_input(), proplists:proplist()) ->
+    {ok, delete_designation_output(), tuple()} |
+    {error, any()} |
+    {error, delete_designation_errors(), tuple()}.
+delete_designation(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/designations/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a Amazon DataZone domain.
@@ -12082,6 +12322,43 @@ get_data_source_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
 get_data_source_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-source-runs/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the details of a designation, including its Cedar policy.
+-spec get_designation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_designation_output(), tuple()} |
+    {error, any()} |
+    {error, get_designation_errors(), tuple()}.
+get_designation(Client, DomainIdentifier, Identifier)
+  when is_map(Client) ->
+    get_designation(Client, DomainIdentifier, Identifier, #{}, #{}).
+
+-spec get_designation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_designation_output(), tuple()} |
+    {error, any()} |
+    {error, get_designation_errors(), tuple()}.
+get_designation(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_designation(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, []).
+
+-spec get_designation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_designation_output(), tuple()} |
+    {error, any()} |
+    {error, get_designation_errors(), tuple()}.
+get_designation(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/designations/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -13746,6 +14023,52 @@ list_data_sources(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
         {<<"projectIdentifier">>, ProjectIdentifier},
         {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
         {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the designations in a domain.
+%%
+%% Returns system-managed designations
+%% first, followed by user-created designations sorted alphabetically by
+%% name.
+-spec list_designations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_designations_output(), tuple()} |
+    {error, any()} |
+    {error, list_designations_errors(), tuple()}.
+list_designations(Client, DomainIdentifier)
+  when is_map(Client) ->
+    list_designations(Client, DomainIdentifier, #{}, #{}).
+
+-spec list_designations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_designations_output(), tuple()} |
+    {error, any()} |
+    {error, list_designations_errors(), tuple()}.
+list_designations(Client, DomainIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_designations(Client, DomainIdentifier, QueryMap, HeadersMap, []).
+
+-spec list_designations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_designations_output(), tuple()} |
+    {error, any()} |
+    {error, list_designations_errors(), tuple()}.
+list_designations(Client, DomainIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/designations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -16082,6 +16405,42 @@ update_data_source(Client, DomainIdentifier, Identifier, Input) ->
 update_data_source(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/data-sources/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an existing designation.
+%%
+%% Managed designations cannot be modified.
+-spec update_designation(aws_client:aws_client(), binary() | list(), binary() | list(), update_designation_input()) ->
+    {ok, update_designation_output(), tuple()} |
+    {error, any()} |
+    {error, update_designation_errors(), tuple()}.
+update_designation(Client, DomainIdentifier, Identifier, Input) ->
+    update_designation(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_designation(aws_client:aws_client(), binary() | list(), binary() | list(), update_designation_input(), proplists:proplist()) ->
+    {ok, update_designation_output(), tuple()} |
+    {error, any()} |
+    {error, update_designation_errors(), tuple()}.
+update_designation(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/designations/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

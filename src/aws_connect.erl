@@ -10058,7 +10058,8 @@
 %%   <<"OrganizationResourceId">> => string(),
 %%   <<"SecurityProfileName">> => string(),
 %%   <<"TagRestrictedResources">> => list(string()),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any())
 %% }
 -type security_profile() :: #{binary() => any()}.
 
@@ -10086,7 +10087,8 @@
 %%   <<"Id">> => string(),
 %%   <<"OrganizationResourceId">> => string(),
 %%   <<"SecurityProfileName">> => string(),
-%%   <<"Tags">> => map()
+%%   <<"Tags">> => map(),
+%%   <<"Type">> => list(any())
 %% }
 -type security_profile_search_summary() :: #{binary() => any()}.
 
@@ -10097,7 +10099,8 @@
 %%   <<"Id">> => string(),
 %%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"Type">> => list(any())
 %% }
 -type security_profile_summary() :: #{binary() => any()}.
 

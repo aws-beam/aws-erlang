@@ -51,10 +51,10 @@
 %% rules that are compatible
 %% with Suricata, a free, open source network analysis and threat detection
 %% engine.
-%% Network Firewall supports Suricata version 7.0.8. For information about
+%% Network Firewall supports Suricata version 8.0.3. For information about
 %% Suricata,
 %% see the Suricata website: https://suricata.io/ and the
-%% Suricata User Guide: https://suricata.readthedocs.io/en/suricata-7.0.8/.
+%% Suricata User Guide: https://suricata.readthedocs.io/en/suricata-8.0.3/.
 %%
 %% You can use Network Firewall to monitor and protect your VPC traffic in a
 %% number of ways.
@@ -943,6 +943,7 @@
 %% Example:
 %% describe_flow_operation_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"FirewallArn">> := string(),
 %%   <<"FlowOperationId">> := string(),
 %%   <<"VpcEndpointAssociationArn">> => string(),
@@ -953,6 +954,7 @@
 %% Example:
 %% describe_flow_operation_response() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FlowOperation">> => flow_operation(),
 %%   <<"FlowOperationId">> => string(),
@@ -1260,6 +1262,7 @@
 %% firewall_policy() :: #{
 %%   <<"EnableTLSSessionHolding">> => boolean(),
 %%   <<"PolicyVariables">> => policy_variables(),
+%%   <<"Route53ResolvedIPValidation">> => route53_resolved_ip_validation(),
 %%   <<"StatefulDefaultActions">> => list(string()),
 %%   <<"StatefulEngineOptions">> => stateful_engine_options(),
 %%   <<"StatefulRuleGroupReferences">> => list(stateful_rule_group_reference()),
@@ -1270,6 +1273,14 @@
 %%   <<"TLSInspectionConfigurationArn">> => string()
 %% }
 -type firewall_policy() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_policy_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type firewall_policy_error() :: #{binary() => any()}.
 
 %% Example:
 %% firewall_policy_metadata() :: #{
@@ -1285,12 +1296,14 @@
 %%   <<"ConsumedStatelessRuleCapacity">> => integer(),
 %%   <<"Description">> => string(),
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"Errors">> => list(firewall_policy_error()),
 %%   <<"FirewallPolicyArn">> => string(),
 %%   <<"FirewallPolicyId">> => string(),
 %%   <<"FirewallPolicyName">> => string(),
 %%   <<"FirewallPolicyStatus">> => list(any()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"NumberOfAssociations">> => integer(),
+%%   <<"StatusMessage">> => string(),
 %%   <<"Tags">> => list(tag())
 %% }
 -type firewall_policy_response() :: #{binary() => any()}.
@@ -1511,6 +1524,7 @@
 %% Example:
 %% list_flow_operation_results_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"FirewallArn">> := string(),
 %%   <<"FlowOperationId">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -1523,6 +1537,7 @@
 %% Example:
 %% list_flow_operation_results_response() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FlowOperationId">> => string(),
 %%   <<"FlowOperationStatus">> => list(any()),
@@ -1538,6 +1553,7 @@
 %% Example:
 %% list_flow_operations_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"FirewallArn">> := string(),
 %%   <<"FlowOperationType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
@@ -1937,6 +1953,16 @@
 -type resource_owner_check_exception() :: #{binary() => any()}.
 
 %% Example:
+%% route53_resolved_ip_validation() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"BypassDestinationValidationIPRanges">> => list(address()),
+%%   <<"DNSExpiryExceptionPolicy">> => list(any()),
+%%   <<"DNSFirewallRuleGroupId">> => string(),
+%%   <<"SourceIPRanges">> => list(address())
+%% }
+-type route53_resolved_ip_validation() :: #{binary() => any()}.
+
+%% Example:
 %% rule_definition() :: #{
 %%   <<"Actions">> => list(string()),
 %%   <<"MatchAttributes">> => match_attributes()
@@ -2069,6 +2095,7 @@
 %% Example:
 %% start_flow_capture_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"FirewallArn">> := string(),
 %%   <<"FlowFilters">> := list(flow_filter()),
 %%   <<"MinimumFlowAgeInSeconds">> => integer(),
@@ -2088,6 +2115,7 @@
 %% Example:
 %% start_flow_flush_request() :: #{
 %%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"FirewallArn">> := string(),
 %%   <<"FlowFilters">> := list(flow_filter()),
 %%   <<"MinimumFlowAgeInSeconds">> => integer(),
@@ -2736,6 +2764,7 @@
     throttling_exception() | 
     limit_exceeded_exception() | 
     invalid_request_exception() | 
+    invalid_operation_exception() | 
     internal_server_error() | 
     insufficient_capacity_exception().
 
@@ -3120,6 +3149,7 @@
 -type update_container_association_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
+    limit_exceeded_exception() | 
     invalid_token_exception() | 
     invalid_request_exception() | 
     internal_server_error().
@@ -3159,6 +3189,7 @@
     resource_not_found_exception() | 
     invalid_token_exception() | 
     invalid_request_exception() | 
+    invalid_operation_exception() | 
     internal_server_error().
 
 -type update_firewall_policy_change_protection_errors() ::

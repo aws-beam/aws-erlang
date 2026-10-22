@@ -1438,6 +1438,31 @@
 
 
 %% Example:
+%% m_s_teams_channel() :: #{
+%%   <<"channelId">> => string(),
+%%   <<"channelName">> => [string()]
+%% }
+-type m_s_teams_channel() :: #{binary() => any()}.
+
+
+%% Example:
+%% m_s_teams_configuration() :: #{
+%%   <<"teamId">> => string(),
+%%   <<"teamName">> => [string()],
+%%   <<"transmissionTarget">> => m_s_teams_transmission_target()
+%% }
+-type m_s_teams_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% m_s_teams_transmission_target() :: #{
+%%   <<"opsOncallTarget">> => m_s_teams_channel(),
+%%   <<"opsSRETarget">> => m_s_teams_channel()
+%% }
+-type m_s_teams_transmission_target() :: #{binary() => any()}.
+
+
+%% Example:
 %% monthly_recurrence() :: #{
 %%   <<"dayOfMonth">> => [integer()]
 %% }
@@ -2405,6 +2430,7 @@
 
 -type associate_service_errors() ::
     validation_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     invalid_parameter_exception() | 
     internal_server_exception() | 
@@ -2759,6 +2785,7 @@
 
 -type update_association_errors() ::
     validation_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception().
