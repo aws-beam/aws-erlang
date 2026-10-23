@@ -18,12 +18,16 @@
          create_dictionary/3,
          create_feed/2,
          create_feed/3,
+         create_schedule_action/3,
+         create_schedule_action/4,
          delete_dictionary/3,
          delete_dictionary/4,
          delete_feed/3,
          delete_feed/4,
          delete_feed_policy/3,
          delete_feed_policy/4,
+         delete_schedule_action/3,
+         delete_schedule_action/4,
          disassociate_feed/3,
          disassociate_feed/4,
          export_dictionary_entries/2,
@@ -47,6 +51,9 @@
          list_feeds/1,
          list_feeds/3,
          list_feeds/4,
+         list_schedule_actions/2,
+         list_schedule_actions/4,
+         list_schedule_actions/5,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -189,6 +196,26 @@
 
 
 %% Example:
+%% create_schedule_action_request() :: #{
+%%   <<"actionName">> := string(),
+%%   <<"operations">> := list(list()),
+%%   <<"startConfiguration">> := list()
+%% }
+-type create_schedule_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_schedule_action_response() :: #{
+%%   <<"actionName">> => string(),
+%%   <<"error">> => schedule_action_error(),
+%%   <<"operations">> => list(list()),
+%%   <<"startConfiguration">> => list(),
+%%   <<"status">> => list(any())
+%% }
+-type create_schedule_action_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% cropping_config() :: #{
 %%   <<"templateGroups">> => list(template_group())
 %% }
@@ -230,6 +257,20 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_feed_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_schedule_action_request() :: #{
+%%   <<"actionName">> := string()
+%% }
+-type delete_schedule_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_schedule_action_response() :: #{
+%%   <<"actionName">> => string()
+%% }
+-type delete_schedule_action_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -286,6 +327,13 @@
 %%   <<"status">> => list(any())
 %% }
 -type feed_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% fixed_mode_schedule_action_start_settings() :: #{
+%%   <<"scheduledAt">> => [non_neg_integer()]
+%% }
+-type fixed_mode_schedule_action_start_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -419,6 +467,22 @@
 %% }
 -type list_feeds_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_schedule_actions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_schedule_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_schedule_actions_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"scheduleActions">> => list(schedule_action())
+%% }
+-type list_schedule_actions_response() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
@@ -443,10 +507,36 @@
 
 
 %% Example:
+%% remove_clipping_data_source_configuration() :: #{
+%%   <<"outputName">> => string()
+%% }
+-type remove_clipping_data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_action() :: #{
+%%   <<"actionName">> => string(),
+%%   <<"error">> => schedule_action_error(),
+%%   <<"operations">> => list(list()),
+%%   <<"startConfiguration">> => list(),
+%%   <<"status">> => list(any())
+%% }
+-type schedule_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% schedule_action_error() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => [string()]
+%% }
+-type schedule_action_error() :: #{binary() => any()}.
 
 
 %% Example:
@@ -531,6 +621,14 @@
 
 
 %% Example:
+%% update_clipping_data_source_configuration() :: #{
+%%   <<"dataSourceConfiguration">> => data_source_configuration(),
+%%   <<"outputName">> => string()
+%% }
+-type update_clipping_data_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_dictionary_request() :: #{
 %%   <<"entries">> => string(),
 %%   <<"language">> => list(any()),
@@ -588,6 +686,14 @@
 
 
 %% Example:
+%% update_output_status() :: #{
+%%   <<"outputName">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_output_status() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -618,6 +724,15 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_schedule_action_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type delete_dictionary_errors() ::
     validation_exception() | 
     too_many_request_exception() | 
@@ -639,6 +754,14 @@
     too_many_request_exception() | 
     resource_not_found_exception() | 
     internal_server_error_exception() | 
+    access_denied_exception().
+
+-type delete_schedule_action_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type disassociate_feed_errors() ::
@@ -692,6 +815,13 @@
     access_denied_exception().
 
 -type list_feeds_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
+-type list_schedule_actions_errors() ::
     validation_exception() | 
     too_many_request_exception() | 
     resource_not_found_exception() | 
@@ -896,6 +1026,46 @@ create_feed(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a schedule action on a feed.
+%%
+%% A schedule action applies configuration changes to the feed at a time that
+%% you specify, in the same way as an UpdateFeed request.
+%%
+%% Elemental Inference validates the targets of the action when you create
+%% it.
+-spec create_schedule_action(aws_client:aws_client(), binary() | list(), create_schedule_action_request()) ->
+    {ok, create_schedule_action_response(), tuple()} |
+    {error, any()} |
+    {error, create_schedule_action_errors(), tuple()}.
+create_schedule_action(Client, Id, Input) ->
+    create_schedule_action(Client, Id, Input, []).
+
+-spec create_schedule_action(aws_client:aws_client(), binary() | list(), create_schedule_action_request(), proplists:proplist()) ->
+    {ok, create_schedule_action_response(), tuple()} |
+    {error, any()} |
+    {error, create_schedule_action_errors(), tuple()}.
+create_schedule_action(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/feed/", aws_util:encode_uri(Id), "/schedule-actions"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes the specified dictionary.
 %%
 %% You cannot delete a dictionary that is referenced by a feed. You must
@@ -1009,6 +1179,48 @@ delete_feed_policy(Client, Id, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a schedule action from a feed.
+%%
+%% A deleted action never runs.
+%%
+%% You can delete only an action whose status is PENDING. Deleting an action
+%% doesn't reverse changes that the action already made to the feed. When
+%% you delete or archive a feed, Elemental Inference deletes all the schedule
+%% actions on that feed.
+-spec delete_schedule_action(aws_client:aws_client(), binary() | list(), delete_schedule_action_request()) ->
+    {ok, delete_schedule_action_response(), tuple()} |
+    {error, any()} |
+    {error, delete_schedule_action_errors(), tuple()}.
+delete_schedule_action(Client, Id, Input) ->
+    delete_schedule_action(Client, Id, Input, []).
+
+-spec delete_schedule_action(aws_client:aws_client(), binary() | list(), delete_schedule_action_request(), proplists:proplist()) ->
+    {ok, delete_schedule_action_response(), tuple()} |
+    {error, any()} |
+    {error, delete_schedule_action_errors(), tuple()}.
+delete_schedule_action(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/feed/", aws_util:encode_uri(Id), "/schedule-actions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"actionName">>, <<"actionName">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Releases the resource (the source media) that is associated with this
@@ -1303,6 +1515,54 @@ list_feeds(Client, QueryMap, HeadersMap)
 list_feeds(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/feeds"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Displays a list of the schedule actions on a feed, including the
+%% status of each action and, for a failed action, information about why it
+%% failed.
+%%
+%% Elemental Inference keeps an action whose status is COMPLETED or FAILED
+%% for about 48 hours after its scheduled time, and then deletes it
+%% automatically.
+-spec list_schedule_actions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_schedule_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_schedule_actions_errors(), tuple()}.
+list_schedule_actions(Client, Id)
+  when is_map(Client) ->
+    list_schedule_actions(Client, Id, #{}, #{}).
+
+-spec list_schedule_actions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_schedule_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_schedule_actions_errors(), tuple()}.
+list_schedule_actions(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_schedule_actions(Client, Id, QueryMap, HeadersMap, []).
+
+-spec list_schedule_actions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_schedule_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_schedule_actions_errors(), tuple()}.
+list_schedule_actions(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/feed/", aws_util:encode_uri(Id), "/schedule-actions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

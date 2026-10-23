@@ -603,6 +603,9 @@
          list_quick_connects/5,
          list_realtime_contact_analysis_segments_v2/4,
          list_realtime_contact_analysis_segments_v2/5,
+         list_replication_findings/3,
+         list_replication_findings/5,
+         list_replication_findings/6,
          list_routing_profile_manual_assignment_queues/3,
          list_routing_profile_manual_assignment_queues/5,
          list_routing_profile_manual_assignment_queues/6,
@@ -1266,6 +1269,15 @@
 %%   <<"Type">> => list(any())
 %% }
 -type application() :: #{binary() => any()}.
+
+
+%% Example:
+%% approximate_drifted_resource_count() :: #{
+%%   <<"Count">> => float(),
+%%   <<"Region">> => string(),
+%%   <<"Timestamp">> => non_neg_integer()
+%% }
+-type approximate_drifted_resource_count() :: #{binary() => any()}.
 
 %% Example:
 %% assign_contact_category_action_definition() :: #{}
@@ -5984,6 +5996,7 @@
 %%   <<"AgentConfig">> => agent_config(),
 %%   <<"Arn">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"LastFailoverTime">> => non_neg_integer(),
 %%   <<"SignInConfig">> => sign_in_config(),
 %%   <<"TelephonyConfig">> => telephony_config()
 %% }
@@ -7335,6 +7348,25 @@
 %%   <<"Status">> => list(any())
 %% }
 -type list_realtime_contact_analysis_segments_v2_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_replication_findings_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceType">> := string()
+%% }
+-type list_replication_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_replication_findings_response() :: #{
+%%   <<"ApproximateDriftedResourceCounts">> => list(approximate_drifted_resource_count()),
+%%   <<"NextToken">> => string(),
+%%   <<"ReplicationFindingsList">> => list(replication_finding()),
+%%   <<"ResourceReplicationStatuses">> => list(resource_replication_status())
+%% }
+-type list_replication_findings_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9022,6 +9054,20 @@
 
 
 %% Example:
+%% replication_finding() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Operation">> => string(),
+%%   <<"ReferenceCode">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type replication_finding() :: #{binary() => any()}.
+
+
+%% Example:
 %% replication_status_summary() :: #{
 %%   <<"Region">> => string(),
 %%   <<"ReplicationStatus">> => list(any()),
@@ -9065,6 +9111,14 @@
 %%   <<"Message">> => string()
 %% }
 -type resource_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_replication_status() :: #{
+%%   <<"Region">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type resource_replication_status() :: #{binary() => any()}.
 
 
 %% Example:
@@ -14381,6 +14435,13 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     output_type_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
+-type list_replication_findings_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_request_exception() | 
     internal_service_exception() | 
     access_denied_exception().
@@ -25815,6 +25876,57 @@ list_realtime_contact_analysis_segments_v2(Client, ContactId, InstanceId, Input0
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists replication findings for resources of a specified resource type
+%% in a specified
+%% Connect Customer instance.
+%%
+%% A replication finding describes a single resource whose replication
+%% to one or more Regions is incomplete or has encountered an error. Results
+%% are returned in pages.
+%% This operation is available only for instances that are set up for Global
+%% Resiliency.
+-spec list_replication_findings(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_replication_findings_response(), tuple()} |
+    {error, any()} |
+    {error, list_replication_findings_errors(), tuple()}.
+list_replication_findings(Client, InstanceId, ResourceType)
+  when is_map(Client) ->
+    list_replication_findings(Client, InstanceId, ResourceType, #{}, #{}).
+
+-spec list_replication_findings(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_replication_findings_response(), tuple()} |
+    {error, any()} |
+    {error, list_replication_findings_errors(), tuple()}.
+list_replication_findings(Client, InstanceId, ResourceType, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_replication_findings(Client, InstanceId, ResourceType, QueryMap, HeadersMap, []).
+
+-spec list_replication_findings(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_replication_findings_response(), tuple()} |
+    {error, any()} |
+    {error, list_replication_findings_errors(), tuple()}.
+list_replication_findings(Client, InstanceId, ResourceType, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/replication-findings/", aws_util:encode_uri(InstanceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceType">>, ResourceType}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists the manual assignment queues associated with a routing profile.
 %%

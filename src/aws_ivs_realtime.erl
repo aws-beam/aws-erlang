@@ -134,6 +134,8 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         revoke_connection_token/2,
+         revoke_connection_token/3,
          start_composition/2,
          start_composition/3,
          start_participant_replication/2,
@@ -1061,6 +1063,17 @@
 
 
 %% Example:
+%% revoke_connection_token_request() :: #{
+%%   <<"tokenId">> := string()
+%% }
+-type revoke_connection_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_connection_token_response() :: #{}
+-type revoke_connection_token_response() :: #{}.
+
+
+%% Example:
 %% s3_destination_configuration() :: #{
 %%   <<"encoderConfigurationArns">> => list(string()),
 %%   <<"recordingConfiguration">> => recording_configuration(),
@@ -1519,6 +1532,11 @@
     validation_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
+
+-type revoke_connection_token_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type start_composition_errors() ::
     validation_exception() | 
@@ -2704,6 +2722,44 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Revokes the specified connection token so that it can no longer
+%% connect to a stage.
+%%
+%% This operation disconnects any participant currently connected with the
+%% revoked token.
+-spec revoke_connection_token(aws_client:aws_client(), revoke_connection_token_request()) ->
+    {ok, revoke_connection_token_response(), tuple()} |
+    {error, any()} |
+    {error, revoke_connection_token_errors(), tuple()}.
+revoke_connection_token(Client, Input) ->
+    revoke_connection_token(Client, Input, []).
+
+-spec revoke_connection_token(aws_client:aws_client(), revoke_connection_token_request(), proplists:proplist()) ->
+    {ok, revoke_connection_token_response(), tuple()} |
+    {error, any()} |
+    {error, revoke_connection_token_errors(), tuple()}.
+revoke_connection_token(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/RevokeConnectionToken"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a Composition from a stage based on the configuration provided
 %% in the request.

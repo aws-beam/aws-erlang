@@ -26,6 +26,8 @@
          batch_get_lifecycle_policy/3,
          batch_get_vpc_endpoint/2,
          batch_get_vpc_endpoint/3,
+         cancel_ingestion_job/2,
+         cancel_ingestion_job/3,
          create_access_policy/2,
          create_access_policy/3,
          create_collection/2,
@@ -34,6 +36,10 @@
          create_collection_group/3,
          create_index/2,
          create_index/3,
+         create_ingestion_job/2,
+         create_ingestion_job/3,
+         create_ingestion_stream/2,
+         create_ingestion_stream/3,
          create_lifecycle_policy/2,
          create_lifecycle_policy/3,
          create_security_config/2,
@@ -50,6 +56,8 @@
          delete_collection_group/3,
          delete_index/2,
          delete_index/3,
+         delete_ingestion_stream/2,
+         delete_ingestion_stream/3,
          delete_lifecycle_policy/2,
          delete_lifecycle_policy/3,
          delete_security_config/2,
@@ -64,6 +72,10 @@
          get_account_settings/3,
          get_index/2,
          get_index/3,
+         get_ingestion_job/2,
+         get_ingestion_job/3,
+         get_ingestion_stream/2,
+         get_ingestion_stream/3,
          get_policies_stats/2,
          get_policies_stats/3,
          get_security_config/2,
@@ -76,6 +88,10 @@
          list_collection_groups/3,
          list_collections/2,
          list_collections/3,
+         list_ingestion_jobs/2,
+         list_ingestion_jobs/3,
+         list_ingestion_streams/2,
+         list_ingestion_streams/3,
          list_lifecycle_policies/2,
          list_lifecycle_policies/3,
          list_security_configs/2,
@@ -213,6 +229,23 @@
 %%   <<"vpcEndpointErrorDetails">> => list(vpc_endpoint_error_detail())
 %% }
 -type batch_get_vpc_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_ingestion_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"collectionId">> := string(),
+%%   <<"ingestionJobId">> := string()
+%% }
+-type cancel_ingestion_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_ingestion_job_response() :: #{
+%%   <<"collectionId">> => string(),
+%%   <<"ingestionJobId">> => string(),
+%%   <<"ingestionJobName">> => string(),
+%%   <<"status">> => string()
+%% }
+-type cancel_ingestion_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% capacity_details() :: #{
@@ -441,6 +474,43 @@
 -type create_index_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_ingestion_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"collectionId">> := string(),
+%%   <<"failureIndexName">> => string(),
+%%   <<"indexName">> := string(),
+%%   <<"ingestionJobName">> := string(),
+%%   <<"source">> := ingestion_job_source(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_ingestion_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_ingestion_job_response() :: #{
+%%   <<"ingestionJobDetail">> => ingestion_job_detail()
+%% }
+-type create_ingestion_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_ingestion_stream_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"collectionId">> := string(),
+%%   <<"failureIndexName">> => string(),
+%%   <<"indexName">> := string(),
+%%   <<"ingestionStreamName">> := string(),
+%%   <<"roleArn">> := string(),
+%%   <<"source">> := ingestion_stream_source(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_ingestion_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_ingestion_stream_response() :: #{
+%%   <<"ingestionStreamDetail">> => ingestion_stream_detail()
+%% }
+-type create_ingestion_stream_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_lifecycle_policy_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
@@ -584,6 +654,23 @@
 -type delete_index_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_ingestion_stream_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"collectionId">> := string(),
+%%   <<"ingestionStreamId">> := string()
+%% }
+-type delete_ingestion_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_ingestion_stream_response() :: #{
+%%   <<"collectionId">> => string(),
+%%   <<"ingestionStreamId">> => string(),
+%%   <<"ingestionStreamName">> => string(),
+%%   <<"status">> => string()
+%% }
+-type delete_ingestion_stream_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_lifecycle_policy_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"name">> := string(),
@@ -718,6 +805,32 @@
 -type get_index_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_ingestion_job_request() :: #{
+%%   <<"collectionId">> := string(),
+%%   <<"ingestionJobId">> := string()
+%% }
+-type get_ingestion_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ingestion_job_response() :: #{
+%%   <<"ingestionJobDetail">> => ingestion_job_detail()
+%% }
+-type get_ingestion_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_ingestion_stream_request() :: #{
+%%   <<"collectionId">> := string(),
+%%   <<"ingestionStreamId">> := string()
+%% }
+-type get_ingestion_stream_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_ingestion_stream_response() :: #{
+%%   <<"ingestionStreamDetail">> => ingestion_stream_detail()
+%% }
+-type get_ingestion_stream_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_policies_stats_request() :: #{
 
 %% }
@@ -775,6 +888,118 @@
 %%   <<"userAttribute">> => string()
 %% }
 -type iam_identity_center_config_options() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_alert() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type ingestion_alert() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_failure_reason() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => [string()]
+%% }
+-type ingestion_failure_reason() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_job_detail() :: #{
+%%   <<"activeAlerts">> => list(ingestion_alert()),
+%%   <<"arn">> => string(),
+%%   <<"collectionId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"failureIndexName">> => string(),
+%%   <<"failureReasons">> => list(ingestion_failure_reason()),
+%%   <<"indexName">> => string(),
+%%   <<"ingestionJobId">> => string(),
+%%   <<"ingestionJobName">> => string(),
+%%   <<"revision">> => [float()],
+%%   <<"source">> => ingestion_job_source(),
+%%   <<"state">> => string(),
+%%   <<"statistics">> => ingestion_statistics(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type ingestion_job_detail() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_job_s3_source() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"bucketOwnerAccountId">> => string(),
+%%   <<"keyPrefix">> => [string()]
+%% }
+-type ingestion_job_s3_source() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_job_source() :: #{
+%%   <<"s3">> => ingestion_job_s3_source()
+%% }
+-type ingestion_job_source() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_job_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"indexName">> => string(),
+%%   <<"ingestionJobId">> => string(),
+%%   <<"ingestionJobName">> => string(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type ingestion_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_statistics() :: #{
+%%   <<"s3">> => s3_statistics()
+%% }
+-type ingestion_statistics() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_stream_detail() :: #{
+%%   <<"activeAlerts">> => list(ingestion_alert()),
+%%   <<"arn">> => string(),
+%%   <<"collectionId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"failureIndexName">> => string(),
+%%   <<"failureReasons">> => list(ingestion_failure_reason()),
+%%   <<"indexName">> => string(),
+%%   <<"ingestionStreamId">> => string(),
+%%   <<"ingestionStreamName">> => string(),
+%%   <<"revision">> => [float()],
+%%   <<"roleArn">> => string(),
+%%   <<"source">> => ingestion_stream_source(),
+%%   <<"state">> => string(),
+%%   <<"statistics">> => ingestion_statistics(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type ingestion_stream_detail() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_stream_s3_source() :: #{
+%%   <<"buckets">> => list(stream_bucket_config()),
+%%   <<"sqsArn">> => string()
+%% }
+-type ingestion_stream_s3_source() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_stream_source() :: #{
+%%   <<"s3">> => ingestion_stream_s3_source()
+%% }
+-type ingestion_stream_source() :: #{binary() => any()}.
+
+%% Example:
+%% ingestion_stream_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"indexName">> => string(),
+%%   <<"ingestionStreamId">> => string(),
+%%   <<"ingestionStreamName">> => string(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type ingestion_stream_summary() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -880,6 +1105,36 @@
 -type list_collections_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_ingestion_jobs_request() :: #{
+%%   <<"collectionId">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_ingestion_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ingestion_jobs_response() :: #{
+%%   <<"ingestionJobSummaries">> => list(ingestion_job_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_ingestion_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_ingestion_streams_request() :: #{
+%%   <<"collectionId">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_ingestion_streams_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_ingestion_streams_response() :: #{
+%%   <<"ingestionStreamSummaries">> => list(ingestion_stream_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_ingestion_streams_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_lifecycle_policies_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
@@ -966,6 +1221,14 @@
 -type resource_not_found_exception() :: #{binary() => any()}.
 
 %% Example:
+%% s3_statistics() :: #{
+%%   <<"objectsDiscovered">> => [float()],
+%%   <<"objectsFailed">> => [float()],
+%%   <<"objectsIngested">> => [float()]
+%% }
+-type s3_statistics() :: #{binary() => any()}.
+
+%% Example:
 %% saml_config_options() :: #{
 %%   <<"groupAttribute">> => string(),
 %%   <<"metadata">> => string(),
@@ -1047,6 +1310,14 @@
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% stream_bucket_config() :: #{
+%%   <<"bucket">> => string(),
+%%   <<"bucketOwnerAccountId">> => string(),
+%%   <<"initialScan">> => string()
+%% }
+-type stream_bucket_config() :: #{binary() => any()}.
+
+%% Example:
 %% tag() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
@@ -1115,6 +1386,7 @@
 %%   <<"deletionProtection">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"id">> => string(),
+%%   <<"kmsKeyArn">> => [string()],
 %%   <<"lastModifiedDate">> => [float()],
 %%   <<"name">> => string(),
 %%   <<"status">> => string(),
@@ -1156,6 +1428,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"deletionProtection">> => string(),
 %%   <<"description">> => [string()],
+%%   <<"encryptionConfig">> => encryption_config(),
 %%   <<"id">> := string(),
 %%   <<"vectorOptions">> => vector_options()
 %% }
@@ -1336,6 +1609,12 @@
     validation_exception() | 
     internal_server_exception().
 
+-type cancel_ingestion_job_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
 -type create_access_policy_errors() ::
     validation_exception() | 
     service_quota_exceeded_exception() | 
@@ -1357,6 +1636,20 @@
 
 -type create_index_errors() ::
     validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_ingestion_job_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
+-type create_ingestion_stream_errors() ::
+    validation_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception().
@@ -1408,6 +1701,12 @@
     resource_not_found_exception() | 
     internal_server_exception().
 
+-type delete_ingestion_stream_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception().
+
 -type delete_lifecycle_policy_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
@@ -1446,6 +1745,16 @@
     resource_not_found_exception() | 
     internal_server_exception().
 
+-type get_ingestion_job_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type get_ingestion_stream_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
 -type get_policies_stats_errors() ::
     internal_server_exception().
 
@@ -1469,6 +1778,16 @@
 
 -type list_collections_errors() ::
     validation_exception() | 
+    internal_server_exception().
+
+-type list_ingestion_jobs_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception().
+
+-type list_ingestion_streams_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception().
 
 -type list_lifecycle_policies_errors() ::
@@ -1670,6 +1989,26 @@ batch_get_vpc_endpoint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchGetVpcEndpoint">>, Input, Options).
 
+%% @doc Cancels an in-progress ingestion job.
+%%
+%% Documents that were already indexed before the cancellation remain in the
+%% index.
+-spec cancel_ingestion_job(aws_client:aws_client(), cancel_ingestion_job_request()) ->
+    {ok, cancel_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_ingestion_job_errors(), tuple()}.
+cancel_ingestion_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_ingestion_job(Client, Input, []).
+
+-spec cancel_ingestion_job(aws_client:aws_client(), cancel_ingestion_job_request(), proplists:proplist()) ->
+    {ok, cancel_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_ingestion_job_errors(), tuple()}.
+cancel_ingestion_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelIngestionJob">>, Input, Options).
+
 %% @doc Creates a data access policy for OpenSearch Serverless.
 %%
 %% Access policies limit access to collections and the resources within them,
@@ -1761,6 +2100,52 @@ create_index(Client, Input)
 create_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateIndex">>, Input, Options).
+
+%% @doc Creates an ingestion job that performs a one-time bulk ingestion of
+%% data from an Amazon S3 bucket into an index in an OpenSearch Serverless
+%% collection.
+%%
+%% An ingestion job scans the source bucket, indexes the documents it finds,
+%% and then completes. To continuously ingest new data as it arrives, use
+%% `CreateIngestionStream' instead.
+-spec create_ingestion_job(aws_client:aws_client(), create_ingestion_job_request()) ->
+    {ok, create_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_ingestion_job_errors(), tuple()}.
+create_ingestion_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_ingestion_job(Client, Input, []).
+
+-spec create_ingestion_job(aws_client:aws_client(), create_ingestion_job_request(), proplists:proplist()) ->
+    {ok, create_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, create_ingestion_job_errors(), tuple()}.
+create_ingestion_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIngestionJob">>, Input, Options).
+
+%% @doc Creates an ingestion stream that continuously ingests data from an
+%% Amazon S3 bucket into an index in an OpenSearch Serverless collection.
+%%
+%% An ingestion stream processes Amazon S3 event notifications delivered to
+%% an Amazon SQS queue and ingests new objects as they arrive. The stream
+%% continues to ingest data until you delete it. To perform a one-time bulk
+%% ingestion instead, use `CreateIngestionJob'.
+-spec create_ingestion_stream(aws_client:aws_client(), create_ingestion_stream_request()) ->
+    {ok, create_ingestion_stream_response(), tuple()} |
+    {error, any()} |
+    {error, create_ingestion_stream_errors(), tuple()}.
+create_ingestion_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_ingestion_stream(Client, Input, []).
+
+-spec create_ingestion_stream(aws_client:aws_client(), create_ingestion_stream_request(), proplists:proplist()) ->
+    {ok, create_ingestion_stream_response(), tuple()} |
+    {error, any()} |
+    {error, create_ingestion_stream_errors(), tuple()}.
+create_ingestion_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateIngestionStream">>, Input, Options).
 
 %% @doc Creates a lifecyle policy to be applied to OpenSearch Serverless
 %% indexes.
@@ -1939,6 +2324,25 @@ delete_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteIndex">>, Input, Options).
 
+%% @doc Deletes an ingestion stream.
+%%
+%% Documents that were already indexed by the stream remain in the index.
+-spec delete_ingestion_stream(aws_client:aws_client(), delete_ingestion_stream_request()) ->
+    {ok, delete_ingestion_stream_response(), tuple()} |
+    {error, any()} |
+    {error, delete_ingestion_stream_errors(), tuple()}.
+delete_ingestion_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_ingestion_stream(Client, Input, []).
+
+-spec delete_ingestion_stream(aws_client:aws_client(), delete_ingestion_stream_request(), proplists:proplist()) ->
+    {ok, delete_ingestion_stream_response(), tuple()} |
+    {error, any()} |
+    {error, delete_ingestion_stream_errors(), tuple()}.
+delete_ingestion_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteIngestionStream">>, Input, Options).
+
 %% @doc Deletes an OpenSearch Serverless lifecycle policy.
 %%
 %% For more information, see Deleting data lifecycle policies:
@@ -2079,6 +2483,42 @@ get_index(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetIndex">>, Input, Options).
 
+%% @doc Returns information about an ingestion job, including its
+%% configuration, status, and processing state.
+-spec get_ingestion_job(aws_client:aws_client(), get_ingestion_job_request()) ->
+    {ok, get_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_ingestion_job_errors(), tuple()}.
+get_ingestion_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ingestion_job(Client, Input, []).
+
+-spec get_ingestion_job(aws_client:aws_client(), get_ingestion_job_request(), proplists:proplist()) ->
+    {ok, get_ingestion_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_ingestion_job_errors(), tuple()}.
+get_ingestion_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIngestionJob">>, Input, Options).
+
+%% @doc Returns information about an ingestion stream, including its
+%% configuration, status, and processing state.
+-spec get_ingestion_stream(aws_client:aws_client(), get_ingestion_stream_request()) ->
+    {ok, get_ingestion_stream_response(), tuple()} |
+    {error, any()} |
+    {error, get_ingestion_stream_errors(), tuple()}.
+get_ingestion_stream(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_ingestion_stream(Client, Input, []).
+
+-spec get_ingestion_stream(aws_client:aws_client(), get_ingestion_stream_request(), proplists:proplist()) ->
+    {ok, get_ingestion_stream_response(), tuple()} |
+    {error, any()} |
+    {error, get_ingestion_stream_errors(), tuple()}.
+get_ingestion_stream(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetIngestionStream">>, Input, Options).
+
 %% @doc Returns statistical information about your OpenSearch Serverless
 %% access policies, security configurations, and security policies.
 -spec get_policies_stats(aws_client:aws_client(), get_policies_stats_request()) ->
@@ -2204,6 +2644,40 @@ list_collections(Client, Input)
 list_collections(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCollections">>, Input, Options).
+
+%% @doc Returns a list of ingestion jobs in a collection.
+-spec list_ingestion_jobs(aws_client:aws_client(), list_ingestion_jobs_request()) ->
+    {ok, list_ingestion_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_ingestion_jobs_errors(), tuple()}.
+list_ingestion_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_ingestion_jobs(Client, Input, []).
+
+-spec list_ingestion_jobs(aws_client:aws_client(), list_ingestion_jobs_request(), proplists:proplist()) ->
+    {ok, list_ingestion_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_ingestion_jobs_errors(), tuple()}.
+list_ingestion_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListIngestionJobs">>, Input, Options).
+
+%% @doc Returns a list of ingestion streams in a collection.
+-spec list_ingestion_streams(aws_client:aws_client(), list_ingestion_streams_request()) ->
+    {ok, list_ingestion_streams_response(), tuple()} |
+    {error, any()} |
+    {error, list_ingestion_streams_errors(), tuple()}.
+list_ingestion_streams(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_ingestion_streams(Client, Input, []).
+
+-spec list_ingestion_streams(aws_client:aws_client(), list_ingestion_streams_request(), proplists:proplist()) ->
+    {ok, list_ingestion_streams_response(), tuple()} |
+    {error, any()} |
+    {error, list_ingestion_streams_errors(), tuple()}.
+list_ingestion_streams(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListIngestionStreams">>, Input, Options).
 
 %% @doc Returns a list of OpenSearch Serverless lifecycle policies.
 %%

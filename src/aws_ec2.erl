@@ -1280,6 +1280,8 @@
          get_spot_placement_scores/3,
          get_subnet_cidr_reservations/2,
          get_subnet_cidr_reservations/3,
+         get_transit_gateway_attachment_nat_configuration/2,
+         get_transit_gateway_attachment_nat_configuration/3,
          get_transit_gateway_attachment_propagations/2,
          get_transit_gateway_attachment_propagations/3,
          get_transit_gateway_metering_policy_entries/2,
@@ -1442,6 +1444,8 @@
          modify_traffic_mirror_session/3,
          modify_transit_gateway/2,
          modify_transit_gateway/3,
+         modify_transit_gateway_attachment_nat_configuration/2,
+         modify_transit_gateway_attachment_nat_configuration/3,
          modify_transit_gateway_metering_policy/2,
          modify_transit_gateway_metering_policy/3,
          modify_transit_gateway_policy_table_entry/2,
@@ -14130,6 +14134,22 @@
 -type get_subnet_cidr_reservations_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_transit_gateway_attachment_nat_configuration_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type get_transit_gateway_attachment_nat_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_transit_gateway_attachment_nat_configuration_result() :: #{
+%%   <<"NatGatewayRules">> => list(transit_gateway_nat_rule()),
+%%   <<"NatGatewaySupport">> => list(any()),
+%%   <<"NatSystemRouteSupport">> => list(any()),
+%%   <<"TransitGatewayAttachmentId">> => string()
+%% }
+-type get_transit_gateway_attachment_nat_configuration_result() :: #{binary() => any()}.
+
+%% Example:
 %% get_transit_gateway_attachment_propagations_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
@@ -18351,6 +18371,26 @@
 %%   <<"TrafficMirrorSession">> => traffic_mirror_session()
 %% }
 -type modify_traffic_mirror_session_result() :: #{binary() => any()}.
+
+%% Example:
+%% modify_transit_gateway_attachment_nat_configuration_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"NatGatewayRules">> => list(transit_gateway_nat_rule_request()),
+%%   <<"NatGatewaySupport">> => list(any()),
+%%   <<"NatSystemRouteSupport">> => list(any()),
+%%   <<"ResetNatGatewayRules">> => boolean(),
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type modify_transit_gateway_attachment_nat_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_transit_gateway_attachment_nat_configuration_result() :: #{
+%%   <<"NatGatewayRules">> => list(transit_gateway_nat_rule()),
+%%   <<"NatGatewaySupport">> => list(any()),
+%%   <<"NatSystemRouteSupport">> => list(any()),
+%%   <<"TransitGatewayAttachmentId">> => string()
+%% }
+-type modify_transit_gateway_attachment_nat_configuration_result() :: #{binary() => any()}.
 
 %% Example:
 %% modify_transit_gateway_metering_policy_request() :: #{
@@ -22779,6 +22819,7 @@
 %% transit_gateway_attachment() :: #{
 %%   <<"Association">> => transit_gateway_attachment_association(),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"NatGatewaySupport">> => list(any()),
 %%   <<"ResourceId">> => string(),
 %%   <<"ResourceOwnerId">> => string(),
 %%   <<"ResourceType">> => list(any()),
@@ -23013,6 +23054,23 @@
 %%   <<"TransitGatewayMulticastDomainId">> => string()
 %% }
 -type transit_gateway_multicast_registered_group_sources() :: #{binary() => any()}.
+
+%% Example:
+%% transit_gateway_nat_rule() :: #{
+%%   <<"MatchSourceCidr">> => string(),
+%%   <<"NatCidr">> => string(),
+%%   <<"RuleNumber">> => integer(),
+%%   <<"State">> => list(any())
+%% }
+-type transit_gateway_nat_rule() :: #{binary() => any()}.
+
+%% Example:
+%% transit_gateway_nat_rule_request() :: #{
+%%   <<"MatchSourceCidr">> => string(),
+%%   <<"NatCidr">> => string(),
+%%   <<"RuleNumber">> => integer()
+%% }
+-type transit_gateway_nat_rule_request() :: #{binary() => any()}.
 
 %% Example:
 %% transit_gateway_options() :: #{
@@ -30769,11 +30827,15 @@ delete_transit_gateway_route(Client, Input, Options)
 
 %% @doc Deletes the specified transit gateway route table.
 %%
-%% If there are any route tables associated with
-%% the transit gateway route table, you must first run
-%% `DisassociateRouteTable' before you can delete the transit gateway
-%% route table. This removes any route tables associated with the transit
-%% gateway route table.
+%% Before you can delete a transit gateway route table, you
+%% must disassociate all attachments from it by using
+%% `DisassociateTransitGatewayRouteTable' and wait for the
+%% disassociations to
+%% complete. You can't delete a transit gateway route table that is the
+%% default association route table
+%% or default propagation route table for the transit gateway. To change the
+%% default route tables, use
+%% `ModifyTransitGateway'.
 -spec delete_transit_gateway_route_table(aws_client:aws_client(), delete_transit_gateway_route_table_request()) ->
     {ok, delete_transit_gateway_route_table_result(), tuple()} |
     {error, any()}.
@@ -39051,6 +39113,24 @@ get_subnet_cidr_reservations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSubnetCidrReservations">>, Input, Options).
 
+%% @doc Describes the NAT configuration for the specified transit gateway
+%% attachment.
+%%
+%% Only the owner of the transit gateway can describe the NAT configuration.
+-spec get_transit_gateway_attachment_nat_configuration(aws_client:aws_client(), get_transit_gateway_attachment_nat_configuration_request()) ->
+    {ok, get_transit_gateway_attachment_nat_configuration_result(), tuple()} |
+    {error, any()}.
+get_transit_gateway_attachment_nat_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_transit_gateway_attachment_nat_configuration(Client, Input, []).
+
+-spec get_transit_gateway_attachment_nat_configuration(aws_client:aws_client(), get_transit_gateway_attachment_nat_configuration_request(), proplists:proplist()) ->
+    {ok, get_transit_gateway_attachment_nat_configuration_result(), tuple()} |
+    {error, any()}.
+get_transit_gateway_attachment_nat_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetTransitGatewayAttachmentNatConfiguration">>, Input, Options).
+
 %% @doc Lists the route tables to which the specified resource attachment
 %% propagates routes.
 -spec get_transit_gateway_attachment_propagations(aws_client:aws_client(), get_transit_gateway_attachment_propagations_request()) ->
@@ -41050,6 +41130,39 @@ modify_transit_gateway(Client, Input)
 modify_transit_gateway(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTransitGateway">>, Input, Options).
+
+%% @doc Modifies the NAT configuration for the specified transit gateway
+%% attachment.
+%%
+%% Use this operation to do the following:
+%%
+%% Enable or disable NAT gateway support for the attachment.
+%%
+%% Specify whether the transit gateway installs routes for the NAT CIDRs.
+%%
+%% Replace the NAT gateway rules for the attachment.
+%%
+%% Only the owner of the transit gateway can modify the NAT configuration.
+%%
+%% With NAT gateway support enabled, the transit gateway translates addresses
+%% in each rule's `MatchSourceCidr' range
+%% to the corresponding addresses in its `NatCidr' range.
+%%
+%% The transit gateway applies changes asynchronously. To check the result,
+%% use `GetTransitGatewayAttachmentNatConfiguration'.
+-spec modify_transit_gateway_attachment_nat_configuration(aws_client:aws_client(), modify_transit_gateway_attachment_nat_configuration_request()) ->
+    {ok, modify_transit_gateway_attachment_nat_configuration_result(), tuple()} |
+    {error, any()}.
+modify_transit_gateway_attachment_nat_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_transit_gateway_attachment_nat_configuration(Client, Input, []).
+
+-spec modify_transit_gateway_attachment_nat_configuration(aws_client:aws_client(), modify_transit_gateway_attachment_nat_configuration_request(), proplists:proplist()) ->
+    {ok, modify_transit_gateway_attachment_nat_configuration_result(), tuple()} |
+    {error, any()}.
+modify_transit_gateway_attachment_nat_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyTransitGatewayAttachmentNatConfiguration">>, Input, Options).
 
 %% @doc Modifies a transit gateway metering policy.
 -spec modify_transit_gateway_metering_policy(aws_client:aws_client(), modify_transit_gateway_metering_policy_request()) ->

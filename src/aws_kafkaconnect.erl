@@ -43,8 +43,12 @@
          list_worker_configurations/1,
          list_worker_configurations/3,
          list_worker_configurations/4,
+         pause_connector/3,
+         pause_connector/4,
          restart_connector/3,
          restart_connector/4,
+         resume_connector/3,
+         resume_connector/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -628,6 +632,18 @@
 %% }
 -type not_found_exception() :: #{binary() => any()}.
 
+%% Example:
+%% pause_connector_request() :: #{}
+-type pause_connector_request() :: #{}.
+
+
+%% Example:
+%% pause_connector_response() :: #{
+%%   <<"connectorArn">> => string(),
+%%   <<"connectorOperationArn">> => string()
+%% }
+-type pause_connector_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% plugin() :: #{
@@ -680,6 +696,18 @@
 %%   <<"connectorOperationArn">> => string()
 %% }
 -type restart_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% resume_connector_request() :: #{}
+-type resume_connector_request() :: #{}.
+
+
+%% Example:
+%% resume_connector_response() :: #{
+%%   <<"connectorArn">> => string(),
+%%   <<"connectorOperationArn">> => string()
+%% }
+-type resume_connector_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -815,7 +843,8 @@
 %% update_connector_request() :: #{
 %%   <<"capacity">> => capacity_update(),
 %%   <<"connectorConfiguration">> => map(),
-%%   <<"currentVersion">> := string()
+%%   <<"currentVersion">> := string(),
+%%   <<"skipHealthValidation">> => boolean()
 %% }
 -type update_connector_request() :: #{binary() => any()}.
 
@@ -1054,6 +1083,16 @@
     forbidden_exception() | 
     bad_request_exception().
 
+-type pause_connector_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
 -type restart_connector_errors() ::
     unauthorized_exception() | 
     too_many_requests_exception() | 
@@ -1061,6 +1100,16 @@
     not_found_exception() | 
     internal_server_error_exception() | 
     forbidden_exception() | 
+    bad_request_exception().
+
+-type resume_connector_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
     bad_request_exception().
 
 -type tag_resource_errors() ::
@@ -1662,6 +1711,43 @@ list_worker_configurations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Pauses the specified connector.
+%%
+%% The operation runs asynchronously. To track the pause, pass the connector
+%% operation ARN from the response to `DescribeConnectorOperation'.
+-spec pause_connector(aws_client:aws_client(), binary() | list(), pause_connector_request()) ->
+    {ok, pause_connector_response(), tuple()} |
+    {error, any()} |
+    {error, pause_connector_errors(), tuple()}.
+pause_connector(Client, ConnectorArn, Input) ->
+    pause_connector(Client, ConnectorArn, Input, []).
+
+-spec pause_connector(aws_client:aws_client(), binary() | list(), pause_connector_request(), proplists:proplist()) ->
+    {ok, pause_connector_response(), tuple()} |
+    {error, any()} |
+    {error, pause_connector_errors(), tuple()}.
+pause_connector(Client, ConnectorArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/connectors/", aws_util:encode_uri(ConnectorArn), "/pause"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Restarts the specified connector.
 %%
 %% By default, this operation restarts the connector and all of its tasks.
@@ -1700,6 +1786,43 @@ restart_connector(Client, ConnectorArn, Input0, Options0) ->
                      {<<"onlyFailedTasks">>, <<"onlyFailedTasks">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Resumes the specified paused connector.
+%%
+%% The operation runs asynchronously. To track the resume, pass the connector
+%% operation ARN from the response to `DescribeConnectorOperation'.
+-spec resume_connector(aws_client:aws_client(), binary() | list(), resume_connector_request()) ->
+    {ok, resume_connector_response(), tuple()} |
+    {error, any()} |
+    {error, resume_connector_errors(), tuple()}.
+resume_connector(Client, ConnectorArn, Input) ->
+    resume_connector(Client, ConnectorArn, Input, []).
+
+-spec resume_connector(aws_client:aws_client(), binary() | list(), resume_connector_request(), proplists:proplist()) ->
+    {ok, resume_connector_response(), tuple()} |
+    {error, any()} |
+    {error, resume_connector_errors(), tuple()}.
+resume_connector(Client, ConnectorArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/connectors/", aws_util:encode_uri(ConnectorArn), "/resume"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Attaches tags to the specified resource.

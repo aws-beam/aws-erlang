@@ -903,6 +903,7 @@
 %%   <<"context">> => list(),
 %%   <<"errorCode">> => string(),
 %%   <<"errorMessage">> => string(),
+%%   <<"evaluationDimensionName">> => string(),
 %%   <<"evaluatorArn">> => string(),
 %%   <<"evaluatorId">> => string(),
 %%   <<"evaluatorName">> => string(),
@@ -940,6 +941,7 @@
 
 %% Example:
 %% evaluator_summary() :: #{
+%%   <<"evaluationDimensionName">> => [string()],
 %%   <<"evaluatorId">> => [string()],
 %%   <<"statistics">> => evaluator_statistics(),
 %%   <<"totalEvaluated">> => [integer()],

@@ -163,6 +163,8 @@
          get_vpc_attachment/2,
          get_vpc_attachment/4,
          get_vpc_attachment/5,
+         list_attachment_nat_configurations/2,
+         list_attachment_nat_configurations/3,
          list_attachment_routing_policy_associations/2,
          list_attachment_routing_policy_associations/4,
          list_attachment_routing_policy_associations/5,
@@ -214,6 +216,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_attachment_nat_configuration/3,
+         update_attachment_nat_configuration/4,
          update_connection/4,
          update_connection/5,
          update_core_network/3,
@@ -337,6 +341,8 @@
 %%   <<"EdgeLocation">> => string(),
 %%   <<"EdgeLocations">> => list(string()),
 %%   <<"LastModificationErrors">> => list(attachment_error()),
+%%   <<"NatGatewaySupport">> => list(any()),
+%%   <<"NatSystemRouteSupport">> => boolean(),
 %%   <<"NetworkFunctionGroupName">> => string(),
 %%   <<"OwnerAccountId">> => string(),
 %%   <<"ProposedNetworkFunctionGroupChange">> => proposed_network_function_group_change(),
@@ -358,6 +364,16 @@
 %%   <<"ResourceArn">> => string()
 %% }
 -type attachment_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% attachment_nat_configuration() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"NatGatewayRules">> => list(nat_rule()),
+%%   <<"NatGatewaySupport">> => list(any()),
+%%   <<"NatSystemRouteSupport">> => boolean()
+%% }
+-type attachment_nat_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -711,6 +727,8 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
 %%   <<"EdgeLocation">> := string(),
+%%   <<"NatGatewayRules">> => list(nat_rule_request()),
+%%   <<"NatGatewaySupport">> => list(any()),
 %%   <<"Options">> := connect_attachment_options(),
 %%   <<"RoutingPolicyLabel">> => string(),
 %%   <<"Tags">> => list(tag()),
@@ -831,6 +849,9 @@
 %%   <<"CoreNetworkId">> := string(),
 %%   <<"DirectConnectGatewayArn">> := string(),
 %%   <<"EdgeLocations">> := list(string()),
+%%   <<"NatGatewayRules">> => list(nat_rule_request()),
+%%   <<"NatGatewaySupport">> => list(any()),
+%%   <<"NatSystemRouteSupport">> => boolean(),
 %%   <<"RoutingPolicyLabel">> => string(),
 %%   <<"Tags">> => list(tag())
 %% }
@@ -898,6 +919,9 @@
 %% create_site_to_site_vpn_attachment_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
+%%   <<"NatGatewayRules">> => list(nat_rule_request()),
+%%   <<"NatGatewaySupport">> => list(any()),
+%%   <<"NatSystemRouteSupport">> => boolean(),
 %%   <<"RoutingPolicyLabel">> => string(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VpnConnectionArn">> := string()
@@ -951,6 +975,8 @@
 %% create_vpc_attachment_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
+%%   <<"NatGatewayRules">> => list(nat_rule_request()),
+%%   <<"NatGatewaySupport">> => list(any()),
 %%   <<"Options">> => vpc_options(),
 %%   <<"RoutingPolicyLabel">> => string(),
 %%   <<"SubnetArns">> := list(string()),
@@ -1493,6 +1519,8 @@
 %%   <<"DestinationFilters">> => map(),
 %%   <<"ExactCidrMatches">> => list(string()),
 %%   <<"LongestPrefixMatches">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
 %%   <<"PrefixListIds">> => list(string()),
 %%   <<"RouteTableIdentifier">> := route_table_identifier(),
 %%   <<"States">> => list(list(any())()),
@@ -1505,8 +1533,10 @@
 
 %% Example:
 %% get_network_routes_response() :: #{
+%%   <<"CoreNetworkNetworkFunctionGroup">> => core_network_network_function_group_identifier(),
 %%   <<"CoreNetworkSegmentEdge">> => core_network_segment_edge_identifier(),
 %%   <<"NetworkRoutes">> => list(network_route()),
+%%   <<"NextToken">> => string(),
 %%   <<"RouteTableArn">> => string(),
 %%   <<"RouteTableTimestamp">> => non_neg_integer(),
 %%   <<"RouteTableType">> => list(any())
@@ -1701,6 +1731,25 @@
 
 
 %% Example:
+%% list_attachment_nat_configurations_request() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"CoreNetworkId">> => string(),
+%%   <<"Filters">> => map(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attachment_nat_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_attachment_nat_configurations_response() :: #{
+%%   <<"AttachmentNatConfigurations">> => list(attachment_nat_configuration()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_attachment_nat_configurations_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_attachment_routing_policy_associations_request() :: #{
 %%   <<"AttachmentId">> => string(),
 %%   <<"MaxResults">> => integer(),
@@ -1793,12 +1842,16 @@
 %%   <<"CommunityMatches">> => list(string()),
 %%   <<"EdgeLocation">> := string(),
 %%   <<"ExactAsPathMatches">> => list(string()),
+%%   <<"ExactPrefixMatches">> => list(string()),
 %%   <<"LocalPreferenceMatches">> => list(string()),
+%%   <<"LongestPrefixMatches">> => list(string()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"MedMatches">> => list(string()),
 %%   <<"NextHopFilters">> => map(),
 %%   <<"NextToken">> => string(),
-%%   <<"SegmentName">> := string()
+%%   <<"SegmentName">> := string(),
+%%   <<"SubnetOfMatches">> => list(string()),
+%%   <<"SupernetOfMatches">> => list(string())
 %% }
 -type list_core_network_routing_information_request() :: #{binary() => any()}.
 
@@ -1881,6 +1934,25 @@
 %%   <<"Longitude">> => string()
 %% }
 -type location() :: #{binary() => any()}.
+
+
+%% Example:
+%% nat_rule() :: #{
+%%   <<"MatchSourceCidr">> => string(),
+%%   <<"NatCidr">> => string(),
+%%   <<"RuleNumber">> => integer(),
+%%   <<"State">> => list(any())
+%% }
+-type nat_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% nat_rule_request() :: #{
+%%   <<"MatchSourceCidr">> => string(),
+%%   <<"NatCidr">> => string(),
+%%   <<"RuleNumber">> => integer()
+%% }
+-type nat_rule_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2405,6 +2477,26 @@
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_attachment_nat_configuration_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"NatGatewayRules">> => list(nat_rule_request()),
+%%   <<"NatGatewaySupport">> => list(any()),
+%%   <<"NatSystemRouteSupport">> => boolean()
+%% }
+-type update_attachment_nat_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_attachment_nat_configuration_response() :: #{
+%%   <<"AttachmentId">> => string(),
+%%   <<"NatGatewayRules">> => list(nat_rule()),
+%%   <<"NatGatewaySupport">> => list(any()),
+%%   <<"NatSystemRouteSupport">> => boolean()
+%% }
+-type update_attachment_nat_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3101,6 +3193,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_attachment_nat_configurations_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_attachment_routing_policy_associations_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -3247,6 +3346,15 @@
 -type untag_resource_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_attachment_nat_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -5872,6 +5980,43 @@ get_vpc_attachment(Client, AttachmentId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the NAT configurations of core network attachments.
+%%
+%% You must specify either a core network ID or an attachment ID. Only the
+%% core network owner can list NAT configurations.
+-spec list_attachment_nat_configurations(aws_client:aws_client(), list_attachment_nat_configurations_request()) ->
+    {ok, list_attachment_nat_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_attachment_nat_configurations_errors(), tuple()}.
+list_attachment_nat_configurations(Client, Input) ->
+    list_attachment_nat_configurations(Client, Input, []).
+
+-spec list_attachment_nat_configurations(aws_client:aws_client(), list_attachment_nat_configurations_request(), proplists:proplist()) ->
+    {ok, list_attachment_nat_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_attachment_nat_configurations_errors(), tuple()}.
+list_attachment_nat_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/nat-configurations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the routing policy associations for attachments in a core
 %% network.
 -spec list_attachment_routing_policy_associations(aws_client:aws_client(), binary() | list()) ->
@@ -6693,6 +6838,54 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the NAT configuration of a core network attachment.
+%%
+%% You can enable or disable NAT gateway support, specify whether the core
+%% network installs system routes for the NAT CIDR blocks, and replace the
+%% NAT rules of the attachment. Specify at least one of
+%% `NatGatewaySupport', `NatSystemRouteSupport', or
+%% `NatGatewayRules'.
+%%
+%% Only the core network owner can update the NAT configuration of an
+%% attachment. The attachment must be in the `AVAILABLE',
+%% `PENDING_ATTACHMENT_ACCEPTANCE', or `PENDING_TAG_ACCEPTANCE'
+%% state. Changes are applied asynchronously, and the attachment is in the
+%% `UPDATING' state while they are applied. If the attachment is pending
+%% acceptance, the NAT configuration is stored and is applied after the
+%% attachment is accepted.
+-spec update_attachment_nat_configuration(aws_client:aws_client(), binary() | list(), update_attachment_nat_configuration_request()) ->
+    {ok, update_attachment_nat_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_attachment_nat_configuration_errors(), tuple()}.
+update_attachment_nat_configuration(Client, AttachmentId, Input) ->
+    update_attachment_nat_configuration(Client, AttachmentId, Input, []).
+
+-spec update_attachment_nat_configuration(aws_client:aws_client(), binary() | list(), update_attachment_nat_configuration_request(), proplists:proplist()) ->
+    {ok, update_attachment_nat_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_attachment_nat_configuration_errors(), tuple()}.
+update_attachment_nat_configuration(Client, AttachmentId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/attachments/", aws_util:encode_uri(AttachmentId), "/nat-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates the information for an existing connection.

@@ -735,6 +735,13 @@
 
 
 %% Example:
+%% circuit_breaker_configuration() :: #{
+%%   <<"mode">> => list(any())
+%% }
+-type circuit_breaker_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% cloud_watch_logs_input_config() :: #{
 %%   <<"logGroupNamePrefixes">> => list(string()),
 %%   <<"logGroupNames">> => list(string()),
@@ -2436,6 +2443,15 @@
 
 
 %% Example:
+%% evaluation_dimension() :: #{
+%%   <<"dimensionInstruction">> => string(),
+%%   <<"dimensionName">> => string(),
+%%   <<"dimensionRatingScale">> => list()
+%% }
+-type evaluation_dimension() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluator_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
@@ -2451,6 +2467,34 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type evaluator_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% fallback() :: #{
+%%   <<"circuitBreaker">> => circuit_breaker_configuration(),
+%%   <<"firstByteTimeoutMilliseconds">> => [integer()],
+%%   <<"targetFallback">> => list(fallback_target()),
+%%   <<"triggerOn">> => fallback_triggers()
+%% }
+-type fallback() :: #{binary() => any()}.
+
+
+%% Example:
+%% fallback_target() :: #{
+%%   <<"firstByteTimeoutMilliseconds">> => [integer()],
+%%   <<"model">> => string(),
+%%   <<"targetName">> => string(),
+%%   <<"triggerOn">> => fallback_triggers()
+%% }
+-type fallback_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% fallback_triggers() :: #{
+%%   <<"errors">> => list(list(any())()),
+%%   <<"statusCodes">> => list(string())
+%% }
+-type fallback_triggers() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4675,6 +4719,21 @@
 
 
 %% Example:
+%% match_model_entry() :: #{
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type match_model_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% match_models() :: #{
+%%   <<"anyOf">> => list(match_model_entry())
+%% }
+-type match_models() :: #{binary() => any()}.
+
+
+%% Example:
 %% match_paths() :: #{
 %%   <<"anyOf">> => list(string())
 %% }
@@ -5710,6 +5769,8 @@
 
 %% Example:
 %% static_route() :: #{
+%%   <<"fallback">> => fallback(),
+%%   <<"model">> => string(),
 %%   <<"targetName">> => string()
 %% }
 -type static_route() :: #{binary() => any()}.
@@ -5910,7 +5971,9 @@
 %% Example:
 %% target_traffic_split_entry() :: #{
 %%   <<"description">> => [string()],
+%%   <<"fallback">> => fallback(),
 %%   <<"metadata">> => map(),
+%%   <<"model">> => string(),
 %%   <<"name">> => [string()],
 %%   <<"targetName">> => string(),
 %%   <<"weight">> => [integer()]
@@ -14228,6 +14291,11 @@ update_evaluator(Client, EvaluatorId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing gateway.
+%%
+%% Replaces the entire gateway configuration. Any optional field that you
+%% omit, including fields in `protocolConfiguration', is reset. For
+%% information about retrieving the current configuration, see GetGateway:
+%% https://docs.aws.amazon.com/bedrock-agentcore-control/latest/APIReference/API_GetGateway.html.
 -spec update_gateway(aws_client:aws_client(), binary() | list(), update_gateway_request()) ->
     {ok, update_gateway_response(), tuple()} |
     {error, any()} |
