@@ -591,6 +591,10 @@
 %% }
 -type audio_watermark_settings() :: #{binary() => any()}.
 
+%% Example:
+%% auto_filter_settings() :: #{}
+-type auto_filter_settings() :: #{}.
+
 
 %% Example:
 %% automatic_input_failover_settings() :: #{
@@ -614,12 +618,22 @@
 
 
 %% Example:
+%% av1_filter_settings() :: #{
+%%   <<"AutoFilterSettings">> => auto_filter_settings(),
+%%   <<"NoneFilterSettings">> => none_filter_settings(),
+%%   <<"PerceptualFilterSettings">> => perceptual_filter_settings()
+%% }
+-type av1_filter_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% av1_settings() :: #{
 %%   <<"AfdSignaling">> => list(any()),
 %%   <<"BitDepth">> => list(any()),
 %%   <<"Bitrate">> => integer(),
 %%   <<"BufSize">> => integer(),
 %%   <<"ColorSpaceSettings">> => av1_color_space_settings(),
+%%   <<"FilterSettings">> => av1_filter_settings(),
 %%   <<"FixedAfd">> => list(any()),
 %%   <<"FramerateDenominator">> => integer(),
 %%   <<"FramerateNumerator">> => integer(),
@@ -2767,7 +2781,10 @@
 
 %% Example:
 %% h264_filter_settings() :: #{
+%%   <<"AutoFilterSettings">> => auto_filter_settings(),
 %%   <<"BandwidthReductionFilterSettings">> => bandwidth_reduction_filter_settings(),
+%%   <<"NoneFilterSettings">> => none_filter_settings(),
+%%   <<"PerceptualFilterSettings">> => perceptual_filter_settings(),
 %%   <<"TemporalFilterSettings">> => temporal_filter_settings()
 %% }
 -type h264_filter_settings() :: #{binary() => any()}.
@@ -2777,6 +2794,7 @@
 %% h264_settings() :: #{
 %%   <<"AdaptiveQuantization">> => list(any()),
 %%   <<"AfdSignaling">> => list(any()),
+%%   <<"AllowExplicitWeightedPrediction">> => list(any()),
 %%   <<"Bitrate">> => integer(),
 %%   <<"BufFillPct">> => integer(),
 %%   <<"BufSize">> => integer(),
@@ -2837,7 +2855,10 @@
 
 %% Example:
 %% h265_filter_settings() :: #{
+%%   <<"AutoFilterSettings">> => auto_filter_settings(),
 %%   <<"BandwidthReductionFilterSettings">> => bandwidth_reduction_filter_settings(),
+%%   <<"NoneFilterSettings">> => none_filter_settings(),
+%%   <<"PerceptualFilterSettings">> => perceptual_filter_settings(),
 %%   <<"TemporalFilterSettings">> => temporal_filter_settings()
 %% }
 -type h265_filter_settings() :: #{binary() => any()}.
@@ -4630,6 +4651,10 @@
 %% }
 -type node_interface_mapping_create_request() :: #{binary() => any()}.
 
+%% Example:
+%% none_filter_settings() :: #{}
+-type none_filter_settings() :: #{}.
+
 
 %% Example:
 %% not_found_exception() :: #{
@@ -4758,6 +4783,13 @@
 %%   <<"Pipelines">> => list(pipeline_pause_state_settings())
 %% }
 -type pause_state_schedule_action_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% perceptual_filter_settings() :: #{
+%%   <<"Strength">> => list(any())
+%% }
+-type perceptual_filter_settings() :: #{binary() => any()}.
 
 
 %% Example:

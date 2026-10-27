@@ -1116,10 +1116,12 @@
 %%   <<"defaultRootObject">> => string(),
 %%   <<"distributionName">> := string(),
 %%   <<"enablePrivateOriginAccess">> => boolean(),
+%%   <<"enableWaf">> => boolean(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"origin">> := input_origin(),
 %%   <<"tags">> => list(tag()),
-%%   <<"viewerMinimumTlsProtocolVersion">> => list(any())
+%%   <<"viewerMinimumTlsProtocolVersion">> => list(any()),
+%%   <<"wafRules">> => list(waf_rule())
 %% }
 -type create_distribution_request() :: #{binary() => any()}.
 
@@ -3024,7 +3026,8 @@
 %%   <<"status">> => string(),
 %%   <<"supportCode">> => string(),
 %%   <<"tags">> => list(tag()),
-%%   <<"viewerMinimumTlsProtocolVersion">> => string()
+%%   <<"viewerMinimumTlsProtocolVersion">> => string(),
+%%   <<"waf">> => waf_config()
 %% }
 -type lightsail_distribution() :: #{binary() => any()}.
 
@@ -3944,10 +3947,12 @@
 %%   <<"defaultRootObject">> => string(),
 %%   <<"distributionName">> := string(),
 %%   <<"enablePrivateOriginAccess">> => boolean(),
+%%   <<"enableWaf">> => boolean(),
 %%   <<"isEnabled">> => boolean(),
 %%   <<"origin">> => input_origin(),
 %%   <<"useDefaultCertificate">> => boolean(),
-%%   <<"viewerMinimumTlsProtocolVersion">> => list(any())
+%%   <<"viewerMinimumTlsProtocolVersion">> => list(any()),
+%%   <<"wafRules">> => list(waf_rule())
 %% }
 -type update_distribution_request() :: #{binary() => any()}.
 
@@ -4034,6 +4039,54 @@
 %%   <<"operations">> => list(operation())
 %% }
 -type update_relational_database_result() :: #{binary() => any()}.
+
+%% Example:
+%% waf_acfp_config() :: #{
+%%   <<"creationPath">> => string(),
+%%   <<"payloadType">> => list(any()),
+%%   <<"registrationPagePath">> => string(),
+%%   <<"responseInspection">> => waf_response_inspection()
+%% }
+-type waf_acfp_config() :: #{binary() => any()}.
+
+%% Example:
+%% waf_atp_config() :: #{
+%%   <<"loginPath">> => string(),
+%%   <<"passwordField">> => string(),
+%%   <<"payloadType">> => list(any()),
+%%   <<"responseInspection">> => waf_response_inspection(),
+%%   <<"usernameField">> => string()
+%% }
+-type waf_atp_config() :: #{binary() => any()}.
+
+%% Example:
+%% waf_bot_control_config() :: #{
+%%   <<"inspectionLevel">> => list(any())
+%% }
+-type waf_bot_control_config() :: #{binary() => any()}.
+
+%% Example:
+%% waf_config() :: #{
+%%   <<"isWafEnabled">> => boolean(),
+%%   <<"wafRules">> => list(waf_rule())
+%% }
+-type waf_config() :: #{binary() => any()}.
+
+%% Example:
+%% waf_response_inspection() :: #{
+%%   <<"failureCodes">> => list(integer()),
+%%   <<"successCodes">> => list(integer())
+%% }
+-type waf_response_inspection() :: #{binary() => any()}.
+
+%% Example:
+%% waf_rule() :: #{
+%%   <<"acfpConfig">> => waf_acfp_config(),
+%%   <<"atpConfig">> => waf_atp_config(),
+%%   <<"botControlConfig">> => waf_bot_control_config(),
+%%   <<"name">> => string()
+%% }
+-type waf_rule() :: #{binary() => any()}.
 
 -type allocate_static_ip_errors() ::
     unauthenticated_exception() | 

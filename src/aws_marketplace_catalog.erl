@@ -527,6 +527,7 @@
 %%   <<"OfferSummary">> => offer_summary(),
 %%   <<"ResaleAuthorizationSummary">> => resale_authorization_summary(),
 %%   <<"SaaSProductSummary">> => saa_s_product_summary(),
+%%   <<"SubsidiaryAuthorizationSummary">> => subsidiary_authorization_summary(),
 %%   <<"Visibility">> => string()
 %% }
 -type entity_summary() :: #{binary() => any()}.
@@ -1353,6 +1354,114 @@
 %%   <<"ChangeSetId">> => string()
 %% }
 -type start_change_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_created_date_filter() :: #{
+%%   <<"DateRange">> => subsidiary_authorization_created_date_filter_date_range()
+%% }
+-type subsidiary_authorization_created_date_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_created_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type subsidiary_authorization_created_date_filter_date_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_entity_id_filter() :: #{
+%%   <<"ValueList">> => list(string())
+%% }
+-type subsidiary_authorization_entity_id_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_filters() :: #{
+%%   <<"CreatedDate">> => subsidiary_authorization_created_date_filter(),
+%%   <<"EntityId">> => subsidiary_authorization_entity_id_filter(),
+%%   <<"LastModifiedDate">> => subsidiary_authorization_last_modified_date_filter(),
+%%   <<"Name">> => subsidiary_authorization_name_filter(),
+%%   <<"ResourceId">> => subsidiary_authorization_resource_id_filter(),
+%%   <<"ResourceName">> => subsidiary_authorization_resource_name_filter(),
+%%   <<"Status">> => subsidiary_authorization_status_filter(),
+%%   <<"SubsidiaryAccountId">> => subsidiary_authorization_subsidiary_account_id_filter()
+%% }
+-type subsidiary_authorization_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_last_modified_date_filter() :: #{
+%%   <<"DateRange">> => subsidiary_authorization_last_modified_date_filter_date_range()
+%% }
+-type subsidiary_authorization_last_modified_date_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_last_modified_date_filter_date_range() :: #{
+%%   <<"AfterValue">> => string(),
+%%   <<"BeforeValue">> => string()
+%% }
+-type subsidiary_authorization_last_modified_date_filter_date_range() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_name_filter() :: #{
+%%   <<"ValueList">> => list(string()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type subsidiary_authorization_name_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_resource_id_filter() :: #{
+%%   <<"ValueList">> => list(string())
+%% }
+-type subsidiary_authorization_resource_id_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_resource_name_filter() :: #{
+%%   <<"ValueList">> => list(string()),
+%%   <<"WildCardValue">> => string()
+%% }
+-type subsidiary_authorization_resource_name_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type subsidiary_authorization_sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_status_filter() :: #{
+%%   <<"ValueList">> => list(list(any())())
+%% }
+-type subsidiary_authorization_status_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_subsidiary_account_id_filter() :: #{
+%%   <<"ValueList">> => list(string())
+%% }
+-type subsidiary_authorization_subsidiary_account_id_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% subsidiary_authorization_summary() :: #{
+%%   <<"CreatedDate">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"SubsidiaryAccountId">> => string()
+%% }
+-type subsidiary_authorization_summary() :: #{binary() => any()}.
 
 
 %% Example:

@@ -11,18 +11,28 @@
 %% `https://billing.us-east-1.api.aws'
 -module(aws_billing).
 
--export([associate_source_views/2,
+-export([associate_contract/2,
+         associate_contract/3,
+         associate_source_views/2,
          associate_source_views/3,
+         cancel_contractual_investment_attestation/2,
+         cancel_contractual_investment_attestation/3,
          create_billing_view/2,
          create_billing_view/3,
+         create_contractual_investment_attestation/2,
+         create_contractual_investment_attestation/3,
          delete_billing_view/2,
          delete_billing_view/3,
+         disassociate_contract/2,
+         disassociate_contract/3,
          disassociate_source_views/2,
          disassociate_source_views/3,
          get_billing_preferences/2,
          get_billing_preferences/3,
          get_billing_view/2,
          get_billing_view/3,
+         get_contract_information/2,
+         get_contract_information/3,
          get_credit_allocation_history/2,
          get_credit_allocation_history/3,
          get_credits/2,
@@ -41,6 +51,14 @@
          list_business_support_account_charges/3,
          list_business_support_subscription_history/2,
          list_business_support_subscription_history/3,
+         list_contracts/2,
+         list_contracts/3,
+         list_contractual_investment_attestations/2,
+         list_contractual_investment_attestations/3,
+         list_contractual_investment_summaries/2,
+         list_contractual_investment_summaries/3,
+         list_contractual_investments/2,
+         list_contractual_investments/3,
          list_enterprise_support_linked_account_charges/2,
          list_enterprise_support_linked_account_charges/3,
          list_source_views_for_billing_view/2,
@@ -83,11 +101,38 @@
 -type additional_charge() :: #{binary() => any()}.
 
 %% Example:
+%% additional_recipient() :: #{
+%%   <<"email">> => string()
+%% }
+-type additional_recipient() :: #{binary() => any()}.
+
+%% Example:
 %% amount() :: #{
 %%   <<"currencyAmount">> => string(),
 %%   <<"currencyCode">> => string()
 %% }
 -type amount() :: #{binary() => any()}.
+
+%% Example:
+%% approver_details() :: #{
+%%   <<"email">> => string(),
+%%   <<"name">> => string(),
+%%   <<"title">> => string()
+%% }
+-type approver_details() :: #{binary() => any()}.
+
+%% Example:
+%% associate_contract_request() :: #{
+%%   <<"contractArn">> := string(),
+%%   <<"contractDocumentId">> := string()
+%% }
+-type associate_contract_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_contract_response() :: #{
+
+%% }
+-type associate_contract_response() :: #{binary() => any()}.
 
 %% Example:
 %% associate_source_views_request() :: #{
@@ -101,6 +146,20 @@
 %%   <<"arn">> => string()
 %% }
 -type associate_source_views_response() :: #{binary() => any()}.
+
+%% Example:
+%% attestation_details() :: #{
+%%   <<"attestationValue">> => list(),
+%%   <<"investmentDistributions">> => list(investment_distribution())
+%% }
+-type attestation_details() :: #{binary() => any()}.
+
+%% Example:
+%% attestation_quantity() :: #{
+%%   <<"attestationUnit">> => [string()],
+%%   <<"attestationVolume">> => [string()]
+%% }
+-type attestation_quantity() :: #{binary() => any()}.
 
 %% Example:
 %% billing_feature_filter() :: #{
@@ -246,6 +305,20 @@
 -type business_support_tier_charge() :: #{binary() => any()}.
 
 %% Example:
+%% cancel_contractual_investment_attestation_request() :: #{
+%%   <<"attestationId">> := string(),
+%%   <<"contractArn">> := string(),
+%%   <<"reason">> := string()
+%% }
+-type cancel_contractual_investment_attestation_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_contractual_investment_attestation_response() :: #{
+
+%% }
+-type cancel_contractual_investment_attestation_response() :: #{binary() => any()}.
+
+%% Example:
 %% charge_account() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"chargePercentage">> => [string()]
@@ -266,6 +339,16 @@
 %%   <<"isGdn">> => [boolean()]
 %% }
 -type contract_account() :: #{binary() => any()}.
+
+%% Example:
+%% contract_summary() :: #{
+%%   <<"associationStatus">> => list(any()),
+%%   <<"contractArn">> => string(),
+%%   <<"contractTerm">> => interval(),
+%%   <<"contractType">> => list(any()),
+%%   <<"lastUpdatedAt">> => [non_neg_integer()]
+%% }
+-type contract_summary() :: #{binary() => any()}.
 
 %% Example:
 %% cost_category_values() :: #{
@@ -291,6 +374,26 @@
 %%   <<"createdAt">> => [non_neg_integer()]
 %% }
 -type create_billing_view_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_contractual_investment_attestation_request() :: #{
+%%   <<"additionalRecipients">> => list(additional_recipient()),
+%%   <<"approverDetails">> := approver_details(),
+%%   <<"attestationDetails">> := attestation_details(),
+%%   <<"clientToken">> => string(),
+%%   <<"contractArn">> := string(),
+%%   <<"contractDocumentId">> := string(),
+%%   <<"investmentDisbursedAt">> => [non_neg_integer()],
+%%   <<"investmentId">> := string(),
+%%   <<"investmentSummaryId">> := string()
+%% }
+-type create_contractual_investment_attestation_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_contractual_investment_attestation_response() :: #{
+%%   <<"attestationId">> => string()
+%% }
+-type create_contractual_investment_attestation_response() :: #{binary() => any()}.
 
 %% Example:
 %% credit_allocation_history_entry() :: #{
@@ -350,6 +453,18 @@
 -type dimension_values() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_contract_request() :: #{
+%%   <<"contractArn">> := string()
+%% }
+-type disassociate_contract_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_contract_response() :: #{
+
+%% }
+-type disassociate_contract_response() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_source_views_request() :: #{
 %%   <<"arn">> := string(),
 %%   <<"sourceViews">> := list(string())
@@ -405,6 +520,18 @@
 %%   <<"billingView">> => billing_view_element()
 %% }
 -type get_billing_view_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_contract_information_request() :: #{
+%%   <<"contractArn">> := string()
+%% }
+-type get_contract_information_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_contract_information_response() :: #{
+%%   <<"contract">> => list()
+%% }
+-type get_contract_information_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_credit_allocation_history_request() :: #{
@@ -510,6 +637,67 @@
 -type internal_server_exception() :: #{binary() => any()}.
 
 %% Example:
+%% interval() :: #{
+%%   <<"endDateInclusive">> => [non_neg_integer()],
+%%   <<"startDateInclusive">> => [non_neg_integer()]
+%% }
+-type interval() :: #{binary() => any()}.
+
+%% Example:
+%% investment_attestation() :: #{
+%%   <<"attestationId">> => string(),
+%%   <<"attestationStatus">> => list(any()),
+%%   <<"attestedAt">> => [non_neg_integer()],
+%%   <<"attestedValue">> => amount(),
+%%   <<"investmentDisbursedAt">> => [non_neg_integer()],
+%%   <<"investmentDistributions">> => list(investment_distribution()),
+%%   <<"investmentId">> => string(),
+%%   <<"investmentName">> => [string()],
+%%   <<"investmentSummaryId">> => string(),
+%%   <<"isCancellable">> => [boolean()],
+%%   <<"outcomeDescription">> => [string()],
+%%   <<"rejectionReasons">> => list(string()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type investment_attestation() :: #{binary() => any()}.
+
+%% Example:
+%% investment_distribution() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"investmentAmount">> => amount()
+%% }
+-type investment_distribution() :: #{binary() => any()}.
+
+%% Example:
+%% investment_multiplier() :: #{
+%%   <<"investmentAttestationInputUnit">> => [string()],
+%%   <<"multiplierType">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type investment_multiplier() :: #{binary() => any()}.
+
+%% Example:
+%% investment_restriction() :: #{
+%%   <<"amount">> => amount()
+%% }
+-type investment_restriction() :: #{binary() => any()}.
+
+%% Example:
+%% investment_summary() :: #{
+%%   <<"investmentName">> => [string()],
+%%   <<"investmentSummaryId">> => string(),
+%%   <<"investmentType">> => list(any()),
+%%   <<"maxAllowedInvestmentDisbursementValue">> => amount()
+%% }
+-type investment_summary() :: #{binary() => any()}.
+
+%% Example:
+%% legal_entity() :: #{
+%%   <<"legalEntityName">> => string()
+%% }
+-type legal_entity() :: #{binary() => any()}.
+
+%% Example:
 %% linked_account_charge() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"accountType">> => [string()],
@@ -602,6 +790,67 @@
 -type list_business_support_subscription_history_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_contracts_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_contracts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_contracts_response() :: #{
+%%   <<"items">> => list(contract_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contracts_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_contractual_investment_attestations_request() :: #{
+%%   <<"contractArn">> := string(),
+%%   <<"investmentSummaryId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_contractual_investment_attestations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_contractual_investment_attestations_response() :: #{
+%%   <<"items">> => list(investment_attestation()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contractual_investment_attestations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_contractual_investment_summaries_request() :: #{
+%%   <<"contractArn">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_contractual_investment_summaries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_contractual_investment_summaries_response() :: #{
+%%   <<"items">> => list(investment_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contractual_investment_summaries_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_contractual_investments_request() :: #{
+%%   <<"contractArn">> := string(),
+%%   <<"investmentSummaryId">> := string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_contractual_investments_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_contractual_investments_response() :: #{
+%%   <<"items">> => list(list()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_contractual_investments_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_enterprise_support_linked_account_charges_request() :: #{
 %%   <<"accountId">> => string(),
 %%   <<"billingMonth">> := string(),
@@ -645,6 +894,25 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% milestone_based_investment() :: #{
+%%   <<"investmentDisbursedAt">> => [non_neg_integer()],
+%%   <<"investmentId">> => string(),
+%%   <<"investmentValue">> => amount()
+%% }
+-type milestone_based_investment() :: #{binary() => any()}.
+
+%% Example:
+%% outcome_based_investment() :: #{
+%%   <<"attestationWindow">> => interval(),
+%%   <<"disbursedValue">> => amount(),
+%%   <<"investmentId">> => string(),
+%%   <<"investmentMultipliers">> => list(investment_multiplier()),
+%%   <<"investmentRestrictions">> => list(investment_restriction()),
+%%   <<"outcomeDescription">> => [string()]
+%% }
+-type outcome_based_investment() :: #{binary() => any()}.
+
+%% Example:
 %% pricing_plan() :: #{
 %%   <<"description">> => [string()],
 %%   <<"discountAppliesToMinimumCharge">> => [boolean()],
@@ -671,6 +939,17 @@
 %%   <<"tierMinimum">> => [string()]
 %% }
 -type pricing_plan_tier() :: #{binary() => any()}.
+
+%% Example:
+%% private_pricing_addendum() :: #{
+%%   <<"contractArn">> => string(),
+%%   <<"contractRestrictions">> => list(list(any())()),
+%%   <<"contractTerm">> => interval(),
+%%   <<"eligiblePayerAccounts">> => list(string()),
+%%   <<"investmentAccounts">> => list(string()),
+%%   <<"legalEntities">> => list(legal_entity())
+%% }
+-type private_pricing_addendum() :: #{binary() => any()}.
 
 %% Example:
 %% redeem_credits_request() :: #{
@@ -813,6 +1092,14 @@
 %% }
 -type validation_exception_field() :: #{binary() => any()}.
 
+-type associate_contract_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type associate_source_views_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -821,6 +1108,14 @@
     internal_server_exception() | 
     conflict_exception() | 
     billing_view_health_status_exception() | 
+    access_denied_exception().
+
+-type cancel_contractual_investment_attestation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type create_billing_view_errors() ::
@@ -833,11 +1128,26 @@
     billing_view_health_status_exception() | 
     access_denied_exception().
 
+-type create_contractual_investment_attestation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type delete_billing_view_errors() ::
     validation_exception() | 
     throttling_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type disassociate_contract_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 -type disassociate_source_views_errors() ::
@@ -856,6 +1166,13 @@
     access_denied_exception().
 
 -type get_billing_view_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_contract_information_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -923,6 +1240,33 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_contracts_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_contractual_investment_attestations_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_contractual_investment_summaries_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_contractual_investments_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_enterprise_support_linked_account_charges_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -984,6 +1328,29 @@
 %% API
 %%====================================================================
 
+%% @doc Private Pricing contracts let eligible payer accounts manage private
+%% pricing agreements with Amazon Web Services.
+%%
+%% This operation associates a private pricing contract with the caller's
+%% Amazon Web Services account. The caller must be a payer (management)
+%% account listed on the contract. This operation is idempotent, so retrying
+%% a request that already succeeded is safe.
+-spec associate_contract(aws_client:aws_client(), associate_contract_request()) ->
+    {ok, associate_contract_response(), tuple()} |
+    {error, any()} |
+    {error, associate_contract_errors(), tuple()}.
+associate_contract(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_contract(Client, Input, []).
+
+-spec associate_contract(aws_client:aws_client(), associate_contract_request(), proplists:proplist()) ->
+    {ok, associate_contract_response(), tuple()} |
+    {error, any()} |
+    {error, associate_contract_errors(), tuple()}.
+associate_contract(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateContract">>, Input, Options).
+
 %% @doc Associates one or more source billing views with an existing billing
 %% view.
 %%
@@ -1005,6 +1372,27 @@ associate_source_views(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSourceViews">>, Input, Options).
 
+%% @doc Cancels a contractual investment attestation.
+%%
+%% This operation is idempotent, so retrying is safe. You can cancel an
+%% attestation only while it is still pending (its `isCancellable' value
+%% is `true').
+-spec cancel_contractual_investment_attestation(aws_client:aws_client(), cancel_contractual_investment_attestation_request()) ->
+    {ok, cancel_contractual_investment_attestation_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_contractual_investment_attestation_errors(), tuple()}.
+cancel_contractual_investment_attestation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_contractual_investment_attestation(Client, Input, []).
+
+-spec cancel_contractual_investment_attestation(aws_client:aws_client(), cancel_contractual_investment_attestation_request(), proplists:proplist()) ->
+    {ok, cancel_contractual_investment_attestation_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_contractual_investment_attestation_errors(), tuple()}.
+cancel_contractual_investment_attestation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelContractualInvestmentAttestation">>, Input, Options).
+
 %% @doc Creates a billing view with the specified billing view attributes.
 -spec create_billing_view(aws_client:aws_client(), create_billing_view_request()) ->
     {ok, create_billing_view_response(), tuple()} |
@@ -1022,6 +1410,29 @@ create_billing_view(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBillingView">>, Input, Options).
 
+%% @doc Creates an attestation that claims an investment award for a
+%% completed milestone or outcome within a private pricing contract.
+%%
+%% Supply a `clientToken' to make the request idempotent so a safe retry
+%% does not create a duplicate attestation. This operation starts an
+%% asynchronous review and returns an `attestationId' while the
+%% attestation is pending.
+-spec create_contractual_investment_attestation(aws_client:aws_client(), create_contractual_investment_attestation_request()) ->
+    {ok, create_contractual_investment_attestation_response(), tuple()} |
+    {error, any()} |
+    {error, create_contractual_investment_attestation_errors(), tuple()}.
+create_contractual_investment_attestation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_contractual_investment_attestation(Client, Input, []).
+
+-spec create_contractual_investment_attestation(aws_client:aws_client(), create_contractual_investment_attestation_request(), proplists:proplist()) ->
+    {ok, create_contractual_investment_attestation_response(), tuple()} |
+    {error, any()} |
+    {error, create_contractual_investment_attestation_errors(), tuple()}.
+create_contractual_investment_attestation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateContractualInvestmentAttestation">>, Input, Options).
+
 %% @doc Deletes the specified billing view.
 -spec delete_billing_view(aws_client:aws_client(), delete_billing_view_request()) ->
     {ok, delete_billing_view_response(), tuple()} |
@@ -1038,6 +1449,27 @@ delete_billing_view(Client, Input)
 delete_billing_view(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBillingView">>, Input, Options).
+
+%% @doc Removes the association between a private pricing contract and your
+%% Amazon Web Services account.
+%%
+%% The account must have been associated with the contract previously. This
+%% operation is idempotent, so retrying is safe.
+-spec disassociate_contract(aws_client:aws_client(), disassociate_contract_request()) ->
+    {ok, disassociate_contract_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_contract_errors(), tuple()}.
+disassociate_contract(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_contract(Client, Input, []).
+
+-spec disassociate_contract(aws_client:aws_client(), disassociate_contract_request(), proplists:proplist()) ->
+    {ok, disassociate_contract_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_contract_errors(), tuple()}.
+disassociate_contract(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateContract">>, Input, Options).
 
 %% @doc Removes the association between one or more source billing views and
 %% an existing billing view.
@@ -1096,6 +1528,27 @@ get_billing_view(Client, Input)
 get_billing_view(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBillingView">>, Input, Options).
+
+%% @doc Returns information about a specific private pricing contract,
+%% including its term (duration), eligible payer accounts, investment
+%% accounts, and legal entities.
+%%
+%% This operation is read-only.
+-spec get_contract_information(aws_client:aws_client(), get_contract_information_request()) ->
+    {ok, get_contract_information_response(), tuple()} |
+    {error, any()} |
+    {error, get_contract_information_errors(), tuple()}.
+get_contract_information(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_contract_information(Client, Input, []).
+
+-spec get_contract_information(aws_client:aws_client(), get_contract_information_request(), proplists:proplist()) ->
+    {ok, get_contract_information_response(), tuple()} |
+    {error, any()} |
+    {error, get_contract_information_errors(), tuple()}.
+get_contract_information(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetContractInformation">>, Input, Options).
 
 %% @doc Returns the per-billing-month allocation history for credits applied
 %% to an Amazon Web Services account's bills.
@@ -1283,6 +1736,87 @@ list_business_support_subscription_history(Client, Input)
 list_business_support_subscription_history(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBusinessSupportSubscriptionHistory">>, Input, Options).
+
+%% @doc Lists the private pricing contracts that your Amazon Web Services
+%% account is an eligible payer account of.
+%%
+%% This operation is read-only and paginated.
+-spec list_contracts(aws_client:aws_client(), list_contracts_request()) ->
+    {ok, list_contracts_response(), tuple()} |
+    {error, any()} |
+    {error, list_contracts_errors(), tuple()}.
+list_contracts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_contracts(Client, Input, []).
+
+-spec list_contracts(aws_client:aws_client(), list_contracts_request(), proplists:proplist()) ->
+    {ok, list_contracts_response(), tuple()} |
+    {error, any()} |
+    {error, list_contracts_errors(), tuple()}.
+list_contracts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListContracts">>, Input, Options).
+
+%% @doc Lists the investment attestations submitted under a specific private
+%% pricing contract.
+%%
+%% Use this operation to track attestation status, including the terminal
+%% statuses `DISBURSED', `REJECTED', and `CANCELLED'. This
+%% operation is read-only and paginated.
+-spec list_contractual_investment_attestations(aws_client:aws_client(), list_contractual_investment_attestations_request()) ->
+    {ok, list_contractual_investment_attestations_response(), tuple()} |
+    {error, any()} |
+    {error, list_contractual_investment_attestations_errors(), tuple()}.
+list_contractual_investment_attestations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_contractual_investment_attestations(Client, Input, []).
+
+-spec list_contractual_investment_attestations(aws_client:aws_client(), list_contractual_investment_attestations_request(), proplists:proplist()) ->
+    {ok, list_contractual_investment_attestations_response(), tuple()} |
+    {error, any()} |
+    {error, list_contractual_investment_attestations_errors(), tuple()}.
+list_contractual_investment_attestations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListContractualInvestmentAttestations">>, Input, Options).
+
+%% @doc Lists the investment summaries within a specific private pricing
+%% contract.
+%%
+%% This operation is read-only and paginated.
+-spec list_contractual_investment_summaries(aws_client:aws_client(), list_contractual_investment_summaries_request()) ->
+    {ok, list_contractual_investment_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_contractual_investment_summaries_errors(), tuple()}.
+list_contractual_investment_summaries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_contractual_investment_summaries(Client, Input, []).
+
+-spec list_contractual_investment_summaries(aws_client:aws_client(), list_contractual_investment_summaries_request(), proplists:proplist()) ->
+    {ok, list_contractual_investment_summaries_response(), tuple()} |
+    {error, any()} |
+    {error, list_contractual_investment_summaries_errors(), tuple()}.
+list_contractual_investment_summaries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListContractualInvestmentSummaries">>, Input, Options).
+
+%% @doc Lists the investments within a specific investment summary.
+%%
+%% This operation is read-only and paginated.
+-spec list_contractual_investments(aws_client:aws_client(), list_contractual_investments_request()) ->
+    {ok, list_contractual_investments_response(), tuple()} |
+    {error, any()} |
+    {error, list_contractual_investments_errors(), tuple()}.
+list_contractual_investments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_contractual_investments(Client, Input, []).
+
+-spec list_contractual_investments(aws_client:aws_client(), list_contractual_investments_request(), proplists:proplist()) ->
+    {ok, list_contractual_investments_response(), tuple()} |
+    {error, any()} |
+    {error, list_contractual_investments_errors(), tuple()}.
+list_contractual_investments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListContractualInvestments">>, Input, Options).
 
 %% @doc Returns Support-eligible spend broken down at linked account level.
 -spec list_enterprise_support_linked_account_charges(aws_client:aws_client(), list_enterprise_support_linked_account_charges_request()) ->

@@ -136,6 +136,8 @@
          create_ad_configuration/3,
          create_channel/2,
          create_channel/3,
+         create_failover_slate_configuration/2,
+         create_failover_slate_configuration/3,
          create_playback_restriction_policy/2,
          create_playback_restriction_policy/3,
          create_recording_configuration/2,
@@ -146,6 +148,8 @@
          delete_ad_configuration/3,
          delete_channel/2,
          delete_channel/3,
+         delete_failover_slate_configuration/2,
+         delete_failover_slate_configuration/3,
          delete_playback_key_pair/2,
          delete_playback_key_pair/3,
          delete_playback_restriction_policy/2,
@@ -158,6 +162,8 @@
          get_ad_configuration/3,
          get_channel/2,
          get_channel/3,
+         get_failover_slate_configuration/2,
+         get_failover_slate_configuration/3,
          get_playback_key_pair/2,
          get_playback_key_pair/3,
          get_playback_restriction_policy/2,
@@ -178,6 +184,8 @@
          list_ad_configurations/3,
          list_channels/2,
          list_channels/3,
+         list_failover_slate_configurations/2,
+         list_failover_slate_configurations/3,
          list_playback_key_pairs/2,
          list_playback_key_pairs/3,
          list_playback_restriction_policies/2,
@@ -207,6 +215,8 @@
          update_ad_configuration/3,
          update_channel/2,
          update_channel/3,
+         update_failover_slate_configuration/2,
+         update_failover_slate_configuration/3,
          update_playback_restriction_policy/2,
          update_playback_restriction_policy/3]).
 
@@ -361,6 +371,7 @@
 %%   <<"arn">> => string(),
 %%   <<"authorized">> => boolean(),
 %%   <<"containerFormat">> => string(),
+%%   <<"failoverSlateConfigurationArn">> => string(),
 %%   <<"ingestEndpoint">> => string(),
 %%   <<"insecureIngest">> => boolean(),
 %%   <<"latencyMode">> => string(),
@@ -397,6 +408,7 @@
 %%   <<"adConfigurationArn">> => string(),
 %%   <<"arn">> => string(),
 %%   <<"authorized">> => boolean(),
+%%   <<"failoverSlateConfigurationArn">> => string(),
 %%   <<"insecureIngest">> => boolean(),
 %%   <<"latencyMode">> => string(),
 %%   <<"name">> => string(),
@@ -446,6 +458,7 @@
 %%   <<"adConfigurationArn">> => string(),
 %%   <<"authorized">> => boolean(),
 %%   <<"containerFormat">> => string(),
+%%   <<"failoverSlateConfigurationArn">> => string(),
 %%   <<"insecureIngest">> => boolean(),
 %%   <<"latencyMode">> => string(),
 %%   <<"multitrackInputConfiguration">> => multitrack_input_configuration(),
@@ -465,6 +478,24 @@
 %%   <<"streamKey">> => stream_key()
 %% }
 -type create_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_failover_slate_configuration_request() :: #{
+%%   <<"activationThresholdSeconds">> => integer(),
+%%   <<"maxSlateDisplaySeconds">> => integer(),
+%%   <<"minSlateDisplaySeconds">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_failover_slate_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_failover_slate_configuration_response() :: #{
+%%   <<"failoverSlateConfiguration">> => failover_slate_configuration()
+%% }
+-type create_failover_slate_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -534,6 +565,13 @@
 
 
 %% Example:
+%% delete_failover_slate_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type delete_failover_slate_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_playback_key_pair_request() :: #{
 %%   <<"arn">> := string()
 %% }
@@ -573,6 +611,32 @@
 
 
 %% Example:
+%% failover_slate_configuration() :: #{
+%%   <<"activationThresholdSeconds">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"maxSlateDisplaySeconds">> => integer(),
+%%   <<"minSlateDisplaySeconds">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type failover_slate_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% failover_slate_configuration_summary() :: #{
+%%   <<"activationThresholdSeconds">> => integer(),
+%%   <<"arn">> => string(),
+%%   <<"maxSlateDisplaySeconds">> => integer(),
+%%   <<"minSlateDisplaySeconds">> => integer(),
+%%   <<"name">> => string(),
+%%   <<"state">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type failover_slate_configuration_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_ad_configuration_request() :: #{
 %%   <<"arn">> := string()
 %% }
@@ -598,6 +662,20 @@
 %%   <<"channel">> => channel()
 %% }
 -type get_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_failover_slate_configuration_request() :: #{
+%%   <<"arn">> := string()
+%% }
+-type get_failover_slate_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_failover_slate_configuration_response() :: #{
+%%   <<"failoverSlateConfiguration">> => failover_slate_configuration()
+%% }
+-type get_failover_slate_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -766,6 +844,7 @@
 %% Example:
 %% list_channels_request() :: #{
 %%   <<"filterByAdConfigurationArn">> => string(),
+%%   <<"filterByFailoverSlateConfigurationArn">> => string(),
 %%   <<"filterByName">> => string(),
 %%   <<"filterByPlaybackRestrictionPolicyArn">> => string(),
 %%   <<"filterByRecordingConfigurationArn">> => string(),
@@ -781,6 +860,22 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_channels_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_failover_slate_configurations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_failover_slate_configurations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_failover_slate_configurations_response() :: #{
+%%   <<"failoverSlateConfigurations">> => list(failover_slate_configuration_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_failover_slate_configurations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1153,6 +1248,7 @@
 %% stream_session() :: #{
 %%   <<"channel">> => channel(),
 %%   <<"endTime">> => non_neg_integer(),
+%%   <<"failoverSlateConfiguration">> => failover_slate_configuration(),
 %%   <<"ingestConfiguration">> => ingest_configuration(),
 %%   <<"ingestConfigurations">> => ingest_configurations(),
 %%   <<"recordingConfiguration">> => recording_configuration(),
@@ -1270,6 +1366,7 @@
 %%   <<"arn">> := string(),
 %%   <<"authorized">> => boolean(),
 %%   <<"containerFormat">> => string(),
+%%   <<"failoverSlateConfigurationArn">> => string(),
 %%   <<"insecureIngest">> => boolean(),
 %%   <<"latencyMode">> => string(),
 %%   <<"multitrackInputConfiguration">> => multitrack_input_configuration(),
@@ -1287,6 +1384,24 @@
 %%   <<"channel">> => channel()
 %% }
 -type update_channel_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_failover_slate_configuration_request() :: #{
+%%   <<"activationThresholdSeconds">> => integer(),
+%%   <<"arn">> := string(),
+%%   <<"maxSlateDisplaySeconds">> => integer(),
+%%   <<"minSlateDisplaySeconds">> => integer(),
+%%   <<"name">> => string()
+%% }
+-type update_failover_slate_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_failover_slate_configuration_response() :: #{
+%%   <<"failoverSlateConfiguration">> => failover_slate_configuration()
+%% }
+-type update_failover_slate_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1371,6 +1486,14 @@
     pending_verification() | 
     access_denied_exception().
 
+-type create_failover_slate_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_playback_restriction_policy_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1404,6 +1527,13 @@
     validation_exception() | 
     resource_not_found_exception() | 
     pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_failover_slate_configuration_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
 
@@ -1442,6 +1572,12 @@
 -type get_channel_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
+    access_denied_exception().
+
+-type get_failover_slate_configuration_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 -type get_playback_key_pair_errors() ::
@@ -1501,6 +1637,11 @@
 -type list_channels_errors() ::
     validation_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type list_failover_slate_configurations_errors() ::
+    validation_exception() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 -type list_playback_key_pairs_errors() ::
@@ -1581,8 +1722,18 @@
 
 -type update_channel_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     pending_verification() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_failover_slate_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
 
@@ -1836,6 +1987,40 @@ create_channel(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a new failover slate configuration.
+-spec create_failover_slate_configuration(aws_client:aws_client(), create_failover_slate_configuration_request()) ->
+    {ok, create_failover_slate_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_failover_slate_configuration_errors(), tuple()}.
+create_failover_slate_configuration(Client, Input) ->
+    create_failover_slate_configuration(Client, Input, []).
+
+-spec create_failover_slate_configuration(aws_client:aws_client(), create_failover_slate_configuration_request(), proplists:proplist()) ->
+    {ok, create_failover_slate_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, create_failover_slate_configuration_errors(), tuple()}.
+create_failover_slate_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateFailoverSlateConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new playback restriction policy, for constraining playback
 %% by countries and/or origins.
 -spec create_playback_restriction_policy(aws_client:aws_client(), create_playback_restriction_policy_request()) ->
@@ -2015,6 +2200,40 @@ delete_channel(Client, Input) ->
 delete_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/DeleteChannel"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified failover slate configuration.
+-spec delete_failover_slate_configuration(aws_client:aws_client(), delete_failover_slate_configuration_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_failover_slate_configuration_errors(), tuple()}.
+delete_failover_slate_configuration(Client, Input) ->
+    delete_failover_slate_configuration(Client, Input, []).
+
+-spec delete_failover_slate_configuration(aws_client:aws_client(), delete_failover_slate_configuration_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_failover_slate_configuration_errors(), tuple()}.
+delete_failover_slate_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteFailoverSlateConfiguration"],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2233,6 +2452,40 @@ get_channel(Client, Input) ->
 get_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetChannel"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the failover slate configuration for the specified ARN.
+-spec get_failover_slate_configuration(aws_client:aws_client(), get_failover_slate_configuration_request()) ->
+    {ok, get_failover_slate_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_failover_slate_configuration_errors(), tuple()}.
+get_failover_slate_configuration(Client, Input) ->
+    get_failover_slate_configuration(Client, Input, []).
+
+-spec get_failover_slate_configuration(aws_client:aws_client(), get_failover_slate_configuration_request(), proplists:proplist()) ->
+    {ok, get_failover_slate_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_failover_slate_configuration_errors(), tuple()}.
+get_failover_slate_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetFailoverSlateConfiguration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2604,6 +2857,42 @@ list_channels(Client, Input) ->
 list_channels(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListChannels"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets summary information about all failover slate configurations in
+%% your account, in the Amazon Web Services region where the API request is
+%% processed.
+-spec list_failover_slate_configurations(aws_client:aws_client(), list_failover_slate_configurations_request()) ->
+    {ok, list_failover_slate_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_failover_slate_configurations_errors(), tuple()}.
+list_failover_slate_configurations(Client, Input) ->
+    list_failover_slate_configurations(Client, Input, []).
+
+-spec list_failover_slate_configurations(aws_client:aws_client(), list_failover_slate_configurations_request(), proplists:proplist()) ->
+    {ok, list_failover_slate_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_failover_slate_configurations_errors(), tuple()}.
+list_failover_slate_configurations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListFailoverSlateConfigurations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3119,6 +3408,40 @@ update_channel(Client, Input) ->
 update_channel(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateChannel"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a specified failover slate configuration.
+-spec update_failover_slate_configuration(aws_client:aws_client(), update_failover_slate_configuration_request()) ->
+    {ok, update_failover_slate_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_failover_slate_configuration_errors(), tuple()}.
+update_failover_slate_configuration(Client, Input) ->
+    update_failover_slate_configuration(Client, Input, []).
+
+-spec update_failover_slate_configuration(aws_client:aws_client(), update_failover_slate_configuration_request(), proplists:proplist()) ->
+    {ok, update_failover_slate_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, update_failover_slate_configuration_errors(), tuple()}.
+update_failover_slate_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateFailoverSlateConfiguration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

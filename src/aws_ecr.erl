@@ -67,6 +67,8 @@
          describe_pull_through_cache_rules/3,
          describe_registry/2,
          describe_registry/3,
+         describe_replication_backfill_results/2,
+         describe_replication_backfill_results/3,
          describe_repositories/2,
          describe_repositories/3,
          describe_repository_creation_templates/2,
@@ -97,6 +99,8 @@
          list_images/3,
          list_pull_time_update_exclusions/2,
          list_pull_time_update_exclusions/3,
+         list_replication_backfills/2,
+         list_replication_backfills/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          put_account_setting/2,
@@ -125,6 +129,10 @@
          start_image_scan/3,
          start_lifecycle_policy_preview/2,
          start_lifecycle_policy_preview/3,
+         start_replication_backfill/2,
+         start_replication_backfill/3,
+         stop_replication_backfill/2,
+         stop_replication_backfill/3,
          tag_resource/2,
          tag_resource/3,
          untag_resource/2,
@@ -569,6 +577,31 @@
 %%   <<"replicationConfiguration">> => replication_configuration()
 %% }
 -type describe_registry_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_backfill_results_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string(),
+%%   <<"replicationBackfillId">> := string(),
+%%   <<"resultStatusFilter">> => list(any())
+%% }
+-type describe_replication_backfill_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_replication_backfill_results_response() :: #{
+%%   <<"destination">> => replication_destination(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"failureCode">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"progress">> => replication_backfill_progress(),
+%%   <<"registryId">> => string(),
+%%   <<"replicationBackfillId">> => string(),
+%%   <<"results">> => list(replication_backfill_result()),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type describe_replication_backfill_results_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_repositories_request() :: #{
@@ -1156,6 +1189,22 @@
 -type list_pull_time_update_exclusions_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_replication_backfills_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string()
+%% }
+-type list_replication_backfills_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_replication_backfills_response() :: #{
+%%   <<"backfills">> => list(replication_backfill_summary()),
+%%   <<"nextToken">> => string(),
+%%   <<"registryId">> => string()
+%% }
+-type list_replication_backfills_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"resourceArn">> := string()
 %% }
@@ -1392,6 +1441,55 @@
 -type remediation() :: #{binary() => any()}.
 
 %% Example:
+%% replication_backfill_in_progress_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replication_backfill_in_progress_exception() :: #{binary() => any()}.
+
+%% Example:
+%% replication_backfill_invalid_status_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replication_backfill_invalid_status_exception() :: #{binary() => any()}.
+
+%% Example:
+%% replication_backfill_not_found_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type replication_backfill_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% replication_backfill_progress() :: #{
+%%   <<"completedReplicationCount">> => integer(),
+%%   <<"failedReplicationCount">> => integer(),
+%%   <<"failureCodes">> => list(string()),
+%%   <<"totalReplicationCount">> => integer()
+%% }
+-type replication_backfill_progress() :: #{binary() => any()}.
+
+%% Example:
+%% replication_backfill_result() :: #{
+%%   <<"failureCode">> => string(),
+%%   <<"imageId">> => image_identifier(),
+%%   <<"repositoryName">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"subImageFailureCodes">> => list(string())
+%% }
+-type replication_backfill_result() :: #{binary() => any()}.
+
+%% Example:
+%% replication_backfill_summary() :: #{
+%%   <<"destination">> => replication_destination(),
+%%   <<"endedAt">> => non_neg_integer(),
+%%   <<"failureCode">> => string(),
+%%   <<"progress">> => replication_backfill_progress(),
+%%   <<"replicationBackfillId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type replication_backfill_summary() :: #{binary() => any()}.
+
+%% Example:
 %% replication_configuration() :: #{
 %%   <<"rules">> => list(replication_rule())
 %% }
@@ -1613,6 +1711,40 @@
 %%   <<"status">> => list(any())
 %% }
 -type start_lifecycle_policy_preview_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_replication_backfill_request() :: #{
+%%   <<"destination">> := replication_destination(),
+%%   <<"registryId">> => string()
+%% }
+-type start_replication_backfill_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_replication_backfill_response() :: #{
+%%   <<"destination">> => replication_destination(),
+%%   <<"registryId">> => string(),
+%%   <<"replicationBackfillId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type start_replication_backfill_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_replication_backfill_request() :: #{
+%%   <<"registryId">> => string(),
+%%   <<"replicationBackfillId">> := string()
+%% }
+-type stop_replication_backfill_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_replication_backfill_response() :: #{
+%%   <<"destination">> => replication_destination(),
+%%   <<"registryId">> => string(),
+%%   <<"replicationBackfillId">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
+%% }
+-type stop_replication_backfill_response() :: #{binary() => any()}.
 
 %% Example:
 %% subject_identifier() :: #{
@@ -1996,6 +2128,12 @@
     server_exception() | 
     invalid_parameter_exception().
 
+-type describe_replication_backfill_results_errors() ::
+    validation_exception() | 
+    server_exception() | 
+    replication_backfill_not_found_exception() | 
+    invalid_parameter_exception().
+
 -type describe_repositories_errors() ::
     server_exception() | 
     repository_not_found_exception() | 
@@ -2082,6 +2220,11 @@
     validation_exception() | 
     server_exception() | 
     limit_exceeded_exception() | 
+    invalid_parameter_exception().
+
+-type list_replication_backfills_errors() ::
+    validation_exception() | 
+    server_exception() | 
     invalid_parameter_exception().
 
 -type list_tags_for_resource_errors() ::
@@ -2173,6 +2316,20 @@
     repository_not_found_exception() | 
     lifecycle_policy_preview_in_progress_exception() | 
     lifecycle_policy_not_found_exception() | 
+    invalid_parameter_exception().
+
+-type start_replication_backfill_errors() ::
+    validation_exception() | 
+    server_exception() | 
+    replication_backfill_in_progress_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception().
+
+-type stop_replication_backfill_errors() ::
+    validation_exception() | 
+    server_exception() | 
+    replication_backfill_not_found_exception() | 
+    replication_backfill_invalid_status_exception() | 
     invalid_parameter_exception().
 
 -type tag_resource_errors() ::
@@ -2724,6 +2881,33 @@ describe_registry(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeRegistry">>, Input, Options).
 
+%% @doc Returns the status, progress, and per-image results for a replication
+%% backfill.
+%%
+%% The
+%% backfill to describe is identified by the `replicationBackfillId'
+%% returned by
+%% the `StartReplicationBackfill' operation.
+%%
+%% The per-image results are available only after the replication backfill
+%% reaches a
+%% terminal status.
+-spec describe_replication_backfill_results(aws_client:aws_client(), describe_replication_backfill_results_request()) ->
+    {ok, describe_replication_backfill_results_response(), tuple()} |
+    {error, any()} |
+    {error, describe_replication_backfill_results_errors(), tuple()}.
+describe_replication_backfill_results(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_replication_backfill_results(Client, Input, []).
+
+-spec describe_replication_backfill_results(aws_client:aws_client(), describe_replication_backfill_results_request(), proplists:proplist()) ->
+    {ok, describe_replication_backfill_results_response(), tuple()} |
+    {error, any()} |
+    {error, describe_replication_backfill_results_errors(), tuple()}.
+describe_replication_backfill_results(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeReplicationBackfillResults">>, Input, Options).
+
 %% @doc Describes image repositories in a registry.
 -spec describe_repositories(aws_client:aws_client(), describe_repositories_request()) ->
     {ok, describe_repositories_response(), tuple()} |
@@ -3043,6 +3227,29 @@ list_pull_time_update_exclusions(Client, Input)
 list_pull_time_update_exclusions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListPullTimeUpdateExclusions">>, Input, Options).
+
+%% @doc Lists the replication backfills for a registry, including their
+%% status and
+%% progress.
+%%
+%% Replication backfills that have reached a terminal status are retained for
+%% 90 days
+%% after they end, after which they are no longer returned.
+-spec list_replication_backfills(aws_client:aws_client(), list_replication_backfills_request()) ->
+    {ok, list_replication_backfills_response(), tuple()} |
+    {error, any()} |
+    {error, list_replication_backfills_errors(), tuple()}.
+list_replication_backfills(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_replication_backfills(Client, Input, []).
+
+-spec list_replication_backfills(aws_client:aws_client(), list_replication_backfills_request(), proplists:proplist()) ->
+    {ok, list_replication_backfills_response(), tuple()} |
+    {error, any()} |
+    {error, list_replication_backfills_errors(), tuple()}.
+list_replication_backfills(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListReplicationBackfills">>, Input, Options).
 
 %% @doc List the tags for an Amazon ECR resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
@@ -3379,6 +3586,70 @@ start_lifecycle_policy_preview(Client, Input)
 start_lifecycle_policy_preview(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartLifecyclePolicyPreview">>, Input, Options).
+
+%% @doc Starts a replication backfill for a registry.
+%%
+%% A replication backfill replicates a
+%% registry's existing images that match its replication configuration to
+%% the specified
+%% destination. Use the `DescribeReplicationBackfillResults' operation to
+%% monitor the progress of a replication backfill, and to retrieve its
+%% per-image results
+%% after it reaches a terminal status.
+%%
+%% The destination must already be configured in the registry's
+%% replication
+%% configuration.
+%%
+%% Only one replication backfill can be in progress for a given destination
+%% Region at
+%% a time. Starting a replication backfill for a destination Region that
+%% already has one
+%% in progress fails with a `ReplicationBackfillInProgressException'. In
+%% addition, a registry can have at most 10 replication backfills in progress
+%% at once.
+%% Starting a replication backfill that would exceed this limit fails with a
+%% `LimitExceededException'.
+-spec start_replication_backfill(aws_client:aws_client(), start_replication_backfill_request()) ->
+    {ok, start_replication_backfill_response(), tuple()} |
+    {error, any()} |
+    {error, start_replication_backfill_errors(), tuple()}.
+start_replication_backfill(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_replication_backfill(Client, Input, []).
+
+-spec start_replication_backfill(aws_client:aws_client(), start_replication_backfill_request(), proplists:proplist()) ->
+    {ok, start_replication_backfill_response(), tuple()} |
+    {error, any()} |
+    {error, start_replication_backfill_errors(), tuple()}.
+start_replication_backfill(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartReplicationBackfill">>, Input, Options).
+
+%% @doc Stops an in progress replication backfill for a registry.
+%%
+%% The backfill to stop is
+%% identified by the `replicationBackfillId' returned by the
+%% `StartReplicationBackfill' operation.
+%%
+%% Images that have already been replicated are not affected, and
+%% replications that
+%% are already in progress continue to completion.
+-spec stop_replication_backfill(aws_client:aws_client(), stop_replication_backfill_request()) ->
+    {ok, stop_replication_backfill_response(), tuple()} |
+    {error, any()} |
+    {error, stop_replication_backfill_errors(), tuple()}.
+stop_replication_backfill(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_replication_backfill(Client, Input, []).
+
+-spec stop_replication_backfill(aws_client:aws_client(), stop_replication_backfill_request(), proplists:proplist()) ->
+    {ok, stop_replication_backfill_response(), tuple()} |
+    {error, any()} |
+    {error, stop_replication_backfill_errors(), tuple()}.
+stop_replication_backfill(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopReplicationBackfill">>, Input, Options).
 
 %% @doc Adds specified tags to a resource with the specified ARN.
 %%

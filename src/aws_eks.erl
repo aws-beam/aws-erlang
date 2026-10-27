@@ -853,6 +853,13 @@
 
 
 %% Example:
+%% crd_management_configuration() :: #{
+%%   <<"managed">> => boolean()
+%% }
+-type crd_management_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_access_config_request() :: #{
 %%   <<"authenticationMode">> => list(any()),
 %%   <<"bootstrapClusterCreatorAdminPermissions">> => boolean()
@@ -1471,7 +1478,8 @@
 
 %% Example:
 %% elastic_load_balancing() :: #{
-%%   <<"enabled">> => boolean()
+%%   <<"enabled">> => boolean(),
+%%   <<"gatewayApi">> => gateway_api_configuration()
 %% }
 -type elastic_load_balancing() :: #{binary() => any()}.
 
@@ -1545,6 +1553,13 @@
 %%   <<"namespace">> => string()
 %% }
 -type fargate_profile_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% gateway_api_configuration() :: #{
+%%   <<"crds">> => crd_management_configuration()
+%% }
+-type gateway_api_configuration() :: #{binary() => any()}.
 
 
 %% Example:

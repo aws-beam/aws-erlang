@@ -40,6 +40,9 @@
          add_flow_sources/4,
          add_flow_vpc_interfaces/3,
          add_flow_vpc_interfaces/4,
+         batch_get_destination_endpoint/2,
+         batch_get_destination_endpoint/4,
+         batch_get_destination_endpoint/5,
          batch_get_router_input/2,
          batch_get_router_input/4,
          batch_get_router_input/5,
@@ -49,6 +52,11 @@
          batch_get_router_output/2,
          batch_get_router_output/4,
          batch_get_router_output/5,
+         batch_get_source_endpoint/2,
+         batch_get_source_endpoint/4,
+         batch_get_source_endpoint/5,
+         connect_endpoints/3,
+         connect_endpoints/4,
          create_bridge/2,
          create_bridge/3,
          create_flow/2,
@@ -73,8 +81,12 @@
          delete_router_network_interface/4,
          delete_router_output/3,
          delete_router_output/4,
+         deregister_destination_endpoint/3,
+         deregister_destination_endpoint/4,
          deregister_gateway_instance/3,
          deregister_gateway_instance/4,
+         deregister_source_endpoint/3,
+         deregister_source_endpoint/4,
          describe_bridge/2,
          describe_bridge/4,
          describe_bridge/5,
@@ -99,6 +111,11 @@
          describe_reservation/2,
          describe_reservation/4,
          describe_reservation/5,
+         disconnect_endpoints/3,
+         disconnect_endpoints/4,
+         get_destination_endpoint/2,
+         get_destination_endpoint/4,
+         get_destination_endpoint/5,
          get_router_input/2,
          get_router_input/4,
          get_router_input/5,
@@ -114,11 +131,16 @@
          get_router_output/2,
          get_router_output/4,
          get_router_output/5,
+         get_source_endpoint/2,
+         get_source_endpoint/4,
+         get_source_endpoint/5,
          grant_flow_entitlements/3,
          grant_flow_entitlements/4,
          list_bridges/1,
          list_bridges/3,
          list_bridges/4,
+         list_destination_endpoints/2,
+         list_destination_endpoints/3,
          list_entitlements/1,
          list_entitlements/3,
          list_entitlements/4,
@@ -143,6 +165,8 @@
          list_router_network_interfaces/3,
          list_router_outputs/2,
          list_router_outputs/3,
+         list_source_endpoints/2,
+         list_source_endpoints/3,
          list_tags_for_global_resource/2,
          list_tags_for_global_resource/4,
          list_tags_for_global_resource/5,
@@ -151,6 +175,10 @@
          list_tags_for_resource/5,
          purchase_offering/3,
          purchase_offering/4,
+         register_destination_endpoint/2,
+         register_destination_endpoint/3,
+         register_source_endpoint/2,
+         register_source_endpoint/3,
          remove_bridge_output/4,
          remove_bridge_output/5,
          remove_bridge_source/4,
@@ -199,6 +227,8 @@
          update_bridge_source/5,
          update_bridge_state/3,
          update_bridge_state/4,
+         update_destination_endpoint/3,
+         update_destination_endpoint/4,
          update_flow/3,
          update_flow/4,
          update_flow_entitlement/4,
@@ -216,7 +246,9 @@
          update_router_network_interface/3,
          update_router_network_interface/4,
          update_router_output/3,
-         update_router_output/4]).
+         update_router_output/4,
+         update_source_endpoint/3,
+         update_source_endpoint/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -443,12 +475,40 @@
 %% automatic_encryption_key_configuration() :: #{}
 -type automatic_encryption_key_configuration() :: #{}.
 
+%% Example:
+%% automatic_endpoint_encryption_configuration() :: #{}
+-type automatic_endpoint_encryption_configuration() :: #{}.
+
 
 %% Example:
 %% bad_request_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_destination_endpoint_error() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type batch_get_destination_endpoint_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_destination_endpoint_request() :: #{
+%%   <<"Arns">> := list(string())
+%% }
+-type batch_get_destination_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_destination_endpoint_response() :: #{
+%%   <<"DestinationEndpoints">> => list(destination_endpoint()),
+%%   <<"Errors">> => list(batch_get_destination_endpoint_error())
+%% }
+-type batch_get_destination_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -521,6 +581,30 @@
 %%   <<"RouterOutputs">> => list(router_output())
 %% }
 -type batch_get_router_output_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_source_endpoint_error() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type batch_get_source_endpoint_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_source_endpoint_request() :: #{
+%%   <<"Arns">> := list(string())
+%% }
+-type batch_get_source_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_get_source_endpoint_response() :: #{
+%%   <<"Errors">> => list(batch_get_source_endpoint_error()),
+%%   <<"SourceEndpoints">> => list(source_endpoint())
+%% }
+-type batch_get_source_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -628,6 +712,30 @@
 %%   <<"Message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_endpoints_request() :: #{
+%%   <<"SourceEndpointArn">> := string()
+%% }
+-type connect_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% connect_endpoints_response() :: #{
+%%   <<"DestinationEndpointArn">> => string(),
+%%   <<"DestinationEndpointName">> => [string()],
+%%   <<"SourceEndpointArn">> => string(),
+%%   <<"SourceEndpointName">> => [string()]
+%% }
+-type connect_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% consumed_resource_share_details() :: #{
+%%   <<"OwnerAccountId">> => [string()]
+%% }
+-type consumed_resource_share_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -867,6 +975,18 @@
 %% }
 -type delete_router_output_response() :: #{binary() => any()}.
 
+%% Example:
+%% deregister_destination_endpoint_request() :: #{}
+-type deregister_destination_endpoint_request() :: #{}.
+
+
+%% Example:
+%% deregister_destination_endpoint_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()]
+%% }
+-type deregister_destination_endpoint_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% deregister_gateway_instance_request() :: #{
@@ -881,6 +1001,18 @@
 %%   <<"InstanceState">> => list(any())
 %% }
 -type deregister_gateway_instance_response() :: #{binary() => any()}.
+
+%% Example:
+%% deregister_source_endpoint_request() :: #{}
+-type deregister_source_endpoint_request() :: #{}.
+
+
+%% Example:
+%% deregister_source_endpoint_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => [string()]
+%% }
+-type deregister_source_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_bridge_request() :: #{}
@@ -996,6 +1128,80 @@
 
 
 %% Example:
+%% destination_endpoint() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedResourceDetails">> => list(),
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"AvailabilityZoneId">> => [string()],
+%%   <<"Configuration">> => list(),
+%%   <<"ConnectedSource">> => string(),
+%%   <<"ConnectionDetails">> => list(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DecryptionConfiguration">> => list(),
+%%   <<"DecryptionType">> => list(any()),
+%%   <<"Description">> => [string()],
+%%   <<"DestinationType">> => list(any()),
+%%   <<"Id">> => [string()],
+%%   <<"LifecycleManagement">> => list(any()),
+%%   <<"Messages">> => list(destination_endpoint_message()),
+%%   <<"Name">> => [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"RegistrationState">> => list(any()),
+%%   <<"ResourceShareDetails">> => list(),
+%%   <<"ResourceShareOwnership">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type destination_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_endpoint_message() :: #{
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type destination_endpoint_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_endpoint_router_input_configuration() :: #{
+%%   <<"EndpointLifecycleManagement">> => list(any()),
+%%   <<"SourceTransitDecryption">> => list(),
+%%   <<"SourceTransitDecryptionType">> => list(any())
+%% }
+-type destination_endpoint_router_input_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% destination_endpoint_router_input_stream_details() :: #{}
+-type destination_endpoint_router_input_stream_details() :: #{}.
+
+
+%% Example:
+%% destination_endpoint_service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type destination_endpoint_service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% disconnect_endpoints_request() :: #{
+%%   <<"SourceEndpointArn">> := string()
+%% }
+-type disconnect_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% disconnect_endpoints_response() :: #{
+%%   <<"DestinationEndpointArn">> => string(),
+%%   <<"DestinationEndpointName">> => [string()],
+%%   <<"SourceEndpointArn">> => string(),
+%%   <<"SourceEndpointName">> => [string()]
+%% }
+-type disconnect_endpoints_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% egress_gateway_bridge() :: #{
 %%   <<"InstanceId">> => [string()],
 %%   <<"MaxBitrate">> => [integer()]
@@ -1040,6 +1246,13 @@
 %%   <<"Url">> => [string()]
 %% }
 -type encryption() :: #{binary() => any()}.
+
+
+%% Example:
+%% endpoint_encryption_secret_configuration() :: #{
+%%   <<"SecretArn">> => string()
+%% }
+-type endpoint_encryption_secret_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1229,6 +1442,17 @@
 -type gateway_network() :: #{binary() => any()}.
 
 %% Example:
+%% get_destination_endpoint_request() :: #{}
+-type get_destination_endpoint_request() :: #{}.
+
+
+%% Example:
+%% get_destination_endpoint_response() :: #{
+%%   <<"DestinationEndpoint">> => destination_endpoint()
+%% }
+-type get_destination_endpoint_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_router_input_request() :: #{}
 -type get_router_input_request() :: #{}.
 
@@ -1286,6 +1510,17 @@
 %%   <<"RouterOutput">> => router_output()
 %% }
 -type get_router_output_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_source_endpoint_request() :: #{}
+-type get_source_endpoint_request() :: #{}.
+
+
+%% Example:
+%% get_source_endpoint_response() :: #{
+%%   <<"SourceEndpoint">> => source_endpoint()
+%% }
+-type get_source_endpoint_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1385,6 +1620,23 @@
 %%   <<"NextToken">> => [string()]
 %% }
 -type list_bridges_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_destination_endpoints_request() :: #{
+%%   <<"Filters">> => list(list()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_destination_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_destination_endpoints_response() :: #{
+%%   <<"DestinationEndpoints">> => list(listed_destination_endpoint()),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_destination_endpoints_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1534,6 +1786,23 @@
 %% }
 -type list_router_outputs_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_source_endpoints_request() :: #{
+%%   <<"Filters">> => list(list()),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_source_endpoints_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_source_endpoints_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"SourceEndpoints">> => list(listed_source_endpoint())
+%% }
+-type list_source_endpoints_response() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_global_resource_request() :: #{}
 -type list_tags_for_global_resource_request() :: #{}.
@@ -1566,6 +1835,30 @@
 %%   <<"PlacementArn">> => [string()]
 %% }
 -type listed_bridge() :: #{binary() => any()}.
+
+
+%% Example:
+%% listed_destination_endpoint() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedResourceArn">> => [string()],
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"AvailabilityZoneId">> => [string()],
+%%   <<"ConnectedSource">> => string(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"DecryptionType">> => list(any()),
+%%   <<"DestinationType">> => list(any()),
+%%   <<"Id">> => [string()],
+%%   <<"LifecycleManagement">> => list(any()),
+%%   <<"MessageCount">> => [integer()],
+%%   <<"Name">> => [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"RegistrationState">> => list(any()),
+%%   <<"ResourceShareOwnership">> => list(any()),
+%%   <<"ResourceShareState">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type listed_destination_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1668,6 +1961,30 @@
 %%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type listed_router_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% listed_source_endpoint() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedResourceArn">> => [string()],
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"AvailabilityZoneId">> => [string()],
+%%   <<"ConnectedDestinationCount">> => [integer()],
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"Id">> => [string()],
+%%   <<"LifecycleManagement">> => list(any()),
+%%   <<"MessageCount">> => [integer()],
+%%   <<"Name">> => [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"RegistrationState">> => list(any()),
+%%   <<"ResourceShareOwnership">> => list(any()),
+%%   <<"ResourceShareState">> => list(any()),
+%%   <<"SourceType">> => list(any()),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type listed_source_endpoint() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1980,11 +2297,32 @@
 
 
 %% Example:
+%% owned_resource_share_details() :: #{
+%%   <<"ShareState">> => list(any())
+%% }
+-type owned_resource_share_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% preferred_day_time_maintenance_configuration() :: #{
 %%   <<"Day">> => list(any()),
 %%   <<"Time">> => [string()]
 %% }
 -type preferred_day_time_maintenance_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_destination_endpoint_networking_configuration() :: #{
+%%   <<"DestinationAllowRules">> => list(public_destination_endpoint_networking_configuration_allow_rule())
+%% }
+-type public_destination_endpoint_networking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_destination_endpoint_networking_configuration_allow_rule() :: #{
+%%   <<"Cidr">> => [string()]
+%% }
+-type public_destination_endpoint_networking_configuration_allow_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1999,6 +2337,20 @@
 %%   <<"Cidr">> => [string()]
 %% }
 -type public_router_network_interface_rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_source_endpoint_networking_configuration() :: #{
+%%   <<"SourceAllowRules">> => list(public_source_endpoint_networking_configuration_allow_rule())
+%% }
+-type public_source_endpoint_networking_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% public_source_endpoint_networking_configuration_allow_rule() :: #{
+%%   <<"Cidr">> => [string()]
+%% }
+-type public_source_endpoint_networking_configuration_allow_rule() :: #{binary() => any()}.
 
 %% Example:
 %% public_tls_encryption_configuration() :: #{}
@@ -2018,6 +2370,42 @@
 %%   <<"Reservation">> => reservation()
 %% }
 -type purchase_offering_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_destination_endpoint_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Configuration">> := list(),
+%%   <<"Description">> => [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type register_destination_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_destination_endpoint_response() :: #{
+%%   <<"DestinationEndpoint">> => destination_endpoint()
+%% }
+-type register_destination_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_source_endpoint_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Configuration">> := list(),
+%%   <<"Description">> => [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"Tags">> => map()
+%% }
+-type register_source_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_source_endpoint_response() :: #{
+%%   <<"SourceEndpoint">> => source_endpoint()
+%% }
+-type register_source_endpoint_response() :: #{binary() => any()}.
 
 %% Example:
 %% remove_bridge_output_request() :: #{}
@@ -2175,8 +2563,25 @@
 
 
 %% Example:
+%% rist_standard_destination_endpoint_configuration() :: #{
+%%   <<"DestinationAddress">> => [string()],
+%%   <<"DestinationIngestPort">> => [integer()]
+%% }
+-type rist_standard_destination_endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rist_standard_source_endpoint_configuration() :: #{
+%%   <<"DestinationIngestPort">> => [integer()],
+%%   <<"RecoveryLatencyMilliseconds">> => [float()]
+%% }
+-type rist_standard_source_endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% router_input() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"AssociatedDestinationEndpointArns">> => list(string()),
 %%   <<"AvailabilityZone">> => [string()],
 %%   <<"Configuration">> => list(),
 %%   <<"ContentQualityAnalysisConfiguration">> => list(),
@@ -2204,6 +2609,32 @@
 %%   <<"UpdatedAt">> => [non_neg_integer()]
 %% }
 -type router_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_input_destination_endpoint_associated_resource_details() :: #{
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"Messages">> => list(router_input_message()),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type router_input_destination_endpoint_associated_resource_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_input_destination_endpoint_configuration() :: #{
+%%   <<"RouterInputArn">> => string()
+%% }
+-type router_input_destination_endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_input_destination_endpoint_connection_details() :: #{
+%%   <<"SourceEncryptionConfiguration">> => list(),
+%%   <<"SourceEncryptionType">> => list(any()),
+%%   <<"SourceEndpointType">> => list(any())
+%% }
+-type router_input_destination_endpoint_connection_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2276,6 +2707,7 @@
 %% Example:
 %% router_output() :: #{
 %%   <<"Arn">> => string(),
+%%   <<"AssociatedSourceEndpointArns">> => list(string()),
 %%   <<"AvailabilityZone">> => [string()],
 %%   <<"Configuration">> => list(),
 %%   <<"CreatedAt">> => [non_neg_integer()],
@@ -2319,6 +2751,32 @@
 
 
 %% Example:
+%% router_output_source_endpoint_associated_resource_details() :: #{
+%%   <<"MaximumBitrate">> => [float()],
+%%   <<"Messages">> => list(router_output_message()),
+%%   <<"Name">> => [string()],
+%%   <<"State">> => list(any())
+%% }
+-type router_output_source_endpoint_associated_resource_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_output_source_endpoint_configuration() :: #{
+%%   <<"RouterOutputArn">> => string()
+%% }
+-type router_output_source_endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_output_source_endpoint_connection_details() :: #{
+%%   <<"DestinationDecryptionConfiguration">> => list(),
+%%   <<"DestinationDecryptionType">> => list(any()),
+%%   <<"DestinationEndpointType">> => list(any())
+%% }
+-type router_output_source_endpoint_connection_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% rtmp_push_router_output_configuration() :: #{
 %%   <<"ApplicationName">> => [string()],
 %%   <<"DestinationAddress">> => [string()],
@@ -2347,11 +2805,36 @@
 
 
 %% Example:
+%% rtp_standard_destination_endpoint_configuration() :: #{
+%%   <<"DestinationAddress">> => [string()],
+%%   <<"DestinationIngestPort">> => [integer()],
+%%   <<"ForwardErrorCorrectionState">> => list(any())
+%% }
+-type rtp_standard_destination_endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rtp_standard_source_endpoint_configuration() :: #{
+%%   <<"DestinationIngestPort">> => [integer()],
+%%   <<"ForwardErrorCorrectionState">> => list(any())
+%% }
+-type rtp_standard_source_endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% secrets_manager_encryption_key_configuration() :: #{
 %%   <<"RoleArn">> => string(),
 %%   <<"SecretArn">> => string()
 %% }
 -type secrets_manager_encryption_key_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% secrets_manager_endpoint_encryption_configuration() :: #{
+%%   <<"EncryptionSecret">> => endpoint_encryption_secret_configuration(),
+%%   <<"EncryptionSecretType">> => list(any())
+%% }
+-type secrets_manager_endpoint_encryption_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2440,6 +2923,63 @@
 
 
 %% Example:
+%% source_endpoint() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AssociatedResourceDetails">> => list(),
+%%   <<"AvailabilityZone">> => [string()],
+%%   <<"AvailabilityZoneId">> => [string()],
+%%   <<"Configuration">> => list(),
+%%   <<"ConnectedDestinations">> => list(string()),
+%%   <<"ConnectionDetails">> => list(),
+%%   <<"ConnectionState">> => list(any()),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => [string()],
+%%   <<"EncryptionConfiguration">> => list(),
+%%   <<"EncryptionType">> => list(any()),
+%%   <<"Id">> => [string()],
+%%   <<"LifecycleManagement">> => list(any()),
+%%   <<"Messages">> => list(source_endpoint_message()),
+%%   <<"Name">> => [string()],
+%%   <<"RegionName">> => [string()],
+%%   <<"RegistrationState">> => list(any()),
+%%   <<"ResourceShareDetails">> => list(),
+%%   <<"ResourceShareOwnership">> => list(any()),
+%%   <<"SourceType">> => list(any()),
+%%   <<"Tags">> => map(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type source_endpoint() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_endpoint_message() :: #{
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()]
+%% }
+-type source_endpoint_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_endpoint_router_output_configuration() :: #{
+%%   <<"DestinationTransitEncryption">> => list(),
+%%   <<"DestinationTransitEncryptionType">> => list(any()),
+%%   <<"EndpointLifecycleManagement">> => list(any())
+%% }
+-type source_endpoint_router_output_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% source_endpoint_router_output_stream_details() :: #{}
+-type source_endpoint_router_output_stream_details() :: #{}.
+
+
+%% Example:
+%% source_endpoint_service_quota_exceeded_exception() :: #{
+%%   <<"Message">> => [string()]
+%% }
+-type source_endpoint_service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% source_priority() :: #{
 %%   <<"PrimarySource">> => [string()]
 %% }
@@ -2466,6 +3006,24 @@
 %%   <<"StreamId">> => [string()]
 %% }
 -type srt_caller_router_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_caller_standard_destination_endpoint_configuration() :: #{
+%%   <<"EncryptionPassphrase">> => endpoint_encryption_secret_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()],
+%%   <<"SourceListenerPort">> => [integer()]
+%% }
+-type srt_caller_standard_destination_endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_caller_standard_source_endpoint_configuration() :: #{
+%%   <<"DestinationIngestPort">> => [integer()],
+%%   <<"EncryptionPassphrase">> => endpoint_encryption_secret_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()]
+%% }
+-type srt_caller_standard_source_endpoint_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2501,6 +3059,54 @@
 
 
 %% Example:
+%% srt_listener_standard_destination_endpoint_configuration() :: #{
+%%   <<"DestinationAddress">> => [string()],
+%%   <<"DestinationIngestPort">> => [integer()],
+%%   <<"EncryptionPassphrase">> => endpoint_encryption_secret_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()],
+%%   <<"StreamId">> => [string()]
+%% }
+-type srt_listener_standard_destination_endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% srt_listener_standard_source_endpoint_configuration() :: #{
+%%   <<"EncryptionPassphrase">> => endpoint_encryption_secret_configuration(),
+%%   <<"MinimumLatencyMilliseconds">> => [float()],
+%%   <<"SourceAddress">> => [string()],
+%%   <<"SourceListenerPort">> => [integer()],
+%%   <<"StreamId">> => [string()]
+%% }
+-type srt_listener_standard_source_endpoint_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% standard_destination_endpoint_associated_resource_details() :: #{}
+-type standard_destination_endpoint_associated_resource_details() :: #{}.
+
+
+%% Example:
+%% standard_destination_endpoint_configuration() :: #{
+%%   <<"DestinationNetworkingConfiguration">> => list(),
+%%   <<"DestinationNetworkingType">> => list(any()),
+%%   <<"Name">> => [string()],
+%%   <<"Protocol">> => list(any()),
+%%   <<"ProtocolConfiguration">> => list()
+%% }
+-type standard_destination_endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% standard_destination_endpoint_connection_details() :: #{
+%%   <<"SourceEncryptionConfiguration">> => list(),
+%%   <<"SourceEncryptionType">> => list(any()),
+%%   <<"SourceEndpointType">> => list(any()),
+%%   <<"SourceIpAddress">> => [string()],
+%%   <<"SourceListenerPort">> => [integer()]
+%% }
+-type standard_destination_endpoint_connection_details() :: #{binary() => any()}.
+
+
+%% Example:
 %% standard_router_input_configuration() :: #{
 %%   <<"NetworkInterfaceArn">> => string(),
 %%   <<"Protocol">> => list(any()),
@@ -2530,6 +3136,32 @@
 %%   <<"DestinationIpAddress">> => [string()]
 %% }
 -type standard_router_output_stream_details() :: #{binary() => any()}.
+
+%% Example:
+%% standard_source_endpoint_associated_resource_details() :: #{}
+-type standard_source_endpoint_associated_resource_details() :: #{}.
+
+
+%% Example:
+%% standard_source_endpoint_configuration() :: #{
+%%   <<"Name">> => [string()],
+%%   <<"Protocol">> => list(any()),
+%%   <<"ProtocolConfiguration">> => list(),
+%%   <<"SourceNetworkingConfiguration">> => list(),
+%%   <<"SourceNetworkingType">> => list(any())
+%% }
+-type standard_source_endpoint_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% standard_source_endpoint_connection_details() :: #{
+%%   <<"DestinationDecryptionConfiguration">> => list(),
+%%   <<"DestinationDecryptionType">> => list(any()),
+%%   <<"DestinationEndpointType">> => list(any()),
+%%   <<"DestinationIngestPort">> => [integer()],
+%%   <<"DestinationIpAddress">> => [string()]
+%% }
+-type standard_source_endpoint_connection_details() :: #{binary() => any()}.
 
 %% Example:
 %% start_flow_request() :: #{}
@@ -2835,6 +3467,21 @@
 
 
 %% Example:
+%% update_destination_endpoint_request() :: #{
+%%   <<"Configuration">> => list(),
+%%   <<"Description">> => [string()]
+%% }
+-type update_destination_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_destination_endpoint_response() :: #{
+%%   <<"DestinationEndpoint">> => destination_endpoint()
+%% }
+-type update_destination_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_egress_gateway_bridge_request() :: #{
 %%   <<"MaxBitrate">> => [integer()]
 %% }
@@ -3090,11 +3737,34 @@
 
 
 %% Example:
+%% update_source_endpoint_request() :: #{
+%%   <<"Configuration">> => list(),
+%%   <<"Description">> => [string()]
+%% }
+-type update_source_endpoint_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_source_endpoint_response() :: #{
+%%   <<"SourceEndpoint">> => source_endpoint()
+%% }
+-type update_source_endpoint_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% video_monitoring_setting() :: #{
 %%   <<"BlackFrames">> => black_frames(),
 %%   <<"FrozenFrames">> => frozen_frames()
 %% }
 -type video_monitoring_setting() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_destination_endpoint_networking_configuration() :: #{
+%%   <<"SecurityGroupIds">> => list([string()]()),
+%%   <<"SubnetId">> => [string()]
+%% }
+-type vpc_destination_endpoint_networking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3134,6 +3804,14 @@
 %%   <<"SubnetId">> => [string()]
 %% }
 -type vpc_router_network_interface_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% vpc_source_endpoint_networking_configuration() :: #{
+%%   <<"SecurityGroupIds">> => list([string()]()),
+%%   <<"SubnetId">> => [string()]
+%% }
+-type vpc_source_endpoint_networking_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3195,6 +3873,13 @@
     forbidden_exception() | 
     bad_request_exception().
 
+-type batch_get_destination_endpoint_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
 -type batch_get_router_input_errors() ::
     too_many_requests_exception() | 
     service_unavailable_exception() | 
@@ -3213,6 +3898,22 @@
     too_many_requests_exception() | 
     service_unavailable_exception() | 
     internal_server_error_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
+-type batch_get_source_endpoint_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
+-type connect_endpoints_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
     conflict_exception() | 
     bad_request_exception().
 
@@ -3322,7 +4023,25 @@
     conflict_exception() | 
     bad_request_exception().
 
+-type deregister_destination_endpoint_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
 -type deregister_gateway_instance_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
+-type deregister_source_endpoint_errors() ::
     too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
@@ -3396,6 +4115,24 @@
     internal_server_error_exception() | 
     bad_request_exception().
 
+-type disconnect_endpoints_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
+-type get_destination_endpoint_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
 -type get_router_input_errors() ::
     too_many_requests_exception() | 
     service_unavailable_exception() | 
@@ -3439,6 +4176,14 @@
     conflict_exception() | 
     bad_request_exception().
 
+-type get_source_endpoint_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
+
 -type grant_flow_entitlements_errors() ::
     too_many_requests_exception() | 
     service_unavailable_exception() | 
@@ -3449,6 +4194,13 @@
     bad_request_exception().
 
 -type list_bridges_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
+-type list_destination_endpoints_errors() ::
     too_many_requests_exception() | 
     service_unavailable_exception() | 
     internal_server_error_exception() | 
@@ -3514,6 +4266,13 @@
     conflict_exception() | 
     bad_request_exception().
 
+-type list_source_endpoints_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
 -type list_tags_for_global_resource_errors() ::
     not_found_exception() | 
     internal_server_error_exception() | 
@@ -3530,6 +4289,24 @@
     not_found_exception() | 
     internal_server_error_exception() | 
     forbidden_exception() | 
+    bad_request_exception().
+
+-type register_destination_endpoint_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    destination_endpoint_service_quota_exceeded_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
+-type register_source_endpoint_errors() ::
+    too_many_requests_exception() | 
+    source_endpoint_service_quota_exceeded_exception() | 
+    service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
     bad_request_exception().
 
 -type remove_bridge_output_errors() ::
@@ -3725,6 +4502,15 @@
     conflict_exception() | 
     bad_request_exception().
 
+-type update_destination_endpoint_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
 -type update_flow_errors() ::
     too_many_requests_exception() | 
     service_unavailable_exception() | 
@@ -3792,6 +4578,15 @@
     bad_request_exception().
 
 -type update_router_output_errors() ::
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
+-type update_source_endpoint_errors() ::
     too_many_requests_exception() | 
     service_unavailable_exception() | 
     not_found_exception() | 
@@ -4013,6 +4808,48 @@ add_flow_vpc_interfaces(Client, FlowArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about multiple destination endpoints in a
+%% single request.
+-spec batch_get_destination_endpoint(aws_client:aws_client(), binary() | list()) ->
+    {ok, batch_get_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_destination_endpoint_errors(), tuple()}.
+batch_get_destination_endpoint(Client, Arns)
+  when is_map(Client) ->
+    batch_get_destination_endpoint(Client, Arns, #{}, #{}).
+
+-spec batch_get_destination_endpoint(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, batch_get_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_destination_endpoint_errors(), tuple()}.
+batch_get_destination_endpoint(Client, Arns, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    batch_get_destination_endpoint(Client, Arns, QueryMap, HeadersMap, []).
+
+-spec batch_get_destination_endpoint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, batch_get_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_destination_endpoint_errors(), tuple()}.
+batch_get_destination_endpoint(Client, Arns, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/destinationEndpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"arns">>, Arns}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about multiple router inputs in AWS Elemental
 %% MediaConnect.
 -spec batch_get_router_input(aws_client:aws_client(), binary() | list()) ->
@@ -4138,6 +4975,82 @@ batch_get_router_output(Client, Arns, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about multiple source endpoints in a single
+%% request.
+-spec batch_get_source_endpoint(aws_client:aws_client(), binary() | list()) ->
+    {ok, batch_get_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_source_endpoint_errors(), tuple()}.
+batch_get_source_endpoint(Client, Arns)
+  when is_map(Client) ->
+    batch_get_source_endpoint(Client, Arns, #{}, #{}).
+
+-spec batch_get_source_endpoint(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, batch_get_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_source_endpoint_errors(), tuple()}.
+batch_get_source_endpoint(Client, Arns, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    batch_get_source_endpoint(Client, Arns, QueryMap, HeadersMap, []).
+
+-spec batch_get_source_endpoint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, batch_get_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, batch_get_source_endpoint_errors(), tuple()}.
+batch_get_source_endpoint(Client, Arns, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/sourceEndpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"arns">>, Arns}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Connects a source endpoint to a destination endpoint.
+-spec connect_endpoints(aws_client:aws_client(), binary() | list(), connect_endpoints_request()) ->
+    {ok, connect_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, connect_endpoints_errors(), tuple()}.
+connect_endpoints(Client, DestinationEndpointArn, Input) ->
+    connect_endpoints(Client, DestinationEndpointArn, Input, []).
+
+-spec connect_endpoints(aws_client:aws_client(), binary() | list(), connect_endpoints_request(), proplists:proplist()) ->
+    {ok, connect_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, connect_endpoints_errors(), tuple()}.
+connect_endpoints(Client, DestinationEndpointArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/connectEndpoints/", aws_util:encode_uri(DestinationEndpointArn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new bridge.
 %%
@@ -4561,6 +5474,40 @@ delete_router_output(Client, Arn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deregisters a destination endpoint from MediaConnect.
+-spec deregister_destination_endpoint(aws_client:aws_client(), binary() | list(), deregister_destination_endpoint_request()) ->
+    {ok, deregister_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_destination_endpoint_errors(), tuple()}.
+deregister_destination_endpoint(Client, Arn, Input) ->
+    deregister_destination_endpoint(Client, Arn, Input, []).
+
+-spec deregister_destination_endpoint(aws_client:aws_client(), binary() | list(), deregister_destination_endpoint_request(), proplists:proplist()) ->
+    {ok, deregister_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_destination_endpoint_errors(), tuple()}.
+deregister_destination_endpoint(Client, Arn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/destinationEndpoint/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deregisters an instance.
 %%
 %% Before you deregister an instance, all bridges running on the instance
@@ -4598,6 +5545,40 @@ deregister_gateway_instance(Client, GatewayInstanceArn, Input0, Options0) ->
                      {<<"force">>, <<"Force">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deregisters a source endpoint from MediaConnect.
+-spec deregister_source_endpoint(aws_client:aws_client(), binary() | list(), deregister_source_endpoint_request()) ->
+    {ok, deregister_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_source_endpoint_errors(), tuple()}.
+deregister_source_endpoint(Client, Arn, Input) ->
+    deregister_source_endpoint(Client, Arn, Input, []).
+
+-spec deregister_source_endpoint(aws_client:aws_client(), binary() | list(), deregister_source_endpoint_request(), proplists:proplist()) ->
+    {ok, deregister_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, deregister_source_endpoint_errors(), tuple()}.
+deregister_source_endpoint(Client, Arn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/sourceEndpoint/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays the details of a bridge.
@@ -4914,6 +5895,77 @@ describe_reservation(Client, ReservationArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Disconnects a source endpoint from a destination endpoint.
+-spec disconnect_endpoints(aws_client:aws_client(), binary() | list(), disconnect_endpoints_request()) ->
+    {ok, disconnect_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, disconnect_endpoints_errors(), tuple()}.
+disconnect_endpoints(Client, DestinationEndpointArn, Input) ->
+    disconnect_endpoints(Client, DestinationEndpointArn, Input, []).
+
+-spec disconnect_endpoints(aws_client:aws_client(), binary() | list(), disconnect_endpoints_request(), proplists:proplist()) ->
+    {ok, disconnect_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, disconnect_endpoints_errors(), tuple()}.
+disconnect_endpoints(Client, DestinationEndpointArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/disconnectEndpoints/", aws_util:encode_uri(DestinationEndpointArn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a destination endpoint.
+-spec get_destination_endpoint(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_destination_endpoint_errors(), tuple()}.
+get_destination_endpoint(Client, Arn)
+  when is_map(Client) ->
+    get_destination_endpoint(Client, Arn, #{}, #{}).
+
+-spec get_destination_endpoint(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_destination_endpoint_errors(), tuple()}.
+get_destination_endpoint(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_destination_endpoint(Client, Arn, QueryMap, HeadersMap, []).
+
+-spec get_destination_endpoint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_destination_endpoint_errors(), tuple()}.
+get_destination_endpoint(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/destinationEndpoint/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a specific router input in AWS Elemental
 %% MediaConnect.
 -spec get_router_input(aws_client:aws_client(), binary() | list()) ->
@@ -5104,6 +6156,43 @@ get_router_output(Client, Arn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a source endpoint.
+-spec get_source_endpoint(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_source_endpoint_errors(), tuple()}.
+get_source_endpoint(Client, Arn)
+  when is_map(Client) ->
+    get_source_endpoint(Client, Arn, #{}, #{}).
+
+-spec get_source_endpoint(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_source_endpoint_errors(), tuple()}.
+get_source_endpoint(Client, Arn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_source_endpoint(Client, Arn, QueryMap, HeadersMap, []).
+
+-spec get_source_endpoint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, get_source_endpoint_errors(), tuple()}.
+get_source_endpoint(Client, Arn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/sourceEndpoint/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Grants entitlements to an existing flow.
 -spec grant_flow_entitlements(aws_client:aws_client(), binary() | list(), grant_flow_entitlements_request()) ->
     {ok, grant_flow_entitlements_response(), tuple()} |
@@ -5183,6 +6272,45 @@ list_bridges(Client, QueryMap, HeadersMap, Options0)
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of the destination endpoints in your account.
+%%
+%% The results are paginated. Use the NextToken value that's returned to
+%% retrieve additional results.
+-spec list_destination_endpoints(aws_client:aws_client(), list_destination_endpoints_request()) ->
+    {ok, list_destination_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_destination_endpoints_errors(), tuple()}.
+list_destination_endpoints(Client, Input) ->
+    list_destination_endpoints(Client, Input, []).
+
+-spec list_destination_endpoints(aws_client:aws_client(), list_destination_endpoints_request(), proplists:proplist()) ->
+    {ok, list_destination_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_destination_endpoints_errors(), tuple()}.
+list_destination_endpoints(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/destinationEndpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Displays a list of all entitlements that have been granted to this
 %% account.
@@ -5567,6 +6695,45 @@ list_router_outputs(Client, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves a list of the source endpoints in your account.
+%%
+%% The results are paginated. Use the NextToken value that's returned to
+%% retrieve additional results.
+-spec list_source_endpoints(aws_client:aws_client(), list_source_endpoints_request()) ->
+    {ok, list_source_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_source_endpoints_errors(), tuple()}.
+list_source_endpoints(Client, Input) ->
+    list_source_endpoints(Client, Input, []).
+
+-spec list_source_endpoints(aws_client:aws_client(), list_source_endpoints_request(), proplists:proplist()) ->
+    {ok, list_source_endpoints_response(), tuple()} |
+    {error, any()} |
+    {error, list_source_endpoints_errors(), tuple()}.
+list_source_endpoints(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/sourceEndpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"MaxResults">>},
+                     {<<"nextToken">>, <<"NextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists the tags associated with a global resource in AWS Elemental
 %% MediaConnect.
 %%
@@ -5663,6 +6830,74 @@ purchase_offering(Client, OfferingArn, Input) ->
 purchase_offering(Client, OfferingArn, Input0, Options0) ->
     Method = post,
     Path = ["/v1/offerings/", aws_util:encode_uri(OfferingArn), ""],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Registers a new destination endpoint in MediaConnect.
+-spec register_destination_endpoint(aws_client:aws_client(), register_destination_endpoint_request()) ->
+    {ok, register_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, register_destination_endpoint_errors(), tuple()}.
+register_destination_endpoint(Client, Input) ->
+    register_destination_endpoint(Client, Input, []).
+
+-spec register_destination_endpoint(aws_client:aws_client(), register_destination_endpoint_request(), proplists:proplist()) ->
+    {ok, register_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, register_destination_endpoint_errors(), tuple()}.
+register_destination_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/destinationEndpoint"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Registers a new source endpoint in MediaConnect.
+-spec register_source_endpoint(aws_client:aws_client(), register_source_endpoint_request()) ->
+    {ok, register_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, register_source_endpoint_errors(), tuple()}.
+register_source_endpoint(Client, Input) ->
+    register_source_endpoint(Client, Input, []).
+
+-spec register_source_endpoint(aws_client:aws_client(), register_source_endpoint_request(), proplists:proplist()) ->
+    {ok, register_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, register_source_endpoint_errors(), tuple()}.
+register_source_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/sourceEndpoint"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6537,6 +7772,40 @@ update_bridge_state(Client, BridgeArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the configuration of a destination endpoint.
+-spec update_destination_endpoint(aws_client:aws_client(), binary() | list(), update_destination_endpoint_request()) ->
+    {ok, update_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, update_destination_endpoint_errors(), tuple()}.
+update_destination_endpoint(Client, Arn, Input) ->
+    update_destination_endpoint(Client, Arn, Input, []).
+
+-spec update_destination_endpoint(aws_client:aws_client(), binary() | list(), update_destination_endpoint_request(), proplists:proplist()) ->
+    {ok, update_destination_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, update_destination_endpoint_errors(), tuple()}.
+update_destination_endpoint(Client, Arn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/destinationEndpoint/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing flow.
 %%
 %% Because `UpdateFlowSources' and `UpdateFlow' are separate
@@ -6875,6 +8144,40 @@ update_router_output(Client, Arn, Input) ->
 update_router_output(Client, Arn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/routerOutput/", aws_util:encode_uri(Arn), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration of a source endpoint.
+-spec update_source_endpoint(aws_client:aws_client(), binary() | list(), update_source_endpoint_request()) ->
+    {ok, update_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, update_source_endpoint_errors(), tuple()}.
+update_source_endpoint(Client, Arn, Input) ->
+    update_source_endpoint(Client, Arn, Input, []).
+
+-spec update_source_endpoint(aws_client:aws_client(), binary() | list(), update_source_endpoint_request(), proplists:proplist()) ->
+    {ok, update_source_endpoint_response(), tuple()} |
+    {error, any()} |
+    {error, update_source_endpoint_errors(), tuple()}.
+update_source_endpoint(Client, Arn, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/sourceEndpoint/", aws_util:encode_uri(Arn), ""],
     SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

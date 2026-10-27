@@ -90,12 +90,14 @@
 %%   <<"estoniaAdditionalInfo">> => estonia_additional_info(),
 %%   <<"franceAdditionalInfo">> => france_additional_info(),
 %%   <<"georgiaAdditionalInfo">> => georgia_additional_info(),
+%%   <<"germanyAdditionalInfo">> => germany_additional_info(),
 %%   <<"greeceAdditionalInfo">> => greece_additional_info(),
 %%   <<"indonesiaAdditionalInfo">> => indonesia_additional_info(),
 %%   <<"israelAdditionalInfo">> => israel_additional_info(),
 %%   <<"italyAdditionalInfo">> => italy_additional_info(),
 %%   <<"kenyaAdditionalInfo">> => kenya_additional_info(),
 %%   <<"malaysiaAdditionalInfo">> => malaysia_additional_info(),
+%%   <<"mexicoAdditionalInfo">> => mexico_additional_info(),
 %%   <<"monacoAdditionalInfo">> => monaco_additional_info(),
 %%   <<"philippinesAdditionalInfo">> => philippines_additional_info(),
 %%   <<"polandAdditionalInfo">> => poland_additional_info(),
@@ -121,6 +123,7 @@
 %%   <<"estoniaAdditionalInfo">> => estonia_additional_info(),
 %%   <<"franceAdditionalInfo">> => france_additional_info(),
 %%   <<"georgiaAdditionalInfo">> => georgia_additional_info(),
+%%   <<"germanyAdditionalInfo">> => germany_additional_info(),
 %%   <<"greeceAdditionalInfo">> => greece_additional_info(),
 %%   <<"indiaAdditionalInfo">> => india_additional_info(),
 %%   <<"indonesiaAdditionalInfo">> => indonesia_additional_info(),
@@ -128,6 +131,7 @@
 %%   <<"italyAdditionalInfo">> => italy_additional_info(),
 %%   <<"kenyaAdditionalInfo">> => kenya_additional_info(),
 %%   <<"malaysiaAdditionalInfo">> => malaysia_additional_info(),
+%%   <<"mexicoAdditionalInfo">> => mexico_additional_info(),
 %%   <<"monacoAdditionalInfo">> => monaco_additional_info(),
 %%   <<"philippinesAdditionalInfo">> => philippines_additional_info(),
 %%   <<"polandAdditionalInfo">> => poland_additional_info(),
@@ -351,6 +355,14 @@
 %% }
 -type georgia_additional_info() :: #{binary() => any()}.
 
+
+%% Example:
+%% germany_additional_info() :: #{
+%%   <<"economicIdentificationNumber">> => string(),
+%%   <<"steuernummer">> => string()
+%% }
+-type germany_additional_info() :: #{binary() => any()}.
+
 %% Example:
 %% get_tax_exemption_types_request() :: #{}
 -type get_tax_exemption_types_request() :: #{}.
@@ -524,6 +536,15 @@
 %%   <<"taxInformationNumber">> => string()
 %% }
 -type malaysia_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% mexico_additional_info() :: #{
+%%   <<"cfdiUsageCode">> => string(),
+%%   <<"taxRegime">> => string(),
+%%   <<"taxRegimeFullName">> => string()
+%% }
+-type mexico_additional_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1032,6 +1053,14 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %% For Amazon Web Services accounts created through Organizations, you can
 %% call this API operation when you don't have a billing address.
 %%
+%% Colombia
+%%
+%% You can provide a Registro Único Tributario (RUT) document in the
+%% verificationDetails field.
+%%
+%% If you provide the RUT document, you do not need to provide address and
+%% legal name. These will be populated based on your document.
+%%
 %% Georgia
 %%
 %% The valid `personType' values are `Physical Person' and
@@ -1233,6 +1262,18 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %%
 %% You must specify the `businessNumber' in the
 %% `monacoAdditionalInfo' field of the `additionalTaxInformation'
+%% object.
+%%
+%% Germany
+%%
+%% You must provide at least one of the following: a Tax Registration Number
+%% (TRN) (`registrationId'), the `economicIdentificationNumber', or
+%% the `steuernummer'.
+%%
+%% You can optionally specify the `economicIdentificationNumber'
+%% (Wirtschafts-Identifikationsnummer, or W-IdNr) and the `steuernummer'
+%% (tax number issued by the local tax office) in the
+%% `germanyAdditionalInfo' field of the `additionalTaxInformation'
 %% object.
 %%
 %% Poland
@@ -1724,6 +1765,14 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %% For Amazon Web Services accounts created through Organizations, you can
 %% call this API operation when you don't have a billing address.
 %%
+%% Colombia
+%%
+%% You can provide a Registro Único Tributario (RUT) document in the
+%% verificationDetails field.
+%%
+%% If you provide the RUT document, you do not need to provide address and
+%% legal name. These will be populated based on your document.
+%%
 %% Georgia
 %%
 %% The valid `personType' values are `Physical Person' and
@@ -1925,6 +1974,18 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %%
 %% You must specify the `businessNumber' in the
 %% `monacoAdditionalInfo' field of the `additionalTaxInformation'
+%% object.
+%%
+%% Germany
+%%
+%% You must provide at least one of the following: a Tax Registration Number
+%% (TRN) (`registrationId'), the `economicIdentificationNumber', or
+%% the `steuernummer'.
+%%
+%% You can optionally specify the `economicIdentificationNumber'
+%% (Wirtschafts-Identifikationsnummer, or W-IdNr) and the `steuernummer'
+%% (tax number issued by the local tax office) in the
+%% `germanyAdditionalInfo' field of the `additionalTaxInformation'
 %% object.
 %%
 %% Poland

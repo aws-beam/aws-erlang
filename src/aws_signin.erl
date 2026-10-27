@@ -3,15 +3,16 @@
 
 %% @doc AWS Sign-In manages authentication for AWS services.
 %%
-%% This service provides
-%% secure authentication flows for accessing AWS resources from the console
-%% and developer tools.
+%% It implements OAuth 2.0, providing secure token exchange and refresh
+%% capabilities.
 -module(aws_signin).
 
 -export([create_o_auth2_token/2,
          create_o_auth2_token/3,
          create_o_auth2_token_with_iam/2,
          create_o_auth2_token_with_iam/3,
+         create_o_auth2_token_with_token_exchange/2,
+         create_o_auth2_token_with_token_exchange/3,
          delete_console_authorization_configuration/2,
          delete_console_authorization_configuration/3,
          delete_resource_permission_statement/2,
@@ -100,7 +101,7 @@
 %% Example:
 %% create_o_auth2_token_with_iam_request() :: #{
 %%   <<"grantType">> := string(),
-%%   <<"resource">> := [string()]
+%%   <<"resource">> := string()
 %% }
 -type create_o_auth2_token_with_iam_request() :: #{binary() => any()}.
 
@@ -112,6 +113,27 @@
 %%   <<"tokenType">> => string()
 %% }
 -type create_o_auth2_token_with_iam_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_o_auth2_token_with_token_exchange_request() :: #{
+%%   <<"grantType">> := string(),
+%%   <<"resource">> => string(),
+%%   <<"scope">> => string(),
+%%   <<"subjectToken">> => string(),
+%%   <<"subjectTokenType">> => string()
+%% }
+-type create_o_auth2_token_with_token_exchange_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_o_auth2_token_with_token_exchange_response() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"expiresIn">> => integer(),
+%%   <<"issuedTokenType">> => string(),
+%%   <<"tokenType">> => string()
+%% }
+-type create_o_auth2_token_with_token_exchange_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -196,13 +218,29 @@
 %%   <<"iss">> => [string()],
 %%   <<"jti">> => [string()],
 %%   <<"nbf">> => [float()],
-%%   <<"resource">> => [string()],
+%%   <<"resource">> => string(),
 %%   <<"signinSession">> => [string()],
 %%   <<"sub">> => [string()],
 %%   <<"tokenType">> => string(),
 %%   <<"userId">> => [string()]
 %% }
 -type introspect_o_auth2_token_with_iam_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_grant_exception() :: #{
+%%   <<"error">> => list(any()),
+%%   <<"message">> => [string()]
+%% }
+-type invalid_grant_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_scope_exception() :: #{
+%%   <<"error">> => list(any()),
+%%   <<"message">> => [string()]
+%% }
+-type invalid_scope_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -305,6 +343,14 @@
 
 
 %% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"error">> => list(any()),
+%%   <<"message">> => [string()]
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% signin_resource_based_policy() :: #{
 %%   <<"statement">> => list(policy_statement()),
 %%   <<"version">> => [string()]
@@ -338,6 +384,14 @@
     too_many_requests_error() | 
     internal_server_exception() | 
     access_denied_exception().
+
+-type create_o_auth2_token_with_token_exchange_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    service_unavailable_exception() | 
+    invalid_scope_exception() | 
+    invalid_grant_exception() | 
+    internal_server_exception().
 
 -type delete_console_authorization_configuration_errors() ::
     validation_exception() | 
@@ -405,50 +459,8 @@
 %% API
 %%====================================================================
 
-%% @doc CreateOAuth2Token API
-%%
-%% Path: /v1/token
-%% Request Method: POST
-%% Content-Type: application/json or application/x-www-form-urlencoded
-%%
-%% This API implements OAuth 2.0 flows for AWS Sign-In CLI clients,
-%% supporting both:
-%% 1.
-%%
-%% Authorization code redemption (grant_type=authorization_code) - NOT
-%% idempotent
-%% 2. Token refresh (grant_type=refresh_token) - Idempotent within token
-%% validity window
-%%
-%% The operation behavior is determined by the grant_type parameter in the
-%% request body:
-%%
-%% **Authorization Code Flow (NOT Idempotent):**
-%% - JSON or form-encoded body with client_id, grant_type=authorization_code,
-%% code, redirect_uri, code_verifier
-%% - Returns access_token, token_type, expires_in, refresh_token, and
-%% id_token
-%% - Each authorization code can only be used ONCE for security (prevents
-%% replay attacks)
-%%
-%% **Token Refresh Flow (Idempotent):**
-%% - JSON or form-encoded body with client_id, grant_type=refresh_token,
-%% refresh_token
-%% - Returns access_token, token_type, expires_in, and refresh_token (no
-%% id_token)
-%% - Multiple calls with same refresh_token return consistent results within
-%% validity window
-%%
-%% Authentication and authorization:
-%% - Confidential clients: sigv4 signing required with signin:ExchangeToken
-%% permissions
-%% - CLI clients (public): authn/authz skipped based on client_id &amp;
-%% grant_type
-%%
-%% Note: This operation cannot be marked as @idempotent because it handles
-%% both idempotent
-%% (token refresh) and non-idempotent (auth code redemption) flows in a
-%% single endpoint.
+%% @doc Exchanges an authorization code or refresh token for an OAuth 2.0
+%% access token and refresh token.
 -spec create_o_auth2_token(aws_client:aws_client(), create_o_auth2_token_request()) ->
     {ok, create_o_auth2_token_response(), tuple()} |
     {error, any()} |
@@ -482,10 +494,8 @@ create_o_auth2_token(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to exchange client credentials for an OAuth 2.0
-%% access token
-%% scoped to a resource that can be used to access AWS services from
-%% applications
+%% @doc Exchanges client credentials for an OAuth 2.0 access token scoped to
+%% a resource, which you can use to access AWS services from applications.
 -spec create_o_auth2_token_with_iam(aws_client:aws_client(), create_o_auth2_token_with_iam_request()) ->
     {ok, create_o_auth2_token_with_iam_response(), tuple()} |
     {error, any()} |
@@ -500,6 +510,41 @@ create_o_auth2_token_with_iam(Client, Input) ->
 create_o_auth2_token_with_iam(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/token?x-amz-client-auth-method=iam"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Exchanges a supported token for an OAuth 2.0 access token scoped to a
+%% resource, which you can use to access AWS services from applications.
+-spec create_o_auth2_token_with_token_exchange(aws_client:aws_client(), create_o_auth2_token_with_token_exchange_request()) ->
+    {ok, create_o_auth2_token_with_token_exchange_response(), tuple()} |
+    {error, any()} |
+    {error, create_o_auth2_token_with_token_exchange_errors(), tuple()}.
+create_o_auth2_token_with_token_exchange(Client, Input) ->
+    create_o_auth2_token_with_token_exchange(Client, Input, []).
+
+-spec create_o_auth2_token_with_token_exchange(aws_client:aws_client(), create_o_auth2_token_with_token_exchange_request(), proplists:proplist()) ->
+    {ok, create_o_auth2_token_with_token_exchange_response(), tuple()} |
+    {error, any()} |
+    {error, create_o_auth2_token_with_token_exchange_errors(), tuple()}.
+create_o_auth2_token_with_token_exchange(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/token?x-amz-oauth-token-method=token-exchange"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -658,21 +703,13 @@ get_resource_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to inspect the metadata and state of an OAuth 2.0
-%% access token or refresh token
+%% @doc Inspects the metadata and active state of an OAuth 2.0 access token
+%% or refresh token.
 %%
 %% Implements RFC 7662 OAuth 2.0 Token Introspection over a
 %% SigV4-authenticated
-%% endpoint.
-%%
-%% Inspects the metadata of an access_token or refresh_token issued
-%% by AWS Sign-In and returns the claims associated with it.
-%%
-%% Inactive token semantics (RFC 7662 §2.2): when the supplied token is
-%% unknown, expired, revoked, malformed, or owned by a different account,
-%% the response body is exactly { &quot;active&quot;: false } with all other
-%% claims
-%% omitted.
+%% endpoint. Returns the claims associated with a token issued by AWS
+%% Sign-In.
 -spec introspect_o_auth2_token_with_iam(aws_client:aws_client(), introspect_o_auth2_token_with_iam_request()) ->
     {ok, introspect_o_auth2_token_with_iam_response(), tuple()} |
     {error, any()} |
@@ -811,18 +848,7 @@ put_resource_permission_statement(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Grants permission to revoke an OAuth 2.0 refresh token and its
-%% associated refresh tokens
-%%
-%% Revokes a refresh_token issued by AWS Sign-In, invalidating the entire
-%% token
-%% chain so that the refresh_token can no longer be used to mint new
-%% access_tokens.
-%%
-%% Idempotency: revoking an already-revoked, expired, or otherwise invalid
-%% token
-%% still returns 200 OK with an empty body. Only the refresh_token type is
-%% accepted.
+%% @doc Revokes an OAuth 2.0 refresh token and its associated token chain.
 -spec revoke_o_auth2_token_with_iam(aws_client:aws_client(), revoke_o_auth2_token_with_iam_request()) ->
     {ok, revoke_o_auth2_token_with_iam_response(), tuple()} |
     {error, any()} |

@@ -1223,7 +1223,8 @@
 %% Example:
 %% list_instances_request() :: #{
 %%   <<"MaxResults">> => integer(),
-%%   <<"NextToken">> => string()
+%%   <<"NextToken">> => string(),
+%%   <<"RegionScope">> => list(any())
 %% }
 -type list_instances_request() :: #{binary() => any()}.
 
@@ -3919,10 +3920,11 @@ update_application(Client, Input, Options)
 %% Enable permission sets for the instance by specifying
 %% `PermissionSetsEnabled'.
 %%
-%% A request that specifies both `EncryptionConfiguration' and
-%% `PermissionSetsEnabled' returns a `ValidationException'. To
-%% perform both operations, call `UpdateInstance' separately for each.
-%% The two calls can be made in parallel.
+%% If you specify both `EncryptionConfiguration' and
+%% `PermissionSetsEnabled' in a request, the request returns a
+%% `ValidationException'. To perform both operations, call
+%% `UpdateInstance' separately for each. You can make the two calls in
+%% parallel.
 -spec update_instance(aws_client:aws_client(), update_instance_request()) ->
     {ok, update_instance_response(), tuple()} |
     {error, any()} |

@@ -881,6 +881,8 @@
          update_metric_metadata/5,
          update_notification_content/4,
          update_notification_content/5,
+         update_outbound_email_contact_message/4,
+         update_outbound_email_contact_message/5,
          update_participant_authentication/2,
          update_participant_authentication/3,
          update_participant_role_config/4,
@@ -8139,6 +8141,13 @@
 
 
 %% Example:
+%% nullable_additional_recipients() :: #{
+%%   <<"CcEmailAddresses">> => list(email_address_info())
+%% }
+-type nullable_additional_recipients() :: #{binary() => any()}.
+
+
+%% Example:
 %% number_condition() :: #{
 %%   <<"ComparisonType">> => list(any()),
 %%   <<"FieldName">> => string(),
@@ -11336,6 +11345,7 @@
 
 %% Example:
 %% update_contact_request() :: #{
+%%   <<"AdditionalRecipients">> => nullable_additional_recipients(),
 %%   <<"CustomerEndpoint">> => endpoint(),
 %%   <<"Description">> => string(),
 %%   <<"Name">> => string(),
@@ -11587,6 +11597,36 @@
 %% Example:
 %% update_notification_content_response() :: #{}
 -type update_notification_content_response() :: #{}.
+
+
+%% Example:
+%% update_outbound_email_contact_message_request() :: #{
+%%   <<"EmailMessage">> := update_outbound_email_content()
+%% }
+-type update_outbound_email_contact_message_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_outbound_email_contact_message_response() :: #{
+%%   <<"ContactId">> => string()
+%% }
+-type update_outbound_email_contact_message_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_outbound_email_content() :: #{
+%%   <<"MessageSourceType">> => list(any()),
+%%   <<"RawMessage">> => update_outbound_raw_message()
+%% }
+-type update_outbound_email_content() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_outbound_raw_message() :: #{
+%%   <<"Body">> => string(),
+%%   <<"ContentType">> => string()
+%% }
+-type update_outbound_raw_message() :: #{binary() => any()}.
 
 
 %% Example:
@@ -15407,6 +15447,14 @@
     resource_not_found_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
+-type update_outbound_email_contact_message_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_request_exception() | 
     internal_service_exception() | 
     access_denied_exception().
 
@@ -31237,6 +31285,46 @@ update_notification_content(Client, InstanceId, NotificationId, Input) ->
 update_notification_content(Client, InstanceId, NotificationId, Input0, Options0) ->
     Method = post,
     Path = ["/notifications/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(NotificationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the draft outbound email message for a contact.
+%%
+%% Use this operation to save changes to an in-progress
+%% outbound email reply before you send it. This operation applies only to
+%% contacts with an `OUTBOUND' or
+%% `AGENT_REPLY' initiation method; it isn't supported for
+%% flow-initiated emails.
+-spec update_outbound_email_contact_message(aws_client:aws_client(), binary() | list(), binary() | list(), update_outbound_email_contact_message_request()) ->
+    {ok, update_outbound_email_contact_message_response(), tuple()} |
+    {error, any()} |
+    {error, update_outbound_email_contact_message_errors(), tuple()}.
+update_outbound_email_contact_message(Client, ContactId, InstanceId, Input) ->
+    update_outbound_email_contact_message(Client, ContactId, InstanceId, Input, []).
+
+-spec update_outbound_email_contact_message(aws_client:aws_client(), binary() | list(), binary() | list(), update_outbound_email_contact_message_request(), proplists:proplist()) ->
+    {ok, update_outbound_email_contact_message_response(), tuple()} |
+    {error, any()} |
+    {error, update_outbound_email_contact_message_errors(), tuple()}.
+update_outbound_email_contact_message(Client, ContactId, InstanceId, Input0, Options0) ->
+    Method = put,
+    Path = ["/instances/", aws_util:encode_uri(InstanceId), "/contacts/", aws_util:encode_uri(ContactId), "/outbound-email-message"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -189,6 +189,8 @@
          update_cloud_exadata_infrastructure/3,
          update_exadb_vm_cluster/2,
          update_exadb_vm_cluster/3,
+         update_exascale_cloud_exadata_infrastructure/2,
+         update_exascale_cloud_exadata_infrastructure/3,
          update_exascale_db_storage_vault/2,
          update_exascale_db_storage_vault/3,
          update_odb_network/2,
@@ -761,6 +763,7 @@
 %%   <<"dbNodeStorageSizeInGBs">> => [integer()],
 %%   <<"dbServerVersion">> => [string()],
 %%   <<"displayName">> => [string()],
+%%   <<"exascaleConfiguration">> => exascale_configuration(),
 %%   <<"lastMaintenanceRunId">> => [string()],
 %%   <<"maintenanceWindow">> => maintenance_window(),
 %%   <<"maxCpuCount">> => [integer()],
@@ -804,6 +807,7 @@
 %%   <<"dbNodeStorageSizeInGBs">> => [integer()],
 %%   <<"dbServerVersion">> => [string()],
 %%   <<"displayName">> => [string()],
+%%   <<"exascaleConfiguration">> => exascale_configuration(),
 %%   <<"lastMaintenanceRunId">> => [string()],
 %%   <<"maintenanceWindow">> => maintenance_window(),
 %%   <<"maxCpuCount">> => [integer()],
@@ -857,6 +861,9 @@
 %%   <<"diskRedundancy">> => list(any()),
 %%   <<"displayName">> => [string()],
 %%   <<"domain">> => [string()],
+%%   <<"exascaleDbStorageVaultArn">> => string(),
+%%   <<"exascaleDbStorageVaultId">> => string(),
+%%   <<"fileSystemConfigurationDetails">> => list(file_system_configuration_details()),
 %%   <<"giVersion">> => [string()],
 %%   <<"hostname">> => [string()],
 %%   <<"iamRoles">> => list(iam_role()),
@@ -881,10 +888,13 @@
 %%   <<"sshPublicKeys">> => list(string()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()],
+%%   <<"storageManagementType">> => list(any()),
 %%   <<"storageSizeInGBs">> => [integer()],
 %%   <<"systemVersion">> => [string()],
 %%   <<"timeZone">> => [string()],
-%%   <<"vipIds">> => list([string()]())
+%%   <<"vipIds">> => list([string()]()),
+%%   <<"vmBackupStorageType">> => list(any()),
+%%   <<"vmFileSystemStorageType">> => list(any())
 %% }
 -type cloud_vm_cluster() :: #{binary() => any()}.
 
@@ -905,6 +915,9 @@
 %%   <<"diskRedundancy">> => list(any()),
 %%   <<"displayName">> => [string()],
 %%   <<"domain">> => [string()],
+%%   <<"exascaleDbStorageVaultArn">> => string(),
+%%   <<"exascaleDbStorageVaultId">> => string(),
+%%   <<"fileSystemConfigurationDetails">> => list(file_system_configuration_details()),
 %%   <<"giVersion">> => [string()],
 %%   <<"hostname">> => [string()],
 %%   <<"iamRoles">> => list(iam_role()),
@@ -929,10 +942,13 @@
 %%   <<"sshPublicKeys">> => list(string()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()],
+%%   <<"storageManagementType">> => list(any()),
 %%   <<"storageSizeInGBs">> => [integer()],
 %%   <<"systemVersion">> => [string()],
 %%   <<"timeZone">> => [string()],
-%%   <<"vipIds">> => list([string()]())
+%%   <<"vipIds">> => list([string()]()),
+%%   <<"vmBackupStorageType">> => list(any()),
+%%   <<"vmFileSystemStorageType">> => list(any())
 %% }
 -type cloud_vm_cluster_summary() :: #{binary() => any()}.
 
@@ -1103,6 +1119,8 @@
 %%   <<"dbNodeStorageSizeInGBs">> => [integer()],
 %%   <<"dbServers">> => list([string()]()),
 %%   <<"displayName">> := string(),
+%%   <<"exascaleDbStorageVaultId">> => string(),
+%%   <<"fileSystemConfigurationDetails">> => list(file_system_configuration_details()),
 %%   <<"giVersion">> := [string()],
 %%   <<"hostname">> := string(),
 %%   <<"isLocalBackupEnabled">> => [boolean()],
@@ -1114,7 +1132,9 @@
 %%   <<"sshPublicKeys">> := list([string()]()),
 %%   <<"systemVersion">> => [string()],
 %%   <<"tags">> => map(),
-%%   <<"timeZone">> => [string()]
+%%   <<"timeZone">> => [string()],
+%%   <<"vmBackupStorageType">> => list(any()),
+%%   <<"vmFileSystemStorageType">> => list(any())
 %% }
 -type create_cloud_vm_cluster_input() :: #{binary() => any()}.
 
@@ -1169,6 +1189,7 @@
 %%   <<"availabilityZone">> => [string()],
 %%   <<"availabilityZoneId">> => [string()],
 %%   <<"clientToken">> => string(),
+%%   <<"cloudExadataInfrastructureId">> => string(),
 %%   <<"description">> => [string()],
 %%   <<"displayName">> := string(),
 %%   <<"highCapacityDatabaseStorageTotalSizeInGBs">> := [integer()],
@@ -1770,6 +1791,15 @@
 -type exadb_vm_cluster_summary() :: #{binary() => any()}.
 
 %% Example:
+%% exascale_configuration() :: #{
+%%   <<"availableStorageSizeInGBs">> => [integer()],
+%%   <<"availableVmStorageSizeInGBs">> => [integer()],
+%%   <<"totalStorageSizeInGBs">> => [integer()],
+%%   <<"totalVmStorageSizeInGBs">> => [integer()]
+%% }
+-type exascale_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% exascale_db_storage_details() :: #{
 %%   <<"availableSizeInGBs">> => [integer()],
 %%   <<"totalSizeInGBs">> => [integer()]
@@ -1783,6 +1813,8 @@
 %%   <<"autoscaleLimitInGBs">> => [integer()],
 %%   <<"availabilityZone">> => [string()],
 %%   <<"availabilityZoneId">> => [string()],
+%%   <<"cloudExadataInfrastructureArn">> => string(),
+%%   <<"cloudExadataInfrastructureId">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => [string()],
 %%   <<"displayName">> => [string()],
@@ -1797,6 +1829,7 @@
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()],
 %%   <<"timeZone">> => [string()],
+%%   <<"vaultType">> => list(any()),
 %%   <<"vmClusterArns">> => list(string()),
 %%   <<"vmClusterCount">> => [integer()],
 %%   <<"vmClusterIds">> => list(string())
@@ -1810,6 +1843,8 @@
 %%   <<"autoscaleLimitInGBs">> => [integer()],
 %%   <<"availabilityZone">> => [string()],
 %%   <<"availabilityZoneId">> => [string()],
+%%   <<"cloudExadataInfrastructureArn">> => string(),
+%%   <<"cloudExadataInfrastructureId">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => [string()],
 %%   <<"displayName">> => [string()],
@@ -1824,6 +1859,7 @@
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()],
 %%   <<"timeZone">> => [string()],
+%%   <<"vaultType">> => list(any()),
 %%   <<"vmClusterArns">> => list(string()),
 %%   <<"vmClusterCount">> => [integer()],
 %%   <<"vmClusterIds">> => list(string())
@@ -1845,6 +1881,13 @@
 %%   <<"statusReason">> => [string()]
 %% }
 -type failover_autonomous_database_output() :: #{binary() => any()}.
+
+%% Example:
+%% file_system_configuration_details() :: #{
+%%   <<"fileSystemSizeInGBs">> => [integer()],
+%%   <<"mountPoint">> => [string()]
+%% }
+-type file_system_configuration_details() :: #{binary() => any()}.
 
 %% Example:
 %% flex_component_summary() :: #{
@@ -2299,8 +2342,10 @@
 
 %% Example:
 %% list_exascale_db_storage_vaults_input() :: #{
+%%   <<"cloudExadataInfrastructureId">> => string(),
 %%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => [string()]
+%%   <<"nextToken">> => [string()],
+%%   <<"vaultType">> => list(any())
 %% }
 -type list_exascale_db_storage_vaults_input() :: #{binary() => any()}.
 
@@ -2982,6 +3027,22 @@
 -type update_exadb_vm_cluster_output() :: #{binary() => any()}.
 
 %% Example:
+%% update_exascale_cloud_exadata_infrastructure_input() :: #{
+%%   <<"totalStorageSizeInGBs">> := [integer()],
+%%   <<"totalVmStorageSizeInGBs">> => [integer()]
+%% }
+-type update_exascale_cloud_exadata_infrastructure_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_exascale_cloud_exadata_infrastructure_output() :: #{
+%%   <<"cloudExadataInfrastructureId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type update_exascale_cloud_exadata_infrastructure_output() :: #{binary() => any()}.
+
+%% Example:
 %% update_exascale_db_storage_vault_input() :: #{
 %%   <<"additionalFlashCacheInPercent">> => [integer()],
 %%   <<"autoscaleLimitInGBs">> => [integer()],
@@ -3162,6 +3223,7 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -3473,6 +3535,7 @@
 -type list_exascale_db_storage_vaults_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -3618,6 +3681,14 @@
     access_denied_exception().
 
 -type update_exadb_vm_cluster_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_exascale_cloud_exadata_infrastructure_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3829,6 +3900,9 @@ create_exadb_vm_cluster(Client, Input, Options)
     request(Client, <<"CreateExadbVmCluster">>, Input, Options).
 
 %% @doc Creates an Exascale storage vault.
+%%
+%% To create the Exascale storage vault on dedicated Exadata infrastructure,
+%% specify `cloudExadataInfrastructureId'.
 -spec create_exascale_db_storage_vault(aws_client:aws_client(), create_exascale_db_storage_vault_input()) ->
     {ok, create_exascale_db_storage_vault_output(), tuple()} |
     {error, any()} |
@@ -4997,6 +5071,27 @@ update_exadb_vm_cluster(Client, Input)
 update_exadb_vm_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateExadbVmCluster">>, Input, Options).
+
+%% @doc Configures or updates the Exascale storage on an Exadata
+%% infrastructure.
+%%
+%% After you configure Exascale storage, you can create Exascale storage
+%% vaults on the infrastructure and VM clusters that use Exascale storage.
+-spec update_exascale_cloud_exadata_infrastructure(aws_client:aws_client(), update_exascale_cloud_exadata_infrastructure_input()) ->
+    {ok, update_exascale_cloud_exadata_infrastructure_output(), tuple()} |
+    {error, any()} |
+    {error, update_exascale_cloud_exadata_infrastructure_errors(), tuple()}.
+update_exascale_cloud_exadata_infrastructure(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_exascale_cloud_exadata_infrastructure(Client, Input, []).
+
+-spec update_exascale_cloud_exadata_infrastructure(aws_client:aws_client(), update_exascale_cloud_exadata_infrastructure_input(), proplists:proplist()) ->
+    {ok, update_exascale_cloud_exadata_infrastructure_output(), tuple()} |
+    {error, any()} |
+    {error, update_exascale_cloud_exadata_infrastructure_errors(), tuple()}.
+update_exascale_cloud_exadata_infrastructure(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateExascaleCloudExadataInfrastructure">>, Input, Options).
 
 %% @doc Updates the specified Exascale storage vault.
 -spec update_exascale_db_storage_vault(aws_client:aws_client(), update_exascale_db_storage_vault_input()) ->
