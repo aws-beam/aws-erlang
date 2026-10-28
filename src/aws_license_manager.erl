@@ -275,8 +275,10 @@
 %%   <<"AllowedOperations">> := list(list(any())()),
 %%   <<"ClientToken">> := string(),
 %%   <<"GrantName">> := string(),
+%%   <<"GrantType">> => list(any()),
 %%   <<"HomeRegion">> := string(),
 %%   <<"LicenseArn">> := string(),
+%%   <<"Options">> => options(),
 %%   <<"Principals">> := list(string()),
 %%   <<"Tags">> => list(tag())
 %% }
@@ -805,6 +807,7 @@
 %%   <<"GrantArn">> => string(),
 %%   <<"GrantName">> => string(),
 %%   <<"GrantStatus">> => list(any()),
+%%   <<"GrantType">> => list(any()),
 %%   <<"GrantedOperations">> => list(list(any())()),
 %%   <<"GranteePrincipalArn">> => string(),
 %%   <<"HomeRegion">> => string(),
@@ -1407,7 +1410,8 @@
 
 %% Example:
 %% options() :: #{
-%%   <<"ActivationOverrideBehavior">> => list(any())
+%%   <<"ActivationOverrideBehavior">> => list(any()),
+%%   <<"DesiredStatus">> => list(any())
 %% }
 -type options() :: #{binary() => any()}.
 
@@ -1461,6 +1465,7 @@
 %% Example:
 %% received_metadata() :: #{
 %%   <<"AllowedOperations">> => list(list(any())()),
+%%   <<"GrantType">> => list(any()),
 %%   <<"ReceivedStatus">> => list(any()),
 %%   <<"ReceivedStatusReason">> => string()
 %% }
@@ -2371,6 +2376,30 @@ checkout_license(Client, Input, Options)
 %% License Manager:
 %% https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html
 %% in the License Manager User Guide.
+%%
+%% Set the type of grant with the `GrantType' field:
+%%
+%% `BuyerGrant' - The default grant type, created by the seller when a
+%% customer subscribes to a product. The seller creates a license for the
+%% subscription
+%% and a buyer grant for the customer. With a buyer grant, the customer can
+%% use,
+%% consume, and distribute the license, according to the permissions the
+%% seller sets in
+%% the product contract.
+%%
+%% `DelegateGrant' - A delegate grant gives the grantee read-only
+%% visibility into the licenses and grants that you have distributed to
+%% buyers for a
+%% product. The grantee can monitor that activity on your behalf, and can
+%% also listen
+%% for the related Amazon EventBridge events. A delegate grant conveys no
+%% entitlement to
+%% use the licenses, and its only allowed operation is
+%% `ListReceivedLicenses'.
+%% You must create the delegate grant, and its license, from the same
+%% Amazon Web Services account that you used to create those buyer licenses
+%% and grants.
 -spec create_grant(aws_client:aws_client(), create_grant_request()) ->
     {ok, create_grant_response(), tuple()} |
     {error, any()} |

@@ -1202,6 +1202,8 @@
          get_image_ancestry/3,
          get_image_block_public_access_state/2,
          get_image_block_public_access_state/3,
+         get_image_findings/2,
+         get_image_findings/3,
          get_instance_metadata_defaults/2,
          get_instance_metadata_defaults/3,
          get_instance_tpm_ek_pub/2,
@@ -13473,6 +13475,22 @@
 -type get_image_block_public_access_state_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_image_findings_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"ImageId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type get_image_findings_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_image_findings_result() :: #{
+%%   <<"ImageFindings">> => list(image_finding()),
+%%   <<"NextToken">> => string()
+%% }
+-type get_image_findings_result() :: #{binary() => any()}.
+
+%% Example:
 %% get_instance_metadata_defaults_request() :: #{
 %%   <<"DryRun">> => boolean()
 %% }
@@ -14667,6 +14685,7 @@
 %%   <<"RamdiskId">> => string(),
 %%   <<"RootDeviceName">> => string(),
 %%   <<"RootDeviceType">> => list(any()),
+%%   <<"ScanResults">> => scan_results(),
 %%   <<"SourceImageId">> => string(),
 %%   <<"SourceImageRegion">> => string(),
 %%   <<"SourceInstanceId">> => string(),
@@ -14716,7 +14735,8 @@
 %%   <<"ImageNames">> => list(string()),
 %%   <<"ImageProviders">> => list(string()),
 %%   <<"ImageWatermarks">> => list(image_watermark_filter_response()),
-%%   <<"MarketplaceProductCodes">> => list(string())
+%%   <<"MarketplaceProductCodes">> => list(string()),
+%%   <<"ScanResultCondition">> => scan_result_condition()
 %% }
 -type image_criterion() :: #{binary() => any()}.
 
@@ -14727,7 +14747,8 @@
 %%   <<"ImageNames">> => list(string()),
 %%   <<"ImageProviders">> => list(string()),
 %%   <<"ImageWatermarks">> => list(image_watermark_filter_request()),
-%%   <<"MarketplaceProductCodes">> => list(string())
+%%   <<"MarketplaceProductCodes">> => list(string()),
+%%   <<"ScanResultCondition">> => scan_result_condition_request()
 %% }
 -type image_criterion_request() :: #{binary() => any()}.
 
@@ -14741,6 +14762,19 @@
 %%   <<"UserBucket">> => user_bucket()
 %% }
 -type image_disk_container() :: #{binary() => any()}.
+
+%% Example:
+%% image_finding() :: #{
+%%   <<"FirstObservedAt">> => non_neg_integer(),
+%%   <<"FixAvailable">> => boolean(),
+%%   <<"Paths">> => list(string()),
+%%   <<"Score">> => float(),
+%%   <<"SeverityLabel">> => list(any()),
+%%   <<"SnapshotId">> => string(),
+%%   <<"Title">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type image_finding() :: #{binary() => any()}.
 
 %% Example:
 %% image_metadata() :: #{
@@ -21473,6 +21507,42 @@
 %%   <<"UploadPolicySignature">> => string()
 %% }
 -type s3_storage() :: #{binary() => any()}.
+
+%% Example:
+%% scan_result_condition() :: #{
+%%   <<"MaxDaysSinceCriticalFixAvailable">> => integer(),
+%%   <<"MaxDaysSinceHighFixAvailable">> => integer(),
+%%   <<"MaxDaysSinceInformationalFixAvailable">> => integer(),
+%%   <<"MaxDaysSinceLastFindingScan">> => integer(),
+%%   <<"MaxDaysSinceLowFixAvailable">> => integer(),
+%%   <<"MaxDaysSinceMediumFixAvailable">> => integer(),
+%%   <<"MaximumSeverityLabel">> => list(any())
+%% }
+-type scan_result_condition() :: #{binary() => any()}.
+
+%% Example:
+%% scan_result_condition_request() :: #{
+%%   <<"MaxDaysSinceCriticalFixAvailable">> => integer(),
+%%   <<"MaxDaysSinceHighFixAvailable">> => integer(),
+%%   <<"MaxDaysSinceInformationalFixAvailable">> => integer(),
+%%   <<"MaxDaysSinceLastFindingScan">> => integer(),
+%%   <<"MaxDaysSinceLowFixAvailable">> => integer(),
+%%   <<"MaxDaysSinceMediumFixAvailable">> => integer(),
+%%   <<"MaximumSeverityLabel">> => list(any())
+%% }
+-type scan_result_condition_request() :: #{binary() => any()}.
+
+%% Example:
+%% scan_results() :: #{
+%%   <<"CriticalFixAvailableSince">> => non_neg_integer(),
+%%   <<"FindingScanDate">> => non_neg_integer(),
+%%   <<"HighFixAvailableSince">> => non_neg_integer(),
+%%   <<"HighestFindingSeverityLabel">> => list(any()),
+%%   <<"InformationalFixAvailableSince">> => non_neg_integer(),
+%%   <<"LowFixAvailableSince">> => non_neg_integer(),
+%%   <<"MediumFixAvailableSince">> => non_neg_integer()
+%% }
+-type scan_results() :: #{binary() => any()}.
 
 %% Example:
 %% scheduled_instance() :: #{
@@ -38192,6 +38262,26 @@ get_image_block_public_access_state(Client, Input)
 get_image_block_public_access_state(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetImageBlockPublicAccessState">>, Input, Options).
+
+%% @doc Describes the Amazon Inspector vulnerability findings for the
+%% specified AMI.
+%%
+%% You can get findings for AMIs that you own, AMIs that are shared with you,
+%% and public
+%% AMIs. Amazon Inspector returns findings only for AMIs that it has scanned.
+-spec get_image_findings(aws_client:aws_client(), get_image_findings_request()) ->
+    {ok, get_image_findings_result(), tuple()} |
+    {error, any()}.
+get_image_findings(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_image_findings(Client, Input, []).
+
+-spec get_image_findings(aws_client:aws_client(), get_image_findings_request(), proplists:proplist()) ->
+    {ok, get_image_findings_result(), tuple()} |
+    {error, any()}.
+get_image_findings(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetImageFindings">>, Input, Options).
 
 %% @doc Gets the default instance metadata service (IMDS) settings that are
 %% set at the account

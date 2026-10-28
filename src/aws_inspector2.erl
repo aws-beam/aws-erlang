@@ -2,9 +2,8 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Inspector is a vulnerability discovery service that automates
-%% continuous scanning for
-%% security vulnerabilities within your Amazon EC2, Amazon ECR, and Amazon
-%% Web Services Lambda environments.
+%% continuous scanning for security vulnerabilities within your Amazon EC2,
+%% Amazon ECR, and Amazon Web Services Lambda environments.
 -module(aws_inspector2).
 
 -export([associate_member/2,
@@ -90,6 +89,8 @@
          get_findings_report_status/3,
          get_member/2,
          get_member/3,
+         get_on_demand_scan_status/2,
+         get_on_demand_scan_status/3,
          get_sbom_export/2,
          get_sbom_export/3,
          list_account_permissions/2,
@@ -126,6 +127,8 @@
          list_findings/3,
          list_members/2,
          list_members/3,
+         list_on_demand_scans/2,
+         list_on_demand_scans/3,
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
@@ -143,6 +146,8 @@
          start_cis_session/3,
          start_code_security_scan/2,
          start_code_security_scan/3,
+         start_on_demand_scan/2,
+         start_on_demand_scan/3,
          stop_cis_session/2,
          stop_cis_session/3,
          tag_resource/3,
@@ -224,6 +229,7 @@
 %% Example:
 %% ami_aggregation() :: #{
 %%   <<"amis">> => list(string_filter()),
+%%   <<"scanSources">> => list(string()),
 %%   <<"sortBy">> => string(),
 %%   <<"sortOrder">> => string()
 %% }
@@ -240,9 +246,48 @@
 %%   <<"cloudPartition">> => string(),
 %%   <<"cloudProvider">> => string(),
 %%   <<"cloudRegion">> => string(),
+%%   <<"scanSource">> => string(),
 %%   <<"severityCounts">> => severity_counts()
 %% }
 -type ami_aggregation_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ami_configuration() :: #{
+%%   <<"createdWithin">> => string(),
+%%   <<"lastLaunchedWithin">> => string(),
+%%   <<"scanModeConfiguration">> => ami_scan_mode_configuration()
+%% }
+-type ami_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ami_configuration_state() :: #{
+%%   <<"createdWithin">> => string(),
+%%   <<"lastLaunchedWithin">> => string(),
+%%   <<"scanModeConfiguration">> => ami_scan_mode_configuration(),
+%%   <<"status">> => string(),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type ami_configuration_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% ami_scan_mode_configuration() :: #{
+%%   <<"excludeBackupDlmAmis">> => [boolean()],
+%%   <<"excludeCopiedAmis">> => [boolean()],
+%%   <<"scanMode">> => string(),
+%%   <<"tags">> => list(ami_tag_filter())
+%% }
+-type ami_scan_mode_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% ami_tag_filter() :: #{
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type ami_tag_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -279,6 +324,7 @@
 
 %% Example:
 %% auto_enable() :: #{
+%%   <<"ami">> => [boolean()],
 %%   <<"codeRepository">> => [boolean()],
 %%   <<"ec2">> => [boolean()],
 %%   <<"ecr">> => [boolean()],
@@ -1194,6 +1240,7 @@
 %%   <<"lambdaFunctionTags">> => list(coverage_map_filter()),
 %%   <<"lastScannedAt">> => list(coverage_date_filter()),
 %%   <<"lastScannedCommitId">> => list(coverage_string_filter()),
+%%   <<"machineImageTags">> => list(coverage_map_filter()),
 %%   <<"resourceId">> => list(coverage_string_filter()),
 %%   <<"resourceType">> => list(coverage_string_filter()),
 %%   <<"scanMode">> => list(coverage_string_filter()),
@@ -1556,6 +1603,7 @@
 %% Example:
 %% destination() :: #{
 %%   <<"bucketName">> => [string()],
+%%   <<"expectedBucketOwner">> => string(),
 %%   <<"keyPrefix">> => [string()],
 %%   <<"kmsKeyArn">> => [string()]
 %% }
@@ -1887,6 +1935,10 @@
 %%   <<"lambdaFunctionName">> => list(string_filter()),
 %%   <<"lambdaFunctionRuntime">> => list(string_filter()),
 %%   <<"lastObservedAt">> => list(date_filter()),
+%%   <<"machineImageId">> => list(string_filter()),
+%%   <<"machineImageName">> => list(string_filter()),
+%%   <<"machineImageOwnerAccountId">> => list(string_filter()),
+%%   <<"machineImagePlatform">> => list(string_filter()),
 %%   <<"networkProtocol">> => list(string_filter()),
 %%   <<"portRange">> => list(port_range_filter()),
 %%   <<"relatedVulnerabilities">> => list(string_filter()),
@@ -2140,6 +2192,7 @@
 
 %% Example:
 %% get_configuration_response() :: #{
+%%   <<"amiConfiguration">> => ami_configuration_state(),
 %%   <<"ec2Configuration">> => ec2_configuration_state(),
 %%   <<"ecrConfiguration">> => ecr_configuration_state()
 %% }
@@ -2217,6 +2270,28 @@
 %%   <<"member">> => member()
 %% }
 -type get_member_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_on_demand_scan_status_request() :: #{
+%%   <<"resourceId">> := string(),
+%%   <<"resourceType">> := list(any()),
+%%   <<"scanId">> := string()
+%% }
+-type get_on_demand_scan_status_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_on_demand_scan_status_response() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"scanId">> => string(),
+%%   <<"scanStatus">> => list(any()),
+%%   <<"scanStatusReason">> => list(any()),
+%%   <<"startedAt">> => [non_neg_integer()]
+%% }
+-type get_on_demand_scan_status_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2695,6 +2770,24 @@
 %% }
 -type list_members_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% list_on_demand_scans_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"resourceId">> := string(),
+%%   <<"resourceType">> := list(any())
+%% }
+-type list_on_demand_scans_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_on_demand_scans_response() :: #{
+%%   <<"items">> => list(on_demand_scan()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_on_demand_scans_response() :: #{binary() => any()}.
+
 %% Example:
 %% list_tags_for_resource_request() :: #{}
 -type list_tags_for_resource_request() :: #{}.
@@ -2722,6 +2815,31 @@
 %%   <<"totals">> => list(usage_total())
 %% }
 -type list_usage_totals_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% machine_image_details() :: #{
+%%   <<"architecture">> => string(),
+%%   <<"creationDate">> => non_neg_integer(),
+%%   <<"isPublic">> => [boolean()],
+%%   <<"machineImageId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"ownerAccountId">> => string(),
+%%   <<"platform">> => string(),
+%%   <<"rootDeviceType">> => string(),
+%%   <<"sourceResourceId">> => string(),
+%%   <<"state">> => string(),
+%%   <<"virtualizationType">> => string()
+%% }
+-type machine_image_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% machine_image_metadata() :: #{
+%%   <<"platform">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type machine_image_metadata() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2790,6 +2908,19 @@
 %%   <<"upperInclusive">> => [float()]
 %% }
 -type number_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% on_demand_scan() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"scanId">> => string(),
+%%   <<"scanStatus">> => list(any()),
+%%   <<"scanStatusReason">> => list(any()),
+%%   <<"startedAt">> => [non_neg_integer()]
+%% }
+-type on_demand_scan() :: #{binary() => any()}.
 
 %% Example:
 %% one_time_schedule() :: #{}
@@ -2981,6 +3112,7 @@
 %%   <<"awsLambdaFunction">> => aws_lambda_function_details(),
 %%   <<"codeRepository">> => code_repository_details(),
 %%   <<"image">> => image(),
+%%   <<"machineImage">> => machine_image_details(),
 %%   <<"serverlessFunction">> => serverless_function(),
 %%   <<"vm">> => vm()
 %% }
@@ -3038,6 +3170,7 @@
 %%   <<"ecrImage">> => ecr_container_image_metadata(),
 %%   <<"ecrRepository">> => ecr_repository_metadata(),
 %%   <<"lambdaFunction">> => lambda_function_metadata(),
+%%   <<"machineImage">> => machine_image_metadata(),
 %%   <<"serverlessFunction">> => serverless_function_metadata(),
 %%   <<"vmInstance">> => vm_instance_metadata()
 %% }
@@ -3046,6 +3179,7 @@
 
 %% Example:
 %% resource_state() :: #{
+%%   <<"ami">> => state(),
 %%   <<"codeRepository">> => state(),
 %%   <<"ec2">> => state(),
 %%   <<"ecr">> => state(),
@@ -3057,6 +3191,7 @@
 
 %% Example:
 %% resource_status() :: #{
+%%   <<"ami">> => string(),
 %%   <<"codeRepository">> => string(),
 %%   <<"ec2">> => string(),
 %%   <<"ecr">> => string(),
@@ -3284,6 +3419,22 @@
 
 
 %% Example:
+%% start_on_demand_scan_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"resourceId">> := string(),
+%%   <<"resourceType">> := list(any())
+%% }
+-type start_on_demand_scan_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_on_demand_scan_response() :: #{
+%%   <<"scanId">> => string()
+%% }
+-type start_on_demand_scan_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% state() :: #{
 %%   <<"errorCode">> => string(),
 %%   <<"errorMessage">> => string(),
@@ -3501,6 +3652,7 @@
 
 %% Example:
 %% update_configuration_inheritance() :: #{
+%%   <<"amiConfiguration">> => string(),
 %%   <<"ec2Configuration">> => string(),
 %%   <<"ecrConfiguration">> => string()
 %% }
@@ -3510,6 +3662,7 @@
 %% Example:
 %% update_configuration_request() :: #{
 %%   <<"accountId">> => string(),
+%%   <<"amiConfiguration">> => ami_configuration(),
 %%   <<"ec2Configuration">> => ec2_configuration(),
 %%   <<"ecrConfiguration">> => ecr_configuration(),
 %%   <<"updateConfigurationInheritance">> => update_configuration_inheritance()
@@ -4083,6 +4236,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_on_demand_scan_status_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_sbom_export_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -4190,6 +4350,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_on_demand_scans_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -4244,6 +4410,13 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type start_on_demand_scan_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type stop_cis_session_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -4291,6 +4464,7 @@
     validation_exception() | 
     throttling_exception() | 
     internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type update_connector_errors() ::
@@ -4348,14 +4522,11 @@
 %% @doc Associates an Amazon Web Services account with an Amazon Inspector
 %% delegated administrator.
 %%
-%% An HTTP 200 response
-%% indicates the association was successfully started, but doesn’t indicate
-%% whether it was
-%% completed. You can check if the association completed by using
-%% ListMembers:
+%% An HTTP 200 response indicates the association was successfully started,
+%% but doesn’t indicate whether it was completed. You can check if the
+%% association completed by using ListMembers:
 %% https://docs.aws.amazon.com/inspector/v2/APIReference/API_ListMembers.html
-%% for multiple
-%% accounts or GetMembers:
+%% for multiple accounts or GetMembers:
 %% https://docs.aws.amazon.com/inspector/v2/APIReference/API_GetMember.html
 %% for a single account.
 -spec associate_member(aws_client:aws_client(), associate_member_request()) ->
@@ -4392,8 +4563,7 @@ associate_member(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Associates multiple code repositories with an Amazon Inspector code
-%% security scan
-%% configuration.
+%% security scan configuration.
 -spec batch_associate_code_security_scan_configuration(aws_client:aws_client(), batch_associate_code_security_scan_configuration_request()) ->
     {ok, batch_associate_code_security_scan_configuration_response(), tuple()} |
     {error, any()} |
@@ -4428,8 +4598,7 @@ batch_associate_code_security_scan_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Disassociates multiple code repositories from an Amazon Inspector
-%% code security scan
-%% configuration.
+%% code security scan configuration.
 -spec batch_disassociate_code_security_scan_configuration(aws_client:aws_client(), batch_disassociate_code_security_scan_configuration_request()) ->
     {ok, batch_disassociate_code_security_scan_configuration_response(), tuple()} |
     {error, any()} |
@@ -4499,8 +4668,7 @@ batch_get_account_status(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves code snippets from findings that Amazon Inspector detected
-%% code vulnerabilities
-%% in.
+%% code vulnerabilities in.
 -spec batch_get_code_snippet(aws_client:aws_client(), batch_get_code_snippet_request()) ->
     {ok, batch_get_code_snippet_response(), tuple()} |
     {error, any()} |
@@ -4603,12 +4771,10 @@ batch_get_free_trial_info(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves Amazon Inspector deep inspection activation status of
-%% multiple member accounts within
-%% your organization.
+%% multiple member accounts within your organization.
 %%
 %% You must be the delegated administrator of an organization in Amazon
-%% Inspector to
-%% use this API.
+%% Inspector to use this API.
 -spec batch_get_member_ec2_deep_inspection_status(aws_client:aws_client(), batch_get_member_ec2_deep_inspection_status_request()) ->
     {ok, batch_get_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
@@ -4643,12 +4809,10 @@ batch_get_member_ec2_deep_inspection_status(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Activates or deactivates Amazon Inspector deep inspection for the
-%% provided member accounts in your
-%% organization.
+%% provided member accounts in your organization.
 %%
 %% You must be the delegated administrator of an organization in Amazon
-%% Inspector to use
-%% this API.
+%% Inspector to use this API.
 -spec batch_update_member_ec2_deep_inspection_status(aws_client:aws_client(), batch_update_member_ec2_deep_inspection_status_request()) ->
     {ok, batch_update_member_ec2_deep_inspection_status_response(), tuple()} |
     {error, any()} |
@@ -4788,10 +4952,9 @@ create_cis_scan_configuration(Client, Input0, Options0) ->
 %% provider.
 %%
 %% After calling the `CreateCodeSecurityIntegration' operation, you
-%% complete
-%% authentication and authorization with your provider. Next you call the
-%% `UpdateCodeSecurityIntegration' operation to provide the `details'
-%% to complete the integration setup
+%% complete authentication and authorization with your provider. Next you
+%% call the `UpdateCodeSecurityIntegration' operation to provide the
+%% `details' to complete the integration setup
 -spec create_code_security_integration(aws_client:aws_client(), create_code_security_integration_request()) ->
     {ok, create_code_security_integration_response(), tuple()} |
     {error, any()} |
@@ -4896,8 +5059,8 @@ create_connector(Client, Input0, Options0) ->
 
 %% @doc Creates a filter resource using specified filter criteria.
 %%
-%% When the filter action is set
-%% to `SUPPRESS' this action creates a suppression rule.
+%% When the filter action is set to `SUPPRESS' this action creates a
+%% suppression rule.
 -spec create_filter(aws_client:aws_client(), create_filter_request()) ->
     {ok, create_filter_response(), tuple()} |
     {error, any()} |
@@ -4933,10 +5096,9 @@ create_filter(Client, Input0, Options0) ->
 
 %% @doc Creates a finding report.
 %%
-%% By default only `ACTIVE' findings are returned in
-%% the report. To see `SUPRESSED' or `CLOSED' findings you must
-%% specify
-%% a value for the `findingStatus' filter criteria.
+%% By default only `ACTIVE' findings are returned in the report. To see
+%% `SUPRESSED' or `CLOSED' findings you must specify a value for the
+%% `findingStatus' filter criteria.
 -spec create_findings_report(aws_client:aws_client(), create_findings_report_request()) ->
     {ok, create_findings_report_response(), tuple()} |
     {error, any()} |
@@ -5212,8 +5374,8 @@ describe_organization_configuration(Client, Input0, Options0) ->
 %% @doc Disables Amazon Inspector scans for one or more Amazon Web Services
 %% accounts.
 %%
-%% Disabling all scan types in an
-%% account disables the Amazon Inspector service.
+%% Disabling all scan types in an account disables the Amazon Inspector
+%% service.
 -spec disable(aws_client:aws_client(), disable_request()) ->
     {ok, disable_response(), tuple()} |
     {error, any()} |
@@ -5593,13 +5755,10 @@ get_code_security_scan_configuration(Client, Input0, Options0) ->
 
 %% @doc Retrieves setting configurations for Amazon Inspector scans.
 %%
-%% If you specify an
-%% `accountId', this operation returns the scan configuration for that
-%% member
-%% account. You must be the delegated administrator for the specified member
-%% account.
-%% If you do not specify an `accountId', this operation returns your own
-%% scan configuration.
+%% If you specify an `accountId', this operation returns the scan
+%% configuration for that member account. You must be the delegated
+%% administrator for the specified member account. If you do not specify an
+%% `accountId', this operation returns your own scan configuration.
 -spec get_configuration(aws_client:aws_client(), get_configuration_request()) ->
     {ok, get_configuration_response(), tuple()} |
     {error, any()} |
@@ -5634,8 +5793,7 @@ get_configuration(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves information about the Amazon Inspector delegated
-%% administrator for your
-%% organization.
+%% administrator for your organization.
 -spec get_delegated_admin_account(aws_client:aws_client(), get_delegated_admin_account_request()) ->
     {ok, get_delegated_admin_account_response(), tuple()} |
     {error, any()} |
@@ -5670,8 +5828,7 @@ get_delegated_admin_account(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the activation status of Amazon Inspector deep inspection
-%% and custom paths associated
-%% with your account.
+%% and custom paths associated with your account.
 -spec get_ec2_deep_inspection_configuration(aws_client:aws_client(), get_ec2_deep_inspection_configuration_request()) ->
     {ok, get_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |
@@ -5815,6 +5972,40 @@ get_member(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves the status of a specific on-demand scan for a resource.
+-spec get_on_demand_scan_status(aws_client:aws_client(), get_on_demand_scan_status_request()) ->
+    {ok, get_on_demand_scan_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_on_demand_scan_status_errors(), tuple()}.
+get_on_demand_scan_status(Client, Input) ->
+    get_on_demand_scan_status(Client, Input, []).
+
+-spec get_on_demand_scan_status(aws_client:aws_client(), get_on_demand_scan_status_request(), proplists:proplist()) ->
+    {ok, get_on_demand_scan_status_response(), tuple()} |
+    {error, any()} |
+    {error, get_on_demand_scan_status_errors(), tuple()}.
+get_on_demand_scan_status(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ondemand/scan/status"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets details of a software bill of materials (SBOM) report.
 -spec get_sbom_export(aws_client:aws_client(), get_sbom_export_request()) ->
     {ok, get_sbom_export_response(), tuple()} |
@@ -5849,8 +6040,7 @@ get_sbom_export(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists the permissions an account has to configure Amazon Inspector.
+%% @doc Lists the permissions an account has to configure Amazon Inspector.
 %%
 %% If the account is a member account or standalone account with resources
 %% managed by an Organizations policy, the operation returns fewer
@@ -6061,8 +6251,7 @@ list_code_security_integrations(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists the associations between code repositories and Amazon Inspector
-%% code security scan
-%% configurations.
+%% code security scan configurations.
 -spec list_code_security_scan_configuration_associations(aws_client:aws_client(), list_code_security_scan_configuration_associations_request()) ->
     {ok, list_code_security_scan_configuration_associations_response(), tuple()} |
     {error, any()} |
@@ -6415,8 +6604,7 @@ list_findings(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc List members associated with the Amazon Inspector delegated
-%% administrator for your
-%% organization.
+%% administrator for your organization.
 -spec list_members(aws_client:aws_client(), list_members_request()) ->
     {ok, list_members_response(), tuple()} |
     {error, any()} |
@@ -6431,6 +6619,40 @@ list_members(Client, Input) ->
 list_members(Client, Input0, Options0) ->
     Method = post,
     Path = ["/members/list"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the on-demand scans for a resource.
+-spec list_on_demand_scans(aws_client:aws_client(), list_on_demand_scans_request()) ->
+    {ok, list_on_demand_scans_response(), tuple()} |
+    {error, any()} |
+    {error, list_on_demand_scans_errors(), tuple()}.
+list_on_demand_scans(Client, Input) ->
+    list_on_demand_scans(Client, Input, []).
+
+-spec list_on_demand_scans(aws_client:aws_client(), list_on_demand_scans_request(), proplists:proplist()) ->
+    {ok, list_on_demand_scans_response(), tuple()} |
+    {error, any()} |
+    {error, list_on_demand_scans_errors(), tuple()}.
+list_on_demand_scans(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ondemand/scans"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6523,8 +6745,8 @@ list_usage_totals(Client, Input0, Options0) ->
 
 %% @doc Resets an encryption key.
 %%
-%% After the key is reset your resources will be encrypted by an
-%% Amazon Web Services owned key.
+%% After the key is reset your resources will be encrypted by an Amazon Web
+%% Services owned key.
 -spec reset_encryption_key(aws_client:aws_client(), reset_encryption_key_request()) ->
     {ok, reset_encryption_key_response(), tuple()} |
     {error, any()} |
@@ -6594,11 +6816,9 @@ search_vulnerabilities(Client, Input0, Options0) ->
 
 %% @doc Sends a CIS session health.
 %%
-%% This API is used by the Amazon Inspector SSM plugin to
-%% communicate with the Amazon Inspector service. The Amazon Inspector SSM
-%% plugin calls
-%% this API to start a CIS scan session for the scan ID supplied by the
-%% service.
+%% This API is used by the Amazon Inspector SSM plugin to communicate with
+%% the Amazon Inspector service. The Amazon Inspector SSM plugin calls this
+%% API to start a CIS scan session for the scan ID supplied by the service.
 -spec send_cis_session_health(aws_client:aws_client(), send_cis_session_health_request()) ->
     {ok, send_cis_session_health_response(), tuple()} |
     {error, any()} |
@@ -6634,11 +6854,9 @@ send_cis_session_health(Client, Input0, Options0) ->
 
 %% @doc Sends a CIS session telemetry.
 %%
-%% This API is used by the Amazon Inspector SSM plugin to
-%% communicate with the Amazon Inspector service. The Amazon Inspector SSM
-%% plugin calls
-%% this API to start a CIS scan session for the scan ID supplied by the
-%% service.
+%% This API is used by the Amazon Inspector SSM plugin to communicate with
+%% the Amazon Inspector service. The Amazon Inspector SSM plugin calls this
+%% API to start a CIS scan session for the scan ID supplied by the service.
 -spec send_cis_session_telemetry(aws_client:aws_client(), send_cis_session_telemetry_request()) ->
     {ok, send_cis_session_telemetry_response(), tuple()} |
     {error, any()} |
@@ -6674,11 +6892,9 @@ send_cis_session_telemetry(Client, Input0, Options0) ->
 
 %% @doc Starts a CIS session.
 %%
-%% This API is used by the Amazon Inspector SSM plugin to
-%% communicate with the Amazon Inspector service. The Amazon Inspector SSM
-%% plugin calls
-%% this API to start a CIS scan session for the scan ID supplied by the
-%% service.
+%% This API is used by the Amazon Inspector SSM plugin to communicate with
+%% the Amazon Inspector service. The Amazon Inspector SSM plugin calls this
+%% API to start a CIS scan session for the scan ID supplied by the service.
 -spec start_cis_session(aws_client:aws_client(), start_cis_session_request()) ->
     {ok, start_cis_session_response(), tuple()} |
     {error, any()} |
@@ -6746,13 +6962,46 @@ start_code_security_scan(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts an on-demand scan of the specified resource, such as an Amazon
+%% Machine Image (AMI).
+-spec start_on_demand_scan(aws_client:aws_client(), start_on_demand_scan_request()) ->
+    {ok, start_on_demand_scan_response(), tuple()} |
+    {error, any()} |
+    {error, start_on_demand_scan_errors(), tuple()}.
+start_on_demand_scan(Client, Input) ->
+    start_on_demand_scan(Client, Input, []).
+
+-spec start_on_demand_scan(aws_client:aws_client(), start_on_demand_scan_request(), proplists:proplist()) ->
+    {ok, start_on_demand_scan_response(), tuple()} |
+    {error, any()} |
+    {error, start_on_demand_scan_errors(), tuple()}.
+start_on_demand_scan(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ondemand/scan"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Stops a CIS session.
 %%
-%% This API is used by the Amazon Inspector SSM plugin to
-%% communicate with the Amazon Inspector service. The Amazon Inspector SSM
-%% plugin calls
-%% this API to stop a CIS scan session for the scan ID supplied by the
-%% service.
+%% This API is used by the Amazon Inspector SSM plugin to communicate with
+%% the Amazon Inspector service. The Amazon Inspector SSM plugin calls this
+%% API to stop a CIS scan session for the scan ID supplied by the service.
 -spec stop_cis_session(aws_client:aws_client(), stop_cis_session_request()) ->
     {ok, stop_cis_session_response(), tuple()} |
     {error, any()} |
@@ -6892,10 +7141,9 @@ update_cis_scan_configuration(Client, Input0, Options0) ->
 %% @doc Updates an existing code security integration.
 %%
 %% After calling the `CreateCodeSecurityIntegration' operation, you
-%% complete
-%% authentication and authorization with your provider. Next you call the
-%% `UpdateCodeSecurityIntegration' operation to provide the `details'
-%% to complete the integration setup
+%% complete authentication and authorization with your provider. Next you
+%% call the `UpdateCodeSecurityIntegration' operation to provide the
+%% `details' to complete the integration setup
 -spec update_code_security_integration(aws_client:aws_client(), update_code_security_integration_request()) ->
     {ok, update_code_security_integration_response(), tuple()} |
     {error, any()} |
@@ -6965,16 +7213,12 @@ update_code_security_scan_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates the scan configuration for your Amazon Inspector account.
 %%
-%% If you don't specify an
-%% `accountId', this operation updates the delegated administrator's
-%% configuration
-%% and propagates it to member accounts that have not been individually
-%% configured. If you
-%% specify an `accountId', this operation updates that member
-%% account's
+%% If you don't specify an `accountId', this operation updates the
+%% delegated administrator's configuration and propagates it to member
+%% accounts that have not been individually configured. If you specify an
+%% `accountId', this operation updates that member account's
 %% configuration. Only the delegated administrator can specify an
-%% `accountId';
-%% member accounts cannot call this operation.
+%% `accountId'; member accounts cannot call this operation.
 -spec update_configuration(aws_client:aws_client(), update_configuration_request()) ->
     {ok, update_configuration_response(), tuple()} |
     {error, any()} |
@@ -7115,8 +7359,8 @@ update_ec2_deep_inspection_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates an encryption key.
 %%
-%% A `ResourceNotFoundException' means that an
-%% Amazon Web Services owned key is being used for encryption.
+%% A `ResourceNotFoundException' means that an Amazon Web Services owned
+%% key is being used for encryption.
 -spec update_encryption_key(aws_client:aws_client(), update_encryption_key_request()) ->
     {ok, update_encryption_key_response(), tuple()} |
     {error, any()} |
@@ -7188,8 +7432,7 @@ update_filter(Client, Input0, Options0) ->
 %% @doc Updates the Amazon Inspector deep inspection custom paths for your
 %% organization.
 %%
-%% You must be an
-%% Amazon Inspector delegated administrator to use this API.
+%% You must be an Amazon Inspector delegated administrator to use this API.
 -spec update_org_ec2_deep_inspection_configuration(aws_client:aws_client(), update_org_ec2_deep_inspection_configuration_request()) ->
     {ok, update_org_ec2_deep_inspection_configuration_response(), tuple()} |
     {error, any()} |

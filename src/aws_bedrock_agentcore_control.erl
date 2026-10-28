@@ -330,6 +330,8 @@
          list_workload_identities/3,
          put_resource_policy/3,
          put_resource_policy/4,
+         reset_token_vault_key_material/2,
+         reset_token_vault_key_material/3,
          rotate_payment_connector_credentials/4,
          rotate_payment_connector_credentials/5,
          set_token_vault_cm_k/2,
@@ -5030,8 +5032,16 @@
 
 
 %% Example:
+%% on_behalf_of_authentication_config() :: #{
+%%   <<"clientAuthenticationMethod">> => list(any())
+%% }
+-type on_behalf_of_authentication_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% on_behalf_of_token_exchange_config_type() :: #{
 %%   <<"grantType">> => list(any()),
+%%   <<"onBehalfOfAuthenticationConfig">> => on_behalf_of_authentication_config(),
 %%   <<"tokenExchangeGrantTypeConfig">> => token_exchange_grant_type_config_type()
 %% }
 -type on_behalf_of_token_exchange_config_type() :: #{binary() => any()}.
@@ -5378,6 +5388,22 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type registry_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_token_vault_key_material_request() :: #{
+%%   <<"tokenVaultId">> := string()
+%% }
+-type reset_token_vault_key_material_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% reset_token_vault_key_material_response() :: #{
+%%   <<"kmsConfiguration">> => kms_configuration(),
+%%   <<"lastModifiedDate">> => [non_neg_integer()],
+%%   <<"tokenVaultId">> => string()
+%% }
+-type reset_token_vault_key_material_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7323,6 +7349,7 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type delete_agent_runtime_errors() ::
@@ -8096,6 +8123,15 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type reset_token_vault_key_material_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type rotate_payment_connector_credentials_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -8110,6 +8146,7 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    conflict_exception() | 
     concurrent_modification_exception() | 
     access_denied_exception().
 
@@ -8397,6 +8434,7 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 %%====================================================================
@@ -13652,6 +13690,56 @@ put_resource_policy(Client, ResourceArn, Input0, Options0) ->
     Method = put,
     Path = ["/resourcepolicy/", aws_util:encode_uri(ResourceArn), ""],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Resets the key material for a token vault whose customer managed KMS
+%% key has been deleted, and re-encrypts the token vault with an Amazon Web
+%% Services managed key so that you can use the token vault again.
+%%
+%% This operation can't be undone. The reset permanently deletes the
+%% OAuth2 access tokens and refresh tokens stored in the token vault,
+%% including tokens obtained through all supported flows. After the reset,
+%% your agents must complete these flows again to get new tokens, and for
+%% user-delegated flows your users must authorize access again. The reset
+%% doesn't delete your credential providers or their configuration.
+%%
+%% You can reset a token vault only if its customer managed key has been
+%% deleted. If the key still exists, including when it's disabled or
+%% scheduled for deletion, this operation returns a
+%% `ValidationException'. To use the token vault again, enable the key or
+%% cancel its scheduled deletion in KMS. To switch to a different key, use
+%% `SetTokenVaultCMK'.
+-spec reset_token_vault_key_material(aws_client:aws_client(), reset_token_vault_key_material_request()) ->
+    {ok, reset_token_vault_key_material_response(), tuple()} |
+    {error, any()} |
+    {error, reset_token_vault_key_material_errors(), tuple()}.
+reset_token_vault_key_material(Client, Input) ->
+    reset_token_vault_key_material(Client, Input, []).
+
+-spec reset_token_vault_key_material(aws_client:aws_client(), reset_token_vault_key_material_request(), proplists:proplist()) ->
+    {ok, reset_token_vault_key_material_response(), tuple()} |
+    {error, any()} |
+    {error, reset_token_vault_key_material_errors(), tuple()}.
+reset_token_vault_key_material(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/identities/reset-token-vault-key-material"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

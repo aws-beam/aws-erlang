@@ -2863,6 +2863,12 @@
 -type instance_access_details() :: #{binary() => any()}.
 
 %% Example:
+%% instance_attribute_updates() :: #{
+%%   <<"bundleId">> => string()
+%% }
+-type instance_attribute_updates() :: #{binary() => any()}.
+
+%% Example:
 %% instance_entry() :: #{
 %%   <<"availabilityZone">> => string(),
 %%   <<"instanceType">> => string(),
@@ -3721,6 +3727,7 @@
 
 %% Example:
 %% start_instance_request() :: #{
+%%   <<"attributeUpdates">> => instance_attribute_updates(),
 %%   <<"instanceName">> := string()
 %% }
 -type start_instance_request() :: #{binary() => any()}.

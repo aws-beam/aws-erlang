@@ -456,6 +456,7 @@
 %%   <<"cpu">> => string(),
 %%   <<"exitCode">> => integer(),
 %%   <<"gpuIds">> => list(string()),
+%%   <<"gpuSharingStrategy">> => list(),
 %%   <<"healthStatus">> => list(any()),
 %%   <<"image">> => string(),
 %%   <<"imageDigest">> => string(),
@@ -544,6 +545,7 @@
 %%   <<"capacityProviderName">> => string(),
 %%   <<"containerInstanceArn">> => string(),
 %%   <<"ec2InstanceId">> => string(),
+%%   <<"gpuDevices">> => list(gpu_device()),
 %%   <<"healthStatus">> => container_instance_health_status(),
 %%   <<"pendingTasksCount">> => integer(),
 %%   <<"registeredAt">> => non_neg_integer(),
@@ -2040,6 +2042,16 @@
 -type get_task_protection_response() :: #{binary() => any()}.
 
 %% Example:
+%% gpu_device() :: #{
+%%   <<"containerCount">> => integer(),
+%%   <<"gpuId">> => string(),
+%%   <<"remainingMemoryInMiB">> => integer(),
+%%   <<"sharingMode">> => list(any()),
+%%   <<"totalMemoryInMiB">> => integer()
+%% }
+-type gpu_device() :: #{binary() => any()}.
+
+%% Example:
 %% health_check() :: #{
 %%   <<"command">> => list(string()),
 %%   <<"interval">> => integer(),
@@ -2802,6 +2814,13 @@
 -type no_update_available_exception() :: #{binary() => any()}.
 
 %% Example:
+%% nvidia_mps_allocation() :: #{
+%%   <<"maxComputePercent">> => integer(),
+%%   <<"memory">> => integer()
+%% }
+-type nvidia_mps_allocation() :: #{binary() => any()}.
+
+%% Example:
 %% placement_constraint() :: #{
 %%   <<"expression">> => string(),
 %%   <<"type">> => list(any())
@@ -3024,6 +3043,7 @@
 
 %% Example:
 %% resource_requirement() :: #{
+%%   <<"sharingStrategy">> => list(),
 %%   <<"type">> => list(any()),
 %%   <<"value">> => string()
 %% }
