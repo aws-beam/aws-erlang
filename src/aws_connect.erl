@@ -3246,6 +3246,7 @@
 %%   <<"ClientToken">> => string(),
 %%   <<"Constraints">> => task_template_constraints(),
 %%   <<"ContactFlowId">> => string(),
+%%   <<"ContactHooks">> => task_template_contact_hooks(),
 %%   <<"Defaults">> => task_template_defaults(),
 %%   <<"Description">> => string(),
 %%   <<"Fields">> := list(task_template_field()),
@@ -5960,6 +5961,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"Constraints">> => task_template_constraints(),
 %%   <<"ContactFlowId">> => string(),
+%%   <<"ContactHooks">> => task_template_contact_hooks(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Defaults">> => task_template_defaults(),
 %%   <<"Description">> => string(),
@@ -10914,6 +10916,13 @@
 
 
 %% Example:
+%% task_template_contact_hooks() :: #{
+%%   <<"WrapUpFlowId">> => string()
+%% }
+-type task_template_contact_hooks() :: #{binary() => any()}.
+
+
+%% Example:
 %% task_template_default_field_value() :: #{
 %%   <<"DefaultValue">> => string(),
 %%   <<"Id">> => task_template_field_identifier()
@@ -11831,6 +11840,7 @@
 %% update_task_template_request() :: #{
 %%   <<"Constraints">> => task_template_constraints(),
 %%   <<"ContactFlowId">> => string(),
+%%   <<"ContactHooks">> => task_template_contact_hooks(),
 %%   <<"Defaults">> => task_template_defaults(),
 %%   <<"Description">> => string(),
 %%   <<"Fields">> => list(task_template_field()),
@@ -11846,6 +11856,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"Constraints">> => task_template_constraints(),
 %%   <<"ContactFlowId">> => string(),
+%%   <<"ContactHooks">> => task_template_contact_hooks(),
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Defaults">> => task_template_defaults(),
 %%   <<"Description">> => string(),

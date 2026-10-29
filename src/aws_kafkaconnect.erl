@@ -341,6 +341,14 @@
 
 
 %% Example:
+%% custom_plugin_update() :: #{
+%%   <<"customPluginArn">> => string(),
+%%   <<"revision">> => float()
+%% }
+-type custom_plugin_update() :: #{binary() => any()}.
+
+
+%% Example:
 %% delete_connector_request() :: #{
 %%   <<"currentVersion">> => string()
 %% }
@@ -660,6 +668,13 @@
 
 
 %% Example:
+%% plugin_update() :: #{
+%%   <<"customPlugin">> => custom_plugin_update()
+%% }
+-type plugin_update() :: #{binary() => any()}.
+
+
+%% Example:
 %% provisioned_capacity() :: #{
 %%   <<"mcuCount">> => integer(),
 %%   <<"workerCount">> => integer()
@@ -844,7 +859,10 @@
 %%   <<"capacity">> => capacity_update(),
 %%   <<"connectorConfiguration">> => map(),
 %%   <<"currentVersion">> := string(),
-%%   <<"skipHealthValidation">> => boolean()
+%%   <<"plugins">> => list(plugin_update()),
+%%   <<"skipHealthValidation">> => boolean(),
+%%   <<"useDefaultWorkerConfiguration">> => boolean(),
+%%   <<"workerConfiguration">> => worker_configuration_update()
 %% }
 -type update_connector_request() :: #{binary() => any()}.
 
@@ -922,6 +940,14 @@
 
 
 %% Example:
+%% worker_configuration_update() :: #{
+%%   <<"revision">> => float(),
+%%   <<"workerConfigurationArn">> => string()
+%% }
+-type worker_configuration_update() :: #{binary() => any()}.
+
+
+%% Example:
 %% worker_log_delivery() :: #{
 %%   <<"cloudWatchLogs">> => cloud_watch_logs_log_delivery(),
 %%   <<"firehose">> => firehose_log_delivery(),
@@ -941,7 +967,10 @@
 
 %% Example:
 %% worker_setting() :: #{
-%%   <<"capacity">> => capacity_description()
+%%   <<"capacity">> => capacity_description(),
+%%   <<"plugins">> => list(plugin_description()),
+%%   <<"useDefaultWorkerConfiguration">> => boolean(),
+%%   <<"workerConfiguration">> => worker_configuration_description()
 %% }
 -type worker_setting() :: #{binary() => any()}.
 
@@ -1896,8 +1925,12 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 
 %% @doc Updates the specified connector.
 %%
-%% For request body, specify only one parameter: either `capacity' or
-%% `connectorConfiguration'.
+%% In the request body, you can update either the connector's worker
+%% setting or its connector configuration, but not both in the same request.
+%% To update the worker setting, specify one or more of `capacity',
+%% `plugins', `workerConfiguration', or
+%% `useDefaultWorkerConfiguration'. To update the connector
+%% configuration, specify only `connectorConfiguration'.
 -spec update_connector(aws_client:aws_client(), binary() | list(), update_connector_request()) ->
     {ok, update_connector_response(), tuple()} |
     {error, any()} |

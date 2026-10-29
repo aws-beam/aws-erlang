@@ -1172,6 +1172,8 @@
          get_capacity_manager_metric_dimensions/3,
          get_capacity_manager_monitored_tag_keys/2,
          get_capacity_manager_monitored_tag_keys/3,
+         get_capacity_manager_supportability_scores/2,
+         get_capacity_manager_supportability_scores/3,
          get_capacity_reservation_usage/2,
          get_capacity_reservation_usage/3,
          get_client_vpn_endpoint_authorization_policy/2,
@@ -3410,6 +3412,14 @@
 -type capacity_manager_monitored_tag_key() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_manager_supportability_score() :: #{
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"Score">> => list(any())
+%% }
+-type capacity_manager_supportability_score() :: #{binary() => any()}.
+
+%% Example:
 %% capacity_manager_tag_dimension() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -3510,11 +3520,14 @@
 %% Example:
 %% capacity_reservation_fleet() :: #{
 %%   <<"AllocationStrategy">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"CapacityReservationFleetArn">> => string(),
 %%   <<"CapacityReservationFleetId">> => string(),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"EndDate">> => non_neg_integer(),
 %%   <<"InstanceMatchCriteria">> => list(any()),
+%%   <<"InstanceRequirements">> => instance_requirements_request(),
 %%   <<"InstanceTypeSpecifications">> => list(fleet_capacity_reservation()),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => list(tag()),
@@ -4235,10 +4248,13 @@
 %% Example:
 %% create_capacity_reservation_fleet_request() :: #{
 %%   <<"AllocationStrategy">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EndDate">> => non_neg_integer(),
 %%   <<"InstanceMatchCriteria">> => list(any()),
+%%   <<"InstanceRequirements">> => instance_requirements_request(),
 %%   <<"InstanceTypeSpecifications">> => list(reservation_fleet_instance_specification()),
 %%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Tenancy">> => list(any()),
@@ -13236,6 +13252,25 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_capacity_manager_monitored_tag_keys_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_manager_supportability_scores_request() :: #{
+%%   <<"CapacityAmount">> := integer(),
+%%   <<"CapacityAvailabilityZoneIds">> := list(string()),
+%%   <<"CapacityUnit">> := list(any()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceRequirementsWithMetadata">> => instance_requirements_with_metadata_request(),
+%%   <<"InstanceTypes">> => list(string()),
+%%   <<"MarketType">> := list(any())
+%% }
+-type get_capacity_manager_supportability_scores_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_manager_supportability_scores_result() :: #{
+%%   <<"AggregateScore">> => list(any()),
+%%   <<"CapacityManagerSupportabilityScores">> => list(capacity_manager_supportability_score())
+%% }
+-type get_capacity_manager_supportability_scores_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_capacity_reservation_usage_request() :: #{
@@ -37923,6 +37958,37 @@ get_capacity_manager_monitored_tag_keys(Client, Input)
 get_capacity_manager_monitored_tag_keys(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCapacityManagerMonitoredTagKeys">>, Input, Options).
+
+%% @doc
+%% Scores how well each instance type and Availability Zone combination can
+%% support a capacity request, based on current Amazon EC2 capacity.
+%%
+%% The response includes a score for each combination and an aggregate score
+%% for all combinations in the request.
+%% This action doesn't launch or reserve instances, and a score
+%% doesn't guarantee that a later launch will succeed.
+%%
+%% Call this action in the Region where you turned on Capacity Manager. A
+%% single request can include Availability Zones in any Region.
+%% Real-time supportability checks are available only to Amazon Web Services
+%% Support customers on the Unified Operations plan.
+%%
+%% For more information, see Check supportability:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-manager-supportability.html
+%% in the Amazon EC2 User Guide.
+-spec get_capacity_manager_supportability_scores(aws_client:aws_client(), get_capacity_manager_supportability_scores_request()) ->
+    {ok, get_capacity_manager_supportability_scores_result(), tuple()} |
+    {error, any()}.
+get_capacity_manager_supportability_scores(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_capacity_manager_supportability_scores(Client, Input, []).
+
+-spec get_capacity_manager_supportability_scores(aws_client:aws_client(), get_capacity_manager_supportability_scores_request(), proplists:proplist()) ->
+    {ok, get_capacity_manager_supportability_scores_result(), tuple()} |
+    {error, any()}.
+get_capacity_manager_supportability_scores(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCapacityManagerSupportabilityScores">>, Input, Options).
 
 %% @doc Gets usage information about a Capacity Reservation.
 %%

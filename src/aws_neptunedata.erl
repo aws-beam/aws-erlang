@@ -14,6 +14,8 @@
 
 -export([cancel_gremlin_query/3,
          cancel_gremlin_query/4,
+         cancel_index_rebuild/3,
+         cancel_index_rebuild/4,
          cancel_loader_job/3,
          cancel_loader_job/4,
          cancel_ml_data_processing_job/3,
@@ -50,6 +52,9 @@
          get_gremlin_query_status/2,
          get_gremlin_query_status/4,
          get_gremlin_query_status/5,
+         get_index_rebuild_status/2,
+         get_index_rebuild_status/4,
+         get_index_rebuild_status/5,
          get_loader_job_status/2,
          get_loader_job_status/4,
          get_loader_job_status/5,
@@ -86,9 +91,15 @@
          get_sparql_stream/1,
          get_sparql_stream/3,
          get_sparql_stream/4,
+         get_storage_info/1,
+         get_storage_info/3,
+         get_storage_info/4,
          list_gremlin_queries/1,
          list_gremlin_queries/3,
          list_gremlin_queries/4,
+         list_index_rebuilds/1,
+         list_index_rebuilds/3,
+         list_index_rebuilds/4,
          list_loader_jobs/1,
          list_loader_jobs/3,
          list_loader_jobs/4,
@@ -111,6 +122,8 @@
          manage_propertygraph_statistics/3,
          manage_sparql_statistics/2,
          manage_sparql_statistics/3,
+         start_index_rebuild/2,
+         start_index_rebuild/3,
          start_loader_job/2,
          start_loader_job/3,
          start_ml_data_processing_job/2,
@@ -160,6 +173,19 @@
 %%   <<"status">> => [string()]
 %% }
 -type cancel_gremlin_query_output() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_index_rebuild_input() :: #{}
+-type cancel_index_rebuild_input() :: #{}.
+
+
+%% Example:
+%% cancel_index_rebuild_output() :: #{
+%%   <<"concurrency">> => integer(),
+%%   <<"status">> => list(any()),
+%%   <<"writeBufferSize">> => list(any())
+%% }
+-type cancel_index_rebuild_output() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_loader_job_input() :: #{}
@@ -231,6 +257,15 @@
 %%   <<"status">> => [string()]
 %% }
 -type cancel_open_cypher_query_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% cancelled_by_maintenance_exception() :: #{
+%%   <<"code">> => [string()],
+%%   <<"detailedMessage">> => [string()],
+%%   <<"requestId">> => [string()]
+%% }
+-type cancelled_by_maintenance_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -349,6 +384,14 @@
 %%   <<"statisticsId">> => [string()]
 %% }
 -type delete_statistics_value_map() :: #{binary() => any()}.
+
+
+%% Example:
+%% dictionaries_info() :: #{
+%%   <<"blobs">> => storage_metrics(),
+%%   <<"total">> => storage_metrics()
+%% }
+-type dictionaries_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -511,6 +554,25 @@
 %%   <<"queryString">> => [string()]
 %% }
 -type get_gremlin_query_status_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_index_rebuild_status_input() :: #{}
+-type get_index_rebuild_status_input() :: #{}.
+
+
+%% Example:
+%% get_index_rebuild_status_output() :: #{
+%%   <<"concurrency">> => integer(),
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"estimatedEndTime">> => [non_neg_integer()],
+%%   <<"failureReason">> => [string()],
+%%   <<"progressPercentage">> => [integer()],
+%%   <<"scope">> => list(any()),
+%%   <<"startTime">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"writeBufferSize">> => list(any())
+%% }
+-type get_index_rebuild_status_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -705,6 +767,20 @@
 
 
 %% Example:
+%% get_storage_output() :: #{
+%%   <<"dfeStatistics">> => storage_metrics(),
+%%   <<"dictionaries">> => dictionaries_info(),
+%%   <<"internals">> => storage_metrics(),
+%%   <<"quads">> => quads_indexes_info(),
+%%   <<"schema">> => storage_metrics(),
+%%   <<"streams">> => storage_metrics(),
+%%   <<"totalStorageBytesUsed">> => [float()],
+%%   <<"undoLogs">> => undo_logs_metrics()
+%% }
+-type get_storage_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% gremlin_query_status() :: #{
 %%   <<"queryEvalStats">> => query_eval_stats(),
 %%   <<"queryId">> => [string()],
@@ -781,6 +857,13 @@
 %%   <<"runningQueryCount">> => [integer()]
 %% }
 -type list_gremlin_queries_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_index_rebuilds_output() :: #{
+%%   <<"rebuildIds">> => list([string()]())
+%% }
+-type list_index_rebuilds_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1066,6 +1149,25 @@
 
 
 %% Example:
+%% quads_indexes_info() :: #{
+%%   <<"PG">> => quads_info(),
+%%   <<"RDF">> => quads_info()
+%% }
+-type quads_indexes_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% quads_info() :: #{
+%%   <<"GPSO">> => storage_metrics(),
+%%   <<"OSGP">> => storage_metrics(),
+%%   <<"POGS">> => storage_metrics(),
+%%   <<"PZSOG">> => storage_metrics(),
+%%   <<"SPOG">> => storage_metrics()
+%% }
+-type quads_info() :: #{binary() => any()}.
+
+
+%% Example:
 %% query_eval_stats() :: #{
 %%   <<"cancelled">> => [boolean()],
 %%   <<"elapsed">> => [integer()],
@@ -1148,6 +1250,15 @@
 
 
 %% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"code">> => [string()],
+%%   <<"detailedMessage">> => [string()],
+%%   <<"requestId">> => [string()]
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_exception() :: #{
 %%   <<"code">> => [string()],
 %%   <<"detailedMessage">> => [string()],
@@ -1181,6 +1292,27 @@
 %%   <<"op">> => [string()]
 %% }
 -type sparql_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_index_rebuild_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"concurrency">> => integer(),
+%%   <<"scope">> => list(any()),
+%%   <<"writeBufferSize">> => list(any())
+%% }
+-type start_index_rebuild_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_index_rebuild_output() :: #{
+%%   <<"concurrency">> => integer(),
+%%   <<"rebuildId">> => [string()],
+%%   <<"scope">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"writeBufferSize">> => list(any())
+%% }
+-type start_index_rebuild_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1333,6 +1465,14 @@
 
 
 %% Example:
+%% storage_metrics() :: #{
+%%   <<"count">> => [float()],
+%%   <<"sizeInBytes">> => [float()]
+%% }
+-type storage_metrics() :: #{binary() => any()}.
+
+
+%% Example:
 %% stream_records_not_found_exception() :: #{
 %%   <<"code">> => [string()],
 %%   <<"detailedMessage">> => [string()],
@@ -1377,12 +1517,29 @@
 
 
 %% Example:
+%% undo_logs_metrics() :: #{
+%%   <<"listSize">> => [float()],
+%%   <<"sizeInBytes">> => [float()]
+%% }
+-type undo_logs_metrics() :: #{binary() => any()}.
+
+
+%% Example:
 %% unsupported_operation_exception() :: #{
 %%   <<"code">> => [string()],
 %%   <<"detailedMessage">> => [string()],
 %%   <<"requestId">> => [string()]
 %% }
 -type unsupported_operation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception() :: #{
+%%   <<"code">> => [string()],
+%%   <<"detailedMessage">> => [string()],
+%%   <<"requestId">> => [string()]
+%% }
+-type validation_exception() :: #{binary() => any()}.
 
 -type cancel_gremlin_query_errors() ::
     unsupported_operation_exception() | 
@@ -1399,6 +1556,24 @@
     concurrent_modification_exception() | 
     client_timeout_exception() | 
     bad_request_exception().
+
+-type cancel_index_rebuild_errors() ::
+    validation_exception() | 
+    unsupported_operation_exception() | 
+    too_many_requests_exception() | 
+    server_shutdown_exception() | 
+    read_only_violation_exception() | 
+    preconditions_failed_exception() | 
+    method_not_allowed_exception() | 
+    invalid_parameter_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    illegal_argument_exception() | 
+    constraint_violation_exception() | 
+    client_timeout_exception() | 
+    cancelled_by_user_exception() | 
+    cancelled_by_maintenance_exception() | 
+    access_denied_exception().
 
 -type cancel_loader_job_errors() ::
     unsupported_operation_exception() | 
@@ -1562,6 +1737,7 @@
     concurrent_modification_exception() | 
     client_timeout_exception() | 
     cancelled_by_user_exception() | 
+    cancelled_by_maintenance_exception() | 
     bad_request_exception().
 
 -type execute_gremlin_profile_query_errors() ::
@@ -1584,6 +1760,7 @@
     concurrent_modification_exception() | 
     client_timeout_exception() | 
     cancelled_by_user_exception() | 
+    cancelled_by_maintenance_exception() | 
     bad_request_exception().
 
 -type execute_gremlin_query_errors() ::
@@ -1606,6 +1783,7 @@
     concurrent_modification_exception() | 
     client_timeout_exception() | 
     cancelled_by_user_exception() | 
+    cancelled_by_maintenance_exception() | 
     bad_request_exception().
 
 -type execute_open_cypher_explain_query_errors() ::
@@ -1629,6 +1807,7 @@
     concurrent_modification_exception() | 
     client_timeout_exception() | 
     cancelled_by_user_exception() | 
+    cancelled_by_maintenance_exception() | 
     bad_request_exception().
 
 -type execute_open_cypher_query_errors() ::
@@ -1652,6 +1831,7 @@
     concurrent_modification_exception() | 
     client_timeout_exception() | 
     cancelled_by_user_exception() | 
+    cancelled_by_maintenance_exception() | 
     bad_request_exception().
 
 -type get_engine_status_errors() ::
@@ -1680,6 +1860,20 @@
     concurrent_modification_exception() | 
     client_timeout_exception() | 
     bad_request_exception() | 
+    access_denied_exception().
+
+-type get_index_rebuild_status_errors() ::
+    validation_exception() | 
+    unsupported_operation_exception() | 
+    too_many_requests_exception() | 
+    preconditions_failed_exception() | 
+    method_not_allowed_exception() | 
+    invalid_parameter_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    illegal_argument_exception() | 
+    constraint_violation_exception() | 
+    client_timeout_exception() | 
     access_denied_exception().
 
 -type get_loader_job_status_errors() ::
@@ -1856,6 +2050,20 @@
     constraint_violation_exception() | 
     client_timeout_exception().
 
+-type get_storage_info_errors() ::
+    unsupported_operation_exception() | 
+    too_many_requests_exception() | 
+    server_shutdown_exception() | 
+    preconditions_failed_exception() | 
+    method_not_allowed_exception() | 
+    invalid_parameter_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    illegal_argument_exception() | 
+    constraint_violation_exception() | 
+    client_timeout_exception() | 
+    access_denied_exception().
+
 -type list_gremlin_queries_errors() ::
     unsupported_operation_exception() | 
     too_many_requests_exception() | 
@@ -1872,6 +2080,19 @@
     concurrent_modification_exception() | 
     client_timeout_exception() | 
     bad_request_exception() | 
+    access_denied_exception().
+
+-type list_index_rebuilds_errors() ::
+    unsupported_operation_exception() | 
+    too_many_requests_exception() | 
+    preconditions_failed_exception() | 
+    method_not_allowed_exception() | 
+    invalid_parameter_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    illegal_argument_exception() | 
+    constraint_violation_exception() | 
+    client_timeout_exception() | 
     access_denied_exception().
 
 -type list_loader_jobs_errors() ::
@@ -1989,6 +2210,24 @@
     bad_request_exception() | 
     access_denied_exception().
 
+-type start_index_rebuild_errors() ::
+    unsupported_operation_exception() | 
+    too_many_requests_exception() | 
+    server_shutdown_exception() | 
+    resource_not_found_exception() | 
+    read_only_violation_exception() | 
+    preconditions_failed_exception() | 
+    method_not_allowed_exception() | 
+    memory_limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    illegal_argument_exception() | 
+    constraint_violation_exception() | 
+    concurrent_modification_exception() | 
+    client_timeout_exception() | 
+    access_denied_exception().
+
 -type start_loader_job_errors() ::
     unsupported_operation_exception() | 
     too_many_requests_exception() | 
@@ -2073,6 +2312,46 @@ cancel_gremlin_query(Client, QueryId, Input) ->
 cancel_gremlin_query(Client, QueryId, Input0, Options0) ->
     Method = delete,
     Path = ["/gremlin/status/", aws_util:encode_uri(QueryId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Cancels an in-progress index rebuild operation.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:CancelIndexRebuild:
+%% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#cancelindexrebuild
+%% IAM action in that cluster.
+-spec cancel_index_rebuild(aws_client:aws_client(), binary() | list(), cancel_index_rebuild_input()) ->
+    {ok, cancel_index_rebuild_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_index_rebuild_errors(), tuple()}.
+cancel_index_rebuild(Client, RebuildId, Input) ->
+    cancel_index_rebuild(Client, RebuildId, Input, []).
+
+-spec cancel_index_rebuild(aws_client:aws_client(), binary() | list(), cancel_index_rebuild_input(), proplists:proplist()) ->
+    {ok, cancel_index_rebuild_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_index_rebuild_errors(), tuple()}.
+cancel_index_rebuild(Client, RebuildId, Input0, Options0) ->
+    Method = post,
+    Path = ["/storage/indexes/rebuilds/", aws_util:encode_uri(RebuildId), "/cancel"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2932,6 +3211,49 @@ get_gremlin_query_status(Client, QueryId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the status of an index rebuild operation.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetIndexRebuildStatus:
+%% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getindexrebuildstatus
+%% IAM action in that cluster.
+-spec get_index_rebuild_status(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_index_rebuild_status_output(), tuple()} |
+    {error, any()} |
+    {error, get_index_rebuild_status_errors(), tuple()}.
+get_index_rebuild_status(Client, RebuildId)
+  when is_map(Client) ->
+    get_index_rebuild_status(Client, RebuildId, #{}, #{}).
+
+-spec get_index_rebuild_status(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_index_rebuild_status_output(), tuple()} |
+    {error, any()} |
+    {error, get_index_rebuild_status_errors(), tuple()}.
+get_index_rebuild_status(Client, RebuildId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_index_rebuild_status(Client, RebuildId, QueryMap, HeadersMap, []).
+
+-spec get_index_rebuild_status(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_index_rebuild_status_output(), tuple()} |
+    {error, any()} |
+    {error, get_index_rebuild_status_errors(), tuple()}.
+get_index_rebuild_status(Client, RebuildId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/storage/indexes/rebuilds/", aws_util:encode_uri(RebuildId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets status information about a specified load job.
 %%
 %% Neptune keeps track of the most recent 1,024 bulk load jobs, and stores
@@ -3572,6 +3894,70 @@ get_sparql_stream(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves storage information for the Neptune database instance,
+%% including approximate total storage used and per-category size and entry
+%% counts.
+%%
+%% Storage categories include:
+%%
+%% Quad indexes - the indexes that store graph data, for both RDF (SPARQL)
+%% and Property Graph (Gremlin/openCypher) models.
+%%
+%% Dictionaries - the term dictionaries, including total dictionary storage
+%% and the portion used by blob (large value) entries.
+%%
+%% Undo logs - the undo logs, reported as a total size and the number of
+%% entries in the undo log list.
+%%
+%% Streams - the change-log streams.
+%%
+%% Schema - the schema.
+%%
+%% DFE statistics - the DFE engine statistics.
+%%
+%% System metadata - internal system metadata.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:GetStorageInfo:
+%% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#getstorageinfo
+%% IAM action in that cluster.
+-spec get_storage_info(aws_client:aws_client()) ->
+    {ok, get_storage_output(), tuple()} |
+    {error, any()} |
+    {error, get_storage_info_errors(), tuple()}.
+get_storage_info(Client)
+  when is_map(Client) ->
+    get_storage_info(Client, #{}, #{}).
+
+-spec get_storage_info(aws_client:aws_client(), map(), map()) ->
+    {ok, get_storage_output(), tuple()} |
+    {error, any()} |
+    {error, get_storage_info_errors(), tuple()}.
+get_storage_info(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_storage_info(Client, QueryMap, HeadersMap, []).
+
+-spec get_storage_info(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_storage_output(), tuple()} |
+    {error, any()} |
+    {error, get_storage_info_errors(), tuple()}.
+get_storage_info(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/storage/info"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists active Gremlin queries.
 %%
 %% See Gremlin query status API:
@@ -3627,6 +4013,49 @@ list_gremlin_queries(Client, QueryMap, HeadersMap, Options0)
         {<<"includeWaiting">>, maps:get(<<"includeWaiting">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of all index rebuild operation identifiers.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:ListIndexRebuilds:
+%% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#listindexrebuilds
+%% IAM action in that cluster.
+-spec list_index_rebuilds(aws_client:aws_client()) ->
+    {ok, list_index_rebuilds_output(), tuple()} |
+    {error, any()} |
+    {error, list_index_rebuilds_errors(), tuple()}.
+list_index_rebuilds(Client)
+  when is_map(Client) ->
+    list_index_rebuilds(Client, #{}, #{}).
+
+-spec list_index_rebuilds(aws_client:aws_client(), map(), map()) ->
+    {ok, list_index_rebuilds_output(), tuple()} |
+    {error, any()} |
+    {error, list_index_rebuilds_errors(), tuple()}.
+list_index_rebuilds(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_index_rebuilds(Client, QueryMap, HeadersMap, []).
+
+-spec list_index_rebuilds(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_index_rebuilds_output(), tuple()} |
+    {error, any()} |
+    {error, list_index_rebuilds_errors(), tuple()}.
+list_index_rebuilds(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/storage/indexes/rebuilds"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -4020,6 +4449,53 @@ manage_sparql_statistics(Client, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates an index rebuild operation to optimize storage and improve
+%% query performance.
+%%
+%% The rebuild operation reorganizes index to reclaim space and improve
+%% efficiency.
+%%
+%% When invoking this operation in a Neptune cluster that has IAM
+%% authentication enabled, the IAM user or role making the request must have
+%% a policy attached that allows the neptune-db:StartIndexRebuild:
+%% https://docs.aws.amazon.com/neptune/latest/userguide/iam-dp-actions.html#startindexrebuild
+%% IAM action in that cluster.
+-spec start_index_rebuild(aws_client:aws_client(), start_index_rebuild_input()) ->
+    {ok, start_index_rebuild_output(), tuple()} |
+    {error, any()} |
+    {error, start_index_rebuild_errors(), tuple()}.
+start_index_rebuild(Client, Input) ->
+    start_index_rebuild(Client, Input, []).
+
+-spec start_index_rebuild(aws_client:aws_client(), start_index_rebuild_input(), proplists:proplist()) ->
+    {ok, start_index_rebuild_output(), tuple()} |
+    {error, any()} |
+    {error, start_index_rebuild_errors(), tuple()}.
+start_index_rebuild(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/storage/indexes/rebuilds"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"concurrency">>, <<"concurrency">>},
+                     {<<"scope">>, <<"scope">>},
+                     {<<"writeBufferSize">>, <<"writeBufferSize">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts a Neptune bulk loader job to load data from an Amazon S3

@@ -797,15 +797,18 @@
 
 %% Example:
 %% insert_ad_break_request() :: #{
+%%   <<"adBreakId">> => string(),
 %%   <<"channelArn">> := string(),
-%%   <<"durationSeconds">> := integer()
+%%   <<"durationSeconds">> := integer(),
+%%   <<"targetStartAt">> => non_neg_integer()
 %% }
 -type insert_ad_break_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% insert_ad_break_response() :: #{
-%%   <<"adBreakId">> => string()
+%%   <<"adBreakId">> => string(),
+%%   <<"targetStartAt">> => non_neg_integer()
 %% }
 -type insert_ad_break_response() :: #{binary() => any()}.
 

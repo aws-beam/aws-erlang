@@ -19,6 +19,8 @@
          add_data_source/4,
          add_direct_query_data_source/2,
          add_direct_query_data_source/3,
+         add_replication_peer/3,
+         add_replication_peer/4,
          add_tags/2,
          add_tags/3,
          associate_package/4,
@@ -33,6 +35,8 @@
          cancel_domain_config_change/4,
          cancel_service_software_update/2,
          cancel_service_software_update/3,
+         compare_domain_configuration/2,
+         compare_domain_configuration/3,
          create_application/2,
          create_application/3,
          create_domain/2,
@@ -85,6 +89,9 @@
          describe_domain_nodes/2,
          describe_domain_nodes/4,
          describe_domain_nodes/5,
+         describe_domain_replication/2,
+         describe_domain_replication/4,
+         describe_domain_replication/5,
          describe_domains/2,
          describe_domains/3,
          describe_dry_run_progress/2,
@@ -115,6 +122,8 @@
          dissociate_package/5,
          dissociate_packages/2,
          dissociate_packages/3,
+         failover_replication/3,
+         failover_replication/4,
          get_application/2,
          get_application/4,
          get_application/5,
@@ -210,6 +219,8 @@
          register_capability/4,
          reject_inbound_connection/3,
          reject_inbound_connection/4,
+         remove_replication_peer/3,
+         remove_replication_peer/4,
          remove_tags/2,
          remove_tags/3,
          revoke_vpc_endpoint_access/3,
@@ -222,6 +233,8 @@
          start_migration/3,
          start_service_software_update/2,
          start_service_software_update/3,
+         switchover_replication/3,
+         switchover_replication/4,
          update_application/3,
          update_application/4,
          update_data_source/4,
@@ -336,6 +349,22 @@
 %%   <<"DataSourceArn">> => string()
 %% }
 -type add_direct_query_data_source_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_replication_peer_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"PeerDomainArn">> := string()
+%% }
+-type add_replication_peer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% add_replication_peer_response() :: #{
+%%   <<"DomainArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type add_replication_peer_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -668,6 +697,19 @@
 
 
 %% Example:
+%% category_diff_result() :: #{
+%%   <<"Diverged">> => integer(),
+%%   <<"InSync">> => integer(),
+%%   <<"Items">> => diff_items(),
+%%   <<"SourceOnly">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetOnly">> => integer(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type category_diff_result() :: #{binary() => any()}.
+
+
+%% Example:
 %% change_progress_details() :: #{
 %%   <<"ChangeId">> => string(),
 %%   <<"ConfigChangeStatus">> => list(any()),
@@ -764,6 +806,24 @@
 %%   <<"Enabled">> => boolean()
 %% }
 -type cold_storage_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% compare_domain_configuration_request() :: #{
+%%   <<"Categories">> := list(string()),
+%%   <<"SourceDomainArn">> := string(),
+%%   <<"TargetDomainArn">> := string()
+%% }
+-type compare_domain_configuration_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% compare_domain_configuration_response() :: #{
+%%   <<"Categories">> => map(),
+%%   <<"SourceDomainArn">> => string(),
+%%   <<"TargetDomainArn">> => string()
+%% }
+-type compare_domain_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1181,6 +1241,19 @@
 -type describe_domain_nodes_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_domain_replication_request() :: #{}
+-type describe_domain_replication_request() :: #{}.
+
+
+%% Example:
+%% describe_domain_replication_response() :: #{
+%%   <<"DomainArn">> => string(),
+%%   <<"Peers">> => list(replication_peer()),
+%%   <<"Role">> => list(any())
+%% }
+-type describe_domain_replication_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_domain_request() :: #{}
 -type describe_domain_request() :: #{}.
 
@@ -1378,6 +1451,15 @@
 
 
 %% Example:
+%% diff_items() :: #{
+%%   <<"Diverged">> => list(divergent_item()),
+%%   <<"SourceOnly">> => list(string()),
+%%   <<"TargetOnly">> => list(string())
+%% }
+-type diff_items() :: #{binary() => any()}.
+
+
+%% Example:
 %% direct_query_data_source() :: #{
 %%   <<"DataSourceArn">> => string(),
 %%   <<"DataSourceName">> => string(),
@@ -1420,6 +1502,24 @@
 %%   <<"DomainPackageDetailsList">> => list(domain_package_details())
 %% }
 -type dissociate_packages_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% divergent_field() :: #{
+%%   <<"Path">> => string(),
+%%   <<"Policy">> => list(any()),
+%%   <<"SourceValue">> => string(),
+%%   <<"TargetValue">> => string()
+%% }
+-type divergent_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% divergent_item() :: #{
+%%   <<"Fields">> => list(divergent_field()),
+%%   <<"Name">> => string()
+%% }
+-type divergent_item() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1670,6 +1770,22 @@
 %%   <<"types">> => list(string())
 %% }
 -type export_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% failover_replication_request() :: #{
+%%   <<"AllowDataLoss">> := boolean(),
+%%   <<"PeerDomainArn">> := string()
+%% }
+-type failover_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% failover_replication_response() :: #{
+%%   <<"DomainArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type failover_replication_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2750,11 +2866,36 @@
 
 
 %% Example:
+%% remove_replication_peer_request() :: #{
+%%   <<"PeerDomainArn">> := string()
+%% }
+-type remove_replication_peer_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% remove_replication_peer_response() :: #{
+%%   <<"DomainArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type remove_replication_peer_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% remove_tags_request() :: #{
 %%   <<"ARN">> := string(),
 %%   <<"TagKeys">> := list(string())
 %% }
 -type remove_tags_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_peer() :: #{
+%%   <<"PeerDomainArn">> => string(),
+%%   <<"PeerRole">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type replication_peer() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3065,6 +3206,21 @@
 %%   <<"LimitValues">> => list(string())
 %% }
 -type storage_type_limit() :: #{binary() => any()}.
+
+
+%% Example:
+%% switchover_replication_request() :: #{
+%%   <<"PeerDomainArn">> := string()
+%% }
+-type switchover_replication_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% switchover_replication_response() :: #{
+%%   <<"DomainArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type switchover_replication_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3438,6 +3594,13 @@
     disabled_operation_exception() | 
     base_exception().
 
+-type add_replication_peer_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    resource_already_exists_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
 -type add_tags_errors() ::
     validation_exception() | 
     limit_exceeded_exception() | 
@@ -3488,6 +3651,12 @@
     resource_not_found_exception() | 
     internal_exception() | 
     base_exception().
+
+-type compare_domain_configuration_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
 
 -type create_application_errors() ::
     validation_exception() | 
@@ -3654,6 +3823,12 @@
     dependency_failure_exception() | 
     base_exception().
 
+-type describe_domain_replication_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
 -type describe_domains_errors() ::
     validation_exception() | 
     internal_exception() | 
@@ -3738,6 +3913,12 @@
     disabled_operation_exception() | 
     conflict_exception() | 
     base_exception().
+
+-type failover_replication_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
 
 -type get_application_errors() ::
     validation_exception() | 
@@ -3972,6 +4153,12 @@
     resource_not_found_exception() | 
     disabled_operation_exception().
 
+-type remove_replication_peer_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
+
 -type remove_tags_errors() ::
     validation_exception() | 
     internal_exception() | 
@@ -4011,6 +4198,12 @@
     resource_not_found_exception() | 
     internal_exception() | 
     base_exception().
+
+-type switchover_replication_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception().
 
 -type update_application_errors() ::
     validation_exception() | 
@@ -4195,6 +4388,49 @@ add_direct_query_data_source(Client, Input) ->
 add_direct_query_data_source(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/directQueryDataSource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts replicating a domain to a peer domain in another AWS Region.
+%%
+%% A domain can have one
+%% peer. The domain you call becomes the primary and the peer becomes the
+%% secondary, which
+%% receives a copy of the primary's indexes and serves read requests.
+%%
+%% Replication is established asynchronously. Use the
+%% `DescribeDomainReplication' operation to check whether the
+%% relationship has reached the `ACTIVE' state.
+-spec add_replication_peer(aws_client:aws_client(), binary() | list(), add_replication_peer_request()) ->
+    {ok, add_replication_peer_response(), tuple()} |
+    {error, any()} |
+    {error, add_replication_peer_errors(), tuple()}.
+add_replication_peer(Client, DomainName, Input) ->
+    add_replication_peer(Client, DomainName, Input, []).
+
+-spec add_replication_peer(aws_client:aws_client(), binary() | list(), add_replication_peer_request(), proplists:proplist()) ->
+    {ok, add_replication_peer_response(), tuple()} |
+    {error, any()} |
+    {error, add_replication_peer_errors(), tuple()}.
+add_replication_peer(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/replication/addPeer"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4467,6 +4703,51 @@ cancel_service_software_update(Client, Input) ->
 cancel_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/serviceSoftwareUpdate/cancel"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Compares the metadata of two domains and reports where they differ.
+%%
+%% Use this operation to
+%% check that a secondary domain is configured consistently with its primary
+%% before you rely on
+%% it, because replication copies index data but does not copy domain
+%% metadata such as index
+%% templates, ingest pipelines, or security roles.
+%%
+%% You choose which categories to compare. The response reports, for each
+%% category, how many
+%% items match, how many exist on only one domain, and which fields diverge.
+-spec compare_domain_configuration(aws_client:aws_client(), compare_domain_configuration_request()) ->
+    {ok, compare_domain_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, compare_domain_configuration_errors(), tuple()}.
+compare_domain_configuration(Client, Input) ->
+    compare_domain_configuration(Client, Input, []).
+
+-spec compare_domain_configuration(aws_client:aws_client(), compare_domain_configuration_request(), proplists:proplist()) ->
+    {ok, compare_domain_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, compare_domain_configuration_errors(), tuple()}.
+compare_domain_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/compareDomainConfiguration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5376,6 +5657,50 @@ describe_domain_nodes(Client, DomainName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes the replication arrangement that a domain participates in,
+%% including the domain's
+%% role and the state of its relationship with each peer.
+%%
+%% A domain that is not replicating is returned with an empty `Peers'
+%% list and no
+%% `Role'. Returns `ResourceNotFoundException' if the domain does not
+%% exist.
+-spec describe_domain_replication(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_domain_replication_response(), tuple()} |
+    {error, any()} |
+    {error, describe_domain_replication_errors(), tuple()}.
+describe_domain_replication(Client, DomainName)
+  when is_map(Client) ->
+    describe_domain_replication(Client, DomainName, #{}, #{}).
+
+-spec describe_domain_replication(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_domain_replication_response(), tuple()} |
+    {error, any()} |
+    {error, describe_domain_replication_errors(), tuple()}.
+describe_domain_replication(Client, DomainName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_domain_replication(Client, DomainName, QueryMap, HeadersMap, []).
+
+-spec describe_domain_replication(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_domain_replication_response(), tuple()} |
+    {error, any()} |
+    {error, describe_domain_replication_errors(), tuple()}.
+describe_domain_replication(Client, DomainName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/replication"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns domain configuration information about the specified Amazon
 %% OpenSearch Service
 %% domains.
@@ -5894,6 +6219,53 @@ dissociate_packages(Client, Input) ->
 dissociate_packages(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/packages/dissociateMultiple"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Promotes a secondary domain to primary without coordinating with the
+%% current primary.
+%%
+%% Use
+%% this operation when the primary is unreachable and you cannot wait for it
+%% to recover.
+%%
+%% Writes that had not yet replicated when the primary became unreachable are
+%% lost. You must
+%% set `AllowDataLoss' to acknowledge this. To promote a domain without
+%% losing writes,
+%% use the `SwitchoverReplication' operation instead.
+%%
+%% Call this operation in the Region of the domain you want to promote.
+-spec failover_replication(aws_client:aws_client(), binary() | list(), failover_replication_request()) ->
+    {ok, failover_replication_response(), tuple()} |
+    {error, any()} |
+    {error, failover_replication_errors(), tuple()}.
+failover_replication(Client, DomainName, Input) ->
+    failover_replication(Client, DomainName, Input, []).
+
+-spec failover_replication(aws_client:aws_client(), binary() | list(), failover_replication_request(), proplists:proplist()) ->
+    {ok, failover_replication_response(), tuple()} |
+    {error, any()} |
+    {error, failover_replication_errors(), tuple()}.
+failover_replication(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/replication/failover"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -7344,6 +7716,43 @@ reject_inbound_connection(Client, ConnectionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Stops replicating a domain to its peer.
+%%
+%% Replication ends for both domains, and each domain
+%% keeps the data it holds at that point. Neither domain is deleted.
+-spec remove_replication_peer(aws_client:aws_client(), binary() | list(), remove_replication_peer_request()) ->
+    {ok, remove_replication_peer_response(), tuple()} |
+    {error, any()} |
+    {error, remove_replication_peer_errors(), tuple()}.
+remove_replication_peer(Client, DomainName, Input) ->
+    remove_replication_peer(Client, DomainName, Input, []).
+
+-spec remove_replication_peer(aws_client:aws_client(), binary() | list(), remove_replication_peer_request(), proplists:proplist()) ->
+    {ok, remove_replication_peer_response(), tuple()} |
+    {error, any()} |
+    {error, remove_replication_peer_errors(), tuple()}.
+remove_replication_peer(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/replication/removePeer"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Removes the specified set of tags from an Amazon OpenSearch Service
 %% domain, data
 %% source, or application.
@@ -7559,6 +7968,50 @@ start_service_software_update(Client, Input) ->
 start_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2021-01-01/opensearch/serviceSoftwareUpdate/start"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Promotes a secondary domain to primary, coordinating with the current
+%% primary so that no
+%% writes are lost.
+%%
+%% Use this operation for planned role changes, such as testing your recovery
+%% procedure or moving write traffic to another Region.
+%%
+%% Call this operation in the Region of the domain you want to promote. If
+%% the current primary
+%% is unreachable, use the `FailoverReplication' operation
+%% instead.
+-spec switchover_replication(aws_client:aws_client(), binary() | list(), switchover_replication_request()) ->
+    {ok, switchover_replication_response(), tuple()} |
+    {error, any()} |
+    {error, switchover_replication_errors(), tuple()}.
+switchover_replication(Client, DomainName, Input) ->
+    switchover_replication(Client, DomainName, Input, []).
+
+-spec switchover_replication(aws_client:aws_client(), binary() | list(), switchover_replication_request(), proplists:proplist()) ->
+    {ok, switchover_replication_response(), tuple()} |
+    {error, any()} |
+    {error, switchover_replication_errors(), tuple()}.
+switchover_replication(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2021-01-01/opensearch/domain/", aws_util:encode_uri(DomainName), "/replication/switchover"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

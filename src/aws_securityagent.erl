@@ -325,6 +325,7 @@
 %% Example:
 %% assets() :: #{
 %%   <<"actors">> => list(actor()),
+%%   <<"clientCertificates">> => list(client_certificate()),
 %%   <<"documents">> => list(document_info()),
 %%   <<"endpoints">> => list(endpoint()),
 %%   <<"integratedRepositories">> => list(integrated_repository()),
@@ -884,6 +885,15 @@
 %%   <<"enabled">> => [boolean()]
 %% }
 -type ci_cd_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_certificate() :: #{
+%%   <<"name">> => string(),
+%%   <<"origins">> => list([string()]()),
+%%   <<"secretArn">> => [string()]
+%% }
+-type client_certificate() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2494,6 +2504,7 @@
 %%   <<"allowedDomains">> => list(endpoint()),
 %%   <<"cicdConfiguration">> => ci_cd_configuration(),
 %%   <<"cleanUpStrategy">> => list(any()),
+%%   <<"clientCertificates">> => list(client_certificate()),
 %%   <<"codeRemediationStrategy">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"disableManagedSkills">> => list(list(any())()),

@@ -4350,6 +4350,8 @@
 
 %% Example:
 %% multicast_source() :: #{
+%%   <<"SecondarySourceIp">> => string(),
+%%   <<"SecondaryUrl">> => string(),
 %%   <<"SourceIp">> => string(),
 %%   <<"Url">> => string()
 %% }
@@ -4358,6 +4360,8 @@
 
 %% Example:
 %% multicast_source_create_request() :: #{
+%%   <<"SecondarySourceIp">> => string(),
+%%   <<"SecondaryUrl">> => string(),
 %%   <<"SourceIp">> => string(),
 %%   <<"Url">> => string()
 %% }
@@ -4366,6 +4370,8 @@
 
 %% Example:
 %% multicast_source_update_request() :: #{
+%%   <<"SecondarySourceIp">> => string(),
+%%   <<"SecondaryUrl">> => string(),
 %%   <<"SourceIp">> => string(),
 %%   <<"Url">> => string()
 %% }
