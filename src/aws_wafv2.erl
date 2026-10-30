@@ -268,6 +268,7 @@
 
 %% Example:
 %% association_config() :: #{
+%%   <<"ChallengeJavascriptSdkInjection">> => map(),
 %%   <<"RequestBody">> => map()
 %% }
 -type association_config() :: #{binary() => any()}.
@@ -366,6 +367,12 @@
 %%   <<"ImmunityTimeProperty">> => immunity_time_property()
 %% }
 -type challenge_config() :: #{binary() => any()}.
+
+%% Example:
+%% challenge_javascript_sdk_injection_config() :: #{
+
+%% }
+-type challenge_javascript_sdk_injection_config() :: #{binary() => any()}.
 
 %% Example:
 %% challenge_response() :: #{

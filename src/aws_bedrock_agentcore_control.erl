@@ -993,6 +993,7 @@
 %% create_agent_runtime_request() :: #{
 %%   <<"agentRuntimeArtifact">> := list(),
 %%   <<"agentRuntimeName">> := string(),
+%%   <<"allowedPorts">> => list(list()),
 %%   <<"authorizerConfiguration">> => list(),
 %%   <<"capacityProviderConfiguration">> => capacity_provider_configuration(),
 %%   <<"clientToken">> => string(),
@@ -2653,6 +2654,7 @@
 %%   <<"agentRuntimeId">> => string(),
 %%   <<"agentRuntimeName">> => string(),
 %%   <<"agentRuntimeVersion">> => string(),
+%%   <<"allowedPorts">> => list(list()),
 %%   <<"authorizerConfiguration">> => list(),
 %%   <<"capacityProviderConfiguration">> => capacity_provider_configuration(),
 %%   <<"createdAt">> => non_neg_integer(),
@@ -5263,6 +5265,14 @@
 
 
 %% Example:
+%% port_range() :: #{
+%%   <<"from">> => integer(),
+%%   <<"to">> => integer()
+%% }
+-type port_range() :: #{binary() => any()}.
+
+
+%% Example:
 %% private_endpoint_override() :: #{
 %%   <<"domain">> => string(),
 %%   <<"privateEndpoint">> => list()
@@ -5282,6 +5292,8 @@
 
 %% Example:
 %% protocol_configuration() :: #{
+%%   <<"path">> => string(),
+%%   <<"port">> => integer(),
 %%   <<"serverProtocol">> => list(any())
 %% }
 -type protocol_configuration() :: #{binary() => any()}.
@@ -6129,6 +6141,7 @@
 %% Example:
 %% update_agent_runtime_request() :: #{
 %%   <<"agentRuntimeArtifact">> := list(),
+%%   <<"allowedPorts">> => list(list()),
 %%   <<"authorizerConfiguration">> => list(),
 %%   <<"capacityProviderConfiguration">> => capacity_provider_configuration(),
 %%   <<"clientToken">> => string(),

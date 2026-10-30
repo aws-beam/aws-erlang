@@ -1509,7 +1509,9 @@
 %% Example:
 %% image_scanning_configuration() :: #{
 %%   <<"ecrConfiguration">> => ecr_configuration(),
-%%   <<"imageScanningEnabled">> => boolean()
+%%   <<"imageScanningEnabled">> => boolean(),
+%%   <<"imageScanningTypes">> => list(list(any())()),
+%%   <<"scanResultCondition">> => scan_result_condition()
 %% }
 -type image_scanning_configuration() :: #{binary() => any()}.
 
@@ -2618,6 +2620,14 @@
 %%   <<"s3KeyPrefix">> => string()
 %% }
 -type s3_logs() :: #{binary() => any()}.
+
+
+%% Example:
+%% scan_result_condition() :: #{
+%%   <<"fixAvailable">> => boolean(),
+%%   <<"maximumSeverityLabel">> => list(any())
+%% }
+-type scan_result_condition() :: #{binary() => any()}.
 
 
 %% Example:

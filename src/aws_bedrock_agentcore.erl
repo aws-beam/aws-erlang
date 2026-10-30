@@ -1875,6 +1875,7 @@
 %%   <<"mcpSessionId">> => string(),
 %%   <<"response">> => binary(),
 %%   <<"runtimeSessionId">> => string(),
+%%   <<"sessionEndpointUrl">> => [string()],
 %%   <<"statusCode">> => integer(),
 %%   <<"traceId">> => [string()],
 %%   <<"traceParent">> => [string()],
@@ -5429,6 +5430,7 @@ invoke_agent_runtime(Client, AgentRuntimeArn, Input0, Options0) ->
             {<<"Mcp-Protocol-Version">>, <<"mcpProtocolVersion">>},
             {<<"Mcp-Session-Id">>, <<"mcpSessionId">>},
             {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Id">>, <<"runtimeSessionId">>},
+            {<<"X-Amzn-Bedrock-AgentCore-Runtime-Session-Endpoint-Url">>, <<"sessionEndpointUrl">>},
             {<<"X-Amzn-Trace-Id">>, <<"traceId">>},
             {<<"traceparent">>, <<"traceParent">>},
             {<<"tracestate">>, <<"traceState">>}

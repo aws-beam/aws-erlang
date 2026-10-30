@@ -2347,6 +2347,7 @@
 
 %% Example:
 %% get_instance_request() :: #{
+%%   <<"includeHealthStatus">> => boolean(),
 %%   <<"instanceName">> := string()
 %% }
 -type get_instance_request() :: #{binary() => any()}.
@@ -2396,6 +2397,7 @@
 
 %% Example:
 %% get_instances_request() :: #{
+%%   <<"includeHealthStatus">> => boolean(),
 %%   <<"pageToken">> => string()
 %% }
 -type get_instances_request() :: #{binary() => any()}.
@@ -2828,6 +2830,7 @@
 %%   <<"bundleId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"hardware">> => instance_hardware(),
+%%   <<"instanceStatus">> => instance_health_status(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"ipv6Addresses">> => list(string()),
 %%   <<"isStaticIp">> => boolean(),
@@ -2841,6 +2844,7 @@
 %%   <<"sshKeyName">> => string(),
 %%   <<"state">> => instance_state(),
 %%   <<"supportCode">> => string(),
+%%   <<"systemStatus">> => instance_health_status(),
 %%   <<"tags">> => list(tag()),
 %%   <<"username">> => string()
 %% }
@@ -2885,6 +2889,21 @@
 %%   <<"ramSizeInGb">> => float()
 %% }
 -type instance_hardware() :: #{binary() => any()}.
+
+%% Example:
+%% instance_health_status() :: #{
+%%   <<"details">> => list(instance_health_status_detail()),
+%%   <<"status">> => list(any())
+%% }
+-type instance_health_status() :: #{binary() => any()}.
+
+%% Example:
+%% instance_health_status_detail() :: #{
+%%   <<"impairedSince">> => non_neg_integer(),
+%%   <<"name">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type instance_health_status_detail() :: #{binary() => any()}.
 
 %% Example:
 %% instance_health_summary() :: #{

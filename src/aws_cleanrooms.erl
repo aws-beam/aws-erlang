@@ -3135,7 +3135,8 @@
 %% Example:
 %% protected_job_s3_output_configuration_input() :: #{
 %%   <<"bucket">> => [string()],
-%%   <<"keyPrefix">> => string()
+%%   <<"keyPrefix">> => string(),
+%%   <<"resultFormat">> => list(any())
 %% }
 -type protected_job_s3_output_configuration_input() :: #{binary() => any()}.
 
