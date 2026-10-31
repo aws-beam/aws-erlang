@@ -18,15 +18,14 @@
 %% Developer Guide.
 %%
 %% Lambda Event Functions, previously known as Lambda functions, run your
-%% code in response to events and API calls. Event Functions is a
-%% documentation name only. In this API, the Amazon Web Services SDKs, and
-%% the CLI, Event Functions are still called functions, for example in
-%% `CreateFunction' and `Invoke'. You don't need to change any
-%% code.
+%% code in response to events and API calls. In the Lambda API, the Amazon
+%% Web Services SDKs, and the CLI, Event Functions are still called
+%% functions, for example in `CreateFunction' and `Invoke'. You
+%% don't need to change any existing code.
 %%
 %% The Lambda API Reference provides information about each of the API
-%% methods, including details about the parameters in each API request and
-%% response.
+%% methods for Lambda Event Functions, including details about the parameters
+%% in each API request and response.
 %%
 %% You can use Software Development Kits (SDKs), Integrated Development
 %% Environment (IDE) Toolkits, and command line tools to access the API. For
@@ -2731,6 +2730,7 @@
 %% Example:
 %% self_managed_kafka_event_source_config() :: #{
 %%   <<"ConsumerGroupId">> => string(),
+%%   <<"ConsumptionMode">> => list(any()),
 %%   <<"SchemaRegistryConfig">> => kafka_schema_registry_config()
 %% }
 -type self_managed_kafka_event_source_config() :: #{binary() => any()}.
@@ -4649,7 +4649,7 @@ delete_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Removes a concurrent execution limit from a function.
+%% @doc Removes a concurrent execution limit from a Lambda Event Function.
 -spec delete_function_concurrency(aws_client:aws_client(), binary() | list(), delete_function_concurrency_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -5216,8 +5216,9 @@ get_event_source_mapping(Client, UUID, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns information about the function or function version, with a
-%% link to download the deployment package that's valid for 10 minutes.
+%% @doc Returns information about a Lambda Event Function or function
+%% version, with a link to download the deployment package that's valid
+%% for 10 minutes.
 %%
 %% If you specify a function version, only details that are specific to that
 %% version are returned.
@@ -6309,7 +6310,9 @@ list_event_source_mappings(Client, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Retrieves a list of configurations for asynchronous invocation for a
-%% function.
+%% Lambda Event Function.
+%%
+%% To retrieve more configurations, use the `Marker' parameter.
 %%
 %% To configure options for asynchronous invocation, use
 %% `PutFunctionEventInvokeConfig'.
@@ -6730,8 +6733,8 @@ list_tags(Client, Resource, QueryMap, HeadersMap, Options0)
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns a list of versions:
-%% https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html, with
-%% the version-specific configuration of each.
+%% https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html of a
+%% Lambda Event Function, with the version-specific configuration of each.
 %%
 %% Lambda returns up to 50 versions per call.
 -spec list_versions_by_function(aws_client:aws_client(), binary() | list()) ->
@@ -6819,7 +6822,7 @@ publish_layer_version(Client, LayerName, Input0, Options0) ->
 
 %% @doc Creates a version:
 %% https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html from
-%% the current code and configuration of a function.
+%% the current code and configuration of a Lambda Event Function.
 %%
 %% Use versions to create a snapshot of your function code and configuration
 %% that doesn't change.
@@ -6901,8 +6904,8 @@ put_function_code_signing_config(Client, FunctionName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sets the maximum number of simultaneous executions for a function,
-%% and reserves capacity for that concurrency level.
+%% @doc Sets the maximum number of simultaneous executions for a Lambda Event
+%% Function, and reserves capacity for that concurrency level.
 %%
 %% Concurrency settings apply to the function as a whole, including all
 %% published versions and the unpublished version. Reserving concurrency both
@@ -7009,9 +7012,9 @@ put_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Sets your function's recursive loop detection:
+%% @doc Sets the recursive loop detection:
 %% https://docs.aws.amazon.com/lambda/latest/dg/invocation-recursion.html
-%% configuration.
+%% configuration for a Lambda Event Function.
 %%
 %% When you configure a Lambda function to output to the same service or
 %% resource that invokes the function, it's possible to create an
@@ -7891,7 +7894,8 @@ update_function_event_invoke_config(Client, FunctionName, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates the configuration for a Lambda function URL.
+%% @doc Updates the configuration for a function URL of a Lambda Event
+%% Function.
 -spec update_function_url_config(aws_client:aws_client(), binary() | list(), update_function_url_config_request()) ->
     {ok, update_function_url_config_response(), tuple()} |
     {error, any()} |

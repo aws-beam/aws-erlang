@@ -642,10 +642,17 @@
 
 %% Example:
 %% delete_account_policy_request() :: #{
+%%   <<"dryRun">> => boolean(),
 %%   <<"policyName">> := string(),
 %%   <<"policyType">> := list(any())
 %% }
 -type delete_account_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_policy_response() :: #{
+%%   <<"dryRunResult">> => dry_run_result()
+%% }
+-type delete_account_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_data_protection_policy_request() :: #{
@@ -1208,6 +1215,17 @@
 %%   <<"identifier">> => string()
 %% }
 -type disassociate_source_from_s3_table_integration_response() :: #{binary() => any()}.
+
+%% Example:
+%% dry_run_result() :: #{
+%%   <<"decreasedRetentionLogGroupCount">> => integer(),
+%%   <<"failedAnalysisCount">> => integer(),
+%%   <<"increasedRetentionLogGroupCount">> => integer(),
+%%   <<"topLogGroupsImpacted">> => list(log_group_impact()),
+%%   <<"totalMatchedLogGroups">> => integer(),
+%%   <<"unchangedRetentionLogGroupCount">> => integer()
+%% }
+-type dry_run_result() :: #{binary() => any()}.
 
 %% Example:
 %% entity() :: #{
@@ -1949,6 +1967,7 @@
 %%   <<"logGroupName">> => string(),
 %%   <<"metricFilterCount">> => integer(),
 %%   <<"retentionInDays">> => integer(),
+%%   <<"retentionPolicyName">> => string(),
 %%   <<"storedBytes">> => float()
 %% }
 -type log_group() :: #{binary() => any()}.
@@ -1959,6 +1978,15 @@
 %%   <<"percent">> => integer()
 %% }
 -type log_group_field() :: #{binary() => any()}.
+
+%% Example:
+%% log_group_impact() :: #{
+%%   <<"currentRetention">> => string(),
+%%   <<"logGroupName">> => string(),
+%%   <<"proposedRetention">> => string(),
+%%   <<"storedBytes">> => float()
+%% }
+-type log_group_impact() :: #{binary() => any()}.
 
 %% Example:
 %% log_group_summary() :: #{
@@ -2270,6 +2298,7 @@
 
 %% Example:
 %% put_account_policy_request() :: #{
+%%   <<"dryRun">> => boolean(),
 %%   <<"policyDocument">> := string(),
 %%   <<"policyName">> := string(),
 %%   <<"policyType">> := list(any()),
@@ -2280,7 +2309,8 @@
 
 %% Example:
 %% put_account_policy_response() :: #{
-%%   <<"accountPolicy">> => account_policy()
+%%   <<"accountPolicy">> => account_policy(),
+%%   <<"dryRunResult">> => dry_run_result()
 %% }
 -type put_account_policy_response() :: #{binary() => any()}.
 
@@ -4403,7 +4433,7 @@ create_scheduled_query(Client, Input, Options)
 %% CloudWatch Logs
 %% Insights queries.
 -spec delete_account_policy(aws_client:aws_client(), delete_account_policy_request()) ->
-    {ok, undefined, tuple()} |
+    {ok, delete_account_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_account_policy_errors(), tuple()}.
 delete_account_policy(Client, Input)
@@ -4411,7 +4441,7 @@ delete_account_policy(Client, Input)
     delete_account_policy(Client, Input, []).
 
 -spec delete_account_policy(aws_client:aws_client(), delete_account_policy_request(), proplists:proplist()) ->
-    {ok, undefined, tuple()} |
+    {ok, delete_account_policy_response(), tuple()} |
     {error, any()} |
     {error, delete_account_policy_errors(), tuple()}.
 delete_account_policy(Client, Input, Options)

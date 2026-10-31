@@ -80,6 +80,8 @@
          describe_orderable_db_instance_options/3,
          describe_pending_maintenance_actions/2,
          describe_pending_maintenance_actions/3,
+         describe_serverless_v2_platform_versions/2,
+         describe_serverless_v2_platform_versions/3,
          failover_db_cluster/2,
          failover_db_cluster/3,
          failover_global_cluster/2,
@@ -424,6 +426,7 @@
 %%   <<"ReadReplicaIdentifiers">> => list(string()),
 %%   <<"ReaderEndpoint">> => string(),
 %%   <<"ReplicationSourceIdentifier">> => string(),
+%%   <<"ServerlessV2PlatformVersion">> => string(),
 %%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration_info(),
 %%   <<"Status">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
@@ -984,6 +987,18 @@
 %%   <<"ResourceIdentifier">> => string()
 %% }
 -type describe_pending_maintenance_actions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_serverless_v2_platform_versions_message() :: #{
+%%   <<"DefaultOnly">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IncludeAll">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ServerlessV2PlatformVersion">> => string()
+%% }
+-type describe_serverless_v2_platform_versions_message() :: #{binary() => any()}.
 
 %% Example:
 %% endpoint() :: #{
@@ -1621,6 +1636,24 @@
 %%   <<"MinCapacity">> => float()
 %% }
 -type serverless_v2_features_support() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_platform_version_info() :: #{
+%%   <<"Engine">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"ServerlessV2FeaturesSupport">> => serverless_v2_features_support(),
+%%   <<"ServerlessV2PlatformVersion">> => string(),
+%%   <<"ServerlessV2PlatformVersionDescription">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type serverless_v2_platform_version_info() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_platform_versions_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ServerlessV2PlatformVersions">> => list(serverless_v2_platform_version_info())
+%% }
+-type serverless_v2_platform_versions_message() :: #{binary() => any()}.
 
 %% Example:
 %% serverless_v2_scaling_configuration() :: #{
@@ -2820,6 +2853,22 @@ describe_pending_maintenance_actions(Client, Input)
 describe_pending_maintenance_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePendingMaintenanceActions">>, Input, Options).
+
+%% @doc Describes the properties of specific platform versions for Amazon
+%% DocumentDB Serverless v2.
+-spec describe_serverless_v2_platform_versions(aws_client:aws_client(), describe_serverless_v2_platform_versions_message()) ->
+    {ok, serverless_v2_platform_versions_message(), tuple()} |
+    {error, any()}.
+describe_serverless_v2_platform_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_serverless_v2_platform_versions(Client, Input, []).
+
+-spec describe_serverless_v2_platform_versions(aws_client:aws_client(), describe_serverless_v2_platform_versions_message(), proplists:proplist()) ->
+    {ok, serverless_v2_platform_versions_message(), tuple()} |
+    {error, any()}.
+describe_serverless_v2_platform_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeServerlessV2PlatformVersions">>, Input, Options).
 
 %% @doc Forces a failover for a cluster.
 %%

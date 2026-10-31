@@ -1084,6 +1084,12 @@
 -type accelerator_partition_config() :: #{binary() => any()}.
 
 %% Example:
+%% accelerator_partition_layout() :: #{
+%%   <<"AcceleratorPartitionTypes">> => list(string())
+%% }
+-type accelerator_partition_layout() :: #{binary() => any()}.
+
+%% Example:
 %% action_source() :: #{
 %%   <<"SourceId">> => string(),
 %%   <<"SourceType">> => string(),
@@ -8158,6 +8164,7 @@
 
 %% Example:
 %% inference_component_compute_resource_requirements() :: #{
+%%   <<"AcceleratorPartitionType">> => string(),
 %%   <<"MaxMemoryRequiredInMb">> => integer(),
 %%   <<"MinMemoryRequiredInMb">> => integer(),
 %%   <<"NumberOfAcceleratorDevicesRequired">> => float(),
@@ -11808,6 +11815,7 @@
 
 %% Example:
 %% pending_production_variant_summary() :: #{
+%%   <<"AcceleratorPartitionLayouts">> => list(accelerator_partition_layout()),
 %%   <<"AcceleratorType">> => list(any()),
 %%   <<"CurrentInstanceCount">> => integer(),
 %%   <<"CurrentServerlessConfig">> => production_variant_serverless_config(),
@@ -12150,6 +12158,7 @@
 
 %% Example:
 %% production_variant() :: #{
+%%   <<"AcceleratorPartitionLayouts">> => list(accelerator_partition_layout()),
 %%   <<"AcceleratorType">> => list(any()),
 %%   <<"CapacityReservationConfig">> => production_variant_capacity_reservation_config(),
 %%   <<"ContainerStartupHealthCheckTimeoutInSeconds">> => integer(),
@@ -12245,6 +12254,7 @@
 
 %% Example:
 %% production_variant_summary() :: #{
+%%   <<"AcceleratorPartitionLayouts">> => list(accelerator_partition_layout()),
 %%   <<"CapacityReservationConfig">> => production_variant_capacity_reservation_summary(),
 %%   <<"CurrentInstanceCount">> => integer(),
 %%   <<"CurrentServerlessConfig">> => production_variant_serverless_config(),

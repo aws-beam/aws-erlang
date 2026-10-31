@@ -1779,11 +1779,14 @@
 %% Example:
 %% get_profile_object_type_template_response() :: #{
 %%   <<"AllowProfileCreation">> => boolean(),
+%%   <<"DefaultMaxProfileObjectCount">> => integer(),
+%%   <<"DefaultMaxProfileObjectCountEffectiveAfter">> => non_neg_integer(),
 %%   <<"Fields">> => map(),
 %%   <<"Keys">> => map(),
 %%   <<"SourceLastUpdatedTimestampFormat">> => string(),
 %%   <<"SourceName">> => string(),
 %%   <<"SourceObject">> => string(),
+%%   <<"StoreOnly">> => boolean(),
 %%   <<"TemplateId">> => string()
 %% }
 -type get_profile_object_type_template_response() :: #{binary() => any()}.

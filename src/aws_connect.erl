@@ -1970,6 +1970,22 @@
 
 
 %% Example:
+%% categories_attribute_and_condition() :: #{
+%%   <<"TagConditions">> => list(tag_condition())
+%% }
+-type categories_attribute_and_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% categories_attribute_filter() :: #{
+%%   <<"AndCondition">> => categories_attribute_and_condition(),
+%%   <<"OrConditions">> => list(categories_attribute_and_condition()),
+%%   <<"TagCondition">> => tag_condition()
+%% }
+-type categories_attribute_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% chat_contact_metrics() :: #{
 %%   <<"AgentFirstResponseTimeInMillis">> => float(),
 %%   <<"AgentFirstResponseTimestamp">> => non_neg_integer(),
@@ -7336,6 +7352,7 @@
 
 %% Example:
 %% list_realtime_contact_analysis_segments_v2_request() :: #{
+%%   <<"ListFilter">> => real_time_contact_analysis_segments_filter(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"OutputType">> := list(any()),
@@ -8835,7 +8852,8 @@
 
 %% Example:
 %% real_time_contact_analysis_category_details() :: #{
-%%   <<"PointsOfInterest">> => list(real_time_contact_analysis_point_of_interest())
+%%   <<"PointsOfInterest">> => list(real_time_contact_analysis_point_of_interest()),
+%%   <<"RuleId">> => string()
 %% }
 -type real_time_contact_analysis_category_details() :: #{binary() => any()}.
 
@@ -8941,6 +8959,13 @@
 %%   <<"Time">> => list()
 %% }
 -type real_time_contact_analysis_segment_transcript() :: #{binary() => any()}.
+
+
+%% Example:
+%% real_time_contact_analysis_segments_filter() :: #{
+%%   <<"CategoriesAttributeFilter">> => categories_attribute_filter()
+%% }
+-type real_time_contact_analysis_segments_filter() :: #{binary() => any()}.
 
 
 %% Example:

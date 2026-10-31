@@ -176,6 +176,7 @@
 
 %% Example:
 %% agentic_retrieve_action() :: #{
+%%   <<"codeExecution">> => agentic_retrieve_code_execution_details(),
 %%   <<"fullDocumentExpansion">> => agentic_retrieve_full_doc_expansion_details(),
 %%   <<"memoryRetrieve">> => agentic_retrieve_memory_retrieve_details(),
 %%   <<"retrieve">> => agentic_retrieve_action_details()
@@ -235,6 +236,21 @@
 %%   <<"resultIndex">> => [integer()]
 %% }
 -type agentic_retrieve_citation_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_code_execution_details() :: #{
+%%   <<"documents">> => list(agentic_retrieve_code_execution_document())
+%% }
+-type agentic_retrieve_code_execution_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% agentic_retrieve_code_execution_document() :: #{
+%%   <<"documentId">> => [string()],
+%%   <<"sourceRetriever">> => agentic_retrieve_source_retriever()
+%% }
+-type agentic_retrieve_code_execution_document() :: #{binary() => any()}.
 
 
 %% Example:

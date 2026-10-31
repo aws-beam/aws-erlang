@@ -105,6 +105,7 @@
 %%   <<"dbParameterGroupId">> => string(),
 %%   <<"dbResourceId">> => string(),
 %%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentConfiguration">> => list(),
 %%   <<"deploymentType">> => list(any()),
 %%   <<"engineType">> => list(any()),
 %%   <<"expiresAfter">> => string(),
@@ -130,9 +131,10 @@
 %%   <<"allocatedStorage">> => integer(),
 %%   <<"bucket">> => string(),
 %%   <<"dbBackupConfigurations">> => list(db_backup_configuration()),
-%%   <<"dbInstanceType">> := list(any()),
+%%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentConfiguration">> => list(),
 %%   <<"deploymentType">> => list(any()),
 %%   <<"failoverMode">> => list(any()),
 %%   <<"kmsKeyId">> => string(),
@@ -346,6 +348,7 @@
 %%   <<"dbParameterGroupId">> => string(),
 %%   <<"dbResourceId">> => string(),
 %%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentConfiguration">> => list(),
 %%   <<"deploymentType">> => list(any()),
 %%   <<"engineType">> => list(any()),
 %%   <<"expiresAfter">> => string(),
@@ -441,6 +444,7 @@
 %%   <<"dbParameterGroupId">> => string(),
 %%   <<"dbResourceId">> => string(),
 %%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentConfiguration">> => list(),
 %%   <<"deploymentType">> => list(any()),
 %%   <<"engineType">> => list(any()),
 %%   <<"expiresAfter">> => string(),
@@ -476,6 +480,7 @@
 %%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
 %%   <<"dbStorageType">> => list(any()),
+%%   <<"deploymentConfiguration">> => list(),
 %%   <<"deploymentType">> => list(any()),
 %%   <<"effectiveDbParameterGroupIdentifier">> => string(),
 %%   <<"endpoint">> => [string()],
@@ -637,6 +642,12 @@
 %%   <<"walSnapshotSize">> => [integer()]
 %% }
 -type influx_dbv3_core_parameters() :: #{binary() => any()}.
+
+%% Example:
+%% influx_dbv3_enterprise_deployment_configuration() :: #{
+%%   <<"nodeGroups">> => list(node_group())
+%% }
+-type influx_dbv3_enterprise_deployment_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% influx_dbv3_enterprise_parameters() :: #{
@@ -805,6 +816,14 @@
 -type maintenance_schedule() :: #{binary() => any()}.
 
 %% Example:
+%% node_group() :: #{
+%%   <<"count">> => [integer()],
+%%   <<"instanceModes">> => list(list(any())()),
+%%   <<"instanceType">> => list(any())
+%% }
+-type node_group() :: #{binary() => any()}.
+
+%% Example:
 %% reboot_db_cluster_input() :: #{
 %%   <<"dbClusterId">> := string(),
 %%   <<"instanceIds">> => list(string())
@@ -932,6 +951,7 @@
 %%   <<"dbClusterId">> := string(),
 %%   <<"dbInstanceType">> => list(any()),
 %%   <<"dbParameterGroupIdentifier">> => string(),
+%%   <<"deploymentConfiguration">> => list(),
 %%   <<"failoverMode">> => list(any()),
 %%   <<"logDeliveryConfiguration">> => log_delivery_configuration(),
 %%   <<"maintenanceSchedule">> => maintenance_schedule(),
