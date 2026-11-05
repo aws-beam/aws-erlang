@@ -1606,7 +1606,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"destinationS3Uri">> := string(),
 %%   <<"errorReportLocation">> := export_error_report_location(),
-%%   <<"input">> := list()
+%%   <<"input">> := list(),
+%%   <<"jobName">> => string()
 %% }
 -type create_dataset_export_job_request() :: #{binary() => any()}.
 
@@ -2439,6 +2440,7 @@
 %%   <<"errorReportLocation">> => export_error_report_location(),
 %%   <<"input">> => list(),
 %%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
 %%   <<"startedAt">> => [non_neg_integer()],
 %%   <<"status">> => list(any()),
 %%   <<"workspaceName">> => string()
@@ -2967,6 +2969,7 @@
 %%   <<"completedAt">> => [non_neg_integer()],
 %%   <<"destinationS3Uri">> => string(),
 %%   <<"jobId">> => string(),
+%%   <<"jobName">> => string(),
 %%   <<"startedAt">> => [non_neg_integer()],
 %%   <<"status">> => list(any())
 %% }

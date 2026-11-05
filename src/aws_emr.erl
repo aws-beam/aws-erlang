@@ -1992,6 +1992,7 @@
 %% Example:
 %% step() :: #{
 %%   <<"ActionOnFailure">> => list(any()),
+%%   <<"AdditionalInfo">> => step_additional_info(),
 %%   <<"Config">> => hadoop_step_config(),
 %%   <<"EncryptionKeyArn">> => string(),
 %%   <<"ExecutionRoleArn">> => string(),
@@ -2001,6 +2002,13 @@
 %%   <<"Status">> => step_status()
 %% }
 -type step() :: #{binary() => any()}.
+
+%% Example:
+%% step_additional_info() :: #{
+%%   <<"ResourceManager">> => string(),
+%%   <<"ResourceManagerApplicationIds">> => list(string())
+%% }
+-type step_additional_info() :: #{binary() => any()}.
 
 %% Example:
 %% step_config() :: #{
@@ -2053,6 +2061,7 @@
 %% Example:
 %% step_summary() :: #{
 %%   <<"ActionOnFailure">> => list(any()),
+%%   <<"AdditionalInfo">> => step_additional_info(),
 %%   <<"Config">> => hadoop_step_config(),
 %%   <<"EncryptionKeyArn">> => string(),
 %%   <<"Id">> => string(),

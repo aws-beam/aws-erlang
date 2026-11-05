@@ -119,6 +119,7 @@
 %%   <<"brazilAdditionalInfo">> => brazil_additional_info(),
 %%   <<"canadaAdditionalInfo">> => canada_additional_info(),
 %%   <<"chileAdditionalInfo">> => chile_additional_info(),
+%%   <<"colombiaAdditionalInfo">> => colombia_additional_info(),
 %%   <<"egyptAdditionalInfo">> => egypt_additional_info(),
 %%   <<"estoniaAdditionalInfo">> => estonia_additional_info(),
 %%   <<"franceAdditionalInfo">> => france_additional_info(),
@@ -278,6 +279,15 @@
 %%   <<"documentType">> => list(any())
 %% }
 -type chile_additional_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% colombia_additional_info() :: #{
+%%   <<"issueDate">> => string(),
+%%   <<"responsibilityCodes">> => list(string()),
+%%   <<"taxpayerTypeCode">> => string()
+%% }
+-type colombia_additional_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -753,6 +763,7 @@
 %%   <<"registrationType">> => list(any()),
 %%   <<"sector">> => list(any()),
 %%   <<"status">> => list(any()),
+%%   <<"statusReason">> => tax_registration_status_reason(),
 %%   <<"taxDocumentMetadatas">> => list(tax_document_metadata())
 %% }
 -type tax_registration() :: #{binary() => any()}.
@@ -789,6 +800,14 @@
 
 
 %% Example:
+%% tax_registration_status_reason() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string()
+%% }
+-type tax_registration_status_reason() :: #{binary() => any()}.
+
+
+%% Example:
 %% tax_registration_with_jurisdiction() :: #{
 %%   <<"additionalTaxInformation">> => additional_info_response(),
 %%   <<"certifiedEmailId">> => string(),
@@ -798,6 +817,7 @@
 %%   <<"registrationType">> => list(any()),
 %%   <<"sector">> => list(any()),
 %%   <<"status">> => list(any()),
+%%   <<"statusReason">> => tax_registration_status_reason(),
 %%   <<"taxDocumentMetadatas">> => list(tax_document_metadata())
 %% }
 -type tax_registration_with_jurisdiction() :: #{binary() => any()}.
@@ -1037,6 +1057,11 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %% To call this API operation for specific countries, see the following
 %% country-specific requirements.
 %%
+%% Argentina
+%%
+%% `RegistrationType' valid values are `CUIT' (Clave Única de
+%% Identificación Tributaria) and `CDI' (Clave de Identificación).
+%%
 %% Bangladesh
 %%
 %% You must specify the tax registration certificate document in the
@@ -1229,6 +1254,12 @@ batch_get_tax_exemptions(Client, Input0, Options0) ->
 %% Ukraine
 %%
 %% The sector valid values are `Business' and `Individual'.
+%%
+%% Uruguay
+%%
+%% `RegistrationType' valid values are `RUT' (Registro Único
+%% Tributario), `NIE' (Numero de Identificacion del Extranjero), and
+%% `CI' (Cedula Identidad).
 %%
 %% Philippines
 %%
@@ -1749,6 +1780,11 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %% To call this API operation for specific countries, see the following
 %% country-specific requirements.
 %%
+%% Argentina
+%%
+%% `RegistrationType' valid values are `CUIT' (Clave Única de
+%% Identificación Tributaria) and `CDI' (Clave de Identificación).
+%%
 %% Bangladesh
 %%
 %% You must specify the tax registration certificate document in the
@@ -1941,6 +1977,12 @@ put_tax_inheritance(Client, Input0, Options0) ->
 %% Ukraine
 %%
 %% The sector valid values are `Business' and `Individual'.
+%%
+%% Uruguay
+%%
+%% `RegistrationType' valid values are `RUT' (Registro Único
+%% Tributario), `NIE' (Numero de Identificacion del Extranjero), and
+%% `CI' (Cedula Identidad).
 %%
 %% Philippines
 %%

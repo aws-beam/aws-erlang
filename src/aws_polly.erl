@@ -34,6 +34,9 @@
          list_speech_synthesis_tasks/1,
          list_speech_synthesis_tasks/3,
          list_speech_synthesis_tasks/4,
+         list_tags_for_resource/2,
+         list_tags_for_resource/4,
+         list_tags_for_resource/5,
          put_lexicon/3,
          put_lexicon/4,
          start_speech_synthesis_stream/2,
@@ -41,7 +44,11 @@
          start_speech_synthesis_task/2,
          start_speech_synthesis_task/3,
          synthesize_speech/2,
-         synthesize_speech/3]).
+         synthesize_speech/3,
+         tag_resource/2,
+         tag_resource/3,
+         untag_resource/2,
+         untag_resource/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -171,6 +178,13 @@
 
 
 %% Example:
+%% invalid_tag_parameter_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_tag_parameter_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_task_id_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -259,6 +273,20 @@
 
 
 %% Example:
+%% list_tags_for_resource_input() :: #{
+%%   <<"ResourceArn">> := string()
+%% }
+-type list_tags_for_resource_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_tags_for_resource_output() :: #{
+%%   <<"Tags">> => map()
+%% }
+-type list_tags_for_resource_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% marks_not_supported_for_format_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -281,13 +309,23 @@
 
 %% Example:
 %% put_lexicon_input() :: #{
-%%   <<"Content">> := string()
+%%   <<"Content">> := string(),
+%%   <<"Tags">> => map()
 %% }
 -type put_lexicon_input() :: #{binary() => any()}.
 
 %% Example:
 %% put_lexicon_output() :: #{}
 -type put_lexicon_output() :: #{}.
+
+
+%% Example:
+%% resource_not_found_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type resource_not_found_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -418,6 +456,18 @@
 
 
 %% Example:
+%% tag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"Tags">> := map()
+%% }
+-type tag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% tag_resource_output() :: #{}
+-type tag_resource_output() :: #{}.
+
+
+%% Example:
 %% text_event() :: #{
 %%   <<"FlushStreamConfiguration">> => flush_stream_configuration(),
 %%   <<"Text">> => string(),
@@ -450,6 +500,13 @@
 
 
 %% Example:
+%% too_many_tags_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_tags_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% unsupported_pls_alphabet_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -461,6 +518,18 @@
 %%   <<"message">> => string()
 %% }
 -type unsupported_pls_language_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% untag_resource_input() :: #{
+%%   <<"ResourceArn">> := string(),
+%%   <<"TagKeys">> := list(string())
+%% }
+-type untag_resource_input() :: #{binary() => any()}.
+
+%% Example:
+%% untag_resource_output() :: #{}
+-type untag_resource_output() :: #{}.
 
 
 %% Example:
@@ -517,13 +586,23 @@
     service_failure_exception() | 
     invalid_next_token_exception().
 
+-type list_tags_for_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_failure_exception() | 
+    resource_not_found_exception() | 
+    invalid_tag_parameter_exception().
+
 -type put_lexicon_errors() ::
+    validation_exception() | 
     unsupported_pls_language_exception() | 
     unsupported_pls_alphabet_exception() | 
+    too_many_tags_exception() | 
     service_failure_exception() | 
     max_lexicons_number_exceeded_exception() | 
     max_lexeme_length_exceeded_exception() | 
     lexicon_size_exceeded_exception() | 
+    invalid_tag_parameter_exception() | 
     invalid_lexicon_exception().
 
 -type start_speech_synthesis_stream_errors() ::
@@ -556,6 +635,21 @@
     invalid_ssml_exception() | 
     invalid_sample_rate_exception() | 
     engine_not_supported_exception().
+
+-type tag_resource_errors() ::
+    validation_exception() | 
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    service_failure_exception() | 
+    resource_not_found_exception() | 
+    invalid_tag_parameter_exception().
+
+-type untag_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_failure_exception() | 
+    resource_not_found_exception() | 
+    invalid_tag_parameter_exception().
 
 %%====================================================================
 %% API
@@ -842,6 +936,47 @@ list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the tags for an Amazon Polly resource.
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn)
+  when is_map(Client) ->
+    list_tags_for_resource(Client, ResourceArn, #{}, #{}).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_tags_for_resource(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_tags_for_resource_output(), tuple()} |
+    {error, any()} |
+    {error, list_tags_for_resource_errors(), tuple()}.
+list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/listTagsForResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"arn">>, ResourceArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Stores a pronunciation lexicon in an Amazon Web Services Region.
 %%
 %% If
@@ -849,6 +984,12 @@ list_speech_synthesis_tasks(Client, QueryMap, HeadersMap, Options0)
 %% overwritten by the new lexicon. Lexicon operations have eventual
 %% consistency, therefore, it might take some time before the lexicon is
 %% available to the SynthesizeSpeech operation.
+%%
+%% Overwriting a lexicon keeps its existing tags. You can specify tags
+%% only when you create a lexicon. If you specify tags for a lexicon that
+%% already exists, the request fails with a `ValidationException'.
+%% To change the tags of an existing lexicon, use `TagResource'
+%% and `UntagResource'.
 %%
 %% For more information, see Managing Lexicons:
 %% https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html.
@@ -1038,6 +1179,79 @@ synthesize_speech(Client, Input0, Options0) ->
       Result ->
         Result
     end.
+
+%% @doc Adds specified tags to a resource with the specified ARN.
+%%
+%% Existing tags
+%% on a resource are not changed if they are not specified in the request
+%% parameters. If you specify a tag key that already exists on the resource,
+%% the value in the request replaces the existing value.
+-spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input) ->
+    tag_resource(Client, Input, []).
+
+-spec tag_resource(aws_client:aws_client(), tag_resource_input(), proplists:proplist()) ->
+    {ok, tag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, tag_resource_errors(), tuple()}.
+tag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/tagResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes specified tags from a resource.
+-spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input) ->
+    untag_resource(Client, Input, []).
+
+-spec untag_resource(aws_client:aws_client(), untag_resource_input(), proplists:proplist()) ->
+    {ok, untag_resource_output(), tuple()} |
+    {error, any()} |
+    {error, untag_resource_errors(), tuple()}.
+untag_resource(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/untagResource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %%====================================================================
 %% Internal functions

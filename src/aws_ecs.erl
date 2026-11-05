@@ -1040,6 +1040,7 @@
 %% Example:
 %% daemon_volume() :: #{
 %%   <<"host">> => host_volume_properties(),
+%%   <<"logDriverVolumeConfiguration">> => log_driver_volume_configuration(),
 %%   <<"name">> => string()
 %% }
 -type daemon_volume() :: #{binary() => any()}.
@@ -2533,6 +2534,12 @@
 %%   <<"secretOptions">> => list(secret())
 %% }
 -type log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% log_driver_volume_configuration() :: #{
+%%   <<"driver">> => list(any())
+%% }
+-type log_driver_volume_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% managed_agent() :: #{

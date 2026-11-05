@@ -458,6 +458,13 @@
 -type custom_ami() :: #{binary() => any()}.
 
 %% Example:
+%% default_ami() :: #{
+%%   <<"Architecture">> => list(any()),
+%%   <<"ImageId">> => string()
+%% }
+-type default_ami() :: #{binary() => any()}.
+
+%% Example:
 %% delete_application_message() :: #{
 %%   <<"ApplicationName">> := string(),
 %%   <<"TerminateEnvByForce">> => boolean()
@@ -1006,6 +1013,7 @@
 %%   <<"CustomAmiList">> => list(custom_ami()),
 %%   <<"DateCreated">> => non_neg_integer(),
 %%   <<"DateUpdated">> => non_neg_integer(),
+%%   <<"DefaultAmiList">> => list(default_ami()),
 %%   <<"Description">> => string(),
 %%   <<"Frameworks">> => list(platform_framework()),
 %%   <<"Maintainer">> => string(),

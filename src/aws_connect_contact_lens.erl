@@ -50,8 +50,25 @@
 
 
 %% Example:
+%% categories_attribute_and_condition() :: #{
+%%   <<"TagConditions">> => list(tag_condition())
+%% }
+-type categories_attribute_and_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% categories_attribute_filter() :: #{
+%%   <<"AndCondition">> => categories_attribute_and_condition(),
+%%   <<"OrConditions">> => list(categories_attribute_and_condition()),
+%%   <<"TagCondition">> => tag_condition()
+%% }
+-type categories_attribute_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% category_details() :: #{
-%%   <<"PointsOfInterest">> => list(point_of_interest())
+%%   <<"PointsOfInterest">> => list(point_of_interest()),
+%%   <<"RuleId">> => string()
 %% }
 -type category_details() :: #{binary() => any()}.
 
@@ -108,6 +125,7 @@
 %% list_realtime_contact_analysis_segments_request() :: #{
 %%   <<"ContactId">> := string(),
 %%   <<"InstanceId">> := string(),
+%%   <<"ListFilter">> => real_time_contact_analysis_segments_filter(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -140,6 +158,13 @@
 
 
 %% Example:
+%% real_time_contact_analysis_segments_filter() :: #{
+%%   <<"CategoriesAttributeFilter">> => categories_attribute_filter()
+%% }
+-type real_time_contact_analysis_segments_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% realtime_contact_analysis_segment() :: #{
 %%   <<"Categories">> => categories(),
 %%   <<"ExtractedInformation">> => extracted_information(),
@@ -154,6 +179,15 @@
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_condition() :: #{
+%%   <<"ComparisonType">> => list(any()),
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string()
+%% }
+-type tag_condition() :: #{binary() => any()}.
 
 
 %% Example:

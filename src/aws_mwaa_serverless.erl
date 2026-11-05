@@ -70,6 +70,7 @@
 %%   <<"Description">> => string(),
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"EngineVersion">> => list(integer()),
+%%   <<"Environment">> => environment(),
 %%   <<"LoggingConfiguration">> => logging_configuration(),
 %%   <<"Name">> := string(),
 %%   <<"NetworkConfiguration">> => network_configuration(),
@@ -120,6 +121,12 @@
 -type encryption_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% environment() :: #{
+%%   <<"Variables">> => map()
+%% }
+-type environment() :: #{binary() => any()}.
+
+%% Example:
 %% get_task_instance_request() :: #{
 
 %% }
@@ -160,6 +167,7 @@
 %%   <<"Description">> => string(),
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"EngineVersion">> => list(integer()),
+%%   <<"Environment">> => environment(),
 %%   <<"LoggingConfiguration">> => logging_configuration(),
 %%   <<"ModifiedAt">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -409,6 +417,7 @@
 %%   <<"DefinitionS3Location">> := definition_s3_location(),
 %%   <<"Description">> => string(),
 %%   <<"EngineVersion">> => list(integer()),
+%%   <<"Environment">> => environment(),
 %%   <<"LoggingConfiguration">> => logging_configuration(),
 %%   <<"NetworkConfiguration">> => network_configuration(),
 %%   <<"RoleArn">> := string(),

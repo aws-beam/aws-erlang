@@ -773,6 +773,7 @@
 %%   <<"SnapshotAvailabilityZone">> => string(),
 %%   <<"SnapshotTarget">> => string(),
 %%   <<"SourceDBSnapshotIdentifier">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TargetCustomAvailabilityZone">> => string(),
 %%   <<"TargetDBSnapshotIdentifier">> := string()
@@ -4496,6 +4497,7 @@
 %%   <<"Options">> => list(option()),
 %%   <<"SourceAccountId">> => string(),
 %%   <<"SourceOptionGroup">> => string(),
+%%   <<"SourceRegion">> => string(),
 %%   <<"VpcId">> => string()
 %% }
 -type option_group() :: #{binary() => any()}.
@@ -4522,6 +4524,7 @@
 %% Example:
 %% option_group_option() :: #{
 %%   <<"CopyableCrossAccount">> => boolean(),
+%%   <<"CopyableCrossRegion">> => boolean(),
 %%   <<"DefaultPort">> => integer(),
 %%   <<"Description">> => string(),
 %%   <<"EngineName">> => string(),

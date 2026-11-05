@@ -1959,6 +1959,14 @@
 
 
 %% Example:
+%% case_entry() :: #{
+%%   <<"CaseId">> => string(),
+%%   <<"CaseReferenceNumber">> => string()
+%% }
+-type case_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% case_sla_configuration() :: #{
 %%   <<"FieldId">> => string(),
 %%   <<"Name">> => string(),
@@ -2158,6 +2166,7 @@
 %%   <<"Arn">> => string(),
 %%   <<"Attributes">> => map(),
 %%   <<"Campaign">> => campaign(),
+%%   <<"Cases">> => list(case_entry()),
 %%   <<"Channel">> => list(any()),
 %%   <<"ChatMetrics">> => chat_metrics(),
 %%   <<"ConnectedToSystemTimestamp">> => non_neg_integer(),

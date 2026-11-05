@@ -40,6 +40,8 @@
          batch_get_item/3,
          batch_write_item/2,
          batch_write_item/3,
+         cancel_bulk_operation/2,
+         cancel_bulk_operation/3,
          create_backup/2,
          create_backup/3,
          create_global_table/2,
@@ -56,6 +58,8 @@
          delete_table/3,
          describe_backup/2,
          describe_backup/3,
+         describe_bulk_operation/2,
+         describe_bulk_operation/3,
          describe_continuous_backups/2,
          describe_continuous_backups/3,
          describe_contributor_insights/2,
@@ -98,6 +102,8 @@
          import_table/3,
          list_backups/2,
          list_backups/3,
+         list_bulk_operations/2,
+         list_bulk_operations/3,
          list_contributor_insights/2,
          list_contributor_insights/3,
          list_exports/2,
@@ -124,6 +130,8 @@
          scan/3,
          search_vectors/2,
          search_vectors/3,
+         start_bulk_put_items/2,
+         start_bulk_put_items/3,
          tag_resource/2,
          tag_resource/3,
          transact_get_items/2,
@@ -351,6 +359,80 @@
 %%   <<"LastUpdateToPayPerRequestDateTime">> => non_neg_integer()
 %% }
 -type billing_mode_summary() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_operation_bytes() :: #{
+%%   <<"BulkPutBytes">> => float()
+%% }
+-type bulk_operation_bytes() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_operation_description() :: #{
+%%   <<"BulkOperationArn">> => string(),
+%%   <<"BulkOperationStatus">> => list(any()),
+%%   <<"BulkOperationUsage">> => list(bulk_operation_usage()),
+%%   <<"ClientToken">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FailedItemCount">> => float(),
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureMessage">> => string(),
+%%   <<"InputS3Configuration">> => input_s3_configuration(),
+%%   <<"MaxWriteRequestUnits">> => float(),
+%%   <<"OutputS3Configuration">> => output_s3_configuration(),
+%%   <<"PerformanceTier">> => list(any()),
+%%   <<"ProcessedInputBytes">> => float(),
+%%   <<"ProcessedItemCount">> => float(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"TableDetails">> => list(bulk_operation_table_detail()),
+%%   <<"TotalInputBytes">> => float()
+%% }
+-type bulk_operation_description() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_operation_summary() :: #{
+%%   <<"BulkOperationArn">> => string(),
+%%   <<"BulkOperationStatus">> => list(any()),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type bulk_operation_summary() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_operation_table_detail() :: #{
+%%   <<"TableId">> => string(),
+%%   <<"TableName">> => string()
+%% }
+-type bulk_operation_table_detail() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_operation_usage() :: #{
+%%   <<"BulkPutBytes">> => float(),
+%%   <<"GlobalSecondaryIndexes">> => map(),
+%%   <<"LocalSecondaryIndexes">> => map(),
+%%   <<"Table">> => bulk_operation_bytes(),
+%%   <<"TableName">> => string(),
+%%   <<"VectorIndexes">> => map()
+%% }
+-type bulk_operation_usage() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_operation_vector_bytes() :: #{
+%%   <<"BulkPutVectorBytes">> => float()
+%% }
+-type bulk_operation_vector_bytes() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_bulk_operation_input() :: #{
+%%   <<"BulkOperationArn">> := string()
+%% }
+-type cancel_bulk_operation_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_bulk_operation_output() :: #{
+%%   <<"BulkOperationArn">> => string(),
+%%   <<"BulkOperationStatus">> => list(any())
+%% }
+-type cancel_bulk_operation_output() :: #{binary() => any()}.
 
 %% Example:
 %% cancellation_reason() :: #{
@@ -654,6 +736,18 @@
 %%   <<"BackupDescription">> => backup_description()
 %% }
 -type describe_backup_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bulk_operation_input() :: #{
+%%   <<"BulkOperationArn">> := string()
+%% }
+-type describe_bulk_operation_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_bulk_operation_output() :: #{
+%%   <<"BulkOperationDescription">> => bulk_operation_description()
+%% }
+-type describe_bulk_operation_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_continuous_backups_input() :: #{
@@ -1214,6 +1308,16 @@
 -type input_format_options() :: #{binary() => any()}.
 
 %% Example:
+%% input_s3_configuration() :: #{
+%%   <<"InputCompressionType">> => list(any()),
+%%   <<"InputFormat">> => list(any()),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3BucketOwner">> => string(),
+%%   <<"S3KeyPrefix">> => string()
+%% }
+-type input_s3_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% internal_server_error() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1322,6 +1426,20 @@
 %%   <<"LastEvaluatedBackupArn">> => string()
 %% }
 -type list_backups_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_bulk_operations_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bulk_operations_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_bulk_operations_output() :: #{
+%%   <<"BulkOperationsSummaryList">> => list(bulk_operation_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_bulk_operations_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_contributor_insights_input() :: #{
@@ -1450,6 +1568,17 @@
 %%   <<"MaxReadRequestUnits">> => float()
 %% }
 -type on_demand_throughput_override() :: #{binary() => any()}.
+
+%% Example:
+%% output_s3_configuration() :: #{
+%%   <<"OutputType">> => list(list(any())()),
+%%   <<"S3Bucket">> => string(),
+%%   <<"S3BucketOwner">> => string(),
+%%   <<"S3KeyPrefix">> => string(),
+%%   <<"S3SseAlgorithm">> => list(any()),
+%%   <<"S3SseKmsKeyId">> => string()
+%% }
+-type output_s3_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% parameterized_statement() :: #{
@@ -1951,6 +2080,23 @@
 %%   <<"SSEType">> => list(any())
 %% }
 -type sse_specification() :: #{binary() => any()}.
+
+%% Example:
+%% start_bulk_put_items_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InputS3Configuration">> := input_s3_configuration(),
+%%   <<"MaxWriteRequestUnits">> => float(),
+%%   <<"OutputS3Configuration">> := output_s3_configuration(),
+%%   <<"PerformanceTier">> => list(any()),
+%%   <<"TableName">> := string()
+%% }
+-type start_bulk_put_items_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_bulk_put_items_output() :: #{
+%%   <<"BulkOperationDescription">> => bulk_operation_description()
+%% }
+-type start_bulk_put_items_output() :: #{binary() => any()}.
 
 %% Example:
 %% stream_specification() :: #{
@@ -2456,6 +2602,10 @@
     invalid_endpoint_exception() | 
     internal_server_error().
 
+-type cancel_bulk_operation_errors() ::
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
+
 -type create_backup_errors() ::
     table_not_found_exception() | 
     table_in_use_exception() | 
@@ -2516,6 +2666,10 @@
     invalid_endpoint_exception() | 
     internal_server_error() | 
     backup_not_found_exception().
+
+-type describe_bulk_operation_errors() ::
+    resource_not_found_exception() | 
+    invalid_endpoint_exception().
 
 -type describe_continuous_backups_errors() ::
     table_not_found_exception() | 
@@ -2633,6 +2787,9 @@
     invalid_endpoint_exception() | 
     internal_server_error().
 
+-type list_bulk_operations_errors() ::
+    invalid_endpoint_exception().
+
 -type list_contributor_insights_errors() ::
     resource_not_found_exception() | 
     internal_server_error().
@@ -2717,6 +2874,13 @@
     resource_not_found_exception() | 
     request_limit_exceeded() | 
     internal_server_error().
+
+-type start_bulk_put_items_errors() ::
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_endpoint_exception() | 
+    idempotent_parameter_mismatch_exception().
 
 -type tag_resource_errors() ::
     resource_not_found_exception() | 
@@ -3091,6 +3255,28 @@ batch_write_item(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"BatchWriteItem">>, Input, Options).
 
+%% @doc Cancels an in-progress bulk operation asynchronously.
+%%
+%% Cancellation doesn't remove
+%% items that the operation has already written. Use
+%% `DescribeBulkOperation' to
+%% monitor the operation until it reaches a terminal status.
+-spec cancel_bulk_operation(aws_client:aws_client(), cancel_bulk_operation_input()) ->
+    {ok, cancel_bulk_operation_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_bulk_operation_errors(), tuple()}.
+cancel_bulk_operation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_bulk_operation(Client, Input, []).
+
+-spec cancel_bulk_operation(aws_client:aws_client(), cancel_bulk_operation_input(), proplists:proplist()) ->
+    {ok, cancel_bulk_operation_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_bulk_operation_errors(), tuple()}.
+cancel_bulk_operation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelBulkOperation">>, Input, Options).
+
 %% @doc Creates a backup for an existing table.
 %%
 %% Each time you create an on-demand backup, the entire table data is backed
@@ -3424,6 +3610,23 @@ describe_backup(Client, Input)
 describe_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBackup">>, Input, Options).
+
+%% @doc Describes the specified bulk operation.
+-spec describe_bulk_operation(aws_client:aws_client(), describe_bulk_operation_input()) ->
+    {ok, describe_bulk_operation_output(), tuple()} |
+    {error, any()} |
+    {error, describe_bulk_operation_errors(), tuple()}.
+describe_bulk_operation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_bulk_operation(Client, Input, []).
+
+-spec describe_bulk_operation(aws_client:aws_client(), describe_bulk_operation_input(), proplists:proplist()) ->
+    {ok, describe_bulk_operation_output(), tuple()} |
+    {error, any()} |
+    {error, describe_bulk_operation_errors(), tuple()}.
+describe_bulk_operation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeBulkOperation">>, Input, Options).
 
 %% @doc Checks the status of continuous backups and point in time recovery on
 %% the specified
@@ -4049,6 +4252,29 @@ list_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBackups">>, Input, Options).
 
+%% @doc Lists bulk operations that started within the past 90 days for the
+%% current Amazon Web Services account and Amazon Web Services Region, with
+%% the most recent operations
+%% first.
+%%
+%% Results are paginated. Use the `NextToken' parameter to retrieve
+%% additional results.
+-spec list_bulk_operations(aws_client:aws_client(), list_bulk_operations_input()) ->
+    {ok, list_bulk_operations_output(), tuple()} |
+    {error, any()} |
+    {error, list_bulk_operations_errors(), tuple()}.
+list_bulk_operations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_bulk_operations(Client, Input, []).
+
+-spec list_bulk_operations(aws_client:aws_client(), list_bulk_operations_input(), proplists:proplist()) ->
+    {ok, list_bulk_operations_output(), tuple()} |
+    {error, any()} |
+    {error, list_bulk_operations_errors(), tuple()}.
+list_bulk_operations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListBulkOperations">>, Input, Options).
+
 %% @doc Returns a list of ContributorInsightsSummary for a table and all its
 %% global secondary
 %% indexes.
@@ -4591,6 +4817,26 @@ search_vectors(Client, Input)
 search_vectors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SearchVectors">>, Input, Options).
+
+%% @doc Starts an asynchronous bulk operation that reads items from Amazon S3
+%% and
+%% writes them to an existing DynamoDB table, so you can efficiently load or
+%% migrate large datasets.
+-spec start_bulk_put_items(aws_client:aws_client(), start_bulk_put_items_input()) ->
+    {ok, start_bulk_put_items_output(), tuple()} |
+    {error, any()} |
+    {error, start_bulk_put_items_errors(), tuple()}.
+start_bulk_put_items(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_bulk_put_items(Client, Input, []).
+
+-spec start_bulk_put_items(aws_client:aws_client(), start_bulk_put_items_input(), proplists:proplist()) ->
+    {ok, start_bulk_put_items_output(), tuple()} |
+    {error, any()} |
+    {error, start_bulk_put_items_errors(), tuple()}.
+start_bulk_put_items(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartBulkPutItems">>, Input, Options).
 
 %% @doc Associate a set of tags with an Amazon DynamoDB resource.
 %%

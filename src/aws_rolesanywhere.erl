@@ -130,6 +130,7 @@
 
 %% Example:
 %% create_trust_anchor_request() :: #{
+%%   <<"crlDpRevocationEnabled">> => [boolean()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"name">> := string(),
 %%   <<"notificationSettings">> => list(notification_setting()),
@@ -393,6 +394,14 @@
 
 
 %% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% source() :: #{
 %%   <<"sourceData">> => list(),
 %%   <<"sourceType">> => string()
@@ -465,6 +474,7 @@
 %% Example:
 %% trust_anchor_detail() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"crlDpRevocationEnabled">> => [boolean()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"name">> => string(),
 %%   <<"notificationSettings">> => list(notification_setting_detail()),
@@ -517,6 +527,7 @@
 
 %% Example:
 %% update_trust_anchor_request() :: #{
+%%   <<"crlDpRevocationEnabled">> => [boolean()],
 %%   <<"name">> => string(),
 %%   <<"source">> => source()
 %% }
@@ -531,132 +542,162 @@
 
 -type create_profile_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     access_denied_exception().
 
 -type create_trust_anchor_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     access_denied_exception().
 
 -type delete_attribute_mapping_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type delete_crl_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type delete_profile_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type delete_trust_anchor_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type disable_crl_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type disable_profile_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type disable_trust_anchor_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type enable_crl_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type enable_profile_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type enable_trust_anchor_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type get_crl_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception().
 
 -type get_profile_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type get_subject_errors() ::
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type get_trust_anchor_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type import_crl_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     access_denied_exception().
 
 -type list_crls_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     access_denied_exception().
 
 -type list_profiles_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     access_denied_exception().
 
 -type list_subjects_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type list_trust_anchors_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     access_denied_exception().
 
 -type put_attribute_mapping_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type put_notification_settings_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type reset_notification_settings_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
     too_many_tags_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type update_crl_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type update_profile_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 
 -type update_trust_anchor_errors() ::
     validation_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
 

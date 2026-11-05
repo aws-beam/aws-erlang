@@ -403,6 +403,7 @@
 %% Example:
 %% create_network_migration_definition_request() :: #{
 %%   <<"cidrMappings">> => list(cidr_mapping()),
+%%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"scopeTags">> => map(),
@@ -4430,7 +4431,7 @@ disassociate_source_servers(Client, Input0, Options0) ->
 %% dataReplicationInfo.dataReplicationState will be set to DISCONNECTED; The
 %% totalStorageBytes property for each of dataReplicationInfo.replicatedDisks
 %% will be set to zero; dataReplicationInfo.lagDuration and
-%% dataReplicationInfo.lagDuration will be nullified.
+%% dataReplicationInfo.etaDateTime will be nullified.
 -spec disconnect_from_service(aws_client:aws_client(), disconnect_from_service_request()) ->
     {ok, source_server(), tuple()} |
     {error, any()} |
@@ -4475,7 +4476,7 @@ disconnect_from_service(Client, Input0, Options0) ->
 %% be changed to DISCONNECTED; The SourceServer.lifeCycle.state will be
 %% changed to CUTOVER; The totalStorageBytes property for each of
 %% dataReplicationInfo.replicatedDisks will be set to zero;
-%% dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration will
+%% dataReplicationInfo.lagDuration and dataReplicationInfo.etaDateTime will
 %% be nullified.
 -spec finalize_cutover(aws_client:aws_client(), finalize_cutover_request()) ->
     {ok, source_server(), tuple()} |
