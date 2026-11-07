@@ -210,6 +210,10 @@
          put_feedback/4,
          query_assistant/3,
          query_assistant/4,
+         register_assistant_replica_key/3,
+         register_assistant_replica_key/4,
+         register_knowledge_base_replica_key/3,
+         register_knowledge_base_replica_key/4,
          remove_assistant_a_i_agent/3,
          remove_assistant_a_i_agent/4,
          remove_knowledge_base_template_uri/3,
@@ -279,6 +283,8 @@
 %%   <<"assistantId">> => string(),
 %%   <<"configuration">> => list(),
 %%   <<"description">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"modifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"origin">> => string(),
@@ -298,6 +304,8 @@
 %%   <<"assistantId">> => string(),
 %%   <<"configuration">> => list(),
 %%   <<"description">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"modifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"origin">> => string(),
@@ -349,6 +357,8 @@
 %%   <<"contentPolicyConfig">> => a_i_guardrail_content_policy_config(),
 %%   <<"contextualGroundingPolicyConfig">> => a_i_guardrail_contextual_grounding_policy_config(),
 %%   <<"description">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"modifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"sensitiveInformationPolicyConfig">> => a_i_guardrail_sensitive_information_policy_config(),
@@ -376,6 +386,8 @@
 %%   <<"assistantArn">> => string(),
 %%   <<"assistantId">> => string(),
 %%   <<"description">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"modifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"status">> => string(),
@@ -417,6 +429,8 @@
 %%   <<"assistantId">> => string(),
 %%   <<"description">> => string(),
 %%   <<"inferenceConfiguration">> => a_iprompt_inference_configuration(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"modelId">> => string(),
 %%   <<"modifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
@@ -449,6 +463,8 @@
 %%   <<"assistantArn">> => string(),
 %%   <<"assistantId">> => string(),
 %%   <<"description">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"modelId">> => string(),
 %%   <<"modifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
@@ -545,6 +561,8 @@
 %%   <<"assistantId">> => string(),
 %%   <<"associationData">> => list(),
 %%   <<"associationType">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"tags">> => map()
 %% }
 -type assistant_association_data() :: #{binary() => any()}.
@@ -558,6 +576,8 @@
 %%   <<"assistantId">> => string(),
 %%   <<"associationData">> => list(),
 %%   <<"associationType">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"tags">> => map()
 %% }
 -type assistant_association_summary() :: #{binary() => any()}.
@@ -574,10 +594,13 @@
 %% assistant_data() :: #{
 %%   <<"aiAgentConfiguration">> => map(),
 %%   <<"assistantArn">> => string(),
+%%   <<"assistantGlobalResiliencyStatus">> => string(),
 %%   <<"assistantId">> => string(),
 %%   <<"capabilityConfiguration">> => assistant_capability_configuration(),
 %%   <<"description">> => string(),
 %%   <<"integrationConfiguration">> => assistant_integration_configuration(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
 %%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
@@ -603,6 +626,8 @@
 %%   <<"capabilityConfiguration">> => assistant_capability_configuration(),
 %%   <<"description">> => string(),
 %%   <<"integrationConfiguration">> => assistant_integration_configuration(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"orchestratorConfigurationList">> => list(orchestrator_configuration_entry()),
 %%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
@@ -733,8 +758,11 @@
 %%   <<"contentArn">> => string(),
 %%   <<"contentId">> => string(),
 %%   <<"contentType">> => string(),
+%%   <<"fileHash">> => string(),
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"linkOutUri">> => string(),
 %%   <<"metadata">> => map(),
 %%   <<"name">> => string(),
@@ -773,8 +801,11 @@
 %%   <<"contentArn">> => string(),
 %%   <<"contentId">> => string(),
 %%   <<"contentType">> => string(),
+%%   <<"fileHash">> => string(),
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"metadata">> => map(),
 %%   <<"name">> => string(),
 %%   <<"revisionId">> => string(),
@@ -1902,6 +1933,8 @@
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"knowledgeBaseType">> => string(),
 %%   <<"lastContentModificationTime">> => [non_neg_integer()],
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"renderingConfiguration">> => rendering_configuration(),
 %%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
@@ -1919,6 +1952,8 @@
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"knowledgeBaseType">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
+%%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"renderingConfiguration">> => rendering_configuration(),
 %%   <<"serverSideEncryptionConfiguration">> => server_side_encryption_configuration(),
@@ -2419,6 +2454,7 @@
 %%   <<"crossRegionStatus">> => string(),
 %%   <<"displayName">> => string(),
 %%   <<"endOfLifeTimestamp">> => [non_neg_integer()],
+%%   <<"globalResiliencyStatus">> => string(),
 %%   <<"legacyTimestamp">> => [non_neg_integer()],
 %%   <<"modelId">> => string(),
 %%   <<"modelLifecycle">> => string(),
@@ -2687,6 +2723,7 @@
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"language">> => string(),
 %%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
 %%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"quickResponseArn">> => string(),
@@ -2751,6 +2788,7 @@
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"language">> => string(),
 %%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
 %%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"quickResponseArn">> => string(),
@@ -2772,6 +2810,7 @@
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseId">> => string(),
 %%   <<"lastModifiedBy">> => string(),
+%%   <<"lastModifiedRegion">> => string(),
 %%   <<"lastModifiedTime">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"quickResponseArn">> => string(),
@@ -2811,6 +2850,36 @@
 %%   <<"type">> => string()
 %% }
 -type recommendation_trigger() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_assistant_replica_key_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"replicaKmsKey">> := replica_kms_key()
+%% }
+-type register_assistant_replica_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_assistant_replica_key_response() :: #{
+%%   <<"assistant">> => assistant_data()
+%% }
+-type register_assistant_replica_key_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_knowledge_base_replica_key_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"replicaKmsKey">> := replica_kms_key()
+%% }
+-type register_knowledge_base_replica_key_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% register_knowledge_base_replica_key_response() :: #{
+%%   <<"knowledgeBase">> => knowledge_base_data()
+%% }
+-type register_knowledge_base_replica_key_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2855,6 +2924,13 @@
 %%   <<"templateUri">> => string()
 %% }
 -type rendering_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% replica_kms_key() :: #{
+%%   <<"arn">> => string()
+%% }
+-type replica_kms_key() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3074,7 +3150,8 @@
 
 %% Example:
 %% server_side_encryption_configuration() :: #{
-%%   <<"kmsKeyId">> => string()
+%%   <<"kmsKeyId">> => string(),
+%%   <<"replicaKmsKeys">> => list(replica_kms_key())
 %% }
 -type server_side_encryption_configuration() :: #{binary() => any()}.
 
@@ -3475,7 +3552,8 @@
 
 %% Example:
 %% unprocessable_content_exception() :: #{
-%%   <<"message">> => [string()]
+%%   <<"message">> => [string()],
+%%   <<"reason">> => string()
 %% }
 -type unprocessable_content_exception() :: #{binary() => any()}.
 
@@ -4237,10 +4315,27 @@
     request_timeout_exception() | 
     access_denied_exception().
 
+-type register_assistant_replica_key_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type register_knowledge_base_replica_key_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type remove_assistant_a_i_agent_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type remove_knowledge_base_template_uri_errors() ::
@@ -4349,6 +4444,7 @@
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type update_content_errors() ::
@@ -7147,6 +7243,83 @@ query_assistant(Client, AssistantId, Input) ->
 query_assistant(Client, AssistantId, Input0, Options0) ->
     Method = post,
     Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/query"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Registers a replica Region KMS key for an Amazon Q in Connect
+%% assistant.
+%%
+%% To use this operation, you must have `kms:GenerateDataKey' permission
+%% on the replica key.
+-spec register_assistant_replica_key(aws_client:aws_client(), binary() | list(), register_assistant_replica_key_request()) ->
+    {ok, register_assistant_replica_key_response(), tuple()} |
+    {error, any()} |
+    {error, register_assistant_replica_key_errors(), tuple()}.
+register_assistant_replica_key(Client, AssistantId, Input) ->
+    register_assistant_replica_key(Client, AssistantId, Input, []).
+
+-spec register_assistant_replica_key(aws_client:aws_client(), binary() | list(), register_assistant_replica_key_request(), proplists:proplist()) ->
+    {ok, register_assistant_replica_key_response(), tuple()} |
+    {error, any()} |
+    {error, register_assistant_replica_key_errors(), tuple()}.
+register_assistant_replica_key(Client, AssistantId, Input0, Options0) ->
+    Method = put,
+    Path = ["/assistants/", aws_util:encode_uri(AssistantId), "/replicaKey"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Registers a replica Region KMS key for an Amazon Q in Connect
+%% knowledge base.
+%%
+%% To use this operation, you must have `kms:GenerateDataKey' permission
+%% on the replica key. You must also have `kms:CreateGrant' permission on
+%% the primary key.
+-spec register_knowledge_base_replica_key(aws_client:aws_client(), binary() | list(), register_knowledge_base_replica_key_request()) ->
+    {ok, register_knowledge_base_replica_key_response(), tuple()} |
+    {error, any()} |
+    {error, register_knowledge_base_replica_key_errors(), tuple()}.
+register_knowledge_base_replica_key(Client, KnowledgeBaseId, Input) ->
+    register_knowledge_base_replica_key(Client, KnowledgeBaseId, Input, []).
+
+-spec register_knowledge_base_replica_key(aws_client:aws_client(), binary() | list(), register_knowledge_base_replica_key_request(), proplists:proplist()) ->
+    {ok, register_knowledge_base_replica_key_response(), tuple()} |
+    {error, any()} |
+    {error, register_knowledge_base_replica_key_errors(), tuple()}.
+register_knowledge_base_replica_key(Client, KnowledgeBaseId, Input0, Options0) ->
+    Method = put,
+    Path = ["/knowledgeBases/", aws_util:encode_uri(KnowledgeBaseId), "/replicaKey"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

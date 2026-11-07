@@ -91,6 +91,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_permission/2,
+         update_permission/3,
          update_resource_share/2,
          update_resource_share/3]).
 
@@ -118,6 +120,7 @@
 %% associate_resource_share_permission_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"permissionArn">> := string(),
+%%   <<"permissionTemplateParameters">> => list(permission_template_parameter_input()),
 %%   <<"permissionVersion">> => integer(),
 %%   <<"replace">> => boolean(),
 %%   <<"resourceShareArn">> := string()
@@ -158,6 +161,7 @@
 %%   <<"defaultVersion">> => boolean(),
 %%   <<"featureSet">> => list(any()),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"permissionTemplateParameters">> => list(permission_template_parameter()),
 %%   <<"permissionVersion">> => string(),
 %%   <<"resourceShareArn">> => string(),
 %%   <<"resourceType">> => string(),
@@ -183,6 +187,7 @@
 %% create_permission_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"name">> := string(),
+%%   <<"permissionTemplateParameters">> => list(permission_template_parameter_declaration()),
 %%   <<"policyTemplate">> := string(),
 %%   <<"resourceType">> := string(),
 %%   <<"tags">> => list(tag())
@@ -202,6 +207,7 @@
 %% create_permission_version_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"permissionArn">> := string(),
+%%   <<"permissionTemplateParameters">> => list(permission_template_parameter_declaration()),
 %%   <<"policyTemplate">> := string()
 %% }
 -type create_permission_version_request() :: #{binary() => any()}.
@@ -221,6 +227,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"name">> := string(),
 %%   <<"permissionArns">> => list(string()),
+%%   <<"permissionTemplateParameters">> => list(permission_arn_and_template_parameters()),
 %%   <<"principals">> => list(string()),
 %%   <<"resourceArns">> => list(string()),
 %%   <<"resourceShareConfiguration">> => resource_share_configuration(),
@@ -339,6 +346,7 @@
 %% Example:
 %% get_permission_request() :: #{
 %%   <<"permissionArn">> := string(),
+%%   <<"permissionTemplateParameters">> => list(permission_template_parameter_input()),
 %%   <<"permissionVersion">> => integer()
 %% }
 -type get_permission_request() :: #{binary() => any()}.
@@ -514,6 +522,8 @@
 %%   <<"nextToken">> => string(),
 %%   <<"permissionArn">> => string(),
 %%   <<"permissionVersion">> => integer(),
+%%   <<"resourceOwner">> => list(any()),
+%%   <<"resourceShareArn">> => string(),
 %%   <<"resourceType">> => string()
 %% }
 -type list_permission_associations_request() :: #{binary() => any()}.
@@ -548,7 +558,9 @@
 %% list_permissions_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"permissionStatus">> => list(any()),
 %%   <<"permissionType">> => list(any()),
+%%   <<"resourceOwner">> => list(any()),
 %%   <<"resourceType">> => string()
 %% }
 -type list_permissions_request() :: #{binary() => any()}.
@@ -713,10 +725,45 @@
 
 
 %% Example:
+%% permission_arn_and_template_parameters() :: #{
+%%   <<"permissionArn">> => string(),
+%%   <<"permissionTemplateParameters">> => list(permission_template_parameter_input())
+%% }
+-type permission_arn_and_template_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% permission_limit_exceeded_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type permission_limit_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_template_parameter() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"values">> => list(string())
+%% }
+-type permission_template_parameter() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_template_parameter_declaration() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type permission_template_parameter_declaration() :: #{binary() => any()}.
+
+
+%% Example:
+%% permission_template_parameter_input() :: #{
+%%   <<"name">> => string(),
+%%   <<"values">> => list(string())
+%% }
+-type permission_template_parameter_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -789,6 +836,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"fromPermissionArn">> := string(),
 %%   <<"fromPermissionVersion">> => integer(),
+%%   <<"permissionTemplateParameters">> => list(permission_template_parameter_input()),
 %%   <<"toPermissionArn">> := string()
 %% }
 -type replace_permission_associations_request() :: #{binary() => any()}.
@@ -809,6 +857,7 @@
 %%   <<"fromPermissionVersion">> => string(),
 %%   <<"id">> => string(),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"permissionTemplateParameters">> => list(permission_template_parameter()),
 %%   <<"status">> => list(any()),
 %%   <<"statusMessage">> => string(),
 %%   <<"toPermissionArn">> => string(),
@@ -938,7 +987,9 @@
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
 %%   <<"permission">> => string(),
+%%   <<"permissionTemplateParameters">> => list(permission_template_parameter_declaration()),
 %%   <<"permissionType">> => list(any()),
+%%   <<"resourceOwner">> => list(any()),
 %%   <<"resourceType">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => list(tag()),
@@ -956,7 +1007,9 @@
 %%   <<"isResourceTypeDefault">> => boolean(),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
 %%   <<"name">> => string(),
+%%   <<"permissionTemplateParameters">> => list(permission_template_parameter()),
 %%   <<"permissionType">> => list(any()),
+%%   <<"resourceOwner">> => list(any()),
 %%   <<"resourceType">> => string(),
 %%   <<"status">> => string(),
 %%   <<"tags">> => list(tag()),
@@ -1083,6 +1136,23 @@
 
 
 %% Example:
+%% update_permission_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"permissionArn">> := string(),
+%%   <<"status">> := list(any())
+%% }
+-type update_permission_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_permission_response() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"permissionStatus">> => list(any())
+%% }
+-type update_permission_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_resource_share_request() :: #{
 %%   <<"allowExternalPrincipals">> => boolean(),
 %%   <<"clientToken">> => string(),
@@ -1150,6 +1220,7 @@
     service_unavailable_exception() | 
     server_internal_exception() | 
     permission_versions_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
     malformed_policy_template_exception() | 
     malformed_arn_exception() | 
     invalid_policy_exception() | 
@@ -1423,6 +1494,17 @@
     server_internal_exception() | 
     malformed_arn_exception() | 
     invalid_parameter_exception().
+
+-type update_permission_errors() ::
+    unknown_resource_exception() | 
+    service_unavailable_exception() | 
+    server_internal_exception() | 
+    permission_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
+    malformed_arn_exception() | 
+    invalid_parameter_exception() | 
+    invalid_client_token_exception() | 
+    idempotent_parameter_mismatch_exception().
 
 -type update_resource_share_errors() ::
     unknown_resource_exception() | 
@@ -1948,6 +2030,16 @@ enable_sharing_with_aws_organization(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Retrieves the contents of a managed permission in JSON format.
+%%
+%% If the permission has template parameters, you can include the
+%% `permissionTemplateParameters' parameter in your request. The
+%% operation then
+%% renders the returned policy with the specified values in place of the
+%% template parameter
+%% placeholders. If you omit `permissionTemplateParameters', the
+%% operation
+%% returns the raw policy template with `@{parameterName}' placeholders
+%% unchanged.
 -spec get_permission(aws_client:aws_client(), get_permission_request()) ->
     {ok, get_permission_response(), tuple()} |
     {error, any()} |
@@ -2909,6 +3001,45 @@ untag_resource(Client, Input) ->
 untag_resource(Client, Input0, Options0) ->
     Method = post,
     Path = ["/untagresource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the status of the specified customer managed permission.
+%%
+%% Setting the status to `DEPRECATED' prevents new resource share
+%% associations. Setting it to `ATTACHABLE' restores a previously
+%% deprecated permission. Existing resource shares that use the permission
+%% continue to function.
+-spec update_permission(aws_client:aws_client(), update_permission_request()) ->
+    {ok, update_permission_response(), tuple()} |
+    {error, any()} |
+    {error, update_permission_errors(), tuple()}.
+update_permission(Client, Input) ->
+    update_permission(Client, Input, []).
+
+-spec update_permission(aws_client:aws_client(), update_permission_request(), proplists:proplist()) ->
+    {ok, update_permission_response(), tuple()} |
+    {error, any()} |
+    {error, update_permission_errors(), tuple()}.
+update_permission(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/updatepermission"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

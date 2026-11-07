@@ -941,6 +941,7 @@
 %% Example:
 %% authentication_configuration_patch() :: #{
 %%   <<"basicAuthenticationCredentials">> => basic_authentication_credentials(),
+%%   <<"oAuth2Properties">> => o_auth2_properties_patch(),
 %%   <<"secretArn">> => [string()]
 %% }
 -type authentication_configuration_patch() :: #{binary() => any()}.
@@ -5436,6 +5437,16 @@
 %%   <<"tokenUrlParametersMap">> => map()
 %% }
 -type o_auth2_properties() :: #{binary() => any()}.
+
+
+%% Example:
+%% o_auth2_properties_patch() :: #{
+%%   <<"oAuth2ClientApplication">> => o_auth2_client_application(),
+%%   <<"oAuth2GrantType">> => list(any()),
+%%   <<"tokenUrl">> => [string()],
+%%   <<"tokenUrlParametersMap">> => map()
+%% }
+-type o_auth2_properties_patch() :: #{binary() => any()}.
 
 
 %% Example:

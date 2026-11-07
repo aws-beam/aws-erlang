@@ -35,7 +35,8 @@
 %%   <<"audience">> => [string()],
 %%   <<"credentials">> => credentials(),
 %%   <<"podIdentityAssociation">> => pod_identity_association(),
-%%   <<"subject">> => subject()
+%%   <<"subject">> => subject(),
+%%   <<"workloadIdentityProviderArn">> => [string()]
 %% }
 -type assume_role_for_pod_identity_response() :: #{binary() => any()}.
 

@@ -46,6 +46,8 @@
          create_prepared_statement/3,
          create_presigned_notebook_url/2,
          create_presigned_notebook_url/3,
+         create_system_table_configuration/2,
+         create_system_table_configuration/3,
          create_work_group/2,
          create_work_group/3,
          delete_capacity_reservation/2,
@@ -58,6 +60,8 @@
          delete_notebook/3,
          delete_prepared_statement/2,
          delete_prepared_statement/3,
+         delete_system_table_configuration/2,
+         delete_system_table_configuration/3,
          delete_work_group/2,
          delete_work_group/3,
          export_notebook/2,
@@ -96,6 +100,8 @@
          get_session_endpoint/3,
          get_session_status/2,
          get_session_status/3,
+         get_system_table_configuration/2,
+         get_system_table_configuration/3,
          get_table_metadata/2,
          get_table_metadata/3,
          get_work_group/2,
@@ -128,6 +134,8 @@
          list_query_executions/3,
          list_sessions/2,
          list_sessions/3,
+         list_system_table_statuses/2,
+         list_system_table_statuses/3,
          list_table_metadata/2,
          list_table_metadata/3,
          list_tags_for_resource/2,
@@ -164,6 +172,8 @@
          update_notebook_metadata/3,
          update_prepared_statement/2,
          update_prepared_statement/3,
+         update_system_table_configuration/2,
+         update_system_table_configuration/3,
          update_work_group/2,
          update_work_group/3]).
 
@@ -447,6 +457,24 @@
 -type create_presigned_notebook_url_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_system_table_configuration_input() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"TableName">> := list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_system_table_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_system_table_configuration_output() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"LastModifiedAt">> => non_neg_integer(),
+%%   <<"TableName">> => list(any())
+%% }
+-type create_system_table_configuration_output() :: #{binary() => any()}.
+
+%% Example:
 %% create_work_group_input() :: #{
 %%   <<"Configuration">> => work_group_configuration(),
 %%   <<"Description">> => string(),
@@ -564,6 +592,18 @@
 
 %% }
 -type delete_prepared_statement_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_system_table_configuration_input() :: #{
+%%   <<"TableName">> := list(any())
+%% }
+-type delete_system_table_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_system_table_configuration_output() :: #{
+
+%% }
+-type delete_system_table_configuration_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_work_group_input() :: #{
@@ -866,6 +906,21 @@
 -type get_session_status_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_system_table_configuration_input() :: #{
+%%   <<"TableName">> := list(any())
+%% }
+-type get_system_table_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_system_table_configuration_output() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"LastModifiedAt">> => non_neg_integer(),
+%%   <<"TableName">> => list(any())
+%% }
+-type get_system_table_configuration_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_table_metadata_input() :: #{
 %%   <<"CatalogName">> := string(),
 %%   <<"DatabaseName">> := string(),
@@ -1126,6 +1181,20 @@
 %%   <<"Sessions">> => list(session_summary())
 %% }
 -type list_sessions_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_system_table_statuses_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_system_table_statuses_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_system_table_statuses_output() :: #{
+%%   <<"Items">> => list(system_table_status()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_system_table_statuses_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_table_metadata_input() :: #{
@@ -1586,6 +1655,13 @@
 -type stop_query_execution_output() :: #{binary() => any()}.
 
 %% Example:
+%% system_table_status() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"TableName">> => list(any())
+%% }
+-type system_table_status() :: #{binary() => any()}.
+
+%% Example:
 %% table_metadata() :: #{
 %%   <<"Columns">> => list(column()),
 %%   <<"CreateTime">> => non_neg_integer(),
@@ -1762,6 +1838,22 @@
 -type update_prepared_statement_output() :: #{binary() => any()}.
 
 %% Example:
+%% update_system_table_configuration_input() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"TableName">> := list(any())
+%% }
+-type update_system_table_configuration_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_system_table_configuration_output() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"LastModifiedAt">> => non_neg_integer(),
+%%   <<"TableName">> => list(any())
+%% }
+-type update_system_table_configuration_output() :: #{binary() => any()}.
+
+%% Example:
 %% update_work_group_input() :: #{
 %%   <<"ConfigurationUpdates">> => work_group_configuration_updates(),
 %%   <<"Description">> => string(),
@@ -1803,7 +1895,8 @@
 %%   <<"PublishCloudWatchMetricsEnabled">> => boolean(),
 %%   <<"QueryResultsS3AccessGrantsConfiguration">> => query_results_s3_access_grants_configuration(),
 %%   <<"RequesterPaysEnabled">> => boolean(),
-%%   <<"ResultConfiguration">> => result_configuration()
+%%   <<"ResultConfiguration">> => result_configuration(),
+%%   <<"SystemTableStatuses">> => list(system_table_status())
 %% }
 -type work_group_configuration() :: #{binary() => any()}.
 
@@ -1881,6 +1974,11 @@
     invalid_request_exception() | 
     internal_server_exception().
 
+-type create_system_table_configuration_errors() ::
+    too_many_requests_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
+
 -type create_work_group_errors() ::
     invalid_request_exception() | 
     internal_server_exception().
@@ -1904,6 +2002,11 @@
 
 -type delete_prepared_statement_errors() ::
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
+
+-type delete_system_table_configuration_errors() ::
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     internal_server_exception().
 
@@ -1995,6 +2098,12 @@
     invalid_request_exception() | 
     internal_server_exception().
 
+-type get_system_table_configuration_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
+
 -type get_table_metadata_errors() ::
     metadata_exception() | 
     invalid_request_exception() | 
@@ -2065,6 +2174,11 @@
 
 -type list_sessions_errors() ::
     resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
+
+-type list_system_table_statuses_errors() ::
+    too_many_requests_exception() | 
     invalid_request_exception() | 
     internal_server_exception().
 
@@ -2150,6 +2264,12 @@
     internal_server_exception().
 
 -type update_prepared_statement_errors() ::
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_server_exception().
+
+-type update_system_table_configuration_errors() ::
+    too_many_requests_exception() | 
     resource_not_found_exception() | 
     invalid_request_exception() | 
     internal_server_exception().
@@ -2411,6 +2531,28 @@ create_presigned_notebook_url(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreatePresignedNotebookUrl">>, Input, Options).
 
+%% @doc Enables system tables for the current account.
+%%
+%% System tables are enabled or disabled for
+%% the entire account: creating this configuration enables them. If a
+%% configuration
+%% already exists, use `UpdateSystemTableConfiguration' to update it.
+-spec create_system_table_configuration(aws_client:aws_client(), create_system_table_configuration_input()) ->
+    {ok, create_system_table_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, create_system_table_configuration_errors(), tuple()}.
+create_system_table_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_system_table_configuration(Client, Input, []).
+
+-spec create_system_table_configuration(aws_client:aws_client(), create_system_table_configuration_input(), proplists:proplist()) ->
+    {ok, create_system_table_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, create_system_table_configuration_errors(), tuple()}.
+create_system_table_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSystemTableConfiguration">>, Input, Options).
+
 %% @doc Creates a workgroup with the specified name.
 %%
 %% A workgroup can be an Apache Spark
@@ -2528,6 +2670,30 @@ delete_prepared_statement(Client, Input)
 delete_prepared_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeletePreparedStatement">>, Input, Options).
+
+%% @doc Disables system tables for the current account by deleting the
+%% account-level
+%% configuration.
+%%
+%% If the configuration doesn't exist, the operation succeeds without
+%% making
+%% any changes. The system table and previously published data are left
+%% intact.
+-spec delete_system_table_configuration(aws_client:aws_client(), delete_system_table_configuration_input()) ->
+    {ok, delete_system_table_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_system_table_configuration_errors(), tuple()}.
+delete_system_table_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_system_table_configuration(Client, Input, []).
+
+-spec delete_system_table_configuration(aws_client:aws_client(), delete_system_table_configuration_input(), proplists:proplist()) ->
+    {ok, delete_system_table_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, delete_system_table_configuration_errors(), tuple()}.
+delete_system_table_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSystemTableConfiguration">>, Input, Options).
 
 %% @doc Deletes the workgroup with the specified name.
 %%
@@ -2906,6 +3072,27 @@ get_session_status(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSessionStatus">>, Input, Options).
 
+%% @doc Returns the account-level system tables configuration.
+%%
+%% Fails with a
+%% `ResourceNotFoundException' if system tables are not enabled for the
+%% account.
+-spec get_system_table_configuration(aws_client:aws_client(), get_system_table_configuration_input()) ->
+    {ok, get_system_table_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_system_table_configuration_errors(), tuple()}.
+get_system_table_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_system_table_configuration(Client, Input, []).
+
+-spec get_system_table_configuration(aws_client:aws_client(), get_system_table_configuration_input(), proplists:proplist()) ->
+    {ok, get_system_table_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, get_system_table_configuration_errors(), tuple()}.
+get_system_table_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSystemTableConfiguration">>, Input, Options).
+
 %% @doc Returns table metadata for the specified catalog, database, and
 %% table.
 -spec get_table_metadata(aws_client:aws_client(), get_table_metadata_input()) ->
@@ -3228,6 +3415,28 @@ list_sessions(Client, Input)
 list_sessions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListSessions">>, Input, Options).
+
+%% @doc Lists the system tables that the account-level configuration
+%% activates, along with
+%% whether each is currently enabled.
+%%
+%% Because system tables are enabled at the account
+%% level, every entry reflects the same account-wide state.
+-spec list_system_table_statuses(aws_client:aws_client(), list_system_table_statuses_input()) ->
+    {ok, list_system_table_statuses_output(), tuple()} |
+    {error, any()} |
+    {error, list_system_table_statuses_errors(), tuple()}.
+list_system_table_statuses(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_system_table_statuses(Client, Input, []).
+
+-spec list_system_table_statuses(aws_client:aws_client(), list_system_table_statuses_input(), proplists:proplist()) ->
+    {ok, list_system_table_statuses_output(), tuple()} |
+    {error, any()} |
+    {error, list_system_table_statuses_errors(), tuple()}.
+list_system_table_statuses(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSystemTableStatuses">>, Input, Options).
 
 %% @doc Lists the metadata for the tables in the specified data catalog
 %% database.
@@ -3613,6 +3822,27 @@ update_prepared_statement(Client, Input)
 update_prepared_statement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdatePreparedStatement">>, Input, Options).
+
+%% @doc Updates the account-level system tables configuration.
+%%
+%% If no configuration exists, use
+%% `CreateSystemTableConfiguration' to create one. Fields that you omit
+%% retain their current values.
+-spec update_system_table_configuration(aws_client:aws_client(), update_system_table_configuration_input()) ->
+    {ok, update_system_table_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_system_table_configuration_errors(), tuple()}.
+update_system_table_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_system_table_configuration(Client, Input, []).
+
+-spec update_system_table_configuration(aws_client:aws_client(), update_system_table_configuration_input(), proplists:proplist()) ->
+    {ok, update_system_table_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_system_table_configuration_errors(), tuple()}.
+update_system_table_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSystemTableConfiguration">>, Input, Options).
 
 %% @doc Updates the workgroup with the specified name.
 %%

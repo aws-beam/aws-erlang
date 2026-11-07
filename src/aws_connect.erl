@@ -4833,6 +4833,10 @@
 -type encryption_config() :: #{binary() => any()}.
 
 %% Example:
+%% end_associated_emails_action_definition() :: #{}
+-type end_associated_emails_action_definition() :: #{}.
+
+%% Example:
 %% end_associated_tasks_action_definition() :: #{}
 -type end_associated_tasks_action_definition() :: #{}.
 
@@ -9360,6 +9364,7 @@
 %%   <<"AssignContactCategoryAction">> => assign_contact_category_action_definition(),
 %%   <<"AssignSlaAction">> => assign_sla_action_definition(),
 %%   <<"CreateCaseAction">> => create_case_action_definition(),
+%%   <<"EndAssociatedEmailsAction">> => end_associated_emails_action_definition(),
 %%   <<"EndAssociatedTasksAction">> => end_associated_tasks_action_definition(),
 %%   <<"EventBridgeAction">> => event_bridge_action_definition(),
 %%   <<"ExtractInformationAction">> => extract_information_action_definition(),

@@ -349,6 +349,7 @@
 %%   <<"AutoScalingGroupNames">> => list(string()),
 %%   <<"Filters">> => list(filter()),
 %%   <<"IncludeInstances">> => boolean(),
+%%   <<"IncludeManagedResources">> => boolean(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -677,6 +678,7 @@
 
 %% Example:
 %% describe_auto_scaling_instances_type() :: #{
+%%   <<"IncludeManagedResources">> => boolean(),
 %%   <<"InstanceIds">> => list(string()),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
@@ -771,6 +773,7 @@
 %% Example:
 %% describe_notification_configurations_type() :: #{
 %%   <<"AutoScalingGroupNames">> => list(string()),
+%%   <<"IncludeManagedResources">> => boolean(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -779,6 +782,7 @@
 %% Example:
 %% describe_policies_type() :: #{
 %%   <<"AutoScalingGroupName">> => string(),
+%%   <<"IncludeManagedResources">> => boolean(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"PolicyNames">> => list(string()),
@@ -792,6 +796,7 @@
 %%   <<"AutoScalingGroupName">> => string(),
 %%   <<"Filters">> => list(filter()),
 %%   <<"IncludeDeletedGroups">> => boolean(),
+%%   <<"IncludeManagedResources">> => boolean(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -801,6 +806,7 @@
 %% describe_scheduled_actions_type() :: #{
 %%   <<"AutoScalingGroupName">> => string(),
 %%   <<"EndTime">> => non_neg_integer(),
+%%   <<"IncludeManagedResources">> => boolean(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"ScheduledActionNames">> => list(string()),
@@ -811,6 +817,7 @@
 %% Example:
 %% describe_tags_type() :: #{
 %%   <<"Filters">> => list(filter()),
+%%   <<"IncludeManagedResources">> => boolean(),
 %%   <<"MaxRecords">> => integer(),
 %%   <<"NextToken">> => string()
 %% }

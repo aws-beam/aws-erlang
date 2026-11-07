@@ -466,6 +466,7 @@
 %%   <<"imageArn">> => string(),
 %%   <<"imageVersion">> => string(),
 %%   <<"status">> => list(any()),
+%%   <<"supportedCpuConfigurations">> => list(cpu_configuration()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type managed_microvm_image_version() :: #{binary() => any()}.

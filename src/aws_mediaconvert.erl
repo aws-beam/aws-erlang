@@ -461,11 +461,13 @@
 
 %% Example:
 %% caption_description() :: #{
+%%   <<"AudioSourceNames">> => list(string()),
 %%   <<"CaptionSelectorName">> => string(),
 %%   <<"CustomLanguageCode">> => string(),
 %%   <<"DestinationSettings">> => caption_destination_settings(),
 %%   <<"LanguageCode">> => list(any()),
-%%   <<"LanguageDescription">> => string()
+%%   <<"LanguageDescription">> => string(),
+%%   <<"Source">> => list(any())
 %% }
 -type caption_description() :: #{binary() => any()}.
 
@@ -746,6 +748,7 @@
 %%   <<"AccelerationSettings">> => acceleration_settings(),
 %%   <<"BillingTagsSource">> => list(any()),
 %%   <<"ClientRequestToken">> => string(),
+%%   <<"ElementalInferenceSettings">> => elemental_inference_settings(),
 %%   <<"HopDestinations">> => list(hop_destination()),
 %%   <<"JobEngineVersion">> => string(),
 %%   <<"JobTemplate">> => string(),
@@ -773,6 +776,7 @@
 %%   <<"AccelerationSettings">> => acceleration_settings(),
 %%   <<"Category">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"ElementalInferenceSettings">> => elemental_inference_settings(),
 %%   <<"HopDestinations">> => list(hop_destination()),
 %%   <<"Name">> := string(),
 %%   <<"Priority">> => integer(),
@@ -1176,6 +1180,20 @@
 %%   <<"FeedManagementState">> => list(any())
 %% }
 -type elemental_inference_feed() :: #{binary() => any()}.
+
+
+%% Example:
+%% elemental_inference_feed_configuration_source() :: #{
+%%   <<"FeedArn">> => string()
+%% }
+-type elemental_inference_feed_configuration_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% elemental_inference_settings() :: #{
+%%   <<"FeedConfigurationSource">> => elemental_inference_feed_configuration_source()
+%% }
+-type elemental_inference_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1845,6 +1863,7 @@
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"CurrentPhase">> => list(any()),
 %%   <<"ElementalInferenceConfiguration">> => elemental_inference_configuration(),
+%%   <<"ElementalInferenceSettings">> => elemental_inference_settings(),
 %%   <<"ErrorCode">> => integer(),
 %%   <<"ErrorMessage">> => string(),
 %%   <<"HopDestinations">> => list(hop_destination()),
@@ -1917,6 +1936,7 @@
 %%   <<"Category">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
+%%   <<"ElementalInferenceSettings">> => elemental_inference_settings(),
 %%   <<"HopDestinations">> => list(hop_destination()),
 %%   <<"LastUpdated">> => non_neg_integer(),
 %%   <<"Name">> => string(),
@@ -3033,6 +3053,7 @@
 %%   <<"AccelerationSettings">> => acceleration_settings(),
 %%   <<"Category">> => string(),
 %%   <<"Description">> => string(),
+%%   <<"ElementalInferenceSettings">> => elemental_inference_settings(),
 %%   <<"HopDestinations">> => list(hop_destination()),
 %%   <<"Priority">> => integer(),
 %%   <<"Queue">> => string(),

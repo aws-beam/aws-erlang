@@ -1945,6 +1945,7 @@
 %%   <<"knowledgeBaseArn">> => string(),
 %%   <<"knowledgeBaseConfiguration">> => knowledge_base_configuration(),
 %%   <<"knowledgeBaseId">> => string(),
+%%   <<"metadataConfigurations">> => list(metadata_configuration()),
 %%   <<"name">> => string(),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
@@ -2444,6 +2445,15 @@
 %%   <<"type">> => list(any())
 %% }
 -type metadata_attribute_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_configuration() :: #{
+%%   <<"name">> => string(),
+%%   <<"searchability">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type metadata_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3614,6 +3624,7 @@
 %% update_knowledge_base_request() :: #{
 %%   <<"description">> => string(),
 %%   <<"knowledgeBaseConfiguration">> := knowledge_base_configuration(),
+%%   <<"metadataConfigurations">> => list(metadata_configuration()),
 %%   <<"name">> := string(),
 %%   <<"roleArn">> := string(),
 %%   <<"storageConfiguration">> => storage_configuration()

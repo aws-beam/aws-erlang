@@ -1272,6 +1272,7 @@
 
 %% Example:
 %% get_document_content_request() :: #{
+%%   <<"mediaId">> => string(),
 %%   <<"outputFormat">> => list(any()),
 %%   <<"userContext">> => user_context()
 %% }
@@ -3711,9 +3712,11 @@ get_agent_memory(Client, AgentAliasId, AgentId, MemoryId, MemoryType, QueryMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the content of an ingested document from a knowledge base.
+%% @doc Retrieves the content of an ingested document from a knowledge base,
+%% or of an image embedded in the document.
 %%
-%% Returns a pre-signed URL for secure document access.
+%% Returns a pre-signed URL for downloading the content. Use this operation
+%% to display the source of a `Retrieve' result.
 -spec get_document_content(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), get_document_content_request()) ->
     {ok, get_document_content_response(), tuple()} |
     {error, any()} |

@@ -60,6 +60,8 @@
          resend_contact_reachability_email/3,
          resend_operation_authorization/2,
          resend_operation_authorization/3,
+         restore_domain/2,
+         restore_domain/3,
          retrieve_domain_auth_code/2,
          retrieve_domain_auth_code/3,
          transfer_domain/2,
@@ -632,6 +634,19 @@
 -type resend_operation_authorization_request() :: #{binary() => any()}.
 
 %% Example:
+%% restore_domain_request() :: #{
+%%   <<"Consent">> => consent(),
+%%   <<"DomainName">> := string()
+%% }
+-type restore_domain_request() :: #{binary() => any()}.
+
+%% Example:
+%% restore_domain_response() :: #{
+%%   <<"OperationId">> => string()
+%% }
+-type restore_domain_response() :: #{binary() => any()}.
+
+%% Example:
 %% retrieve_domain_auth_code_request() :: #{
 %%   <<"DomainName">> := string()
 %% }
@@ -934,6 +949,12 @@
 -type resend_operation_authorization_errors() ::
     t_l_d_in_maintenance() | 
     invalid_input().
+
+-type restore_domain_errors() ::
+    unsupported_t_l_d() | 
+    operation_limit_exceeded() | 
+    invalid_input() | 
+    duplicate_request().
 
 -type retrieve_domain_auth_code_errors() ::
     unsupported_t_l_d() | 
@@ -1716,6 +1737,59 @@ resend_operation_authorization(Client, Input)
 resend_operation_authorization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ResendOperationAuthorization">>, Input, Options).
+
+%% @doc Restores a domain that has expired, or was deleted, before it becomes
+%% available
+%% for others to register.
+%%
+%% The cost of restoring your domain is billed to your Amazon Web Services
+%% account.
+%%
+%% Not every TLD registry supports restoring domains, and the period during
+%% which a
+%% domain can be restored varies by TLD. To find out whether your domain can
+%% be restored
+%% and the period during which you can restore it, see Domains that you can
+%% register with Amazon Route 53:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html
+%% in the Amazon Route 53 Developer
+%% Guide.
+%%
+%% Restoring a domain typically costs more, and sometimes much more, than
+%% registering
+%% or renewing a domain. To get the restoration price for a domain before you
+%% restore
+%% it, use GetDomainPrices:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetDomainPrices.html.
+%%
+%% Restoration is asynchronous. The response includes an operation ID that
+%% you can use
+%% with GetOperationDetail:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html
+%% to track the progress of the request. When the restoration
+%% succeeds, the domain reappears in the response to ListDomains:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListDomains.html.
+%%
+%% For more information, see Restoring an
+%% expired or deleted domain:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-restore-expired.html
+%% in the Amazon Route 53 Developer
+%% Guide.
+-spec restore_domain(aws_client:aws_client(), restore_domain_request()) ->
+    {ok, restore_domain_response(), tuple()} |
+    {error, any()} |
+    {error, restore_domain_errors(), tuple()}.
+restore_domain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    restore_domain(Client, Input, []).
+
+-spec restore_domain(aws_client:aws_client(), restore_domain_request(), proplists:proplist()) ->
+    {ok, restore_domain_response(), tuple()} |
+    {error, any()} |
+    {error, restore_domain_errors(), tuple()}.
+restore_domain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RestoreDomain">>, Input, Options).
 
 %% @doc This operation returns the authorization code for the domain.
 %%

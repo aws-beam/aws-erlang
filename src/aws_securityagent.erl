@@ -1834,6 +1834,14 @@
 
 
 %% Example:
+%% group_metadata() :: #{
+%%   <<"description">> => [string()],
+%%   <<"displayName">> => [string()]
+%% }
+-type group_metadata() :: #{binary() => any()}.
+
+
+%% Example:
 %% http_verification() :: #{
 %%   <<"routePath">> => [string()],
 %%   <<"token">> => [string()]
@@ -4693,8 +4701,8 @@ create_integration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Creates a new membership, granting a user access to an agent space
-%% within an application.
+%% @doc Creates a new membership, granting a user or group access to an agent
+%% space within an application.
 -spec create_membership(aws_client:aws_client(), create_membership_request()) ->
     {ok, create_membership_response(), tuple()} |
     {error, any()}.
@@ -5065,7 +5073,8 @@ delete_integration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a membership, revoking a user's access to an agent space.
+%% @doc Deletes a membership, revoking a user's or group's access to
+%% an agent space.
 -spec delete_membership(aws_client:aws_client(), delete_membership_request()) ->
     {ok, delete_membership_response(), tuple()} |
     {error, any()}.

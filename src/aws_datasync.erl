@@ -147,6 +147,20 @@
 -type azure_blob_sas_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% azure_federated_identity_config() :: #{
+%%   <<"AwsIamRole">> => string(),
+%%   <<"AzureOidc">> => azure_oidc_config()
+%% }
+-type azure_federated_identity_config() :: #{binary() => any()}.
+
+%% Example:
+%% azure_oidc_config() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"TenantId">> => string()
+%% }
+-type azure_oidc_config() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_task_execution_request() :: #{
 %%   <<"TaskExecutionArn">> := string()
 %% }
@@ -191,6 +205,7 @@
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"ContainerUrl">> := string(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"FederatedIdentity">> => azure_federated_identity_config(),
 %%   <<"SasConfiguration">> => azure_blob_sas_configuration(),
 %%   <<"Subdirectory">> => string(),
 %%   <<"Tags">> => list(tag_list_entry())
@@ -337,6 +352,7 @@
 %%   <<"BucketName">> := string(),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"FederatedIdentity">> => object_storage_federated_identity_config(),
 %%   <<"SecretKey">> => string(),
 %%   <<"ServerCertificate">> => binary(),
 %%   <<"ServerHostname">> := string(),
@@ -496,6 +512,7 @@
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"FederatedIdentity">> => azure_federated_identity_config(),
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
 %%   <<"ManagedSecretConfig">> => managed_secret_config()
@@ -644,6 +661,7 @@
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"FederatedIdentity">> => object_storage_federated_identity_config(),
 %%   <<"LocationArn">> => string(),
 %%   <<"LocationUri">> => string(),
 %%   <<"ManagedSecretConfig">> => managed_secret_config(),
@@ -829,6 +847,15 @@
 -type fsx_update_protocol_smb() :: #{binary() => any()}.
 
 %% Example:
+%% google_oidc_config() :: #{
+%%   <<"IdentityPoolName">> => string(),
+%%   <<"IdentityProviderName">> => string(),
+%%   <<"ProjectName">> => string(),
+%%   <<"ProjectNumber">> => string()
+%% }
+-type google_oidc_config() :: #{binary() => any()}.
+
+%% Example:
 %% hdfs_name_node() :: #{
 %%   <<"Hostname">> => string(),
 %%   <<"Port">> => integer()
@@ -958,6 +985,19 @@
 %%   <<"Version">> => list(any())
 %% }
 -type nfs_mount_options() :: #{binary() => any()}.
+
+%% Example:
+%% object_storage_external_identity_config() :: #{
+%%   <<"GoogleOidc">> => google_oidc_config()
+%% }
+-type object_storage_external_identity_config() :: #{binary() => any()}.
+
+%% Example:
+%% object_storage_federated_identity_config() :: #{
+%%   <<"AwsIamRole">> => string(),
+%%   <<"ExternalIdentity">> => object_storage_external_identity_config()
+%% }
+-type object_storage_federated_identity_config() :: #{binary() => any()}.
 
 %% Example:
 %% on_prem_config() :: #{
@@ -1241,6 +1281,7 @@
 %%   <<"BlobType">> => list(any()),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"FederatedIdentity">> => azure_federated_identity_config(),
 %%   <<"LocationArn">> := string(),
 %%   <<"SasConfiguration">> => azure_blob_sas_configuration(),
 %%   <<"Subdirectory">> => string()
@@ -1376,6 +1417,7 @@
 %%   <<"AgentArns">> => list(string()),
 %%   <<"CmkSecretConfig">> => cmk_secret_config(),
 %%   <<"CustomSecretConfig">> => custom_secret_config(),
+%%   <<"FederatedIdentity">> => object_storage_federated_identity_config(),
 %%   <<"LocationArn">> := string(),
 %%   <<"SecretKey">> => string(),
 %%   <<"ServerCertificate">> => binary(),
@@ -2416,20 +2458,6 @@ describe_task_execution(Client, Input, Options)
 %% a truncated list of agents in a response, the response contains a marker
 %% that you can specify
 %% in your next request to fetch the next page of agents.
-%%
-%% `ListAgents' is eventually consistent. This means the result of
-%% running the
-%% operation might not reflect that you just created or deleted an agent. For
-%% example, if you
-%% create an agent with CreateAgent:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/API_CreateAgent.html
-%% and then
-%% immediately run `ListAgents', that agent might not show up in the list
-%% right away.
-%% In situations like this, you can always confirm whether an agent has been
-%% created (or deleted)
-%% by using DescribeAgent:
-%% https://docs.aws.amazon.com/datasync/latest/userguide/API_DescribeAgent.html.
 -spec list_agents(aws_client:aws_client(), list_agents_request()) ->
     {ok, list_agents_response(), tuple()} |
     {error, any()} |

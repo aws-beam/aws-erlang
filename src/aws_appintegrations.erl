@@ -128,6 +128,7 @@
 %%   <<"CreatedTime">> => non_neg_integer(),
 %%   <<"Id">> => string(),
 %%   <<"IsService">> => boolean(),
+%%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Namespace">> => string()
@@ -386,6 +387,7 @@
 %%   <<"IframeConfig">> => iframe_config(),
 %%   <<"InitializationTimeout">> => integer(),
 %%   <<"IsService">> => boolean(),
+%%   <<"LastModifiedRegion">> => string(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"Namespace">> => string(),
@@ -828,19 +830,24 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_request_exception() | 
-    internal_service_error().
+    internal_service_error() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_request_exception() | 
-    internal_service_error().
+    internal_service_error() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_request_exception() | 
-    internal_service_error().
+    internal_service_error() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type update_application_errors() ::
     unsupported_operation_exception() | 

@@ -306,6 +306,8 @@
          get_job_run/3,
          get_job_runs/2,
          get_job_runs/3,
+         get_job_upgrade_analysis/2,
+         get_job_upgrade_analysis/3,
          get_jobs/2,
          get_jobs/3,
          get_mapping/2,
@@ -524,6 +526,8 @@
          start_import_labels_task_run/3,
          start_job_run/2,
          start_job_run/3,
+         start_job_upgrade_analysis/2,
+         start_job_upgrade_analysis/3,
          start_materialized_view_refresh_task_run/2,
          start_materialized_view_refresh_task_run/3,
          start_ml_evaluation_task_run/2,
@@ -542,6 +546,8 @@
          stop_crawler/3,
          stop_crawler_schedule/2,
          stop_crawler_schedule/3,
+         stop_job_upgrade_analysis/2,
+         stop_job_upgrade_analysis/3,
          stop_materialized_view_refresh_task_run/2,
          stop_materialized_view_refresh_task_run/3,
          stop_session/2,
@@ -838,6 +844,15 @@
 %%   <<"IsEnabled">> => boolean()
 %% }
 -type auto_data_quality() :: #{binary() => any()}.
+
+%% Example:
+%% auto_upgrade_metadata() :: #{
+%%   <<"AnalysisId">> => string(),
+%%   <<"SourceVersion">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetVersion">> => string()
+%% }
+-type auto_upgrade_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% backfill_error() :: #{
@@ -5102,6 +5117,27 @@
 -type get_job_runs_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_job_upgrade_analysis_request() :: #{
+%%   <<"analysisId">> := string(),
+%%   <<"jobName">> := string()
+%% }
+-type get_job_upgrade_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_job_upgrade_analysis_response() :: #{
+%%   <<"analysisId">> => string(),
+%%   <<"analysisType">> => list(any()),
+%%   <<"autoUpgradeEligibilitySummary">> => [string()],
+%%   <<"autoUpgradeEvaluationSummary">> => [string()],
+%%   <<"errorMessage">> => [string()],
+%%   <<"jobName">> => string(),
+%%   <<"sourceVersion">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"targetVersion">> => [string()]
+%% }
+-type get_job_upgrade_analysis_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_jobs_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -6403,6 +6439,7 @@
 %% Example:
 %% job() :: #{
 %%   <<"AllocatedCapacity">> => integer(),
+%%   <<"AutoUpgradeMetadata">> => auto_upgrade_metadata(),
 %%   <<"CodeGenConfigurationNodes">> => map(),
 %%   <<"Command">> => job_command(),
 %%   <<"Connections">> => connections_list(),
@@ -8125,6 +8162,7 @@
 
 %% Example:
 %% resource_uri() :: #{
+%%   <<"LastModified">> => non_neg_integer(),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"Uri">> => string()
 %% }
@@ -9098,6 +9136,21 @@
 -type start_job_run_response() :: #{binary() => any()}.
 
 %% Example:
+%% start_job_upgrade_analysis_request() :: #{
+%%   <<"analysisId">> => string(),
+%%   <<"jobName">> := string(),
+%%   <<"upgradeConsent">> => list(any())
+%% }
+-type start_job_upgrade_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_job_upgrade_analysis_response() :: #{
+%%   <<"analysisId">> => string(),
+%%   <<"jobName">> => string()
+%% }
+-type start_job_upgrade_analysis_response() :: #{binary() => any()}.
+
+%% Example:
 %% start_materialized_view_refresh_task_run_request() :: #{
 %%   <<"CatalogId">> := string(),
 %%   <<"DatabaseName">> := string(),
@@ -9293,6 +9346,19 @@
 
 %% }
 -type stop_crawler_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% stop_job_upgrade_analysis_request() :: #{
+%%   <<"analysisId">> := string(),
+%%   <<"jobName">> := string()
+%% }
+-type stop_job_upgrade_analysis_request() :: #{binary() => any()}.
+
+%% Example:
+%% stop_job_upgrade_analysis_response() :: #{
+
+%% }
+-type stop_job_upgrade_analysis_response() :: #{binary() => any()}.
 
 %% Example:
 %% stop_materialized_view_refresh_task_run_request() :: #{
@@ -10352,12 +10418,14 @@
 
 %% Example:
 %% user_defined_function() :: #{
+%%   <<"ArtifactLocation">> => string(),
 %%   <<"CatalogId">> => string(),
 %%   <<"ClassName">> => string(),
 %%   <<"CreateTime">> => non_neg_integer(),
 %%   <<"DatabaseName">> => string(),
 %%   <<"FunctionName">> => string(),
 %%   <<"FunctionType">> => list(any()),
+%%   <<"GovernanceMode">> => list(any()),
 %%   <<"OwnerName">> => string(),
 %%   <<"OwnerType">> => list(any()),
 %%   <<"ResourceUris">> => list(resource_uri())
@@ -10366,9 +10434,11 @@
 
 %% Example:
 %% user_defined_function_input() :: #{
+%%   <<"ArtifactLocation">> => string(),
 %%   <<"ClassName">> => string(),
 %%   <<"FunctionName">> => string(),
 %%   <<"FunctionType">> => list(any()),
+%%   <<"GovernanceMode">> => list(any()),
 %%   <<"OwnerName">> => string(),
 %%   <<"OwnerType">> => list(any()),
 %%   <<"ResourceUris">> => list(resource_uri())
@@ -11572,6 +11642,13 @@
     internal_service_exception() | 
     entity_not_found_exception().
 
+-type get_job_upgrade_analysis_errors() ::
+    operation_not_supported_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
+
 -type get_jobs_errors() ::
     operation_timeout_exception() | 
     invalid_input_exception() | 
@@ -12293,6 +12370,15 @@
     entity_not_found_exception() | 
     concurrent_runs_exceeded_exception().
 
+-type start_job_upgrade_analysis_errors() ::
+    validation_exception() | 
+    resource_number_limit_exceeded_exception() | 
+    operation_not_supported_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
+
 -type start_materialized_view_refresh_task_run_errors() ::
     resource_number_limit_exceeded_exception() | 
     operation_timeout_exception() | 
@@ -12354,6 +12440,14 @@
     scheduler_not_running_exception() | 
     operation_timeout_exception() | 
     entity_not_found_exception().
+
+-type stop_job_upgrade_analysis_errors() ::
+    throttling_exception() | 
+    operation_not_supported_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type stop_materialized_view_refresh_task_run_errors() ::
     operation_timeout_exception() | 
@@ -15558,6 +15652,23 @@ get_job_runs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetJobRuns">>, Input, Options).
 
+%% @doc Retrieves the current status and results of an upgrade analysis.
+-spec get_job_upgrade_analysis(aws_client:aws_client(), get_job_upgrade_analysis_request()) ->
+    {ok, get_job_upgrade_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, get_job_upgrade_analysis_errors(), tuple()}.
+get_job_upgrade_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_job_upgrade_analysis(Client, Input, []).
+
+-spec get_job_upgrade_analysis(aws_client:aws_client(), get_job_upgrade_analysis_request(), proplists:proplist()) ->
+    {ok, get_job_upgrade_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, get_job_upgrade_analysis_errors(), tuple()}.
+get_job_upgrade_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetJobUpgradeAnalysis">>, Input, Options).
+
 %% @doc Retrieves all current job definitions.
 -spec get_jobs(aws_client:aws_client(), get_jobs_request()) ->
     {ok, get_jobs_response(), tuple()} |
@@ -17767,6 +17878,23 @@ start_job_run(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartJobRun">>, Input, Options).
 
+%% @doc Resumes an analysis that is waiting for upgrade consent.
+-spec start_job_upgrade_analysis(aws_client:aws_client(), start_job_upgrade_analysis_request()) ->
+    {ok, start_job_upgrade_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, start_job_upgrade_analysis_errors(), tuple()}.
+start_job_upgrade_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_job_upgrade_analysis(Client, Input, []).
+
+-spec start_job_upgrade_analysis(aws_client:aws_client(), start_job_upgrade_analysis_request(), proplists:proplist()) ->
+    {ok, start_job_upgrade_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, start_job_upgrade_analysis_errors(), tuple()}.
+start_job_upgrade_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartJobUpgradeAnalysis">>, Input, Options).
+
 %% @doc Starts a materialized view refresh task run for a specified
 %% materialized view.
 -spec start_materialized_view_refresh_task_run(aws_client:aws_client(), start_materialized_view_refresh_task_run_request()) ->
@@ -17963,6 +18091,23 @@ stop_crawler_schedule(Client, Input)
 stop_crawler_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StopCrawlerSchedule">>, Input, Options).
+
+%% @doc Stops an in-progress upgrade analysis.
+-spec stop_job_upgrade_analysis(aws_client:aws_client(), stop_job_upgrade_analysis_request()) ->
+    {ok, stop_job_upgrade_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, stop_job_upgrade_analysis_errors(), tuple()}.
+stop_job_upgrade_analysis(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    stop_job_upgrade_analysis(Client, Input, []).
+
+-spec stop_job_upgrade_analysis(aws_client:aws_client(), stop_job_upgrade_analysis_request(), proplists:proplist()) ->
+    {ok, stop_job_upgrade_analysis_response(), tuple()} |
+    {error, any()} |
+    {error, stop_job_upgrade_analysis_errors(), tuple()}.
+stop_job_upgrade_analysis(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StopJobUpgradeAnalysis">>, Input, Options).
 
 %% @doc Stops a materialized view refresh task run for a specified
 %% materialized view.

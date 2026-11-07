@@ -333,6 +333,9 @@
          describe_refresh_schedule/4,
          describe_refresh_schedule/6,
          describe_refresh_schedule/7,
+         describe_resource_permissions/2,
+         describe_resource_permissions/4,
+         describe_resource_permissions/5,
          describe_role_custom_permission/4,
          describe_role_custom_permission/6,
          describe_role_custom_permission/7,
@@ -691,6 +694,8 @@
          update_quick_sight_q_search_configuration/4,
          update_refresh_schedule/4,
          update_refresh_schedule/5,
+         update_resource_permissions/3,
+         update_resource_permissions/4,
          update_role_custom_permission/5,
          update_role_custom_permission/6,
          update_s_p_i_c_e_capacity_configuration/3,
@@ -6978,6 +6983,20 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_refresh_schedule_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_permissions_request() :: #{}
+-type describe_resource_permissions_request() :: #{}.
+
+
+%% Example:
+%% describe_resource_permissions_response() :: #{
+%%   <<"CustomerManagedRoleArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"RoleType">> => list(any()),
+%%   <<"Status">> => integer()
+%% }
+-type describe_resource_permissions_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_role_custom_permission_request() :: #{}
@@ -16463,6 +16482,24 @@
 
 
 %% Example:
+%% update_resource_permissions_request() :: #{
+%%   <<"CustomerManagedRoleArn">> := string(),
+%%   <<"RoleType">> := list(any())
+%% }
+-type update_resource_permissions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_resource_permissions_response() :: #{
+%%   <<"CustomerManagedRoleArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"RoleType">> => list(any()),
+%%   <<"Status">> => integer()
+%% }
+-type update_resource_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_role_custom_permission_request() :: #{
 %%   <<"CustomPermissionsName">> := string()
 %% }
@@ -18481,6 +18518,13 @@
     internal_failure_exception() | 
     access_denied_exception().
 
+-type describe_resource_permissions_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type describe_role_custom_permission_errors() ::
     throttling_exception() | 
     resource_unavailable_exception() | 
@@ -19681,6 +19725,13 @@
     resource_not_found_exception() | 
     precondition_not_met_exception() | 
     limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type update_resource_permissions_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     access_denied_exception().
@@ -25174,6 +25225,48 @@ describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap,
 describe_refresh_schedule(Client, AwsAccountId, DataSetId, ScheduleId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the service role configuration for your Amazon Quick Sight
+%% account.
+%%
+%% Call this operation in the Amazon Web Services Region where your Amazon
+%% Quick Sight account is
+%% registered (the home Region).
+-spec describe_resource_permissions(aws_client:aws_client(), binary() | list()) ->
+    {ok, describe_resource_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resource_permissions_errors(), tuple()}.
+describe_resource_permissions(Client, AwsAccountId)
+  when is_map(Client) ->
+    describe_resource_permissions(Client, AwsAccountId, #{}, #{}).
+
+-spec describe_resource_permissions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, describe_resource_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resource_permissions_errors(), tuple()}.
+describe_resource_permissions(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_resource_permissions(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_resource_permissions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_resource_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resource_permissions_errors(), tuple()}.
+describe_resource_permissions(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/account-resource-permissions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -31239,6 +31332,54 @@ update_refresh_schedule(Client, AwsAccountId, DataSetId, Input) ->
 update_refresh_schedule(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-schedules"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the service role configuration that Amazon Quick Sight uses
+%% to access resources in your
+%% Amazon Web Services account.
+%%
+%% To use this operation, you must have the
+%% `quicksight:UpdateResourcePermissions' and `iam:PassRole'
+%% permissions.
+%%
+%% Call this operation in the Amazon Web Services Region where your Amazon
+%% Quick Sight account is
+%% registered (the home Region). You can switch from a role managed by Amazon
+%% Quick Sight to a
+%% customer-managed role, or replace one customer-managed role with another.
+%% You can't use
+%% this operation to switch back to a role managed by Amazon Quick Sight.
+-spec update_resource_permissions(aws_client:aws_client(), binary() | list(), update_resource_permissions_request()) ->
+    {ok, update_resource_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_resource_permissions_errors(), tuple()}.
+update_resource_permissions(Client, AwsAccountId, Input) ->
+    update_resource_permissions(Client, AwsAccountId, Input, []).
+
+-spec update_resource_permissions(aws_client:aws_client(), binary() | list(), update_resource_permissions_request(), proplists:proplist()) ->
+    {ok, update_resource_permissions_response(), tuple()} |
+    {error, any()} |
+    {error, update_resource_permissions_errors(), tuple()}.
+update_resource_permissions(Client, AwsAccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/account-resource-permissions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

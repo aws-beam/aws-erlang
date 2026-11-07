@@ -4397,6 +4397,11 @@ create_scheduled_query(Client, Input, Options)
 %% data protection policy
 %% or subscription filter policy, any log-group level policies of those types
 %% remain in effect.
+%% If you delete a retention policy, the log groups that it applied to use
+%% their own retention
+%% setting, unless another retention policy applies to them. Deleting a
+%% retention policy does not
+%% restore log events that CloudWatch Logs has already deleted.
 %% This operation supports deletion of data source-based field index
 %% policies, including facet
 %% configurations, in addition to log group-based policies.
@@ -4426,6 +4431,13 @@ create_scheduled_query(Client, Input, Options)
 %% will no longer be available for interactive exploration in the CloudWatch
 %% Logs Insights
 %% console. However, facet data is retained for up to 30 days.
+%%
+%% To delete a retention policy, you must have the
+%% `logs:DeleteRetentionPolicy' and `logs:DeleteAccountPolicy'
+%% permissions. To preview the impact of deleting a retention policy, specify
+%% `true' for `dryRun'. A dry run requires the same
+%% permissions as the operation that it previews, and no additional
+%% permissions.
 %%
 %% If you delete a field index policy, the indexing of the log events that
 %% happened before
@@ -4812,6 +4824,13 @@ delete_resource_policy(Client, Input, Options)
 %%
 %% Log events do not expire if they belong to log groups without a retention
 %% policy.
+%%
+%% If an account-level retention policy applies to this log group, the log
+%% group uses
+%% the retention period from that policy. For more information about
+%% account-level retention
+%% policies, see PutAccountPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html.
 -spec delete_retention_policy(aws_client:aws_client(), delete_retention_policy_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -4936,6 +4955,10 @@ delete_transformer(Client, Input, Options)
 %% To see field index policies, you must have the
 %% `logs:DescribeIndexPolicies'
 %% and `logs:DescribeAccountPolicies' permissions.
+%%
+%% To see retention policies, you must have the
+%% `logs:DescribeAccountPolicies'
+%% permission.
 -spec describe_account_policies(aws_client:aws_client(), describe_account_policies_request()) ->
     {ok, describe_account_policies_response(), tuple()} |
     {error, any()} |
@@ -5195,6 +5218,12 @@ describe_index_policies(Client, Input, Options)
 %% You can return all your log groups or filter the results by prefix. The
 %% results are
 %% ASCII-sorted by log group name.
+%%
+%% If an account-level retention policy applies to a log group,
+%% `retentionInDays'
+%% shows the retention period from that policy, and `retentionPolicyName'
+%% shows the
+%% name of the policy.
 %%
 %% CloudWatch Logs doesn't support IAM policies that control access to
 %% the
@@ -6366,9 +6395,10 @@ list_tags_log_group(Client, Input, Options)
 
 %% @doc Creates an account-level data protection policy, subscription filter
 %% policy, field index
-%% policy, transformer policy, or metric extraction policy that applies to
-%% all log groups, a
-%% subset of log groups, or a data source name and type combination in the
+%% policy, transformer policy, metric extraction policy, or retention policy
+%% that applies to all
+%% log groups, a subset of log groups, or a data source name and type
+%% combination in the
 %% account.
 %%
 %% Account-level
@@ -6425,6 +6455,9 @@ list_tags_log_group(Client, Input, Options)
 %% resolution
 %% applies.
 %%
+%% Retention policies — An account-level retention policy overrides
+%% the retention setting of the log group.
+%%
 %% For field index policies, you can configure indexed fields as facets
 %% to enable interactive exploration of your logs. Facets provide value
 %% distributions and counts
@@ -6460,6 +6493,12 @@ list_tags_log_group(Client, Input, Options)
 %%
 %% To create a metric extraction policy, you must have the
 %% `logs:PutMetricExtractionPolicy' and `logs:PutAccountPolicy'
+%% permissions.
+%%
+%% To create a retention policy, you must have the
+%% `logs:PutRetentionPolicy'
+%% and `logs:PutAccountPolicy' permissions. A dry run requires the same
+%% permissions as the operation that it previews, and no additional
 %% permissions.
 %%
 %% Data protection policy
@@ -6880,6 +6919,75 @@ list_tags_log_group(Client, Input, Options)
 %% log groups matching `&quot;/aws&quot;' is not a subset of the log
 %% groups matching
 %% `&quot;/aws/lambda&quot;'.
+%%
+%% Retention policy
+%%
+%% A retention policy sets the retention period for log groups in your
+%% account. You can use an
+%% account-level retention policy to set a default retention period for all
+%% log groups in the
+%% account, or for a subset of log groups that you specify with the
+%% `selectionCriteria' parameter. CloudWatch Logs automatically deletes
+%% log events
+%% that are older than the retention period.
+%%
+%% Each account can have up to 20 account-level retention policies in each
+%% Region. To scope a
+%% retention policy to a subset of log groups, use `LogGroupNamePrefix'
+%% in
+%% `selectionCriteria'. Retention policies support log group name
+%% prefixes only. If
+%% you omit `selectionCriteria', the policy applies
+%% to all log groups in the account.
+%%
+%% Unlike other account-level policy types, retention policies can have
+%% overlapping selection
+%% criteria. When more than one retention policy applies to a log group, the
+%% policy with the
+%% longest retention period is used. A policy that specifies
+%% `NEVER_EXPIRE' is treated
+%% as the longest retention period. This lets you set a baseline retention
+%% period for the account,
+%% apply longer retention periods to specific log groups, and exempt specific
+%% log groups from
+%% expiring at all. If two policies that apply to the same log group specify
+%% the same retention
+%% period, the policy that was created first is the one reported in
+%% `retentionPolicyName'.
+%%
+%% Account-level retention policies require a minimum retention period of 30
+%% days.
+%%
+%% A retention policy takes effect 24 hours after you create it. If you
+%% update a policy, the
+%% new retention period takes effect 24 hours after the update, and the
+%% previous retention
+%% period stays in effect until then. During this period,
+%% `DescribeLogGroups' and log
+%% event expiration use the retention period that is currently in effect, but
+%% a dry run reports
+%% the impact as if the policy were already in effect.
+%%
+%% Before you create, update, or delete a retention policy, you can specify
+%% `true' for `dryRun' to preview how many log groups would have a
+%% longer,
+%% shorter, or unchanged retention period. For more information, see
+%% DryRunResult:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DryRunResult.html.
+%%
+%% An account-level retention policy replaces the retention period set on a
+%% log group,
+%% including when the log group's own retention period is longer. For
+%% example, if a log group is
+%% set to retain log events for 10 years and you create a retention policy
+%% that sets a 90-day
+%% retention period for that log group, CloudWatch Logs deletes the log
+%% events in that log group
+%% that are older than 90 days. Specify `true' for `dryRun' to see
+%% which
+%% log groups would have a shorter retention period before you create or
+%% update the
+%% policy.
 -spec put_account_policy(aws_client:aws_client(), put_account_policy_request()) ->
     {ok, put_account_policy_response(), tuple()} |
     {error, any()} |
@@ -7622,6 +7730,22 @@ put_resource_policy(Client, Input, Options)
 %% configure the number of days for which to retain log events in the
 %% specified log
 %% group.
+%%
+%% Account-level retention policies created with PutAccountPolicy:
+%% https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutAccountPolicy.html
+%% override the retention that you
+%% set with `PutRetentionPolicy'. If an account-level retention policy
+%% applies to the
+%% log group, this operation succeeds and CloudWatch Logs saves the retention
+%% period that you
+%% specify, but the retention period from the account-level policy continues
+%% to determine when
+%% log events in the log group expire. `DescribeLogGroups' returns the
+%% retention period
+%% from the policy in `retentionInDays' and the name of the policy in
+%% `retentionPolicyName'. The retention period that you set with this
+%% operation takes
+%% effect if the account-level policy no longer applies to the log group.
 %%
 %% CloudWatch Logs doesn't immediately delete log events when they reach
 %% their retention

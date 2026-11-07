@@ -7,23 +7,27 @@
 %% Cases data types:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_Types_Amazon_Connect_Cases.html
 %%
-%% With Amazon Connect Cases, your agents can track and manage customer
+%% With Connect Customer Cases, your agents can track and manage customer
 %% issues that require multiple interactions, follow-up tasks, and teams in
 %% your contact center.
 %%
 %% A case represents a customer issue. It records the issue, the steps and
 %% interactions taken to resolve the issue, and the outcome. For more
-%% information, see Amazon Connect Cases:
+%% information, see Connect Customer Cases:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/cases.html in the
-%% Amazon Connect Administrator Guide.
+%% Connect Customer Administrator Guide.
 -module(aws_connectcases).
 
--export([batch_get_case_rule/3,
+-export([batch_create_related_item/2,
+         batch_create_related_item/3,
+         batch_get_case_rule/3,
          batch_get_case_rule/4,
          batch_get_field/3,
          batch_get_field/4,
          batch_put_field_options/4,
          batch_put_field_options/5,
+         batch_update_case/2,
+         batch_update_case/3,
          create_case/3,
          create_case/4,
          create_case_rule/3,
@@ -155,6 +159,50 @@
 
 
 %% Example:
+%% batch_create_related_item_error_entry() :: #{
+%%   <<"caseIdentifier">> => case_identifier(),
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()]
+%% }
+-type batch_create_related_item_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_related_item_identifier() :: #{
+%%   <<"caseIdentifier">> => list()
+%% }
+-type batch_create_related_item_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_related_item_request() :: #{
+%%   <<"cases">> := list(batch_create_related_item_identifier()),
+%%   <<"clientToken">> => [string()],
+%%   <<"content">> := list(),
+%%   <<"domainId">> := string(),
+%%   <<"performedBy">> => list()
+%% }
+-type batch_create_related_item_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_related_item_response() :: #{
+%%   <<"failedItems">> => list(batch_create_related_item_error_entry()),
+%%   <<"successfulItems">> => list(batch_create_related_item_success_entry())
+%% }
+-type batch_create_related_item_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_create_related_item_success_entry() :: #{
+%%   <<"caseIdentifier">> => case_identifier(),
+%%   <<"relatedItemArn">> => string(),
+%%   <<"relatedItemId">> => string()
+%% }
+-type batch_create_related_item_success_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_get_case_rule_request() :: #{
 %%   <<"caseRules">> := list(case_rule_identifier())
 %% }
@@ -200,6 +248,51 @@
 
 
 %% Example:
+%% batch_update_case_error_entry() :: #{
+%%   <<"caseIdentifier">> => case_identifier(),
+%%   <<"errorCode">> => [string()],
+%%   <<"errorMessage">> => [string()]
+%% }
+-type batch_update_case_error_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_case_identifier() :: #{
+%%   <<"caseIdentifier">> => list()
+%% }
+-type batch_update_case_identifier() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_case_request() :: #{
+%%   <<"cases">> := list(batch_update_case_identifier()),
+%%   <<"clientToken">> => [string()],
+%%   <<"customerId">> => string(),
+%%   <<"domainId">> := string(),
+%%   <<"fields">> := list(field_value_input()),
+%%   <<"performedBy">> => list(),
+%%   <<"status">> => string(),
+%%   <<"title">> => string()
+%% }
+-type batch_update_case_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_case_response() :: #{
+%%   <<"failedCases">> => list(batch_update_case_error_entry()),
+%%   <<"successfulCases">> => list(batch_update_case_success_entry())
+%% }
+-type batch_update_case_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_update_case_success_entry() :: #{
+%%   <<"caseIdentifier">> => case_identifier()
+%% }
+-type batch_update_case_success_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% boolean_operands() :: #{
 %%   <<"operandOne">> => list(),
 %%   <<"operandTwo">> => list(),
@@ -213,6 +306,15 @@
 %%   <<"fields">> => list(field_identifier())
 %% }
 -type case_event_included_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_identifier() :: #{
+%%   <<"caseId">> => string(),
+%%   <<"referenceId">> => string(),
+%%   <<"referenceNumber">> => string()
+%% }
+-type case_identifier() :: #{binary() => any()}.
 
 
 %% Example:
@@ -646,6 +748,14 @@
 %%   <<"value">> => list()
 %% }
 -type field_value() :: #{binary() => any()}.
+
+
+%% Example:
+%% field_value_input() :: #{
+%%   <<"fieldIdentifier">> => list(),
+%%   <<"value">> => list()
+%% }
+-type field_value_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1322,6 +1432,15 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+-type batch_create_related_item_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type batch_get_case_rule_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1342,6 +1461,14 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type batch_update_case_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type create_case_errors() ::
@@ -1652,9 +1779,76 @@
 %% API
 %%====================================================================
 
+%% @doc Creates a comment and associates it with multiple cases in a single
+%% request.
+%%
+%% All cases must belong to the same domain. This operation supports only the
+%% Comment related item type.
+%%
+%% Each case is processed independently. If some cases fail, the remaining
+%% cases still receive the related item. To determine whether individual
+%% items failed, inspect the `failedItems' array in the response.
+%%
+%% The entire request fails, and no related items are created, in the
+%% following cases:
+%%
+%% The specified domain doesn't exist.
+%%
+%% A reference ID doesn't match any case in the domain.
+%%
+%% The request contains duplicate case IDs.
+%%
+%% The content isn't comment content.
+%%
+%% This operation uses the same IAM action as CreateRelatedItem:
+%% https://docs.aws.amazon.com/cases/latest/APIReference/API_CreateRelatedItem.html
+%% (`cases:CreateRelatedItem'). You can use the `cases:IsBatchAction'
+%% condition key in IAM policies to allow or deny batch operations
+%% independently from single-case operations.
+%%
+%% If you provide a value for `performedBy.userArn', you must also have
+%% DescribeUser:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
+%% permission on the ARN of the user that you provide.
+%%
+%% Endpoints: See Connect Customer endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+-spec batch_create_related_item(aws_client:aws_client(), batch_create_related_item_request()) ->
+    {ok, batch_create_related_item_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_related_item_errors(), tuple()}.
+batch_create_related_item(Client, Input) ->
+    batch_create_related_item(Client, Input, []).
+
+-spec batch_create_related_item(aws_client:aws_client(), batch_create_related_item_request(), proplists:proplist()) ->
+    {ok, batch_create_related_item_response(), tuple()} |
+    {error, any()} |
+    {error, batch_create_related_item_errors(), tuple()}.
+batch_create_related_item(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/cases:batchCreateRelatedItem"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Gets a batch of case rules.
 %%
-%% In the Amazon Connect admin website, case rules are known as case field
+%% In the Connect Customer admin website, case rules are known as case field
 %% conditions. For more information about case field conditions, see Add case
 %% field conditions to a case template:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
@@ -1761,26 +1955,106 @@ batch_put_field_options(Client, DomainId, FieldId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc If you provide a value for `PerformedBy.UserArn' you must also
-%% have connect:DescribeUser:
+%% @doc Updates fields on multiple cases in a single request.
+%%
+%% All cases must belong to the same domain. Set the title, status, and
+%% customer ID through the top-level `title', `status', and
+%% `customerId' parameters, and set other fields through the `fields'
+%% array.
+%%
+%% Each case is processed independently. If some cases fail, the remaining
+%% cases are still updated. To determine whether individual cases failed,
+%% inspect the `failedCases' array in the response.
+%%
+%% The entire request fails, and no cases are updated, in the following
+%% cases:
+%%
+%% The specified domain doesn't exist.
+%%
+%% A reference ID doesn't match any case in the domain.
+%%
+%% The request contains duplicate case IDs.
+%%
+%% The request doesn't specify any update. Provide at least one entry in
+%% `fields', or a `title', `status', or `customerId'.
+%%
+%% A field identifier in `fields' doesn't resolve to a field in the
+%% domain, for example, an unknown field name.
+%%
+%% A field name contains a pipe (`|') or comma (`,') character.
+%%
+%% `fields' includes `title', `status', or `customerId'.
+%%
+%% This operation uses the same IAM action as UpdateCase:
+%% https://docs.aws.amazon.com/cases/latest/APIReference/API_UpdateCase.html
+%% (`cases:UpdateCase'). You can use the `cases:IsBatchAction'
+%% condition key in IAM policies to allow or deny batch operations
+%% independently from single-case operations.
+%%
+%% If you provide a value for `performedBy.userArn', you must also have
+%% DescribeUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
-%% permission on the User ARN resource that you provide
+%% permission on the ARN of the user that you provide.
 %%
-%% Creates a case in the specified Cases domain.
+%% Endpoints: See Connect Customer endpoints and quotas:
+%% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
+-spec batch_update_case(aws_client:aws_client(), batch_update_case_request()) ->
+    {ok, batch_update_case_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_case_errors(), tuple()}.
+batch_update_case(Client, Input) ->
+    batch_update_case(Client, Input, []).
+
+-spec batch_update_case(aws_client:aws_client(), batch_update_case_request(), proplists:proplist()) ->
+    {ok, batch_update_case_response(), tuple()} |
+    {error, any()} |
+    {error, batch_update_case_errors(), tuple()}.
+batch_update_case(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/cases:batchUpdateCase"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc If you provide a value for `PerformedBy.UserArn', you must also
+%% have the connect:DescribeUser:
+%% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
+%% permission on the user ARN that you provide.
 %%
-%% Case system and custom fields are taken as an array id/value pairs with a
-%% declared data types.
+%% Creates a case in the specified Cases domain. Case system and custom
+%% fields are taken as an array id/value pairs with a declared data types.
 %%
 %% When creating a case from a template that has tag propagation
 %% configurations, the specified tags are automatically applied to the case.
 %%
-%% The following fields are required when creating a case:
-%%
-%% `customer_id' - You must provide the full customer profile ARN in this
-%% format: `arn:aws:profile:your_AWS_Region:your_AWS_account
-%% ID:domains/your_profiles_domain_name/profiles/profile_ID'
+%% The following field is always required when creating a case:
 %%
 %% `title'
+%%
+%% The following field may be required depending on the template
+%% configuration:
+%%
+%% `customer_id' - Required only if the template's
+%% `requiredFields' list includes `customer_id'. When required,
+%% provide the full customer profile ARN in this format:
+%% `arn:aws:profile:your_AWS_Region:your_AWS_account_ID:domains/your_profiles_domain_name/profiles/profile_ID'.
+%% When not required, the field is optional and can be omitted, added,
+%% changed, or removed after case creation.
 -spec create_case(aws_client:aws_client(), binary() | list(), create_case_request()) ->
     {ok, create_case_response(), tuple()} |
     {error, any()} |
@@ -1816,7 +2090,7 @@ create_case(Client, DomainId, Input0, Options0) ->
 
 %% @doc Creates a new case rule.
 %%
-%% In the Amazon Connect admin website, case rules are known as case field
+%% In the Connect Customer admin website, case rules are known as case field
 %% conditions. For more information about case field conditions, see Add case
 %% field conditions to a case template:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
@@ -1856,10 +2130,11 @@ create_case_rule(Client, DomainId, Input0, Options0) ->
 %% @doc Creates a domain, which is a container for all case data, such as
 %% cases, fields, templates and layouts.
 %%
-%% Each Amazon Connect instance can be associated with only one Cases domain.
+%% Each Connect Customer instance can be associated with only one Cases
+%% domain.
 %%
 %% This will not associate your connect instance to Cases domain. Instead,
-%% use the Amazon Connect CreateIntegrationAssociation:
+%% use the Connect Customer CreateIntegrationAssociation:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_CreateIntegrationAssociation.html
 %% API. You need specific IAM permissions to successfully associate the Cases
 %% domain. For more information, see Onboard to Cases:
@@ -1982,7 +2257,7 @@ create_layout(Client, DomainId, Input0, Options0) ->
 %% it with a case.
 %%
 %% There's a quota for the number of fields allowed in a Custom type
-%% related item. See Amazon Connect Cases quotas:
+%% related item. See Connect Customer Cases quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#cases-quotas.
 %%
 %% Use cases
@@ -1996,7 +2271,7 @@ create_layout(Client, DomainId, Input0, Options0) ->
 %%
 %% SLAs, to capture target resolution goals
 %%
-%% Cases, to capture related Amazon Connect Cases
+%% Cases, to capture related Connect Customer Cases
 %%
 %% Files, such as policy documentation or customer-provided attachments
 %%
@@ -2017,14 +2292,12 @@ create_layout(Client, DomainId, Input0, Options0) ->
 %% identifier, the `relatedItemArn'. Examples of related items include
 %% `comments' and `contacts'.
 %%
-%% If you provide a value for `performedBy.userArn' you must also have
+%% If you provide a value for `performedBy.userArn', you must also have
 %% DescribeUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
 %% permission on the ARN of the user that you provide.
 %%
-%% The `type' field is reserved for internal use only.
-%%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec create_related_item(aws_client:aws_client(), binary() | list(), binary() | list(), create_related_item_request()) ->
     {ok, create_related_item_response(), tuple()} |
@@ -2163,7 +2436,7 @@ delete_case(Client, CaseId, DomainId, Input0, Options0) ->
 
 %% @doc Deletes a case rule.
 %%
-%% In the Amazon Connect admin website, case rules are known as case field
+%% In the Connect Customer admin website, case rules are known as case field
 %% conditions. For more information about case field conditions, see Add case
 %% field conditions to a case template:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
@@ -2203,8 +2476,8 @@ delete_case_rule(Client, CaseRuleId, DomainId, Input0, Options0) ->
 %% @doc Deletes a Cases domain.
 %%
 %% After deleting your domain you must disassociate the deleted domain from
-%% your Amazon Connect instance with another API call before being able to
-%% use Cases again with this Amazon Connect instance. See
+%% your Connect Customer instance with another API call before being able to
+%% use Cases again with this Connect Customer instance. See
 %% DeleteIntegrationAssociation:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DeleteIntegrationAssociation.html.
 -spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_request()) ->
@@ -2240,7 +2513,7 @@ delete_domain(Client, DomainId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a field from a cases template.
+%% @doc Deletes a field from a Cases template.
 %%
 %% After a field is deleted:
 %%
@@ -2312,7 +2585,7 @@ delete_field(Client, DomainId, FieldId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a layout from a cases template.
+%% @doc Deletes a layout from a Cases template.
 %%
 %% You can delete up to 100 layouts per domain.
 %%
@@ -2396,11 +2669,11 @@ delete_related_item(Client, CaseId, DomainId, RelatedItemId, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a cases template.
+%% @doc Deletes a Cases template.
 %%
 %% You can delete up to 100 templates per domain.
 %%
-%% After a cases template is deleted:
+%% After a Cases template is deleted:
 %%
 %% You can still retrieve the template by calling `GetTemplate'.
 %%
@@ -2662,7 +2935,7 @@ get_template(Client, DomainId, TemplateId, Input0, Options0) ->
 
 %% @doc Lists all case rules in a Cases domain.
 %%
-%% In the Amazon Connect admin website, case rules are known as case field
+%% In the Connect Customer admin website, case rules are known as case field
 %% conditions. For more information about case field conditions, see Add case
 %% field conditions to a case template:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
@@ -2979,7 +3252,7 @@ list_templates(Client, DomainId, Input0, Options0) ->
 %% For a complete list of fields you can add to the event message, see Create
 %% case fields:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-fields.html in
-%% the Amazon Connect Administrator Guide
+%% the Connect Customer Administrator Guide.
 -spec put_case_event_configuration(aws_client:aws_client(), binary() | list(), put_case_event_configuration_request()) ->
     {ok, put_case_event_configuration_response(), tuple()} |
     {error, any()} |
@@ -3047,7 +3320,7 @@ put_case_event_configuration(Client, DomainId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_connect-cases_SearchCases.html
 %% API to search within case field values.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec search_all_related_items(aws_client:aws_client(), binary() | list(), search_all_related_items_request()) ->
     {ok, search_all_related_items_response(), tuple()} |
@@ -3229,15 +3502,13 @@ untag_resource(Client, Arn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc If you provide a value for `PerformedBy.UserArn' you must also
-%% have connect:DescribeUser:
+%% @doc If you provide a value for `PerformedBy.UserArn', you must also
+%% have the connect:DescribeUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
-%% permission on the User ARN resource that you provide
+%% permission on the user ARN that you provide.
 %%
-%% Updates the values of fields on a case.
-%%
-%% Fields to be updated are received as an array of id/value pairs identical
-%% to the `CreateCase' input .
+%% Updates the values of fields on a case. Fields to be updated are received
+%% as an array of id/value pairs identical to the `CreateCase' input.
 %%
 %% If the action is successful, the service sends back an HTTP 200 response
 %% with an empty HTTP body.
@@ -3276,7 +3547,7 @@ update_case(Client, CaseId, DomainId, Input0, Options0) ->
 
 %% @doc Updates a case rule.
 %%
-%% In the Amazon Connect admin website, case rules are known as case field
+%% In the Connect Customer admin website, case rules are known as case field
 %% conditions. For more information about case field conditions, see Add case
 %% field conditions to a case template:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-field-conditions.html.
@@ -3398,8 +3669,8 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 %%
 %% Custom - Update the fields of a custom related item. You can add, modify,
 %% and remove fields from a custom related item. There's a quota for the
-%% number of fields allowed in a Custom type related item. See Amazon Connect
-%% Cases quotas:
+%% number of fields allowed in a Custom type related item. See Connect
+%% Customer Cases quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#cases-quotas.
 %%
 %% Important things to know
@@ -3408,7 +3679,7 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 %% their associated values should be included in the request. Fields not
 %% included as part of this request will be removed.
 %%
-%% If you provide a value for `performedBy.userArn' you must also have
+%% If you provide a value for `performedBy.userArn', you must also have
 %% DescribeUser:
 %% https://docs.aws.amazon.com/connect/latest/APIReference/API_DescribeUser.html
 %% permission on the ARN of the user that you provide.
@@ -3417,7 +3688,7 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 %% https://docs.aws.amazon.com/connect/latest/adminguide/case-fields.html#system-case-fields
 %% cannot be used in a custom related item.
 %%
-%% Endpoints: See Amazon Connect endpoints and quotas:
+%% Endpoints: See Connect Customer endpoints and quotas:
 %% https://docs.aws.amazon.com/general/latest/gr/connect_region.html.
 -spec update_related_item(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_related_item_request()) ->
     {ok, update_related_item_response(), tuple()} |

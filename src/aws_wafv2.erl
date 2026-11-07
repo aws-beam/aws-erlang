@@ -417,6 +417,27 @@
 -type condition() :: #{binary() => any()}.
 
 %% Example:
+%% connected_account_chain_config() :: #{
+%%   <<"Chain">> => list(any()),
+%%   <<"Prices">> => list(connected_account_price())
+%% }
+-type connected_account_chain_config() :: #{binary() => any()}.
+
+%% Example:
+%% connected_account_config() :: #{
+%%   <<"ConnectedAccountArn">> => string(),
+%%   <<"PaymentNetworks">> => list(connected_account_chain_config())
+%% }
+-type connected_account_config() :: #{binary() => any()}.
+
+%% Example:
+%% connected_account_price() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"Currency">> => list(any())
+%% }
+-type connected_account_price() :: #{binary() => any()}.
+
+%% Example:
 %% cookie_match_pattern() :: #{
 %%   <<"All">> => all(),
 %%   <<"ExcludedCookies">> => list(string()),
@@ -1598,6 +1619,7 @@
 
 %% Example:
 %% monetization_config() :: #{
+%%   <<"ConnectedAccountConfigs">> => list(connected_account_config()),
 %%   <<"CryptoConfig">> => crypto_config(),
 %%   <<"CurrencyMode">> => list(any())
 %% }
