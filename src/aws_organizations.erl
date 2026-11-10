@@ -301,6 +301,9 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+%% hackney:body/1 is only called with hackney versions that still export it.
+-ignore_xref([{hackney, body, 1}]).
+
 
 %% Example:
 %% accept_handshake_request() :: #{
@@ -4657,8 +4660,8 @@ update_responsibility_transfer(Client, Input, Options)
 %%====================================================================
 
 -spec request(aws_client:aws_client(), binary(), map(), list()) ->
-    {ok, Result, {integer(), list(), hackney:client()}} |
-    {error, Error, {integer(), list(), hackney:client()}} |
+    {ok, Result, {integer(), list(), term()}} |
+    {error, Error, {integer(), list(), term()}} |
     {error, term()} when
     Result :: map() | undefined,
     Error :: map().
@@ -4685,7 +4688,7 @@ do_request(Client, Action, Input0, Options) ->
     handle_response(Response).
 
 handle_response({ok, 200, ResponseHeaders, Client}) ->
-    case hackney:body(Client) of
+    case response_body(Client) of
         {ok, <<>>} ->
             {ok, undefined, {200, ResponseHeaders, Client}};
         {ok, Body} ->
@@ -4693,11 +4696,19 @@ handle_response({ok, 200, ResponseHeaders, Client}) ->
             {ok, Result, {200, ResponseHeaders, Client}}
     end;
 handle_response({ok, StatusCode, ResponseHeaders, Client}) ->
-    {ok, Body} = hackney:body(Client),
+    {ok, Body} = response_body(Client),
     Error = jsx:decode(Body),
     {error, Error, {StatusCode, ResponseHeaders, Client}};
 handle_response({error, Reason}) ->
     {error, Reason}.
+
+%% hackney 1.x and 2.x return a client reference that is read with
+%% hackney:body/1. hackney 3.0 removed hackney:body/1 and returns the body in
+%% the response tuple, so a binary is already the body.
+response_body(Body) when is_binary(Body) ->
+    {ok, Body};
+response_body(Client) ->
+    apply(hackney, body, [Client]).
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
     Endpoint;

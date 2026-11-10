@@ -395,6 +395,9 @@
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
+%% hackney:body/1 is only called with hackney versions that still export it.
+-ignore_xref([{hackney, body, 1}]).
+
 
 
 %% Example:
@@ -17139,8 +17142,8 @@ proplists_take(Key, Proplist, Default) ->
 -spec request(aws_client:aws_client(), atom(), iolist(), list(),
               list(), map() | undefined, list(), pos_integer() | undefined) ->
     {ok, {integer(), list()}} |
-    {ok, Result, {integer(), list(), hackney:client()}} |
-    {error, Error, {integer(), list(), hackney:client()}} |
+    {ok, Result, {integer(), list(), term()}} |
+    {error, Error, {integer(), list(), term()}} |
     {error, term()} when
     Result :: map(),
     Error :: map().
@@ -17203,7 +17206,7 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, SuccessStatusCode, De
        StatusCode =:= 204;
        StatusCode =:= 206;
        StatusCode =:= SuccessStatusCode ->
-    case hackney:body(Client) of
+    case response_body(Client) of
         {ok, <<>>} when StatusCode =:= 200;
                         StatusCode =:= SuccessStatusCode ->
             {ok, #{}, {StatusCode, ResponseHeaders, Client}};
@@ -17225,7 +17228,7 @@ handle_response({ok, StatusCode, _ResponseHeaders, _Client}, _, _DecodeBody)
   %% Retriable error if retries are enabled
   {error, service_unavailable};
 handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
-    {ok, Body} = hackney:body(Client),
+    {ok, Body} = response_body(Client),
     try
       DecodedError = jsx:decode(Body),
       {error, DecodedError, {StatusCode, ResponseHeaders, Client}}
@@ -17235,6 +17238,14 @@ handle_response({ok, StatusCode, ResponseHeaders, Client}, _, _DecodeBody) ->
     end;
 handle_response({error, Reason}, _, _DecodeBody) ->
   {error, Reason}.
+
+%% hackney 1.x and 2.x return a client reference that is read with
+%% hackney:body/1. hackney 3.0 removed hackney:body/1 and returns the body in
+%% the response tuple, so a binary is already the body.
+response_body(Body) when is_binary(Body) ->
+    {ok, Body};
+response_body(Client) ->
+    apply(hackney, body, [Client]).
 
 build_host(_EndpointPrefix, #{region := <<"local">>, endpoint := Endpoint}) ->
     Endpoint;
