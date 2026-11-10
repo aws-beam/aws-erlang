@@ -1032,6 +1032,14 @@
 
 
 %% Example:
+%% eks_container_linux_capabilities() :: #{
+%%   <<"add">> => list(string()),
+%%   <<"drop">> => list(string())
+%% }
+-type eks_container_linux_capabilities() :: #{binary() => any()}.
+
+
+%% Example:
 %% eks_container_override() :: #{
 %%   <<"args">> => list(string()),
 %%   <<"command">> => list(string()),
@@ -1054,11 +1062,13 @@
 %% Example:
 %% eks_container_security_context() :: #{
 %%   <<"allowPrivilegeEscalation">> => boolean(),
+%%   <<"capabilities">> => eks_container_linux_capabilities(),
 %%   <<"privileged">> => boolean(),
 %%   <<"readOnlyRootFilesystem">> => boolean(),
 %%   <<"runAsGroup">> => float(),
 %%   <<"runAsNonRoot">> => boolean(),
-%%   <<"runAsUser">> => float()
+%%   <<"runAsUser">> => float(),
+%%   <<"seccompProfile">> => eks_seccomp_profile()
 %% }
 -type eks_container_security_context() :: #{binary() => any()}.
 
@@ -1113,6 +1123,7 @@
 %%   <<"imagePullSecrets">> => list(image_pull_secret()),
 %%   <<"initContainers">> => list(eks_container()),
 %%   <<"metadata">> => eks_metadata(),
+%%   <<"securityContext">> => eks_pod_security_context(),
 %%   <<"serviceAccountName">> => string(),
 %%   <<"shareProcessNamespace">> => boolean(),
 %%   <<"volumes">> => list(eks_volume())
@@ -1130,6 +1141,7 @@
 %%   <<"metadata">> => eks_metadata(),
 %%   <<"nodeName">> => string(),
 %%   <<"podName">> => string(),
+%%   <<"securityContext">> => eks_pod_security_context(),
 %%   <<"serviceAccountName">> => string(),
 %%   <<"shareProcessNamespace">> => boolean(),
 %%   <<"volumes">> => list(eks_volume())
@@ -1144,6 +1156,17 @@
 %%   <<"metadata">> => eks_metadata()
 %% }
 -type eks_pod_properties_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_pod_security_context() :: #{
+%%   <<"fsGroup">> => float(),
+%%   <<"runAsGroup">> => float(),
+%%   <<"runAsNonRoot">> => boolean(),
+%%   <<"runAsUser">> => float(),
+%%   <<"seccompProfile">> => eks_seccomp_profile()
+%% }
+-type eks_pod_security_context() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1165,6 +1188,14 @@
 %%   <<"podProperties">> => eks_pod_properties_override()
 %% }
 -type eks_properties_override() :: #{binary() => any()}.
+
+
+%% Example:
+%% eks_seccomp_profile() :: #{
+%%   <<"localhostProfile">> => string(),
+%%   <<"type">> => list(any())
+%% }
+-type eks_seccomp_profile() :: #{binary() => any()}.
 
 
 %% Example:

@@ -54,6 +54,8 @@
          create_auto_ml_job_v2/3,
          create_cluster/2,
          create_cluster/3,
+         create_cluster_extension/2,
+         create_cluster_extension/3,
          create_cluster_scheduler_config/2,
          create_cluster_scheduler_config/3,
          create_code_repository/2,
@@ -198,6 +200,8 @@
          delete_association/3,
          delete_cluster/2,
          delete_cluster/3,
+         delete_cluster_extension/2,
+         delete_cluster_extension/3,
          delete_cluster_scheduler_config/2,
          delete_cluster_scheduler_config/3,
          delete_code_repository/2,
@@ -330,6 +334,8 @@
          describe_cluster/3,
          describe_cluster_event/2,
          describe_cluster_event/3,
+         describe_cluster_extension/2,
+         describe_cluster_extension/3,
          describe_cluster_node/2,
          describe_cluster_node/3,
          describe_cluster_scheduler_config/2,
@@ -510,6 +516,8 @@
          list_candidates_for_auto_ml_job/3,
          list_cluster_events/2,
          list_cluster_events/3,
+         list_cluster_extensions/2,
+         list_cluster_extensions/3,
          list_cluster_nodes/2,
          list_cluster_nodes/3,
          list_cluster_scheduler_configs/2,
@@ -748,6 +756,8 @@
          update_artifact/3,
          update_cluster/2,
          update_cluster/3,
+         update_cluster_extension/2,
+         update_cluster_extension/3,
          update_cluster_scheduler_config/2,
          update_cluster_scheduler_config/3,
          update_cluster_software/2,
@@ -1251,6 +1261,13 @@
 %%   <<"ValidationRole">> => string()
 %% }
 -type algorithm_validation_specification() :: #{binary() => any()}.
+
+%% Example:
+%% alias_operations() :: #{
+%%   <<"Add">> => list(string()),
+%%   <<"Remove">> => list(string())
+%% }
+-type alias_operations() :: #{binary() => any()}.
 
 %% Example:
 %% amazon_q_settings() :: #{
@@ -3006,6 +3023,23 @@
 -type create_auto_ml_job_v2_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_cluster_extension_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ClusterArn">> := string(),
+%%   <<"ConfigurationValues">> => string(),
+%%   <<"ExtensionName">> := string(),
+%%   <<"ExtensionVersion">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_cluster_extension_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_extension_response() :: #{
+%%   <<"ExtensionArn">> => string()
+%% }
+-type create_cluster_extension_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_cluster_request() :: #{
 %%   <<"AutoScaling">> => cluster_auto_scaling_config(),
 %%   <<"ClusterName">> := string(),
@@ -3853,6 +3887,7 @@
 %%   <<"PipelineDescription">> => string(),
 %%   <<"PipelineDisplayName">> => string(),
 %%   <<"PipelineName">> := string(),
+%%   <<"PipelineVersionAliases">> => list(string()),
 %%   <<"RoleArn">> := string(),
 %%   <<"Tags">> => list(tag())
 %% }
@@ -4459,6 +4494,19 @@
 %%   <<"SourceArn">> => string()
 %% }
 -type delete_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_extension_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"ExtensionArn">> := string()
+%% }
+-type delete_cluster_extension_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_extension_response() :: #{
+%%   <<"ExtensionArn">> => string()
+%% }
+-type delete_cluster_extension_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_cluster_request() :: #{
@@ -5238,6 +5286,20 @@
 %%   <<"EventDetails">> => cluster_event_detail()
 %% }
 -type describe_cluster_event_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_extension_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"ExtensionArn">> := string()
+%% }
+-type describe_cluster_extension_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_extension_response() :: #{
+%%   <<"ExtensionDetails">> => extension_details(),
+%%   <<"NodeSummary">> => extension_node_summary()
+%% }
+-type describe_cluster_extension_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_cluster_node_request() :: #{
@@ -6422,7 +6484,9 @@
 %%   <<"PipelineExecutionDisplayName">> => string(),
 %%   <<"PipelineExecutionStatus">> => list(any()),
 %%   <<"PipelineExperimentConfig">> => pipeline_experiment_config(),
+%%   <<"PipelineVersionAliases">> => list(string()),
 %%   <<"PipelineVersionId">> => float(),
+%%   <<"RoleArn">> => string(),
 %%   <<"SelectiveExecutionConfig">> => selective_execution_config()
 %% }
 -type describe_pipeline_execution_response() :: #{binary() => any()}.
@@ -6430,6 +6494,7 @@
 %% Example:
 %% describe_pipeline_request() :: #{
 %%   <<"PipelineName">> := string(),
+%%   <<"PipelineVersionAlias">> => string(),
 %%   <<"PipelineVersionId">> => float()
 %% }
 -type describe_pipeline_request() :: #{binary() => any()}.
@@ -6448,6 +6513,7 @@
 %%   <<"PipelineDisplayName">> => string(),
 %%   <<"PipelineName">> => string(),
 %%   <<"PipelineStatus">> => list(any()),
+%%   <<"PipelineVersionAliases">> => list(string()),
 %%   <<"PipelineVersionDescription">> => string(),
 %%   <<"PipelineVersionDisplayName">> => string(),
 %%   <<"RoleArn">> => string()
@@ -7442,6 +7508,36 @@
 -type extend_training_plan_response() :: #{binary() => any()}.
 
 %% Example:
+%% extension_details() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"ConfigurationValues">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExtensionArn">> => string(),
+%%   <<"ExtensionName">> => string(),
+%%   <<"ExtensionVersion">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type extension_details() :: #{binary() => any()}.
+
+%% Example:
+%% extension_node_summary() :: #{
+%%   <<"ActiveCount">> => integer(),
+%%   <<"TotalCount">> => integer()
+%% }
+-type extension_node_summary() :: #{binary() => any()}.
+
+%% Example:
+%% extension_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ExtensionArn">> => string(),
+%%   <<"ExtensionName">> => string(),
+%%   <<"ExtensionVersion">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type extension_summary() :: #{binary() => any()}.
+
+%% Example:
 %% f_sx_lustre_config() :: #{
 %%   <<"PerUnitStorageThroughput">> => integer(),
 %%   <<"SizeInGiB">> => integer()
@@ -7793,6 +7889,13 @@
 %%   <<"SupportStatus">> => list(any())
 %% }
 -type hub_content_info() :: #{binary() => any()}.
+
+%% Example:
+%% hub_content_step_metadata() :: #{
+%%   <<"HubArn">> => string(),
+%%   <<"HubContentArn">> => string()
+%% }
+-type hub_content_step_metadata() :: #{binary() => any()}.
 
 %% Example:
 %% hub_info() :: #{
@@ -9043,6 +9146,23 @@
 -type list_cluster_events_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_cluster_extensions_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_extensions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_extensions_response() :: #{
+%%   <<"Extensions">> => list(extension_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_extensions_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_cluster_nodes_request() :: #{
 %%   <<"ClusterName">> := string(),
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
@@ -10169,6 +10289,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"PipelineName">> := string(),
+%%   <<"PipelineVersionAlias">> => string(),
 %%   <<"SortBy">> => list(any()),
 %%   <<"SortOrder">> => list(any())
 %% }
@@ -10218,6 +10339,7 @@
 %% list_pipelines_request() :: #{
 %%   <<"CreatedAfter">> => non_neg_integer(),
 %%   <<"CreatedBefore">> => non_neg_integer(),
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"PipelineNamePrefix">> => string(),
@@ -11923,6 +12045,7 @@
 %%   <<"EndpointConfig">> => endpoint_config_step_metadata(),
 %%   <<"Fail">> => fail_step_metadata(),
 %%   <<"ForEach">> => for_each_step_metadata(),
+%%   <<"HubContent">> => hub_content_step_metadata(),
 %%   <<"InferenceComponent">> => inference_component_metadata(),
 %%   <<"Job">> => job_step_metadata(),
 %%   <<"Lambda">> => lambda_step_metadata(),
@@ -11944,6 +12067,7 @@
 %%   <<"PipelineExecutionDisplayName">> => string(),
 %%   <<"PipelineExecutionFailureReason">> => string(),
 %%   <<"PipelineExecutionStatus">> => list(any()),
+%%   <<"PipelineVersionAliases">> => list(string()),
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type pipeline_execution_summary() :: #{binary() => any()}.
@@ -11978,6 +12102,7 @@
 %%   <<"LastModifiedBy">> => user_context(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"PipelineArn">> => string(),
+%%   <<"PipelineVersionAliases">> => list(string()),
 %%   <<"PipelineVersionDescription">> => string(),
 %%   <<"PipelineVersionDisplayName">> => string(),
 %%   <<"PipelineVersionId">> => float()
@@ -11989,6 +12114,7 @@
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"LastExecutionPipelineExecutionArn">> => string(),
 %%   <<"PipelineArn">> => string(),
+%%   <<"PipelineVersionAliases">> => list(string()),
 %%   <<"PipelineVersionDescription">> => string(),
 %%   <<"PipelineVersionDisplayName">> => string(),
 %%   <<"PipelineVersionId">> => float()
@@ -13283,7 +13409,9 @@
 %%   <<"PipelineExecutionDisplayName">> => string(),
 %%   <<"PipelineName">> := string(),
 %%   <<"PipelineParameters">> => list(parameter()),
+%%   <<"PipelineVersionAlias">> => string(),
 %%   <<"PipelineVersionId">> => float(),
+%%   <<"RoleArn">> => string(),
 %%   <<"SelectiveExecutionConfig">> => selective_execution_config()
 %% }
 -type start_pipeline_execution_request() :: #{binary() => any()}.
@@ -14320,6 +14448,22 @@
 -type update_artifact_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_cluster_extension_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ClusterArn">> := string(),
+%%   <<"ConfigurationValues">> => string(),
+%%   <<"ExtensionArn">> := string(),
+%%   <<"ExtensionVersion">> => string()
+%% }
+-type update_cluster_extension_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_extension_response() :: #{
+%%   <<"ExtensionArn">> => string()
+%% }
+-type update_cluster_extension_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_cluster_request() :: #{
 %%   <<"AutoScaling">> => cluster_auto_scaling_config(),
 %%   <<"ClusterName">> := string(),
@@ -14857,6 +15001,7 @@
 %%   <<"PipelineDescription">> => string(),
 %%   <<"PipelineDisplayName">> => string(),
 %%   <<"PipelineName">> := string(),
+%%   <<"PipelineVersionAliases">> => list(string()),
 %%   <<"RoleArn">> => string()
 %% }
 -type update_pipeline_request() :: #{binary() => any()}.
@@ -14871,6 +15016,7 @@
 %% Example:
 %% update_pipeline_version_request() :: #{
 %%   <<"PipelineArn">> := string(),
+%%   <<"PipelineVersionAliasOperations">> => alias_operations(),
 %%   <<"PipelineVersionDescription">> => string(),
 %%   <<"PipelineVersionDisplayName">> => string(),
 %%   <<"PipelineVersionId">> := float()
@@ -15232,6 +15378,11 @@
     resource_limit_exceeded() | 
     resource_in_use().
 
+-type create_cluster_extension_errors() ::
+    resource_not_found() | 
+    resource_in_use() | 
+    conflict_exception().
+
 -type create_cluster_scheduler_config_errors() ::
     resource_limit_exceeded() | 
     conflict_exception().
@@ -15486,6 +15637,11 @@
     resource_not_found() | 
     conflict_exception().
 
+-type delete_cluster_extension_errors() ::
+    resource_not_found() | 
+    resource_in_use() | 
+    conflict_exception().
+
 -type delete_cluster_scheduler_config_errors() ::
     resource_not_found().
 
@@ -15659,6 +15815,9 @@
     resource_not_found().
 
 -type describe_cluster_event_errors() ::
+    resource_not_found().
+
+-type describe_cluster_extension_errors() ::
     resource_not_found().
 
 -type describe_cluster_node_errors() ::
@@ -15856,6 +16015,9 @@
 -type list_cluster_events_errors() ::
     resource_not_found().
 
+-type list_cluster_extensions_errors() ::
+    resource_not_found().
+
 -type list_cluster_nodes_errors() ::
     resource_not_found().
 
@@ -16040,6 +16202,10 @@
 -type update_cluster_errors() ::
     resource_not_found() | 
     resource_limit_exceeded() | 
+    conflict_exception().
+
+-type update_cluster_extension_errors() ::
+    resource_not_found() | 
     conflict_exception().
 
 -type update_cluster_scheduler_config_errors() ::
@@ -16805,6 +16971,28 @@ create_cluster(Client, Input)
 create_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCluster">>, Input, Options).
+
+%% @doc Installs an extension, such as `sagemaker-observability', on a
+%% SageMaker HyperPod cluster orchestrated by Slurm.
+%%
+%% The cluster must have `NodeProvisioningMode' set to `Continuous'
+%% and can have only one extension with a given name. To track the
+%% installation, call `DescribeClusterExtension'.
+-spec create_cluster_extension(aws_client:aws_client(), create_cluster_extension_request()) ->
+    {ok, create_cluster_extension_response(), tuple()} |
+    {error, any()} |
+    {error, create_cluster_extension_errors(), tuple()}.
+create_cluster_extension(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_cluster_extension(Client, Input, []).
+
+-spec create_cluster_extension(aws_client:aws_client(), create_cluster_extension_request(), proplists:proplist()) ->
+    {ok, create_cluster_extension_response(), tuple()} |
+    {error, any()} |
+    {error, create_cluster_extension_errors(), tuple()}.
+create_cluster_extension(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateClusterExtension">>, Input, Options).
 
 %% @doc Create cluster policy configuration.
 %%
@@ -18896,6 +19084,33 @@ delete_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCluster">>, Input, Options).
 
+%% @doc Deletes an extension from a SageMaker HyperPod cluster.
+%%
+%% SageMaker HyperPod removes the extension's software from every node in
+%% the cluster. While SageMaker HyperPod removes the extension, its status is
+%% `Deleting'. After SageMaker HyperPod removes the extension from all
+%% nodes, it no longer appears in `ListClusterExtensions', and
+%% `DescribeClusterExtension' returns a `ResourceNotFound' error.
+%%
+%% Deleting an extension doesn't delete data that the extension sent to
+%% other Amazon Web Services services, such as metrics in Amazon CloudWatch
+%% or Amazon Managed Service for Prometheus.
+-spec delete_cluster_extension(aws_client:aws_client(), delete_cluster_extension_request()) ->
+    {ok, delete_cluster_extension_response(), tuple()} |
+    {error, any()} |
+    {error, delete_cluster_extension_errors(), tuple()}.
+delete_cluster_extension(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_cluster_extension(Client, Input, []).
+
+-spec delete_cluster_extension(aws_client:aws_client(), delete_cluster_extension_request(), proplists:proplist()) ->
+    {ok, delete_cluster_extension_response(), tuple()} |
+    {error, any()} |
+    {error, delete_cluster_extension_errors(), tuple()}.
+delete_cluster_extension(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteClusterExtension">>, Input, Options).
+
 %% @doc Deletes the cluster policy of the cluster.
 -spec delete_cluster_scheduler_config(aws_client:aws_client(), delete_cluster_scheduler_config_request()) ->
     {ok, undefined, tuple()} |
@@ -20199,6 +20414,28 @@ describe_cluster_event(Client, Input)
 describe_cluster_event(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterEvent">>, Input, Options).
+
+%% @doc Retrieves information about an extension installed on a SageMaker
+%% HyperPod cluster.
+%%
+%% The information includes the extension's version, configuration, and
+%% status, and a summary of how many cluster nodes are running the current
+%% version and configuration of the extension.
+-spec describe_cluster_extension(aws_client:aws_client(), describe_cluster_extension_request()) ->
+    {ok, describe_cluster_extension_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_extension_errors(), tuple()}.
+describe_cluster_extension(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_cluster_extension(Client, Input, []).
+
+-spec describe_cluster_extension(aws_client:aws_client(), describe_cluster_extension_request(), proplists:proplist()) ->
+    {ok, describe_cluster_extension_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_extension_errors(), tuple()}.
+describe_cluster_extension(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeClusterExtension">>, Input, Options).
 
 %% @doc Retrieves information of a node (also called a instance
 %% interchangeably) of a SageMaker HyperPod cluster.
@@ -21863,6 +22100,23 @@ list_cluster_events(Client, Input)
 list_cluster_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusterEvents">>, Input, Options).
+
+%% @doc Lists the extensions installed on a SageMaker HyperPod cluster.
+-spec list_cluster_extensions(aws_client:aws_client(), list_cluster_extensions_request()) ->
+    {ok, list_cluster_extensions_response(), tuple()} |
+    {error, any()} |
+    {error, list_cluster_extensions_errors(), tuple()}.
+list_cluster_extensions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cluster_extensions(Client, Input, []).
+
+-spec list_cluster_extensions(aws_client:aws_client(), list_cluster_extensions_request(), proplists:proplist()) ->
+    {ok, list_cluster_extensions_response(), tuple()} |
+    {error, any()} |
+    {error, list_cluster_extensions_errors(), tuple()}.
+list_cluster_extensions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListClusterExtensions">>, Input, Options).
 
 %% @doc Retrieves the list of instances (also called nodes interchangeably)
 %% in a SageMaker HyperPod cluster.
@@ -24040,6 +24294,38 @@ update_cluster(Client, Input)
 update_cluster(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCluster">>, Input, Options).
+
+%% @doc Updates the configuration or the version of an extension installed on
+%% a SageMaker HyperPod cluster.
+%%
+%% SageMaker HyperPod applies the change to every node in the cluster. You
+%% can change the configuration, the version, or both in one request.
+%%
+%% Configuration: You can change settings by sending
+%% `ConfigurationValues'. Settings that you include are changed. Settings
+%% that you omit keep their current values. A setting with the value
+%% `null' is removed and returns to its default value.
+%%
+%% Version: You can update to a later version. You can't update to an
+%% earlier version. To use an earlier version, delete the extension and
+%% create it again with that version.
+%%
+%% You can't update an extension while it is being deleted.
+-spec update_cluster_extension(aws_client:aws_client(), update_cluster_extension_request()) ->
+    {ok, update_cluster_extension_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_extension_errors(), tuple()}.
+update_cluster_extension(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cluster_extension(Client, Input, []).
+
+-spec update_cluster_extension(aws_client:aws_client(), update_cluster_extension_request(), proplists:proplist()) ->
+    {ok, update_cluster_extension_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_extension_errors(), tuple()}.
+update_cluster_extension(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateClusterExtension">>, Input, Options).
 
 %% @doc Update the cluster policy configuration.
 -spec update_cluster_scheduler_config(aws_client:aws_client(), update_cluster_scheduler_config_request()) ->

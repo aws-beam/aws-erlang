@@ -95,6 +95,8 @@
          invoke_code_interpreter/4,
          invoke_harness/2,
          invoke_harness/3,
+         invoke_web_search/3,
+         invoke_web_search/4,
          list_a_b_tests/1,
          list_a_b_tests/3,
          list_a_b_tests/4,
@@ -825,6 +827,14 @@
 %%   <<"mcp">> => mcp_descriptor()
 %% }
 -type descriptors() :: #{binary() => any()}.
+
+
+%% Example:
+%% domain_filter() :: #{
+%%   <<"exclude">> => list(string()),
+%%   <<"include">> => list(string())
+%% }
+-type domain_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1951,6 +1961,22 @@
 
 
 %% Example:
+%% invoke_web_search_input() :: #{
+%%   <<"filters">> => web_search_filters(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"searchQuery">> := [string()]
+%% }
+-type invoke_web_search_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% invoke_web_search_output() :: #{
+%%   <<"results">> => list(web_search_result())
+%% }
+-type invoke_web_search_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% key_press_arguments() :: #{
 %%   <<"key">> => [string()],
 %%   <<"presses">> => [integer()]
@@ -2574,6 +2600,14 @@
 
 
 %% Example:
+%% published_date_filter() :: #{
+%%   <<"publishedAfter">> => non_neg_integer(),
+%%   <<"publishedBefore">> => non_neg_integer()
+%% }
+-type published_date_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% recommendation_evaluation_config() :: #{
 %%   <<"evaluators">> => list(recommendation_evaluator_reference())
 %% }
@@ -2816,6 +2850,14 @@
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_unavailable_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"retryAfterSeconds">> => [integer()]
+%% }
+-type service_unavailable_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3415,6 +3457,24 @@
 %% }
 -type view_port() :: #{binary() => any()}.
 
+
+%% Example:
+%% web_search_filters() :: #{
+%%   <<"domainFilter">> => domain_filter(),
+%%   <<"publishedDateFilter">> => published_date_filter()
+%% }
+-type web_search_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_search_result() :: #{
+%%   <<"publishedAt">> => non_neg_integer(),
+%%   <<"text">> => [string()],
+%%   <<"title">> => [string()],
+%%   <<"url">> => [string()]
+%% }
+-type web_search_result() :: #{binary() => any()}.
+
 -type batch_create_memory_records_errors() ::
     validation_exception() | 
     throttled_exception() | 
@@ -3745,6 +3805,14 @@
     throttling_exception() | 
     service_quota_exceeded_exception() | 
     runtime_client_error() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type invoke_web_search_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_unavailable_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
@@ -5714,6 +5782,48 @@ invoke_harness(Client, Input0, Options0) ->
                      {<<"qualifier">>, <<"qualifier">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Searches the web and returns a ranked list of results.
+%%
+%% Each result includes a text extract from the page.
+%%
+%% You can filter the results by domain and by publication date.
+%%
+%% To use this operation, you must have the
+%% `bedrock-agentcore:InvokeWebSearch' permission on the resource
+%% `arn:${Partition}:bedrock-agentcore:${Region}:aws:tool/web-search.v1'.
+-spec invoke_web_search(aws_client:aws_client(), binary() | list(), invoke_web_search_input()) ->
+    {ok, invoke_web_search_output(), tuple()} |
+    {error, any()} |
+    {error, invoke_web_search_errors(), tuple()}.
+invoke_web_search(Client, WebSearchId, Input) ->
+    invoke_web_search(Client, WebSearchId, Input, []).
+
+-spec invoke_web_search(aws_client:aws_client(), binary() | list(), invoke_web_search_input(), proplists:proplist()) ->
+    {ok, invoke_web_search_output(), tuple()} |
+    {error, any()} |
+    {error, invoke_web_search_errors(), tuple()}.
+invoke_web_search(Client, WebSearchId, Input0, Options0) ->
+    Method = post,
+    Path = ["/web-search/", aws_util:encode_uri(WebSearchId), "/invoke"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all A/B tests in the account.

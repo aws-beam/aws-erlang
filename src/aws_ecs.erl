@@ -2137,6 +2137,7 @@
 %%   <<"localStorageConfiguration">> => managed_instances_local_storage_configuration(),
 %%   <<"monitoring">> => list(any()),
 %%   <<"networkConfiguration">> => managed_instances_network_configuration(),
+%%   <<"nitroEnclavesEnabled">> => boolean(),
 %%   <<"storageConfiguration">> => managed_instances_storage_configuration()
 %% }
 -type instance_launch_template() :: #{binary() => any()}.
@@ -3001,6 +3002,7 @@
 %%   <<"runtimePlatform">> => runtime_platform(),
 %%   <<"tags">> => list(tag()),
 %%   <<"taskRoleArn">> => string(),
+%%   <<"trustedExecutionConfiguration">> => trusted_execution_configuration(),
 %%   <<"volumes">> => list(volume())
 %% }
 -type register_task_definition_request() :: #{binary() => any()}.
@@ -3632,6 +3634,7 @@
 %%   <<"tags">> => list(tag()),
 %%   <<"taskArn">> => string(),
 %%   <<"taskDefinitionArn">> => string(),
+%%   <<"trustedExecutionSummary">> => trusted_execution_summary(),
 %%   <<"version">> => float()
 %% }
 -type task() :: #{binary() => any()}.
@@ -3663,6 +3666,7 @@
 %%   <<"status">> => list(any()),
 %%   <<"taskDefinitionArn">> => string(),
 %%   <<"taskRoleArn">> => string(),
+%%   <<"trustedExecutionConfiguration">> => trusted_execution_configuration(),
 %%   <<"volumes">> => list(volume())
 %% }
 -type task_definition() :: #{binary() => any()}.
@@ -3787,6 +3791,20 @@
 %%   <<"min">> => float()
 %% }
 -type total_local_storage_g_b_request() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_execution_configuration() :: #{
+%%   <<"attestationPolicy">> => string(),
+%%   <<"isolationMode">> => list(any())
+%% }
+-type trusted_execution_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_execution_summary() :: #{
+%%   <<"attestationPolicyStatus">> => list(any()),
+%%   <<"isolationMode">> => list(any())
+%% }
+-type trusted_execution_summary() :: #{binary() => any()}.
 
 %% Example:
 %% ulimit() :: #{

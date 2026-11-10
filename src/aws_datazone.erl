@@ -9947,7 +9947,8 @@ create_data_source(Client, DomainIdentifier, Input0, Options0) ->
 %% @doc Creates a new user-defined designation with a Cedar permit policy.
 %%
 %% The designation defines a named role that can be assigned to project
-%% members.
+%% members through `CreateProjectMembership' or granted through
+%% `AddPolicyGrant'.
 -spec create_designation(aws_client:aws_client(), binary() | list(), create_designation_input()) ->
     {ok, create_designation_output(), tuple()} |
     {error, any()} |
@@ -11068,10 +11069,11 @@ delete_data_source(Client, DomainIdentifier, Identifier, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Deletes a designation.
+%% @doc Deletes a user-created designation.
 %%
-%% Managed designations cannot be deleted.
-%% This operation is idempotent.
+%% Managed designations cannot be deleted. The call fails if the designation
+%% has `deletionProtection' enabled or if any project member still holds
+%% it. This operation is idempotent.
 -spec delete_designation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_designation_input()) ->
     {ok, delete_designation_output(), tuple()} |
     {error, any()} |
@@ -12346,7 +12348,10 @@ get_data_source_run(Client, DomainIdentifier, Identifier, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Gets the details of a designation, including its Cedar policy.
+%% @doc Gets the details of a designation, including its Cedar permit policy.
+%%
+%% Returns the full designation record for both system-managed and
+%% user-created designations.
 -spec get_designation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_designation_output(), tuple()} |
     {error, any()} |
@@ -14041,9 +14046,9 @@ list_data_sources(Client, DomainIdentifier, ProjectIdentifier, QueryMap, Headers
 
 %% @doc Lists the designations in a domain.
 %%
-%% Returns system-managed designations
-%% first, followed by user-created designations sorted alphabetically by
-%% name.
+%% The response returns system-managed designations first, followed by
+%% user-created designations in alphabetical order by name. Results are
+%% paginated. Use `nextToken' to retrieve additional pages of results.
 -spec list_designations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_designations_output(), tuple()} |
     {error, any()} |
@@ -16435,9 +16440,10 @@ update_data_source(Client, DomainIdentifier, Identifier, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Updates an existing designation.
+%% @doc Updates an existing user-created designation.
 %%
-%% Managed designations cannot be modified.
+%% Managed designations cannot be modified. Omit a field to leave its current
+%% value unchanged.
 -spec update_designation(aws_client:aws_client(), binary() | list(), binary() | list(), update_designation_input()) ->
     {ok, update_designation_output(), tuple()} |
     {error, any()} |

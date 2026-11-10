@@ -74,6 +74,8 @@
          create_crawler/3,
          create_custom_entity_type/2,
          create_custom_entity_type/3,
+         create_data_quality_evaluation_config/2,
+         create_data_quality_evaluation_config/3,
          create_data_quality_ruleset/2,
          create_data_quality_ruleset/3,
          create_database/2,
@@ -148,6 +150,8 @@
          delete_crawler/3,
          delete_custom_entity_type/2,
          delete_custom_entity_type/3,
+         delete_data_quality_evaluation_config/2,
+         delete_data_quality_evaluation_config/3,
          delete_data_quality_ruleset/2,
          delete_data_quality_ruleset/3,
          delete_database/2,
@@ -260,6 +264,8 @@
          get_data_catalog_encryption_settings/3,
          get_data_catalog_export_configuration/2,
          get_data_catalog_export_configuration/3,
+         get_data_quality_evaluation_config/2,
+         get_data_quality_evaluation_config/3,
          get_data_quality_model/2,
          get_data_quality_model/3,
          get_data_quality_model_result/2,
@@ -410,6 +416,8 @@
          list_crawls/3,
          list_custom_entity_types/2,
          list_custom_entity_types/3,
+         list_data_quality_evaluation_configs/2,
+         list_data_quality_evaluation_configs/3,
          list_data_quality_results/2,
          list_data_quality_results/3,
          list_data_quality_results_v2/2,
@@ -582,6 +590,8 @@
          update_crawler/3,
          update_crawler_schedule/2,
          update_crawler_schedule/3,
+         update_data_quality_evaluation_config/2,
+         update_data_quality_evaluation_config/3,
          update_data_quality_ruleset/2,
          update_data_quality_ruleset/3,
          update_database/2,
@@ -2257,6 +2267,34 @@
 -type create_custom_entity_type_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_data_quality_evaluation_config_request() :: #{
+%%   <<"AdditionalDataSources">> => map(),
+%%   <<"AdditionalRunOptions">> => data_quality_evaluation_config_additional_run_options(),
+%%   <<"ClientToken">> => string(),
+%%   <<"DataSource">> := data_quality_evaluation_config_data_source(),
+%%   <<"EndAt">> => non_neg_integer(),
+%%   <<"Level">> := list(any()),
+%%   <<"ManagedRulesetName">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"Role">> := string(),
+%%   <<"RulesetName">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"StartAt">> => non_neg_integer(),
+%%   <<"Tags">> => map(),
+%%   <<"Timeout">> => integer(),
+%%   <<"Triggers">> => list(list(any())())
+%% }
+-type create_data_quality_evaluation_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_data_quality_evaluation_config_response() :: #{
+%%   <<"EvaluationRunMode">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type create_data_quality_evaluation_config_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_data_quality_ruleset_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"DataQualitySecurityConfiguration">> => string(),
@@ -2929,6 +2967,66 @@
 -type data_quality_encryption() :: #{binary() => any()}.
 
 %% Example:
+%% data_quality_evaluation_config_additional_run_options() :: #{
+%%   <<"CloudWatchMetricsEnabled">> => boolean(),
+%%   <<"CompositeRuleEvaluationMethod">> => list(any()),
+%%   <<"CustomLogGroupPrefix">> => string(),
+%%   <<"DataQualityRuleResults">> => data_quality_rule_results_options(),
+%%   <<"ObservationMode">> => list(any()),
+%%   <<"ObservationResults">> => observation_results_options(),
+%%   <<"ObservationScope">> => list(any()),
+%%   <<"ProfilingResults">> => profiling_results_options(),
+%%   <<"ResultsS3Prefix">> => string(),
+%%   <<"RowLevelResults">> => row_level_results_options()
+%% }
+-type data_quality_evaluation_config_additional_run_options() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_evaluation_config_data_source() :: #{
+%%   <<"GlueTables">> => data_quality_evaluation_config_glue_tables()
+%% }
+-type data_quality_evaluation_config_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_evaluation_config_glue_tables() :: #{
+%%   <<"AdditionalOptions">> => map(),
+%%   <<"CatalogId">> => string(),
+%%   <<"ConnectionName">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"PreProcessingQuery">> => string(),
+%%   <<"TableNamePattern">> => string()
+%% }
+-type data_quality_evaluation_config_glue_tables() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_evaluation_config_list_data_source() :: #{
+%%   <<"GlueTables">> => data_quality_evaluation_config_list_glue_tables()
+%% }
+-type data_quality_evaluation_config_list_data_source() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_evaluation_config_list_details() :: #{
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"DataSource">> => data_quality_evaluation_config_list_data_source(),
+%%   <<"EvaluationRunMode">> => list(any()),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"Level">> => list(any()),
+%%   <<"ManagedRulesetName">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"PauseRuns">> => boolean(),
+%%   <<"RulesetName">> => string()
+%% }
+-type data_quality_evaluation_config_list_details() :: #{binary() => any()}.
+
+%% Example:
+%% data_quality_evaluation_config_list_glue_tables() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"TableNamePattern">> => string()
+%% }
+-type data_quality_evaluation_config_list_glue_tables() :: #{binary() => any()}.
+
+%% Example:
 %% data_quality_evaluation_run_additional_run_options() :: #{
 %%   <<"CloudWatchMetricsEnabled">> => boolean(),
 %%   <<"CompositeRuleEvaluationMethod">> => list(any()),
@@ -2975,8 +3073,10 @@
 %%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
 %%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()),
 %%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"DataQualityEvaluationConfig">> => string(),
 %%   <<"DataSource">> => data_source(),
 %%   <<"EvaluationContext">> => string(),
+%%   <<"EvaluationRunMode">> => list(any()),
 %%   <<"JobName">> => string(),
 %%   <<"JobRunId">> => string(),
 %%   <<"Observations">> => list(data_quality_observation()),
@@ -2992,7 +3092,9 @@
 
 %% Example:
 %% data_quality_result_description() :: #{
+%%   <<"DataQualityEvaluationConfig">> => string(),
 %%   <<"DataSource">> => data_source(),
+%%   <<"EvaluationRunMode">> => list(any()),
 %%   <<"JobName">> => string(),
 %%   <<"JobRunId">> => string(),
 %%   <<"ResultId">> => string(),
@@ -3002,7 +3104,9 @@
 
 %% Example:
 %% data_quality_result_filter_criteria() :: #{
+%%   <<"DataQualityEvaluationConfig">> => string(),
 %%   <<"DataSource">> => data_source(),
+%%   <<"EvaluationRunMode">> => list(any()),
 %%   <<"JobName">> => string(),
 %%   <<"JobRunId">> => string(),
 %%   <<"StartedAfter">> => non_neg_integer(),
@@ -3014,10 +3118,12 @@
 %% data_quality_result_v2_item() :: #{
 %%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
 %%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()),
+%%   <<"DataQualityEvaluationConfig">> => string(),
 %%   <<"DataSource">> => data_source(),
 %%   <<"Descriptors">> => map(),
 %%   <<"Dimensions">> => map(),
 %%   <<"EvaluationContext">> => string(),
+%%   <<"EvaluationRunMode">> => list(any()),
 %%   <<"ExecutionCompletedOn">> => non_neg_integer(),
 %%   <<"ExecutionStartedOn">> => non_neg_integer(),
 %%   <<"Observations">> => list(data_quality_observation()),
@@ -3032,10 +3138,12 @@
 
 %% Example:
 %% data_quality_results_v2_description() :: #{
+%%   <<"DataQualityEvaluationConfig">> => string(),
 %%   <<"DataSource">> => data_source(),
 %%   <<"Descriptors">> => map(),
 %%   <<"Dimensions">> => map(),
 %%   <<"EvaluationContext">> => string(),
+%%   <<"EvaluationRunMode">> => list(any()),
 %%   <<"ResultId">> => string(),
 %%   <<"ResultPublishedOn">> => non_neg_integer()
 %% }
@@ -3043,9 +3151,11 @@
 
 %% Example:
 %% data_quality_results_v2_filter_criteria() :: #{
+%%   <<"DataQualityEvaluationConfig">> => string(),
 %%   <<"DataSource">> => data_source(),
 %%   <<"Dimensions">> => map(),
 %%   <<"EvaluationContext">> => string(),
+%%   <<"EvaluationRunMode">> => list(any()),
 %%   <<"PublishedAfter">> => non_neg_integer(),
 %%   <<"PublishedBefore">> => non_neg_integer()
 %% }
@@ -3426,6 +3536,18 @@
 %%   <<"Name">> => string()
 %% }
 -type delete_custom_entity_type_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_quality_evaluation_config_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type delete_data_quality_evaluation_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_data_quality_evaluation_config_response() :: #{
+
+%% }
+-type delete_data_quality_evaluation_config_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_data_quality_ruleset_request() :: #{
@@ -4727,6 +4849,35 @@
 -type get_data_catalog_export_configuration_output() :: #{binary() => any()}.
 
 %% Example:
+%% get_data_quality_evaluation_config_request() :: #{
+%%   <<"Name">> := string()
+%% }
+-type get_data_quality_evaluation_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_data_quality_evaluation_config_response() :: #{
+%%   <<"AdditionalDataSources">> => map(),
+%%   <<"AdditionalRunOptions">> => data_quality_evaluation_config_additional_run_options(),
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"DataSource">> => data_quality_evaluation_config_data_source(),
+%%   <<"EndAt">> => non_neg_integer(),
+%%   <<"EvaluationRunMode">> => list(any()),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"Level">> => list(any()),
+%%   <<"ManagedRulesetName">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"PauseRuns">> => boolean(),
+%%   <<"Role">> => string(),
+%%   <<"RulesetName">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"StartAt">> => non_neg_integer(),
+%%   <<"Timeout">> => integer(),
+%%   <<"Triggers">> => list(list(any())())
+%% }
+-type get_data_quality_evaluation_config_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_data_quality_model_request() :: #{
 %%   <<"ProfileId">> := string(),
 %%   <<"StatisticId">> => string()
@@ -4767,8 +4918,10 @@
 %%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
 %%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()),
 %%   <<"CompletedOn">> => non_neg_integer(),
+%%   <<"DataQualityEvaluationConfig">> => string(),
 %%   <<"DataSource">> => data_source(),
 %%   <<"EvaluationContext">> => string(),
+%%   <<"EvaluationRunMode">> => list(any()),
 %%   <<"JobName">> => string(),
 %%   <<"JobRunId">> => string(),
 %%   <<"Observations">> => list(data_quality_observation()),
@@ -4792,10 +4945,12 @@
 %% get_data_quality_result_v2_response() :: #{
 %%   <<"AggregatedMetrics">> => data_quality_aggregated_metrics(),
 %%   <<"AnalyzerResults">> => list(data_quality_analyzer_result()),
+%%   <<"DataQualityEvaluationConfig">> => string(),
 %%   <<"DataSource">> => data_source(),
 %%   <<"Descriptors">> => map(),
 %%   <<"Dimensions">> => map(),
 %%   <<"EvaluationContext">> => string(),
+%%   <<"EvaluationRunMode">> => list(any()),
 %%   <<"ExecutionCompletedOn">> => non_neg_integer(),
 %%   <<"ExecutionStartedOn">> => non_neg_integer(),
 %%   <<"Observations">> => list(data_quality_observation()),
@@ -6798,6 +6953,21 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_custom_entity_types_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_evaluation_configs_request() :: #{
+%%   <<"Level">> => list(any()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_quality_evaluation_configs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_data_quality_evaluation_configs_response() :: #{
+%%   <<"DataQualityEvaluationConfigs">> => list(data_quality_evaluation_config_list_details()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_data_quality_evaluation_configs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_data_quality_results_request() :: #{
@@ -10013,6 +10183,48 @@
 -type update_csv_classifier_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_data_quality_evaluation_config_request() :: #{
+%%   <<"AdditionalDataSources">> => map(),
+%%   <<"AdditionalRunOptions">> => data_quality_evaluation_config_additional_run_options(),
+%%   <<"DataSource">> => data_quality_evaluation_config_data_source(),
+%%   <<"EndAt">> => non_neg_integer(),
+%%   <<"ManagedRulesetName">> => list(any()),
+%%   <<"Name">> := string(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"PauseRuns">> => boolean(),
+%%   <<"Role">> => string(),
+%%   <<"RulesetName">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"StartAt">> => non_neg_integer(),
+%%   <<"Timeout">> => integer(),
+%%   <<"Triggers">> => list(list(any())())
+%% }
+-type update_data_quality_evaluation_config_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_data_quality_evaluation_config_response() :: #{
+%%   <<"AdditionalDataSources">> => map(),
+%%   <<"AdditionalRunOptions">> => data_quality_evaluation_config_additional_run_options(),
+%%   <<"CreatedOn">> => non_neg_integer(),
+%%   <<"DataSource">> => data_quality_evaluation_config_data_source(),
+%%   <<"EndAt">> => non_neg_integer(),
+%%   <<"EvaluationRunMode">> => list(any()),
+%%   <<"LastModifiedOn">> => non_neg_integer(),
+%%   <<"Level">> => list(any()),
+%%   <<"ManagedRulesetName">> => list(any()),
+%%   <<"Name">> => string(),
+%%   <<"NumberOfWorkers">> => integer(),
+%%   <<"PauseRuns">> => boolean(),
+%%   <<"Role">> => string(),
+%%   <<"RulesetName">> => string(),
+%%   <<"ScheduleExpression">> => string(),
+%%   <<"StartAt">> => non_neg_integer(),
+%%   <<"Timeout">> => integer(),
+%%   <<"Triggers">> => list(list(any())())
+%% }
+-type update_data_quality_evaluation_config_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_data_quality_ruleset_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"Name">> := string(),
@@ -10808,6 +11020,16 @@
     already_exists_exception() | 
     access_denied_exception().
 
+-type create_data_quality_evaluation_config_errors() ::
+    resource_number_limit_exceeded_exception() | 
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    entity_not_found_exception() | 
+    already_exists_exception() | 
+    access_denied_exception().
+
 -type create_data_quality_ruleset_errors() ::
     resource_number_limit_exceeded_exception() | 
     operation_timeout_exception() | 
@@ -11107,6 +11329,13 @@
     crawler_running_exception().
 
 -type delete_custom_entity_type_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
+
+-type delete_data_quality_evaluation_config_errors() ::
     operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -11485,6 +11714,13 @@
     invalid_input_exception() | 
     internal_service_exception() | 
     entity_not_found_exception().
+
+-type get_data_quality_evaluation_config_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_data_quality_model_errors() ::
     operation_timeout_exception() | 
@@ -11981,6 +12217,12 @@
     operation_timeout_exception() | 
     invalid_input_exception() | 
     internal_service_exception().
+
+-type list_data_quality_evaluation_configs_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
 
 -type list_data_quality_results_errors() ::
     operation_timeout_exception() | 
@@ -12573,6 +12815,14 @@
     operation_timeout_exception() | 
     invalid_input_exception() | 
     entity_not_found_exception().
+
+-type update_data_quality_evaluation_config_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    concurrent_modification_exception() | 
+    access_denied_exception().
 
 -type update_data_quality_ruleset_errors() ::
     resource_number_limit_exceeded_exception() | 
@@ -13416,6 +13666,33 @@ create_custom_entity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateCustomEntityType">>, Input, Options).
 
+%% @doc Creates a data quality evaluation configuration, which evaluates the
+%% data quality of a collection of tables in the Glue Data Catalog once, on a
+%% schedule, or when table metadata changes.
+%%
+%% A configuration applies to a catalog, a database, or a single table, and
+%% evaluates every table in scope, including tables added later, without
+%% per-table setup.
+%%
+%% When configurations at more than one level apply to the same table, the
+%% most specific configuration applies. Each table is evaluated at most once
+%% an hour, whichever triggers you choose.
+-spec create_data_quality_evaluation_config(aws_client:aws_client(), create_data_quality_evaluation_config_request()) ->
+    {ok, create_data_quality_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_quality_evaluation_config_errors(), tuple()}.
+create_data_quality_evaluation_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_data_quality_evaluation_config(Client, Input, []).
+
+-spec create_data_quality_evaluation_config(aws_client:aws_client(), create_data_quality_evaluation_config_request(), proplists:proplist()) ->
+    {ok, create_data_quality_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, create_data_quality_evaluation_config_errors(), tuple()}.
+create_data_quality_evaluation_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateDataQualityEvaluationConfig">>, Input, Options).
+
 %% @doc Creates a data quality ruleset with DQDL rules applied to a specified
 %% Glue table.
 %%
@@ -14141,6 +14418,23 @@ delete_custom_entity_type(Client, Input)
 delete_custom_entity_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteCustomEntityType">>, Input, Options).
+
+%% @doc Deletes a data quality evaluation configuration.
+-spec delete_data_quality_evaluation_config(aws_client:aws_client(), delete_data_quality_evaluation_config_request()) ->
+    {ok, delete_data_quality_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_quality_evaluation_config_errors(), tuple()}.
+delete_data_quality_evaluation_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_data_quality_evaluation_config(Client, Input, []).
+
+-spec delete_data_quality_evaluation_config(aws_client:aws_client(), delete_data_quality_evaluation_config_request(), proplists:proplist()) ->
+    {ok, delete_data_quality_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, delete_data_quality_evaluation_config_errors(), tuple()}.
+delete_data_quality_evaluation_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteDataQualityEvaluationConfig">>, Input, Options).
 
 %% @doc Deletes a data quality ruleset.
 -spec delete_data_quality_ruleset(aws_client:aws_client(), delete_data_quality_ruleset_request()) ->
@@ -15211,6 +15505,23 @@ get_data_catalog_export_configuration(Client, Input)
 get_data_catalog_export_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDataCatalogExportConfiguration">>, Input, Options).
+
+%% @doc Retrieves a data quality evaluation configuration.
+-spec get_data_quality_evaluation_config(aws_client:aws_client(), get_data_quality_evaluation_config_request()) ->
+    {ok, get_data_quality_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_quality_evaluation_config_errors(), tuple()}.
+get_data_quality_evaluation_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_data_quality_evaluation_config(Client, Input, []).
+
+-spec get_data_quality_evaluation_config(aws_client:aws_client(), get_data_quality_evaluation_config_request(), proplists:proplist()) ->
+    {ok, get_data_quality_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, get_data_quality_evaluation_config_errors(), tuple()}.
+get_data_quality_evaluation_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDataQualityEvaluationConfig">>, Input, Options).
 
 %% @doc Retrieve the training status of the model along with more information
 %% (CompletedOn, StartedOn, FailureReason).
@@ -16655,6 +16966,24 @@ list_custom_entity_types(Client, Input)
 list_custom_entity_types(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCustomEntityTypes">>, Input, Options).
+
+%% @doc Lists the data quality evaluation configurations in your account,
+%% optionally filtered by level.
+-spec list_data_quality_evaluation_configs(aws_client:aws_client(), list_data_quality_evaluation_configs_request()) ->
+    {ok, list_data_quality_evaluation_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_quality_evaluation_configs_errors(), tuple()}.
+list_data_quality_evaluation_configs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_data_quality_evaluation_configs(Client, Input, []).
+
+-spec list_data_quality_evaluation_configs(aws_client:aws_client(), list_data_quality_evaluation_configs_request(), proplists:proplist()) ->
+    {ok, list_data_quality_evaluation_configs_response(), tuple()} |
+    {error, any()} |
+    {error, list_data_quality_evaluation_configs_errors(), tuple()}.
+list_data_quality_evaluation_configs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListDataQualityEvaluationConfigs">>, Input, Options).
 
 %% @doc Returns all data quality execution results for your account.
 -spec list_data_quality_results(aws_client:aws_client(), list_data_quality_results_request()) ->
@@ -18427,6 +18756,25 @@ update_crawler_schedule(Client, Input)
 update_crawler_schedule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCrawlerSchedule">>, Input, Options).
+
+%% @doc Updates a data quality evaluation configuration.
+%%
+%% Fields that you don't specify keep their current values.
+-spec update_data_quality_evaluation_config(aws_client:aws_client(), update_data_quality_evaluation_config_request()) ->
+    {ok, update_data_quality_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_quality_evaluation_config_errors(), tuple()}.
+update_data_quality_evaluation_config(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_data_quality_evaluation_config(Client, Input, []).
+
+-spec update_data_quality_evaluation_config(aws_client:aws_client(), update_data_quality_evaluation_config_request(), proplists:proplist()) ->
+    {ok, update_data_quality_evaluation_config_response(), tuple()} |
+    {error, any()} |
+    {error, update_data_quality_evaluation_config_errors(), tuple()}.
+update_data_quality_evaluation_config(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDataQualityEvaluationConfig">>, Input, Options).
 
 %% @doc Updates the specified data quality ruleset.
 -spec update_data_quality_ruleset(aws_client:aws_client(), update_data_quality_ruleset_request()) ->

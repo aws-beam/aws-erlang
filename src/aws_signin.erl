@@ -7,7 +7,9 @@
 %% capabilities.
 -module(aws_signin).
 
--export([create_o_auth2_token/2,
+-export([create_bearer_token/2,
+         create_bearer_token/3,
+         create_o_auth2_token/2,
          create_o_auth2_token/3,
          create_o_auth2_token_with_iam/2,
          create_o_auth2_token_with_iam/3,
@@ -59,6 +61,24 @@
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bearer_token_request() :: #{
+%%   <<"durationSeconds">> => integer(),
+%%   <<"grantType">> := string(),
+%%   <<"resource">> := string()
+%% }
+-type create_bearer_token_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_bearer_token_response() :: #{
+%%   <<"accessToken">> => string(),
+%%   <<"expiresIn">> => integer(),
+%%   <<"tokenType">> => string()
+%% }
+-type create_bearer_token_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -373,6 +393,12 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+-type create_bearer_token_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type create_o_auth2_token_errors() ::
     validation_exception() | 
     too_many_requests_error() | 
@@ -458,6 +484,43 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates a bearer token that represents your IAM credentials and can
+%% be used to access a supported AWS service.
+%%
+%% By default, the token is valid for 12 hours.
+-spec create_bearer_token(aws_client:aws_client(), create_bearer_token_request()) ->
+    {ok, create_bearer_token_response(), tuple()} |
+    {error, any()} |
+    {error, create_bearer_token_errors(), tuple()}.
+create_bearer_token(Client, Input) ->
+    create_bearer_token(Client, Input, []).
+
+-spec create_bearer_token(aws_client:aws_client(), create_bearer_token_request(), proplists:proplist()) ->
+    {ok, create_bearer_token_response(), tuple()} |
+    {error, any()} |
+    {error, create_bearer_token_errors(), tuple()}.
+create_bearer_token(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/token?x-amz-token-request-type=bearer"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Exchanges an authorization code or refresh token for an OAuth 2.0
 %% access token and refresh token.

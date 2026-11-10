@@ -135,6 +135,8 @@
          revoke_vpc_endpoint_access/4,
          start_elasticsearch_service_software_update/2,
          start_elasticsearch_service_software_update/3,
+         update_clone/3,
+         update_clone/4,
          update_elasticsearch_domain_config/3,
          update_elasticsearch_domain_config/4,
          update_package/2,
@@ -429,6 +431,7 @@
 %% change_progress_status_details() :: #{
 %%   <<"ChangeId">> => string(),
 %%   <<"ChangeProgressStages">> => list(change_progress_stage()),
+%%   <<"ClonedBlueGreenUpgradeDetails">> => cloned_blue_green_upgrade_details(),
 %%   <<"CompletedProperties">> => list(string()),
 %%   <<"ConfigChangeStatus">> => list(any()),
 %%   <<"InitiatedBy">> => list(any()),
@@ -439,6 +442,30 @@
 %%   <<"TotalNumberOfStages">> => integer()
 %% }
 -type change_progress_status_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloned_blue_green_options() :: #{
+%%   <<"RetentionOptions">> => list()
+%% }
+-type cloned_blue_green_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloned_blue_green_scheduled_action() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"ScheduledTime">> => non_neg_integer()
+%% }
+-type cloned_blue_green_scheduled_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloned_blue_green_upgrade_details() :: #{
+%%   <<"RetentionInHours">> => integer(),
+%%   <<"ScheduledAction">> => cloned_blue_green_scheduled_action(),
+%%   <<"TrafficSplit">> => traffic_percents()
+%% }
+-type cloned_blue_green_upgrade_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -566,6 +593,21 @@
 %% }
 -type create_vpc_endpoint_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% cutover_options() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"Target">> => list(any())
+%% }
+-type cutover_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% cutover_request_options() :: #{
+%%   <<"Target">> => list(any())
+%% }
+-type cutover_request_options() :: #{binary() => any()}.
+
 %% Example:
 %% delete_elasticsearch_domain_request() :: #{}
 -type delete_elasticsearch_domain_request() :: #{}.
@@ -635,6 +677,14 @@
 %%   <<"Status">> => option_status()
 %% }
 -type deployment_strategy_options_status() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_strategy_override_options() :: #{
+%%   <<"ClonedBlueGreenOptions">> => cloned_blue_green_options(),
+%%   <<"DeploymentStrategy">> => list(any())
+%% }
+-type deployment_strategy_override_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1658,6 +1708,51 @@
 
 
 %% Example:
+%% traffic_percents() :: #{
+%%   <<"CloneReadTrafficPercent">> => integer(),
+%%   <<"PrimaryReadTrafficPercent">> => integer()
+%% }
+-type traffic_percents() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_split_options() :: #{
+%%   <<"Current">> => traffic_percents(),
+%%   <<"Status">> => list(any()),
+%%   <<"Target">> => traffic_percents()
+%% }
+-type traffic_split_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% traffic_split_request_options() :: #{
+%%   <<"CloneReadTrafficPercent">> => integer(),
+%%   <<"Strategy">> => list(any())
+%% }
+-type traffic_split_request_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_clone_request() :: #{
+%%   <<"CutoverOptions">> => cutover_request_options(),
+%%   <<"RetentionOptions">> => list(),
+%%   <<"TrafficSplitOptions">> => traffic_split_request_options()
+%% }
+-type update_clone_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_clone_response() :: #{
+%%   <<"ChangeId">> => string(),
+%%   <<"CutoverOptions">> => cutover_options(),
+%%   <<"DomainName">> => string(),
+%%   <<"RetentionOptions">> => list(),
+%%   <<"TrafficSplitOptions">> => traffic_split_options()
+%% }
+-type update_clone_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_elasticsearch_domain_config_request() :: #{
 %%   <<"AccessPolicies">> => string(),
 %%   <<"AdvancedOptions">> => map(),
@@ -1723,6 +1818,7 @@
 
 %% Example:
 %% upgrade_elasticsearch_domain_request() :: #{
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_override_options(),
 %%   <<"DomainName">> := string(),
 %%   <<"PerformCheckOnly">> => boolean(),
 %%   <<"TargetVersion">> := string()
@@ -1733,6 +1829,7 @@
 %% Example:
 %% upgrade_elasticsearch_domain_response() :: #{
 %%   <<"ChangeProgressDetails">> => change_progress_details(),
+%%   <<"DeploymentStrategyOptions">> => deployment_strategy_override_options(),
 %%   <<"DomainName">> => string(),
 %%   <<"PerformCheckOnly">> => boolean(),
 %%   <<"TargetVersion">> => string()
@@ -2130,6 +2227,13 @@
     validation_exception() | 
     resource_not_found_exception() | 
     internal_exception() | 
+    base_exception().
+
+-type update_clone_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_exception() | 
+    disabled_operation_exception() | 
     base_exception().
 
 -type update_elasticsearch_domain_config_errors() ::
@@ -3963,6 +4067,46 @@ start_elasticsearch_service_software_update(Client, Input) ->
 start_elasticsearch_service_software_update(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2015-01-01/es/serviceSoftwareUpdate/start"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Manages a cloned blue/green upgrade that is in progress on a domain.
+%%
+%% Use it to shift a percentage of search traffic to the cloned cluster, to
+%% cut over to the cloned cluster or back to the primary cluster, or to
+%% change the retention period. Specify exactly one of
+%% `TrafficSplitOptions', `CutoverOptions', or `RetentionOptions'
+%% in each request.
+-spec update_clone(aws_client:aws_client(), binary() | list(), update_clone_request()) ->
+    {ok, update_clone_response(), tuple()} |
+    {error, any()} |
+    {error, update_clone_errors(), tuple()}.
+update_clone(Client, DomainName, Input) ->
+    update_clone(Client, DomainName, Input, []).
+
+-spec update_clone(aws_client:aws_client(), binary() | list(), update_clone_request(), proplists:proplist()) ->
+    {ok, update_clone_response(), tuple()} |
+    {error, any()} |
+    {error, update_clone_errors(), tuple()}.
+update_clone(Client, DomainName, Input0, Options0) ->
+    Method = post,
+    Path = ["/2015-01-01/es/domain/", aws_util:encode_uri(DomainName), "/clone"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
