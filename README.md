@@ -92,7 +92,7 @@ This implementation is based on [AWS: Exponential Backoff And Jitter](https://aw
 Simply add the library to your `rebar.config`:
 
 ```erlang
-{deps, [{aws, "1.1.0", {pkg, aws_erlang}}]}.
+{deps, [{aws, "1.3.4", {pkg, aws_erlang}}]}.
 ```
 
 ## Obtaining Credentials
