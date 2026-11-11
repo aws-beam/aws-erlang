@@ -676,6 +676,13 @@
 
 
 %% Example:
+%% build_lifecycle_hooks() :: #{
+%%   <<"warmup">> => lifecycle_hook()
+%% }
+-type build_lifecycle_hooks() :: #{binary() => any()}.
+
+
+%% Example:
 %% capacity_provider_configuration() :: #{
 %%   <<"capacityProviderArn">> => string()
 %% }
@@ -1003,11 +1010,13 @@
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
 %%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"hooksConfiguration">> => runtime_hooks_configuration(),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"platformVersion">> => string(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
 %%   <<"requestHeaderConfiguration">> => list(),
+%%   <<"resourceConfigurations">> => list(resource_configuration()),
 %%   <<"roleArn">> := string(),
 %%   <<"tags">> => map()
 %% }
@@ -1291,6 +1300,7 @@
 %%   <<"authorizerType">> := list(any()),
 %%   <<"clientToken">> => string(),
 %%   <<"description">> => string(),
+%%   <<"domainOverride">> => domain_override(),
 %%   <<"exceptionLevel">> => list(any()),
 %%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
 %%   <<"kmsKeyArn">> => string(),
@@ -1311,6 +1321,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"customTransformConfiguration">> => custom_transform_configuration(),
 %%   <<"description">> => string(),
+%%   <<"domainOverride">> => domain_override(),
 %%   <<"exceptionLevel">> => list(any()),
 %%   <<"gatewayArn">> => string(),
 %%   <<"gatewayId">> => string(),
@@ -2282,6 +2293,14 @@
 
 
 %% Example:
+%% domain_override() :: #{
+%%   <<"alternateDomains">> => list(string()),
+%%   <<"defaultDomain">> => string()
+%% }
+-type domain_override() :: #{binary() => any()}.
+
+
+%% Example:
 %% ebs_volume_configuration() :: #{
 %%   <<"encrypted">> => [boolean()],
 %%   <<"iops">> => integer(),
@@ -2665,6 +2684,7 @@
 %%   <<"environmentVariables">> => map(),
 %%   <<"failureReason">> => [string()],
 %%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"hooksConfiguration">> => runtime_hooks_configuration(),
 %%   <<"lastUpdatedAt">> => non_neg_integer(),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
 %%   <<"metadataConfiguration">> => runtime_metadata_configuration(),
@@ -2672,6 +2692,7 @@
 %%   <<"platformVersion">> => string(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
 %%   <<"requestHeaderConfiguration">> => list(),
+%%   <<"resourceConfigurations">> => list(resource_configuration()),
 %%   <<"roleArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"workloadIdentityDetails">> => workload_identity_details()
@@ -2939,6 +2960,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"customTransformConfiguration">> => custom_transform_configuration(),
 %%   <<"description">> => string(),
+%%   <<"domainOverride">> => domain_override(),
 %%   <<"exceptionLevel">> => list(any()),
 %%   <<"gatewayArn">> => string(),
 %%   <<"gatewayId">> => string(),
@@ -3768,6 +3790,14 @@
 
 
 %% Example:
+%% http_post_lifecycle_hook_action() :: #{
+%%   <<"path">> => string(),
+%%   <<"port">> => integer()
+%% }
+-type http_post_lifecycle_hook_action() :: #{binary() => any()}.
+
+
+%% Example:
 %% iam_credential_provider() :: #{
 %%   <<"region">> => [string()],
 %%   <<"service">> => [string()]
@@ -3994,6 +4024,13 @@
 %%   <<"maxLifetime">> => [integer()]
 %% }
 -type lifecycle_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% lifecycle_hook() :: #{
+%%   <<"action">> => list()
+%% }
+-type lifecycle_hook() :: #{binary() => any()}.
 
 
 %% Example:
@@ -5422,6 +5459,13 @@
 
 
 %% Example:
+%% resource_configuration() :: #{
+%%   <<"minimumMemoryInMiB">> => [integer()]
+%% }
+-type resource_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_limit_exceeded_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -5479,6 +5523,13 @@
 %%   <<"sessionConfig">> => session_config()
 %% }
 -type rule() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_hooks_configuration() :: #{
+%%   <<"build">> => build_lifecycle_hooks()
+%% }
+-type runtime_hooks_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -6151,12 +6202,14 @@
 %%   <<"description">> => string(),
 %%   <<"environmentVariables">> => map(),
 %%   <<"filesystemConfigurations">> => list(list()),
+%%   <<"hooksConfiguration">> => runtime_hooks_configuration(),
 %%   <<"lifecycleConfiguration">> => lifecycle_configuration(),
 %%   <<"metadataConfiguration">> => runtime_metadata_configuration(),
 %%   <<"networkConfiguration">> => network_configuration(),
 %%   <<"platformVersion">> => string(),
 %%   <<"protocolConfiguration">> => protocol_configuration(),
 %%   <<"requestHeaderConfiguration">> => list(),
+%%   <<"resourceConfigurations">> => list(resource_configuration()),
 %%   <<"roleArn">> := string()
 %% }
 -type update_agent_runtime_request() :: #{binary() => any()}.
@@ -6356,6 +6409,7 @@
 %%   <<"authorizerType">> := list(any()),
 %%   <<"customTransformConfiguration">> => custom_transform_configuration(),
 %%   <<"description">> => string(),
+%%   <<"domainOverride">> => domain_override(),
 %%   <<"exceptionLevel">> => list(any()),
 %%   <<"interceptorConfigurations">> => list(gateway_interceptor_configuration()),
 %%   <<"kmsKeyArn">> => string(),
@@ -6376,6 +6430,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"customTransformConfiguration">> => custom_transform_configuration(),
 %%   <<"description">> => string(),
+%%   <<"domainOverride">> => domain_override(),
 %%   <<"exceptionLevel">> => list(any()),
 %%   <<"gatewayArn">> => string(),
 %%   <<"gatewayId">> => string(),

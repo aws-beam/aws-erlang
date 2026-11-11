@@ -1,9 +1,8 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% With Amazon Route 53 Profiles you can share Route 53 configurations with
-%% VPCs and AWS accounts
+%% @doc With Amazon Route 53 Profiles you can share Route 53 configurations
+%% with VPCs and Amazon Web Services accounts
 -module(aws_route53profiles).
 
 -export([associate_profile/2,
@@ -43,6 +42,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_profile_association/3,
+         update_profile_association/4,
          update_profile_resource_association/3,
          update_profile_resource_association/4]).
 
@@ -63,6 +64,7 @@
 %% Example:
 %% associate_profile_request() :: #{
 %%   <<"Name">> := string(),
+%%   <<"Priority">> => integer(),
 %%   <<"ProfileId">> := string(),
 %%   <<"ResourceId">> := string(),
 %%   <<"Tags">> => list(tag())
@@ -235,6 +237,7 @@
 %% list_profile_resource_associations_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
+%%   <<"ResourceArn">> => string(),
 %%   <<"ResourceType">> => string()
 %% }
 -type list_profile_resource_associations_request() :: #{binary() => any()}.
@@ -298,6 +301,7 @@
 %%   <<"ModificationTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"OwnerId">> => string(),
+%%   <<"Priority">> => integer(),
 %%   <<"ProfileId">> => string(),
 %%   <<"ResourceId">> => string(),
 %%   <<"Status">> => list(any()),
@@ -384,6 +388,21 @@
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_profile_association_request() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Priority">> => integer()
+%% }
+-type update_profile_association_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_profile_association_response() :: #{
+%%   <<"ProfileAssociation">> => profile_association()
+%% }
+-type update_profile_association_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -521,6 +540,16 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type update_profile_association_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_profile_resource_association_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -535,13 +564,37 @@
 %% API
 %%====================================================================
 
-%% @doc
-%% Associates a Route 53 Profiles profile with a VPC.
+%% @doc Associates a Route 53 Profiles profile with a VPC.
 %%
-%% A VPC can have only one Profile associated with it, but a Profile can be
-%% associated with 1000 of VPCs (and you can request a higher quota).
-%% For more information, see
-%% [https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities].
+%% A VPC can have up to two Profile associations. A Profile can be associated
+%% with up to 1,000 VPCs, and you can request a higher quota for the number
+%% of VPCs. For more information, see Quotas on Route 53 Profiles:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-route53-profiles.
+%%
+%% Route 53 VPC Resolver evaluates the Profile associations for a VPC in
+%% priority order, starting with the lowest `Priority' value. If the VPC
+%% has no other Profile associations, you can omit `Priority', and the
+%% association gets priority 100. When the VPC already has a Profile
+%% association, you must specify a `Priority', and each Profile
+%% association for the VPC must have a unique priority. To change the
+%% priority of an existing association, use `UpdateProfileAssociation'.
+%%
+%% The request fails with a `ValidationException' in these cases:
+%%
+%% You omit `Priority', and the VPC already has a Profile association.
+%%
+%% Another Profile association for the VPC already uses the priority that you
+%% specify.
+%%
+%% The priority is outside the range 100–9900.
+%%
+%% The Profile is already associated with the VPC, and you specify a
+%% different `Name' or `Priority'. To change the priority, use
+%% UpdateProfileAssociation:
+%% https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53profiles_UpdateProfileAssociation.html.
+%%
+%% The request fails with a `LimitExceededException' if the VPC already
+%% has the maximum number of Profile associations.
 -spec associate_profile(aws_client:aws_client(), associate_profile_request()) ->
     {ok, associate_profile_response(), tuple()} |
     {error, any()} |
@@ -575,8 +628,7 @@ associate_profile(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Associates a DNS reource configuration to a Route 53 Profile.
+%% @doc Associates a DNS resource configuration to a Route 53 Profile.
 -spec associate_resource_to_profile(aws_client:aws_client(), associate_resource_to_profile_request()) ->
     {ok, associate_resource_to_profile_response(), tuple()} |
     {error, any()} |
@@ -610,8 +662,7 @@ associate_resource_to_profile(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Creates an empty Route 53 Profile.
+%% @doc Creates an empty Route 53 Profile.
 -spec create_profile(aws_client:aws_client(), create_profile_request()) ->
     {ok, create_profile_response(), tuple()} |
     {error, any()} |
@@ -645,8 +696,7 @@ create_profile(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Deletes the specified Route 53 Profile.
+%% @doc Deletes the specified Route 53 Profile.
 %%
 %% Before you can delete a profile, you must first disassociate it from all
 %% VPCs.
@@ -683,8 +733,7 @@ delete_profile(Client, ProfileId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Dissociates a specified Route 53 Profile from the specified VPC.
+%% @doc Dissociates a specified Route 53 Profile from the specified VPC.
 -spec disassociate_profile(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_profile_request()) ->
     {ok, disassociate_profile_response(), tuple()} |
     {error, any()} |
@@ -718,8 +767,7 @@ disassociate_profile(Client, ProfileId, ResourceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Dissoaciated a specified resource, from the Route 53 Profile.
+%% @doc Dissoaciated a specified resource, from the Route 53 Profile.
 -spec disassociate_resource_from_profile(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_resource_from_profile_request()) ->
     {ok, disassociate_resource_from_profile_response(), tuple()} |
     {error, any()} |
@@ -753,9 +801,9 @@ disassociate_resource_from_profile(Client, ProfileId, ResourceArn, Input0, Optio
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Returns information about a specified Route 53 Profile, such as whether
-%% whether the Profile is shared, and the current status of the Profile.
+%% @doc Returns information about a specified Route 53 Profile, such as
+%% whether whether the Profile is shared, and the current status of the
+%% Profile.
 -spec get_profile(aws_client:aws_client(), binary() | list()) ->
     {ok, get_profile_response(), tuple()} |
     {error, any()} |
@@ -792,11 +840,10 @@ get_profile(Client, ProfileId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Retrieves a Route 53 Profile association for a VPC.
+%% @doc Retrieves a Route 53 Profile association for a VPC.
 %%
-%% A VPC can have only one Profile association, but a Profile can be
-%% associated with up to 5000 VPCs.
+%% A VPC can have up to two Profile associations, and a Profile can be
+%% associated with up to 1,000 VPCs.
 -spec get_profile_association(aws_client:aws_client(), binary() | list()) ->
     {ok, get_profile_association_response(), tuple()} |
     {error, any()} |
@@ -833,8 +880,7 @@ get_profile_association(Client, ProfileAssociationId, QueryMap, HeadersMap, Opti
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Returns information about a specified Route 53 Profile resource
+%% @doc Returns information about a specified Route 53 Profile resource
 %% association.
 -spec get_profile_resource_association(aws_client:aws_client(), binary() | list()) ->
     {ok, get_profile_resource_association_response(), tuple()} |
@@ -872,8 +918,8 @@ get_profile_resource_association(Client, ProfileResourceAssociationId, QueryMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists all the VPCs that the specified Route 53 Profile is associated with.
+%% @doc Lists all the VPCs that the specified Route 53 Profile is associated
+%% with.
 -spec list_profile_associations(aws_client:aws_client()) ->
     {ok, list_profile_associations_response(), tuple()} |
     {error, any()} |
@@ -917,8 +963,8 @@ list_profile_associations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists all the resource associations for the specified Route 53 Profile.
+%% @doc Lists all the resource associations for the specified Route 53
+%% Profile.
 -spec list_profile_resource_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_profile_resource_associations_response(), tuple()} |
     {error, any()} |
@@ -955,15 +1001,15 @@ list_profile_resource_associations(Client, ProfileId, QueryMap, HeadersMap, Opti
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceArn">>, maps:get(<<"resourceArn">>, QueryMap, undefined)},
         {<<"resourceType">>, maps:get(<<"resourceType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists all the Route 53 Profiles associated with your Amazon Web Services
-%% account.
+%% @doc Lists all the Route 53 Profiles associated with your Amazon Web
+%% Services account.
 -spec list_profiles(aws_client:aws_client()) ->
     {ok, list_profiles_response(), tuple()} |
     {error, any()} |
@@ -1005,8 +1051,7 @@ list_profiles(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Lists the tags that you associated with the specified resource.
+%% @doc Lists the tags that you associated with the specified resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -1043,8 +1088,7 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc
-%% Adds one or more tags to a specified resource.
+%% @doc Adds one or more tags to a specified resource.
 -spec tag_resource(aws_client:aws_client(), binary() | list(), tag_resource_request()) ->
     {ok, tag_resource_response(), tuple()} |
     {error, any()} |
@@ -1078,8 +1122,7 @@ tag_resource(Client, ResourceArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Removes one or more tags from a specified resource.
+%% @doc Removes one or more tags from a specified resource.
 -spec untag_resource(aws_client:aws_client(), binary() | list(), untag_resource_request()) ->
     {ok, untag_resource_response(), tuple()} |
     {error, any()} |
@@ -1114,8 +1157,62 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Updates the specified Route 53 Profile resourse association.
+%% @doc Updates the name or priority of the specified Route 53 Profile
+%% association with a VPC.
+%%
+%% Route 53 VPC Resolver evaluates the Profile associations for a VPC in
+%% priority order, starting with the lowest value. Only the account that
+%% created the association can update it.
+%%
+%% When you change the priority, the association status is `UPDATING'
+%% until the change propagates, and then `COMPLETE'. While the status is
+%% `UPDATING', Route 53 VPC Resolver might still use the previous
+%% priority for some queries. When the status is `COMPLETE', the new
+%% priority applies to all queries from the VPC.
+%%
+%% The request fails with a `ValidationException' if another Profile
+%% association for the VPC already uses the priority that you specify, or if
+%% the priority is outside the range 100–9900.
+%%
+%% You can update an association whose status is `CREATING',
+%% `UPDATING', or `COMPLETE'. The request fails with a
+%% `ConflictException' if the association status is `DELETING',
+%% `DELETED', or `FAILED', or if the account that owns the
+%% association is inactive.
+-spec update_profile_association(aws_client:aws_client(), binary() | list(), update_profile_association_request()) ->
+    {ok, update_profile_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_profile_association_errors(), tuple()}.
+update_profile_association(Client, ProfileAssociationId, Input) ->
+    update_profile_association(Client, ProfileAssociationId, Input, []).
+
+-spec update_profile_association(aws_client:aws_client(), binary() | list(), update_profile_association_request(), proplists:proplist()) ->
+    {ok, update_profile_association_response(), tuple()} |
+    {error, any()} |
+    {error, update_profile_association_errors(), tuple()}.
+update_profile_association(Client, ProfileAssociationId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/profileassociation/", aws_util:encode_uri(ProfileAssociationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the specified Route 53 Profile resourse association.
 -spec update_profile_resource_association(aws_client:aws_client(), binary() | list(), update_profile_resource_association_request()) ->
     {ok, update_profile_resource_association_response(), tuple()} |
     {error, any()} |

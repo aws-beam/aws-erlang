@@ -133,6 +133,8 @@
          create_firewall/3,
          create_firewall_policy/2,
          create_firewall_policy/3,
+         create_firewall_policy_v2/2,
+         create_firewall_policy_v2/3,
          create_proxy/2,
          create_proxy/3,
          create_proxy_configuration/2,
@@ -153,6 +155,8 @@
          delete_firewall/3,
          delete_firewall_policy/2,
          delete_firewall_policy/3,
+         delete_firewall_policy_v2/2,
+         delete_firewall_policy_v2/3,
          delete_network_firewall_transit_gateway_attachment/2,
          delete_network_firewall_transit_gateway_attachment/3,
          delete_proxy/2,
@@ -179,6 +183,8 @@
          describe_firewall_metadata/3,
          describe_firewall_policy/2,
          describe_firewall_policy/3,
+         describe_firewall_policy_v2/2,
+         describe_firewall_policy_v2/3,
          describe_flow_operation/2,
          describe_flow_operation/3,
          describe_logging_configuration/2,
@@ -217,6 +223,8 @@
          list_container_associations/3,
          list_firewall_policies/2,
          list_firewall_policies/3,
+         list_firewall_policies_v2/2,
+         list_firewall_policies_v2/3,
          list_firewalls/2,
          list_firewalls/3,
          list_flow_operation_results/2,
@@ -267,6 +275,8 @@
          update_firewall_policy/3,
          update_firewall_policy_change_protection/2,
          update_firewall_policy_change_protection/3,
+         update_firewall_policy_v2/2,
+         update_firewall_policy_v2/3,
          update_logging_configuration/2,
          update_logging_configuration/3,
          update_proxy/2,
@@ -529,6 +539,24 @@
 -type create_firewall_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_firewall_policy_v2_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallPolicyV2">> := firewall_policy_v2(),
+%%   <<"FirewallPolicyV2Name">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_firewall_policy_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_firewall_policy_v2_response() :: #{
+%%   <<"FirewallPolicyV2Response">> => firewall_policy_v2_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type create_firewall_policy_v2_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_firewall_request() :: #{
 %%   <<"AvailabilityZoneChangeProtection">> => boolean(),
 %%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
@@ -651,6 +679,8 @@
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallRuleGroup">> => firewall_rule_group(),
+%%   <<"IpsRuleGroup">> => ips_rule_group(),
 %%   <<"RuleGroup">> => rule_group(),
 %%   <<"RuleGroupName">> := string(),
 %%   <<"Rules">> => string(),
@@ -736,6 +766,19 @@
 %%   <<"FirewallPolicyResponse">> => firewall_policy_response()
 %% }
 -type delete_firewall_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_policy_v2_request() :: #{
+%%   <<"FirewallPolicyV2Arn">> => string(),
+%%   <<"FirewallPolicyV2Name">> => string()
+%% }
+-type delete_firewall_policy_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_firewall_policy_v2_response() :: #{
+%%   <<"FirewallPolicyV2Response">> => firewall_policy_v2_response()
+%% }
+-type delete_firewall_policy_v2_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_firewall_request() :: #{
@@ -929,6 +972,22 @@
 -type describe_firewall_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_firewall_policy_v2_request() :: #{
+%%   <<"FirewallPolicyV2Arn">> => string(),
+%%   <<"FirewallPolicyV2Name">> => string(),
+%%   <<"RuleOutputFormat">> => list(any())
+%% }
+-type describe_firewall_policy_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_firewall_policy_v2_response() :: #{
+%%   <<"FirewallPolicyV2">> => firewall_policy_v2(),
+%%   <<"FirewallPolicyV2Response">> => firewall_policy_v2_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type describe_firewall_policy_v2_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_firewall_request() :: #{
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string()
@@ -1104,12 +1163,15 @@
 %%   <<"AnalyzeRuleGroup">> => boolean(),
 %%   <<"RuleGroupArn">> => string(),
 %%   <<"RuleGroupName">> => string(),
+%%   <<"RuleOutputFormat">> => list(any()),
 %%   <<"Type">> => list(any())
 %% }
 -type describe_rule_group_request() :: #{binary() => any()}.
 
 %% Example:
 %% describe_rule_group_response() :: #{
+%%   <<"FirewallRuleGroup">> => firewall_rule_group(),
+%%   <<"IpsRuleGroup">> => ips_rule_group(),
 %%   <<"RuleGroup">> => rule_group(),
 %%   <<"RuleGroupResponse">> => rule_group_response(),
 %%   <<"UpdateToken">> => string()
@@ -1312,6 +1374,87 @@
 -type firewall_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% firewall_policy_v2() :: #{
+%%   <<"FirewallDefaultAction">> => list(any()),
+%%   <<"FirewallRuleGroupEntries">> => list(firewall_rule_group_entry()),
+%%   <<"IpsRuleGroupEntries">> => list(ips_rule_group_entry()),
+%%   <<"PolicyMode">> => list(any()),
+%%   <<"PolicyVariables">> => policy_variables(),
+%%   <<"Route53ResolvedIPValidation">> => route53_resolved_ip_validation(),
+%%   <<"StatefulEngineOptions">> => stateful_engine_options_v2(),
+%%   <<"TLSInspectionConfigurationArn">> => string()
+%% }
+-type firewall_policy_v2() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_policy_v2_metadata() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type firewall_policy_v2_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_policy_v2_response() :: #{
+%%   <<"ConsumedFirewallRuleCapacity">> => integer(),
+%%   <<"ConsumedIpsDomainCapacity">> => integer(),
+%%   <<"ConsumedIpsRuleCapacity">> => integer(),
+%%   <<"Description">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"Errors">> => list(firewall_policy_error()),
+%%   <<"FirewallPolicyV2Arn">> => string(),
+%%   <<"FirewallPolicyV2Id">> => string(),
+%%   <<"FirewallPolicyV2Name">> => string(),
+%%   <<"FirewallPolicyV2Status">> => list(any()),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"NumberOfAssociations">> => integer(),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type firewall_policy_v2_response() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule() :: #{
+%%   <<"AcceptPriorHooks">> => boolean(),
+%%   <<"Action">> => list(any()),
+%%   <<"ActionScope">> => list(any()),
+%%   <<"AlertEnabled">> => boolean(),
+%%   <<"BypassIPSEnabled">> => boolean(),
+%%   <<"DestIPs">> => string(),
+%%   <<"DestPorts">> => string(),
+%%   <<"Hook">> => list(any()),
+%%   <<"Protocol">> => list(any()),
+%%   <<"RuleMetadata">> => rule_metadata(),
+%%   <<"RuleOptions">> => list(rule_option()),
+%%   <<"SourceIPs">> => string(),
+%%   <<"SourcePorts">> => string()
+%% }
+-type firewall_rule() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_group() :: #{
+%%   <<"ReferenceSets">> => reference_sets(),
+%%   <<"RuleVariables">> => rule_variables(),
+%%   <<"RulesSource">> => firewall_rules_source()
+%% }
+-type firewall_rule_group() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_group_entry() :: #{
+%%   <<"InlineRuleGroup">> => firewall_rule_group(),
+%%   <<"Priority">> => integer(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type firewall_rule_group_entry() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rules_source() :: #{
+%%   <<"FirewallRules">> => list(firewall_rule()),
+%%   <<"RulesSourceList">> => rules_source_list(),
+%%   <<"RulesString">> => string()
+%% }
+-type firewall_rules_source() :: #{binary() => any()}.
+
+%% Example:
 %% firewall_status() :: #{
 %%   <<"CapacityUsageSummary">> => capacity_usage_summary(),
 %%   <<"ConfigurationSyncStateSummary">> => list(any()),
@@ -1460,6 +1603,34 @@
 -type ip_set_reference() :: #{binary() => any()}.
 
 %% Example:
+%% ips_rule_group() :: #{
+%%   <<"ReferenceSets">> => reference_sets(),
+%%   <<"RuleVariables">> => rule_variables(),
+%%   <<"RulesSource">> => ips_rules_source()
+%% }
+-type ips_rule_group() :: #{binary() => any()}.
+
+%% Example:
+%% ips_rule_group_entry() :: #{
+%%   <<"InlineRuleGroup">> => ips_rule_group(),
+%%   <<"Override">> => ips_rule_group_override(),
+%%   <<"ResourceArn">> => string()
+%% }
+-type ips_rule_group_entry() :: #{binary() => any()}.
+
+%% Example:
+%% ips_rule_group_override() :: #{
+%%   <<"Action">> => list(any())
+%% }
+-type ips_rule_group_override() :: #{binary() => any()}.
+
+%% Example:
+%% ips_rules_source() :: #{
+%%   <<"RulesString">> => string()
+%% }
+-type ips_rules_source() :: #{binary() => any()}.
+
+%% Example:
 %% limit_exceeded_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1508,6 +1679,20 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_firewall_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_policies_v2_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_policies_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_policies_v2_response() :: #{
+%%   <<"FirewallPoliciesV2">> => list(firewall_policy_v2_metadata()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_policies_v2_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_firewalls_request() :: #{
@@ -2011,6 +2196,13 @@
 -type rule_group_response() :: #{binary() => any()}.
 
 %% Example:
+%% rule_metadata() :: #{
+%%   <<"RuleDescription">> => string(),
+%%   <<"RuleEnabled">> => boolean()
+%% }
+-type rule_metadata() :: #{binary() => any()}.
+
+%% Example:
 %% rule_option() :: #{
 %%   <<"Keyword">> => string(),
 %%   <<"Settings">> => list(string())
@@ -2142,6 +2334,13 @@
 %%   <<"StreamExceptionPolicy">> => list(any())
 %% }
 -type stateful_engine_options() :: #{binary() => any()}.
+
+%% Example:
+%% stateful_engine_options_v2() :: #{
+%%   <<"FlowTimeouts">> => flow_timeouts(),
+%%   <<"StreamExceptionPolicy">> => list(any())
+%% }
+-type stateful_engine_options_v2() :: #{binary() => any()}.
 
 %% Example:
 %% stateful_rule() :: #{
@@ -2491,6 +2690,25 @@
 -type update_firewall_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_firewall_policy_v2_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallPolicyV2">> := firewall_policy_v2(),
+%%   <<"FirewallPolicyV2Arn">> => string(),
+%%   <<"FirewallPolicyV2Name">> => string(),
+%%   <<"UpdateToken">> := string()
+%% }
+-type update_firewall_policy_v2_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_firewall_policy_v2_response() :: #{
+%%   <<"FirewallPolicyV2Response">> => firewall_policy_v2_response(),
+%%   <<"UpdateToken">> => string()
+%% }
+-type update_firewall_policy_v2_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_logging_configuration_request() :: #{
 %%   <<"EnableMonitoringDashboard">> => boolean(),
 %%   <<"FirewallArn">> => string(),
@@ -2624,6 +2842,8 @@
 %%   <<"Description">> => string(),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"FirewallRuleGroup">> => firewall_rule_group(),
+%%   <<"IpsRuleGroup">> => ips_rule_group(),
 %%   <<"RuleGroup">> => rule_group(),
 %%   <<"RuleGroupArn">> => string(),
 %%   <<"RuleGroupName">> => string(),
@@ -2771,6 +2991,14 @@
     internal_server_error() | 
     insufficient_capacity_exception().
 
+-type create_firewall_policy_v2_errors() ::
+    throttling_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error() | 
+    insufficient_capacity_exception().
+
 -type create_proxy_errors() ::
     unsupported_operation_exception() | 
     throttling_exception() | 
@@ -2836,6 +3064,14 @@
     internal_server_error().
 
 -type delete_firewall_policy_errors() ::
+    unsupported_operation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
+    internal_server_error().
+
+-type delete_firewall_policy_v2_errors() ::
     unsupported_operation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -2922,6 +3158,12 @@
     internal_server_error().
 
 -type describe_firewall_policy_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_server_error().
+
+-type describe_firewall_policy_v2_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_request_exception() | 
@@ -3039,6 +3281,11 @@
     internal_server_error().
 
 -type list_firewall_policies_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_server_error().
+
+-type list_firewall_policies_v2_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
     internal_server_error().
@@ -3201,6 +3448,14 @@
     resource_not_found_exception() | 
     invalid_token_exception() | 
     invalid_request_exception() | 
+    internal_server_error().
+
+-type update_firewall_policy_v2_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_token_exception() | 
+    invalid_request_exception() | 
+    invalid_operation_exception() | 
     internal_server_error().
 
 -type update_logging_configuration_errors() ::
@@ -3498,6 +3753,30 @@ create_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFirewallPolicy">>, Input, Options).
 
+%% @doc Creates a Next Generation policy according to the specifications.
+%%
+%% A Next Generation policy defines the behavior of a firewall in a
+%% collection of firewall engine and IPS engine rule groups and other
+%% settings. You can use one firewall policy for multiple firewalls. For more
+%% information, see Next Generation policies:
+%% https://docs.aws.amazon.com/network-firewall/latest/developerguide/firewall-policies-v2.html
+%% in the Network Firewall Developer Guide.
+-spec create_firewall_policy_v2(aws_client:aws_client(), create_firewall_policy_v2_request()) ->
+    {ok, create_firewall_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, create_firewall_policy_v2_errors(), tuple()}.
+create_firewall_policy_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_firewall_policy_v2(Client, Input, []).
+
+-spec create_firewall_policy_v2(aws_client:aws_client(), create_firewall_policy_v2_request(), proplists:proplist()) ->
+    {ok, create_firewall_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, create_firewall_policy_v2_errors(), tuple()}.
+create_firewall_policy_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateFirewallPolicyV2">>, Input, Options).
+
 %% @doc Creates an Network Firewall `Proxy'
 %%
 %% Attaches a Proxy configuration to a NAT Gateway.
@@ -3772,6 +4051,23 @@ delete_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFirewallPolicy">>, Input, Options).
 
+%% @doc Deletes the specified `FirewallPolicyV2'.
+-spec delete_firewall_policy_v2(aws_client:aws_client(), delete_firewall_policy_v2_request()) ->
+    {ok, delete_firewall_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, delete_firewall_policy_v2_errors(), tuple()}.
+delete_firewall_policy_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_firewall_policy_v2(Client, Input, []).
+
+-spec delete_firewall_policy_v2(aws_client:aws_client(), delete_firewall_policy_v2_request(), proplists:proplist()) ->
+    {ok, delete_firewall_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, delete_firewall_policy_v2_errors(), tuple()}.
+delete_firewall_policy_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteFirewallPolicyV2">>, Input, Options).
+
 %% @doc Deletes a transit gateway attachment from a Network Firewall.
 %%
 %% Either the firewall owner or the transit gateway owner can delete the
@@ -4019,6 +4315,23 @@ describe_firewall_policy(Client, Input)
 describe_firewall_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFirewallPolicy">>, Input, Options).
+
+%% @doc Returns the data objects for the specified Next Generation policy.
+-spec describe_firewall_policy_v2(aws_client:aws_client(), describe_firewall_policy_v2_request()) ->
+    {ok, describe_firewall_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, describe_firewall_policy_v2_errors(), tuple()}.
+describe_firewall_policy_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_firewall_policy_v2(Client, Input, []).
+
+-spec describe_firewall_policy_v2(aws_client:aws_client(), describe_firewall_policy_v2_request(), proplists:proplist()) ->
+    {ok, describe_firewall_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, describe_firewall_policy_v2_errors(), tuple()}.
+describe_firewall_policy_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeFirewallPolicyV2">>, Input, Options).
 
 %% @doc Returns key information about a specific flow operation.
 -spec describe_flow_operation(aws_client:aws_client(), describe_flow_operation_request()) ->
@@ -4397,6 +4710,27 @@ list_firewall_policies(Client, Input)
 list_firewall_policies(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallPolicies">>, Input, Options).
+
+%% @doc Retrieves the metadata for the Next Generation policies that you have
+%% defined.
+%%
+%% Depending on your setting for max results and the number of firewall
+%% policies, a single call might not return the full list.
+-spec list_firewall_policies_v2(aws_client:aws_client(), list_firewall_policies_v2_request()) ->
+    {ok, list_firewall_policies_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_firewall_policies_v2_errors(), tuple()}.
+list_firewall_policies_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_firewall_policies_v2(Client, Input, []).
+
+-spec list_firewall_policies_v2(aws_client:aws_client(), list_firewall_policies_v2_request(), proplists:proplist()) ->
+    {ok, list_firewall_policies_v2_response(), tuple()} |
+    {error, any()} |
+    {error, list_firewall_policies_v2_errors(), tuple()}.
+list_firewall_policies_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFirewallPoliciesV2">>, Input, Options).
 
 %% @doc Retrieves the metadata for the firewalls that you have defined.
 %%
@@ -5031,6 +5365,23 @@ update_firewall_policy_change_protection(Client, Input)
 update_firewall_policy_change_protection(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFirewallPolicyChangeProtection">>, Input, Options).
+
+%% @doc Updates the properties of the specified Next Generation policy.
+-spec update_firewall_policy_v2(aws_client:aws_client(), update_firewall_policy_v2_request()) ->
+    {ok, update_firewall_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, update_firewall_policy_v2_errors(), tuple()}.
+update_firewall_policy_v2(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_firewall_policy_v2(Client, Input, []).
+
+-spec update_firewall_policy_v2(aws_client:aws_client(), update_firewall_policy_v2_request(), proplists:proplist()) ->
+    {ok, update_firewall_policy_v2_response(), tuple()} |
+    {error, any()} |
+    {error, update_firewall_policy_v2_errors(), tuple()}.
+update_firewall_policy_v2(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateFirewallPolicyV2">>, Input, Options).
 
 %% @doc Sets the logging configuration for the specified firewall.
 %%

@@ -182,6 +182,7 @@
 %%   <<"endTimeBehaviorReasonCode">> => list(any()),
 %%   <<"endTimeBehaviorType">> => list(any()),
 %%   <<"entitlements">> => list(entitlement()),
+%%   <<"freeTrialEndTime">> => non_neg_integer(),
 %%   <<"initialAgreementId">> => string(),
 %%   <<"lastUpdateTime">> => non_neg_integer(),
 %%   <<"proposalSummary">> => proposal_summary(),
@@ -406,6 +407,7 @@
 %%   <<"endTime">> => non_neg_integer(),
 %%   <<"endTimeBehavior">> => end_time_behavior(),
 %%   <<"estimatedCharges">> => estimated_charges(),
+%%   <<"freeTrialSummary">> => free_trial_summary(),
 %%   <<"initialAgreementId">> => string(),
 %%   <<"proposalSummary">> => proposal_summary(),
 %%   <<"proposer">> => proposer(),
@@ -500,6 +502,12 @@
 %%   <<"type">> => string()
 %% }
 -type free_trial_pricing_term() :: #{binary() => any()}.
+
+%% Example:
+%% free_trial_summary() :: #{
+%%   <<"trialEndTime">> => non_neg_integer()
+%% }
+-type free_trial_summary() :: #{binary() => any()}.
 
 %% Example:
 %% get_agreement_cancellation_request_input() :: #{

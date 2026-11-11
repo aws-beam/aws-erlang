@@ -2176,6 +2176,7 @@
 %%   <<"ContactAssociationId">> => string(),
 %%   <<"ContactDetails">> => contact_details(),
 %%   <<"ContactEvaluations">> => map(),
+%%   <<"ContactLens">> => contact_lens(),
 %%   <<"Customer">> => customer(),
 %%   <<"CustomerEndpoint">> => endpoint_info(),
 %%   <<"CustomerId">> => string(),
@@ -2233,6 +2234,14 @@
 %%   <<"Value">> => string()
 %% }
 -type contact_analysis_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_analysis_reference_state() :: #{
+%%   <<"Status">> => string(),
+%%   <<"StatusReason">> => string()
+%% }
+-type contact_analysis_reference_state() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2524,6 +2533,44 @@
 
 
 %% Example:
+%% contact_lens() :: #{
+%%   <<"ConversationalAnalytics">> => conversational_analytics()
+%% }
+-type contact_lens() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_lens_channel_configuration() :: #{
+%%   <<"AnalyticsModes">> => list(string())
+%% }
+-type contact_lens_channel_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_lens_redaction_configuration() :: #{
+%%   <<"Behavior">> => string(),
+%%   <<"Entities">> => list(string()),
+%%   <<"MaskMode">> => string(),
+%%   <<"Policy">> => string()
+%% }
+-type contact_lens_redaction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_lens_sentiment_configuration() :: #{
+%%   <<"Behavior">> => string()
+%% }
+-type contact_lens_sentiment_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% contact_lens_summary_configuration() :: #{
+%%   <<"SummaryModes">> => list(string())
+%% }
+-type contact_lens_summary_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% contact_metric_info() :: #{
 %%   <<"Name">> => list(any())
 %% }
@@ -2641,6 +2688,27 @@
 %%   <<"TagCondition">> => tag_condition()
 %% }
 -type control_plane_user_attribute_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversational_analytics() :: #{
+%%   <<"Configuration">> => conversational_analytics_configuration(),
+%%   <<"ContactAnalysisReferenceState">> => contact_analysis_reference_state()
+%% }
+-type conversational_analytics() :: #{binary() => any()}.
+
+
+%% Example:
+%% conversational_analytics_configuration() :: #{
+%%   <<"ChannelConfiguration">> => contact_lens_channel_configuration(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"LanguageLocale">> => string(),
+%%   <<"LanguageLocales">> => list(string()),
+%%   <<"RedactionConfiguration">> => contact_lens_redaction_configuration(),
+%%   <<"SentimentConfiguration">> => contact_lens_sentiment_configuration(),
+%%   <<"SummaryConfiguration">> => contact_lens_summary_configuration()
+%% }
+-type conversational_analytics_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -27282,7 +27350,7 @@ monitor_contact(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows pausing an ongoing task contact.
+%% @doc Pauses an ongoing task or email contact.
 -spec pause_contact(aws_client:aws_client(), pause_contact_request()) ->
     {ok, pause_contact_response(), tuple()} |
     {error, any()} |
@@ -27475,7 +27543,7 @@ replicate_instance(Client, InstanceId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows resuming a task contact in a paused state.
+%% @doc Resumes a task or email contact in a paused state.
 -spec resume_contact(aws_client:aws_client(), resume_contact_request()) ->
     {ok, resume_contact_response(), tuple()} |
     {error, any()} |

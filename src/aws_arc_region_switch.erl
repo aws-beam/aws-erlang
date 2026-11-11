@@ -767,6 +767,14 @@
 -type resource_warning() :: #{binary() => any()}.
 
 %% Example:
+%% retryable_conflict_exception() :: #{
+%%   <<"message">> => [string()],
+%%   <<"resourceId">> => [string()],
+%%   <<"resourceType">> => [string()]
+%% }
+-type retryable_conflict_exception() :: #{binary() => any()}.
+
+%% Example:
 %% route53_health_check() :: #{
 %%   <<"healthCheckId">> => string(),
 %%   <<"hostedZoneId">> => string(),
@@ -1085,6 +1093,7 @@
     internal_server_exception().
 
 -type update_plan_errors() ::
+    retryable_conflict_exception() | 
     resource_not_found_exception().
 
 -type update_plan_execution_errors() ::

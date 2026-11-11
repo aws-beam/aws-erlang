@@ -166,13 +166,16 @@
 %%   <<"iamInstanceProfileArn">> => string(),
 %%   <<"id">> => [string()],
 %%   <<"instanceConfigs">> => list(instance_config()),
+%%   <<"launchTemplateMode">> => list(any()),
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"nodeLifecycleActions">> => node_lifecycle_actions(),
 %%   <<"purchaseOption">> => list(any()),
 %%   <<"scalingConfiguration">> => scaling_configuration(),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"slurmConfiguration">> => compute_node_group_slurm_configuration(),
 %%   <<"spotOptions">> => spot_options(),
+%%   <<"sshKeyName">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"subnetIds">> => list(string())
 %% }
@@ -244,14 +247,17 @@
 %%   <<"clientToken">> => string(),
 %%   <<"clusterIdentifier">> := string(),
 %%   <<"computeNodeGroupName">> := string(),
-%%   <<"customLaunchTemplate">> := custom_launch_template(),
+%%   <<"customLaunchTemplate">> => custom_launch_template(),
 %%   <<"iamInstanceProfileArn">> := string(),
 %%   <<"instanceConfigs">> := list(instance_config()),
+%%   <<"launchTemplateMode">> => list(any()),
 %%   <<"nodeLifecycleActions">> => node_lifecycle_actions_request(),
 %%   <<"purchaseOption">> => list(any()),
 %%   <<"scalingConfiguration">> := scaling_configuration_request(),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"slurmConfiguration">> => compute_node_group_slurm_configuration_request(),
 %%   <<"spotOptions">> => spot_options(),
+%%   <<"sshKeyName">> => string(),
 %%   <<"subnetIds">> := list([string()]()),
 %%   <<"tags">> => map()
 %% }
@@ -736,11 +742,14 @@
 %%   <<"computeNodeGroupIdentifier">> := string(),
 %%   <<"customLaunchTemplate">> => custom_launch_template(),
 %%   <<"iamInstanceProfileArn">> => string(),
+%%   <<"launchTemplateMode">> => list(any()),
 %%   <<"nodeLifecycleActions">> => update_node_lifecycle_actions_request(),
 %%   <<"purchaseOption">> => list(any()),
 %%   <<"scalingConfiguration">> => scaling_configuration_request(),
+%%   <<"securityGroupIds">> => list(string()),
 %%   <<"slurmConfiguration">> => update_compute_node_group_slurm_configuration_request(),
 %%   <<"spotOptions">> => spot_options(),
+%%   <<"sshKeyName">> => string(),
 %%   <<"subnetIds">> => list([string()]())
 %% }
 -type update_compute_node_group_request() :: #{binary() => any()}.
@@ -994,11 +1003,16 @@ create_cluster(Client, Input, Options)
 %% the information you provide to this API action to launch compute nodes in
 %% your account. You can only specify subnets in the same Amazon VPC as your
 %% cluster. You receive billing charges for the compute nodes that PCS
-%% launches in your account. You must already have a launch template before
-%% you call this API. For more information, see Launch an instance from a
-%% launch template:
-%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html
-%% in the Amazon Elastic Compute Cloud User Guide for Linux Instances.
+%% launches in your account. You can configure common instance settings, such
+%% as the AMI, security groups, and SSH key pair, directly on the compute
+%% node group, or you can provide a custom EC2 launch template. To use a
+%% launch template that PCS manages, set `launchTemplateMode' to
+%% `MANAGED' and don't provide `customLaunchTemplate'. In this
+%% case, you must specify `amiId' and `securityGroupIds'. For more
+%% information, see Configuring instance settings for compute node groups in
+%% PCS:
+%% https://docs.aws.amazon.com/pcs/latest/userguide/working-with_cng_instance-settings.html
+%% in the PCS User Guide.
 -spec create_compute_node_group(aws_client:aws_client(), create_compute_node_group_request()) ->
     {ok, create_compute_node_group_response(), tuple()} |
     {error, any()} |

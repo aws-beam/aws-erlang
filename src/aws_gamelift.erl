@@ -755,6 +755,7 @@
 %%   <<"CustomEventData">> => string(),
 %%   <<"Destinations">> => list(game_session_queue_destination()),
 %%   <<"FilterConfiguration">> => filter_configuration(),
+%%   <<"LogConfiguration">> => game_session_queue_log_configuration(),
 %%   <<"Name">> := string(),
 %%   <<"NotificationTarget">> => string(),
 %%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()),
@@ -1877,6 +1878,7 @@
 %%   <<"Destinations">> => list(game_session_queue_destination()),
 %%   <<"FilterConfiguration">> => filter_configuration(),
 %%   <<"GameSessionQueueArn">> => string(),
+%%   <<"LogConfiguration">> => game_session_queue_log_configuration(),
 %%   <<"Name">> => string(),
 %%   <<"NotificationTarget">> => string(),
 %%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()),
@@ -1890,6 +1892,12 @@
 %%   <<"DestinationArn">> => string()
 %% }
 -type game_session_queue_destination() :: #{binary() => any()}.
+
+%% Example:
+%% game_session_queue_log_configuration() :: #{
+%%   <<"DeliveryDestinations">> => list(log_delivery_destination())
+%% }
+-type game_session_queue_log_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_compute_access_input() :: #{
@@ -2304,6 +2312,13 @@
 %%   <<"S3BucketName">> => string()
 %% }
 -type log_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% log_delivery_destination() :: #{
+%%   <<"DestinationArn">> => string(),
+%%   <<"LogDestination">> => list(any())
+%% }
+-type log_delivery_destination() :: #{binary() => any()}.
 
 %% Example:
 %% managed_capacity_configuration() :: #{
@@ -3075,6 +3090,7 @@
 
 %% Example:
 %% update_game_session_queue_input() :: #{
+%%   <<"AddLogDeliveryDestinations">> => list(log_delivery_destination()),
 %%   <<"CustomEventData">> => string(),
 %%   <<"Destinations">> => list(game_session_queue_destination()),
 %%   <<"FilterConfiguration">> => filter_configuration(),
@@ -3082,6 +3098,7 @@
 %%   <<"NotificationTarget">> => string(),
 %%   <<"PlayerLatencyPolicies">> => list(player_latency_policy()),
 %%   <<"PriorityConfiguration">> => priority_configuration(),
+%%   <<"RemoveLogDeliveryDestinations">> => list(log_delivery_destination()),
 %%   <<"TimeoutInSeconds">> => integer()
 %% }
 -type update_game_session_queue_input() :: #{binary() => any()}.
@@ -4892,10 +4909,8 @@ create_game_session(Client, Input, Options)
 %%
 %% Creates a placement queue that processes requests for new game sessions.
 %%
-%% A queue uses
-%% FleetIQ algorithms to locate the best available placement locations for a
-%% new game
-%% session, and then prompts the game server process to start a new game
+%% A queue
+%% finds the best available game server, then prompts it to start a new game
 %% session.
 %%
 %% A game session queue is configured with a set of destinations (Amazon
@@ -4952,6 +4967,14 @@ create_game_session(Client, Input, Options)
 %% `Destinations'
 %%
 %% `PlayerLatencyPolicies'
+%%
+%% Create a queue that delivers game session placement insight logs to one or
+%% more log destinations.
+%%
+%% Required parameters `Name' and
+%% `Destinations'
+%%
+%% `LogConfiguration'
 %%
 %% Results
 %%

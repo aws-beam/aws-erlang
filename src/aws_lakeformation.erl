@@ -66,6 +66,8 @@
          get_data_lake_settings/3,
          get_effective_permissions_for_path/2,
          get_effective_permissions_for_path/3,
+         get_glue_function_session_context/2,
+         get_glue_function_session_context/3,
          get_l_f_tag/2,
          get_l_f_tag/3,
          get_l_f_tag_expression/2,
@@ -82,6 +84,8 @@
          get_table_objects/3,
          get_temporary_data_location_credentials/2,
          get_temporary_data_location_credentials/3,
+         get_temporary_glue_function_credentials/2,
+         get_temporary_glue_function_credentials/3,
          get_temporary_glue_partition_credentials/2,
          get_temporary_glue_partition_credentials/3,
          get_temporary_glue_table_credentials/2,
@@ -194,6 +198,14 @@
 %%   <<"Message">> => string()
 %% }
 -type already_exists_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% any_resource() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type any_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -807,6 +819,22 @@
 
 
 %% Example:
+%% get_glue_function_session_context_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"UserDefinedFunctionArns">> := list(string())
+%% }
+-type get_glue_function_session_context_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_glue_function_session_context_response() :: #{
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SessionContextId">> => string()
+%% }
+-type get_glue_function_session_context_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_l_f_tag_expression_request() :: #{
 %%   <<"CatalogId">> => string(),
 %%   <<"Name">> := string()
@@ -943,6 +971,24 @@
 %%   <<"CredentialsScope">> => list(any())
 %% }
 -type get_temporary_data_location_credentials_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_temporary_glue_function_credentials_request() :: #{
+%%   <<"AuditContext">> => audit_context(),
+%%   <<"UserDefinedFunctionArn">> := string()
+%% }
+-type get_temporary_glue_function_credentials_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_temporary_glue_function_credentials_response() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"Expiration">> => non_neg_integer(),
+%%   <<"SecretAccessKey">> => string(),
+%%   <<"SessionToken">> => string()
+%% }
+-type get_temporary_glue_function_credentials_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1483,6 +1529,7 @@
 
 %% Example:
 %% resource() :: #{
+%%   <<"AnyResource">> => any_resource(),
 %%   <<"Catalog">> => catalog_resource(),
 %%   <<"DataCellsFilter">> => data_cells_filter_resource(),
 %%   <<"DataLocation">> => data_location_resource(),
@@ -1492,7 +1539,8 @@
 %%   <<"LFTagPolicy">> => l_f_tag_policy_resource(),
 %%   <<"RLSPolicy">> => r_l_s_policy_resource(),
 %%   <<"Table">> => table_resource(),
-%%   <<"TableWithColumns">> => table_with_columns_resource()
+%%   <<"TableWithColumns">> => table_with_columns_resource(),
+%%   <<"UserDefinedFunction">> => user_defined_function_resource()
 %% }
 -type resource() :: #{binary() => any()}.
 
@@ -1846,6 +1894,20 @@
 
 
 %% Example:
+%% user_defined_function_resource() :: #{
+%%   <<"CatalogId">> => string(),
+%%   <<"DatabaseName">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"UserDefinedFunctionWildcard">> => user_defined_function_wildcard()
+%% }
+-type user_defined_function_resource() :: #{binary() => any()}.
+
+%% Example:
+%% user_defined_function_wildcard() :: #{}
+-type user_defined_function_wildcard() :: #{}.
+
+
+%% Example:
 %% virtual_object() :: #{
 %%   <<"ETag">> => string(),
 %%   <<"Uri">> => string()
@@ -2097,6 +2159,13 @@
     internal_service_exception() | 
     entity_not_found_exception().
 
+-type get_glue_function_session_context_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    entity_not_found_exception() | 
+    access_denied_exception().
+
 -type get_l_f_tag_errors() ::
     operation_timeout_exception() | 
     invalid_input_exception() | 
@@ -2155,6 +2224,14 @@
     glue_encryption_exception() | 
     entity_not_found_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type get_temporary_glue_function_credentials_errors() ::
+    operation_timeout_exception() | 
+    invalid_input_exception() | 
+    internal_service_exception() | 
+    glue_encryption_exception() | 
+    entity_not_found_exception() | 
     access_denied_exception().
 
 -type get_temporary_glue_partition_credentials_errors() ::
@@ -3501,6 +3578,53 @@ get_effective_permissions_for_path(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a session context for one or more user-defined functions that
+%% an integrated analytics engine runs
+%% together in a job.
+%%
+%% You must have the `EXECUTE' permission on every function in the list.
+%%
+%% While the session context is in use, if you don't have full
+%% `SELECT' permission on a table, the
+%% job can read the table only if every function in the session has the
+%% `SELECT' permission on it.
+%% Lake Formation enforces this check.
+%%
+%% To use this operation, you must have the `lakeformation:GetDataAccess'
+%% permission.
+-spec get_glue_function_session_context(aws_client:aws_client(), get_glue_function_session_context_request()) ->
+    {ok, get_glue_function_session_context_response(), tuple()} |
+    {error, any()} |
+    {error, get_glue_function_session_context_errors(), tuple()}.
+get_glue_function_session_context(Client, Input) ->
+    get_glue_function_session_context(Client, Input, []).
+
+-spec get_glue_function_session_context(aws_client:aws_client(), get_glue_function_session_context_request(), proplists:proplist()) ->
+    {ok, get_glue_function_session_context_response(), tuple()} |
+    {error, any()} |
+    {error, get_glue_function_session_context_errors(), tuple()}.
+get_glue_function_session_context(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetGlueFunctionSessionContext"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Returns an LF-tag definition.
 -spec get_l_f_tag(aws_client:aws_client(), get_l_f_tag_request()) ->
     {ok, get_l_f_tag_response(), tuple()} |
@@ -3796,6 +3920,50 @@ get_temporary_data_location_credentials(Client, Input) ->
 get_temporary_data_location_credentials(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetTemporaryDataLocationCredentials"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns temporary credentials that you can use to download the
+%% artifacts of a user-defined function whose
+%% `GovernanceMode' is `LAKE_FORMATION'.
+%%
+%% Lake Formation assumes the role that you
+%% registered for the function's `ArtifactLocation'. The credentials
+%% have read-only access to that location in
+%% Amazon S3.
+%%
+%% To use this operation, you must have the `EXECUTE' permission on the
+%% function.
+-spec get_temporary_glue_function_credentials(aws_client:aws_client(), get_temporary_glue_function_credentials_request()) ->
+    {ok, get_temporary_glue_function_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_temporary_glue_function_credentials_errors(), tuple()}.
+get_temporary_glue_function_credentials(Client, Input) ->
+    get_temporary_glue_function_credentials(Client, Input, []).
+
+-spec get_temporary_glue_function_credentials(aws_client:aws_client(), get_temporary_glue_function_credentials_request(), proplists:proplist()) ->
+    {ok, get_temporary_glue_function_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_temporary_glue_function_credentials_errors(), tuple()}.
+get_temporary_glue_function_credentials(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetTemporaryGlueFunctionCredentials"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

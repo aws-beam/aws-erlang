@@ -1536,6 +1536,7 @@
 %%   <<"started">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
 %%   <<"stopped">> => non_neg_integer(),
+%%   <<"testPackageArn">> => string(),
 %%   <<"testSpecArn">> => string(),
 %%   <<"totalJobs">> => integer(),
 %%   <<"type">> => list(any()),

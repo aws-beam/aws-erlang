@@ -56,6 +56,9 @@
          get_table_bucket_encryption/2,
          get_table_bucket_encryption/4,
          get_table_bucket_encryption/5,
+         get_table_bucket_logging/2,
+         get_table_bucket_logging/4,
+         get_table_bucket_logging/5,
          get_table_bucket_maintenance_configuration/2,
          get_table_bucket_maintenance_configuration/4,
          get_table_bucket_maintenance_configuration/5,
@@ -121,6 +124,8 @@
          list_tags_for_resource/5,
          put_table_bucket_encryption/3,
          put_table_bucket_encryption/4,
+         put_table_bucket_logging/3,
+         put_table_bucket_logging/4,
          put_table_bucket_maintenance_configuration/4,
          put_table_bucket_maintenance_configuration/5,
          put_table_bucket_metrics_configuration/3,
@@ -359,6 +364,17 @@
 %%   <<"encryptionConfiguration">> => encryption_configuration()
 %% }
 -type get_table_bucket_encryption_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_table_bucket_logging_request() :: #{}
+-type get_table_bucket_logging_request() :: #{}.
+
+
+%% Example:
+%% get_table_bucket_logging_response() :: #{
+%%   <<"tableBucketLoggingStatus">> => table_bucket_logging_status()
+%% }
+-type get_table_bucket_logging_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_table_bucket_maintenance_configuration_request() :: #{}
@@ -834,6 +850,15 @@
 
 
 %% Example:
+%% logging_enabled() :: #{
+%%   <<"targetBucket">> => string(),
+%%   <<"targetObjectKeyFormat">> => target_object_key_format(),
+%%   <<"targetPrefix">> => string()
+%% }
+-type logging_enabled() :: #{binary() => any()}.
+
+
+%% Example:
 %% maintenance_settings() :: #{
 %%   <<"icebergCompaction">> => migration_compaction_settings(),
 %%   <<"icebergSnapshotManagement">> => migration_snapshot_management_settings()
@@ -969,6 +994,13 @@
 
 
 %% Example:
+%% partitioned_prefix() :: #{
+%%   <<"partitionDateSource">> => list(any())
+%% }
+-type partitioned_prefix() :: #{binary() => any()}.
+
+
+%% Example:
 %% planning_stats() :: #{
 %%   <<"objectsPlanned">> => [float()],
 %%   <<"objectsScanned">> => [float()],
@@ -982,6 +1014,13 @@
 %%   <<"encryptionConfiguration">> := encryption_configuration()
 %% }
 -type put_table_bucket_encryption_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_table_bucket_logging_request() :: #{
+%%   <<"tableBucketLoggingStatus">> := table_bucket_logging_status()
+%% }
+-type put_table_bucket_logging_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1177,6 +1216,13 @@
 
 
 %% Example:
+%% table_bucket_logging_status() :: #{
+%%   <<"loggingEnabled">> => logging_enabled()
+%% }
+-type table_bucket_logging_status() :: #{binary() => any()}.
+
+
+%% Example:
 %% table_bucket_maintenance_configuration_value() :: #{
 %%   <<"settings">> => list(),
 %%   <<"status">> => list(any())
@@ -1291,6 +1337,13 @@
 %% Example:
 %% tag_resource_response() :: #{}
 -type tag_resource_response() :: #{}.
+
+
+%% Example:
+%% target_object_key_format() :: #{
+%%   <<"partitionedPrefix">> => partitioned_prefix()
+%% }
+-type target_object_key_format() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1490,6 +1543,14 @@
     bad_request_exception() | 
     access_denied_exception().
 
+-type get_table_bucket_logging_errors() ::
+    too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
 -type get_table_bucket_maintenance_configuration_errors() ::
     too_many_requests_exception() | 
     not_found_exception() | 
@@ -1663,6 +1724,14 @@
     bad_request_exception().
 
 -type put_table_bucket_encryption_errors() ::
+    too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
+-type put_table_bucket_logging_errors() ::
     too_many_requests_exception() | 
     not_found_exception() | 
     internal_server_error_exception() | 
@@ -2543,6 +2612,50 @@ get_table_bucket_encryption(Client, TableBucketARN, QueryMap, HeadersMap)
 get_table_bucket_encryption(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/encryption"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the server access logging configuration for a table bucket.
+%%
+%% For more information, see Server access logging for table buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-server-logs.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions You must have the `s3tables:GetTableBucketLogging'
+%% permission to use this operation.
+-spec get_table_bucket_logging(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_table_bucket_logging_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_bucket_logging_errors(), tuple()}.
+get_table_bucket_logging(Client, TableBucketARN)
+  when is_map(Client) ->
+    get_table_bucket_logging(Client, TableBucketARN, #{}, #{}).
+
+-spec get_table_bucket_logging(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_table_bucket_logging_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_bucket_logging_errors(), tuple()}.
+get_table_bucket_logging(Client, TableBucketARN, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_table_bucket_logging(Client, TableBucketARN, QueryMap, HeadersMap, []).
+
+-spec get_table_bucket_logging(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_table_bucket_logging_response(), tuple()} |
+    {error, any()} |
+    {error, get_table_bucket_logging_errors(), tuple()}.
+get_table_bucket_logging(Client, TableBucketARN, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/logging"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3566,6 +3679,52 @@ put_table_bucket_encryption(Client, TableBucketARN, Input0, Options0) ->
     Method = put,
     Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/encryption"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets, updates, or removes the server access logging configuration for
+%% a table bucket.
+%%
+%% When logging is enabled, Amazon S3 delivers a record of the requests made
+%% to the table bucket and its tables to the target general purpose bucket
+%% that you specify. To disable logging, call this operation with an empty
+%% `tableBucketLoggingStatus'. For more information, see Server access
+%% logging for table buckets:
+%% https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-tables-server-logs.html
+%% in the Amazon Simple Storage Service User Guide.
+%%
+%% Permissions You must have the `s3tables:PutTableBucketLogging'
+%% permission to use this operation.
+-spec put_table_bucket_logging(aws_client:aws_client(), binary() | list(), put_table_bucket_logging_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_table_bucket_logging_errors(), tuple()}.
+put_table_bucket_logging(Client, TableBucketARN, Input) ->
+    put_table_bucket_logging(Client, TableBucketARN, Input, []).
+
+-spec put_table_bucket_logging(aws_client:aws_client(), binary() | list(), put_table_bucket_logging_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, put_table_bucket_logging_errors(), tuple()}.
+put_table_bucket_logging(Client, TableBucketARN, Input0, Options0) ->
+    Method = put,
+    Path = ["/buckets/", aws_util:encode_uri(TableBucketARN), "/logging"],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
