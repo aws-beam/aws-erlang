@@ -776,7 +776,8 @@
 
 %% Example:
 %% connector_configuration() :: #{
-%%   <<"azure">> => azure_connector_configuration()
+%%   <<"azure">> => azure_connector_configuration(),
+%%   <<"gcp">> => gcp_connector_configuration()
 %% }
 -type connector_configuration() :: #{binary() => any()}.
 
@@ -791,8 +792,10 @@
 %% connector_summary() :: #{
 %%   <<"arn">> => string(),
 %%   <<"createdTime">> => non_neg_integer(),
+%%   <<"gcpOrganizationId">> => string(),
 %%   <<"name">> => string(),
 %%   <<"provider">> => list(any()),
+%%   <<"serviceAccountEmail">> => string(),
 %%   <<"tenantIdentifier">> => string()
 %% }
 -type connector_summary() :: #{binary() => any()}.
@@ -1471,6 +1474,14 @@
 %%   <<"Name">> => string()
 %% }
 -type field_info() :: #{binary() => any()}.
+
+%% Example:
+%% gcp_connector_configuration() :: #{
+%%   <<"gcpOrganizationId">> => string(),
+%%   <<"serviceAccountEmail">> => string(),
+%%   <<"workloadIdentityPoolProvider">> => string()
+%% }
+-type gcp_connector_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% get_aggregate_compliance_details_by_config_rule_request() :: #{

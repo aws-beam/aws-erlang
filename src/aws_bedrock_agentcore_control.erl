@@ -1757,6 +1757,7 @@
 %%   <<"allowedClients">> => list(string()),
 %%   <<"allowedScopes">> => list(string()),
 %%   <<"allowedWorkloadConfiguration">> => allowed_workload_configuration(),
+%%   <<"certificateConfigurations">> => list(list()),
 %%   <<"customClaims">> => list(custom_claim_validation_type()),
 %%   <<"discoveryUrl">> => string(),
 %%   <<"privateEndpoint">> => list(),
@@ -1780,6 +1781,7 @@
 
 %% Example:
 %% custom_oauth2_provider_config_input() :: #{
+%%   <<"certificateConfigurations">> => list(list()),
 %%   <<"clientAuthenticationMethod">> => list(any()),
 %%   <<"clientId">> => string(),
 %%   <<"clientSecret">> => string(),
@@ -1796,6 +1798,7 @@
 
 %% Example:
 %% custom_oauth2_provider_config_output() :: #{
+%%   <<"certificateConfigurations">> => list(list()),
 %%   <<"clientAuthenticationMethod">> => list(any()),
 %%   <<"clientId">> => string(),
 %%   <<"oauthDiscovery">> => list(),
@@ -3664,6 +3667,7 @@
 %% Example:
 %% harness_remote_mcp_config() :: #{
 %%   <<"headers">> => map(),
+%%   <<"outboundAuth">> => list(),
 %%   <<"url">> => string()
 %% }
 -type harness_remote_mcp_config() :: #{binary() => any()}.

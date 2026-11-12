@@ -264,7 +264,8 @@
 %%   <<"Timestamp">> := non_neg_integer(),
 %%   <<"UsageAllocations">> => list(usage_allocation()),
 %%   <<"UsageDimension">> := string(),
-%%   <<"UsageQuantity">> => integer()
+%%   <<"UsageQuantity">> => integer(),
+%%   <<"UsageQuantityAsDecimal">> => string()
 %% }
 -type meter_usage_request() :: #{binary() => any()}.
 
@@ -333,6 +334,7 @@
 %% Example:
 %% usage_allocation() :: #{
 %%   <<"AllocatedUsageQuantity">> => integer(),
+%%   <<"AllocatedUsageQuantityAsDecimal">> => string(),
 %%   <<"Tags">> => list(tag())
 %% }
 -type usage_allocation() :: #{binary() => any()}.
@@ -344,6 +346,7 @@
 %%   <<"Dimension">> => string(),
 %%   <<"LicenseArn">> => string(),
 %%   <<"Quantity">> => integer(),
+%%   <<"QuantityAsDecimal">> => string(),
 %%   <<"Timestamp">> => non_neg_integer(),
 %%   <<"UsageAllocations">> => list(usage_allocation())
 %% }
@@ -483,6 +486,9 @@
 %% in the
 %% Amazon Web Services Marketplace Seller Guide.
 %%
+%% To report fractional usage, use `QuantityAsDecimal' instead of
+%% `Quantity' in each `UsageRecord'.
+%%
 %% `BatchMeterUsage' returns a list of
 %% `UsageRecordResult' objects, which have each
 %% `UsageRecord'. It also returns a list of
@@ -578,6 +584,9 @@ batch_meter_usage(Client, Input, Options)
 %% If you submit records more than six hours after events occur, the records
 %% won't be accepted. The timestamp in your request determines when an
 %% event is recorded.
+%%
+%% To report fractional usage, use `UsageQuantityAsDecimal' instead of
+%% `UsageQuantity'.
 %%
 %% You can optionally include multiple usage allocations, to provide
 %% customers with usage data split into buckets by tags that you define or

@@ -38236,7 +38236,9 @@ get_enabled_ipam_policy(Client, Input, Options)
 %% quickly
 %%
 %% `GetFlowLogsIntegrationTemplate' does not support integration between
-%% Amazon Web Services Transit Gateway Flow Logs and Amazon Athena.
+%% Amazon Web Services Transit Gateway Flow Logs or Amazon Web Services Cloud
+%% WAN Flow Logs
+%% and Amazon Athena.
 -spec get_flow_logs_integration_template(aws_client:aws_client(), get_flow_logs_integration_template_request()) ->
     {ok, get_flow_logs_integration_template_result(), tuple()} |
     {error, any()}.

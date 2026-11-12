@@ -1606,6 +1606,7 @@
 %% Example:
 %% harness_remote_mcp_config() :: #{
 %%   <<"headers">> => map(),
+%%   <<"outboundAuth">> => list(),
 %%   <<"url">> => string()
 %% }
 -type harness_remote_mcp_config() :: #{binary() => any()}.
@@ -1720,6 +1721,14 @@
 %%   <<"type">> => list(any())
 %% }
 -type harness_tool_use_block_start() :: #{binary() => any()}.
+
+
+%% Example:
+%% iam_credential_provider() :: #{
+%%   <<"region">> => [string()],
+%%   <<"service">> => [string()]
+%% }
+-type iam_credential_provider() :: #{binary() => any()}.
 
 
 %% Example:

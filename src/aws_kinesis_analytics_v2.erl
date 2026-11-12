@@ -31,6 +31,8 @@
          create_application_presigned_url/3,
          create_application_snapshot/2,
          create_application_snapshot/3,
+         create_snapshot/2,
+         create_snapshot/3,
          delete_application/2,
          delete_application/3,
          delete_application_cloud_watch_logging_option/2,
@@ -45,6 +47,8 @@
          delete_application_snapshot/3,
          delete_application_vpc_configuration/2,
          delete_application_vpc_configuration/3,
+         delete_snapshot/2,
+         delete_snapshot/3,
          describe_application/2,
          describe_application/3,
          describe_application_operation/2,
@@ -53,8 +57,16 @@
          describe_application_snapshot/3,
          describe_application_version/2,
          describe_application_version/3,
+         describe_snapshot/2,
+         describe_snapshot/3,
+         describe_snapshot_operation/2,
+         describe_snapshot_operation/3,
          discover_input_schema/2,
          discover_input_schema/3,
+         export_snapshot/2,
+         export_snapshot/3,
+         import_snapshot/2,
+         import_snapshot/3,
          list_application_operations/2,
          list_application_operations/3,
          list_application_snapshots/2,
@@ -63,6 +75,10 @@
          list_application_versions/3,
          list_applications/2,
          list_applications/3,
+         list_snapshot_operations/2,
+         list_snapshot_operations/3,
+         list_snapshots/2,
+         list_snapshots/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          rollback_application/2,
@@ -310,6 +326,13 @@
 -type application_maintenance_configuration_update() :: #{binary() => any()}.
 
 %% Example:
+%% application_operation_description() :: #{
+%%   <<"ApplicationName">> => string(),
+%%   <<"ApplicationOperationId">> => string()
+%% }
+-type application_operation_description() :: #{binary() => any()}.
+
+%% Example:
 %% application_operation_info() :: #{
 %%   <<"EndTime">> => non_neg_integer(),
 %%   <<"Operation">> => string(),
@@ -333,24 +356,28 @@
 %% Example:
 %% application_restore_configuration() :: #{
 %%   <<"ApplicationRestoreType">> => list(any()),
+%%   <<"SnapshotArn">> => string(),
 %%   <<"SnapshotName">> => string()
 %% }
 -type application_restore_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% application_snapshot_configuration() :: #{
+%%   <<"SnapshotMode">> => list(any()),
 %%   <<"SnapshotsEnabled">> => boolean()
 %% }
 -type application_snapshot_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% application_snapshot_configuration_description() :: #{
+%%   <<"SnapshotMode">> => list(any()),
 %%   <<"SnapshotsEnabled">> => boolean()
 %% }
 -type application_snapshot_configuration_description() :: #{binary() => any()}.
 
 %% Example:
 %% application_snapshot_configuration_update() :: #{
+%%   <<"SnapshotModeUpdate">> => list(any()),
 %%   <<"SnapshotsEnabledUpdate">> => boolean()
 %% }
 -type application_snapshot_configuration_update() :: #{binary() => any()}.
@@ -548,6 +575,24 @@
 -type create_application_snapshot_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_snapshot_request() :: #{
+%%   <<"ApplicationName">> := string(),
+%%   <<"SnapshotDescription">> => string(),
+%%   <<"SnapshotName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_response() :: #{
+%%   <<"SnapshotArn">> => string(),
+%%   <<"SnapshotOperationId">> => string(),
+%%   <<"SnapshotOperationStatus">> => list(any()),
+%%   <<"SnapshotStatus">> => list(any())
+%% }
+-type create_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
 %% csv_mapping_parameters() :: #{
 %%   <<"RecordColumnDelimiter">> => string(),
 %%   <<"RecordRowDelimiter">> => string()
@@ -678,6 +723,22 @@
 -type delete_application_vpc_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_snapshot_request() :: #{
+%%   <<"SnapshotCreationTimestamp">> := non_neg_integer(),
+%%   <<"SnapshotName">> := string()
+%% }
+-type delete_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_response() :: #{
+%%   <<"SnapshotArn">> => string(),
+%%   <<"SnapshotOperationId">> => string(),
+%%   <<"SnapshotOperationStatus">> => list(any()),
+%%   <<"SnapshotStatus">> => list(any())
+%% }
+-type delete_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
 %% deploy_as_application_configuration() :: #{
 %%   <<"S3ContentLocation">> => s3_content_base_location()
 %% }
@@ -748,6 +809,31 @@
 -type describe_application_version_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_snapshot_operation_request() :: #{
+%%   <<"SnapshotName">> := string(),
+%%   <<"SnapshotOperationId">> := string()
+%% }
+-type describe_snapshot_operation_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_operation_response() :: #{
+%%   <<"SnapshotOperationInfoDetails">> => snapshot_operation_info_details()
+%% }
+-type describe_snapshot_operation_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_request() :: #{
+%%   <<"SnapshotName">> := string()
+%% }
+-type describe_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_response() :: #{
+%%   <<"SnapshotInfoDetails">> => snapshot_info_details()
+%% }
+-type describe_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
 %% destination_schema() :: #{
 %%   <<"RecordFormatType">> => list(any())
 %% }
@@ -773,6 +859,13 @@
 -type discover_input_schema_response() :: #{binary() => any()}.
 
 %% Example:
+%% encryption_configuration_description() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"KeyType">> => list(any())
+%% }
+-type encryption_configuration_description() :: #{binary() => any()}.
+
+%% Example:
 %% environment_properties() :: #{
 %%   <<"PropertyGroups">> => list(property_group())
 %% }
@@ -795,6 +888,29 @@
 %%   <<"ErrorString">> => string()
 %% }
 -type error_info() :: #{binary() => any()}.
+
+%% Example:
+%% export_destination_configuration() :: #{
+%%   <<"DestinationEncryptionConfiguration">> => snapshot_encryption_configuration(),
+%%   <<"DestinationS3PrefixLocation">> => s3_prefix_location(),
+%%   <<"DestinationType">> => list(any()),
+%%   <<"ExportRoleArn">> => string()
+%% }
+-type export_destination_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% export_snapshot_request() :: #{
+%%   <<"ExportDestinationConfiguration">> := export_destination_configuration(),
+%%   <<"SnapshotName">> := string()
+%% }
+-type export_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% export_snapshot_response() :: #{
+%%   <<"SnapshotOperationId">> => string(),
+%%   <<"SnapshotOperationStatus">> => list(any())
+%% }
+-type export_snapshot_response() :: #{binary() => any()}.
 
 %% Example:
 %% flink_application_configuration() :: #{
@@ -844,6 +960,35 @@
 %%   <<"DatabaseARNUpdate">> => string()
 %% }
 -type glue_data_catalog_configuration_update() :: #{binary() => any()}.
+
+%% Example:
+%% import_snapshot_request() :: #{
+%%   <<"DestinationEncryptionConfiguration">> => snapshot_encryption_configuration(),
+%%   <<"ImportSourceConfiguration">> := import_source_configuration(),
+%%   <<"SnapshotDescription">> => string(),
+%%   <<"SnapshotFormat">> => list(any()),
+%%   <<"SnapshotName">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type import_snapshot_request() :: #{binary() => any()}.
+
+%% Example:
+%% import_snapshot_response() :: #{
+%%   <<"SnapshotArn">> => string(),
+%%   <<"SnapshotOperationId">> => string(),
+%%   <<"SnapshotOperationStatus">> => list(any()),
+%%   <<"SnapshotStatus">> => list(any())
+%% }
+-type import_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% import_source_configuration() :: #{
+%%   <<"ImportRoleArn">> => string(),
+%%   <<"SourceEncryptionConfiguration">> => snapshot_encryption_configuration(),
+%%   <<"SourceS3PrefixLocation">> => s3_prefix_location(),
+%%   <<"SourceType">> => list(any())
+%% }
+-type import_source_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% input() :: #{
@@ -1132,6 +1277,41 @@
 -type list_applications_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_snapshot_operations_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SnapshotName">> := string(),
+%%   <<"SnapshotOperation">> => list(any()),
+%%   <<"SnapshotOperationStatus">> => list(any())
+%% }
+-type list_snapshot_operations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_snapshot_operations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SnapshotOperationInfoList">> => list(snapshot_operation_info())
+%% }
+-type list_snapshot_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_snapshots_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SnapshotInitiator">> => list(any()),
+%%   <<"SnapshotInitiatorOperation">> => list(any()),
+%%   <<"SnapshotStatus">> => list(any()),
+%%   <<"SourceApplicationName">> => string()
+%% }
+-type list_snapshots_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_snapshots_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SnapshotInfoList">> => list(snapshot_info())
+%% }
+-type list_snapshots_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"ResourceARN">> := string()
 %% }
@@ -1404,6 +1584,13 @@
 -type s3_content_location_update() :: #{binary() => any()}.
 
 %% Example:
+%% s3_prefix_location() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"KeyPrefix">> => string()
+%% }
+-type s3_prefix_location() :: #{binary() => any()}.
+
+%% Example:
 %% s3_reference_data_source() :: #{
 %%   <<"BucketARN">> => string(),
 %%   <<"FileKey">> => string()
@@ -1441,6 +1628,113 @@
 %%   <<"SnapshotStatus">> => list(any())
 %% }
 -type snapshot_details() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_encryption_configuration() :: #{
+%%   <<"KeyId">> => string(),
+%%   <<"KeyType">> => list(any())
+%% }
+-type snapshot_encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_error_info() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorString">> => string()
+%% }
+-type snapshot_error_info() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_info() :: #{
+%%   <<"SnapshotArn">> => string(),
+%%   <<"SnapshotCreationTimestamp">> => non_neg_integer(),
+%%   <<"SnapshotFormat">> => list(any()),
+%%   <<"SnapshotInitiator">> => list(any()),
+%%   <<"SnapshotInitiatorOperation">> => list(any()),
+%%   <<"SnapshotName">> => string(),
+%%   <<"SnapshotStatus">> => list(any()),
+%%   <<"SourceApplicationName">> => string()
+%% }
+-type snapshot_info() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_info_details() :: #{
+%%   <<"RuntimeEnvironment">> => list(any()),
+%%   <<"SnapshotArn">> => string(),
+%%   <<"SnapshotCreationTimestamp">> => non_neg_integer(),
+%%   <<"SnapshotDescription">> => string(),
+%%   <<"SnapshotEncryptionConfigurationDescription">> => snapshot_encryption_configuration(),
+%%   <<"SnapshotFormat">> => list(any()),
+%%   <<"SnapshotInitiator">> => list(any()),
+%%   <<"SnapshotInitiatorOperation">> => list(any()),
+%%   <<"SnapshotName">> => string(),
+%%   <<"SnapshotSizeInBytes">> => float(),
+%%   <<"SnapshotSourceDescription">> => snapshot_source_description(),
+%%   <<"SnapshotStatus">> => list(any())
+%% }
+-type snapshot_info_details() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_operation_failure_details() :: #{
+%%   <<"ErrorInfo">> => snapshot_error_info()
+%% }
+-type snapshot_operation_failure_details() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_operation_info() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"SnapshotOperation">> => list(any()),
+%%   <<"SnapshotOperationId">> => string(),
+%%   <<"SnapshotOperationStatus">> => list(any()),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type snapshot_operation_info() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_operation_info_details() :: #{
+%%   <<"ApplicationOperationDescription">> => application_operation_description(),
+%%   <<"DestinationEncryptionConfigurationDescription">> => encryption_configuration_description(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"SnapshotArn">> => string(),
+%%   <<"SnapshotDestinationLocationDescription">> => snapshot_operation_location_description(),
+%%   <<"SnapshotOperation">> => list(any()),
+%%   <<"SnapshotOperationFailureDetails">> => snapshot_operation_failure_details(),
+%%   <<"SnapshotOperationId">> => string(),
+%%   <<"SnapshotOperationStatus">> => list(any()),
+%%   <<"SnapshotSourceLocationDescription">> => snapshot_operation_location_description(),
+%%   <<"SourceEncryptionConfigurationDescription">> => encryption_configuration_description(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type snapshot_operation_info_details() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_operation_location_description() :: #{
+%%   <<"LocationType">> => list(any()),
+%%   <<"S3PrefixLocation">> => snapshot_operation_s3_prefix_location()
+%% }
+-type snapshot_operation_location_description() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_operation_s3_prefix_location() :: #{
+%%   <<"BucketARN">> => string(),
+%%   <<"ExportedPrefix">> => string(),
+%%   <<"KeyPrefix">> => string()
+%% }
+-type snapshot_operation_s3_prefix_location() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_source_description() :: #{
+%%   <<"S3PrefixLocation">> => s3_prefix_location(),
+%%   <<"SourceApplicationDescription">> => source_application_description()
+%% }
+-type snapshot_source_description() :: #{binary() => any()}.
+
+%% Example:
+%% source_application_description() :: #{
+%%   <<"ApplicationCreationTimestamp">> => non_neg_integer(),
+%%   <<"ApplicationName">> => string(),
+%%   <<"ApplicationVersionId">> => float()
+%% }
+-type source_application_description() :: #{binary() => any()}.
 
 %% Example:
 %% source_schema() :: #{
@@ -1731,6 +2025,15 @@
     invalid_argument_exception() | 
     invalid_application_configuration_exception().
 
+-type create_snapshot_errors() ::
+    unsupported_operation_exception() | 
+    too_many_tags_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    invalid_application_configuration_exception() | 
+    concurrent_modification_exception().
+
 -type delete_application_errors() ::
     resource_not_found_exception() | 
     resource_in_use_exception() | 
@@ -1783,6 +2086,13 @@
     invalid_application_configuration_exception() | 
     concurrent_modification_exception().
 
+-type delete_snapshot_errors() ::
+    unsupported_operation_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
+
 -type describe_application_errors() ::
     resource_not_found_exception() | 
     invalid_request_exception() | 
@@ -1803,6 +2113,16 @@
     resource_not_found_exception() | 
     invalid_argument_exception().
 
+-type describe_snapshot_errors() ::
+    unsupported_operation_exception() | 
+    resource_not_found_exception() | 
+    invalid_argument_exception().
+
+-type describe_snapshot_operation_errors() ::
+    unsupported_operation_exception() | 
+    resource_not_found_exception() | 
+    invalid_argument_exception().
+
 -type discover_input_schema_errors() ::
     unsupported_operation_exception() | 
     unable_to_detect_schema_exception() | 
@@ -1810,6 +2130,22 @@
     resource_provisioned_throughput_exceeded_exception() | 
     invalid_request_exception() | 
     invalid_argument_exception().
+
+-type export_snapshot_errors() ::
+    unsupported_operation_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
+
+-type import_snapshot_errors() ::
+    unsupported_operation_exception() | 
+    too_many_tags_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    concurrent_modification_exception().
 
 -type list_application_operations_errors() ::
     unsupported_operation_exception() | 
@@ -1828,6 +2164,15 @@
 -type list_applications_errors() ::
     invalid_request_exception().
 
+-type list_snapshot_operations_errors() ::
+    unsupported_operation_exception() | 
+    resource_not_found_exception() | 
+    invalid_argument_exception().
+
+-type list_snapshots_errors() ::
+    unsupported_operation_exception() | 
+    invalid_argument_exception().
+
 -type list_tags_for_resource_errors() ::
     resource_not_found_exception() | 
     invalid_argument_exception() | 
@@ -1842,6 +2187,7 @@
     concurrent_modification_exception().
 
 -type start_application_errors() ::
+    unsupported_operation_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
     invalid_request_exception() | 
@@ -1871,6 +2217,7 @@
     concurrent_modification_exception().
 
 -type update_application_errors() ::
+    unsupported_operation_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
     limit_exceeded_exception() | 
@@ -2137,6 +2484,39 @@ create_application_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateApplicationSnapshot">>, Input, Options).
 
+%% @doc Creates an enhanced snapshot of the state data of a running Managed
+%% Service for Apache Flink application.
+%%
+%% The application must be in the `RUNNING' status, use Apache Flink
+%% version 1.20 or later, and use the `ENHANCED_SNAPSHOTS' snapshot mode.
+%%
+%% This operation is asynchronous. The response returns the snapshot ARN with
+%% the `CREATING' status. To check the status of the snapshot, use
+%% `DescribeSnapshot'. To track the progress of the operation, use
+%% `DescribeSnapshotOperation'.
+%%
+%% An application can have only one `CreateSnapshot' operation in
+%% progress at a time. For information about limits, see Managed Service for
+%% Apache Flink Quotas:
+%% https://docs.aws.amazon.com/managed-flink/latest/java/limits.html. For
+%% more information about snapshots, see Enhanced Snapshots:
+%% https://docs.aws.amazon.com/managed-flink/latest/java/how-snapshots.html.
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_request()) ->
+    {ok, create_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, create_snapshot_errors(), tuple()}.
+create_snapshot(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_snapshot(Client, Input, []).
+
+-spec create_snapshot(aws_client:aws_client(), create_snapshot_request(), proplists:proplist()) ->
+    {ok, create_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, create_snapshot_errors(), tuple()}.
+create_snapshot(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSnapshot">>, Input, Options).
+
 %% @doc Deletes the specified application.
 %%
 %% Managed Service for Apache Flink halts application execution and deletes
@@ -2272,6 +2652,36 @@ delete_application_vpc_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteApplicationVpcConfiguration">>, Input, Options).
 
+%% @doc Deletes an enhanced snapshot.
+%%
+%% Snapshots are not scoped to an application, so you can delete a snapshot
+%% independently of the application that it was created from.
+%%
+%% This operation is asynchronous. The response returns the snapshot ARN with
+%% the `DELETING' status. To track the progress of the operation, use
+%% `DescribeSnapshotOperation'.
+%%
+%% You can delete a snapshot in the `READY' or `FAILED' status. If a
+%% snapshot operation, such as an export, uses the snapshot, Managed Service
+%% for Apache Flink waits for that operation to finish before it deletes the
+%% snapshot. For a snapshot in any other status, `ResourceInUseException'
+%% is returned.
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_request()) ->
+    {ok, delete_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, delete_snapshot_errors(), tuple()}.
+delete_snapshot(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_snapshot(Client, Input, []).
+
+-spec delete_snapshot(aws_client:aws_client(), delete_snapshot_request(), proplists:proplist()) ->
+    {ok, delete_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, delete_snapshot_errors(), tuple()}.
+delete_snapshot(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSnapshot">>, Input, Options).
+
 %% @doc Returns information about a specific Managed Service for Apache Flink
 %% application.
 %%
@@ -2355,6 +2765,48 @@ describe_application_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeApplicationVersion">>, Input, Options).
 
+%% @doc Returns information about an enhanced snapshot.
+%%
+%% To see a list of the snapshots in your account, use `ListSnapshots'.
+-spec describe_snapshot(aws_client:aws_client(), describe_snapshot_request()) ->
+    {ok, describe_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, describe_snapshot_errors(), tuple()}.
+describe_snapshot(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_snapshot(Client, Input, []).
+
+-spec describe_snapshot(aws_client:aws_client(), describe_snapshot_request(), proplists:proplist()) ->
+    {ok, describe_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, describe_snapshot_errors(), tuple()}.
+describe_snapshot(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSnapshot">>, Input, Options).
+
+%% @doc Provides a detailed description of a specified operation that was
+%% performed on an enhanced snapshot.
+%%
+%% To see a list of the operations of a snapshot, use
+%% `ListSnapshotOperations'.
+%%
+%% Snapshot operations are available for 90 days after they are created.
+-spec describe_snapshot_operation(aws_client:aws_client(), describe_snapshot_operation_request()) ->
+    {ok, describe_snapshot_operation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_snapshot_operation_errors(), tuple()}.
+describe_snapshot_operation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_snapshot_operation(Client, Input, []).
+
+-spec describe_snapshot_operation(aws_client:aws_client(), describe_snapshot_operation_request(), proplists:proplist()) ->
+    {ok, describe_snapshot_operation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_snapshot_operation_errors(), tuple()}.
+describe_snapshot_operation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSnapshotOperation">>, Input, Options).
+
 %% @doc Infers a schema for a SQL-based Kinesis Data Analytics application by
 %% evaluating
 %% sample records on the specified streaming source (Kinesis data stream or
@@ -2385,6 +2837,65 @@ discover_input_schema(Client, Input)
 discover_input_schema(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DiscoverInputSchema">>, Input, Options).
+
+%% @doc Exports the data of an enhanced snapshot to an Amazon S3 location.
+%%
+%% Managed Service for Apache Flink assumes the IAM role that you specify in
+%% `ExportDestinationConfiguration' to write the snapshot data. The
+%% snapshot must be in the `READY' status.
+%%
+%% This operation is asynchronous. To track the progress of the export, use
+%% `DescribeSnapshotOperation'.
+%%
+%% A snapshot can have only one export in progress at a time. If an export of
+%% the snapshot is already in progress, `LimitExceededException' is
+%% returned.
+%%
+%% For more information, see Import and export:
+%% https://docs.aws.amazon.com/managed-flink/latest/java/snapshots-import-export.html.
+-spec export_snapshot(aws_client:aws_client(), export_snapshot_request()) ->
+    {ok, export_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, export_snapshot_errors(), tuple()}.
+export_snapshot(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    export_snapshot(Client, Input, []).
+
+-spec export_snapshot(aws_client:aws_client(), export_snapshot_request(), proplists:proplist()) ->
+    {ok, export_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, export_snapshot_errors(), tuple()}.
+export_snapshot(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ExportSnapshot">>, Input, Options).
+
+%% @doc Imports an Apache Flink savepoint from an Amazon S3 location as an
+%% enhanced snapshot.
+%%
+%% Managed Service for Apache Flink assumes the IAM role that you specify in
+%% `ImportSourceConfiguration' to read the savepoint data.
+%%
+%% This operation is asynchronous. The response returns the snapshot ARN with
+%% the `CREATING' status. To track the progress of the import, use
+%% `DescribeSnapshotOperation'.
+%%
+%% For more information, see Import and export:
+%% https://docs.aws.amazon.com/managed-flink/latest/java/snapshots-import-export.html.
+-spec import_snapshot(aws_client:aws_client(), import_snapshot_request()) ->
+    {ok, import_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, import_snapshot_errors(), tuple()}.
+import_snapshot(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    import_snapshot(Client, Input, []).
+
+-spec import_snapshot(aws_client:aws_client(), import_snapshot_request(), proplists:proplist()) ->
+    {ok, import_snapshot_response(), tuple()} |
+    {error, any()} |
+    {error, import_snapshot_errors(), tuple()}.
+import_snapshot(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ImportSnapshot">>, Input, Options).
 
 %% @doc Lists all the operations performed for the specified application such
 %% as UpdateApplication, StartApplication etc.
@@ -2479,6 +2990,65 @@ list_applications(Client, Input)
 list_applications(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListApplications">>, Input, Options).
+
+%% @doc Lists the operations that were performed on the specified enhanced
+%% snapshot, such as `CreateSnapshot', `ImportSnapshot', and
+%% `ExportSnapshot'.
+%%
+%% The response includes a summary of each operation.
+%%
+%% You can specify only one of the `SnapshotOperation' or
+%% `SnapshotOperationStatus' filters in a request. If you specify both,
+%% `InvalidArgumentException' is returned.
+%%
+%% To get the complete description of a specific operation, use
+%% `DescribeSnapshotOperation'. Snapshot operations are available for 90
+%% days after they are created.
+-spec list_snapshot_operations(aws_client:aws_client(), list_snapshot_operations_request()) ->
+    {ok, list_snapshot_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_snapshot_operations_errors(), tuple()}.
+list_snapshot_operations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_snapshot_operations(Client, Input, []).
+
+-spec list_snapshot_operations(aws_client:aws_client(), list_snapshot_operations_request(), proplists:proplist()) ->
+    {ok, list_snapshot_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_snapshot_operations_errors(), tuple()}.
+list_snapshot_operations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSnapshotOperations">>, Input, Options).
+
+%% @doc Lists the enhanced snapshots in your account.
+%%
+%% Snapshots are not scoped to an application. To list the snapshots that
+%% were created from a specific application, use the
+%% `SourceApplicationName' parameter.
+%%
+%% You can specify only one of the following filters in a request:
+%% `SourceApplicationName', `SnapshotInitiator',
+%% `SnapshotInitiatorOperation', or `SnapshotStatus'. If you specify
+%% more than one filter, `InvalidArgumentException' is returned.
+%%
+%% The results are sorted in descending order of snapshot creation timestamp.
+%% To get detailed information about a specific snapshot, use
+%% `DescribeSnapshot'.
+-spec list_snapshots(aws_client:aws_client(), list_snapshots_request()) ->
+    {ok, list_snapshots_response(), tuple()} |
+    {error, any()} |
+    {error, list_snapshots_errors(), tuple()}.
+list_snapshots(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_snapshots(Client, Input, []).
+
+-spec list_snapshots(aws_client:aws_client(), list_snapshots_request(), proplists:proplist()) ->
+    {ok, list_snapshots_response(), tuple()} |
+    {error, any()} |
+    {error, list_snapshots_errors(), tuple()}.
+list_snapshots(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListSnapshots">>, Input, Options).
 
 %% @doc Retrieves the list of key-value tags assigned to the application.
 %%

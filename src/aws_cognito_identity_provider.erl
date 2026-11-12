@@ -100,12 +100,16 @@
          admin_list_groups_for_user/3,
          admin_list_user_auth_events/2,
          admin_list_user_auth_events/3,
+         admin_list_user_sessions/2,
+         admin_list_user_sessions/3,
          admin_remove_user_from_group/2,
          admin_remove_user_from_group/3,
          admin_reset_user_password/2,
          admin_reset_user_password/3,
          admin_respond_to_auth_challenge/2,
          admin_respond_to_auth_challenge/3,
+         admin_revoke_user_session/2,
+         admin_revoke_user_session/3,
          admin_set_user_mfa_preference/2,
          admin_set_user_mfa_preference/3,
          admin_set_user_password/2,
@@ -230,8 +234,12 @@
          get_user_attribute_verification_code/3,
          get_user_auth_factors/2,
          get_user_auth_factors/3,
+         get_user_pool_client_session_configuration/2,
+         get_user_pool_client_session_configuration/3,
          get_user_pool_mfa_config/2,
          get_user_pool_mfa_config/3,
+         get_user_pool_session_configuration/2,
+         get_user_pool_session_configuration/3,
          global_sign_out/2,
          global_sign_out/3,
          initiate_auth/2,
@@ -258,6 +266,8 @@
          list_user_pool_replicas/3,
          list_user_pools/2,
          list_user_pools/3,
+         list_user_sessions/2,
+         list_user_sessions/3,
          list_users/2,
          list_users/3,
          list_users_in_group/2,
@@ -270,6 +280,8 @@
          respond_to_auth_challenge/3,
          revoke_token/2,
          revoke_token/3,
+         revoke_user_session/2,
+         revoke_user_session/3,
          set_log_delivery_configuration/2,
          set_log_delivery_configuration/3,
          set_risk_configuration/2,
@@ -278,8 +290,12 @@
          set_ui_customization/3,
          set_user_mfa_preference/2,
          set_user_mfa_preference/3,
+         set_user_pool_client_session_configuration/2,
+         set_user_pool_client_session_configuration/3,
          set_user_pool_mfa_config/2,
          set_user_pool_mfa_config/3,
+         set_user_pool_session_configuration/2,
+         set_user_pool_session_configuration/3,
          set_user_settings/2,
          set_user_settings/3,
          sign_up/2,
@@ -666,6 +682,21 @@
 -type admin_list_user_auth_events_response() :: #{binary() => any()}.
 
 %% Example:
+%% admin_list_user_sessions_request() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_list_user_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_list_user_sessions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Sessions">> => list(session_description_type())
+%% }
+-type admin_list_user_sessions_response() :: #{binary() => any()}.
+
+%% Example:
 %% admin_remove_user_from_group_request() :: #{
 %%   <<"GroupName">> := string(),
 %%   <<"UserPoolId">> := string(),
@@ -709,6 +740,21 @@
 %%   <<"Session">> => string()
 %% }
 -type admin_respond_to_auth_challenge_response() :: #{binary() => any()}.
+
+%% Example:
+%% admin_revoke_user_session_request() :: #{
+%%   <<"RevokeAssociatedSessions">> => list(any()),
+%%   <<"SessionId">> := string(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"Username">> := string()
+%% }
+-type admin_revoke_user_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% admin_revoke_user_session_response() :: #{
+
+%% }
+-type admin_revoke_user_session_response() :: #{binary() => any()}.
 
 %% Example:
 %% admin_set_user_mfa_preference_request() :: #{
@@ -925,6 +971,12 @@
 %%   <<"TokenType">> => string()
 %% }
 -type client_authentication_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% client_s_s_o_session_config_type() :: #{
+%%   <<"MaxValidityMinutes">> => integer()
+%% }
+-type client_s_s_o_session_config_type() :: #{binary() => any()}.
 
 %% Example:
 %% client_secret_descriptor_type() :: #{
@@ -1879,6 +1931,21 @@
 -type get_user_auth_factors_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_user_pool_client_session_configuration_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_user_pool_client_session_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_pool_client_session_configuration_response() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"SSOSession">> => client_s_s_o_session_config_type(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type get_user_pool_client_session_configuration_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_user_pool_mfa_config_request() :: #{
 %%   <<"UserPoolId">> := string()
 %% }
@@ -1893,6 +1960,20 @@
 %%   <<"WebAuthnConfiguration">> => web_authn_configuration_type()
 %% }
 -type get_user_pool_mfa_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_pool_session_configuration_request() :: #{
+%%   <<"UserPoolId">> := string()
+%% }
+-type get_user_pool_session_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_user_pool_session_configuration_response() :: #{
+%%   <<"TokenSession">> => user_pool_token_session_config_type(),
+%%   <<"UserPoolId">> => string(),
+%%   <<"UserSessionTracking">> => list(any())
+%% }
+-type get_user_pool_session_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_user_request() :: #{
@@ -2266,6 +2347,20 @@
 -type list_user_pools_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_user_sessions_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_user_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_user_sessions_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Sessions">> => list(session_description_type())
+%% }
+-type list_user_sessions_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_users_in_group_request() :: #{
 %%   <<"GroupName">> := string(),
 %%   <<"Limit">> => integer(),
@@ -2553,6 +2648,7 @@
 %% revoke_token_request() :: #{
 %%   <<"ClientId">> := string(),
 %%   <<"ClientSecret">> => string(),
+%%   <<"RevokeAssociatedSessions">> => list(any()),
 %%   <<"Token">> := string()
 %% }
 -type revoke_token_request() :: #{binary() => any()}.
@@ -2562,6 +2658,20 @@
 
 %% }
 -type revoke_token_response() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_user_session_request() :: #{
+%%   <<"AccessToken">> := string(),
+%%   <<"RevokeAssociatedSessions">> => list(any()),
+%%   <<"SessionId">> := string()
+%% }
+-type revoke_user_session_request() :: #{binary() => any()}.
+
+%% Example:
+%% revoke_user_session_response() :: #{
+
+%% }
+-type revoke_user_session_response() :: #{binary() => any()}.
 
 %% Example:
 %% risk_configuration_type() :: #{
@@ -2616,6 +2726,28 @@
 %%   <<"message">> => string()
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% session_description_type() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"DeviceType">> => string(),
+%%   <<"IsCurrentSession">> => boolean(),
+%%   <<"LastActiveDate">> => non_neg_integer(),
+%%   <<"LastIPAddress">> => string(),
+%%   <<"LastLocation">> => session_location_type(),
+%%   <<"OriginSessionId">> => string(),
+%%   <<"SessionId">> => string(),
+%%   <<"SessionType">> => list(any())
+%% }
+-type session_description_type() :: #{binary() => any()}.
+
+%% Example:
+%% session_location_type() :: #{
+%%   <<"City">> => string(),
+%%   <<"Country">> => string()
+%% }
+-type session_location_type() :: #{binary() => any()}.
 
 %% Example:
 %% set_log_delivery_configuration_request() :: #{
@@ -2678,6 +2810,22 @@
 -type set_user_mfa_preference_response() :: #{binary() => any()}.
 
 %% Example:
+%% set_user_pool_client_session_configuration_request() :: #{
+%%   <<"ClientId">> := string(),
+%%   <<"SSOSession">> := client_s_s_o_session_config_type(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type set_user_pool_client_session_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_pool_client_session_configuration_response() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"SSOSession">> => client_s_s_o_session_config_type(),
+%%   <<"UserPoolId">> => string()
+%% }
+-type set_user_pool_client_session_configuration_response() :: #{binary() => any()}.
+
+%% Example:
 %% set_user_pool_mfa_config_request() :: #{
 %%   <<"EmailMfaConfiguration">> => email_mfa_config_type(),
 %%   <<"MfaConfiguration">> => list(any()),
@@ -2697,6 +2845,22 @@
 %%   <<"WebAuthnConfiguration">> => web_authn_configuration_type()
 %% }
 -type set_user_pool_mfa_config_response() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_pool_session_configuration_request() :: #{
+%%   <<"TokenSession">> := user_pool_token_session_config_type(),
+%%   <<"UserPoolId">> := string(),
+%%   <<"UserSessionTracking">> := list(any())
+%% }
+-type set_user_pool_session_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% set_user_pool_session_configuration_response() :: #{
+%%   <<"TokenSession">> => user_pool_token_session_config_type(),
+%%   <<"UserPoolId">> => string(),
+%%   <<"UserSessionTracking">> => list(any())
+%% }
+-type set_user_pool_session_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% set_user_settings_request() :: #{
@@ -3339,6 +3503,12 @@
 -type user_pool_tagging_exception() :: #{binary() => any()}.
 
 %% Example:
+%% user_pool_token_session_config_type() :: #{
+%%   <<"MaxPerUser">> => integer()
+%% }
+-type user_pool_token_session_config_type() :: #{binary() => any()}.
+
+%% Example:
 %% user_pool_type() :: #{
 %%   <<"AccountRecoverySetting">> => account_recovery_setting_type(),
 %%   <<"AcrConfiguration">> => map(),
@@ -3724,6 +3894,15 @@
     invalid_parameter_exception() | 
     internal_error_exception().
 
+-type admin_list_user_sessions_errors() ::
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
+
 -type admin_remove_user_from_group_errors() ::
     user_not_found_exception() | 
     too_many_requests_exception() | 
@@ -3773,6 +3952,15 @@
     expired_code_exception() | 
     code_mismatch_exception() | 
     alias_exists_exception().
+
+-type admin_revoke_user_session_errors() ::
+    user_not_found_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type admin_set_user_mfa_preference_errors() ::
     user_not_found_exception() | 
@@ -4419,9 +4607,25 @@
     internal_error_exception() | 
     forbidden_exception().
 
+-type get_user_pool_client_session_configuration_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
+
 -type get_user_pool_mfa_config_errors() ::
     too_many_requests_exception() | 
     resource_not_found_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
+
+-type get_user_pool_session_configuration_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
     not_authorized_exception() | 
     invalid_parameter_exception() | 
     internal_error_exception().
@@ -4547,6 +4751,18 @@
     invalid_parameter_exception() | 
     internal_error_exception().
 
+-type list_user_sessions_errors() ::
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
+
 -type list_users_errors() ::
     too_many_requests_exception() | 
     resource_not_found_exception() | 
@@ -4627,6 +4843,18 @@
     internal_error_exception() | 
     forbidden_exception().
 
+-type revoke_user_session_errors() ::
+    user_not_found_exception() | 
+    user_not_confirmed_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    password_reset_required_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
+
 -type set_log_delivery_configuration_errors() ::
     too_many_requests_exception() | 
     resource_not_found_exception() | 
@@ -4665,6 +4893,16 @@
     internal_error_exception() | 
     forbidden_exception().
 
+-type set_user_pool_client_session_configuration_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    concurrent_modification_exception().
+
 -type set_user_pool_mfa_config_errors() ::
     too_many_requests_exception() | 
     resource_not_found_exception() | 
@@ -4672,6 +4910,16 @@
     not_authorized_exception() | 
     invalid_sms_role_trust_relationship_exception() | 
     invalid_sms_role_access_policy_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    concurrent_modification_exception().
+
+-type set_user_pool_session_configuration_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
     invalid_parameter_exception() | 
     internal_error_exception() | 
     feature_unavailable_in_tier_exception() | 
@@ -5793,6 +6041,32 @@ admin_list_user_auth_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminListUserAuthEvents">>, Input, Options).
 
+%% @doc Lists the active sessions for a specified user as an administrator.
+%%
+%% The response
+%% includes both token sessions and SSO sessions. Only active sessions are
+%% returned;
+%% revoked and expired sessions aren't included. Amazon Cognito returns
+%% all of a user's sessions in
+%% a single page of up to 125 sessions. The results are eventually
+%% consistent, and new
+%% sessions are typically included within a few seconds.
+-spec admin_list_user_sessions(aws_client:aws_client(), admin_list_user_sessions_request()) ->
+    {ok, admin_list_user_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, admin_list_user_sessions_errors(), tuple()}.
+admin_list_user_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    admin_list_user_sessions(Client, Input, []).
+
+-spec admin_list_user_sessions(aws_client:aws_client(), admin_list_user_sessions_request(), proplists:proplist()) ->
+    {ok, admin_list_user_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, admin_list_user_sessions_errors(), tuple()}.
+admin_list_user_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AdminListUserSessions">>, Input, Options).
+
 %% @doc Given a username and a group name, removes them from the group.
 %%
 %% User pool groups are
@@ -5978,6 +6252,30 @@ admin_respond_to_auth_challenge(Client, Input)
 admin_respond_to_auth_challenge(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AdminRespondToAuthChallenge">>, Input, Options).
+
+%% @doc Revokes a specific user session as an administrator.
+%%
+%% Amazon Cognito revokes all refresh and
+%% access tokens that are associated with the session and deletes the session
+%% record. You
+%% can revoke either a token session or an SSO session, and you can
+%% optionally cascade the
+%% revocation to linked sessions.
+-spec admin_revoke_user_session(aws_client:aws_client(), admin_revoke_user_session_request()) ->
+    {ok, admin_revoke_user_session_response(), tuple()} |
+    {error, any()} |
+    {error, admin_revoke_user_session_errors(), tuple()}.
+admin_revoke_user_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    admin_revoke_user_session(Client, Input, []).
+
+-spec admin_revoke_user_session(aws_client:aws_client(), admin_revoke_user_session_request(), proplists:proplist()) ->
+    {ok, admin_revoke_user_session_response(), tuple()} |
+    {error, any()} |
+    {error, admin_revoke_user_session_errors(), tuple()}.
+admin_revoke_user_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AdminRevokeUserSession">>, Input, Options).
 
 %% @doc Sets the user's multi-factor authentication (MFA) preference,
 %% including which MFA
@@ -8346,6 +8644,29 @@ get_user_auth_factors(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserAuthFactors">>, Input, Options).
 
+%% @doc Retrieves the session configuration for a user pool app client.
+%%
+%% If you have never
+%% called `SetUserPoolClientSessionConfiguration' for the app client,
+%% this
+%% operation returns the default SSO session maximum validity of `60'
+%% minutes.
+-spec get_user_pool_client_session_configuration(aws_client:aws_client(), get_user_pool_client_session_configuration_request()) ->
+    {ok, get_user_pool_client_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_pool_client_session_configuration_errors(), tuple()}.
+get_user_pool_client_session_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_user_pool_client_session_configuration(Client, Input, []).
+
+-spec get_user_pool_client_session_configuration(aws_client:aws_client(), get_user_pool_client_session_configuration_request(), proplists:proplist()) ->
+    {ok, get_user_pool_client_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_pool_client_session_configuration_errors(), tuple()}.
+get_user_pool_client_session_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetUserPoolClientSessionConfiguration">>, Input, Options).
+
 %% @doc Given a user pool ID, returns configuration for sign-in with WebAuthn
 %% authenticators
 %% and for multi-factor authentication (MFA).
@@ -8391,6 +8712,32 @@ get_user_pool_mfa_config(Client, Input)
 get_user_pool_mfa_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetUserPoolMfaConfig">>, Input, Options).
+
+%% @doc Retrieves the session tracking configuration for a user pool,
+%% including whether session
+%% tracking is enabled and the pool-wide maximum number of active token
+%% sessions for
+%% each user.
+%%
+%% If you have never called `SetUserPoolSessionConfiguration' for the
+%% user pool, this operation returns the default values:
+%% `UserSessionTracking' as
+%% `DISABLED' and a `MaxPerUser' value of `20'.
+-spec get_user_pool_session_configuration(aws_client:aws_client(), get_user_pool_session_configuration_request()) ->
+    {ok, get_user_pool_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_pool_session_configuration_errors(), tuple()}.
+get_user_pool_session_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_user_pool_session_configuration(Client, Input, []).
+
+-spec get_user_pool_session_configuration(aws_client:aws_client(), get_user_pool_session_configuration_request(), proplists:proplist()) ->
+    {ok, get_user_pool_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_user_pool_session_configuration_errors(), tuple()}.
+get_user_pool_session_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetUserPoolSessionConfiguration">>, Input, Options).
 
 %% @doc Invalidates the identity, access, and refresh tokens that Amazon
 %% Cognito issued to a user.
@@ -8885,6 +9232,33 @@ list_user_pools(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListUserPools">>, Input, Options).
 
+%% @doc Lists the active sessions for the currently signed-in user.
+%%
+%% Amazon Cognito authorizes this
+%% operation with the user's access token and returns all of the
+%% user's active sessions
+%% across every app client in the user pool, including both token sessions
+%% and SSO
+%% sessions. The `IsCurrentSession' field identifies the session that the
+%% calling access token belongs to. The results are eventually consistent,
+%% and new
+%% sessions are typically included within a few seconds.
+-spec list_user_sessions(aws_client:aws_client(), list_user_sessions_request()) ->
+    {ok, list_user_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_sessions_errors(), tuple()}.
+list_user_sessions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_user_sessions(Client, Input, []).
+
+-spec list_user_sessions(aws_client:aws_client(), list_user_sessions_request(), proplists:proplist()) ->
+    {ok, list_user_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, list_user_sessions_errors(), tuple()}.
+list_user_sessions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListUserSessions">>, Input, Options).
+
 %% @doc Given a user pool ID, returns a list of users and their basic details
 %% in a user
 %% pool.
@@ -9159,6 +9533,30 @@ revoke_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RevokeToken">>, Input, Options).
 
+%% @doc Revokes a specific session for the currently signed-in user.
+%%
+%% Amazon Cognito authorizes this
+%% operation with the user's access token, revokes all refresh and access
+%% tokens that are
+%% associated with the session, and deletes the session record. You can't
+%% revoke the
+%% session that the calling access token belongs to.
+-spec revoke_user_session(aws_client:aws_client(), revoke_user_session_request()) ->
+    {ok, revoke_user_session_response(), tuple()} |
+    {error, any()} |
+    {error, revoke_user_session_errors(), tuple()}.
+revoke_user_session(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    revoke_user_session(Client, Input, []).
+
+-spec revoke_user_session(aws_client:aws_client(), revoke_user_session_request(), proplists:proplist()) ->
+    {ok, revoke_user_session_response(), tuple()} |
+    {error, any()} |
+    {error, revoke_user_session_errors(), tuple()}.
+revoke_user_session(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RevokeUserSession">>, Input, Options).
+
 %% @doc Sets up or modifies the logging configuration of a user pool.
 %%
 %% User pools can export
@@ -9321,6 +9719,34 @@ set_user_mfa_preference(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserMFAPreference">>, Input, Options).
 
+%% @doc Sets the session configuration for a user pool app client.
+%%
+%% The configurable
+%% client-level setting is the maximum validity period for silent reuse of an
+%% SSO session.
+%% This operation performs a full replacement of the client-level session
+%% configuration;
+%% every request parameter is required, and session tracking must be enabled
+%% for the user
+%% pool. The user pool must be in the Essentials or Plus tier. Otherwise,
+%% this operation
+%% returns a `FeatureUnavailableInTierException'.
+-spec set_user_pool_client_session_configuration(aws_client:aws_client(), set_user_pool_client_session_configuration_request()) ->
+    {ok, set_user_pool_client_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, set_user_pool_client_session_configuration_errors(), tuple()}.
+set_user_pool_client_session_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_user_pool_client_session_configuration(Client, Input, []).
+
+-spec set_user_pool_client_session_configuration(aws_client:aws_client(), set_user_pool_client_session_configuration_request(), proplists:proplist()) ->
+    {ok, set_user_pool_client_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, set_user_pool_client_session_configuration_errors(), tuple()}.
+set_user_pool_client_session_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetUserPoolClientSessionConfiguration">>, Input, Options).
+
 %% @doc Sets user pool multi-factor authentication (MFA) and passkey
 %% configuration.
 %%
@@ -9373,6 +9799,32 @@ set_user_pool_mfa_config(Client, Input)
 set_user_pool_mfa_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SetUserPoolMfaConfig">>, Input, Options).
+
+%% @doc Enables or disables session tracking for a user pool, and sets the
+%% pool-wide maximum
+%% number of active token sessions that each user can have.
+%%
+%% This operation performs a
+%% full replacement of the pool-level session configuration; every request
+%% parameter is
+%% required. The user pool must be in the Essentials or Plus tier. Otherwise,
+%% this
+%% operation returns a `FeatureUnavailableInTierException'.
+-spec set_user_pool_session_configuration(aws_client:aws_client(), set_user_pool_session_configuration_request()) ->
+    {ok, set_user_pool_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, set_user_pool_session_configuration_errors(), tuple()}.
+set_user_pool_session_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_user_pool_session_configuration(Client, Input, []).
+
+-spec set_user_pool_session_configuration(aws_client:aws_client(), set_user_pool_session_configuration_request(), proplists:proplist()) ->
+    {ok, set_user_pool_session_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, set_user_pool_session_configuration_errors(), tuple()}.
+set_user_pool_session_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetUserPoolSessionConfiguration">>, Input, Options).
 
 %% @doc
 %% This action is no longer supported.
