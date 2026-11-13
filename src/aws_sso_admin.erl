@@ -744,6 +744,7 @@
 %%   <<"IdentityStoreId">> => string(),
 %%   <<"InstanceArn">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"NetworkConfigurationDetails">> => network_configuration_info(),
 %%   <<"OwnerAccountId">> => string(),
 %%   <<"PermissionSetsEnabled">> => [boolean()],
 %%   <<"PrimaryRegion">> => string(),
@@ -1348,6 +1349,15 @@
 -type list_trusted_token_issuers_response() :: #{binary() => any()}.
 
 %% Example:
+%% network_configuration_info() :: #{
+%%   <<"AllowSourceIps">> => list(string()),
+%%   <<"ExcludeApplicationArns">> => list(string()),
+%%   <<"RestrictSourceVpcs">> => list(string()),
+%%   <<"VpceAccessRequired">> => [boolean()]
+%% }
+-type network_configuration_info() :: #{binary() => any()}.
+
+%% Example:
 %% oidc_jwt_configuration() :: #{
 %%   <<"ClaimAttributePath">> => string(),
 %%   <<"IdentityStoreAttributePath">> => string(),
@@ -1671,6 +1681,7 @@
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"InstanceArn">> := string(),
 %%   <<"Name">> => string(),
+%%   <<"NetworkConfiguration">> => network_configuration_info(),
 %%   <<"PermissionSetsEnabled">> => [boolean()]
 %% }
 -type update_instance_request() :: #{binary() => any()}.
@@ -3923,10 +3934,13 @@ update_application(Client, Input, Options)
 %% Enable permission sets for the instance by specifying
 %% `PermissionSetsEnabled'.
 %%
-%% If you specify both `EncryptionConfiguration' and
-%% `PermissionSetsEnabled' in a request, the request returns a
-%% `ValidationException'. To perform both operations, call
-%% `UpdateInstance' separately for each. You can make the two calls in
+%% Update the network configuration of the instance by specifying
+%% `NetworkConfiguration'.
+%%
+%% A request that specifies more than one of `EncryptionConfiguration',
+%% `PermissionSetsEnabled', and `NetworkConfiguration' returns a
+%% `ValidationException'. To perform more than one of these operations,
+%% call `UpdateInstance' separately for each. The calls can be made in
 %% parallel.
 -spec update_instance(aws_client:aws_client(), update_instance_request()) ->
     {ok, update_instance_response(), tuple()} |

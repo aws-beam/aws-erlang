@@ -81,6 +81,8 @@
          delete_dashboards/3,
          delete_insight_rules/2,
          delete_insight_rules/3,
+         delete_metric_data_query_definition/2,
+         delete_metric_data_query_definition/3,
          delete_metric_stream/2,
          delete_metric_stream/3,
          delete_resource_metrics_configuration/2,
@@ -117,6 +119,8 @@
          get_insight_rule_report/3,
          get_metric_data/2,
          get_metric_data/3,
+         get_metric_data_query_definition/2,
+         get_metric_data_query_definition/3,
          get_metric_statistics/2,
          get_metric_statistics/3,
          get_metric_stream/2,
@@ -133,6 +137,8 @@
          list_dashboards/3,
          list_managed_insight_rules/2,
          list_managed_insight_rules/3,
+         list_metric_data_query_definitions/2,
+         list_metric_data_query_definitions/3,
          list_metric_streams/2,
          list_metric_streams/3,
          list_metrics/2,
@@ -157,6 +163,8 @@
          put_metric_alarm/3,
          put_metric_data/2,
          put_metric_data/3,
+         put_metric_data_query_definition/2,
+         put_metric_data_query_definition/3,
          put_metric_stream/2,
          put_metric_stream/3,
          set_alarm_state/2,
@@ -420,6 +428,18 @@
 %%   <<"Failures">> => list(partial_failure())
 %% }
 -type delete_insight_rules_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_data_query_definition_input() :: #{
+%%   <<"Id">> := string()
+%% }
+-type delete_metric_data_query_definition_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_data_query_definition_output() :: #{
+
+%% }
+-type delete_metric_data_query_definition_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_metric_stream_input() :: #{
@@ -723,6 +743,24 @@
 -type get_metric_data_output() :: #{binary() => any()}.
 
 %% Example:
+%% get_metric_data_query_definition_input() :: #{
+%%   <<"Id">> := string()
+%% }
+-type get_metric_data_query_definition_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_metric_data_query_definition_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Expression">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type get_metric_data_query_definition_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_metric_statistics_input() :: #{
 %%   <<"Dimensions">> => list(dimension()),
 %%   <<"EndTime">> := non_neg_integer(),
@@ -958,6 +996,20 @@
 -type list_managed_insight_rules_output() :: #{binary() => any()}.
 
 %% Example:
+%% list_metric_data_query_definitions_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_metric_data_query_definitions_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_metric_data_query_definitions_output() :: #{
+%%   <<"Items">> => list(metric_data_query_definition_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_metric_data_query_definitions_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_metric_streams_input() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1126,6 +1178,15 @@
 %%   <<"ReturnData">> => boolean()
 %% }
 -type metric_data_query() :: #{binary() => any()}.
+
+%% Example:
+%% metric_data_query_definition_summary() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type metric_data_query_definition_summary() :: #{binary() => any()}.
 
 %% Example:
 %% metric_data_result() :: #{
@@ -1380,6 +1441,28 @@
 %%   <<"StrictEntityValidation">> => boolean()
 %% }
 -type put_metric_data_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_metric_data_query_definition_input() :: #{
+%%   <<"Expression">> := string(),
+%%   <<"Id">> => string(),
+%%   <<"Path">> := string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"Type">> := list(any())
+%% }
+-type put_metric_data_query_definition_input() :: #{binary() => any()}.
+
+%% Example:
+%% put_metric_data_query_definition_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Expression">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Type">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type put_metric_data_query_definition_output() :: #{binary() => any()}.
 
 %% Example:
 %% put_metric_stream_input() :: #{
@@ -1734,6 +1817,9 @@
 -type get_metric_data_errors() ::
     invalid_next_token().
 
+-type get_metric_data_query_definition_errors() ::
+    resource_not_found_exception().
+
 -type get_metric_statistics_errors() ::
     missing_required_parameter_exception() | 
     invalid_parameter_value_exception() | 
@@ -1817,6 +1903,11 @@
     invalid_parameter_value_exception() | 
     invalid_parameter_combination_exception() | 
     internal_service_fault().
+
+-type put_metric_data_query_definition_errors() ::
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    conflict_exception().
 
 -type put_metric_stream_errors() ::
     missing_required_parameter_exception() | 
@@ -2165,6 +2256,33 @@ delete_insight_rules(Client, Input)
 delete_insight_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInsightRules">>, Input, Options).
+
+%% @doc Deletes a metric data query definition.
+%%
+%% This operation is idempotent. If the definition doesn't exist, the
+%% operation succeeds
+%% without returning an error.
+%%
+%% Permissions
+%%
+%% To delete a definition, you need the
+%% `cloudwatch:DeleteMetricDataQueryDefinition' permission on the metric
+%% data query definition resource. You can use the
+%% `aws:ResourceTag/${TagKey}'
+%% condition key to control access based on the tags of the definition.
+-spec delete_metric_data_query_definition(aws_client:aws_client(), delete_metric_data_query_definition_input()) ->
+    {ok, delete_metric_data_query_definition_output(), tuple()} |
+    {error, any()}.
+delete_metric_data_query_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_metric_data_query_definition(Client, Input, []).
+
+-spec delete_metric_data_query_definition(aws_client:aws_client(), delete_metric_data_query_definition_input(), proplists:proplist()) ->
+    {ok, delete_metric_data_query_definition_output(), tuple()} |
+    {error, any()}.
+delete_metric_data_query_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMetricDataQueryDefinition">>, Input, Options).
 
 %% @doc Permanently deletes the metric stream that you specify.
 -spec delete_metric_stream(aws_client:aws_client(), delete_metric_stream_input()) ->
@@ -2798,6 +2916,31 @@ get_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetMetricData">>, Input, Options).
 
+%% @doc Returns a metric data query definition, including its expression.
+%%
+%% Permissions
+%%
+%% To get a definition, you need the
+%% `cloudwatch:GetMetricDataQueryDefinition' permission on the metric
+%% data
+%% query definition resource. You can use the `aws:ResourceTag/${TagKey}'
+%% condition key to control access based on the tags of the definition.
+-spec get_metric_data_query_definition(aws_client:aws_client(), get_metric_data_query_definition_input()) ->
+    {ok, get_metric_data_query_definition_output(), tuple()} |
+    {error, any()} |
+    {error, get_metric_data_query_definition_errors(), tuple()}.
+get_metric_data_query_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_metric_data_query_definition(Client, Input, []).
+
+-spec get_metric_data_query_definition(aws_client:aws_client(), get_metric_data_query_definition_input(), proplists:proplist()) ->
+    {ok, get_metric_data_query_definition_output(), tuple()} |
+    {error, any()} |
+    {error, get_metric_data_query_definition_errors(), tuple()}.
+get_metric_data_query_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetMetricDataQueryDefinition">>, Input, Options).
+
 %% @doc Gets statistics for the specified metric.
 %%
 %% The maximum number of data points returned from a single call is 1,440. If
@@ -3105,6 +3248,37 @@ list_managed_insight_rules(Client, Input)
 list_managed_insight_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListManagedInsightRules">>, Input, Options).
+
+%% @doc Lists the metric data query definitions in your account and Region.
+%%
+%% The results are summaries that don't include the expression. To get
+%% the full
+%% definition, call `GetMetricDataQueryDefinition' with its ID.
+%%
+%% This operation supports pagination. Use the `MaxResults' and
+%% `NextToken' parameters to retrieve results in multiple calls.
+%%
+%% Permissions
+%%
+%% To list definitions, you need the
+%% `cloudwatch:ListMetricDataQueryDefinitions' permission. This
+%% permission
+%% applies to all definitions in the account and Region. The results
+%% aren't filtered by
+%% tags.
+-spec list_metric_data_query_definitions(aws_client:aws_client(), list_metric_data_query_definitions_input()) ->
+    {ok, list_metric_data_query_definitions_output(), tuple()} |
+    {error, any()}.
+list_metric_data_query_definitions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_metric_data_query_definitions(Client, Input, []).
+
+-spec list_metric_data_query_definitions(aws_client:aws_client(), list_metric_data_query_definitions_input(), proplists:proplist()) ->
+    {ok, list_metric_data_query_definitions_output(), tuple()} |
+    {error, any()}.
+list_metric_data_query_definitions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListMetricDataQueryDefinitions">>, Input, Options).
 
 %% @doc Returns a list of metric streams in this account.
 -spec list_metric_streams(aws_client:aws_client(), list_metric_streams_input()) ->
@@ -3714,6 +3888,57 @@ put_metric_data(Client, Input)
 put_metric_data(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutMetricData">>, Input, Options).
+
+%% @doc Creates or updates a metric data query definition.
+%%
+%% A metric data query definition saves a metric query so that you can reuse
+%% it later.
+%% It includes the query expression, the query language, and a path that
+%% names the
+%% definition and can organize it into folders. When you save a definition,
+%% CloudWatch doesn't validate or run its expression.
+%%
+%% To create a definition, omit `Id'. CloudWatch generates the ID and
+%% returns it. To update a definition, specify its `Id'. An update
+%% replaces the
+%% path, expression, and type, and keeps the creation time.
+%%
+%% The path must be unique in your account and Region. If another definition
+%% already
+%% uses the path, the request fails with a `ConflictException'.
+%%
+%% You can have up to 1,000 metric data query definitions in each Region of
+%% your
+%% account. A request that would create more fails with a
+%% `LimitExceededException'.
+%%
+%% Permissions
+%%
+%% To create or update a definition, you need the
+%% `cloudwatch:PutMetricDataQueryDefinition' permission on the metric
+%% data
+%% query definition resource. The resource ARN has the format
+%% `arn:aws:cloudwatch:Region:account-id:metric-query-definition/Id'.
+%%
+%% To add tags when you create a definition, you also need the
+%% `cloudwatch:TagResource' permission. You can use the
+%% `aws:RequestTag/${TagKey}' and `aws:TagKeys' condition keys
+%% to control which tags can be added.
+-spec put_metric_data_query_definition(aws_client:aws_client(), put_metric_data_query_definition_input()) ->
+    {ok, put_metric_data_query_definition_output(), tuple()} |
+    {error, any()} |
+    {error, put_metric_data_query_definition_errors(), tuple()}.
+put_metric_data_query_definition(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_metric_data_query_definition(Client, Input, []).
+
+-spec put_metric_data_query_definition(aws_client:aws_client(), put_metric_data_query_definition_input(), proplists:proplist()) ->
+    {ok, put_metric_data_query_definition_output(), tuple()} |
+    {error, any()} |
+    {error, put_metric_data_query_definition_errors(), tuple()}.
+put_metric_data_query_definition(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutMetricDataQueryDefinition">>, Input, Options).
 
 %% @doc Creates or updates a metric stream.
 %%

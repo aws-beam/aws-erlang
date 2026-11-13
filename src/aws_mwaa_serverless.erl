@@ -14,7 +14,9 @@
 %% complex analytics workloads.
 -module(aws_mwaa_serverless).
 
--export([create_workflow/2,
+-export([create_airflow_ui_url/2,
+         create_airflow_ui_url/3,
+         create_workflow/2,
          create_workflow/3,
          delete_workflow/2,
          delete_workflow/3,
@@ -64,6 +66,22 @@
 %%   <<"ResourceType">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_airflow_ui_url_request() :: #{
+%%   <<"ExpiresInSeconds">> => integer(),
+%%   <<"SessionDurationInSeconds">> => integer()
+%% }
+-type create_airflow_ui_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_airflow_ui_url_response() :: #{
+%%   <<"AuthorizedUrl">> => string(),
+%%   <<"SessionExpiresAt">> => non_neg_integer(),
+%%   <<"SessionId">> => string(),
+%%   <<"UrlExpiresAt">> => non_neg_integer()
+%% }
+-type create_airflow_ui_url_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_workflow_request() :: #{
@@ -505,6 +523,14 @@
 %% }
 -type workflow_version_summary() :: #{binary() => any()}.
 
+-type create_airflow_ui_url_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    operation_timeout_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_workflow_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -629,6 +655,36 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates a launch URL that opens the Apache Airflow UI for your
+%% workflows in Amazon Managed Workflows for Apache Airflow Serverless.
+%%
+%% The UI shows the workflows in your account in the current AWS Region. To
+%% start a UI session, open the URL in a browser before it expires.
+%%
+%% The UI runs with the permissions of the IAM identity that you use to call
+%% this operation. You see only the workflows, workflow runs, and logs that
+%% the identity can read, and you can start a workflow run only if the
+%% identity has permission to start one.
+%%
+%% The UI session uses the caller's permissions. The session works only
+%% from the network address that opened the URL. It ends at
+%% `SessionExpiresAt' or when you sign out from the UI.
+-spec create_airflow_ui_url(aws_client:aws_client(), create_airflow_ui_url_request()) ->
+    {ok, create_airflow_ui_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_airflow_ui_url_errors(), tuple()}.
+create_airflow_ui_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_airflow_ui_url(Client, Input, []).
+
+-spec create_airflow_ui_url(aws_client:aws_client(), create_airflow_ui_url_request(), proplists:proplist()) ->
+    {ok, create_airflow_ui_url_response(), tuple()} |
+    {error, any()} |
+    {error, create_airflow_ui_url_errors(), tuple()}.
+create_airflow_ui_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateAirflowUiUrl">>, Input, Options).
 
 %% @doc Creates a new workflow in Amazon Managed Workflows for Apache Airflow
 %% Serverless.

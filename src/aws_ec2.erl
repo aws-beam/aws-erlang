@@ -278,6 +278,8 @@
          create_mac_system_integrity_protection_modification_task/3,
          create_managed_prefix_list/2,
          create_managed_prefix_list/3,
+         create_metric_category/2,
+         create_metric_category/3,
          create_nat_gateway/2,
          create_nat_gateway/3,
          create_network_acl/2,
@@ -476,6 +478,8 @@
          delete_local_gateway_virtual_interface_group/3,
          delete_managed_prefix_list/2,
          delete_managed_prefix_list/3,
+         delete_metric_category/2,
+         delete_metric_category/3,
          delete_nat_gateway/2,
          delete_nat_gateway/3,
          delete_network_acl/2,
@@ -816,6 +820,8 @@
          describe_mac_modification_tasks/3,
          describe_managed_prefix_lists/2,
          describe_managed_prefix_lists/3,
+         describe_metric_categories/2,
+         describe_metric_categories/3,
          describe_moving_addresses/2,
          describe_moving_addresses/3,
          describe_nat_gateways/2,
@@ -1420,6 +1426,8 @@
          modify_managed_prefix_list/3,
          modify_managed_resource_visibility/2,
          modify_managed_resource_visibility/3,
+         modify_metric_category/2,
+         modify_metric_category/3,
          modify_network_interface_attribute/2,
          modify_network_interface_attribute/3,
          modify_private_dns_name_options/2,
@@ -1879,8 +1887,10 @@
 
 %% Example:
 %% account_vpc_encryption_control_exclusions() :: #{
+%%   <<"ApiGatewayV2">> => list(any()),
 %%   <<"EgressOnlyInternetGateway">> => list(any()),
 %%   <<"ElasticFileSystem">> => list(any()),
+%%   <<"GlobalAccelerator">> => list(any()),
 %%   <<"InternetGateway">> => list(any()),
 %%   <<"Lambda">> => list(any()),
 %%   <<"NatGateway">> => list(any()),
@@ -5088,6 +5098,21 @@
 -type create_managed_prefix_list_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_metric_category_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"Metrics">> := list(string()),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_metric_category_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_metric_category_result() :: #{
+%%   <<"MetricCategory">> => metric_category()
+%% }
+-type create_metric_category_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_nat_gateway_request() :: #{
 %%   <<"AllocationId">> => string(),
 %%   <<"AvailabilityMode">> => list(any()),
@@ -6935,6 +6960,19 @@
 %%   <<"PrefixList">> => managed_prefix_list()
 %% }
 -type delete_managed_prefix_list_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_category_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MetricCategoryId">> := string()
+%% }
+-type delete_metric_category_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_metric_category_result() :: #{
+%%   <<"MetricCategoryId">> => string()
+%% }
+-type delete_metric_category_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_nat_gateway_request() :: #{
@@ -9541,6 +9579,23 @@
 %%   <<"PrefixLists">> => list(managed_prefix_list())
 %% }
 -type describe_managed_prefix_lists_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metric_categories_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"MetricCategoryIds">> => list(string()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_metric_categories_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_metric_categories_result() :: #{
+%%   <<"MetricCategories">> => list(metric_category()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_metric_categories_result() :: #{binary() => any()}.
 
 %% Example:
 %% describe_moving_addresses_request() :: #{
@@ -17101,13 +17156,15 @@
 
 %% Example:
 %% launch_templates_monitoring() :: #{
-%%   <<"Enabled">> => boolean()
+%%   <<"Enabled">> => boolean(),
+%%   <<"MetricCategoryIds">> => list(string())
 %% }
 -type launch_templates_monitoring() :: #{binary() => any()}.
 
 %% Example:
 %% launch_templates_monitoring_request() :: #{
-%%   <<"Enabled">> => boolean()
+%%   <<"Enabled">> => boolean(),
+%%   <<"MetricCategoryIds">> => list(string())
 %% }
 -type launch_templates_monitoring_request() :: #{binary() => any()}.
 
@@ -17468,6 +17525,14 @@
 -type memory_mi_b_request() :: #{binary() => any()}.
 
 %% Example:
+%% metric_category() :: #{
+%%   <<"MetricCategoryId">> => string(),
+%%   <<"Metrics">> => list(string()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type metric_category() :: #{binary() => any()}.
+
+%% Example:
 %% metric_data_result() :: #{
 %%   <<"Dimension">> => capacity_manager_dimension(),
 %%   <<"MetricValues">> => list(metric_value()),
@@ -17516,9 +17581,11 @@
 
 %% Example:
 %% modify_account_vpc_encryption_control_request() :: #{
+%%   <<"ApiGatewayV2">> => list(any()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EgressOnlyInternetGateway">> => list(any()),
 %%   <<"ElasticFileSystem">> => list(any()),
+%%   <<"GlobalAccelerator">> => list(any()),
 %%   <<"InternetGateway">> => list(any()),
 %%   <<"Lambda">> => list(any()),
 %%   <<"Mode">> => list(any()),
@@ -18237,6 +18304,20 @@
 -type modify_managed_resource_visibility_result() :: #{binary() => any()}.
 
 %% Example:
+%% modify_metric_category_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"MetricCategoryId">> := string(),
+%%   <<"Metrics">> := list(string())
+%% }
+-type modify_metric_category_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_metric_category_result() :: #{
+%%   <<"MetricCategory">> => metric_category()
+%% }
+-type modify_metric_category_result() :: #{binary() => any()}.
+
+%% Example:
 %% modify_network_interface_attribute_request() :: #{
 %%   <<"AssociatePublicIpAddress">> => boolean(),
 %%   <<"AssociatedSubnetIds">> => list(string()),
@@ -18825,9 +18906,11 @@
 
 %% Example:
 %% modify_vpc_encryption_control_request() :: #{
+%%   <<"ApiGatewayV2Exclusion">> => list(any()),
 %%   <<"DryRun">> => boolean(),
 %%   <<"EgressOnlyInternetGatewayExclusion">> => list(any()),
 %%   <<"ElasticFileSystemExclusion">> => list(any()),
+%%   <<"GlobalAcceleratorExclusion">> => list(any()),
 %%   <<"InternetGatewayExclusion">> => list(any()),
 %%   <<"LambdaExclusion">> => list(any()),
 %%   <<"Mode">> => list(any()),
@@ -19079,7 +19162,8 @@
 %% Example:
 %% monitor_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"InstanceIds">> := list(string())
+%%   <<"InstanceIds">> := list(string()),
+%%   <<"MetricCategoryIds">> => list(string())
 %% }
 -type monitor_instances_request() :: #{binary() => any()}.
 
@@ -19091,6 +19175,7 @@
 
 %% Example:
 %% monitoring() :: #{
+%%   <<"MetricCategoryIds">> => list(string()),
 %%   <<"State">> => list(any())
 %% }
 -type monitoring() :: #{binary() => any()}.
@@ -21460,7 +21545,8 @@
 
 %% Example:
 %% run_instances_monitoring_enabled() :: #{
-%%   <<"Enabled">> => boolean()
+%%   <<"Enabled">> => boolean(),
+%%   <<"MetricCategoryIds">> => list(string())
 %% }
 -type run_instances_monitoring_enabled() :: #{binary() => any()}.
 
@@ -23521,7 +23607,8 @@
 %% Example:
 %% unmonitor_instances_request() :: #{
 %%   <<"DryRun">> => boolean(),
-%%   <<"InstanceIds">> := list(string())
+%%   <<"InstanceIds">> := list(string()),
+%%   <<"MetricCategoryIds">> => list(string())
 %% }
 -type unmonitor_instances_request() :: #{binary() => any()}.
 
@@ -24262,8 +24349,10 @@
 
 %% Example:
 %% vpc_encryption_control_configuration() :: #{
+%%   <<"ApiGatewayV2Exclusion">> => list(any()),
 %%   <<"EgressOnlyInternetGatewayExclusion">> => list(any()),
 %%   <<"ElasticFileSystemExclusion">> => list(any()),
+%%   <<"GlobalAcceleratorExclusion">> => list(any()),
 %%   <<"InternetGatewayExclusion">> => list(any()),
 %%   <<"LambdaExclusion">> => list(any()),
 %%   <<"Mode">> => list(any()),
@@ -24283,8 +24372,10 @@
 
 %% Example:
 %% vpc_encryption_control_exclusions() :: #{
+%%   <<"ApiGatewayV2">> => vpc_encryption_control_exclusion(),
 %%   <<"EgressOnlyInternetGateway">> => vpc_encryption_control_exclusion(),
 %%   <<"ElasticFileSystem">> => vpc_encryption_control_exclusion(),
+%%   <<"GlobalAccelerator">> => vpc_encryption_control_exclusion(),
 %%   <<"InternetGateway">> => vpc_encryption_control_exclusion(),
 %%   <<"Lambda">> => vpc_encryption_control_exclusion(),
 %%   <<"NatGateway">> => vpc_encryption_control_exclusion(),
@@ -27034,7 +27125,9 @@ create_image(Client, Input, Options)
 %% The report
 %% provides visibility into which accounts are using the specified image, and
 %% how many resources
-%% (EC2 instances or launch templates) are referencing it.
+%% (EC2 instances, EC2 launch templates, Image Builder image recipes, or
+%% Image Builder container
+%% recipes) are referencing it.
 %%
 %% For more information, see View your AMI usage:
 %% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/your-ec2-ami-usage.html
@@ -27715,6 +27808,28 @@ create_managed_prefix_list(Client, Input)
 create_managed_prefix_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateManagedPrefixList">>, Input, Options).
+
+%% @doc Creates a metric category.
+%%
+%% A metric category is a set of additional metrics that you
+%% can associate with an instance that has detailed monitoring enabled.
+%%
+%% For more information, see Use metric categories for additional metrics:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-detailed-monitoring.html#detailed-monitoring-metric-categories
+%% in the Amazon EC2 User Guide.
+-spec create_metric_category(aws_client:aws_client(), create_metric_category_request()) ->
+    {ok, create_metric_category_result(), tuple()} |
+    {error, any()}.
+create_metric_category(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_metric_category(Client, Input, []).
+
+-spec create_metric_category(aws_client:aws_client(), create_metric_category_request(), proplists:proplist()) ->
+    {ok, create_metric_category_result(), tuple()} |
+    {error, any()}.
+create_metric_category(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateMetricCategory">>, Input, Options).
 
 %% @doc Creates a NAT gateway in the specified subnet.
 %%
@@ -30180,6 +30295,28 @@ delete_managed_prefix_list(Client, Input)
 delete_managed_prefix_list(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteManagedPrefixList">>, Input, Options).
+
+%% @doc Deletes the specified metric category.
+%%
+%% Associations between the metric category and
+%% your instances are removed asynchronously.
+%%
+%% For more information, see Use metric categories for additional metrics:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-detailed-monitoring.html#detailed-monitoring-metric-categories
+%% in the Amazon EC2 User Guide.
+-spec delete_metric_category(aws_client:aws_client(), delete_metric_category_request()) ->
+    {ok, delete_metric_category_result(), tuple()} |
+    {error, any()}.
+delete_metric_category(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_metric_category(Client, Input, []).
+
+-spec delete_metric_category(aws_client:aws_client(), delete_metric_category_request(), proplists:proplist()) ->
+    {ok, delete_metric_category_result(), tuple()} |
+    {error, any()}.
+delete_metric_category(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteMetricCategory">>, Input, Options).
 
 %% @doc Deletes the specified NAT gateway.
 %%
@@ -33865,6 +34002,26 @@ describe_managed_prefix_lists(Client, Input)
 describe_managed_prefix_lists(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeManagedPrefixLists">>, Input, Options).
+
+%% @doc Describes the specified metric categories, or all of your metric
+%% categories.
+%%
+%% For more information, see Use metric categories for additional metrics:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-detailed-monitoring.html#detailed-monitoring-metric-categories
+%% in the Amazon EC2 User Guide.
+-spec describe_metric_categories(aws_client:aws_client(), describe_metric_categories_request()) ->
+    {ok, describe_metric_categories_result(), tuple()} |
+    {error, any()}.
+describe_metric_categories(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_metric_categories(Client, Input, []).
+
+-spec describe_metric_categories(aws_client:aws_client(), describe_metric_categories_request(), proplists:proplist()) ->
+    {ok, describe_metric_categories_result(), tuple()} |
+    {error, any()}.
+describe_metric_categories(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeMetricCategories">>, Input, Options).
 
 %% @doc
 %% This action is deprecated.
@@ -38236,9 +38393,7 @@ get_enabled_ipam_policy(Client, Input, Options)
 %% quickly
 %%
 %% `GetFlowLogsIntegrationTemplate' does not support integration between
-%% Amazon Web Services Transit Gateway Flow Logs or Amazon Web Services Cloud
-%% WAN Flow Logs
-%% and Amazon Athena.
+%% Amazon Web Services Transit Gateway Flow Logs and Amazon Athena.
 -spec get_flow_logs_integration_template(aws_client:aws_client(), get_flow_logs_integration_template_request()) ->
     {ok, get_flow_logs_integration_template_result(), tuple()} |
     {error, any()}.
@@ -40921,6 +41076,31 @@ modify_managed_resource_visibility(Client, Input)
 modify_managed_resource_visibility(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyManagedResourceVisibility">>, Input, Options).
+
+%% @doc Modifies the metrics in the specified metric category.
+%%
+%% The metrics that you specify
+%% replace the existing metrics.
+%%
+%% Instances that are associated with the metric category are updated
+%% asynchronously.
+%%
+%% For more information, see Use metric categories for additional metrics:
+%% https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-detailed-monitoring.html#detailed-monitoring-metric-categories
+%% in the Amazon EC2 User Guide.
+-spec modify_metric_category(aws_client:aws_client(), modify_metric_category_request()) ->
+    {ok, modify_metric_category_result(), tuple()} |
+    {error, any()}.
+modify_metric_category(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_metric_category(Client, Input, []).
+
+-spec modify_metric_category(aws_client:aws_client(), modify_metric_category_request(), proplists:proplist()) ->
+    {ok, modify_metric_category_result(), tuple()} |
+    {error, any()}.
+modify_metric_category(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyMetricCategory">>, Input, Options).
 
 %% @doc Modifies the specified network interface attribute.
 %%

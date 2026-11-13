@@ -5766,6 +5766,7 @@
 
 %% Example:
 %% describe_hub_content_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DocumentSchemaVersion">> => string(),
 %%   <<"FailureReason">> => string(),
@@ -5782,6 +5783,7 @@
 %%   <<"HubContentType">> => list(any()),
 %%   <<"HubContentVersion">> => string(),
 %%   <<"HubName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"ReferenceMinVersion">> => string(),
 %%   <<"SageMakerPublicHubContentArn">> => string(),
@@ -5797,6 +5799,7 @@
 
 %% Example:
 %% describe_hub_response() :: #{
+%%   <<"CreatedBy">> => user_context(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"FailureReason">> => string(),
 %%   <<"HubArn">> => string(),
@@ -5805,6 +5808,7 @@
 %%   <<"HubName">> => string(),
 %%   <<"HubSearchKeywords">> => list(string()),
 %%   <<"HubStatus">> => list(any()),
+%%   <<"LastModifiedBy">> => user_context(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"S3StorageConfig">> => hub_s3_storage_config()
 %% }
@@ -7844,6 +7848,7 @@
 
 %% Example:
 %% hub_content() :: #{
+%%   <<"CreatedBy">> => user_context(),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DocumentSchemaVersion">> => string(),
 %%   <<"FailureReason">> => string(),
@@ -7860,6 +7865,7 @@
 %%   <<"HubContentType">> => list(any()),
 %%   <<"HubContentVersion">> => string(),
 %%   <<"HubName">> => string(),
+%%   <<"LastModifiedBy">> => user_context(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"ReferenceMinVersion">> => string(),
 %%   <<"SageMakerPublicHubContentArn">> => string(),

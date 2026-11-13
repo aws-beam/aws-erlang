@@ -3072,7 +3072,8 @@
 %% Example:
 %% protected_job_error() :: #{
 %%   <<"code">> => [string()],
-%%   <<"message">> => [string()]
+%%   <<"message">> => [string()],
+%%   <<"retry">> => retry_info()
 %% }
 -type protected_job_error() :: #{binary() => any()}.
 
@@ -3226,7 +3227,8 @@
 %% Example:
 %% protected_query_error() :: #{
 %%   <<"code">> => [string()],
-%%   <<"message">> => [string()]
+%%   <<"message">> => [string()],
+%%   <<"retry">> => retry_info()
 %% }
 -type protected_query_error() :: #{binary() => any()}.
 
@@ -3336,6 +3338,13 @@
 %%   <<"resourceType">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% retry_info() :: #{
+%%   <<"retryable">> => [boolean()]
+%% }
+-type retry_info() :: #{binary() => any()}.
 
 
 %% Example:

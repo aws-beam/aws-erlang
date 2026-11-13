@@ -460,6 +460,7 @@
 %%   <<"RemoteId">> => [string()],
 %%   <<"RouterIntegrationState">> => list(any()),
 %%   <<"RouterIntegrationTransitEncryption">> => flow_transit_encryption(),
+%%   <<"RtmpPushSettings">> => rtmp_push_output_settings(),
 %%   <<"SenderControlPort">> => [integer()],
 %%   <<"SmoothingLatency">> => [integer()],
 %%   <<"StreamId">> => [string()],
@@ -474,6 +475,14 @@
 %% }
 -type audio_monitoring_setting() :: #{binary() => any()}.
 
+
+%% Example:
+%% auto_pid_map_configuration() :: #{
+%%   <<"PidsPerProgram">> => [integer()],
+%%   <<"StartPid">> => integer()
+%% }
+-type auto_pid_map_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% automatic_encryption_key_configuration() :: #{}
 -type automatic_encryption_key_configuration() :: #{}.
@@ -481,6 +490,10 @@
 %% Example:
 %% automatic_endpoint_encryption_configuration() :: #{}
 -type automatic_endpoint_encryption_configuration() :: #{}.
+
+%% Example:
+%% automatic_rtmp_push_naming_configuration() :: #{}
+-type automatic_rtmp_push_naming_configuration() :: #{}.
 
 
 %% Example:
@@ -887,6 +900,7 @@
 %%   <<"MaintenanceConfiguration">> => list(),
 %%   <<"MaximumBitrate">> := [float()],
 %%   <<"Name">> := [string()],
+%%   <<"Processors">> => router_output_processors(),
 %%   <<"RegionName">> => [string()],
 %%   <<"RoutingScope">> := list(any()),
 %%   <<"Tags">> => map(),
@@ -1050,6 +1064,7 @@
 %%   <<"FlowArn">> => [string()],
 %%   <<"Messages">> => list(message_detail()),
 %%   <<"NdiInfo">> => ndi_source_metadata_info(),
+%%   <<"RtmpInfo">> => rtmp_source_metadata_info(),
 %%   <<"Timestamp">> => [non_neg_integer()],
 %%   <<"TransportMediaInfo">> => transport_media_info()
 %% }
@@ -1273,7 +1288,9 @@
 
 %% Example:
 %% fabric_configuration() :: #{
-%%   <<"RecoveryLatencyMode">> => list(any())
+%%   <<"RecoveryLatencyMode">> => list(any()),
+%%   <<"SwitchingConfiguration">> => list(),
+%%   <<"SwitchingMode">> => list(any())
 %% }
 -type fabric_configuration() :: #{binary() => any()}.
 
@@ -1300,6 +1317,7 @@
 
 %% Example:
 %% failover_router_input_indexed_stream_details() :: #{
+%%   <<"RtmpPush">> => rtmp_push_stream_details(),
 %%   <<"SourceIndex">> => [integer()],
 %%   <<"SourceIpAddress">> => [string()]
 %% }
@@ -1560,6 +1578,10 @@
 %% }
 -type grant_flow_entitlements_response() :: #{binary() => any()}.
 
+%% Example:
+%% immediate_fabric_switching_configuration() :: #{}
+-type immediate_fabric_switching_configuration() :: #{}.
+
 
 %% Example:
 %% ingress_gateway_bridge() :: #{
@@ -1606,6 +1628,13 @@
 %%   <<"Message">> => [string()]
 %% }
 -type internal_server_error_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_frame_fabric_switching_configuration() :: #{
+%%   <<"KeyFrameWaitMilliseconds">> => [float()]
+%% }
+-type key_frame_fabric_switching_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2001,6 +2030,14 @@
 
 
 %% Example:
+%% manual_rtmp_push_naming_configuration() :: #{
+%%   <<"ApplicationName">> => [string()],
+%%   <<"StreamName">> => [string()]
+%% }
+-type manual_rtmp_push_naming_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% media_connect_flow_router_input_configuration() :: #{
 %%   <<"FlowArn">> => string(),
 %%   <<"FlowOutputArn">> => string(),
@@ -2304,6 +2341,18 @@
 %%   <<"ShareState">> => list(any())
 %% }
 -type owned_resource_share_details() :: #{binary() => any()}.
+
+%% Example:
+%% passthrough() :: #{}
+-type passthrough() :: #{}.
+
+
+%% Example:
+%% pid_map_rule() :: #{
+%%   <<"Action">> => string(),
+%%   <<"MatchExpression">> => [string()]
+%% }
+-type pid_map_rule() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2725,6 +2774,7 @@
 %%   <<"Messages">> => list(router_output_message()),
 %%   <<"Name">> => [string()],
 %%   <<"OutputType">> => list(any()),
+%%   <<"Processors">> => router_output_processors(),
 %%   <<"RegionName">> => [string()],
 %%   <<"RoutedInputArn">> => string(),
 %%   <<"RoutedState">> => list(any()),
@@ -2744,6 +2794,13 @@
 %%   <<"Message">> => [string()]
 %% }
 -type router_output_message() :: #{binary() => any()}.
+
+
+%% Example:
+%% router_output_processors() :: #{
+%%   <<"SingleProgramTransportStreamPidMap">> => single_program_transport_stream_pid_map_configuration()
+%% }
+-type router_output_processors() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2780,6 +2837,48 @@
 
 
 %% Example:
+%% rtmp_media_info() :: #{
+%%   <<"Streams">> => list(rtmp_media_stream_info())
+%% }
+-type rtmp_media_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% rtmp_media_stream_info() :: #{
+%%   <<"Channels">> => [integer()],
+%%   <<"Codec">> => [string()],
+%%   <<"Color">> => color_information(),
+%%   <<"FrameRate">> => [string()],
+%%   <<"FrameResolution">> => frame_resolution(),
+%%   <<"Language">> => [string()],
+%%   <<"SampleRate">> => [integer()],
+%%   <<"SampleSize">> => [integer()],
+%%   <<"ScanMode">> => list(any()),
+%%   <<"StreamId">> => [integer()],
+%%   <<"StreamType">> => list(any())
+%% }
+-type rtmp_media_stream_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% rtmp_push_output_settings() :: #{
+%%   <<"ApplicationName">> => [string()],
+%%   <<"StreamName">> => [string()],
+%%   <<"TlsEncryption">> => tls_encryption()
+%% }
+-type rtmp_push_output_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% rtmp_push_router_input_configuration() :: #{
+%%   <<"NamingConfiguration">> => list(),
+%%   <<"NamingType">> => list(any()),
+%%   <<"Port">> => [integer()]
+%% }
+-type rtmp_push_router_input_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% rtmp_push_router_output_configuration() :: #{
 %%   <<"ApplicationName">> => [string()],
 %%   <<"DestinationAddress">> => [string()],
@@ -2788,6 +2887,32 @@
 %%   <<"TlsEncryption">> => tls_encryption()
 %% }
 -type rtmp_push_router_output_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% rtmp_push_source_settings() :: #{
+%%   <<"ApplicationName">> => [string()],
+%%   <<"NamingType">> => list(any()),
+%%   <<"StreamName">> => [string()]
+%% }
+-type rtmp_push_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% rtmp_push_stream_details() :: #{
+%%   <<"ApplicationName">> => [string()],
+%%   <<"StreamName">> => [string()]
+%% }
+-type rtmp_push_stream_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% rtmp_source_metadata_info() :: #{
+%%   <<"ApplicationName">> => [string()],
+%%   <<"MediaInfo">> => rtmp_media_info(),
+%%   <<"StreamName">> => [string()]
+%% }
+-type rtmp_source_metadata_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2856,6 +2981,13 @@
 
 
 %% Example:
+%% set_rtmp_push_source_settings() :: #{
+%%   <<"NamingConfiguration">> => list()
+%% }
+-type set_rtmp_push_source_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% set_source_request() :: #{
 %%   <<"Decryption">> => encryption(),
 %%   <<"Description">> => [string()],
@@ -2872,6 +3004,7 @@
 %%   <<"Protocol">> => list(any()),
 %%   <<"RouterIntegrationState">> => list(any()),
 %%   <<"RouterIntegrationTransitDecryption">> => flow_transit_encryption(),
+%%   <<"RtmpPushSettings">> => set_rtmp_push_source_settings(),
 %%   <<"SenderControlPort">> => [integer()],
 %%   <<"SenderIpAddress">> => [string()],
 %%   <<"SourceListenerAddress">> => [string()],
@@ -2898,6 +3031,19 @@
 %%   <<"ThresholdSeconds">> => integer()
 %% }
 -type silent_audio_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% single_program_transport_stream_pid_map_configuration() :: #{
+%%   <<"Auto">> => auto_pid_map_configuration(),
+%%   <<"DefaultAction">> => string(),
+%%   <<"ProgramClockReferencePid">> => list(),
+%%   <<"ProgramMapTablePid">> => list(),
+%%   <<"ProgramNumber">> => list(),
+%%   <<"Rules">> => list(pid_map_rule()),
+%%   <<"TransportStreamId">> => list()
+%% }
+-type single_program_transport_stream_pid_map_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3120,6 +3266,7 @@
 
 %% Example:
 %% standard_router_input_stream_details() :: #{
+%%   <<"RtmpPush">> => rtmp_push_stream_details(),
 %%   <<"SourceIpAddress">> => [string()]
 %% }
 -type standard_router_input_stream_details() :: #{binary() => any()}.
@@ -3319,6 +3466,8 @@
 %%   <<"NdiSpeedHqQuality">> => [integer()],
 %%   <<"Protocol">> => list(any()),
 %%   <<"RemoteId">> => [string()],
+%%   <<"RtmpPushOutputSettings">> => rtmp_push_output_settings(),
+%%   <<"RtmpPushSourceSettings">> => rtmp_push_source_settings(),
 %%   <<"SenderControlPort">> => [integer()],
 %%   <<"SenderIpAddress">> => [string()],
 %%   <<"SmoothingLatency">> => [integer()],
@@ -3344,9 +3493,11 @@
 %%   <<"Color">> => color_information(),
 %%   <<"FrameRate">> => [string()],
 %%   <<"FrameResolution">> => frame_resolution(),
+%%   <<"Language">> => [string()],
 %%   <<"Pid">> => [integer()],
 %%   <<"SampleRate">> => [integer()],
 %%   <<"SampleSize">> => [integer()],
+%%   <<"ScanMode">> => list(any()),
 %%   <<"StreamType">> => [string()]
 %% }
 -type transport_stream() :: #{binary() => any()}.
@@ -3572,6 +3723,7 @@
 %%   <<"RemoteId">> => [string()],
 %%   <<"RouterIntegrationState">> => list(any()),
 %%   <<"RouterIntegrationTransitEncryption">> => flow_transit_encryption(),
+%%   <<"RtmpPushSettings">> => rtmp_push_output_settings(),
 %%   <<"SenderControlPort">> => [integer()],
 %%   <<"SenderIpAddress">> => [string()],
 %%   <<"SmoothingLatency">> => [integer()],
@@ -3624,6 +3776,7 @@
 %%   <<"Protocol">> => list(any()),
 %%   <<"RouterIntegrationState">> => list(any()),
 %%   <<"RouterIntegrationTransitDecryption">> => flow_transit_encryption(),
+%%   <<"RtmpPushSettings">> => set_rtmp_push_source_settings(),
 %%   <<"SenderControlPort">> => [integer()],
 %%   <<"SenderIpAddress">> => [string()],
 %%   <<"SourceListenerAddress">> => [string()],
@@ -3726,6 +3879,7 @@
 %%   <<"MaintenanceConfiguration">> => list(),
 %%   <<"MaximumBitrate">> => [float()],
 %%   <<"Name">> => [string()],
+%%   <<"Processors">> => router_output_processors(),
 %%   <<"RoutingScope">> => list(any()),
 %%   <<"Tier">> => list(any())
 %% }

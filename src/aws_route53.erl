@@ -45,6 +45,8 @@
          create_key_signing_key/3,
          create_query_logging_config/2,
          create_query_logging_config/3,
+         create_resource_record_set_protections/3,
+         create_resource_record_set_protections/4,
          create_reusable_delegation_set/2,
          create_reusable_delegation_set/3,
          create_traffic_policy/2,
@@ -67,6 +69,8 @@
          delete_key_signing_key/5,
          delete_query_logging_config/3,
          delete_query_logging_config/4,
+         delete_resource_record_set_protections/3,
+         delete_resource_record_set_protections/4,
          delete_reusable_delegation_set/3,
          delete_reusable_delegation_set/4,
          delete_traffic_policy/4,
@@ -162,6 +166,9 @@
          list_query_logging_configs/1,
          list_query_logging_configs/3,
          list_query_logging_configs/4,
+         list_resource_record_set_protections/2,
+         list_resource_record_set_protections/4,
+         list_resource_record_set_protections/5,
          list_resource_record_sets/2,
          list_resource_record_sets/4,
          list_resource_record_sets/5,
@@ -537,6 +544,17 @@
 
 
 %% Example:
+%% create_resource_record_set_protections_request() :: #{
+%%   <<"Protections">> := list(resource_record_set_protection_config())
+%% }
+-type create_resource_record_set_protections_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_resource_record_set_protections_response() :: #{}
+-type create_resource_record_set_protections_response() :: #{}.
+
+
+%% Example:
 %% create_reusable_delegation_set_request() :: #{
 %%   <<"CallerReference">> := string(),
 %%   <<"HostedZoneId">> => string()
@@ -718,6 +736,17 @@
 %% Example:
 %% delete_query_logging_config_response() :: #{}
 -type delete_query_logging_config_response() :: #{}.
+
+
+%% Example:
+%% delete_resource_record_set_protections_request() :: #{
+%%   <<"Protections">> := list(resource_record_set_protection_key())
+%% }
+-type delete_resource_record_set_protections_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_resource_record_set_protections_response() :: #{}
+-type delete_resource_record_set_protections_response() :: #{}.
 
 %% Example:
 %% delete_reusable_delegation_set_request() :: #{}
@@ -1289,6 +1318,14 @@
 
 
 %% Example:
+%% invalid_resource_record_set_protection_batch() :: #{
+%%   <<"Errors">> => list(protection_error()),
+%%   <<"Message">> => string()
+%% }
+-type invalid_resource_record_set_protection_batch() :: #{binary() => any()}.
+
+
+%% Example:
 %% invalid_signing_status() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1548,6 +1585,24 @@
 %%   <<"QueryLoggingConfigs">> => list(query_logging_config())
 %% }
 -type list_query_logging_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_record_set_protections_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"StartRecordName">> => string(),
+%%   <<"StartRecordType">> => list(any())
+%% }
+-type list_resource_record_set_protections_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_record_set_protections_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceRecordSetProtections">> => list(resource_record_set_protection())
+%% }
+-type list_resource_record_set_protections_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1842,6 +1897,24 @@
 
 
 %% Example:
+%% protection_already_exists() :: #{
+%%   <<"Errors">> => list(protection_error()),
+%%   <<"Message">> => string()
+%% }
+-type protection_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% protection_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"RecordName">> => string(),
+%%   <<"RecordType">> => list(any())
+%% }
+-type protection_error() :: #{binary() => any()}.
+
+
+%% Example:
 %% public_zone_vpc_association() :: #{
 %%   <<"message">> => string()
 %% }
@@ -1890,6 +1963,32 @@
 %%   <<"Weight">> => float()
 %% }
 -type resource_record_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_record_set_protection() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"RecordName">> => string(),
+%%   <<"RecordType">> => list(any())
+%% }
+-type resource_record_set_protection() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_record_set_protection_config() :: #{
+%%   <<"Comment">> => string(),
+%%   <<"RecordName">> => string(),
+%%   <<"RecordType">> => list(any())
+%% }
+-type resource_record_set_protection_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_record_set_protection_key() :: #{
+%%   <<"RecordName">> => string(),
+%%   <<"RecordType">> => list(any())
+%% }
+-type resource_record_set_protection_key() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2251,6 +2350,14 @@
     insufficient_cloud_watch_logs_resource_policy() | 
     concurrent_modification().
 
+-type create_resource_record_set_protections_errors() ::
+    protection_already_exists() | 
+    prior_request_not_complete() | 
+    no_such_hosted_zone() | 
+    limits_exceeded() | 
+    invalid_resource_record_set_protection_batch() | 
+    invalid_input().
+
 -type create_reusable_delegation_set_errors() ::
     limits_exceeded() | 
     invalid_input() | 
@@ -2326,6 +2433,12 @@
     no_such_query_logging_config() | 
     invalid_input() | 
     concurrent_modification().
+
+-type delete_resource_record_set_protections_errors() ::
+    prior_request_not_complete() | 
+    no_such_hosted_zone() | 
+    invalid_resource_record_set_protection_batch() | 
+    invalid_input().
 
 -type delete_reusable_delegation_set_errors() ::
     no_such_delegation_set() | 
@@ -2474,6 +2587,11 @@
     invalid_input().
 
 -type list_query_logging_configs_errors() ::
+    no_such_hosted_zone() | 
+    invalid_pagination_token() | 
+    invalid_input().
+
+-type list_resource_record_set_protections_errors() ::
     no_such_hosted_zone() | 
     invalid_pagination_token() | 
     invalid_input().
@@ -2764,6 +2882,23 @@ change_cidr_collection(Client, Id, Input0, Options0) ->
 %% If you try to delete the same resource record set more than once in a
 %% single
 %% change batch, Route 53 returns an `InvalidChangeBatch' error.
+%%
+%% Protected Resource Record Sets
+%%
+%% If a resource record set protection exists for a name and type, Route 53
+%% rejects any
+%% change in the change batch that creates, updates, or deletes a resource
+%% record set with
+%% that name and type. Because change batches are transactional, Route 53
+%% rejects the
+%% entire request and returns an `InvalidChangeBatch' error. Route 53
+%% identifies
+%% each protected resource record set in the error message and includes the
+%% protection's
+%% comment, if any. To make the change, first delete the protection by using
+%% `DeleteResourceRecordSetProtections'. To see which resource record
+%% sets
+%% are protected, use `ListResourceRecordSetProtections'.
 %%
 %% Traffic Flow
 %%
@@ -3447,6 +3582,76 @@ create_query_logging_config(Client, Input0, Options0) ->
         Result
     end.
 
+%% @doc Creates one or more resource record set protections in a hosted zone.
+%%
+%% A protection applies to every resource record set in the hosted zone that
+%% has the specified name and type. While a protection exists, Route 53
+%% rejects any `ChangeResourceRecordSets' request that creates, updates,
+%% or deletes a resource record set with that name and type, and returns an
+%% `InvalidChangeBatch' error. To change a protected resource record set,
+%% first delete its protection by using
+%% `DeleteResourceRecordSetProtections'.
+%%
+%% You can create a protection for a name and type that doesn't have a
+%% resource record set yet. In that case, Route 53 also rejects requests to
+%% create that resource record set.
+%%
+%% You can't delete a hosted zone that has protections. To delete the
+%% hosted zone, first delete all of its protections by using
+%% `DeleteResourceRecordSetProtections'.
+%%
+%% The request is atomic. Route 53 either creates all of the protections in
+%% the request or none of them. If one or more entries fail, the response is
+%% an error that lists the failing entries and the reason that each one
+%% failed. Route 53 checks for invalid entries before it checks for existing
+%% protections, so if any entry is invalid, the error lists only the invalid
+%% entries.
+%%
+%% The error that Route 53 returns depends on the failures:
+%%
+%% If every entry already has a protection, Route 53 returns a
+%% `ProtectionAlreadyExists' error.
+%%
+%% For any other combination of failures, Route 53 returns an
+%% `InvalidResourceRecordSetProtectionBatch' error.
+%%
+%% You can specify up to 100 protections in one request. The number of
+%% protections that you can have in a hosted zone is limited by a quota. If
+%% the request would exceed that quota, Route 53 returns a
+%% `LimitsExceeded' error.
+-spec create_resource_record_set_protections(aws_client:aws_client(), binary() | list(), create_resource_record_set_protections_request()) ->
+    {ok, create_resource_record_set_protections_response(), tuple()} |
+    {error, any()} |
+    {error, create_resource_record_set_protections_errors(), tuple()}.
+create_resource_record_set_protections(Client, HostedZoneId, Input) ->
+    create_resource_record_set_protections(Client, HostedZoneId, Input, []).
+
+-spec create_resource_record_set_protections(aws_client:aws_client(), binary() | list(), create_resource_record_set_protections_request(), proplists:proplist()) ->
+    {ok, create_resource_record_set_protections_response(), tuple()} |
+    {error, any()} |
+    {error, create_resource_record_set_protections_errors(), tuple()}.
+create_resource_record_set_protections(Client, HostedZoneId, Input0, Options0) ->
+    Method = post,
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrsetprotection"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a delegation set (a group of four name servers) that can be
 %% reused by multiple
 %% hosted zones that were created by the same Amazon Web Services account.
@@ -3986,6 +4191,12 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 %% ChangeResourceRecordSets:
 %% https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html.
 %%
+%% You also can't delete a hosted zone that has resource record set
+%% protections. To see
+%% the protections in a hosted zone, use
+%% `ListResourceRecordSetProtections'. To
+%% delete them, use `DeleteResourceRecordSetProtections'.
+%%
 %% To verify that the hosted zone has been deleted, do one of the following:
 %%
 %% Use the `GetHostedZone' action to request information about the
@@ -4097,6 +4308,52 @@ delete_query_logging_config(Client, Id, Input) ->
 delete_query_logging_config(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/2013-04-01/queryloggingconfig/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes one or more resource record set protections from a hosted
+%% zone.
+%%
+%% After a protection is deleted, you can change the resource record sets
+%% that have that name and type by using `ChangeResourceRecordSets'.
+%%
+%% The request is atomic. Route 53 either deletes all of the protections in
+%% the request or none of them. If one or more entries fail, for example
+%% because no protection exists for the specified name and type, Route 53
+%% returns an `InvalidResourceRecordSetProtectionBatch' error that lists
+%% the failing entries and the reason that each one failed.
+%%
+%% You can specify up to 100 protections in one request.
+-spec delete_resource_record_set_protections(aws_client:aws_client(), binary() | list(), delete_resource_record_set_protections_request()) ->
+    {ok, delete_resource_record_set_protections_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_record_set_protections_errors(), tuple()}.
+delete_resource_record_set_protections(Client, HostedZoneId, Input) ->
+    delete_resource_record_set_protections(Client, HostedZoneId, Input, []).
+
+-spec delete_resource_record_set_protections(aws_client:aws_client(), binary() | list(), delete_resource_record_set_protections_request(), proplists:proplist()) ->
+    {ok, delete_resource_record_set_protections_response(), tuple()} |
+    {error, any()} |
+    {error, delete_resource_record_set_protections_errors(), tuple()}.
+delete_resource_record_set_protections(Client, HostedZoneId, Input0, Options0) ->
+    Method = post,
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrsetprotection/delete"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5781,6 +6038,58 @@ list_query_logging_configs(Client, QueryMap, HeadersMap, Options0)
         {<<"hostedzoneid">>, maps:get(<<"hostedzoneid">>, QueryMap, undefined)},
         {<<"maxresults">>, maps:get(<<"maxresults">>, QueryMap, undefined)},
         {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the resource record set protections in a hosted zone.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and successfully.
+%%
+%% If the response includes a `NextToken' element, there are more
+%% protections to list. To get the next page of results, submit another
+%% request and specify the value of `NextToken' in the `NextToken'
+%% parameter.
+-spec list_resource_record_set_protections(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_resource_record_set_protections_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_record_set_protections_errors(), tuple()}.
+list_resource_record_set_protections(Client, HostedZoneId)
+  when is_map(Client) ->
+    list_resource_record_set_protections(Client, HostedZoneId, #{}, #{}).
+
+-spec list_resource_record_set_protections(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_resource_record_set_protections_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_record_set_protections_errors(), tuple()}.
+list_resource_record_set_protections(Client, HostedZoneId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resource_record_set_protections(Client, HostedZoneId, QueryMap, HeadersMap, []).
+
+-spec list_resource_record_set_protections(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_resource_record_set_protections_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_record_set_protections_errors(), tuple()}.
+list_resource_record_set_protections(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrsetprotection"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxresults">>, maps:get(<<"maxresults">>, QueryMap, undefined)},
+        {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)},
+        {<<"name">>, maps:get(<<"name">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

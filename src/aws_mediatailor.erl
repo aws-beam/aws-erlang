@@ -818,6 +818,7 @@
 %%   <<"Description">> => string(),
 %%   <<"FunctionId">> => string(),
 %%   <<"FunctionType">> => list(any()),
+%%   <<"HlsTagProcessorConfiguration">> => hls_tag_processor_configuration(),
 %%   <<"HttpRequestConfiguration">> => http_request_configuration(),
 %%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
 %%   <<"Tags">> => map(),
@@ -898,6 +899,16 @@
 %%   <<"ManifestWindowSeconds">> => integer()
 %% }
 -type hls_playlist_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% hls_tag_processor_configuration() :: #{
+%%   <<"Output">> => map(),
+%%   <<"RunCondition">> => string(),
+%%   <<"Runtime">> => list(any()),
+%%   <<"TagFilter">> => list(list(any())())
+%% }
+-type hls_tag_processor_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1162,6 +1173,7 @@
 %%   <<"Description">> => string(),
 %%   <<"FunctionId">> => string(),
 %%   <<"FunctionType">> => list(any()),
+%%   <<"HlsTagProcessorConfiguration">> => hls_tag_processor_configuration(),
 %%   <<"HttpRequestConfiguration">> => http_request_configuration(),
 %%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
 %%   <<"Tags">> => map(),
@@ -1273,6 +1285,7 @@
 %%   <<"CustomOutputConfiguration">> => custom_output_configuration(),
 %%   <<"Description">> => string(),
 %%   <<"FunctionType">> := list(any()),
+%%   <<"HlsTagProcessorConfiguration">> => hls_tag_processor_configuration(),
 %%   <<"HttpRequestConfiguration">> => http_request_configuration(),
 %%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
 %%   <<"Tags">> => map(),
@@ -1290,6 +1303,7 @@
 %%   <<"Description">> => string(),
 %%   <<"FunctionId">> => string(),
 %%   <<"FunctionType">> => list(any()),
+%%   <<"HlsTagProcessorConfiguration">> => hls_tag_processor_configuration(),
 %%   <<"HttpRequestConfiguration">> => http_request_configuration(),
 %%   <<"SequentialExecutorConfiguration">> => sequential_executor_configuration(),
 %%   <<"Tags">> => map(),

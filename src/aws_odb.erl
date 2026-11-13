@@ -39,6 +39,8 @@
          accept_marketplace_registration/3,
          associate_iam_role_to_resource/2,
          associate_iam_role_to_resource/3,
+         associate_virtual_machines_to_cloud_vm_cluster/2,
+         associate_virtual_machines_to_cloud_vm_cluster/3,
          associate_virtual_machines_to_exadb_vm_cluster/2,
          associate_virtual_machines_to_exadb_vm_cluster/3,
          create_autonomous_database/2,
@@ -81,6 +83,8 @@
          delete_odb_peering_connection/3,
          disassociate_iam_role_from_resource/2,
          disassociate_iam_role_from_resource/3,
+         disassociate_virtual_machines_from_cloud_vm_cluster/2,
+         disassociate_virtual_machines_from_cloud_vm_cluster/3,
          disassociate_virtual_machines_from_exadb_vm_cluster/2,
          disassociate_virtual_machines_from_exadb_vm_cluster/3,
          failover_autonomous_database/2,
@@ -185,8 +189,14 @@
          update_autonomous_database/3,
          update_autonomous_database_backup/2,
          update_autonomous_database_backup/3,
+         update_cloud_autonomous_vm_cluster/2,
+         update_cloud_autonomous_vm_cluster/3,
          update_cloud_exadata_infrastructure/2,
          update_cloud_exadata_infrastructure/3,
+         update_cloud_exadata_infrastructure_storage_capacity/2,
+         update_cloud_exadata_infrastructure_storage_capacity/3,
+         update_cloud_vm_cluster/2,
+         update_cloud_vm_cluster/3,
          update_exadb_vm_cluster/2,
          update_exadb_vm_cluster/3,
          update_exascale_cloud_exadata_infrastructure/2,
@@ -242,6 +252,21 @@
 
 %% }
 -type associate_iam_role_to_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% associate_virtual_machines_to_cloud_vm_cluster_input() :: #{
+%%   <<"dbServers">> := list([string()]())
+%% }
+-type associate_virtual_machines_to_cloud_vm_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% associate_virtual_machines_to_cloud_vm_cluster_output() :: #{
+%%   <<"cloudVmClusterId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type associate_virtual_machines_to_cloud_vm_cluster_output() :: #{binary() => any()}.
 
 %% Example:
 %% associate_virtual_machines_to_exadb_vm_cluster_input() :: #{
@@ -663,6 +688,7 @@
 %%   <<"ociResourceAnchorName">> => [string()],
 %%   <<"ociUrl">> => [string()],
 %%   <<"ocid">> => [string()],
+%%   <<"ocpusLowestScaledValue">> => [integer()],
 %%   <<"odbNetworkArn">> => string(),
 %%   <<"odbNetworkId">> => string(),
 %%   <<"percentProgress">> => [float()],
@@ -727,6 +753,7 @@
 %%   <<"ociResourceAnchorName">> => [string()],
 %%   <<"ociUrl">> => [string()],
 %%   <<"ocid">> => [string()],
+%%   <<"ocpusLowestScaledValue">> => [integer()],
 %%   <<"odbNetworkArn">> => string(),
 %%   <<"odbNetworkId">> => string(),
 %%   <<"percentProgress">> => [float()],
@@ -1647,6 +1674,21 @@
 
 %% }
 -type disassociate_iam_role_from_resource_output() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_virtual_machines_from_cloud_vm_cluster_input() :: #{
+%%   <<"dbServers">> := list([string()]())
+%% }
+-type disassociate_virtual_machines_from_cloud_vm_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_virtual_machines_from_cloud_vm_cluster_output() :: #{
+%%   <<"cloudVmClusterId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type disassociate_virtual_machines_from_cloud_vm_cluster_output() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_virtual_machines_from_exadb_vm_cluster_input() :: #{
@@ -2990,8 +3032,32 @@
 -type update_autonomous_database_output() :: #{binary() => any()}.
 
 %% Example:
+%% update_cloud_autonomous_vm_cluster_input() :: #{
+%%   <<"autonomousDataStorageSizeInTBs">> => [float()],
+%%   <<"cpuCoreCountPerNode">> => [integer()],
+%%   <<"description">> => [string()],
+%%   <<"displayName">> => string(),
+%%   <<"licenseModel">> => list(any()),
+%%   <<"maintenanceWindow">> => maintenance_window(),
+%%   <<"totalContainerDatabases">> => [integer()]
+%% }
+-type update_cloud_autonomous_vm_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_cloud_autonomous_vm_cluster_output() :: #{
+%%   <<"cloudAutonomousVmClusterId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type update_cloud_autonomous_vm_cluster_output() :: #{binary() => any()}.
+
+%% Example:
 %% update_cloud_exadata_infrastructure_input() :: #{
-%%   <<"maintenanceWindow">> => maintenance_window()
+%%   <<"computeCount">> => [integer()],
+%%   <<"displayName">> => string(),
+%%   <<"maintenanceWindow">> => maintenance_window(),
+%%   <<"storageCount">> => [integer()]
 %% }
 -type update_cloud_exadata_infrastructure_input() :: #{binary() => any()}.
 
@@ -3003,6 +3069,44 @@
 %%   <<"statusReason">> => [string()]
 %% }
 -type update_cloud_exadata_infrastructure_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_cloud_exadata_infrastructure_storage_capacity_input() :: #{
+
+%% }
+-type update_cloud_exadata_infrastructure_storage_capacity_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_cloud_exadata_infrastructure_storage_capacity_output() :: #{
+%%   <<"cloudExadataInfrastructureId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type update_cloud_exadata_infrastructure_storage_capacity_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_cloud_vm_cluster_input() :: #{
+%%   <<"cpuCoreCount">> => [integer()],
+%%   <<"dataCollectionOptions">> => data_collection_options(),
+%%   <<"dataStorageSizeInTBs">> => [float()],
+%%   <<"dbNodeStorageSizeInGBs">> => [integer()],
+%%   <<"displayName">> => string(),
+%%   <<"licenseModel">> => list(any()),
+%%   <<"memorySizeInGBs">> => [integer()],
+%%   <<"sshPublicKeys">> => list([string()]()),
+%%   <<"storageSizeInGBs">> => [integer()]
+%% }
+-type update_cloud_vm_cluster_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_cloud_vm_cluster_output() :: #{
+%%   <<"cloudVmClusterId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type update_cloud_vm_cluster_output() :: #{binary() => any()}.
 
 %% Example:
 %% update_exadb_vm_cluster_input() :: #{
@@ -3146,6 +3250,14 @@
     access_denied_exception().
 
 -type associate_iam_role_to_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type associate_virtual_machines_to_cloud_vm_cluster_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3316,6 +3428,14 @@
     access_denied_exception().
 
 -type disassociate_iam_role_from_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type disassociate_virtual_machines_from_cloud_vm_cluster_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3675,7 +3795,31 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type update_cloud_autonomous_vm_cluster_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_cloud_exadata_infrastructure_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_cloud_exadata_infrastructure_storage_capacity_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_cloud_vm_cluster_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3764,6 +3908,23 @@ associate_iam_role_to_resource(Client, Input)
 associate_iam_role_to_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateIamRoleToResource">>, Input, Options).
+
+%% @doc Adds virtual machines to the specified VM cluster.
+-spec associate_virtual_machines_to_cloud_vm_cluster(aws_client:aws_client(), associate_virtual_machines_to_cloud_vm_cluster_input()) ->
+    {ok, associate_virtual_machines_to_cloud_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, associate_virtual_machines_to_cloud_vm_cluster_errors(), tuple()}.
+associate_virtual_machines_to_cloud_vm_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_virtual_machines_to_cloud_vm_cluster(Client, Input, []).
+
+-spec associate_virtual_machines_to_cloud_vm_cluster(aws_client:aws_client(), associate_virtual_machines_to_cloud_vm_cluster_input(), proplists:proplist()) ->
+    {ok, associate_virtual_machines_to_cloud_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, associate_virtual_machines_to_cloud_vm_cluster_errors(), tuple()}.
+associate_virtual_machines_to_cloud_vm_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateVirtualMachinesToCloudVmCluster">>, Input, Options).
 
 %% @doc Adds virtual machines to the specified Exascale VM cluster.
 -spec associate_virtual_machines_to_exadb_vm_cluster(aws_client:aws_client(), associate_virtual_machines_to_exadb_vm_cluster_input()) ->
@@ -4136,6 +4297,23 @@ disassociate_iam_role_from_resource(Client, Input)
 disassociate_iam_role_from_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateIamRoleFromResource">>, Input, Options).
+
+%% @doc Removes virtual machines from the specified VM cluster.
+-spec disassociate_virtual_machines_from_cloud_vm_cluster(aws_client:aws_client(), disassociate_virtual_machines_from_cloud_vm_cluster_input()) ->
+    {ok, disassociate_virtual_machines_from_cloud_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_virtual_machines_from_cloud_vm_cluster_errors(), tuple()}.
+disassociate_virtual_machines_from_cloud_vm_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_virtual_machines_from_cloud_vm_cluster(Client, Input, []).
+
+-spec disassociate_virtual_machines_from_cloud_vm_cluster(aws_client:aws_client(), disassociate_virtual_machines_from_cloud_vm_cluster_input(), proplists:proplist()) ->
+    {ok, disassociate_virtual_machines_from_cloud_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, disassociate_virtual_machines_from_cloud_vm_cluster_errors(), tuple()}.
+disassociate_virtual_machines_from_cloud_vm_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateVirtualMachinesFromCloudVmCluster">>, Input, Options).
 
 %% @doc Removes virtual machines from the specified Exascale VM cluster.
 -spec disassociate_virtual_machines_from_exadb_vm_cluster(aws_client:aws_client(), disassociate_virtual_machines_from_exadb_vm_cluster_input()) ->
@@ -5041,6 +5219,23 @@ update_autonomous_database_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAutonomousDatabaseBackup">>, Input, Options).
 
+%% @doc Updates the properties of the specified Autonomous VM cluster.
+-spec update_cloud_autonomous_vm_cluster(aws_client:aws_client(), update_cloud_autonomous_vm_cluster_input()) ->
+    {ok, update_cloud_autonomous_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_autonomous_vm_cluster_errors(), tuple()}.
+update_cloud_autonomous_vm_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cloud_autonomous_vm_cluster(Client, Input, []).
+
+-spec update_cloud_autonomous_vm_cluster(aws_client:aws_client(), update_cloud_autonomous_vm_cluster_input(), proplists:proplist()) ->
+    {ok, update_cloud_autonomous_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_autonomous_vm_cluster_errors(), tuple()}.
+update_cloud_autonomous_vm_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCloudAutonomousVmCluster">>, Input, Options).
+
 %% @doc Updates the properties of an Exadata infrastructure resource.
 -spec update_cloud_exadata_infrastructure(aws_client:aws_client(), update_cloud_exadata_infrastructure_input()) ->
     {ok, update_cloud_exadata_infrastructure_output(), tuple()} |
@@ -5057,6 +5252,40 @@ update_cloud_exadata_infrastructure(Client, Input)
 update_cloud_exadata_infrastructure(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateCloudExadataInfrastructure">>, Input, Options).
+
+%% @doc Adds storage capacity to the specified Exadata infrastructure.
+-spec update_cloud_exadata_infrastructure_storage_capacity(aws_client:aws_client(), update_cloud_exadata_infrastructure_storage_capacity_input()) ->
+    {ok, update_cloud_exadata_infrastructure_storage_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_exadata_infrastructure_storage_capacity_errors(), tuple()}.
+update_cloud_exadata_infrastructure_storage_capacity(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cloud_exadata_infrastructure_storage_capacity(Client, Input, []).
+
+-spec update_cloud_exadata_infrastructure_storage_capacity(aws_client:aws_client(), update_cloud_exadata_infrastructure_storage_capacity_input(), proplists:proplist()) ->
+    {ok, update_cloud_exadata_infrastructure_storage_capacity_output(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_exadata_infrastructure_storage_capacity_errors(), tuple()}.
+update_cloud_exadata_infrastructure_storage_capacity(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCloudExadataInfrastructureStorageCapacity">>, Input, Options).
+
+%% @doc Updates the properties of the specified VM cluster.
+-spec update_cloud_vm_cluster(aws_client:aws_client(), update_cloud_vm_cluster_input()) ->
+    {ok, update_cloud_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_vm_cluster_errors(), tuple()}.
+update_cloud_vm_cluster(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cloud_vm_cluster(Client, Input, []).
+
+-spec update_cloud_vm_cluster(aws_client:aws_client(), update_cloud_vm_cluster_input(), proplists:proplist()) ->
+    {ok, update_cloud_vm_cluster_output(), tuple()} |
+    {error, any()} |
+    {error, update_cloud_vm_cluster_errors(), tuple()}.
+update_cloud_vm_cluster(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCloudVmCluster">>, Input, Options).
 
 %% @doc Updates the specified Exascale VM cluster.
 -spec update_exadb_vm_cluster(aws_client:aws_client(), update_exadb_vm_cluster_input()) ->

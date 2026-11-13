@@ -46,6 +46,8 @@
          attach_load_balancer_tls_certificate/3,
          attach_static_ip/2,
          attach_static_ip/3,
+         check_subdomain_availability/2,
+         check_subdomain_availability/3,
          close_instance_public_ports/2,
          close_instance_public_ports/3,
          copy_snapshot/2,
@@ -98,6 +100,8 @@
          create_relational_database_from_snapshot/3,
          create_relational_database_snapshot/2,
          create_relational_database_snapshot/3,
+         create_subdomain/2,
+         create_subdomain/3,
          delete_alarm/2,
          delete_alarm/3,
          delete_auto_snapshot/2,
@@ -140,6 +144,8 @@
          delete_relational_database/3,
          delete_relational_database_snapshot/2,
          delete_relational_database_snapshot/3,
+         delete_subdomain/2,
+         delete_subdomain/3,
          detach_certificate_from_distribution/2,
          detach_certificate_from_distribution/3,
          detach_disk/2,
@@ -288,6 +294,8 @@
          get_static_ip/3,
          get_static_ips/2,
          get_static_ips/3,
+         get_subdomains/2,
+         get_subdomains/3,
          import_key_pair/2,
          import_key_pair/3,
          is_vpc_peered/2,
@@ -357,7 +365,9 @@
          update_relational_database/2,
          update_relational_database/3,
          update_relational_database_parameters/2,
-         update_relational_database_parameters/3]).
+         update_relational_database_parameters/3,
+         update_subdomain_association/2,
+         update_subdomain_association/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -732,6 +742,21 @@
 %%   <<"tags">> => list(tag())
 %% }
 -type certificate_summary() :: #{binary() => any()}.
+
+%% Example:
+%% check_subdomain_availability_request() :: #{
+%%   <<"reserve">> => boolean(),
+%%   <<"subdomainName">> := string()
+%% }
+-type check_subdomain_availability_request() :: #{binary() => any()}.
+
+%% Example:
+%% check_subdomain_availability_result() :: #{
+%%   <<"available">> => boolean(),
+%%   <<"reservationExpiresAt">> => non_neg_integer(),
+%%   <<"subdomainName">> => string()
+%% }
+-type check_subdomain_availability_result() :: #{binary() => any()}.
 
 %% Example:
 %% close_instance_public_ports_request() :: #{
@@ -1122,6 +1147,7 @@
 %%   <<"enableWaf">> => boolean(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"origin">> := input_origin(),
+%%   <<"subdomainName">> => string(),
 %%   <<"tags">> => list(tag()),
 %%   <<"viewerMinimumTlsProtocolVersion">> => list(any()),
 %%   <<"wafRules">> => list(waf_rule())
@@ -1343,6 +1369,20 @@
 %%   <<"operations">> => list(operation())
 %% }
 -type create_relational_database_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% create_subdomain_request() :: #{
+%%   <<"subdomainName">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_subdomain_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_subdomain_result() :: #{
+%%   <<"operation">> => operation(),
+%%   <<"subdomain">> => subdomain()
+%% }
+-type create_subdomain_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_alarm_request() :: #{
@@ -1606,6 +1646,19 @@
 %%   <<"operations">> => list(operation())
 %% }
 -type delete_relational_database_snapshot_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subdomain_request() :: #{
+%%   <<"subdomainName">> := string()
+%% }
+-type delete_subdomain_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_subdomain_result() :: #{
+%%   <<"operation">> => operation(),
+%%   <<"subdomain">> => subdomain()
+%% }
+-type delete_subdomain_result() :: #{binary() => any()}.
 
 %% Example:
 %% destination_info() :: #{
@@ -2783,6 +2836,20 @@
 -type get_static_ips_result() :: #{binary() => any()}.
 
 %% Example:
+%% get_subdomains_request() :: #{
+%%   <<"pageToken">> => string(),
+%%   <<"subdomainName">> => string()
+%% }
+-type get_subdomains_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_subdomains_result() :: #{
+%%   <<"nextPageToken">> => string(),
+%%   <<"subdomains">> => list(subdomain())
+%% }
+-type get_subdomains_result() :: #{binary() => any()}.
+
+%% Example:
 %% header_object() :: #{
 %%   <<"headersAllowList">> => list(list(any())()),
 %%   <<"option">> => list(any())
@@ -3052,12 +3119,22 @@
 %%   <<"originPublicDNS">> => string(),
 %%   <<"resourceType">> => list(any()),
 %%   <<"status">> => string(),
+%%   <<"subdomain">> => lightsail_distribution_subdomain(),
 %%   <<"supportCode">> => string(),
 %%   <<"tags">> => list(tag()),
 %%   <<"viewerMinimumTlsProtocolVersion">> => string(),
 %%   <<"waf">> => waf_config()
 %% }
 -type lightsail_distribution() :: #{binary() => any()}.
+
+%% Example:
+%% lightsail_distribution_subdomain() :: #{
+%%   <<"errorCode">> => string(),
+%%   <<"errorDetails">> => string(),
+%%   <<"name">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type lightsail_distribution_subdomain() :: #{binary() => any()}.
 
 %% Example:
 %% load_balancer() :: #{
@@ -3832,6 +3909,31 @@
 -type stop_relational_database_result() :: #{binary() => any()}.
 
 %% Example:
+%% subdomain() :: #{
+%%   <<"arn">> => string(),
+%%   <<"attachedResource">> => subdomain_attachable_resource(),
+%%   <<"attachingResource">> => subdomain_attachable_resource(),
+%%   <<"children">> => list(subdomain()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"depth">> => integer(),
+%%   <<"fqdn">> => string(),
+%%   <<"location">> => resource_location(),
+%%   <<"parentFqdn">> => string(),
+%%   <<"state">> => list(any()),
+%%   <<"subdomainName">> => string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type subdomain() :: #{binary() => any()}.
+
+%% Example:
+%% subdomain_attachable_resource() :: #{
+%%   <<"arn">> => string(),
+%%   <<"attachedAt">> => non_neg_integer(),
+%%   <<"name">> => string()
+%% }
+-type subdomain_attachable_resource() :: #{binary() => any()}.
+
+%% Example:
 %% tag() :: #{
 %%   <<"key">> => string(),
 %%   <<"value">> => string()
@@ -4070,6 +4172,21 @@
 -type update_relational_database_result() :: #{binary() => any()}.
 
 %% Example:
+%% update_subdomain_association_request() :: #{
+%%   <<"action">> := list(any()),
+%%   <<"subdomainName">> := string(),
+%%   <<"targetResourceArn">> => string()
+%% }
+-type update_subdomain_association_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_subdomain_association_result() :: #{
+%%   <<"operation">> => operation(),
+%%   <<"subdomain">> => subdomain()
+%% }
+-type update_subdomain_association_result() :: #{binary() => any()}.
+
+%% Example:
 %% waf_acfp_config() :: #{
 %%   <<"creationPath">> => string(),
 %%   <<"payloadType">> => list(any()),
@@ -4173,6 +4290,13 @@
     not_found_exception() | 
     invalid_input_exception() | 
     account_setup_in_progress_exception() | 
+    access_denied_exception().
+
+-type check_subdomain_availability_errors() ::
+    unauthenticated_exception() | 
+    service_exception() | 
+    operation_failure_exception() | 
+    invalid_input_exception() | 
     access_denied_exception().
 
 -type close_instance_public_ports_errors() ::
@@ -4417,6 +4541,14 @@
     account_setup_in_progress_exception() | 
     access_denied_exception().
 
+-type create_subdomain_errors() ::
+    unauthenticated_exception() | 
+    service_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
+
 -type delete_alarm_errors() ::
     unauthenticated_exception() | 
     service_exception() | 
@@ -4610,6 +4742,14 @@
     not_found_exception() | 
     invalid_input_exception() | 
     account_setup_in_progress_exception() | 
+    access_denied_exception().
+
+-type delete_subdomain_errors() ::
+    unauthenticated_exception() | 
+    service_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
     access_denied_exception().
 
 -type detach_certificate_from_distribution_errors() ::
@@ -5301,6 +5441,13 @@
     account_setup_in_progress_exception() | 
     access_denied_exception().
 
+-type get_subdomains_errors() ::
+    unauthenticated_exception() | 
+    service_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
+
 -type import_key_pair_errors() ::
     unauthenticated_exception() | 
     service_exception() | 
@@ -5626,6 +5773,14 @@
     account_setup_in_progress_exception() | 
     access_denied_exception().
 
+-type update_subdomain_association_errors() ::
+    unauthenticated_exception() | 
+    service_exception() | 
+    operation_failure_exception() | 
+    not_found_exception() | 
+    invalid_input_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -5791,6 +5946,29 @@ attach_static_ip(Client, Input)
 attach_static_ip(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AttachStaticIp">>, Input, Options).
+
+%% @doc Checks whether a Lightsail subdomain is available to create.
+%%
+%% Optionally, reserves the
+%% subdomain for your account for 15 minutes.
+%%
+%% If you don't reserve the subdomain, another account can create it
+%% before you do.
+-spec check_subdomain_availability(aws_client:aws_client(), check_subdomain_availability_request()) ->
+    {ok, check_subdomain_availability_result(), tuple()} |
+    {error, any()} |
+    {error, check_subdomain_availability_errors(), tuple()}.
+check_subdomain_availability(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    check_subdomain_availability(Client, Input, []).
+
+-spec check_subdomain_availability(aws_client:aws_client(), check_subdomain_availability_request(), proplists:proplist()) ->
+    {ok, check_subdomain_availability_result(), tuple()} |
+    {error, any()} |
+    {error, check_subdomain_availability_errors(), tuple()}.
+check_subdomain_availability(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CheckSubdomainAvailability">>, Input, Options).
 
 %% @doc Closes ports for a specific Amazon Lightsail instance.
 %%
@@ -6590,6 +6768,43 @@ create_relational_database_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateRelationalDatabaseSnapshot">>, Input, Options).
 
+%% @doc Creates a Lightsail subdomain, such as `mysite', with the web
+%% address
+%% `mysite.amazonlightsail.com'.
+%%
+%% After the subdomain is created, use the
+%% `UpdateSubdomainAssociation' action to associate it with a Lightsail
+%% resource.
+%%
+%% When you create a nested subdomain, such as `blog.mysite', and you
+%% don't
+%% already have the top-level subdomain (`mysite'), Lightsail adds the
+%% top-level
+%% subdomain to your account in the `IMPLICIT' state.
+%%
+%% You can have up to 30 subdomains in your account. Nested subdomains,
+%% subdomains in the
+%% `CREATE_FAILED' state, and deleted subdomains that other accounts
+%% can't create yet
+%% count toward this quota. Subdomains in the `IMPLICIT' state don't
+%% count toward this
+%% quota.
+-spec create_subdomain(aws_client:aws_client(), create_subdomain_request()) ->
+    {ok, create_subdomain_result(), tuple()} |
+    {error, any()} |
+    {error, create_subdomain_errors(), tuple()}.
+create_subdomain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_subdomain(Client, Input, []).
+
+-spec create_subdomain(aws_client:aws_client(), create_subdomain_request(), proplists:proplist()) ->
+    {ok, create_subdomain_result(), tuple()} |
+    {error, any()} |
+    {error, create_subdomain_errors(), tuple()}.
+create_subdomain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSubdomain">>, Input, Options).
+
 %% @doc Deletes an alarm.
 %%
 %% An alarm is used to monitor a single metric for one of your resources.
@@ -7119,6 +7334,38 @@ delete_relational_database_snapshot(Client, Input)
 delete_relational_database_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRelationalDatabaseSnapshot">>, Input, Options).
+
+%% @doc Deletes a Lightsail subdomain.
+%%
+%% The subdomain must be in the `UNATTACHED' or `CREATE_FAILED'
+%% state. To delete a subdomain that's associated with a resource, first
+%% disassociate it by using
+%% the `UpdateSubdomainAssociation' action.
+%%
+%% When you delete a top-level subdomain that has nested subdomains, the
+%% nested subdomains
+%% continue to work, and the top-level subdomain changes to the
+%% `IMPLICIT'
+%% state.
+%%
+%% After you delete a subdomain that was associated with a resource, the
+%% subdomain isn't
+%% available to other accounts for at least 30 days.
+-spec delete_subdomain(aws_client:aws_client(), delete_subdomain_request()) ->
+    {ok, delete_subdomain_result(), tuple()} |
+    {error, any()} |
+    {error, delete_subdomain_errors(), tuple()}.
+delete_subdomain(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_subdomain(Client, Input, []).
+
+-spec delete_subdomain(aws_client:aws_client(), delete_subdomain_request(), proplists:proplist()) ->
+    {ok, delete_subdomain_result(), tuple()} |
+    {error, any()} |
+    {error, delete_subdomain_errors(), tuple()}.
+delete_subdomain(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSubdomain">>, Input, Options).
 
 %% @doc Detaches an SSL/TLS certificate from your Amazon Lightsail content
 %% delivery network (CDN)
@@ -7968,6 +8215,13 @@ get_distribution_metric_data(Client, Input, Options)
 %% @doc Returns information about one or more of your Amazon Lightsail
 %% content delivery network
 %% (CDN) distributions.
+%%
+%% The `defaultRootObject' and `customErrorResponses' values are
+%% returned only when you specify `distributionName' to retrieve a single
+%% distribution. When you call `GetDistributions' without a distribution
+%% name to
+%% list all distributions, these two fields aren't included in the
+%% response.
 -spec get_distributions(aws_client:aws_client(), get_distributions_request()) ->
     {ok, get_distributions_result(), tuple()} |
     {error, any()} |
@@ -8746,6 +9000,31 @@ get_static_ips(Client, Input)
 get_static_ips(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetStaticIps">>, Input, Options).
+
+%% @doc Returns information about one or more of your Lightsail subdomains.
+%%
+%% When you don't specify a subdomain, the response lists your top-level
+%% subdomains, and
+%% each top-level subdomain includes its nested subdomains.
+%%
+%% The results are paginated. To get the next page of results, use the
+%% `pageToken'
+%% parameter.
+-spec get_subdomains(aws_client:aws_client(), get_subdomains_request()) ->
+    {ok, get_subdomains_result(), tuple()} |
+    {error, any()} |
+    {error, get_subdomains_errors(), tuple()}.
+get_subdomains(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_subdomains(Client, Input, []).
+
+-spec get_subdomains(aws_client:aws_client(), get_subdomains_request(), proplists:proplist()) ->
+    {ok, get_subdomains_result(), tuple()} |
+    {error, any()} |
+    {error, get_subdomains_errors(), tuple()}.
+get_subdomains(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetSubdomains">>, Input, Options).
 
 %% @doc Imports a public SSH key from a specific key pair.
 -spec import_key_pair(aws_client:aws_client(), import_key_pair_request()) ->
@@ -9689,6 +9968,46 @@ update_relational_database_parameters(Client, Input)
 update_relational_database_parameters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateRelationalDatabaseParameters">>, Input, Options).
+
+%% @doc Associates a Lightsail subdomain with a resource, disassociates it
+%% from a resource, or
+%% moves it from one resource to another resource.
+%%
+%% Currently, you can associate a subdomain only with a Lightsail content
+%% delivery network
+%% (CDN) distribution. A resource can be associated with only one subdomain
+%% at a time.
+%%
+%% When you associate a subdomain with a distribution, Lightsail attaches the
+%% subdomain's
+%% certificate to the distribution. You can't associate a subdomain with
+%% a distribution that uses
+%% a custom domain, which is a distribution that has a Lightsail certificate
+%% attached.
+%%
+%% You can transfer each subdomain to another resource only once in a 24-hour
+%% period.
+%%
+%% The update is asynchronous. The response returns the subdomain in the
+%% `ATTACHING', `DETACHING', or `TRANSFERRING' state, and an
+%% operation. To check when the update is complete, use the
+%% `GetSubdomains'
+%% action.
+-spec update_subdomain_association(aws_client:aws_client(), update_subdomain_association_request()) ->
+    {ok, update_subdomain_association_result(), tuple()} |
+    {error, any()} |
+    {error, update_subdomain_association_errors(), tuple()}.
+update_subdomain_association(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_subdomain_association(Client, Input, []).
+
+-spec update_subdomain_association(aws_client:aws_client(), update_subdomain_association_request(), proplists:proplist()) ->
+    {ok, update_subdomain_association_result(), tuple()} |
+    {error, any()} |
+    {error, update_subdomain_association_errors(), tuple()}.
+update_subdomain_association(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSubdomainAssociation">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

@@ -190,6 +190,8 @@
          list_filters/5,
          list_findings/3,
          list_findings/4,
+         list_investigation_records/3,
+         list_investigation_records/4,
          list_investigations/3,
          list_investigations/4,
          list_invitations/1,
@@ -342,6 +344,24 @@
 
 
 %% Example:
+%% account_affected_resource() :: #{
+%%   <<"FindingCount">> => integer(),
+%%   <<"Identifier">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type account_affected_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_analysis() :: #{
+%%   <<"AffectedResources">> => list(account_affected_resource()),
+%%   <<"FindingsSummary">> => findings_summary(),
+%%   <<"TacticCoverage">> => list(tactic_coverage())
+%% }
+-type account_analysis() :: #{binary() => any()}.
+
+
+%% Example:
 %% account_detail() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"Email">> => string()
@@ -366,12 +386,35 @@
 
 
 %% Example:
+%% account_overview() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AccountRankings">> => list(member_account_ranking()),
+%%   <<"AccountStatus">> => string(),
+%%   <<"AffectedAccountCount">> => float(),
+%%   <<"DelegatedAdminAccountId">> => string(),
+%%   <<"DetectorId">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"TotalFindings">> => float(),
+%%   <<"TotalMemberAccounts">> => float()
+%% }
+-type account_overview() :: #{binary() => any()}.
+
+
+%% Example:
 %% account_statistics() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"LastGeneratedAt">> => non_neg_integer(),
 %%   <<"TotalFindings">> => integer()
 %% }
 -type account_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_summary() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"FindingCount">> => integer()
+%% }
+-type account_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -396,6 +439,14 @@
 %%   <<"Type">> => list(any())
 %% }
 -type activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% activity_window() :: #{
+%%   <<"FirstSeenAt">> => non_neg_integer(),
+%%   <<"LastSeenAt">> => non_neg_integer()
+%% }
+-type activity_window() :: #{binary() => any()}.
 
 
 %% Example:
@@ -452,10 +503,32 @@
 
 
 %% Example:
+%% affected_resource() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Identifier">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type affected_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% agent_details() :: #{
 %%   <<"Version">> => string()
 %% }
 -type agent_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% analysis_record() :: #{
+%%   <<"AccountAnalysis">> => investigation_account_analysis(),
+%%   <<"AnalysisType">> => list(any()),
+%%   <<"Indicators">> => list(investigation_indicator()),
+%%   <<"KubernetesPolicyViolation">> => kubernetes_policy_violation(),
+%%   <<"Processes">> => list(process()),
+%%   <<"S3Analysis">> => s3_analysis(),
+%%   <<"ThreatAssessment">> => investigation_threat_assessment()
+%% }
+-type analysis_record() :: #{binary() => any()}.
 
 
 %% Example:
@@ -490,6 +563,16 @@
 %%   <<"UserAgent">> => string()
 %% }
 -type api_call() :: #{binary() => any()}.
+
+
+%% Example:
+%% archive_distribution() :: #{
+%%   <<"ArchivedCount">> => float(),
+%%   <<"ArchivedPercentage">> => float(),
+%%   <<"UnarchivedCount">> => float(),
+%%   <<"UnarchivedPercentage">> => float()
+%% }
+-type archive_distribution() :: #{binary() => any()}.
 
 
 %% Example:
@@ -531,6 +614,25 @@
 
 
 %% Example:
+%% attack() :: #{
+%%   <<"Findings">> => list(finding_reference()),
+%%   <<"Tactic">> => threat_reference(),
+%%   <<"Technique">> => threat_reference(),
+%%   <<"Version">> => string()
+%% }
+-type attack() :: #{binary() => any()}.
+
+
+%% Example:
+%% attack_phase() :: #{
+%%   <<"Attacks">> => list(attack()),
+%%   <<"Description">> => string(),
+%%   <<"Phase">> => list(any())
+%% }
+-type attack_phase() :: #{binary() => any()}.
+
+
+%% Example:
 %% autonomous_system() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Number">> => integer()
@@ -566,6 +668,15 @@
 %%   <<"Type">> => string()
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% baseline() :: #{
+%%   <<"AnomalousFindings">> => list(finding_type_classification()),
+%%   <<"BaselineFindings">> => list(finding_type_classification()),
+%%   <<"TotalFindings">> => float()
+%% }
+-type baseline() :: #{binary() => any()}.
 
 
 %% Example:
@@ -726,6 +837,43 @@
 %%   <<"StartTime">> => non_neg_integer()
 %% }
 -type continuous_scan_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% correlated_finding() :: #{
+%%   <<"CorrelationReasons">> => list(list(any())()),
+%%   <<"Count">> => float(),
+%%   <<"FindingIds">> => list(string()),
+%%   <<"FindingType">> => string(),
+%%   <<"SeverityMax">> => float(),
+%%   <<"SharedBehaviors">> => list(shared_behavior()),
+%%   <<"SharedResources">> => list(shared_resource())
+%% }
+-type correlated_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% countermeasure() :: #{
+%%   <<"Actions">> => list(countermeasure_action()),
+%%   <<"DefenseTactic">> => list(any()),
+%%   <<"Description">> => string()
+%% }
+-type countermeasure() :: #{binary() => any()}.
+
+
+%% Example:
+%% countermeasure_action() :: #{
+%%   <<"AffectedResources">> => list(affected_resource()),
+%%   <<"CliCommands">> => list(string()),
+%%   <<"DefenseTechnique">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Disposition">> => list(any()),
+%%   <<"DispositionId">> => integer(),
+%%   <<"Mitigates">> => list(string()),
+%%   <<"Priority">> => list(any()),
+%%   <<"Title">> => string()
+%% }
+-type countermeasure_action() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1331,6 +1479,16 @@
 
 
 %% Example:
+%% detection_coverage() :: #{
+%%   <<"CoverageGaps">> => string(),
+%%   <<"FoundationalDataSources">> => list(list(any())()),
+%%   <<"KeyObservation">> => string(),
+%%   <<"ProtectionPlans">> => list(protection_plan())
+%% }
+-type detection_coverage() :: #{binary() => any()}.
+
+
+%% Example:
 %% detection_rule_ec2_requirements() :: #{
 %%   <<"MinAgentVersion">> => string()
 %% }
@@ -1481,6 +1639,29 @@
 %%   <<"UnprocessedAccounts">> => list(unprocessed_account())
 %% }
 -type disassociate_members_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% distribution() :: #{
+%%   <<"Archive">> => archive_distribution(),
+%%   <<"AttackVectors">> => list(tactic_coverage()),
+%%   <<"Dimension">> => list(any()),
+%%   <<"FindingTypes">> => list(type_distribution()),
+%%   <<"Resources">> => list(resource_distribution()),
+%%   <<"SeverityBreakdown">> => severity_breakdown(),
+%%   <<"TopFindingTypes">> => list(finding_type_count()),
+%%   <<"TotalFindings">> => float()
+%% }
+-type distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% dns_context() :: #{
+%%   <<"DomainSuffix">> => string(),
+%%   <<"OtherDomains">> => string(),
+%%   <<"ResolverHistory">> => string()
+%% }
+-type dns_context() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1691,6 +1872,16 @@
 
 
 %% Example:
+%% enrichment() :: #{
+%%   <<"AsnOrg">> => string(),
+%%   <<"CountryName">> => string(),
+%%   <<"ThreatListName">> => string(),
+%%   <<"ThreatName">> => string()
+%% }
+-type enrichment() :: #{binary() => any()}.
+
+
+%% Example:
 %% evidence() :: #{
 %%   <<"ThreatIntelligenceDetails">> => list(threat_intelligence_detail())
 %% }
@@ -1703,6 +1894,57 @@
 %%   <<"ManagementType">> => list(any())
 %% }
 -type fargate_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% fetch_criterion() :: #{
+%%   <<"Condition">> => list(any()),
+%%   <<"Field">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type fetch_criterion() :: #{binary() => any()}.
+
+
+%% Example:
+%% fetch_query() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"Criteria">> => list(fetch_criterion()),
+%%   <<"FindingId">> => string(),
+%%   <<"FindingType">> => string(),
+%%   <<"Indicator">> => string(),
+%%   <<"IndicatorType">> => list(any()),
+%%   <<"RowLimit">> => integer(),
+%%   <<"TimeWindow">> => fetch_time_window()
+%% }
+-type fetch_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% fetch_record() :: #{
+%%   <<"FetchType">> => list(any()),
+%%   <<"Query">> => fetch_query(),
+%%   <<"Result">> => fetch_result()
+%% }
+-type fetch_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% fetch_result() :: #{
+%%   <<"Documentation">> => finding_type_documentation(),
+%%   <<"Features">> => list(investigation_detector_feature_configuration()),
+%%   <<"ItemIds">> => list(string()),
+%%   <<"TotalCount">> => float(),
+%%   <<"Verdict">> => list(any())
+%% }
+-type fetch_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% fetch_time_window() :: #{
+%%   <<"DurationInMinutes">> => integer(),
+%%   <<"StartedAt">> => non_neg_integer()
+%% }
+-type fetch_time_window() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1760,6 +2002,26 @@
 
 
 %% Example:
+%% finding_detail() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"ActivityWindow">> => activity_window(),
+%%   <<"FindingId">> => string(),
+%%   <<"FindingType">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"Severity">> => string()
+%% }
+-type finding_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_reference() :: #{
+%%   <<"FindingType">> => string(),
+%%   <<"Uid">> => string()
+%% }
+-type finding_reference() :: #{binary() => any()}.
+
+
+%% Example:
 %% finding_statistics() :: #{
 %%   <<"CountBySeverity">> => map(),
 %%   <<"GroupedByAccount">> => list(account_statistics()),
@@ -1772,12 +2034,53 @@
 
 
 %% Example:
+%% finding_type_classification() :: #{
+%%   <<"Classification">> => string(),
+%%   <<"Count">> => float(),
+%%   <<"Description">> => string(),
+%%   <<"FindingType">> => string(),
+%%   <<"Percentage">> => float()
+%% }
+-type finding_type_classification() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_type_count() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"FindingType">> => string()
+%% }
+-type finding_type_count() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_type_documentation() :: #{
+%%   <<"Description">> => string(),
+%%   <<"Feature">> => string(),
+%%   <<"FullDescription">> => string(),
+%%   <<"LearnMoreLinks">> => list(string()),
+%%   <<"Remediation">> => string(),
+%%   <<"Severity">> => string()
+%% }
+-type finding_type_documentation() :: #{binary() => any()}.
+
+
+%% Example:
 %% finding_type_statistics() :: #{
 %%   <<"FindingType">> => string(),
 %%   <<"LastGeneratedAt">> => non_neg_integer(),
 %%   <<"TotalFindings">> => integer()
 %% }
 -type finding_type_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% findings_summary() :: #{
+%%   <<"ByTimeWindow">> => list(time_window_group()),
+%%   <<"SeverityBreakdown">> => severity_breakdown(),
+%%   <<"TopFindingTypes">> => list(finding_type_count()),
+%%   <<"TotalFindings">> => integer()
+%% }
+-type findings_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1936,9 +2239,12 @@
 %% }
 -type get_findings_statistics_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_investigation_request() :: #{}
--type get_investigation_request() :: #{}.
+%% get_investigation_request() :: #{
+%%   <<"SummaryFormat">> => list(any())
+%% }
+-type get_investigation_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2274,13 +2580,136 @@
 %%   <<"Metadata">> => investigation_metadata(),
 %%   <<"Risk">> => string(),
 %%   <<"RiskLevel">> => list(any()),
+%%   <<"Scope">> => investigation_scope(),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"Summary">> => string(),
+%%   <<"SummaryData">> => investigation_summary_data(),
 %%   <<"TriggerPrompt">> => string(),
 %%   <<"TriggeredBy">> => string()
 %% }
 -type investigation() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_account_analysis() :: #{
+%%   <<"Baseline">> => baseline(),
+%%   <<"Trend">> => trend()
+%% }
+-type investigation_account_analysis() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_actor() :: #{
+%%   <<"AccessKeyId">> => string(),
+%%   <<"PrincipalId">> => string(),
+%%   <<"UserAgent">> => string(),
+%%   <<"UserName">> => string(),
+%%   <<"UserType">> => string()
+%% }
+-type investigation_actor() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_detector_feature_configuration() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type investigation_detector_feature_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_ec2_instance() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"ImageId">> => string(),
+%%   <<"InstanceId">> => string(),
+%%   <<"InstanceState">> => string(),
+%%   <<"InstanceType">> => string(),
+%%   <<"LaunchedAt">> => non_neg_integer(),
+%%   <<"PrivateIpAddress">> => string(),
+%%   <<"PublicIp">> => string(),
+%%   <<"SubnetId">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type investigation_ec2_instance() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_ecs_cluster() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type investigation_ecs_cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_eks_cluster() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"VpcId">> => string()
+%% }
+-type investigation_eks_cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_filter_condition() :: #{
+%%   <<"Equals">> => list(string()),
+%%   <<"NotEquals">> => list(string())
+%% }
+-type investigation_filter_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_filter_criteria() :: #{
+%%   <<"Criterion">> => map()
+%% }
+-type investigation_filter_criteria() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_indicator() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type investigation_indicator() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_kubernetes_workload() :: #{
+%%   <<"Containers">> => string(),
+%%   <<"SecurityContext">> => string(),
+%%   <<"Volumes">> => string(),
+%%   <<"WorkloadName">> => string(),
+%%   <<"WorkloadType">> => string()
+%% }
+-type investigation_kubernetes_workload() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_malware_scan() :: #{
+%%   <<"EngineSources">> => string(),
+%%   <<"FilesScanned">> => float(),
+%%   <<"GigabytesScanned">> => float(),
+%%   <<"HighestSeverity">> => string(),
+%%   <<"HighestSeverityThreatName">> => string(),
+%%   <<"InfectedFileCount">> => float(),
+%%   <<"ResourceIdentifier">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"ScanCategory">> => list(any()),
+%%   <<"ScanCompletedAt">> => non_neg_integer(),
+%%   <<"ScanId">> => string(),
+%%   <<"ScanStartedAt">> => non_neg_integer(),
+%%   <<"ScanType">> => list(any()),
+%%   <<"Threats">> => list(malware_threat()),
+%%   <<"TotalInfectedItems">> => float(),
+%%   <<"TriggerFindingId">> => string(),
+%%   <<"UniqueThreatCount">> => float(),
+%%   <<"VolumesScanned">> => float()
+%% }
+-type investigation_malware_scan() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2289,6 +2718,51 @@
 %%   <<"Version">> => string()
 %% }
 -type investigation_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_record() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Narrative">> => string(),
+%%   <<"RecordId">> => string(),
+%%   <<"SupportingData">> => list(),
+%%   <<"Title">> => string(),
+%%   <<"Type">> => list(any())
+%% }
+-type investigation_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_resource() :: #{
+%%   <<"Data">> => investigation_resource_data(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceType">> => list(any()),
+%%   <<"Uid">> => string()
+%% }
+-type investigation_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_resource_data() :: #{
+%%   <<"Ec2Instance">> => investigation_ec2_instance(),
+%%   <<"EcsCluster">> => investigation_ecs_cluster(),
+%%   <<"EksCluster">> => investigation_eks_cluster(),
+%%   <<"LambdaFunction">> => lambda_function(),
+%%   <<"RdsDbInstance">> => rds_db_instance(),
+%%   <<"RdsDbUser">> => rds_db_user()
+%% }
+-type investigation_resource_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_scope() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"AdminAccountId">> => string(),
+%%   <<"FindingId">> => string(),
+%%   <<"InvestigationType">> => list(any()),
+%%   <<"QueryTimeWindow">> => query_time_window()
+%% }
+-type investigation_scope() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2302,9 +2776,12 @@
 %% Example:
 %% investigation_summary() :: #{
 %%   <<"AccountId">> => string(),
+%%   <<"AdminAccountId">> => string(),
 %%   <<"Confidence">> => list(any()),
 %%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FindingId">> => string(),
 %%   <<"InvestigationId">> => string(),
+%%   <<"InvestigationType">> => list(any()),
 %%   <<"RiskLevel">> => list(any()),
 %%   <<"StartTime">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
@@ -2312,6 +2789,33 @@
 %%   <<"TriggerPrompt">> => string()
 %% }
 -type investigation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_summary_data() :: #{
+%%   <<"AccountAnalysis">> => account_analysis(),
+%%   <<"Countermeasures">> => list(countermeasure()),
+%%   <<"FindingType">> => string(),
+%%   <<"KeyObservations">> => key_observations(),
+%%   <<"OrganizationAnalysis">> => organization_analysis(),
+%%   <<"Recommendations">> => list(recommendation()),
+%%   <<"ThreatAssessment">> => threat_assessment()
+%% }
+-type investigation_summary_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% investigation_threat_assessment() :: #{
+%%   <<"Assessment">> => string(),
+%%   <<"AuthenticationContext">> => string(),
+%%   <<"Classification">> => string(),
+%%   <<"CredentialCompromise">> => string(),
+%%   <<"IpAccountActivity">> => string(),
+%%   <<"RdsControlPlaneActivity">> => string(),
+%%   <<"Reputation">> => reputation(),
+%%   <<"ThreatConfidence">> => list(any())
+%% }
+-type investigation_threat_assessment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2356,6 +2860,54 @@
 %%   <<"NestedItemPath">> => string()
 %% }
 -type item_path() :: #{binary() => any()}.
+
+
+%% Example:
+%% key_observations() :: #{
+%%   <<"Narrative">> => string(),
+%%   <<"Observations">> => list(string()),
+%%   <<"Title">> => string()
+%% }
+-type key_observations() :: #{binary() => any()}.
+
+
+%% Example:
+%% kubernetes_activity() :: #{
+%%   <<"Anomaly">> => kubernetes_anomaly(),
+%%   <<"ApiCall">> => kubernetes_api_call(),
+%%   <<"Enrichment">> => enrichment(),
+%%   <<"Workload">> => investigation_kubernetes_workload()
+%% }
+-type kubernetes_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% kubernetes_anomaly() :: #{
+%%   <<"AnomalyScore">> => string(),
+%%   <<"BaselineContext">> => string(),
+%%   <<"TrainingPeriod">> => string(),
+%%   <<"UnusualBehavior">> => string()
+%% }
+-type kubernetes_anomaly() :: #{binary() => any()}.
+
+
+%% Example:
+%% kubernetes_api_call() :: #{
+%%   <<"ClusterName">> => string(),
+%%   <<"EventCount">> => float(),
+%%   <<"Namespace">> => string(),
+%%   <<"RequestUri">> => string(),
+%%   <<"ResourceName">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SourceIps">> => string(),
+%%   <<"StatusCode">> => integer(),
+%%   <<"UserAgent">> => string(),
+%%   <<"UserGroups">> => string(),
+%%   <<"UserId">> => string(),
+%%   <<"Username">> => string(),
+%%   <<"Verb">> => string()
+%% }
+-type kubernetes_api_call() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2429,6 +2981,18 @@
 
 
 %% Example:
+%% kubernetes_policy_violation() :: #{
+%%   <<"AffectedResource">> => string(),
+%%   <<"ExposureVector">> => string(),
+%%   <<"GrantedAccess">> => string(),
+%%   <<"MisconfigurationImpact">> => string(),
+%%   <<"Subject">> => string(),
+%%   <<"ViolationType">> => string()
+%% }
+-type kubernetes_policy_violation() :: #{binary() => any()}.
+
+
+%% Example:
 %% kubernetes_role_binding_details() :: #{
 %%   <<"Kind">> => string(),
 %%   <<"Name">> => string(),
@@ -2497,6 +3061,20 @@
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type lambda_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% lambda_function() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FunctionArn">> => string(),
+%%   <<"FunctionName">> => string(),
+%%   <<"FunctionVersion">> => string(),
+%%   <<"RevisionId">> => string(),
+%%   <<"Role">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"VpcConfigurationSummary">> => string()
+%% }
+-type lambda_function() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2635,7 +3213,28 @@
 
 
 %% Example:
+%% list_investigation_records_request() :: #{
+%%   <<"InvestigationId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"RecordTypes">> => list(list(any())())
+%% }
+-type list_investigation_records_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_investigation_records_response() :: #{
+%%   <<"InvestigationId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"Records">> => list(investigation_record()),
+%%   <<"Status">> => list(any())
+%% }
+-type list_investigation_records_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_investigations_request() :: #{
+%%   <<"FilterCriteria">> => investigation_filter_criteria(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"SortCriteria">> => investigation_sort_criteria()
@@ -2951,6 +3550,16 @@
 
 
 %% Example:
+%% malware_threat() :: #{
+%%   <<"InfectedFileCount">> => float(),
+%%   <<"Name">> => string(),
+%%   <<"SampleFiles">> => string(),
+%%   <<"Severity">> => string()
+%% }
+-type malware_threat() :: #{binary() => any()}.
+
+
+%% Example:
 %% master() :: #{
 %%   <<"AccountId">> => string(),
 %%   <<"InvitationId">> => string(),
@@ -2972,6 +3581,17 @@
 %%   <<"UpdatedAt">> => string()
 %% }
 -type member() :: #{binary() => any()}.
+
+
+%% Example:
+%% member_account_ranking() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"FindingCount">> => float(),
+%%   <<"Rank">> => integer(),
+%%   <<"RiskLevel">> => list(any()),
+%%   <<"RiskRationale">> => string()
+%% }
+-type member_account_ranking() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3022,10 +3642,48 @@
 
 
 %% Example:
+%% metadata_record() :: #{
+%%   <<"TotalTimeMilliseconds">> => float()
+%% }
+-type metadata_record() :: #{binary() => any()}.
+
+
+%% Example:
 %% model_detail() :: #{
 %%   <<"ModelId">> => string()
 %% }
 -type model_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_activity() :: #{
+%%   <<"Anomaly">> => network_anomaly(),
+%%   <<"Blocked">> => string(),
+%%   <<"Counts">> => network_counts(),
+%%   <<"Direction">> => string(),
+%%   <<"Dns">> => dns_context(),
+%%   <<"Enrichment">> => enrichment(),
+%%   <<"Method">> => string(),
+%%   <<"Platform">> => string(),
+%%   <<"Ports">> => network_ports(),
+%%   <<"Protocol">> => string(),
+%%   <<"Traffic">> => network_traffic()
+%% }
+-type network_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_anomaly() :: #{
+%%   <<"BaselineBytes">> => string(),
+%%   <<"Deviation">> => string(),
+%%   <<"Duration">> => string(),
+%%   <<"ProfileAgeDays">> => integer(),
+%%   <<"RemoteRegion">> => string(),
+%%   <<"RemoteService">> => string(),
+%%   <<"ResetRatio">> => string(),
+%%   <<"TargetHostCount">> => float()
+%% }
+-type network_anomaly() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3047,6 +3705,16 @@
 %%   <<"RemotePortDetails">> => remote_port_details()
 %% }
 -type network_connection_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_counts() :: #{
+%%   <<"RequestCount">> => float(),
+%%   <<"ResetAttempts">> => float(),
+%%   <<"SuspiciousAttempts">> => float(),
+%%   <<"TotalAttempts">> => float()
+%% }
+-type network_counts() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3089,11 +3757,63 @@
 
 
 %% Example:
+%% network_ports() :: #{
+%%   <<"PortCount">> => float(),
+%%   <<"Ports">> => string(),
+%%   <<"PortsUsed">> => string(),
+%%   <<"RemotePort">> => string(),
+%%   <<"ResolverPort">> => string(),
+%%   <<"TargetPort">> => string()
+%% }
+-type network_ports() :: #{binary() => any()}.
+
+
+%% Example:
+%% network_traffic() :: #{
+%%   <<"BytesReceived">> => float(),
+%%   <<"BytesSent">> => float()
+%% }
+-type network_traffic() :: #{binary() => any()}.
+
+
+%% Example:
+%% observation_record() :: #{
+%%   <<"AccountOverview">> => account_overview(),
+%%   <<"DetectionCoverage">> => detection_coverage(),
+%%   <<"Distribution">> => distribution(),
+%%   <<"FindingDetail">> => finding_detail(),
+%%   <<"Indicators">> => list(investigation_indicator()),
+%%   <<"KubernetesActivity">> => kubernetes_activity(),
+%%   <<"MalwareScan">> => investigation_malware_scan(),
+%%   <<"NetworkActivity">> => network_activity(),
+%%   <<"ObservationType">> => list(any()),
+%%   <<"RdsLoginActivity">> => rds_login_activity(),
+%%   <<"Recommendations">> => list(recommendation()),
+%%   <<"RelatedFindings">> => related_findings(),
+%%   <<"RepresentativeResources">> => list(representative_finding()),
+%%   <<"Resource">> => investigation_resource(),
+%%   <<"RuntimeSignals">> => runtime_signals(),
+%%   <<"S3Activity">> => s3_activity()
+%% }
+-type observation_record() :: #{binary() => any()}.
+
+
+%% Example:
 %% observations() :: #{
 %%   <<"Number">> => list(float()),
 %%   <<"Text">> => list(string())
 %% }
 -type observations() :: #{binary() => any()}.
+
+
+%% Example:
+%% observed_finding_type() :: #{
+%%   <<"Count">> => float(),
+%%   <<"FindingType">> => string(),
+%%   <<"SeverityMax">> => float(),
+%%   <<"SharedResources">> => list(shared_resource())
+%% }
+-type observed_finding_type() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3120,6 +3840,14 @@
 %%   <<"Name">> => list(any())
 %% }
 -type organization_additional_configuration_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_analysis() :: #{
+%%   <<"AccountBreakdown">> => list(account_summary()),
+%%   <<"FindingsSummary">> => organization_findings_summary()
+%% }
+-type organization_analysis() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3195,6 +3923,18 @@
 %%   <<"Name">> => list(any())
 %% }
 -type organization_feature_statistics_additional_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% organization_findings_summary() :: #{
+%%   <<"AffectedAccountCount">> => integer(),
+%%   <<"ByTimeWindow">> => list(time_window_group()),
+%%   <<"SeverityBreakdown">> => severity_breakdown(),
+%%   <<"TopFindingTypes">> => list(finding_type_count()),
+%%   <<"TotalAccountCount">> => integer(),
+%%   <<"TotalFindings">> => integer()
+%% }
+-type organization_findings_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3319,6 +4059,17 @@
 
 
 %% Example:
+%% process() :: #{
+%%   <<"Findings">> => list(finding_reference()),
+%%   <<"Name">> => string(),
+%%   <<"ParentUuid">> => string(),
+%%   <<"Path">> => string(),
+%%   <<"Uuid">> => string()
+%% }
+-type process() :: #{binary() => any()}.
+
+
+%% Example:
 %% process_details() :: #{
 %%   <<"Euid">> => integer(),
 %%   <<"ExecutablePath">> => string(),
@@ -3354,6 +4105,14 @@
 
 
 %% Example:
+%% protection_plan() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type protection_plan() :: #{binary() => any()}.
+
+
+%% Example:
 %% public_access() :: #{
 %%   <<"EffectivePermission">> => string(),
 %%   <<"PermissionConfiguration">> => permission_configuration()
@@ -3372,6 +4131,26 @@
 
 
 %% Example:
+%% query_time_window() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type query_time_window() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_db_instance() :: #{
+%%   <<"DbClusterIdentifier">> => string(),
+%%   <<"DbInstanceArn">> => string(),
+%%   <<"DbInstanceIdentifier">> => string(),
+%%   <<"DbiResourceId">> => string(),
+%%   <<"Engine">> => string(),
+%%   <<"EngineVersion">> => string()
+%% }
+-type rds_db_instance() :: #{binary() => any()}.
+
+
+%% Example:
 %% rds_db_instance_details() :: #{
 %%   <<"DbClusterIdentifier">> => string(),
 %%   <<"DbInstanceArn">> => string(),
@@ -3382,6 +4161,17 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type rds_db_instance_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% rds_db_user() :: #{
+%%   <<"Application">> => string(),
+%%   <<"AuthMethod">> => string(),
+%%   <<"Database">> => string(),
+%%   <<"Ssl">> => string(),
+%%   <<"User">> => string()
+%% }
+-type rds_db_user() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3409,11 +4199,34 @@
 
 
 %% Example:
+%% rds_login_activity() :: #{
+%%   <<"ActivityWindow">> => activity_window(),
+%%   <<"AnomalyContext">> => string(),
+%%   <<"Enrichment">> => enrichment(),
+%%   <<"LoginCount">> => float(),
+%%   <<"Outcome">> => string(),
+%%   <<"Rate">> => string()
+%% }
+-type rds_login_activity() :: #{binary() => any()}.
+
+
+%% Example:
 %% rds_login_attempt_action() :: #{
 %%   <<"LoginAttributes">> => list(login_attribute()),
 %%   <<"RemoteIpDetails">> => remote_ip_details()
 %% }
 -type rds_login_attempt_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% recommendation() :: #{
+%%   <<"Category">> => list(any()),
+%%   <<"CliCommands">> => list(string()),
+%%   <<"Priority">> => list(any()),
+%%   <<"Rationale">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type recommendation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3431,6 +4244,14 @@
 %%   <<"RecoveryPointArn">> => string()
 %% }
 -type recovery_point_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% related_findings() :: #{
+%%   <<"Correlated">> => list(correlated_finding()),
+%%   <<"Observed">> => list(observed_finding_type())
+%% }
+-type related_findings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3460,6 +4281,27 @@
 %%   <<"PortName">> => string()
 %% }
 -type remote_port_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% representative_finding() :: #{
+%%   <<"FindingCount">> => float(),
+%%   <<"FindingId">> => string(),
+%%   <<"Identifier">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"RiskLevel">> => list(any()),
+%%   <<"RiskRationale">> => string()
+%% }
+-type representative_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% reputation() :: #{
+%%   <<"CurrentDisposition">> => string(),
+%%   <<"FindingTimeDisposition">> => string(),
+%%   <<"ReputationComparison">> => string()
+%% }
+-type reputation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3514,6 +4356,15 @@
 %%   <<"InstanceArn">> => string()
 %% }
 -type resource_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_distribution() :: #{
+%%   <<"Count">> => float(),
+%%   <<"Identifier">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type resource_distribution() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3637,6 +4488,48 @@
 %%   <<"Process">> => process_details()
 %% }
 -type runtime_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_signals() :: #{
+%%   <<"KeyObservation">> => string(),
+%%   <<"SignalGroups">> => list(signal_group())
+%% }
+-type runtime_signals() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_activity() :: #{
+%%   <<"ActivityWindow">> => activity_window(),
+%%   <<"Actor">> => investigation_actor(),
+%%   <<"AffectedBucket">> => string(),
+%%   <<"Api">> => string(),
+%%   <<"Enrichment">> => enrichment(),
+%%   <<"EventCount">> => float(),
+%%   <<"NonS3Activity">> => string(),
+%%   <<"OtherS3Activity">> => string(),
+%%   <<"SessionAssessment">> => string(),
+%%   <<"SourceIp">> => string()
+%% }
+-type s3_activity() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_analysis() :: #{
+%%   <<"ActorAssessment">> => string(),
+%%   <<"AuthorizationAssessment">> => string(),
+%%   <<"BlockPublicAccessSettings">> => string(),
+%%   <<"EffectivePermission">> => string(),
+%%   <<"Exposure">> => string(),
+%%   <<"FindingSubtype">> => string(),
+%%   <<"IpReputation">> => string(),
+%%   <<"S3ApiActivity">> => string(),
+%%   <<"SourceContext">> => string(),
+%%   <<"SourceIp">> => string(),
+%%   <<"UserAgent">> => string(),
+%%   <<"UserAgentClassification">> => string()
+%% }
+-type s3_analysis() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3955,12 +4848,39 @@
 
 
 %% Example:
+%% severity_breakdown() :: #{
+%%   <<"Critical">> => integer(),
+%%   <<"High">> => integer(),
+%%   <<"Info">> => integer(),
+%%   <<"Low">> => integer(),
+%%   <<"Medium">> => integer()
+%% }
+-type severity_breakdown() :: #{binary() => any()}.
+
+
+%% Example:
 %% severity_statistics() :: #{
 %%   <<"LastGeneratedAt">> => non_neg_integer(),
 %%   <<"Severity">> => float(),
 %%   <<"TotalFindings">> => integer()
 %% }
 -type severity_statistics() :: #{binary() => any()}.
+
+
+%% Example:
+%% shared_behavior() :: #{
+%%   <<"Path">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type shared_behavior() :: #{binary() => any()}.
+
+
+%% Example:
+%% shared_resource() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"ResourceType">> => string()
+%% }
+-type shared_resource() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3982,6 +4902,15 @@
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type signal() :: #{binary() => any()}.
+
+
+%% Example:
+%% signal_group() :: #{
+%%   <<"Count">> => float(),
+%%   <<"FindingType">> => string(),
+%%   <<"Severity">> => float()
+%% }
+-type signal_group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4046,6 +4975,16 @@
 
 
 %% Example:
+%% tactic_coverage() :: #{
+%%   <<"FindingCount">> => integer(),
+%%   <<"FindingTypes">> => list(string()),
+%%   <<"Phase">> => list(any()),
+%%   <<"Techniques">> => list(technique_coverage())
+%% }
+-type tactic_coverage() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -4065,6 +5004,15 @@
 
 
 %% Example:
+%% technique_coverage() :: #{
+%%   <<"FindingCount">> => integer(),
+%%   <<"FindingTypes">> => list(string()),
+%%   <<"Technique">> => threat_reference()
+%% }
+-type technique_coverage() :: #{binary() => any()}.
+
+
+%% Example:
 %% threat() :: #{
 %%   <<"Count">> => float(),
 %%   <<"Hash">> => string(),
@@ -4074,6 +5022,14 @@
 %%   <<"Source">> => string()
 %% }
 -type threat() :: #{binary() => any()}.
+
+
+%% Example:
+%% threat_assessment() :: #{
+%%   <<"AttackProgression">> => list(attack_phase()),
+%%   <<"ThreatActorProfile">> => string()
+%% }
+-type threat_assessment() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4096,10 +5052,27 @@
 
 
 %% Example:
+%% threat_reference() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Uid">> => string()
+%% }
+-type threat_reference() :: #{binary() => any()}.
+
+
+%% Example:
 %% threats_detected_item_count() :: #{
 %%   <<"Files">> => integer()
 %% }
 -type threats_detected_item_count() :: #{binary() => any()}.
+
+
+%% Example:
+%% time_window_group() :: #{
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"FindingCount">> => integer(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type time_window_group() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4111,12 +5084,33 @@
 
 
 %% Example:
+%% trend() :: #{
+%%   <<"ByTimeWindow">> => list(time_window_group()),
+%%   <<"EndedAt">> => non_neg_integer(),
+%%   <<"Granularity">> => list(any()),
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"TotalFindings">> => float()
+%% }
+-type trend() :: #{binary() => any()}.
+
+
+%% Example:
 %% trigger_details() :: #{
 %%   <<"Description">> => string(),
 %%   <<"GuardDutyFindingId">> => string(),
 %%   <<"TriggerType">> => list(any())
 %% }
 -type trigger_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% type_distribution() :: #{
+%%   <<"Count">> => float(),
+%%   <<"DominantSeverity">> => string(),
+%%   <<"FindingType">> => string(),
+%%   <<"Percentage">> => float()
+%% }
+-type type_distribution() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4781,6 +5775,12 @@
 -type list_findings_errors() ::
     internal_server_error_exception() | 
     bad_request_exception().
+
+-type list_investigation_records_errors() ::
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
 
 -type list_investigations_errors() ::
     internal_server_error_exception() | 
@@ -6827,6 +7827,12 @@ get_findings_statistics(Client, DetectorId, Input0, Options0) ->
 %%
 %% Retrieves the results and status of a specific GuardDuty investigation.
 %%
+%% GuardDuty returns the results, including the summary and the scope of the
+%% investigation, only when the investigation status is `COMPLETED'. By
+%% default, GuardDuty returns the summary as text in `Summary'. To return
+%% a typed summary in `SummaryData' instead, set `SummaryFormat' to
+%% `STRUCTURED'.
+%%
 %% An administrator account can retrieve any investigation within the
 %% organization. Member accounts can only retrieve investigations that belong
 %% to them.
@@ -6862,7 +7868,11 @@ get_investigation(Client, DetectorId, InvestigationId, QueryMap, HeadersMap, Opt
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"summaryFormat">>, maps:get(<<"summaryFormat">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -7796,8 +8806,57 @@ list_findings(Client, DetectorId, Input0, Options0) ->
 %% Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris),
 %% Europe (Stockholm), and Asia Pacific (Tokyo).
 %%
+%% Returns the records for a specific GuardDuty investigation. Each record is
+%% one step in the reasoning that GuardDuty followed to reach the results of
+%% the investigation.
+%%
+%% An administrator account can list the records of any investigation within
+%% the organization. Member accounts can only list the records of
+%% investigations that belong to them.
+-spec list_investigation_records(aws_client:aws_client(), binary() | list(), list_investigation_records_request()) ->
+    {ok, list_investigation_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_investigation_records_errors(), tuple()}.
+list_investigation_records(Client, DetectorId, Input) ->
+    list_investigation_records(Client, DetectorId, Input, []).
+
+-spec list_investigation_records(aws_client:aws_client(), binary() | list(), list_investigation_records_request(), proplists:proplist()) ->
+    {ok, list_investigation_records_response(), tuple()} |
+    {error, any()} |
+    {error, list_investigation_records_errors(), tuple()}.
+list_investigation_records(Client, DetectorId, Input0, Options0) ->
+    Method = post,
+    Path = ["/detector/", aws_util:encode_uri(DetectorId), "/investigation/records"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc This API is currently available as a preview.
+%%
+%% This feature is available in the following Amazon Web Services Regions: US
+%% East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central),
+%% Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris),
+%% Europe (Stockholm), and Asia Pacific (Tokyo).
+%%
 %% Returns a list of investigations associated with the specified GuardDuty
-%% detector.
+%% detector. You can filter the investigations by status, risk level,
+%% confidence, finding ID, and investigation type, and sort them by start
+%% time, end time, status, risk level, or confidence.
 %%
 %% An administrator account sees all investigations across the organization.
 %% Member accounts see only the investigations that belong to them.

@@ -4175,6 +4175,7 @@
 %% media_package_v2_group_settings() :: #{
 %%   <<"AdditionalDestinations">> => list(media_package_additional_destinations()),
 %%   <<"CaptionLanguageMappings">> => list(caption_language_mapping()),
+%%   <<"CaptionLanguageSetting">> => list(any()),
 %%   <<"Id3Behavior">> => list(any()),
 %%   <<"KlvBehavior">> => list(any()),
 %%   <<"NielsenId3Behavior">> => list(any()),
@@ -8882,7 +8883,13 @@ delete_node(Client, ClusterId, NodeId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Delete an expired reservation.
+%% @doc Delete an expired reservation, or cancel an active reservation during
+%% the calendar month (UTC) in which you purchased it.
+%%
+%% You can't cancel an active reservation that you purchased in an
+%% earlier month, including one that renewed automatically. You also
+%% can't cancel an active reservation during the last hour of the month,
+%% from 23:00 UTC on the last day of the month.
 -spec delete_reservation(aws_client:aws_client(), binary() | list(), delete_reservation_request()) ->
     {ok, delete_reservation_response(), tuple()} |
     {error, any()} |

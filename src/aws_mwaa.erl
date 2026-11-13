@@ -121,6 +121,7 @@
 %%   <<"EndpointManagement">> => string(),
 %%   <<"EnvironmentClass">> => string(),
 %%   <<"ExecutionRoleArn">> => string(),
+%%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
 %%   <<"KmsKey">> => string(),
 %%   <<"LoggingConfiguration">> => logging_configuration_input(),
 %%   <<"MaxWebservers">> => integer(),
@@ -137,6 +138,7 @@
 %%   <<"StartupScriptS3ObjectVersion">> => string(),
 %%   <<"StartupScriptS3Path">> => string(),
 %%   <<"Tags">> => map(),
+%%   <<"Teams">> => map(),
 %%   <<"WebserverAccessMode">> => string(),
 %%   <<"WeeklyMaintenanceWindowStart">> => string()
 %% }
@@ -192,6 +194,7 @@
 %%   <<"EndpointManagement">> => string(),
 %%   <<"EnvironmentClass">> => string(),
 %%   <<"ExecutionRoleArn">> => string(),
+%%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
 %%   <<"KmsKey">> => string(),
 %%   <<"LastUpdate">> => last_update(),
 %%   <<"LoggingConfiguration">> => logging_configuration(),
@@ -212,6 +215,7 @@
 %%   <<"StartupScriptS3Path">> => [string()],
 %%   <<"Status">> => string(),
 %%   <<"Tags">> => map(),
+%%   <<"Teams">> => map(),
 %%   <<"WebserverAccessMode">> => string(),
 %%   <<"WebserverUrl">> => string(),
 %%   <<"WebserverVpcEndpointService">> => string(),
@@ -229,6 +233,14 @@
 %%   <<"Environment">> => environment()
 %% }
 -type get_environment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% identity_center_configuration() :: #{
+%%   <<"IdentityStoreId">> => string(),
+%%   <<"StartUrl">> => string()
+%% }
+-type identity_center_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -416,6 +428,14 @@
 
 
 %% Example:
+%% team_config() :: #{
+%%   <<"DagS3Path">> => string(),
+%%   <<"SourceBucketArn">> => string()
+%% }
+-type team_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_input() :: #{
 %%   <<"tagKeys">> := list(string())
 %% }
@@ -433,6 +453,7 @@
 %%   <<"DagS3Path">> => string(),
 %%   <<"EnvironmentClass">> => string(),
 %%   <<"ExecutionRoleArn">> => string(),
+%%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
 %%   <<"LoggingConfiguration">> => logging_configuration_input(),
 %%   <<"MaxWebservers">> => integer(),
 %%   <<"MaxWorkers">> => integer(),
@@ -447,6 +468,7 @@
 %%   <<"SourceBucketArn">> => string(),
 %%   <<"StartupScriptS3ObjectVersion">> => string(),
 %%   <<"StartupScriptS3Path">> => string(),
+%%   <<"Teams">> => update_teams_input(),
 %%   <<"WebserverAccessMode">> => string(),
 %%   <<"WeeklyMaintenanceWindowStart">> => string(),
 %%   <<"WorkerReplacementStrategy">> => string()
@@ -474,6 +496,14 @@
 %%   <<"SecurityGroupIds">> => list(string())
 %% }
 -type update_network_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_teams_input() :: #{
+%%   <<"AddOrUpdate">> => map(),
+%%   <<"Remove">> => list(string())
+%% }
+-type update_teams_input() :: #{binary() => any()}.
 
 
 %% Example:

@@ -51,7 +51,9 @@
 %% https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html.
 -module(aws_secrets_manager).
 
--export([batch_get_secret_value/2,
+-export([associate_cross_account_replica/2,
+         associate_cross_account_replica/3,
+         batch_get_secret_value/2,
          batch_get_secret_value/3,
          cancel_rotate_secret/2,
          cancel_rotate_secret/3,
@@ -63,12 +65,16 @@
          delete_secret/3,
          describe_secret/2,
          describe_secret/3,
+         disassociate_cross_account_replica/2,
+         disassociate_cross_account_replica/3,
          get_random_password/2,
          get_random_password/3,
          get_resource_policy/2,
          get_resource_policy/3,
          get_secret_value/2,
          get_secret_value/3,
+         list_resource_policies/2,
+         list_resource_policies/3,
          list_secret_version_ids/2,
          list_secret_version_ids/3,
          list_secrets/2,
@@ -113,6 +119,23 @@
 -type api_error_type() :: #{binary() => any()}.
 
 %% Example:
+%% associate_cross_account_replica_request() :: #{
+%%   <<"CrossAccountReplicaARN">> := string(),
+%%   <<"ReplicaRestriction">> => list(any()),
+%%   <<"ReplicationRoleARN">> => string(),
+%%   <<"SecretId">> := string()
+%% }
+-type associate_cross_account_replica_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_cross_account_replica_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"CrossAccountReplicaARN">> => string(),
+%%   <<"ReplicationStatus">> => list(any())
+%% }
+-type associate_cross_account_replica_response() :: #{binary() => any()}.
+
+%% Example:
 %% batch_get_secret_value_request() :: #{
 %%   <<"Filters">> => list(filter()),
 %%   <<"MaxResults">> => integer(),
@@ -147,6 +170,7 @@
 %% create_secret_request() :: #{
 %%   <<"AddReplicaRegions">> => list(replica_region_type()),
 %%   <<"ClientRequestToken">> => string(),
+%%   <<"CrossAccountPrimaryARN">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"ForceOverwriteReplicaSecret">> => boolean(),
 %%   <<"KmsKeyId">> => string(),
@@ -168,6 +192,23 @@
 -type create_secret_response() :: #{binary() => any()}.
 
 %% Example:
+%% cross_account_primary_type() :: #{
+%%   <<"PrimarySecretARN">> => string(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type cross_account_primary_type() :: #{binary() => any()}.
+
+%% Example:
+%% cross_account_replica_entry() :: #{
+%%   <<"ReplicaSecretARN">> => string(),
+%%   <<"ReplicationRoleARN">> => string(),
+%%   <<"ReplicationStatus">> => list(any()),
+%%   <<"StatusMessage">> => string()
+%% }
+-type cross_account_replica_entry() :: #{binary() => any()}.
+
+%% Example:
 %% decryption_failure() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -175,6 +216,7 @@
 
 %% Example:
 %% delete_resource_policy_request() :: #{
+%%   <<"PolicyName">> => string(),
 %%   <<"SecretId">> := string()
 %% }
 -type delete_resource_policy_request() :: #{binary() => any()}.
@@ -182,7 +224,8 @@
 %% Example:
 %% delete_resource_policy_response() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"PolicyName">> => string()
 %% }
 -type delete_resource_policy_response() :: #{binary() => any()}.
 
@@ -212,6 +255,8 @@
 %% describe_secret_response() :: #{
 %%   <<"ARN">> => string(),
 %%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"CrossAccountPrimary">> => cross_account_primary_type(),
+%%   <<"CrossAccountReplicas">> => list(cross_account_replica_entry()),
 %%   <<"DeletedDate">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"ExternalSecretRotationMetadata">> => list(external_secret_rotation_metadata_item()),
@@ -233,6 +278,20 @@
 %%   <<"VersionIdsToStages">> => map()
 %% }
 -type describe_secret_response() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_cross_account_replica_request() :: #{
+%%   <<"CrossAccountReplicaARN">> := string(),
+%%   <<"SecretId">> := string()
+%% }
+-type disassociate_cross_account_replica_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_cross_account_replica_response() :: #{
+%%   <<"ARN">> => string(),
+%%   <<"CrossAccountReplicaARN">> => string()
+%% }
+-type disassociate_cross_account_replica_response() :: #{binary() => any()}.
 
 %% Example:
 %% encryption_failure() :: #{
@@ -275,6 +334,7 @@
 
 %% Example:
 %% get_resource_policy_request() :: #{
+%%   <<"PolicyName">> => string(),
 %%   <<"SecretId">> := string()
 %% }
 -type get_resource_policy_request() :: #{binary() => any()}.
@@ -283,6 +343,7 @@
 %% get_resource_policy_response() :: #{
 %%   <<"ARN">> => string(),
 %%   <<"Name">> => string(),
+%%   <<"PolicyName">> => string(),
 %%   <<"ResourcePolicy">> => string()
 %% }
 -type get_resource_policy_response() :: #{binary() => any()}.
@@ -336,6 +397,21 @@
 %%   <<"Message">> => string()
 %% }
 -type limit_exceeded_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SecretId">> := string()
+%% }
+-type list_resource_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resource_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourcePolicies">> => list(resource_policy_summary())
+%% }
+-type list_resource_policies_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_secret_version_ids_request() :: #{
@@ -394,6 +470,7 @@
 %% Example:
 %% put_resource_policy_request() :: #{
 %%   <<"BlockPublicPolicy">> => boolean(),
+%%   <<"PolicyName">> => string(),
 %%   <<"ResourcePolicy">> := string(),
 %%   <<"SecretId">> := string()
 %% }
@@ -402,7 +479,8 @@
 %% Example:
 %% put_resource_policy_response() :: #{
 %%   <<"ARN">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"PolicyName">> => string()
 %% }
 -type put_resource_policy_response() :: #{binary() => any()}.
 
@@ -483,6 +561,12 @@
 %%   <<"Message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% resource_policy_summary() :: #{
+%%   <<"PolicyName">> => string()
+%% }
+-type resource_policy_summary() :: #{binary() => any()}.
 
 %% Example:
 %% restore_secret_request() :: #{
@@ -662,6 +746,13 @@
 %% }
 -type validation_errors_entry() :: #{binary() => any()}.
 
+-type associate_cross_account_replica_errors() ::
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error().
+
 -type batch_get_secret_value_errors() ::
     resource_not_found_exception() | 
     invalid_request_exception() | 
@@ -705,6 +796,12 @@
     invalid_parameter_exception() | 
     internal_service_error().
 
+-type disassociate_cross_account_replica_errors() ::
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_error().
+
 -type get_random_password_errors() ::
     invalid_request_exception() | 
     invalid_parameter_exception() | 
@@ -722,6 +819,13 @@
     invalid_parameter_exception() | 
     internal_service_error() | 
     decryption_failure().
+
+-type list_resource_policies_errors() ::
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    invalid_next_token_exception() | 
+    internal_service_error().
 
 -type list_secret_version_ids_errors() ::
     resource_not_found_exception() | 
@@ -825,6 +929,66 @@
 %% API
 %%====================================================================
 
+%% @doc Links a primary secret in your account to a replica secret in a
+%% different Amazon Web Services
+%% account and starts replication to this replica.
+%%
+%% The replica secret must already exist in the
+%% other Amazon Web Services account. Create the replica with
+%% `CreateSecret' and set its
+%% `CrossAccountPrimaryARN' field set to this primary secret's ARN.
+%% When you call AssociateCrossAccountReplica, Secrets Manager calls
+%% AcceptCrossAccountReplication on the replica secret on your behalf.
+%%
+%% The primary and replica secrets must be in the same Amazon Web Services
+%% Region and partition, and
+%% you must call this operation from the account that owns the primary
+%% secret. A primary
+%% secret can have at most one cross-account replica. This operation is
+%% idempotent, so
+%% you can call it again for the same replica to repair replication. If the
+%% association fails,
+%% Secrets Manager does not modify either the primary or replica secret.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
+%%
+%% Required permissions:
+%%
+%% `secretsmanager:AssociateCrossAccountReplica',
+%% `secretsmanager:GetSecretValue' on the primary secret, and
+%% `secretsmanager:AcceptCrossAccountReplication' on the replica secret.
+%% You
+%% must also have `kms:Decrypt' permission for the Key Management Service
+%% (KMS) key that encrypts the primary secret, and
+%% `kms:Encrypt' permission for the Amazon Web Services KMS key that
+%% encrypts the replica
+%% secret. If you supply `ReplicationRoleARN', you also need
+%% `iam:PassRole' for that role. For more information, see
+%% IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication
+%% and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec associate_cross_account_replica(aws_client:aws_client(), associate_cross_account_replica_request()) ->
+    {ok, associate_cross_account_replica_response(), tuple()} |
+    {error, any()} |
+    {error, associate_cross_account_replica_errors(), tuple()}.
+associate_cross_account_replica(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_cross_account_replica(Client, Input, []).
+
+-spec associate_cross_account_replica(aws_client:aws_client(), associate_cross_account_replica_request(), proplists:proplist()) ->
+    {ok, associate_cross_account_replica_response(), tuple()} |
+    {error, any()} |
+    {error, associate_cross_account_replica_errors(), tuple()}.
+associate_cross_account_replica(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateCrossAccountReplica">>, Input, Options).
+
 %% @doc Retrieves the contents of the encrypted fields `SecretString' or
 %% `SecretBinary' for up to 20 secrets.
 %%
@@ -888,8 +1052,8 @@ batch_get_secret_value(Client, Input, Options)
 %% moving the
 %% staging label `AWSCURRENT' to the version that has `AWSPENDING'.
 %% To determine which version has a specific staging label, call
-%% `ListSecretVersionIds'. Then use `UpdateSecretVersionStage' to
-%% change staging labels. For more information, see How rotation
+%% `DescribeSecret'. Then use `UpdateSecretVersionStage' to change
+%% staging labels. For more information, see How rotation
 %% works:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotate-secrets_how.html.
 %%
@@ -932,11 +1096,11 @@ cancel_rotate_secret(Client, Input, Options)
 %% secret
 %% information that you store in an encrypted form in Secrets Manager. The
 %% secret also includes the
-%% connection information to access a database or other service, which
-%% Secrets Manager doesn't
-%% encrypt. A secret in Secrets Manager consists of both the protected secret
-%% data and the important
-%% information needed to manage the secret.
+%% connection information to access a database or other service. Secrets
+%% Manager does not encrypt
+%% this connection information. A secret in Secrets Manager consists of both
+%% the encrypted secret
+%% versions and the metadata that Secrets Manager uses to manage the secret.
 %%
 %% For secrets that use managed rotation, you need to create the
 %% secret through the managing service. For more information, see Secrets
@@ -951,7 +1115,7 @@ cancel_rotate_secret(Client, Input, Options)
 %% To create a secret, you can provide the secret value to be encrypted in
 %% either the
 %% `SecretString' parameter or the `SecretBinary' parameter, but
-%% not both. If you include `SecretString' or `SecretBinary' then
+%% not both. If you include `SecretString' or `SecretBinary', then
 %% Secrets Manager creates an initial secret version and automatically
 %% attaches the staging label
 %% `AWSCURRENT' to it.
@@ -971,14 +1135,20 @@ cancel_rotate_secret(Client, Input, Options)
 %% then Secrets Manager creates it for you automatically. All users and roles
 %% in the Amazon Web Services account
 %% automatically have access to use `aws/secretsmanager'. Creating
-%% `aws/secretsmanager' can result in a one-time significant delay in
-%% returning the result.
+%% `aws/secretsmanager' can result in a one-time delay to complete the
+%% secret creation.
 %%
 %% If the secret is in a different Amazon Web Services account from the
 %% credentials calling the API,
 %% then you can't use `aws/secretsmanager' to encrypt the secret, and
 %% you must
 %% create and use a customer managed KMS key.
+%%
+%% To create a cross-account replica secret, include
+%% `CrossAccountPrimaryARN'.
+%% The replica must use a customer managed KMS key, and can't include
+%% `AddReplicaRegions', `Description', `SecretBinary',
+%% `SecretString', or `Type'.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action.
@@ -992,8 +1162,11 @@ cancel_rotate_secret(Client, Input, Options)
 %% `secretsmanager:CreateSecret'. If you include tags in the
 %% secret, you also need `secretsmanager:TagResource'. To add replica
 %% Regions,
-%% you must also have `secretsmanager:ReplicateSecretToRegions'.
-%% For more information, see
+%% you must also have `secretsmanager:ReplicateSecretToRegions'. To
+%% create a
+%% cross-account replica secret, you must also have
+%% `secretsmanager:PutResourcePolicy' permissions. For more information,
+%% see
 %% IAM policy actions for Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
 %% and Authentication
@@ -1079,6 +1252,16 @@ delete_resource_policy(Client, Input, Options)
 %% delete the primary secret. When you delete a replica, it is deleted
 %% immediately.
 %%
+%% You can't delete a cross-account primary secret that is associated
+%% with a
+%% cross-account replica secret. You must first disassociate each of the
+%% replicas using
+%% `DisassociateCrossAccountReplica', before deleting the primary secret.
+%% Similarly, you can't delete a cross-account replica secret without
+%% first stopping
+%% replication. Call `StopReplicationToReplica' to stop replication, and
+%% then you can delete the secret.
+%%
 %% You can't directly delete a version of a secret. Instead, you remove
 %% all staging
 %% labels from the version using `UpdateSecretVersionStage'. This marks
@@ -1144,6 +1327,15 @@ delete_secret(Client, Input, Options)
 %% It does not include the encrypted secret value.
 %% Secrets Manager only returns fields that have a value in the response.
 %%
+%% The `VersionIdsToStages' field in the response includes every version
+%% ID
+%% that has a staging label attached, even if that version doesn't
+%% contain a secret
+%% value. In contrast, `ListSecretVersionIds' only returns versions that
+%% contain a secret value. To check whether a secret version contains a
+%% value, call
+%% `GetSecretValue'.
+%%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
 %% it might be logged. For more information, see Logging Secrets Manager
@@ -1173,6 +1365,60 @@ describe_secret(Client, Input)
 describe_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSecret">>, Input, Options).
+
+%% @doc Removes the link between a primary secret in your account and a
+%% cross-account replica
+%% secret, and stops replication to the replica secret.
+%%
+%% Call this operation on the primary secret.
+%% This action removes the replica association created by
+%% `AssociateCrossAccountReplica'.
+%%
+%% Disassociating the replica from the primary does not delete the replica
+%% secret or
+%% convert the replica secret to a standalone secret. The replica secret
+%% remains in the other
+%% account and its replication status changes to `Detached'. Secrets
+%% Manager no longer sends updates
+%% from the primary secret to the replica secret after disassociation. To
+%% convert a detached
+%% replica into a standalone secret, call
+%% `StopReplicationToReplica' on the replica secret.
+%%
+%% You must disassociate a cross-account replica before you call
+%% `DeleteSecret' for the primary secret. The `DeleteSecret'
+%% call fails if any replicas are still associated with the primary secret.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
+%%
+%% Required permissions:
+%%
+%% `secretsmanager:DisassociateCrossAccountReplica'.
+%% For more information, see
+%% IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication
+%% and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec disassociate_cross_account_replica(aws_client:aws_client(), disassociate_cross_account_replica_request()) ->
+    {ok, disassociate_cross_account_replica_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_cross_account_replica_errors(), tuple()}.
+disassociate_cross_account_replica(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_cross_account_replica(Client, Input, []).
+
+-spec disassociate_cross_account_replica(aws_client:aws_client(), disassociate_cross_account_replica_request(), proplists:proplist()) ->
+    {ok, disassociate_cross_account_replica_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_cross_account_replica_errors(), tuple()}.
+disassociate_cross_account_replica(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateCrossAccountReplica">>, Input, Options).
 
 %% @doc Generates a random password.
 %%
@@ -1301,6 +1547,46 @@ get_secret_value(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSecretValue">>, Input, Options).
 
+%% @doc Lists the resource-based policies attached to a secret.
+%%
+%% The response contains only the
+%% names of the policies, not their contents. Secrets Manager lists
+%% `default' first,
+%% followed by any other policies in alphabetical order. To get the contents
+%% of a policy,
+%% use `GetResourcePolicy'. You can modify only the `default'
+%% policy.
+%%
+%% Secrets Manager generates a CloudTrail log entry when you call this
+%% action. Do not include sensitive information in request parameters because
+%% it might be logged. For more information, see Logging Secrets Manager
+%% events with CloudTrail:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieve-ct-entries.html.
+%%
+%% Required permissions:
+%%
+%% `secretsmanager:ListResourcePolicies'. For more information, see
+%% IAM policy actions for Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
+%% and Authentication
+%% and access control in Secrets Manager:
+%% https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html.
+-spec list_resource_policies(aws_client:aws_client(), list_resource_policies_request()) ->
+    {ok, list_resource_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_policies_errors(), tuple()}.
+list_resource_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resource_policies(Client, Input, []).
+
+-spec list_resource_policies(aws_client:aws_client(), list_resource_policies_request(), proplists:proplist()) ->
+    {ok, list_resource_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_policies_errors(), tuple()}.
+list_resource_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResourcePolicies">>, Input, Options).
+
 %% @doc Lists the versions of a secret.
 %%
 %% Secrets Manager uses staging labels to indicate the different
@@ -1309,6 +1595,12 @@ get_secret_value(Client, Input, Options)
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version.
 %%
 %% To list the secrets in the account, use `ListSecrets'.
+%%
+%% `ListSecretVersionIds' only returns versions that contain a secret
+%% value. To see all version IDs that have staging labels attached, including
+%% ones
+%% without a secret value, call `DescribeSecret' and check
+%% `VersionIdsToStages'.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
@@ -1690,13 +1982,25 @@ rotate_secret(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RotateSecret">>, Input, Options).
 
-%% @doc Removes the link between the replica secret and the primary secret
-%% and promotes the
-%% replica to a primary secret in the replica Region.
+%% @doc Removes the link between a replica secret and its primary secret, and
+%% stops
+%% replication to the replica.
 %%
-%% You must call this operation from the Region in which you want to promote
-%% the replica
-%% to a primary secret.
+%% You call this operation from the replica account or Region.
+%% Depending on the type of replica, the behavior is:
+%%
+%% Cross-Region replica: promotes the replica to
+%% a standalone primary secret in the replica Region.
+%%
+%% Cross-account replica: promotes the replica
+%% in your account to a standalone secret and stops replication from its
+%% primary
+%% secret in the other account. Secrets Manager updates the primary
+%% secret's replication status
+%% to `Detached' for this replica.
+%%
+%% To stop cross-account replication from the primary account instead, use
+%% `DisassociateCrossAccountReplica'.
 %%
 %% Secrets Manager generates a CloudTrail log entry when you call this
 %% action. Do not include sensitive information in request parameters because
@@ -1706,7 +2010,10 @@ rotate_secret(Client, Input, Options)
 %%
 %% Required permissions:
 %%
-%% `secretsmanager:StopReplicationToReplica'. For more information, see
+%% `secretsmanager:StopReplicationToReplica'. For cross-account
+%% replica secrets, you must also have
+%% `secretsmanager:DeleteResourcePolicy'
+%% permissions. For more information, see
 %% IAM policy actions for Secrets Manager:
 %% https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#reference_iam-permissions_actions
 %% and Authentication
