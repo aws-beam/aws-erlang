@@ -1441,6 +1441,14 @@
 
 
 %% Example:
+%% m_s_teams_bidirectional_configuration() :: #{
+%%   <<"enabled">> => [boolean()],
+%%   <<"roleArn">> => string()
+%% }
+-type m_s_teams_bidirectional_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% m_s_teams_channel() :: #{
 %%   <<"channelId">> => string(),
 %%   <<"channelName">> => [string()]
@@ -1450,6 +1458,7 @@
 
 %% Example:
 %% m_s_teams_configuration() :: #{
+%%   <<"bidirectional">> => m_s_teams_bidirectional_configuration(),
 %%   <<"teamId">> => string(),
 %%   <<"teamName">> => [string()],
 %%   <<"transmissionTarget">> => m_s_teams_transmission_target()

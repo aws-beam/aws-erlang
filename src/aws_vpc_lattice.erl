@@ -1865,6 +1865,7 @@
 
 %% Example:
 %% update_resource_gateway_request() :: #{
+%%   <<"resourceConfigDnsResolution">> => string(),
 %%   <<"securityGroupIds">> => list(string())
 %% }
 -type update_resource_gateway_request() :: #{binary() => any()}.
@@ -1876,6 +1877,7 @@
 %%   <<"id">> => string(),
 %%   <<"ipAddressType">> => string(),
 %%   <<"name">> => string(),
+%%   <<"resourceConfigDnsResolution">> => string(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => string(),
 %%   <<"subnetIds">> => list(string()),
@@ -3435,11 +3437,13 @@ delete_service(Client, ServiceIdentifier, Input0, Options0) ->
 
 %% @doc Deletes a service network.
 %%
-%% You can only delete the service network if there is no service or VPC
-%% associated with it. If you delete a service network, all resources related
-%% to the service network, such as the resource policy, auth policy, and
-%% access log subscriptions, are also deleted. For more information, see
-%% Delete a service network:
+%% You can only delete the service network if there are no services, VPCs,
+%% resource configurations, or service network endpoints associated with it.
+%% Only the owner of a service network endpoint can remove it from the
+%% service network, by deleting the endpoint. If you delete a service
+%% network, all resources related to the service network, such as the
+%% resource policy, auth policy, and access log subscriptions, are also
+%% deleted. For more information, see Delete a service network:
 %% https://docs.aws.amazon.com/vpc-lattice/latest/ug/service-networks.html#delete-service-network
 %% in the Amazon VPC Lattice User Guide.
 -spec delete_service_network(aws_client:aws_client(), binary() | list(), delete_service_network_request()) ->

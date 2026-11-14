@@ -1279,6 +1279,7 @@
 %%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
 %%   <<"AliasAttributes">> => list(list(any())()),
 %%   <<"AutoVerifiedAttributes">> => list(list(any())()),
+%%   <<"DcrConfiguration">> => dcr_configuration_type(),
 %%   <<"DeletionProtection">> => list(any()),
 %%   <<"DeviceConfiguration">> => device_configuration_type(),
 %%   <<"EmailConfiguration">> => email_configuration_type(),
@@ -1330,6 +1331,16 @@
 %%   <<"LambdaVersion">> => list(any())
 %% }
 -type custom_sms_lambda_version_config_type() :: #{binary() => any()}.
+
+%% Example:
+%% dcr_configuration_type() :: #{
+%%   <<"AllowedScopes">> => list(string()),
+%%   <<"AuthenticatedGrantTypes">> => list(list(any())()),
+%%   <<"EnableStatus">> => list(any()),
+%%   <<"OpenDcrEnabled">> => boolean(),
+%%   <<"OpenDcrGrantTypes">> => list(list(any())())
+%% }
+-type dcr_configuration_type() :: #{binary() => any()}.
 
 %% Example:
 %% delete_group_request() :: #{
@@ -2305,6 +2316,7 @@
 
 %% Example:
 %% list_user_pool_clients_request() :: #{
+%%   <<"ClientType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"UserPoolId">> := string()
@@ -2616,6 +2628,7 @@
 %% Example:
 %% resource_server_type() :: #{
 %%   <<"Identifier">> => string(),
+%%   <<"ManagedBy">> => list(any()),
 %%   <<"Name">> => string(),
 %%   <<"Scopes">> => list(resource_server_scope_type()),
 %%   <<"UserPoolId">> => string()
@@ -3331,6 +3344,7 @@
 %%   <<"AcrConfiguration">> => map(),
 %%   <<"AdminCreateUserConfig">> => admin_create_user_config_type(),
 %%   <<"AutoVerifiedAttributes">> => list(list(any())()),
+%%   <<"DcrConfiguration">> => dcr_configuration_type(),
 %%   <<"DeletionProtection">> => list(any()),
 %%   <<"DeviceConfiguration">> => device_configuration_type(),
 %%   <<"EmailConfiguration">> => email_configuration_type(),
@@ -3449,6 +3463,7 @@
 %%   <<"ClientId">> => string(),
 %%   <<"ClientName">> => string(),
 %%   <<"ClientSecret">> => string(),
+%%   <<"ClientType">> => list(any()),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"DefaultRedirectURI">> => string(),
 %%   <<"EnablePropagateAdditionalUserContextData">> => boolean(),
@@ -3518,6 +3533,7 @@
 %%   <<"AutoVerifiedAttributes">> => list(list(any())()),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"CustomDomain">> => string(),
+%%   <<"DcrConfiguration">> => dcr_configuration_type(),
 %%   <<"DeletionProtection">> => list(any()),
 %%   <<"DeviceConfiguration">> => device_configuration_type(),
 %%   <<"Domain">> => string(),

@@ -1,15 +1,13 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc
-%% Amazon EventBridge Scheduler is a serverless scheduler that allows you to
-%% create, run, and manage tasks from one central, managed service.
+%% @doc Amazon EventBridge Scheduler is a serverless scheduler that allows
+%% you to create, run, and manage tasks from one central, managed service.
 %%
 %% EventBridge Scheduler delivers your tasks reliably, with built-in
 %% mechanisms that adjust your schedules based on the availability of
-%% downstream targets.
-%% The following reference lists the available API actions, and data types
-%% for EventBridge Scheduler.
+%% downstream targets. The following reference lists the available API
+%% actions, and data types for EventBridge Scheduler.
 -module(aws_scheduler).
 
 -export([create_schedule/3,
@@ -170,6 +168,21 @@
 %%   <<"Source">> => string()
 %% }
 -type event_bridge_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_bridge_put_events_v2_parameters() :: #{
+%%   <<"DetailType">> => string(),
+%%   <<"Source">> => string()
+%% }
+-type event_bridge_put_events_v2_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_bridge_put_raw_events_parameters() :: #{
+%%   <<"Metadata">> => map()
+%% }
+-type event_bridge_put_raw_events_parameters() :: #{binary() => any()}.
 
 
 %% Example:
@@ -400,6 +413,8 @@
 %%   <<"DeadLetterConfig">> => dead_letter_config(),
 %%   <<"EcsParameters">> => ecs_parameters(),
 %%   <<"EventBridgeParameters">> => event_bridge_parameters(),
+%%   <<"EventBridgePutEventsV2Parameters">> => event_bridge_put_events_v2_parameters(),
+%%   <<"EventBridgePutRawEventsParameters">> => event_bridge_put_raw_events_parameters(),
 %%   <<"Input">> => string(),
 %%   <<"KinesisParameters">> => kinesis_parameters(),
 %%   <<"RetryPolicy">> => retry_policy(),
@@ -484,6 +499,7 @@
 -type delete_schedule_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception().
@@ -498,6 +514,7 @@
 -type get_schedule_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception().
 
@@ -541,6 +558,7 @@
 -type update_schedule_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception().
@@ -656,13 +674,12 @@ delete_schedule(Client, Name, Input0, Options0) ->
 %% @doc Deletes the specified schedule group.
 %%
 %% Deleting a schedule group results in EventBridge Scheduler deleting all
-%% schedules associated with the group.
-%% When you delete a group, it remains in a `DELETING' state until all of
-%% its associated schedules are deleted.
-%% Schedules associated with the group that are set to run while the schedule
-%% group is in the process of being deleted might continue to invoke their
-%% targets
-%% until the schedule group and its associated schedules are deleted.
+%% schedules associated with the group. When you delete a group, it remains
+%% in a `DELETING' state until all of its associated schedules are
+%% deleted. Schedules associated with the group that are set to run while the
+%% schedule group is in the process of being deleted might continue to invoke
+%% their targets until the schedule group and its associated schedules are
+%% deleted.
 %%
 %% This operation is eventually consistent.
 -spec delete_schedule_group(aws_client:aws_client(), binary() | list(), delete_schedule_group_input()) ->
@@ -975,14 +992,13 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc
-%% Updates the specified schedule.
+%% @doc Updates the specified schedule.
 %%
 %% When you call `UpdateSchedule', EventBridge Scheduler uses all values,
-%% including empty values, specified in the request and
-%% overrides the existing schedule. This is by design. This means that if you
-%% do not set an optional field in your request, that field will be set to
-%% its system-default value after the update.
+%% including empty values, specified in the request and overrides the
+%% existing schedule. This is by design. This means that if you do not set an
+%% optional field in your request, that field will be set to its
+%% system-default value after the update.
 %%
 %% Before calling this operation, we recommend that you call the
 %% `GetSchedule' API operation and make a note of all optional parameters

@@ -119,6 +119,7 @@
 %% Example:
 %% create_profile_request() :: #{
 %%   <<"acceptRoleSessionName">> => [boolean()],
+%%   <<"aliasName">> => string(),
 %%   <<"durationSeconds">> => [integer()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"managedPolicyArns">> => list([string()]()),
@@ -133,6 +134,7 @@
 
 %% Example:
 %% create_trust_anchor_request() :: #{
+%%   <<"aliasName">> => string(),
 %%   <<"crlDpRevocationEnabled">> => [boolean()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"name">> := string(),
@@ -157,13 +159,16 @@
 
 %% Example:
 %% crl_detail() :: #{
+%%   <<"aliasArn">> => string(),
+%%   <<"aliasName">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
-%%   <<"crlArn">> => [string()],
+%%   <<"crlArn">> => string(),
 %%   <<"crlData">> => [binary()],
 %%   <<"crlId">> => string(),
 %%   <<"enabled">> => [boolean()],
 %%   <<"name">> => [string()],
-%%   <<"trustAnchorArn">> => [string()],
+%%   <<"previousAliasName">> => string(),
+%%   <<"trustAnchorArn">> => string(),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type crl_detail() :: #{binary() => any()}.
@@ -193,6 +198,7 @@
 
 %% Example:
 %% import_crl_request() :: #{
+%%   <<"aliasName">> => string(),
 %%   <<"crlData">> := [binary()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"name">> := string(),
@@ -304,6 +310,8 @@
 %% Example:
 %% profile_detail() :: #{
 %%   <<"acceptRoleSessionName">> => [boolean()],
+%%   <<"aliasArn">> => string(),
+%%   <<"aliasName">> => string(),
 %%   <<"attributeMappings">> => list(attribute_mapping()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => [string()],
@@ -311,6 +319,7 @@
 %%   <<"enabled">> => [boolean()],
 %%   <<"managedPolicyArns">> => list([string()]()),
 %%   <<"name">> => string(),
+%%   <<"previousAliasName">> => string(),
 %%   <<"profileArn">> => string(),
 %%   <<"profileId">> => string(),
 %%   <<"requireInstanceProperties">> => [boolean()],
@@ -476,13 +485,16 @@
 
 %% Example:
 %% trust_anchor_detail() :: #{
+%%   <<"aliasArn">> => string(),
+%%   <<"aliasName">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"crlDpRevocationEnabled">> => [boolean()],
 %%   <<"enabled">> => [boolean()],
 %%   <<"name">> => string(),
 %%   <<"notificationSettings">> => list(notification_setting_detail()),
+%%   <<"previousAliasName">> => string(),
 %%   <<"source">> => source(),
-%%   <<"trustAnchorArn">> => [string()],
+%%   <<"trustAnchorArn">> => string(),
 %%   <<"trustAnchorId">> => string(),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
@@ -510,6 +522,7 @@
 
 %% Example:
 %% update_crl_request() :: #{
+%%   <<"aliasName">> => string(),
 %%   <<"crlData">> => [binary()],
 %%   <<"name">> => string()
 %% }
@@ -519,6 +532,7 @@
 %% Example:
 %% update_profile_request() :: #{
 %%   <<"acceptRoleSessionName">> => [boolean()],
+%%   <<"aliasName">> => string(),
 %%   <<"durationSeconds">> => [integer()],
 %%   <<"managedPolicyArns">> => list([string()]()),
 %%   <<"name">> => string(),
@@ -530,6 +544,7 @@
 
 %% Example:
 %% update_trust_anchor_request() :: #{
+%%   <<"aliasName">> => string(),
 %%   <<"crlDpRevocationEnabled">> => [boolean()],
 %%   <<"name">> => string(),
 %%   <<"source">> => source()

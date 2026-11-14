@@ -184,8 +184,12 @@
          register_publisher/3,
          register_type/2,
          register_type/3,
+         remove_alias/2,
+         remove_alias/3,
          rollback_stack/2,
          rollback_stack/3,
+         set_alias/2,
+         set_alias/3,
          set_stack_policy/2,
          set_stack_policy/3,
          set_type_configuration/2,
@@ -1869,6 +1873,12 @@
 -type register_type_output() :: #{binary() => any()}.
 
 %% Example:
+%% remove_alias_input() :: #{
+%%   <<"AliasName">> := string()
+%% }
+-type remove_alias_input() :: #{binary() => any()}.
+
+%% Example:
 %% required_activated_type() :: #{
 %%   <<"OriginalTypeName">> => string(),
 %%   <<"PublisherId">> => string(),
@@ -2060,6 +2070,13 @@
 -type scanned_resource_identifier() :: #{binary() => any()}.
 
 %% Example:
+%% set_alias_input() :: #{
+%%   <<"AliasName">> := string(),
+%%   <<"StackName">> := string()
+%% }
+-type set_alias_input() :: #{binary() => any()}.
+
+%% Example:
 %% set_stack_policy_input() :: #{
 %%   <<"StackName">> := string(),
 %%   <<"StackPolicyBody">> => string(),
@@ -2109,6 +2126,7 @@
 
 %% Example:
 %% stack() :: #{
+%%   <<"AliasName">> => string(),
 %%   <<"Capabilities">> => list(list(any())()),
 %%   <<"ChangeSetId">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -3044,6 +3062,10 @@
 
 -type rollback_stack_errors() ::
     token_already_exists_exception().
+
+-type set_alias_errors() ::
+    limit_exceeded_exception() | 
+    already_exists_exception().
 
 -type set_type_configuration_errors() ::
     type_not_found_exception() | 
@@ -5159,6 +5181,24 @@ register_type(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterType">>, Input, Options).
 
+%% @doc Removes an alias from a stack.
+%%
+%% After the alias is removed successfully, it can no longer be used to
+%% reference the stack in API calls.
+-spec remove_alias(aws_client:aws_client(), remove_alias_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+remove_alias(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_alias(Client, Input, []).
+
+-spec remove_alias(aws_client:aws_client(), remove_alias_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+remove_alias(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveAlias">>, Input, Options).
+
 %% @doc When specifying `RollbackStack', you preserve the state of
 %% previously
 %% provisioned resources when an operation fails.
@@ -5199,6 +5239,40 @@ rollback_stack(Client, Input)
 rollback_stack(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RollbackStack">>, Input, Options).
+
+%% @doc Assigns an alias to an existing stack.
+%%
+%% An alias is an alternative name for a stack that
+%% can be used in place of the stack name in any CloudFormation API call that
+%% accepts the
+%% `StackName' parameter. This enables you to effectively rename a stack
+%% without
+%% recreating it.
+%%
+%% After setting an alias, both the original stack name and the alias resolve
+%% to the same
+%% stack. Setting an alias does not change the stack's ARN, physical
+%% resource IDs, or any
+%% deployed resources.
+%%
+%% Each stack can have at most one alias. To change a stack's alias,
+%% first remove the
+%% existing alias using `RemoveAlias', then set a new one.
+-spec set_alias(aws_client:aws_client(), set_alias_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_alias_errors(), tuple()}.
+set_alias(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    set_alias(Client, Input, []).
+
+-spec set_alias(aws_client:aws_client(), set_alias_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, set_alias_errors(), tuple()}.
+set_alias(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SetAlias">>, Input, Options).
 
 %% @doc Sets a stack policy for a specified stack.
 -spec set_stack_policy(aws_client:aws_client(), set_stack_policy_input()) ->

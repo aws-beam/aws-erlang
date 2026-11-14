@@ -201,6 +201,8 @@
          update_entitlement/3,
          update_fleet/2,
          update_fleet/3,
+         update_image_builder/2,
+         update_image_builder/3,
          update_image_permissions/2,
          update_image_permissions/3,
          update_stack/2,
@@ -235,6 +237,8 @@
 
 %% Example:
 %% agent_access_config() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"ReplaySessionEnabled">> => boolean(),
 %%   <<"S3BucketArn">> => string(),
 %%   <<"ScreenImageFormat">> => list(any()),
 %%   <<"ScreenResolution">> => list(any()),
@@ -246,6 +250,8 @@
 
 %% Example:
 %% agent_access_config_for_update() :: #{
+%%   <<"KmsKeyArn">> => string(),
+%%   <<"ReplaySessionEnabled">> => boolean(),
 %%   <<"S3BucketArn">> => string(),
 %%   <<"ScreenImageFormat">> => list(any()),
 %%   <<"ScreenResolution">> => list(any()),
@@ -675,6 +681,7 @@
 %% Example:
 %% create_image_builder_request() :: #{
 %%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"AgentAccessConfig">> => image_builder_agent_access_config(),
 %%   <<"AppstreamAgentVersion">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"DisableIMDSV1">> => boolean(),
@@ -1583,6 +1590,7 @@
 %% Example:
 %% image_builder() :: #{
 %%   <<"AccessEndpoints">> => list(access_endpoint()),
+%%   <<"AgentAccessConfig">> => image_builder_agent_access_config(),
 %%   <<"AppstreamAgentVersion">> => string(),
 %%   <<"Arn">> => string(),
 %%   <<"CreatedTime">> => non_neg_integer(),
@@ -1605,6 +1613,28 @@
 %%   <<"VpcConfig">> => vpc_config()
 %% }
 -type image_builder() :: #{binary() => any()}.
+
+%% Example:
+%% image_builder_agent_access_config() :: #{
+%%   <<"S3BucketArn">> => string(),
+%%   <<"ScreenImageFormat">> => list(any()),
+%%   <<"ScreenResolution">> => list(any()),
+%%   <<"ScreenshotsUploadEnabled">> => boolean(),
+%%   <<"Settings">> => list(agent_access_setting()),
+%%   <<"UserControlMode">> => list(any())
+%% }
+-type image_builder_agent_access_config() :: #{binary() => any()}.
+
+%% Example:
+%% image_builder_agent_access_config_for_update() :: #{
+%%   <<"S3BucketArn">> => string(),
+%%   <<"ScreenImageFormat">> => list(any()),
+%%   <<"ScreenResolution">> => list(any()),
+%%   <<"ScreenshotsUploadEnabled">> => boolean(),
+%%   <<"Settings">> => list(agent_access_setting()),
+%%   <<"UserControlMode">> => list(any())
+%% }
+-type image_builder_agent_access_config_for_update() :: #{binary() => any()}.
 
 %% Example:
 %% image_builder_state_change_reason() :: #{
@@ -2137,6 +2167,22 @@
 %%   <<"Fleet">> => fleet()
 %% }
 -type update_fleet_result() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_builder_request() :: #{
+%%   <<"AgentAccessConfig">> => image_builder_agent_access_config_for_update(),
+%%   <<"AttributesToDelete">> => list(list(any())()),
+%%   <<"Description">> => string(),
+%%   <<"DisplayName">> => string(),
+%%   <<"Name">> := string()
+%% }
+-type update_image_builder_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_image_builder_result() :: #{
+%%   <<"ImageBuilder">> => image_builder()
+%% }
+-type update_image_builder_result() :: #{binary() => any()}.
 
 %% Example:
 %% update_image_permissions_request() :: #{
@@ -2740,6 +2786,15 @@
     operation_not_permitted_exception() | 
     limit_exceeded_exception() | 
     invalid_role_exception() | 
+    invalid_parameter_combination_exception() | 
+    invalid_account_status_exception() | 
+    incompatible_image_exception() | 
+    concurrent_modification_exception().
+
+-type update_image_builder_errors() ::
+    resource_not_found_exception() | 
+    request_limit_exceeded_exception() | 
+    operation_not_permitted_exception() | 
     invalid_parameter_combination_exception() | 
     invalid_account_status_exception() | 
     incompatible_image_exception() | 
@@ -3694,6 +3749,9 @@ describe_fleets(Client, Input, Options)
 %% if the image builder names are provided.
 %%
 %% Otherwise, all image builders in the account are described.
+%%
+%% The description of each image builder includes its agent access
+%% configuration, if agent access is enabled.
 -spec describe_image_builders(aws_client:aws_client(), describe_image_builders_request()) ->
     {ok, describe_image_builders_result(), tuple()} |
     {error, any()} |
@@ -4474,6 +4532,25 @@ update_fleet(Client, Input)
 update_fleet(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFleet">>, Input, Options).
+
+%% @doc Updates the specified fields for the specified image builder.
+%%
+%% The image builder must be in the STOPPED state.
+-spec update_image_builder(aws_client:aws_client(), update_image_builder_request()) ->
+    {ok, update_image_builder_result(), tuple()} |
+    {error, any()} |
+    {error, update_image_builder_errors(), tuple()}.
+update_image_builder(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_image_builder(Client, Input, []).
+
+-spec update_image_builder(aws_client:aws_client(), update_image_builder_request(), proplists:proplist()) ->
+    {ok, update_image_builder_result(), tuple()} |
+    {error, any()} |
+    {error, update_image_builder_errors(), tuple()}.
+update_image_builder(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateImageBuilder">>, Input, Options).
 
 %% @doc Adds or updates permissions for the specified private image.
 -spec update_image_permissions(aws_client:aws_client(), update_image_permissions_request()) ->

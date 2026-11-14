@@ -6707,8 +6707,9 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
 %% accounts, and settings for each Region.
 %%
 %% This operation doesn't support selective updates. The request
-%% replaces the stored configuration, so include every setting that you
-%% want to keep.
+%% replaces the entire distribution configuration, so include every setting
+%% that you want to keep. Any optional property that you omit is removed
+%% or reset to its default.
 -spec update_distribution_configuration(aws_client:aws_client(), update_distribution_configuration_request()) ->
     {ok, update_distribution_configuration_response(), tuple()} |
     {error, any()} |
@@ -6752,8 +6753,8 @@ update_distribution_configuration(Client, Input0, Options0) ->
 %% current
 %% recipe.
 %%
-%% UpdateImagePipeline does not support selective updates. The request
-%% replaces the pipeline's entire configuration, so include every setting
+%% This operation doesn't support selective updates. The request
+%% replaces the entire pipeline configuration, so include every setting
 %% that you want to keep. Any optional property that you omit is removed
 %% or reset to its default.
 -spec update_image_pipeline(aws_client:aws_client(), update_image_pipeline_request()) ->
@@ -6794,9 +6795,10 @@ update_image_pipeline(Client, Input0, Options0) ->
 %% An infrastructure configuration defines
 %% the environment in which Image Builder builds and tests your image.
 %%
-%% This operation doesn't support selective updates.
-%% The request replaces the configuration, so include every setting that
-%% you want to keep. Omitted optional properties are cleared.
+%% This operation doesn't support selective updates. The request
+%% replaces the entire infrastructure configuration, so include every
+%% setting that you want to keep. Any optional property that you omit is
+%% removed or reset to its default.
 -spec update_infrastructure_configuration(aws_client:aws_client(), update_infrastructure_configuration_request()) ->
     {ok, update_infrastructure_configuration_response(), tuple()} |
     {error, any()} |
@@ -6832,11 +6834,13 @@ update_infrastructure_configuration(Client, Input0, Options0) ->
 
 %% @doc Updates the specified lifecycle policy.
 %%
-%% The request replaces the existing
-%% policy configuration rather than merging changes, so re-specify every
-%% setting
-%% that you want to keep. The `resourceType' must match the existing
-%% policy's value.
+%% The `resourceType' must
+%% match the existing policy's value.
+%%
+%% This operation doesn't support selective updates. The request
+%% replaces the entire lifecycle policy configuration, so include every
+%% setting that you want to keep. Any optional property that you omit is
+%% removed or reset to its default.
 -spec update_lifecycle_policy(aws_client:aws_client(), update_lifecycle_policy_request()) ->
     {ok, update_lifecycle_policy_response(), tuple()} |
     {error, any()} |

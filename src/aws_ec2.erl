@@ -106,6 +106,8 @@
          associate_ipam_resource_discovery/3,
          associate_nat_gateway_address/2,
          associate_nat_gateway_address/3,
+         associate_networking_flex_cost_allocation_policy/2,
+         associate_networking_flex_cost_allocation_policy/3,
          associate_route_server/2,
          associate_route_server/3,
          associate_route_table/2,
@@ -294,6 +296,8 @@
          create_network_interface/3,
          create_network_interface_permission/2,
          create_network_interface_permission/3,
+         create_networking_flex_cost_allocation_policy/2,
+         create_networking_flex_cost_allocation_policy/3,
          create_placement_group/2,
          create_placement_group/3,
          create_public_ipv4_pool/2,
@@ -498,6 +502,8 @@
          delete_network_interface/3,
          delete_network_interface_permission/2,
          delete_network_interface_permission/3,
+         delete_networking_flex_cost_allocation_policies/2,
+         delete_networking_flex_cost_allocation_policies/3,
          delete_placement_group/2,
          delete_placement_group/3,
          delete_public_ipv4_pool/2,
@@ -842,6 +848,10 @@
          describe_network_interface_permissions/3,
          describe_network_interfaces/2,
          describe_network_interfaces/3,
+         describe_networking_flex_cost_allocation_policies/2,
+         describe_networking_flex_cost_allocation_policies/3,
+         describe_networking_flex_cost_allocation_policy_associations/2,
+         describe_networking_flex_cost_allocation_policy_associations/3,
          describe_outpost_lags/2,
          describe_outpost_lags/3,
          describe_placement_groups/2,
@@ -1082,6 +1092,8 @@
          disassociate_ipam_resource_discovery/3,
          disassociate_nat_gateway_address/2,
          disassociate_nat_gateway_address/3,
+         disassociate_networking_flex_cost_allocation_policy/2,
+         disassociate_networking_flex_cost_allocation_policy/3,
          disassociate_route_server/2,
          disassociate_route_server/3,
          disassociate_route_table/2,
@@ -1270,6 +1282,8 @@
          get_network_insights_access_scope_analysis_findings/3,
          get_network_insights_access_scope_content/2,
          get_network_insights_access_scope_content/3,
+         get_networking_flex_cost_allocation_policy_versions/2,
+         get_networking_flex_cost_allocation_policy_versions/3,
          get_password_data/2,
          get_password_data/3,
          get_reserved_instances_exchange_quote/2,
@@ -1430,6 +1444,8 @@
          modify_metric_category/3,
          modify_network_interface_attribute/2,
          modify_network_interface_attribute/3,
+         modify_networking_flex_cost_allocation_policy/2,
+         modify_networking_flex_cost_allocation_policy/3,
          modify_private_dns_name_options/2,
          modify_private_dns_name_options/3,
          modify_public_ip_dns_name_options/2,
@@ -2529,6 +2545,23 @@
 %%   <<"NatGatewayId">> => string()
 %% }
 -type associate_nat_gateway_address_result() :: #{binary() => any()}.
+
+%% Example:
+%% associate_networking_flex_cost_allocation_policy_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"FcaPolicyId">> := string(),
+%%   <<"NetworkResourceIds">> => list(string()),
+%%   <<"NetworkResourceScope">> => flex_cost_allocation_network_resource_scope()
+%% }
+-type associate_networking_flex_cost_allocation_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_networking_flex_cost_allocation_policy_result() :: #{
+%%   <<"FcaPolicyAssociationFailures">> => list(flex_cost_allocation_operation_failure()),
+%%   <<"FcaPolicyAssociations">> => list(flex_cost_allocation_policy_association_description())
+%% }
+-type associate_networking_flex_cost_allocation_policy_result() :: #{binary() => any()}.
 
 %% Example:
 %% associate_route_server_request() :: #{
@@ -5255,6 +5288,29 @@
 -type create_network_interface_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_networking_flex_cost_allocation_policy_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"InstanceFcaPolicyDocument">> => instance_flex_cost_allocation_policy_document(),
+%%   <<"NatFcaPolicyDocument">> => nat_flex_cost_allocation_policy_document(),
+%%   <<"NetworkResourceType">> := list(any()),
+%%   <<"PcxFcaPolicyDocument">> => pcx_flex_cost_allocation_policy_document(),
+%%   <<"ShowBackEnabled">> => boolean(),
+%%   <<"TagSpecifications">> => list(tag_specification())
+%% }
+-type create_networking_flex_cost_allocation_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_networking_flex_cost_allocation_policy_result() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"ExpectedEffectiveAt">> => non_neg_integer(),
+%%   <<"FcaPolicyArn">> => string(),
+%%   <<"FcaPolicyId">> => string()
+%% }
+-type create_networking_flex_cost_allocation_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_placement_group_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupName">> => string(),
@@ -7075,6 +7131,20 @@
 %%   <<"NetworkInterfaceId">> := string()
 %% }
 -type delete_network_interface_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_networking_flex_cost_allocation_policies_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"FcaPolicyIds">> := list(string())
+%% }
+-type delete_networking_flex_cost_allocation_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_networking_flex_cost_allocation_policies_result() :: #{
+%%   <<"Failed">> => list(flex_cost_allocation_operation_failure()),
+%%   <<"Successful">> => list(string())
+%% }
+-type delete_networking_flex_cost_allocation_policies_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_placement_group_request() :: #{
@@ -9776,6 +9846,40 @@
 -type describe_network_interfaces_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_networking_flex_cost_allocation_policies_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"FcaPolicyIds">> => list(string()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_networking_flex_cost_allocation_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_networking_flex_cost_allocation_policies_result() :: #{
+%%   <<"FlexCostAllocationPolicies">> => list(flex_cost_allocation_policy_description()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_networking_flex_cost_allocation_policies_result() :: #{binary() => any()}.
+
+%% Example:
+%% describe_networking_flex_cost_allocation_policy_associations_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"FcaPolicyAssociationIds">> => list(string()),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_networking_flex_cost_allocation_policy_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_networking_flex_cost_allocation_policy_associations_result() :: #{
+%%   <<"FcaPolicyAssociations">> => list(flex_cost_allocation_policy_association_description()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_networking_flex_cost_allocation_policy_associations_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_outpost_lags_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
@@ -11768,6 +11872,20 @@
 -type disassociate_nat_gateway_address_result() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_networking_flex_cost_allocation_policy_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"FcaPolicyAssociationIds">> := list(string())
+%% }
+-type disassociate_networking_flex_cost_allocation_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_networking_flex_cost_allocation_policy_result() :: #{
+%%   <<"FcaPolicyDisassociationFailures">> => list(flex_cost_allocation_operation_failure()),
+%%   <<"FcaPolicyDisassociations">> => list(string())
+%% }
+-type disassociate_networking_flex_cost_allocation_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_route_server_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"RouteServerId">> := string(),
@@ -13081,6 +13199,83 @@
 -type fleet_spot_maintenance_strategies_request() :: #{binary() => any()}.
 
 %% Example:
+%% flex_cost_allocation_cidr_mapping() :: #{
+%%   <<"CidrLabel">> => string(),
+%%   <<"CidrRange">> => string()
+%% }
+-type flex_cost_allocation_cidr_mapping() :: #{binary() => any()}.
+
+%% Example:
+%% flex_cost_allocation_cidr_range_specifications() :: #{
+%%   <<"Prefixes">> => list(flex_cost_allocation_cidr_mapping()),
+%%   <<"PrefixesType">> => string()
+%% }
+-type flex_cost_allocation_cidr_range_specifications() :: #{binary() => any()}.
+
+%% Example:
+%% flex_cost_allocation_network_resource_scope() :: #{
+%%   <<"ResourceIds">> => list(string()),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type flex_cost_allocation_network_resource_scope() :: #{binary() => any()}.
+
+%% Example:
+%% flex_cost_allocation_operation_failure() :: #{
+%%   <<"FailureCode">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"ResourceId">> => string()
+%% }
+-type flex_cost_allocation_operation_failure() :: #{binary() => any()}.
+
+%% Example:
+%% flex_cost_allocation_policy_association_description() :: #{
+%%   <<"AssociatedAt">> => non_neg_integer(),
+%%   <<"AssociationMode">> => list(any()),
+%%   <<"ExpectedEffectiveAt">> => non_neg_integer(),
+%%   <<"FcaPolicyAssociationId">> => string(),
+%%   <<"FcaPolicyId">> => string(),
+%%   <<"ManagedBy">> => list(any()),
+%%   <<"NetworkResourceId">> => string(),
+%%   <<"OwnerAccount">> => string()
+%% }
+-type flex_cost_allocation_policy_association_description() :: #{binary() => any()}.
+
+%% Example:
+%% flex_cost_allocation_policy_description() :: #{
+%%   <<"Description">> => string(),
+%%   <<"FcaPolicyArn">> => string(),
+%%   <<"FcaPolicyId">> => string(),
+%%   <<"InstanceFcaPolicyDocument">> => instance_flex_cost_allocation_policy_document(),
+%%   <<"LatestVersion">> => integer(),
+%%   <<"ManagedBy">> => list(any()),
+%%   <<"NatFcaPolicyDocument">> => nat_flex_cost_allocation_policy_document(),
+%%   <<"NetworkResourceType">> => list(any()),
+%%   <<"OwnerAccount">> => string(),
+%%   <<"PcxFcaPolicyDocument">> => pcx_flex_cost_allocation_policy_document(),
+%%   <<"PolicyCreatedAt">> => non_neg_integer(),
+%%   <<"ShowBackEnabled">> => boolean(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"VersionExpectedEffectiveAt">> => non_neg_integer()
+%% }
+-type flex_cost_allocation_policy_description() :: #{binary() => any()}.
+
+%% Example:
+%% flex_cost_allocation_policy_version() :: #{
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"ExpectedEffectiveAt">> => non_neg_integer(),
+%%   <<"FcaPolicyId">> => string(),
+%%   <<"InstanceFcaPolicyDocument">> => instance_flex_cost_allocation_policy_document(),
+%%   <<"NatFcaPolicyDocument">> => nat_flex_cost_allocation_policy_document(),
+%%   <<"NetworkResourceType">> => list(any()),
+%%   <<"PcxFcaPolicyDocument">> => pcx_flex_cost_allocation_policy_document(),
+%%   <<"ShowBackEnabled">> => boolean(),
+%%   <<"Version">> => integer()
+%% }
+-type flex_cost_allocation_policy_version() :: #{binary() => any()}.
+
+%% Example:
 %% flow_log() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"DeliverCrossAccountRole">> => string(),
@@ -14078,6 +14273,20 @@
 %%   <<"NetworkInsightsAccessScopeContent">> => network_insights_access_scope_content()
 %% }
 -type get_network_insights_access_scope_content_result() :: #{binary() => any()}.
+
+%% Example:
+%% get_networking_flex_cost_allocation_policy_versions_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"FcaPolicyId">> := string(),
+%%   <<"VersionsToInclude">> => list(integer())
+%% }
+-type get_networking_flex_cost_allocation_policy_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_networking_flex_cost_allocation_policy_versions_result() :: #{
+%%   <<"FcaPolicyVersions">> => list(flex_cost_allocation_policy_version())
+%% }
+-type get_networking_flex_cost_allocation_policy_versions_result() :: #{binary() => any()}.
 
 %% Example:
 %% get_password_data_request() :: #{
@@ -15479,6 +15688,14 @@
 %%   <<"InstanceFamily">> => list(any())
 %% }
 -type instance_family_credit_specification() :: #{binary() => any()}.
+
+%% Example:
+%% instance_flex_cost_allocation_policy_document() :: #{
+%%   <<"CidrRangeSpecifications">> => flex_cost_allocation_cidr_range_specifications(),
+%%   <<"Dimensions">> => list(list(any())()),
+%%   <<"ReportingGranularity">> => list(list(any())())
+%% }
+-type instance_flex_cost_allocation_policy_document() :: #{binary() => any()}.
 
 %% Example:
 %% instance_image_metadata() :: #{
@@ -18334,6 +18551,28 @@
 -type modify_network_interface_attribute_request() :: #{binary() => any()}.
 
 %% Example:
+%% modify_networking_flex_cost_allocation_policy_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"DryRun">> => boolean(),
+%%   <<"FcaPolicyId">> := string(),
+%%   <<"InstanceFcaPolicyDocument">> => instance_flex_cost_allocation_policy_document(),
+%%   <<"NatFcaPolicyDocument">> => nat_flex_cost_allocation_policy_document(),
+%%   <<"PcxFcaPolicyDocument">> => pcx_flex_cost_allocation_policy_document(),
+%%   <<"ShowBackEnabled">> => boolean()
+%% }
+-type modify_networking_flex_cost_allocation_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_networking_flex_cost_allocation_policy_result() :: #{
+%%   <<"FcaPolicyId">> => string(),
+%%   <<"UpdatedAt">> => non_neg_integer(),
+%%   <<"Version">> => integer(),
+%%   <<"VersionExpectedEffectiveAt">> => non_neg_integer()
+%% }
+-type modify_networking_flex_cost_allocation_policy_result() :: #{binary() => any()}.
+
+%% Example:
 %% modify_private_dns_name_options_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"EnableResourceNameDnsAAAARecord">> => boolean(),
@@ -19235,6 +19474,14 @@
 -type moving_address_status() :: #{binary() => any()}.
 
 %% Example:
+%% nat_flex_cost_allocation_policy_document() :: #{
+%%   <<"CidrRangeSpecifications">> => flex_cost_allocation_cidr_range_specifications(),
+%%   <<"Dimensions">> => list(list(any())()),
+%%   <<"ReportingGranularity">> => list(list(any())())
+%% }
+-type nat_flex_cost_allocation_policy_document() :: #{binary() => any()}.
+
+%% Example:
 %% nat_gateway() :: #{
 %%   <<"AttachedAppliances">> => list(nat_gateway_attached_appliance()),
 %%   <<"AutoProvisionZones">> => list(any()),
@@ -19777,6 +20024,14 @@
 %%   <<"VendorId">> => string()
 %% }
 -type pci_id() :: #{binary() => any()}.
+
+%% Example:
+%% pcx_flex_cost_allocation_policy_document() :: #{
+%%   <<"CidrRangeSpecifications">> => flex_cost_allocation_cidr_range_specifications(),
+%%   <<"Dimensions">> => list(list(any())()),
+%%   <<"ReportingGranularity">> => list(list(any())())
+%% }
+-type pcx_flex_cost_allocation_policy_document() :: #{binary() => any()}.
 
 %% Example:
 %% peering_attachment_status() :: #{
@@ -25420,6 +25675,39 @@ associate_nat_gateway_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateNatGatewayAddress">>, Input, Options).
 
+%% @doc Associates a flex cost allocation policy with one or more network
+%% resources.
+%%
+%% You can
+%% associate the policy directly with specific resources by resource ID, or
+%% you can associate it with
+%% a scope of resources in an account, Amazon VPC, or subnet.
+%%
+%% The following limits apply:
+%%
+%% A request can associate up to 20 resources.
+%%
+%% A policy can have up to 100 active associations.
+%%
+%% A network resource can have only one active association, across all
+%% policies. If a resource
+%% is already associated, the response includes it in the failures with the
+%% code
+%% `ResourceAlreadyAssociated'.
+-spec associate_networking_flex_cost_allocation_policy(aws_client:aws_client(), associate_networking_flex_cost_allocation_policy_request()) ->
+    {ok, associate_networking_flex_cost_allocation_policy_result(), tuple()} |
+    {error, any()}.
+associate_networking_flex_cost_allocation_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_networking_flex_cost_allocation_policy(Client, Input, []).
+
+-spec associate_networking_flex_cost_allocation_policy(aws_client:aws_client(), associate_networking_flex_cost_allocation_policy_request(), proplists:proplist()) ->
+    {ok, associate_networking_flex_cost_allocation_policy_result(), tuple()} |
+    {error, any()}.
+associate_networking_flex_cost_allocation_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateNetworkingFlexCostAllocationPolicy">>, Input, Options).
+
 %% @doc Associates a route server with a VPC to enable dynamic route updates.
 %%
 %% A route server association is the connection established between a route
@@ -28032,6 +28320,37 @@ create_network_interface_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateNetworkInterfacePermission">>, Input, Options).
 
+%% @doc Creates a flex cost allocation policy for Networking Flexible Cost
+%% Allocation (FCA), a feature of
+%% Amazon Virtual Private Cloud (Amazon VPC).
+%%
+%% The policy allocates the charges of a shared networking
+%% resource at the reporting granularity that you specify. You can create a
+%% policy for one of the following
+%% resource types: NAT gateways, Amazon VPC peering connections, or EC2
+%% instances. Policies can
+%% allocate data transfer charges for all three types, and data processing
+%% charges for NAT gateways.
+%%
+%% You can have up to 100 policies per account in each Amazon Web Services
+%% Region, plus one additional
+%% policy per network resource type created by a declarative policy, for a
+%% maximum of 103 policies in an
+%% Amazon Web Services Region.
+-spec create_networking_flex_cost_allocation_policy(aws_client:aws_client(), create_networking_flex_cost_allocation_policy_request()) ->
+    {ok, create_networking_flex_cost_allocation_policy_result(), tuple()} |
+    {error, any()}.
+create_networking_flex_cost_allocation_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_networking_flex_cost_allocation_policy(Client, Input, []).
+
+-spec create_networking_flex_cost_allocation_policy(aws_client:aws_client(), create_networking_flex_cost_allocation_policy_request(), proplists:proplist()) ->
+    {ok, create_networking_flex_cost_allocation_policy_result(), tuple()} |
+    {error, any()}.
+create_networking_flex_cost_allocation_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateNetworkingFlexCostAllocationPolicy">>, Input, Options).
+
 %% @doc Creates a placement group in which to launch instances.
 %%
 %% The strategy of the placement
@@ -30471,6 +30790,21 @@ delete_network_interface_permission(Client, Input)
 delete_network_interface_permission(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteNetworkInterfacePermission">>, Input, Options).
+
+%% @doc Deletes one or more flex cost allocation policies.
+-spec delete_networking_flex_cost_allocation_policies(aws_client:aws_client(), delete_networking_flex_cost_allocation_policies_request()) ->
+    {ok, delete_networking_flex_cost_allocation_policies_result(), tuple()} |
+    {error, any()}.
+delete_networking_flex_cost_allocation_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_networking_flex_cost_allocation_policies(Client, Input, []).
+
+-spec delete_networking_flex_cost_allocation_policies(aws_client:aws_client(), delete_networking_flex_cost_allocation_policies_request(), proplists:proplist()) ->
+    {ok, delete_networking_flex_cost_allocation_policies_result(), tuple()} |
+    {error, any()}.
+delete_networking_flex_cost_allocation_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteNetworkingFlexCostAllocationPolicies">>, Input, Options).
 
 %% @doc Deletes the specified placement group.
 %%
@@ -34187,8 +34521,8 @@ describe_network_interface_permissions(Client, Input, Options)
 %%
 %% If you have a large number of network interfaces, the operation fails
 %% unless you use
-%% pagination or one of the following filters: `group-id',
-%% `mac-address', `private-dns-name',
+%% pagination or one of the following filters: `attachment.instance-id',
+%% `group-id', `mac-address', `private-dns-name',
 %% `private-ip-address', `subnet-id', or
 %% `vpc-id'.
 %%
@@ -34208,6 +34542,45 @@ describe_network_interfaces(Client, Input)
 describe_network_interfaces(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeNetworkInterfaces">>, Input, Options).
+
+%% @doc Describes one or more of your flex cost allocation policies.
+%%
+%% We recommend using
+%% pagination to ensure that the operation returns quickly and successfully.
+-spec describe_networking_flex_cost_allocation_policies(aws_client:aws_client(), describe_networking_flex_cost_allocation_policies_request()) ->
+    {ok, describe_networking_flex_cost_allocation_policies_result(), tuple()} |
+    {error, any()}.
+describe_networking_flex_cost_allocation_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_networking_flex_cost_allocation_policies(Client, Input, []).
+
+-spec describe_networking_flex_cost_allocation_policies(aws_client:aws_client(), describe_networking_flex_cost_allocation_policies_request(), proplists:proplist()) ->
+    {ok, describe_networking_flex_cost_allocation_policies_result(), tuple()} |
+    {error, any()}.
+describe_networking_flex_cost_allocation_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeNetworkingFlexCostAllocationPolicies">>, Input, Options).
+
+%% @doc Describes the associations between your flex cost allocation policies
+%% and network
+%% resources.
+%%
+%% We recommend using pagination to ensure that the operation returns quickly
+%% and
+%% successfully.
+-spec describe_networking_flex_cost_allocation_policy_associations(aws_client:aws_client(), describe_networking_flex_cost_allocation_policy_associations_request()) ->
+    {ok, describe_networking_flex_cost_allocation_policy_associations_result(), tuple()} |
+    {error, any()}.
+describe_networking_flex_cost_allocation_policy_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_networking_flex_cost_allocation_policy_associations(Client, Input, []).
+
+-spec describe_networking_flex_cost_allocation_policy_associations(aws_client:aws_client(), describe_networking_flex_cost_allocation_policy_associations_request(), proplists:proplist()) ->
+    {ok, describe_networking_flex_cost_allocation_policy_associations_result(), tuple()} |
+    {error, any()}.
+describe_networking_flex_cost_allocation_policy_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeNetworkingFlexCostAllocationPolicyAssociations">>, Input, Options).
 
 %% @doc Describes the Outposts link aggregation groups (LAGs).
 %%
@@ -37010,6 +37383,22 @@ disassociate_nat_gateway_address(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateNatGatewayAddress">>, Input, Options).
 
+%% @doc Disassociates a flex cost allocation policy from one or more network
+%% resources.
+-spec disassociate_networking_flex_cost_allocation_policy(aws_client:aws_client(), disassociate_networking_flex_cost_allocation_policy_request()) ->
+    {ok, disassociate_networking_flex_cost_allocation_policy_result(), tuple()} |
+    {error, any()}.
+disassociate_networking_flex_cost_allocation_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_networking_flex_cost_allocation_policy(Client, Input, []).
+
+-spec disassociate_networking_flex_cost_allocation_policy(aws_client:aws_client(), disassociate_networking_flex_cost_allocation_policy_request(), proplists:proplist()) ->
+    {ok, disassociate_networking_flex_cost_allocation_policy_result(), tuple()} |
+    {error, any()}.
+disassociate_networking_flex_cost_allocation_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateNetworkingFlexCostAllocationPolicy">>, Input, Options).
+
 %% @doc Disassociates a route server from a VPC.
 %%
 %% A route server association is the connection established between a route
@@ -38393,7 +38782,9 @@ get_enabled_ipam_policy(Client, Input, Options)
 %% quickly
 %%
 %% `GetFlowLogsIntegrationTemplate' does not support integration between
-%% Amazon Web Services Transit Gateway Flow Logs and Amazon Athena.
+%% Amazon Web Services Transit Gateway Flow Logs or Amazon Web Services Cloud
+%% WAN Flow Logs
+%% and Amazon Athena.
 -spec get_flow_logs_integration_template(aws_client:aws_client(), get_flow_logs_integration_template_request()) ->
     {ok, get_flow_logs_integration_template_result(), tuple()} |
     {error, any()}.
@@ -39147,6 +39538,21 @@ get_network_insights_access_scope_content(Client, Input)
 get_network_insights_access_scope_content(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetNetworkInsightsAccessScopeContent">>, Input, Options).
+
+%% @doc Retrieves the versions of a flex cost allocation policy.
+-spec get_networking_flex_cost_allocation_policy_versions(aws_client:aws_client(), get_networking_flex_cost_allocation_policy_versions_request()) ->
+    {ok, get_networking_flex_cost_allocation_policy_versions_result(), tuple()} |
+    {error, any()}.
+get_networking_flex_cost_allocation_policy_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_networking_flex_cost_allocation_policy_versions(Client, Input, []).
+
+-spec get_networking_flex_cost_allocation_policy_versions(aws_client:aws_client(), get_networking_flex_cost_allocation_policy_versions_request(), proplists:proplist()) ->
+    {ok, get_networking_flex_cost_allocation_policy_versions_result(), tuple()} |
+    {error, any()}.
+get_networking_flex_cost_allocation_policy_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetNetworkingFlexCostAllocationPolicyVersions">>, Input, Options).
 
 %% @doc Retrieves the encrypted administrator password for a running Windows
 %% instance.
@@ -41121,6 +41527,32 @@ modify_network_interface_attribute(Client, Input)
 modify_network_interface_attribute(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyNetworkInterfaceAttribute">>, Input, Options).
+
+%% @doc Modifies a flex cost allocation policy.
+%%
+%% Changing a policy document or
+%% `ShowBackEnabled' creates a new version of the policy. Changing only
+%% the description doesn't
+%% create a new version.
+%%
+%% A policy can have up to 100 versions. Versions are never removed, so after
+%% a policy reaches 100
+%% versions, you can't change its policy document or
+%% `ShowBackEnabled'. Policies that are managed
+%% by a declarative policy aren't subject to this limit.
+-spec modify_networking_flex_cost_allocation_policy(aws_client:aws_client(), modify_networking_flex_cost_allocation_policy_request()) ->
+    {ok, modify_networking_flex_cost_allocation_policy_result(), tuple()} |
+    {error, any()}.
+modify_networking_flex_cost_allocation_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_networking_flex_cost_allocation_policy(Client, Input, []).
+
+-spec modify_networking_flex_cost_allocation_policy(aws_client:aws_client(), modify_networking_flex_cost_allocation_policy_request(), proplists:proplist()) ->
+    {ok, modify_networking_flex_cost_allocation_policy_result(), tuple()} |
+    {error, any()}.
+modify_networking_flex_cost_allocation_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyNetworkingFlexCostAllocationPolicy">>, Input, Options).
 
 %% @doc Modifies the options for instance hostnames for the specified
 %% instance.

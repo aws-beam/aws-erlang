@@ -338,6 +338,8 @@
          describe_cluster_extension/3,
          describe_cluster_node/2,
          describe_cluster_node/3,
+         describe_cluster_operation/2,
+         describe_cluster_operation/3,
          describe_cluster_scheduler_config/2,
          describe_cluster_scheduler_config/3,
          describe_code_repository/2,
@@ -516,10 +518,14 @@
          list_candidates_for_auto_ml_job/3,
          list_cluster_events/2,
          list_cluster_events/3,
+         list_cluster_extension_versions/2,
+         list_cluster_extension_versions/3,
          list_cluster_extensions/2,
          list_cluster_extensions/3,
          list_cluster_nodes/2,
          list_cluster_nodes/3,
+         list_cluster_operations/2,
+         list_cluster_operations/3,
          list_cluster_scheduler_configs/2,
          list_cluster_scheduler_configs/3,
          list_clusters/2,
@@ -2198,6 +2204,8 @@
 %% Example:
 %% cluster_auto_patch_config() :: #{
 %%   <<"DeploymentConfig">> => deployment_configuration(),
+%%   <<"DrainPolicy">> => cluster_drain_policy(),
+%%   <<"IdleWaitWindowInSeconds">> => integer(),
 %%   <<"PatchSchedule">> => cluster_patch_schedule(),
 %%   <<"PatchingStrategy">> => list(any())
 %% }
@@ -2208,6 +2216,8 @@
 %%   <<"CurrentPatchSchedule">> => cluster_patch_schedule_details(),
 %%   <<"DeploymentConfig">> => deployment_configuration(),
 %%   <<"DesiredPatchSchedule">> => cluster_patch_schedule_details(),
+%%   <<"DrainPolicy">> => cluster_drain_policy(),
+%%   <<"IdleWaitWindowInSeconds">> => integer(),
 %%   <<"PatchingStrategy">> => list(any())
 %% }
 -type cluster_auto_patch_config_details() :: #{binary() => any()}.
@@ -2236,6 +2246,13 @@
 -type cluster_capacity_requirements() :: #{binary() => any()}.
 
 %% Example:
+%% cluster_drain_policy() :: #{
+%%   <<"DrainTimeoutInSeconds">> => integer(),
+%%   <<"OnDrainTimeout">> => list(any())
+%% }
+-type cluster_drain_policy() :: #{binary() => any()}.
+
+%% Example:
 %% cluster_ebs_volume_config() :: #{
 %%   <<"RootVolume">> => boolean(),
 %%   <<"VolumeKmsKeyId">> => string(),
@@ -2254,6 +2271,7 @@
 %%   <<"EventTime">> => non_neg_integer(),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceId">> => [string()],
+%%   <<"OperationId">> => string(),
 %%   <<"ResourceType">> => list(any())
 %% }
 -type cluster_event_detail() :: #{binary() => any()}.
@@ -2268,6 +2286,7 @@
 %%   <<"EventTime">> => non_neg_integer(),
 %%   <<"InstanceGroupName">> => string(),
 %%   <<"InstanceId">> => [string()],
+%%   <<"OperationId">> => string(),
 %%   <<"ResourceType">> => list(any())
 %% }
 -type cluster_event_summary() :: #{binary() => any()}.
@@ -2494,6 +2513,33 @@
 
 %% }
 -type cluster_on_demand_options() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_operation_scaling_configuration() :: #{
+%%   <<"CurrentCount">> => integer(),
+%%   <<"MinCount">> => integer(),
+%%   <<"TargetCount">> => integer()
+%% }
+-type cluster_operation_scaling_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_operation_scaling_details() :: #{
+%%   <<"Desired">> => cluster_operation_scaling_configuration(),
+%%   <<"InstanceGroupName">> => [string()],
+%%   <<"Original">> => cluster_operation_scaling_configuration(),
+%%   <<"Status">> => list(any())
+%% }
+-type cluster_operation_scaling_details() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_operation_summary() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"OperationId">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type cluster_operation_summary() :: #{binary() => any()}.
 
 %% Example:
 %% cluster_orchestrator() :: #{
@@ -5300,6 +5346,7 @@
 %% Example:
 %% describe_cluster_extension_response() :: #{
 %%   <<"ExtensionDetails">> => extension_details(),
+%%   <<"Health">> => extension_health(),
 %%   <<"NodeSummary">> => extension_node_summary()
 %% }
 -type describe_cluster_extension_response() :: #{binary() => any()}.
@@ -5317,6 +5364,25 @@
 %%   <<"NodeDetails">> => cluster_node_details()
 %% }
 -type describe_cluster_node_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_operation_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"OperationId">> := string()
+%% }
+-type describe_cluster_operation_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_operation_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"DeepHealthCheckDetails">> => list(instance_group_health_check_configuration()),
+%%   <<"OperationId">> => string(),
+%%   <<"ScalingDetails">> => list(cluster_operation_scaling_details()),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type describe_cluster_operation_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_cluster_request() :: #{
@@ -7528,6 +7594,20 @@
 -type extension_details() :: #{binary() => any()}.
 
 %% Example:
+%% extension_health() :: #{
+%%   <<"Issues">> => list(extension_health_issue())
+%% }
+-type extension_health() :: #{binary() => any()}.
+
+%% Example:
+%% extension_health_issue() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeCount">> => integer()
+%% }
+-type extension_health_issue() :: #{binary() => any()}.
+
+%% Example:
 %% extension_node_summary() :: #{
 %%   <<"ActiveCount">> => integer(),
 %%   <<"TotalCount">> => integer()
@@ -7543,6 +7623,12 @@
 %%   <<"Status">> => list(any())
 %% }
 -type extension_summary() :: #{binary() => any()}.
+
+%% Example:
+%% extension_version_summary() :: #{
+%%   <<"ExtensionVersion">> => string()
+%% }
+-type extension_version_summary() :: #{binary() => any()}.
 
 %% Example:
 %% f_sx_lustre_config() :: #{
@@ -9141,6 +9227,7 @@
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"NodeId">> => string(),
+%%   <<"OperationId">> => string(),
 %%   <<"ResourceType">> => list(any()),
 %%   <<"SortBy">> => list(any()),
 %%   <<"SortOrder">> => list(any())
@@ -9153,6 +9240,21 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_cluster_events_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_extension_versions_request() :: #{
+%%   <<"ExtensionName">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_extension_versions_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_extension_versions_response() :: #{
+%%   <<"ExtensionVersions">> => list(extension_version_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_extension_versions_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_cluster_extensions_request() :: #{
@@ -9191,6 +9293,27 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_cluster_nodes_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_operations_request() :: #{
+%%   <<"ClusterName">> := string(),
+%%   <<"CreationTimeAfter">> => non_neg_integer(),
+%%   <<"CreationTimeBefore">> => non_neg_integer(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type list_cluster_operations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_cluster_operations_response() :: #{
+%%   <<"ClusterOperationSummaries">> => list(cluster_operation_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_cluster_operations_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_cluster_scheduler_configs_request() :: #{
@@ -15832,6 +15955,9 @@
 -type describe_cluster_node_errors() ::
     resource_not_found().
 
+-type describe_cluster_operation_errors() ::
+    resource_not_found().
+
 -type describe_cluster_scheduler_config_errors() ::
     resource_not_found().
 
@@ -16028,6 +16154,9 @@
     resource_not_found().
 
 -type list_cluster_nodes_errors() ::
+    resource_not_found().
+
+-type list_cluster_operations_errors() ::
     resource_not_found().
 
 -type list_contexts_errors() ::
@@ -20429,7 +20558,9 @@ describe_cluster_event(Client, Input, Options)
 %%
 %% The information includes the extension's version, configuration, and
 %% status, and a summary of how many cluster nodes are running the current
-%% version and configuration of the extension.
+%% version and configuration of the extension. If the extension has problems
+%% on some nodes, the response also lists the problems and how many nodes
+%% each one affects.
 -spec describe_cluster_extension(aws_client:aws_client(), describe_cluster_extension_request()) ->
     {ok, describe_cluster_extension_response(), tuple()} |
     {error, any()} |
@@ -20463,6 +20594,27 @@ describe_cluster_node(Client, Input)
 describe_cluster_node(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeClusterNode">>, Input, Options).
+
+%% @doc Retrieves detailed information about a specific operation for a given
+%% HyperPod cluster, such as a scaling operation or a deep health check.
+%%
+%% Use the `OperationId' returned by the `ListClusterOperations'
+%% operation to identify the operation to describe.
+-spec describe_cluster_operation(aws_client:aws_client(), describe_cluster_operation_request()) ->
+    {ok, describe_cluster_operation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_operation_errors(), tuple()}.
+describe_cluster_operation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_cluster_operation(Client, Input, []).
+
+-spec describe_cluster_operation(aws_client:aws_client(), describe_cluster_operation_request(), proplists:proplist()) ->
+    {ok, describe_cluster_operation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_operation_errors(), tuple()}.
+describe_cluster_operation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeClusterOperation">>, Input, Options).
 
 %% @doc Description of the cluster policy.
 %%
@@ -22110,6 +22262,30 @@ list_cluster_events(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusterEvents">>, Input, Options).
 
+%% @doc Lists the versions of an extension that you can install on a
+%% SageMaker HyperPod cluster, from the highest version to the lowest.
+%%
+%% Use a version from this list as the `ExtensionVersion' in
+%% `CreateClusterExtension' or `UpdateClusterExtension'.
+%%
+%% The list contains only versions that you can install. Versions that
+%% SageMaker HyperPod no longer offers for new installations don't
+%% appear. If SageMaker HyperPod doesn't offer an extension with the name
+%% that you specify, the response contains an empty list.
+-spec list_cluster_extension_versions(aws_client:aws_client(), list_cluster_extension_versions_request()) ->
+    {ok, list_cluster_extension_versions_response(), tuple()} |
+    {error, any()}.
+list_cluster_extension_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cluster_extension_versions(Client, Input, []).
+
+-spec list_cluster_extension_versions(aws_client:aws_client(), list_cluster_extension_versions_request(), proplists:proplist()) ->
+    {ok, list_cluster_extension_versions_response(), tuple()} |
+    {error, any()}.
+list_cluster_extension_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListClusterExtensionVersions">>, Input, Options).
+
 %% @doc Lists the extensions installed on a SageMaker HyperPod cluster.
 -spec list_cluster_extensions(aws_client:aws_client(), list_cluster_extensions_request()) ->
     {ok, list_cluster_extensions_response(), tuple()} |
@@ -22144,6 +22320,26 @@ list_cluster_nodes(Client, Input)
 list_cluster_nodes(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListClusterNodes">>, Input, Options).
+
+%% @doc Retrieves a list of operation summaries for a specified HyperPod
+%% cluster, such as scaling operations and deep health checks.
+%%
+%% The operation supports filtering, sorting, and pagination of results.
+-spec list_cluster_operations(aws_client:aws_client(), list_cluster_operations_request()) ->
+    {ok, list_cluster_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_cluster_operations_errors(), tuple()}.
+list_cluster_operations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_cluster_operations(Client, Input, []).
+
+-spec list_cluster_operations(aws_client:aws_client(), list_cluster_operations_request(), proplists:proplist()) ->
+    {ok, list_cluster_operations_response(), tuple()} |
+    {error, any()} |
+    {error, list_cluster_operations_errors(), tuple()}.
+list_cluster_operations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListClusterOperations">>, Input, Options).
 
 %% @doc List the cluster policy configurations.
 -spec list_cluster_scheduler_configs(aws_client:aws_client(), list_cluster_scheduler_configs_request()) ->
@@ -24318,6 +24514,11 @@ update_cluster(Client, Input, Options)
 %% Version: You can update to a later version. You can't update to an
 %% earlier version. To use an earlier version, delete the extension and
 %% create it again with that version.
+%%
+%% To retry the operation on nodes where it failed, fix the cause that
+%% `DescribeClusterExtension' reports in `Health', and then send an
+%% `UpdateClusterExtension' request that doesn't change the version
+%% or the configuration.
 %%
 %% You can't update an extension while it is being deleted.
 -spec update_cluster_extension(aws_client:aws_client(), update_cluster_extension_request()) ->

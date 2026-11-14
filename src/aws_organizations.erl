@@ -2342,6 +2342,9 @@ accept_handshake(Client, Input, Options)
 %% GUARDDUTY_POLICY:
 %% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_guardduty.html
 %%
+%% SECURITYHUB_CSPM_POLICY:
+%% https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub_cspm.html
+%%
 %% You can only call this operation from the management account or a member
 %% account that is a delegated administrator.
 -spec attach_policy(aws_client:aws_client(), attach_policy_request()) ->

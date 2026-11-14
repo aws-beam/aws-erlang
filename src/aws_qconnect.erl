@@ -1168,6 +1168,7 @@
 %%   <<"businessEmailAddress">> => string(),
 %%   <<"businessName">> => string(),
 %%   <<"businessPhoneNumber">> => string(),
+%%   <<"calculatedAttributes">> => map(),
 %%   <<"city">> => string(),
 %%   <<"country">> => string(),
 %%   <<"county">> => string(),
@@ -1195,6 +1196,7 @@
 %%   <<"profileARN">> => string(),
 %%   <<"profileId">> => string(),
 %%   <<"province">> => string(),
+%%   <<"recommendations">> => list(profile_recommendation()),
 %%   <<"shippingAddress1">> => string(),
 %%   <<"shippingAddress2">> => string(),
 %%   <<"shippingAddress3">> => string(),
@@ -2324,6 +2326,7 @@
 %% Example:
 %% message_template_attributes() :: #{
 %%   <<"agentAttributes">> => agent_attributes(),
+%%   <<"caseAttributes">> => map(),
 %%   <<"customAttributes">> => map(),
 %%   <<"customerProfileAttributes">> => customer_profile_attributes(),
 %%   <<"systemAttributes">> => system_attributes()
@@ -2571,6 +2574,33 @@
 %%   <<"nextMessageToken">> => string()
 %% }
 -type proactive_recommendation_data_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_catalog_item() :: #{
+%%   <<"additionalInformation">> => string(),
+%%   <<"attributes">> => map(),
+%%   <<"category">> => string(),
+%%   <<"code">> => string(),
+%%   <<"createdAt">> => string(),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"imageLink">> => string(),
+%%   <<"link">> => string(),
+%%   <<"name">> => string(),
+%%   <<"price">> => string(),
+%%   <<"type">> => string(),
+%%   <<"updatedAt">> => string()
+%% }
+-type profile_catalog_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% profile_recommendation() :: #{
+%%   <<"catalogItem">> => profile_catalog_item(),
+%%   <<"score">> => float()
+%% }
+-type profile_recommendation() :: #{binary() => any()}.
 
 
 %% Example:

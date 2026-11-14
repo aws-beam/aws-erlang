@@ -707,6 +707,7 @@
 %%   <<"TargetMaps">> => list(map()),
 %%   <<"TargetParameterName">> => string(),
 %%   <<"Targets">> => list(target()),
+%%   <<"TargetsSummary">> => targets_summary(),
 %%   <<"TriggeredAlarms">> => list(alarm_state_information()),
 %%   <<"Variables">> => map(),
 %%   <<"WarningMessage">> => string()
@@ -862,9 +863,11 @@
 %% Example:
 %% cloud_connector_summary() :: #{
 %%   <<"CloudConnectorId">> => string(),
+%%   <<"ConfigConnectorArn">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> => string(),
+%%   <<"Provider">> => list(any()),
 %%   <<"RoleArn">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
@@ -1113,7 +1116,7 @@
 
 %% Example:
 %% create_cloud_connector_request() :: #{
-%%   <<"ConfigConnectorArn">> := string(),
+%%   <<"ConfigConnectorArn">> => string(),
 %%   <<"Configuration">> := list(),
 %%   <<"Description">> => string(),
 %%   <<"DisplayName">> := string(),
@@ -2272,6 +2275,22 @@
 %%   <<"Message">> => string()
 %% }
 -type feature_not_available_exception() :: #{binary() => any()}.
+
+%% Example:
+%% gcp_configuration() :: #{
+%%   <<"OrganizationId">> => string(),
+%%   <<"ServiceAccountEmail">> => string(),
+%%   <<"Targets">> => list(),
+%%   <<"WorkloadIdentityPoolProvider">> => string()
+%% }
+-type gcp_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% gcp_project() :: #{
+%%   <<"ProjectDisplayName">> => string(),
+%%   <<"ProjectId">> => string()
+%% }
+-type gcp_project() :: #{binary() => any()}.
 
 %% Example:
 %% get_access_token_request() :: #{
@@ -5276,6 +5295,16 @@
 -type target_preview() :: #{binary() => any()}.
 
 %% Example:
+%% targets_summary() :: #{
+%%   <<"CompletedCount">> => integer(),
+%%   <<"FailedCount">> => integer(),
+%%   <<"StartedCount">> => integer(),
+%%   <<"SuccessfulCount">> => integer(),
+%%   <<"TotalCount">> => integer()
+%% }
+-type targets_summary() :: #{binary() => any()}.
+
+%% Example:
 %% terminate_session_request() :: #{
 %%   <<"SessionId">> := string()
 %% }
@@ -6549,6 +6578,7 @@
     association_does_not_exist().
 
 -type update_cloud_connector_errors() ::
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_error() | 
     conflict_exception().

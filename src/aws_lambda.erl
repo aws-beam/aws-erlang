@@ -846,6 +846,7 @@
 %%   <<"PublishTo">> => list(any()),
 %%   <<"Role">> := string(),
 %%   <<"Runtime">> => list(any()),
+%%   <<"RuntimeConfig">> => function_runtime_config(),
 %%   <<"SnapStart">> => snap_start(),
 %%   <<"Tags">> => map(),
 %%   <<"TenancyConfig">> => tenancy_config(),
@@ -1378,6 +1379,7 @@
 %%   <<"RevisionId">> => string(),
 %%   <<"Role">> => string(),
 %%   <<"Runtime">> => list(any()),
+%%   <<"RuntimeConfig">> => function_runtime_config(),
 %%   <<"RuntimeVersionConfig">> => runtime_version_config(),
 %%   <<"SigningJobArn">> => string(),
 %%   <<"SigningProfileVersionArn">> => string(),
@@ -1403,6 +1405,14 @@
 %%   <<"MaximumRetryAttempts">> => integer()
 %% }
 -type function_event_invoke_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_runtime_config() :: #{
+%%   <<"RuntimeAlias">> => string(),
+%%   <<"RuntimeArn">> => string()
+%% }
+-type function_runtime_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2670,11 +2680,27 @@
 
 
 %% Example:
+%% runtime_alias_deleted_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type runtime_alias_deleted_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% runtime_version_config() :: #{
 %%   <<"Error">> => runtime_version_error(),
 %%   <<"RuntimeVersionArn">> => string()
 %% }
 -type runtime_version_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_version_deleted_exception() :: #{
+%%   <<"Type">> => string(),
+%%   <<"message">> => string()
+%% }
+-type runtime_version_deleted_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3088,6 +3114,7 @@
 %%   <<"RevisionId">> => string(),
 %%   <<"Role">> => string(),
 %%   <<"Runtime">> => list(any()),
+%%   <<"RuntimeConfig">> => function_runtime_config(),
 %%   <<"SnapStart">> => snap_start(),
 %%   <<"Timeout">> => integer(),
 %%   <<"TracingConfig">> => tracing_config(),
@@ -3503,6 +3530,8 @@
     s3_files_mount_timeout_exception() | 
     s3_files_mount_failure_exception() | 
     s3_files_mount_connectivity_exception() | 
+    runtime_version_deleted_exception() | 
+    runtime_alias_deleted_exception() | 
     resource_not_ready_exception() | 
     resource_not_found_exception() | 
     resource_conflict_exception() | 
@@ -3579,6 +3608,8 @@
     s3_files_mount_timeout_exception() | 
     s3_files_mount_failure_exception() | 
     s3_files_mount_connectivity_exception() | 
+    runtime_version_deleted_exception() | 
+    runtime_alias_deleted_exception() | 
     resource_not_ready_exception() | 
     resource_not_found_exception() | 
     resource_conflict_exception() | 
@@ -3772,6 +3803,7 @@
     too_many_requests_exception() | 
     service_exception() | 
     resource_not_found_exception() | 
+    resource_conflict_exception() | 
     precondition_failed_exception() | 
     invalid_parameter_value_exception().
 
