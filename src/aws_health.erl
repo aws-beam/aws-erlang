@@ -11,11 +11,16 @@
 %% the API operations to get information about events that might affect your
 %% Amazon Web Services services and resources.
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% from Amazon Web Services Support: http://aws.amazon.com/premiumsupport/ to
-%% use the Health API. If you call the Health API from an
-%% Amazon Web Services account that doesn't have a Business, Enterprise
-%% On-Ramp, or Enterprise Support plan, you receive a
+%% You must have an Amazon Web Services Business Support+, Amazon Web
+%% Services Enterprise Support, or Amazon Web Services Unified Operations
+%% plan from Amazon Web Services Support:
+%% http://aws.amazon.com/premiumsupport/ to use the Health API. If you're
+%% in an Amazon Web Services Region that doesn't offer one of these
+%% Amazon Web Services Support plans, or if you haven't transitioned to
+%% one of these plans, you can use the Health API with a Business, Enterprise
+%% On-Ramp, or Enterprise Support plan. If you call the Health API from an
+%% Amazon Web Services account that isn't enrolled in one of these plans,
+%% then you receive a
 %% `SubscriptionRequiredException' error.
 %%
 %% For API access, you need an access key ID and a secret access key. Use
@@ -79,7 +84,11 @@
 %% `nextToken' in the next request to return more results.
 -module(aws_health).
 
--export([describe_affected_accounts_for_organization/2,
+-export([configure_tags/2,
+         configure_tags/3,
+         configure_tags_for_organization/2,
+         configure_tags_for_organization/3,
+         describe_affected_accounts_for_organization/2,
          describe_affected_accounts_for_organization/3,
          describe_affected_entities/2,
          describe_affected_entities/3,
@@ -105,16 +114,43 @@
          describe_health_service_status_for_organization/3,
          describe_service_lifecycle/2,
          describe_service_lifecycle/3,
+         describe_tag_keys/2,
+         describe_tag_keys/3,
+         describe_tag_keys_for_organization/2,
+         describe_tag_keys_for_organization/3,
+         describe_tags/2,
+         describe_tags/3,
+         describe_tags_for_organization/2,
+         describe_tags_for_organization/3,
+         describe_tags_onboarding_status/2,
+         describe_tags_onboarding_status/3,
+         describe_tags_onboarding_status_for_organization/2,
+         describe_tags_onboarding_status_for_organization/3,
          disable_health_service_access_for_organization/2,
          disable_health_service_access_for_organization/3,
+         disable_tags/2,
+         disable_tags/3,
+         disable_tags_for_organization/2,
+         disable_tags_for_organization/3,
          enable_health_service_access_for_organization/2,
-         enable_health_service_access_for_organization/3]).
+         enable_health_service_access_for_organization/3,
+         enable_tags/2,
+         enable_tags/3,
+         enable_tags_for_organization/2,
+         enable_tags_for_organization/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
 %% hackney:body/1 is only called with hackney versions that still export it.
 -ignore_xref([{hackney, body, 1}]).
 
+
+%% Example:
+%% account_entity() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"accountTags">> => map()
+%% }
+-type account_entity() :: #{binary() => any()}.
 
 %% Example:
 %% account_entity_aggregate() :: #{
@@ -125,7 +161,23 @@
 -type account_entity_aggregate() :: #{binary() => any()}.
 
 %% Example:
+%% account_tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type account_tag() :: #{binary() => any()}.
+
+%% Example:
+%% affected_account_filter() :: #{
+%%   <<"eventArn">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type affected_account_filter() :: #{binary() => any()}.
+
+%% Example:
 %% affected_entity() :: #{
+%%   <<"accountTags">> => map(),
 %%   <<"awsAccountId">> => string(),
 %%   <<"entityArn">> => string(),
 %%   <<"entityMetadata">> => map(),
@@ -133,6 +185,7 @@
 %%   <<"entityValue">> => string(),
 %%   <<"eventArn">> => string(),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
+%%   <<"resourceTags">> => map(),
 %%   <<"statusCode">> => list(any()),
 %%   <<"tags">> => map()
 %% }
@@ -145,6 +198,30 @@
 -type concurrent_modification_exception() :: #{binary() => any()}.
 
 %% Example:
+%% configure_tags_for_organization_request() :: #{
+%%   <<"tagKeys">> := list(tag_key_for_organization())
+%% }
+-type configure_tags_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% configure_tags_for_organization_response() :: #{
+%%   <<"configuredTagKeys">> => list(tag_key_for_organization())
+%% }
+-type configure_tags_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% configure_tags_request() :: #{
+%%   <<"tagKeys">> := list(resource_tag_key())
+%% }
+-type configure_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% configure_tags_response() :: #{
+%%   <<"configuredTagKeys">> => list(resource_tag_key())
+%% }
+-type configure_tags_response() :: #{binary() => any()}.
+
+%% Example:
 %% date_time_range() :: #{
 %%   <<"from">> => non_neg_integer(),
 %%   <<"to">> => non_neg_integer()
@@ -154,6 +231,7 @@
 %% Example:
 %% describe_affected_accounts_for_organization_request() :: #{
 %%   <<"eventArn">> := string(),
+%%   <<"filter">> => affected_account_filter(),
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
 %% }
@@ -161,6 +239,7 @@
 
 %% Example:
 %% describe_affected_accounts_for_organization_response() :: #{
+%%   <<"affectedAccountEntities">> => list(account_entity()),
 %%   <<"affectedAccounts">> => list(string()),
 %%   <<"eventScopeCode">> => list(any()),
 %%   <<"nextToken">> => string()
@@ -204,7 +283,8 @@
 %% Example:
 %% describe_entity_aggregates_for_organization_request() :: #{
 %%   <<"awsAccountIds">> => list(string()),
-%%   <<"eventArns">> := list(string())
+%%   <<"eventArns">> := list(string()),
+%%   <<"filter">> => organization_entity_aggregate_filter()
 %% }
 -type describe_entity_aggregates_for_organization_request() :: #{binary() => any()}.
 
@@ -216,7 +296,8 @@
 
 %% Example:
 %% describe_entity_aggregates_request() :: #{
-%%   <<"eventArns">> => list(string())
+%%   <<"eventArns">> => list(string()),
+%%   <<"filter">> => entity_aggregate_filter()
 %% }
 -type describe_entity_aggregates_request() :: #{binary() => any()}.
 
@@ -340,10 +421,70 @@
 -type describe_service_lifecycle_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_tag_keys_for_organization_response() :: #{
+%%   <<"keys">> => list(organization_tag_key())
+%% }
+-type describe_tag_keys_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tag_keys_response() :: #{
+%%   <<"keys">> => list(resource_tag_key())
+%% }
+-type describe_tag_keys_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_for_organization_filter() :: #{
+%%   <<"tagTypes">> => list(list(any())())
+%% }
+-type describe_tags_for_organization_filter() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_for_organization_request() :: #{
+%%   <<"filter">> => describe_tags_for_organization_filter(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_tags_for_organization_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_for_organization_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => list(organization_tag())
+%% }
+-type describe_tags_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_onboarding_status_for_organization_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type describe_tags_onboarding_status_for_organization_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_onboarding_status_response() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type describe_tags_onboarding_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type describe_tags_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_tags_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"tags">> => list(account_tag())
+%% }
+-type describe_tags_response() :: #{binary() => any()}.
+
+%% Example:
 %% entity_account_filter() :: #{
 %%   <<"awsAccountId">> => string(),
 %%   <<"eventArn">> => string(),
-%%   <<"statusCodes">> => list(list(any())())
+%%   <<"statusCodes">> => list(list(any())()),
+%%   <<"tags">> => map()
 %% }
 -type entity_account_filter() :: #{binary() => any()}.
 
@@ -356,13 +497,19 @@
 -type entity_aggregate() :: #{binary() => any()}.
 
 %% Example:
+%% entity_aggregate_filter() :: #{
+%%   <<"tags">> => map()
+%% }
+-type entity_aggregate_filter() :: #{binary() => any()}.
+
+%% Example:
 %% entity_filter() :: #{
 %%   <<"entityArns">> => list(string()),
 %%   <<"entityValues">> => list(string()),
 %%   <<"eventArns">> => list(string()),
 %%   <<"lastUpdatedTimes">> => list(date_time_range()),
 %%   <<"statusCodes">> => list(list(any())()),
-%%   <<"tags">> => list(map())
+%%   <<"tags">> => map()
 %% }
 -type entity_filter() :: #{binary() => any()}.
 
@@ -436,7 +583,7 @@
 %%   <<"regions">> => list(string()),
 %%   <<"services">> => list(string()),
 %%   <<"startTimes">> => list(date_time_range()),
-%%   <<"tags">> => list(map())
+%%   <<"tags">> => map()
 %% }
 -type event_filter() :: #{binary() => any()}.
 
@@ -495,6 +642,12 @@
 -type organization_entity_aggregate() :: #{binary() => any()}.
 
 %% Example:
+%% organization_entity_aggregate_filter() :: #{
+%%   <<"tags">> => map()
+%% }
+-type organization_entity_aggregate_filter() :: #{binary() => any()}.
+
+%% Example:
 %% organization_event() :: #{
 %%   <<"actionability">> => list(any()),
 %%   <<"arn">> => string(),
@@ -543,9 +696,34 @@
 %%   <<"personas">> => list(list(any())()),
 %%   <<"regions">> => list(string()),
 %%   <<"services">> => list(string()),
-%%   <<"startTime">> => date_time_range()
+%%   <<"startTime">> => date_time_range(),
+%%   <<"tags">> => map()
 %% }
 -type organization_event_filter() :: #{binary() => any()}.
+
+%% Example:
+%% organization_tag() :: #{
+%%   <<"key">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"value">> => string()
+%% }
+-type organization_tag() :: #{binary() => any()}.
+
+%% Example:
+%% organization_tag_key() :: #{
+%%   <<"enabledForEventBridge">> => boolean(),
+%%   <<"key">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type organization_tag_key() :: #{binary() => any()}.
+
+%% Example:
+%% resource_tag_key() :: #{
+%%   <<"enabledForEventBridge">> => boolean(),
+%%   <<"key">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type resource_tag_key() :: #{binary() => any()}.
 
 %% Example:
 %% service_lifecycle() :: #{
@@ -562,6 +740,13 @@
 %%   <<"service">> => string()
 %% }
 -type service_lifecycle_filter() :: #{binary() => any()}.
+
+%% Example:
+%% tag_key_for_organization() :: #{
+%%   <<"enabledForEventBridge">> => boolean(),
+%%   <<"key">> => string()
+%% }
+-type tag_key_for_organization() :: #{binary() => any()}.
 
 %% Example:
 %% unsupported_locale() :: #{
@@ -604,6 +789,12 @@
 -type describe_service_lifecycle_errors() ::
     invalid_pagination_token().
 
+-type describe_tags_errors() ::
+    invalid_pagination_token().
+
+-type describe_tags_for_organization_errors() ::
+    invalid_pagination_token().
+
 -type disable_health_service_access_for_organization_errors() ::
     concurrent_modification_exception().
 
@@ -613,6 +804,45 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Configures which resource tag keys are tracked by Health for your
+%% account.
+%%
+%% This operation replaces the existing configuration with the specified tag
+%% keys. Only configured tag keys will appear in Health event data.
+-spec configure_tags(aws_client:aws_client(), configure_tags_request()) ->
+    {ok, configure_tags_response(), tuple()} |
+    {error, any()}.
+configure_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    configure_tags(Client, Input, []).
+
+-spec configure_tags(aws_client:aws_client(), configure_tags_request(), proplists:proplist()) ->
+    {ok, configure_tags_response(), tuple()} |
+    {error, any()}.
+configure_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ConfigureTags">>, Input, Options).
+
+%% @doc Configures which tag keys are tracked by Health for all accounts in
+%% your organization.
+%%
+%% This operation replaces the existing configuration with the specified tag
+%% keys. Only configured tag keys will appear in Health event data across the
+%% organization.
+-spec configure_tags_for_organization(aws_client:aws_client(), configure_tags_for_organization_request()) ->
+    {ok, configure_tags_for_organization_response(), tuple()} |
+    {error, any()}.
+configure_tags_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    configure_tags_for_organization(Client, Input, []).
+
+-spec configure_tags_for_organization(aws_client:aws_client(), configure_tags_for_organization_request(), proplists:proplist()) ->
+    {ok, configure_tags_for_organization_response(), tuple()} |
+    {error, any()}.
+configure_tags_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ConfigureTagsForOrganization">>, Input, Options).
 
 %% @doc Returns a list of accounts in the organization from Organizations
 %% that are affected by the
@@ -1067,6 +1297,109 @@ describe_service_lifecycle(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeServiceLifecycle">>, Input, Options).
 
+%% @doc Returns the list of resource tag keys configured for Health event
+%% tracking in your account.
+-spec describe_tag_keys(aws_client:aws_client(), #{}) ->
+    {ok, describe_tag_keys_response(), tuple()} |
+    {error, any()}.
+describe_tag_keys(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tag_keys(Client, Input, []).
+
+-spec describe_tag_keys(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, describe_tag_keys_response(), tuple()} |
+    {error, any()}.
+describe_tag_keys(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTagKeys">>, Input, Options).
+
+%% @doc Returns the list of tag keys configured for Health event tracking
+%% across your organization.
+-spec describe_tag_keys_for_organization(aws_client:aws_client(), #{}) ->
+    {ok, describe_tag_keys_for_organization_response(), tuple()} |
+    {error, any()}.
+describe_tag_keys_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tag_keys_for_organization(Client, Input, []).
+
+-spec describe_tag_keys_for_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, describe_tag_keys_for_organization_response(), tuple()} |
+    {error, any()}.
+describe_tag_keys_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTagKeysForOrganization">>, Input, Options).
+
+%% @doc Returns the resource tags associated with Health events for your
+%% account.
+%%
+%% Use this operation to retrieve the actual tag key-value pairs attached to
+%% affected entities.
+-spec describe_tags(aws_client:aws_client(), describe_tags_request()) ->
+    {ok, describe_tags_response(), tuple()} |
+    {error, any()} |
+    {error, describe_tags_errors(), tuple()}.
+describe_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tags(Client, Input, []).
+
+-spec describe_tags(aws_client:aws_client(), describe_tags_request(), proplists:proplist()) ->
+    {ok, describe_tags_response(), tuple()} |
+    {error, any()} |
+    {error, describe_tags_errors(), tuple()}.
+describe_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTags">>, Input, Options).
+
+%% @doc Returns the tags associated with Health events across all accounts in
+%% your organization.
+-spec describe_tags_for_organization(aws_client:aws_client(), describe_tags_for_organization_request()) ->
+    {ok, describe_tags_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_tags_for_organization_errors(), tuple()}.
+describe_tags_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tags_for_organization(Client, Input, []).
+
+-spec describe_tags_for_organization(aws_client:aws_client(), describe_tags_for_organization_request(), proplists:proplist()) ->
+    {ok, describe_tags_for_organization_response(), tuple()} |
+    {error, any()} |
+    {error, describe_tags_for_organization_errors(), tuple()}.
+describe_tags_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTagsForOrganization">>, Input, Options).
+
+%% @doc Returns the current onboarding status of the Health tags feature for
+%% your account.
+-spec describe_tags_onboarding_status(aws_client:aws_client(), #{}) ->
+    {ok, describe_tags_onboarding_status_response(), tuple()} |
+    {error, any()}.
+describe_tags_onboarding_status(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tags_onboarding_status(Client, Input, []).
+
+-spec describe_tags_onboarding_status(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, describe_tags_onboarding_status_response(), tuple()} |
+    {error, any()}.
+describe_tags_onboarding_status(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTagsOnboardingStatus">>, Input, Options).
+
+%% @doc Returns the current onboarding status of the Health tags feature for
+%% your organization.
+-spec describe_tags_onboarding_status_for_organization(aws_client:aws_client(), #{}) ->
+    {ok, describe_tags_onboarding_status_for_organization_response(), tuple()} |
+    {error, any()}.
+describe_tags_onboarding_status_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_tags_onboarding_status_for_organization(Client, Input, []).
+
+-spec describe_tags_onboarding_status_for_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, describe_tags_onboarding_status_for_organization_response(), tuple()} |
+    {error, any()}.
+describe_tags_onboarding_status_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTagsOnboardingStatusForOrganization">>, Input, Options).
+
 %% @doc Disables Health from working with Organizations.
 %%
 %% To call this operation, you must sign
@@ -1112,6 +1445,40 @@ disable_health_service_access_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisableHealthServiceAccessForOrganization">>, Input, Options).
 
+%% @doc Disables the Health tags feature for your account.
+%%
+%% After disabling, Health events will no longer include resource tag
+%% information. Previously configured tag keys are discarded.
+-spec disable_tags(aws_client:aws_client(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+disable_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_tags(Client, Input, []).
+
+-spec disable_tags(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+disable_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableTags">>, Input, Options).
+
+%% @doc Disables the Health tags feature for all accounts in your
+%% organization.
+-spec disable_tags_for_organization(aws_client:aws_client(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+disable_tags_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disable_tags_for_organization(Client, Input, []).
+
+-spec disable_tags_for_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+disable_tags_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisableTagsForOrganization">>, Input, Options).
+
 %% @doc Enables Health to work with Organizations.
 %%
 %% You can use the organizational view feature
@@ -1124,11 +1491,13 @@ disable_health_service_access_for_organization(Client, Input, Options)
 %%
 %% To call this operation, you must meet the following requirements:
 %%
-%% You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
-%% from Amazon Web Services Support: http://aws.amazon.com/premiumsupport/ to
-%% use the Health API. If you call
+%% You must have a Amazon Web Services Business Support+, Amazon Web Services
+%% Enterprise Support, or Amazon Web Services Unified Operations plan from
+%% Amazon Web Services Support: http://aws.amazon.com/premiumsupport/ to use
+%% the Health API. If you call
 %% the Health API from an Amazon Web Services account that doesn't have a
-%% Business, Enterprise On-Ramp, or Enterprise Support plan, you receive a
+%% Amazon Web Services Business Support+, Amazon Web Services Enterprise
+%% Support, or Amazon Web Services Unified Operations plan, you receive a
 %% `SubscriptionRequiredException'
 %% error.
 %%
@@ -1160,6 +1529,44 @@ enable_health_service_access_for_organization(Client, Input)
 enable_health_service_access_for_organization(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"EnableHealthServiceAccessForOrganization">>, Input, Options).
+
+%% @doc Enables the Health tags feature for your account.
+%%
+%% Once enabled, Health events will include resource tag information for
+%% affected entities. If the feature is already enabled, this operation has
+%% no effect.
+-spec enable_tags(aws_client:aws_client(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+enable_tags(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_tags(Client, Input, []).
+
+-spec enable_tags(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+enable_tags(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableTags">>, Input, Options).
+
+%% @doc Enables the Health tags feature for all accounts in your
+%% organization.
+%%
+%% Once enabled, Health events will include resource tag information for
+%% affected entities across your organization.
+-spec enable_tags_for_organization(aws_client:aws_client(), #{}) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+enable_tags_for_organization(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    enable_tags_for_organization(Client, Input, []).
+
+-spec enable_tags_for_organization(aws_client:aws_client(), #{}, proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()}.
+enable_tags_for_organization(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"EnableTagsForOrganization">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

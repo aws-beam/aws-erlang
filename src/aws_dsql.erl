@@ -91,6 +91,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
 %%   <<"kmsEncryptionKey">> => string(),
+%%   <<"metricGroups">> => list(metric_group_request()),
 %%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"policy">> => string(),
 %%   <<"tags">> => map()
@@ -106,6 +107,7 @@
 %%   <<"encryptionDetails">> => encryption_details(),
 %%   <<"endpoint">> => string(),
 %%   <<"identifier">> => string(),
+%%   <<"metricGroups">> => list(metric_group_response()),
 %%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"status">> => list(any())
 %% }
@@ -207,6 +209,7 @@
 %%   <<"encryptionDetails">> => encryption_details(),
 %%   <<"endpoint">> => string(),
 %%   <<"identifier">> => string(),
+%%   <<"metricGroups">> => list(metric_group_response()),
 %%   <<"multiRegionProperties">> => multi_region_properties(),
 %%   <<"status">> => list(any()),
 %%   <<"tags">> => map()
@@ -318,6 +321,20 @@
 
 
 %% Example:
+%% metric_group_request() :: #{
+%%   <<"metricGroup">> => list(any())
+%% }
+-type metric_group_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% metric_group_response() :: #{
+%%   <<"metricGroup">> => list(any())
+%% }
+-type metric_group_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% multi_region_properties() :: #{
 %%   <<"clusters">> => list(string()),
 %%   <<"witnessRegion">> => string()
@@ -410,6 +427,7 @@
 %%   <<"clientToken">> => string(),
 %%   <<"deletionProtectionEnabled">> => boolean(),
 %%   <<"kmsEncryptionKey">> => string(),
+%%   <<"metricGroups">> => list(metric_group_request()),
 %%   <<"multiRegionProperties">> => multi_region_properties()
 %% }
 -type update_cluster_input() :: #{binary() => any()}.

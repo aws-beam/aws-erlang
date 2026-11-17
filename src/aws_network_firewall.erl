@@ -197,6 +197,8 @@
          list_analysis_reports/3,
          list_container_associations/2,
          list_container_associations/3,
+         list_context_stores/2,
+         list_context_stores/3,
          list_firewall_policies/2,
          list_firewall_policies/3,
          list_firewall_policies_v2/2,
@@ -207,6 +209,8 @@
          list_flow_operation_results/3,
          list_flow_operations/2,
          list_flow_operations/3,
+         list_resources_in_context_store/2,
+         list_resources_in_context_store/3,
          list_rule_groups/2,
          list_rule_groups/3,
          list_t_l_s_inspection_configurations/2,
@@ -441,6 +445,33 @@
 %%   <<"ClusterArn">> => string()
 %% }
 -type container_monitoring_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% context_filters() :: #{
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type context_filters() :: #{binary() => any()}.
+
+%% Example:
+%% context_set() :: #{
+%%   <<"Definition">> => list(string())
+%% }
+-type context_set() :: #{binary() => any()}.
+
+%% Example:
+%% context_store() :: #{
+%%   <<"ContextStoreId">> => string(),
+%%   <<"ContextStoreOwnerAccountId">> => string()
+%% }
+-type context_store() :: #{binary() => any()}.
+
+%% Example:
+%% context_store_sync_state() :: #{
+%%   <<"StatusMessage">> => string(),
+%%   <<"SyncStatus">> => list(any())
+%% }
+-type context_store_sync_state() :: #{binary() => any()}.
 
 %% Example:
 %% create_container_association_request() :: #{
@@ -1056,6 +1087,8 @@
 %% firewall() :: #{
 %%   <<"AvailabilityZoneChangeProtection">> => boolean(),
 %%   <<"AvailabilityZoneMappings">> => list(availability_zone_mapping()),
+%%   <<"ContextStoreId">> => string(),
+%%   <<"ContextStoreOwnerAccountId">> => string(),
 %%   <<"DeleteProtection">> => boolean(),
 %%   <<"Description">> => string(),
 %%   <<"EnabledAnalysisTypes">> => list(list(any())()),
@@ -1222,6 +1255,7 @@
 %% firewall_status() :: #{
 %%   <<"CapacityUsageSummary">> => capacity_usage_summary(),
 %%   <<"ConfigurationSyncStateSummary">> => list(any()),
+%%   <<"ContextStoreSyncState">> => context_store_sync_state(),
 %%   <<"Status">> => list(any()),
 %%   <<"SyncStates">> => map(),
 %%   <<"TransitGatewayAttachmentSyncState">> => transit_gateway_attachment_sync_state()
@@ -1431,6 +1465,20 @@
 -type list_container_associations_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_context_stores_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_context_stores_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_context_stores_response() :: #{
+%%   <<"ContextStores">> => list(context_store()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_context_stores_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_firewall_policies_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -1521,6 +1569,22 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_flow_operations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_in_context_store_request() :: #{
+%%   <<"ContextStoreId">> := string(),
+%%   <<"Filters">> => context_filters(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_resources_in_context_store_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_resources_in_context_store_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceContexts">> => list(resource_context())
+%% }
+-type list_resources_in_context_store_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_rule_groups_request() :: #{
@@ -1712,6 +1776,16 @@
 -type reject_network_firewall_transit_gateway_attachment_response() :: #{binary() => any()}.
 
 %% Example:
+%% resource_context() :: #{
+%%   <<"AttachmentType">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"ContextType">> => list(any()),
+%%   <<"PublicId">> => string(),
+%%   <<"Region">> => string()
+%% }
+-type resource_context() :: #{binary() => any()}.
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1802,6 +1876,7 @@
 
 %% Example:
 %% rule_variables() :: #{
+%%   <<"ContextSets">> => map(),
 %%   <<"IPSets">> => map(),
 %%   <<"PortSets">> => map()
 %% }
@@ -2694,6 +2769,11 @@
     invalid_request_exception() | 
     internal_server_error().
 
+-type list_context_stores_errors() ::
+    throttling_exception() | 
+    invalid_request_exception() | 
+    internal_server_error().
+
 -type list_firewall_policies_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
@@ -2716,6 +2796,12 @@
     internal_server_error().
 
 -type list_flow_operations_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    internal_server_error().
+
+-type list_resources_in_context_store_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_request_exception() | 
@@ -3826,6 +3912,35 @@ list_container_associations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListContainerAssociations">>, Input, Options).
 
+%% @doc Lists the active context stores that are associated with your
+%% firewalls.
+%%
+%% A context store records network resources that can be used to evaluate
+%% context-aware rules.
+%% You can list the following resource types: VPCs, subnets, security groups,
+%% and transit gateway attachments.
+%%
+%% When using a small page size, a single call might not return the full
+%% list. A response can contain fewer than `MaxResults'
+%% results, or none, and still include a `NextToken'. Keep making
+%% requests until the response does not include a
+%% `NextToken'.
+-spec list_context_stores(aws_client:aws_client(), list_context_stores_request()) ->
+    {ok, list_context_stores_response(), tuple()} |
+    {error, any()} |
+    {error, list_context_stores_errors(), tuple()}.
+list_context_stores(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_context_stores(Client, Input, []).
+
+-spec list_context_stores(aws_client:aws_client(), list_context_stores_request(), proplists:proplist()) ->
+    {ok, list_context_stores_response(), tuple()} |
+    {error, any()} |
+    {error, list_context_stores_errors(), tuple()}.
+list_context_stores(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListContextStores">>, Input, Options).
+
 %% @doc Retrieves the metadata for the firewall policies that you have
 %% defined.
 %%
@@ -3948,6 +4063,33 @@ list_flow_operations(Client, Input)
 list_flow_operations(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFlowOperations">>, Input, Options).
+
+%% @doc Lists the resources that a context store records.
+%%
+%% The context store must be associated with a transit gateway that your
+%% firewall is attached to.
+%% You can filter the results by Region, resource type, or both.
+%%
+%% When using a small page size, a single call might not return the full
+%% list. A response can contain fewer than `MaxResults'
+%% results, or none, and still include a `NextToken'. Keep making
+%% requests until the response does not include a
+%% `NextToken'.
+-spec list_resources_in_context_store(aws_client:aws_client(), list_resources_in_context_store_request()) ->
+    {ok, list_resources_in_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, list_resources_in_context_store_errors(), tuple()}.
+list_resources_in_context_store(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_resources_in_context_store(Client, Input, []).
+
+-spec list_resources_in_context_store(aws_client:aws_client(), list_resources_in_context_store_request(), proplists:proplist()) ->
+    {ok, list_resources_in_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, list_resources_in_context_store_errors(), tuple()}.
+list_resources_in_context_store(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListResourcesInContextStore">>, Input, Options).
 
 %% @doc Retrieves the metadata for the rule groups that you have defined.
 %%

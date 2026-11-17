@@ -251,6 +251,13 @@
 %% }
 -type disk_encryption_configuration() :: #{binary() => any()}.
 
+
+%% Example:
+%% flex_execution() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type flex_execution() :: #{binary() => any()}.
+
 %% Example:
 %% get_application_request() :: #{}
 -type get_application_request() :: #{}.
@@ -423,6 +430,7 @@
 %%   <<"executionIamPolicy">> => job_run_execution_iam_policy(),
 %%   <<"executionRole">> => string(),
 %%   <<"executionTimeoutMinutes">> => float(),
+%%   <<"flexExecution">> => flex_execution(),
 %%   <<"imageConfiguration">> => image_configuration(),
 %%   <<"jobDriver">> => list(),
 %%   <<"jobRunId">> => string(),
@@ -452,6 +460,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"executionRole">> => string(),
+%%   <<"flexExecution">> => flex_execution(),
 %%   <<"id">> => string(),
 %%   <<"jobCreatedAt">> => non_neg_integer(),
 %%   <<"mode">> => string(),
@@ -483,6 +492,7 @@
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"executionRole">> => string(),
+%%   <<"flexExecution">> => flex_execution(),
 %%   <<"id">> => string(),
 %%   <<"mode">> => string(),
 %%   <<"name">> => string(),
@@ -742,6 +752,7 @@
 %%   <<"executionIamPolicy">> => job_run_execution_iam_policy(),
 %%   <<"executionRoleArn">> := string(),
 %%   <<"executionTimeoutMinutes">> => float(),
+%%   <<"flexExecution">> => flex_execution(),
 %%   <<"jobDriver">> => list(),
 %%   <<"mode">> => string(),
 %%   <<"name">> => string(),

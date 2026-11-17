@@ -189,6 +189,8 @@
          create_workspace_page/5,
          deactivate_evaluation_form/4,
          deactivate_evaluation_form/5,
+         delete_all_entity_sessions/2,
+         delete_all_entity_sessions/3,
          delete_attached_file/4,
          delete_attached_file/5,
          delete_contact_data/4,
@@ -3840,6 +3842,19 @@
 %%   <<"VocabularyName">> => string()
 %% }
 -type default_vocabulary() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_all_entity_sessions_request() :: #{
+%%   <<"EntityId">> := string(),
+%%   <<"EntityType">> := list(any()),
+%%   <<"InstanceId">> := string()
+%% }
+-type delete_all_entity_sessions_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_all_entity_sessions_response() :: #{}
+-type delete_all_entity_sessions_response() :: #{}.
 
 
 %% Example:
@@ -13408,6 +13423,14 @@
     invalid_parameter_exception() | 
     internal_service_exception().
 
+-type delete_all_entity_sessions_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
 -type delete_attached_file_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -19058,6 +19081,48 @@ deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input) ->
 deactivate_evaluation_form(Client, EvaluationFormId, InstanceId, Input0, Options0) ->
     Method = post,
     Path = ["/evaluation-forms/", aws_util:encode_uri(InstanceId), "/", aws_util:encode_uri(EvaluationFormId), "/deactivate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes all active sessions for the specified entity in the specified
+%% Connect Customer instance.
+%%
+%% The
+%% operation supports only the `USER' entity type, so you can use it to
+%% sign out all of a user's active
+%% sessions. Use it when you need to end a user's access right away, for
+%% example when they leave your organization or
+%% you suspect that their credentials are compromised.
+-spec delete_all_entity_sessions(aws_client:aws_client(), delete_all_entity_sessions_request()) ->
+    {ok, delete_all_entity_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, delete_all_entity_sessions_errors(), tuple()}.
+delete_all_entity_sessions(Client, Input) ->
+    delete_all_entity_sessions(Client, Input, []).
+
+-spec delete_all_entity_sessions(aws_client:aws_client(), delete_all_entity_sessions_request(), proplists:proplist()) ->
+    {ok, delete_all_entity_sessions_response(), tuple()} |
+    {error, any()} |
+    {error, delete_all_entity_sessions_errors(), tuple()}.
+delete_all_entity_sessions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/auth/sessions/delete-all-entity-sessions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

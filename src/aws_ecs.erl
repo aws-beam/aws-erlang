@@ -1893,11 +1893,18 @@
 
 %% Example:
 %% gateway_connector() :: #{
+%%   <<"deregistrationDelay">> => gateway_connector_deregistration_delay(),
 %%   <<"filters">> => gateway_connector_filters(),
 %%   <<"healthCheck">> => gateway_connector_health_check(),
 %%   <<"portName">> => string()
 %% }
 -type gateway_connector() :: #{binary() => any()}.
+
+%% Example:
+%% gateway_connector_deregistration_delay() :: #{
+%%   <<"timeoutSeconds">> => integer()
+%% }
+-type gateway_connector_deregistration_delay() :: #{binary() => any()}.
 
 %% Example:
 %% gateway_connector_filters() :: #{

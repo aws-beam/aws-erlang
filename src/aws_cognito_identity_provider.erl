@@ -212,6 +212,8 @@
          get_client_token/3,
          get_csv_header/2,
          get_csv_header/3,
+         get_derived_token/2,
+         get_derived_token/3,
          get_device/2,
          get_device/3,
          get_group/2,
@@ -1807,6 +1809,33 @@
 %%   <<"UserPoolId">> => string()
 %% }
 -type get_csv_header_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_derived_token_request() :: #{
+%%   <<"ActorToken">> => string(),
+%%   <<"ActorTokenProviderName">> => string(),
+%%   <<"ActorTokenType">> => list(any()),
+%%   <<"Audiences">> => list(string()),
+%%   <<"ClientId">> := string(),
+%%   <<"ClientSecret">> => string(),
+%%   <<"RequestedTokenType">> => list(any()),
+%%   <<"Resources">> => list(string()),
+%%   <<"Scopes">> => list(string()),
+%%   <<"SubjectToken">> := string(),
+%%   <<"SubjectTokenProviderName">> => string(),
+%%   <<"SubjectTokenType">> := list(any())
+%% }
+-type get_derived_token_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_derived_token_response() :: #{
+%%   <<"ExpiresIn">> => integer(),
+%%   <<"IssuedToken">> => string(),
+%%   <<"IssuedTokenType">> => list(any()),
+%%   <<"Scopes">> => list(string()),
+%%   <<"TokenType">> => list(any())
+%% }
+-type get_derived_token_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_device_request() :: #{
@@ -4508,6 +4537,19 @@
     not_authorized_exception() | 
     invalid_parameter_exception() | 
     internal_error_exception().
+
+-type get_derived_token_errors() ::
+    user_not_found_exception() | 
+    user_lambda_validation_exception() | 
+    unexpected_lambda_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    invalid_lambda_response_exception() | 
+    internal_error_exception() | 
+    forbidden_exception().
 
 -type get_device_errors() ::
     user_not_found_exception() | 
@@ -8269,6 +8311,55 @@ get_csv_header(Client, Input)
 get_csv_header(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetCSVHeader">>, Input, Options).
+
+%% @doc Exchanges an existing token for a new token that is scoped and
+%% audience-bound for a
+%% specific downstream service, following the OAuth 2.0 Token Exchange grant
+%% type.
+%%
+%% For
+%% more information about the OAuth 2.0 Token Exchange grant type, see
+%% RFC 8693 - OAuth 2.0 Token
+%% Exchange: https://tools.ietf.org/html/rfc8693 on the IETF website. Present
+%% a `SubjectToken', the
+%% credential that you already hold, to receive a new token appropriate for
+%% calling a
+%% specific resource server or audience.
+%%
+%% If you also present an `ActorToken' that identifies an intermediary
+%% service, the issued token carries an `act' claim that identifies the
+%% intermediary, and downstream services can distinguish a user acting
+%% directly from an
+%% intermediary acting on the user's behalf. If you don't present an
+%% `ActorToken', the issued token appears as if the user acted
+%% directly.
+%%
+%% To use this operation, you must have IAM credentials, or you must present
+%% the
+%% requesting app client's `ClientId' and, if the client has a
+%% secret,
+%% `ClientSecret', in the request.
+%%
+%% The requesting app client must have
+%% `ALLOW_TOKEN_EXCHANGE_IMPERSONATION'
+%% or `ALLOW_TOKEN_EXCHANGE_DELEGATION' in its `ExplicitAuthFlows'
+%% (depending on whether you include an `ActorToken'), or the request
+%% fails.
+-spec get_derived_token(aws_client:aws_client(), get_derived_token_request()) ->
+    {ok, get_derived_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_derived_token_errors(), tuple()}.
+get_derived_token(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_derived_token(Client, Input, []).
+
+-spec get_derived_token(aws_client:aws_client(), get_derived_token_request(), proplists:proplist()) ->
+    {ok, get_derived_token_response(), tuple()} |
+    {error, any()} |
+    {error, get_derived_token_errors(), tuple()}.
+get_derived_token(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDerivedToken">>, Input, Options).
 
 %% @doc Given a device key, returns information about a remembered device for
 %% the current

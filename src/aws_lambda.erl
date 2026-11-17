@@ -310,6 +310,13 @@
 
 
 %% Example:
+%% accelerator_config() :: #{
+%%   <<"AcceleratorMemorySize">> => list(integer())
+%% }
+-type accelerator_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% account_limit() :: #{
 %%   <<"CodeSizeUnzipped">> => float(),
 %%   <<"CodeSizeZipped">> => float(),
@@ -824,6 +831,7 @@
 
 %% Example:
 %% create_function_request() :: #{
+%%   <<"AcceleratorConfig">> => accelerator_config(),
 %%   <<"Architectures">> => list(list(any())()),
 %%   <<"CapacityProviderConfig">> => capacity_provider_config(),
 %%   <<"Code">> := function_code(),
@@ -1351,6 +1359,7 @@
 
 %% Example:
 %% function_configuration() :: #{
+%%   <<"AcceleratorConfig">> => accelerator_config(),
 %%   <<"Architectures">> => list(list(any())()),
 %%   <<"CapacityProviderConfig">> => capacity_provider_config(),
 %%   <<"CodeSha256">> => string(),
@@ -3098,6 +3107,7 @@
 
 %% Example:
 %% update_function_configuration_request() :: #{
+%%   <<"AcceleratorConfig">> => accelerator_config(),
 %%   <<"CapacityProviderConfig">> => capacity_provider_config(),
 %%   <<"DeadLetterConfig">> => dead_letter_config(),
 %%   <<"Description">> => string(),

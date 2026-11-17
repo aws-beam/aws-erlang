@@ -3,36 +3,56 @@
 
 %% @doc Amazon Web Services Well-Architected
 %%
+%% This is the Amazon Web Services Well-Architected API Reference.
+%%
 %% Amazon Web Services Well-Architected helps you evaluate your architectures
 %% against Amazon Web Services best practices across operational excellence,
 %% security, reliability, performance efficiency, cost optimization, and
 %% sustainability.
 %%
-%% The service includes the Amazon Web Services Well-Architected Agent for
-%% AI-powered recommendations tailored to your specific environment, and the
-%% Well-Architected Tool: http://aws.amazon.com/well-architected-tool for
-%% conducting reviews and tracking improvements.
+%% To view API actions organized by service, see API actions:
+%% https://docs.aws.amazon.com/wellarchitected/latest/userguide/wa-api-actions.html.
 %%
-%% This is the Amazon Web Services Well-Architected API Reference. Through
-%% this API, you can programmatically access personalized recommendations and
-%% automation scripts from the Amazon Web Services Well-Architected Agent,
-%% and create and manage workloads, conduct lens reviews, track milestones,
-%% manage custom lenses, share workloads across accounts, and manage profiles
-%% with the Well-Architected Tool.
+%% Amazon Web Services Well-Architected Agent (preview)
 %%
-%% For more information about the service, see the Amazon Web Services
-%% Well-Architected User Guide:
-%% https://docs.aws.amazon.com/wellarchitected/latest/userguide/intro.html.
+%% Describes the API operations for managing optimization profiles, goals,
+%% application context, and recommendations in the Amazon Web Services
+%% Well-Architected Agent. Through this API, you can create and configure
+%% agent profiles that define the scope of your Amazon Web Services
+%% environment to analyze, set optimization goals across cost, security,
+%% performance, and resilience pillars, start recommendation generation,
+%% retrieve prioritized recommendations with ready-to-deploy remediation
+%% scripts, and provide feedback to improve future recommendations.
+%%
+%% For more information, see What is Amazon Web Services Well-Architected
+%% Agent?:
+%% https://docs.aws.amazon.com/wellarchitected/latest/userguide/agent.html
+%%
+%% Well-Architected Tool
+%%
+%% Describes the API operations for creating and managing workloads,
+%% conducting lens reviews, tracking milestones, managing custom lenses,
+%% sharing workloads across accounts, and managing profiles with the
+%% Well-Architected Tool.
+%%
+%% For more information, see What is Well-Architected Tool?:
+%% https://docs.aws.amazon.com/wellarchitected/latest/userguide/tool.html
 -module(aws_wellarchitected).
 
 -export([associate_lenses/3,
          associate_lenses/4,
          associate_profiles/3,
          associate_profiles/4,
+         create_agent_basic_profile/2,
+         create_agent_basic_profile/3,
          create_agent_context/3,
          create_agent_context/4,
          create_agent_goal/3,
          create_agent_goal/4,
+         create_agent_organizational_profile/2,
+         create_agent_organizational_profile/3,
+         create_agent_organizational_report/2,
+         create_agent_organizational_report/3,
          create_agent_profile/2,
          create_agent_profile/3,
          create_lens_share/3,
@@ -57,8 +77,14 @@
          delete_agent_context/5,
          delete_agent_goal/4,
          delete_agent_goal/5,
+         delete_agent_organizational_report/3,
+         delete_agent_organizational_report/4,
          delete_agent_profile/3,
          delete_agent_profile/4,
+         delete_agent_profile_policy/3,
+         delete_agent_profile_policy/4,
+         delete_agent_recommendation_policy/3,
+         delete_agent_recommendation_policy/4,
          delete_lens/3,
          delete_lens/4,
          delete_lens_share/4,
@@ -88,15 +114,30 @@
          get_agent_goal/3,
          get_agent_goal/5,
          get_agent_goal/6,
+         get_agent_organizational_report/2,
+         get_agent_organizational_report/4,
+         get_agent_organizational_report/5,
+         get_agent_organizational_report_data/3,
+         get_agent_organizational_report_data/5,
+         get_agent_organizational_report_data/6,
+         get_agent_preferences/1,
+         get_agent_preferences/3,
+         get_agent_preferences/4,
          get_agent_profile/2,
          get_agent_profile/4,
          get_agent_profile/5,
+         get_agent_profile_policy/2,
+         get_agent_profile_policy/4,
+         get_agent_profile_policy/5,
          get_agent_recommendation/2,
          get_agent_recommendation/4,
          get_agent_recommendation/5,
          get_agent_recommendation_generation/3,
          get_agent_recommendation_generation/5,
          get_agent_recommendation_generation/6,
+         get_agent_recommendation_policy/2,
+         get_agent_recommendation_policy/4,
+         get_agent_recommendation_policy/5,
          get_answer/4,
          get_answer/6,
          get_answer/7,
@@ -147,6 +188,9 @@
          list_agent_goals/2,
          list_agent_goals/4,
          list_agent_goals/5,
+         list_agent_organizational_reports/1,
+         list_agent_organizational_reports/3,
+         list_agent_organizational_reports/4,
          list_agent_profiles/1,
          list_agent_profiles/3,
          list_agent_profiles/4,
@@ -211,8 +255,16 @@
          list_workload_shares/5,
          list_workloads/2,
          list_workloads/3,
+         put_agent_preferences/2,
+         put_agent_preferences/3,
+         put_agent_profile_policy/3,
+         put_agent_profile_policy/4,
          put_agent_recommendation_feedback/3,
          put_agent_recommendation_feedback/4,
+         put_agent_recommendation_policy/3,
+         put_agent_recommendation_policy/4,
+         send_agent_organizational_report_data_to_s3/3,
+         send_agent_organizational_report_data_to_s3/4,
          start_agent_recommendation_generation/3,
          start_agent_recommendation_generation/4,
          tag_resource/3,
@@ -223,6 +275,8 @@
          update_agent_context/5,
          update_agent_goal/4,
          update_agent_goal/5,
+         update_agent_organizational_profile/3,
+         update_agent_organizational_profile/4,
          update_agent_profile/3,
          update_agent_profile/4,
          update_agent_recommendation_status/3,
@@ -317,8 +371,9 @@
 %%   <<"lastModifiedAt">> => [non_neg_integer()],
 %%   <<"lastModifiedBy">> => [string()],
 %%   <<"name">> => [string()],
+%%   <<"organizationalAggregationConfiguration">> => organizational_aggregation_configuration(),
 %%   <<"pillars">> => list(list(any())()),
-%%   <<"tags">> => list(tag())
+%%   <<"profileType">> => list(any())
 %% }
 -type agent_profile_summary() :: #{binary() => any()}.
 
@@ -327,12 +382,17 @@
 %% agent_recommendation_generation_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => [string()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"errorDetails">> => error_details(),
 %%   <<"estimatedCompletionTime">> => [non_neg_integer()],
+%%   <<"generationRecommendationTypes">> => list(list(any())()),
+%%   <<"generationType">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"lastModifiedAt">> => [non_neg_integer()],
 %%   <<"lastModifiedBy">> => [string()],
 %%   <<"name">> => [string()],
 %%   <<"profileArn">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
 %%   <<"status">> => list(any())
 %% }
 -type agent_recommendation_generation_summary() :: #{binary() => any()}.
@@ -340,6 +400,7 @@
 
 %% Example:
 %% agent_recommendation_item_summary() :: #{
+%%   <<"autoRemediation">> => auto_remediation(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => [string()],
 %%   <<"id">> => [string()],
@@ -453,6 +514,14 @@
 %%   <<"ProfileArns">> := list(string())
 %% }
 -type associate_profiles_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% auto_remediation() :: #{
+%%   <<"cliCommand">> => [string()],
+%%   <<"deepLink">> => [string()]
+%% }
+-type auto_remediation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -589,6 +658,7 @@
 %%   <<"awsServices">> => list([string()]()),
 %%   <<"criticality">> => list(any()),
 %%   <<"industry">> => string(),
+%%   <<"organizationalUnitIds">> => list([string()]()),
 %%   <<"regions">> => list([string()]()),
 %%   <<"resourceTags">> => list(context_resource_tag()),
 %%   <<"resourceTypes">> => list([string()]())
@@ -619,6 +689,40 @@
 %%   <<"title">> => string()
 %% }
 -type context_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% coverage_summary() :: #{
+%%   <<"accountsWithProfile">> => [float()],
+%%   <<"accountsWithoutProfile">> => [float()],
+%%   <<"failedAccountCount">> => [float()],
+%%   <<"failedAccounts">> => list(failed_account()),
+%%   <<"failedOrganizationalUnits">> => list(failed_organizational_unit()),
+%%   <<"recommendationCountByPillar">> => list(pillar_count()),
+%%   <<"recommendationCountByPriority">> => list(priority_count()),
+%%   <<"totalAccountsInScope">> => [float()],
+%%   <<"totalProfiles">> => [float()],
+%%   <<"totalRecommendations">> => [float()]
+%% }
+-type coverage_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_basic_profile_request() :: #{
+%%   <<"tags">> => list(tag())
+%% }
+-type create_agent_basic_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_basic_profile_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()]
+%% }
+-type create_agent_basic_profile_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -653,6 +757,61 @@
 %%   <<"goal">> => goal_summary()
 %% }
 -type create_agent_goal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_organizational_profile_request() :: #{
+%%   <<"businessOverview">> => string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"name">> := [string()],
+%%   <<"organizationalAggregationConfiguration">> => organizational_aggregation_configuration(),
+%%   <<"pillars">> := list(list(any())()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_agent_organizational_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_organizational_profile_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"businessOverview">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"eligibleForArchitectureGeneration">> => [boolean()],
+%%   <<"eligibleForScheduledGeneration">> => [boolean()],
+%%   <<"fieldErrors">> => map(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"organizationId">> => [string()],
+%%   <<"organizationalAggregationConfiguration">> => organizational_aggregation_configuration(),
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_agent_organizational_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_organizational_report_request() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"filters">> => organizational_report_filters(),
+%%   <<"label">> => string()
+%% }
+-type create_agent_organizational_report_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_agent_organizational_report_response() :: #{
+%%   <<"reportId">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type create_agent_organizational_report_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -889,12 +1048,36 @@
 -type delete_agent_goal_response() :: #{}.
 
 %% Example:
+%% delete_agent_organizational_report_request() :: #{}
+-type delete_agent_organizational_report_request() :: #{}.
+
+%% Example:
+%% delete_agent_organizational_report_response() :: #{}
+-type delete_agent_organizational_report_response() :: #{}.
+
+%% Example:
+%% delete_agent_profile_policy_request() :: #{}
+-type delete_agent_profile_policy_request() :: #{}.
+
+%% Example:
+%% delete_agent_profile_policy_response() :: #{}
+-type delete_agent_profile_policy_response() :: #{}.
+
+%% Example:
 %% delete_agent_profile_request() :: #{}
 -type delete_agent_profile_request() :: #{}.
 
 %% Example:
 %% delete_agent_profile_response() :: #{}
 -type delete_agent_profile_response() :: #{}.
+
+%% Example:
+%% delete_agent_recommendation_policy_request() :: #{}
+-type delete_agent_recommendation_policy_request() :: #{}.
+
+%% Example:
+%% delete_agent_recommendation_policy_response() :: #{}
+-type delete_agent_recommendation_policy_response() :: #{}.
 
 
 %% Example:
@@ -989,6 +1172,22 @@
 %% }
 -type export_lens_output() :: #{binary() => any()}.
 
+
+%% Example:
+%% failed_account() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"reason">> => [string()]
+%% }
+-type failed_account() :: #{binary() => any()}.
+
+
+%% Example:
+%% failed_organizational_unit() :: #{
+%%   <<"organizationalUnitId">> => string(),
+%%   <<"reason">> => [string()]
+%% }
+-type failed_organizational_unit() :: #{binary() => any()}.
+
 %% Example:
 %% get_agent_context_request() :: #{}
 -type get_agent_context_request() :: #{}.
@@ -1010,6 +1209,62 @@
 %%   <<"goal">> => goal_summary()
 %% }
 -type get_agent_goal_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_agent_organizational_report_data_request() :: #{
+%%   <<"format">> := list(any())
+%% }
+-type get_agent_organizational_report_data_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_agent_organizational_report_data_response() :: #{
+%%   <<"downloadUrl">> => [string()],
+%%   <<"expiresAt">> => [non_neg_integer()]
+%% }
+-type get_agent_organizational_report_data_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_organizational_report_request() :: #{}
+-type get_agent_organizational_report_request() :: #{}.
+
+
+%% Example:
+%% get_agent_organizational_report_response() :: #{
+%%   <<"coverageSummary">> => coverage_summary(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"filters">> => organizational_report_filters(),
+%%   <<"label">> => string(),
+%%   <<"organizationId">> => [string()],
+%%   <<"ownerAccountId">> => string(),
+%%   <<"reportId">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type get_agent_organizational_report_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_preferences_request() :: #{}
+-type get_agent_preferences_request() :: #{}.
+
+
+%% Example:
+%% get_agent_preferences_response() :: #{
+%%   <<"preferences">> => list(preference_entry())
+%% }
+-type get_agent_preferences_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_profile_policy_request() :: #{}
+-type get_agent_profile_policy_request() :: #{}.
+
+
+%% Example:
+%% get_agent_profile_policy_response() :: #{
+%%   <<"policy">> => string(),
+%%   <<"profileArn">> => string()
+%% }
+-type get_agent_profile_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_agent_profile_request() :: #{}
@@ -1033,7 +1288,9 @@
 %%   <<"lastModifiedAt">> => [non_neg_integer()],
 %%   <<"lastModifiedBy">> => [string()],
 %%   <<"name">> => [string()],
+%%   <<"organizationalAggregationConfiguration">> => organizational_aggregation_configuration(),
 %%   <<"pillars">> => list(list(any())()),
+%%   <<"profileType">> => list(any()),
 %%   <<"tags">> => list(tag())
 %% }
 -type get_agent_profile_response() :: #{binary() => any()}.
@@ -1045,12 +1302,14 @@
 
 %% Example:
 %% get_agent_recommendation_generation_response() :: #{
-%%   <<"additionalContext">> => [any()],
+%%   <<"additionalContext">> => any(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"createdBy">> => [string()],
 %%   <<"endedAt">> => [non_neg_integer()],
 %%   <<"errorDetails">> => error_details(),
 %%   <<"estimatedCompletionTime">> => [non_neg_integer()],
+%%   <<"generationRecommendationTypes">> => list(list(any())()),
+%%   <<"generationType">> => list(any()),
 %%   <<"id">> => string(),
 %%   <<"lastModifiedAt">> => [non_neg_integer()],
 %%   <<"lastModifiedBy">> => [string()],
@@ -1062,6 +1321,18 @@
 %%   <<"status">> => list(any())
 %% }
 -type get_agent_recommendation_generation_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_recommendation_policy_request() :: #{}
+-type get_agent_recommendation_policy_request() :: #{}.
+
+
+%% Example:
+%% get_agent_recommendation_policy_response() :: #{
+%%   <<"policy">> => string(),
+%%   <<"recommendationArn">> => string()
+%% }
+-type get_agent_recommendation_policy_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1519,6 +1790,23 @@
 
 
 %% Example:
+%% list_agent_organizational_reports_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type list_agent_organizational_reports_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_organizational_reports_response() :: #{
+%%   <<"items">> => list(organizational_report_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_organizational_reports_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_agent_profiles_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -1967,6 +2255,64 @@
 
 
 %% Example:
+%% organizational_account_entry() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"regions">> => list(string())
+%% }
+-type organizational_account_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% organizational_aggregation_configuration() :: #{
+%%   <<"accounts">> => list(organizational_account_entry()),
+%%   <<"organizationalUnits">> => list(organizational_unit_entry())
+%% }
+-type organizational_aggregation_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% organizational_report_filters() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"createdAtRange">> => time_window(),
+%%   <<"organizationalUnitIds">> => list(string()),
+%%   <<"pillars">> => list(list(any())()),
+%%   <<"priorities">> => list(list(any())()),
+%%   <<"recommendationTypes">> => list(list(any())()),
+%%   <<"statuses">> => list(list(any())()),
+%%   <<"updatedAtRange">> => time_window()
+%% }
+-type organizational_report_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% organizational_report_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"label">> => string(),
+%%   <<"organizationId">> => [string()],
+%%   <<"ownerAccountId">> => string(),
+%%   <<"reportId">> => string(),
+%%   <<"state">> => list(any())
+%% }
+-type organizational_report_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% organizational_unit_entry() :: #{
+%%   <<"organizationalUnitId">> => string(),
+%%   <<"regions">> => list(string())
+%% }
+-type organizational_unit_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% pillar_count() :: #{
+%%   <<"count">> => [float()],
+%%   <<"pillar">> => list(any())
+%% }
+-type pillar_count() :: #{binary() => any()}.
+
+
+%% Example:
 %% pillar_difference() :: #{
 %%   <<"DifferenceStatus">> => list(any()),
 %%   <<"PillarId">> => string(),
@@ -2002,6 +2348,31 @@
 %%   <<"RiskCounts">> => map()
 %% }
 -type pillar_review_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% preference_entry() :: #{
+%%   <<"detail">> => [string()],
+%%   <<"key">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type preference_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% preference_update() :: #{
+%%   <<"key">> => list(any()),
+%%   <<"state">> => list(any())
+%% }
+-type preference_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% priority_count() :: #{
+%%   <<"count">> => [float()],
+%%   <<"priority">> => list(any())
+%% }
+-type priority_count() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2127,8 +2498,30 @@
 
 
 %% Example:
+%% put_agent_preferences_request() :: #{
+%%   <<"preferences">> := list(preference_update())
+%% }
+-type put_agent_preferences_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_agent_preferences_response() :: #{}
+-type put_agent_preferences_response() :: #{}.
+
+
+%% Example:
+%% put_agent_profile_policy_request() :: #{
+%%   <<"policy">> := string()
+%% }
+-type put_agent_profile_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_agent_profile_policy_response() :: #{}
+-type put_agent_profile_policy_response() :: #{}.
+
+
+%% Example:
 %% put_agent_recommendation_feedback_request() :: #{
-%%   <<"comments">> => [string()],
+%%   <<"comments">> => string(),
 %%   <<"feedbackCategory">> => list(any()),
 %%   <<"type">> := list(any())
 %% }
@@ -2137,6 +2530,17 @@
 %% Example:
 %% put_agent_recommendation_feedback_response() :: #{}
 -type put_agent_recommendation_feedback_response() :: #{}.
+
+
+%% Example:
+%% put_agent_recommendation_policy_request() :: #{
+%%   <<"policy">> := string()
+%% }
+-type put_agent_recommendation_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_agent_recommendation_policy_response() :: #{}
+-type put_agent_recommendation_policy_response() :: #{}.
 
 
 %% Example:
@@ -2315,6 +2719,22 @@
 
 
 %% Example:
+%% send_agent_organizational_report_data_to_s3_request() :: #{
+%%   <<"bucketArn">> := string(),
+%%   <<"format">> := list(any()),
+%%   <<"objectKey">> := string()
+%% }
+-type send_agent_organizational_report_data_to_s3_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% send_agent_organizational_report_data_to_s3_response() :: #{
+%%   <<"deliveredTo">> => [string()]
+%% }
+-type send_agent_organizational_report_data_to_s3_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Message">> => string(),
 %%   <<"QuotaCode">> => string(),
@@ -2359,9 +2779,9 @@
 
 %% Example:
 %% start_agent_recommendation_generation_request() :: #{
-%%   <<"additionalContext">> => [any()],
+%%   <<"additionalContext">> => any(),
 %%   <<"name">> => [string()],
-%%   <<"scope">> := scope(),
+%%   <<"scope">> => scope(),
 %%   <<"types">> := list(list(any())())
 %% }
 -type start_agent_recommendation_generation_request() :: #{binary() => any()}.
@@ -2421,6 +2841,14 @@
 
 
 %% Example:
+%% time_window() :: #{
+%%   <<"from">> => [non_neg_integer()],
+%%   <<"to">> => [non_neg_integer()]
+%% }
+-type time_window() :: #{binary() => any()}.
+
+
+%% Example:
 %% trade_off() :: #{
 %%   <<"description">> => [string()],
 %%   <<"mitigation">> => [string()],
@@ -2477,6 +2905,41 @@
 
 
 %% Example:
+%% update_agent_organizational_profile_request() :: #{
+%%   <<"businessOverview">> => string(),
+%%   <<"clientToken">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"organizationalAggregationConfiguration">> => organizational_aggregation_configuration(),
+%%   <<"pillars">> => list(list(any())())
+%% }
+-type update_agent_organizational_profile_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_organizational_profile_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"businessOverview">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"createdBy">> => [string()],
+%%   <<"deletionProtection">> => [boolean()],
+%%   <<"description">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"eligibleForArchitectureGeneration">> => [boolean()],
+%%   <<"eligibleForScheduledGeneration">> => [boolean()],
+%%   <<"fieldErrors">> => map(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"lastModifiedBy">> => [string()],
+%%   <<"name">> => [string()],
+%%   <<"organizationId">> => [string()],
+%%   <<"organizationalAggregationConfiguration">> => organizational_aggregation_configuration(),
+%%   <<"pillars">> => list(list(any())())
+%% }
+-type update_agent_organizational_profile_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_agent_profile_request() :: #{
 %%   <<"aggregationConfiguration">> => list(aggregation_configuration()),
 %%   <<"businessOverview">> => string(),
@@ -2507,8 +2970,7 @@
 %%   <<"lastModifiedAt">> => [non_neg_integer()],
 %%   <<"lastModifiedBy">> => [string()],
 %%   <<"name">> => [string()],
-%%   <<"pillars">> => list(list(any())()),
-%%   <<"tags">> => list(tag())
+%%   <<"pillars">> => list(list(any())())
 %% }
 -type update_agent_profile_response() :: #{binary() => any()}.
 
@@ -2879,6 +3341,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_agent_basic_profile_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_agent_context_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -2893,6 +3363,23 @@
     throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_agent_organizational_profile_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_agent_organizational_report_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -2999,12 +3486,33 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type delete_agent_organizational_report_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type delete_agent_profile_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type delete_agent_profile_policy_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type delete_agent_recommendation_policy_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 -type delete_lens_errors() ::
@@ -3108,7 +3616,34 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_agent_organizational_report_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agent_organizational_report_data_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agent_preferences_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_agent_profile_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agent_profile_policy_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3123,6 +3658,13 @@
     access_denied_exception().
 
 -type get_agent_recommendation_generation_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agent_recommendation_policy_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3242,6 +3784,12 @@
     access_denied_exception().
 
 -type list_agent_goals_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_agent_organizational_reports_errors() ::
     validation_exception() | 
     throttling_exception() | 
     internal_server_exception() | 
@@ -3397,7 +3945,35 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type put_agent_preferences_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type put_agent_profile_policy_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type put_agent_recommendation_feedback_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_agent_recommendation_policy_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type send_agent_organizational_report_data_to_s3_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3434,9 +4010,17 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type update_agent_organizational_profile_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type update_agent_profile_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
@@ -3643,6 +4227,45 @@ associate_profiles(Client, WorkloadId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a Basic profile for the calling account.
+%%
+%% No configuration input is required because the account and region are
+%% inferred from the caller. The profile uses the reserved name `basic'.
+%% This operation is idempotent. Calling it twice returns the same ARN. Each
+%% account can have at most one Basic profile.
+-spec create_agent_basic_profile(aws_client:aws_client(), create_agent_basic_profile_request()) ->
+    {ok, create_agent_basic_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_basic_profile_errors(), tuple()}.
+create_agent_basic_profile(Client, Input) ->
+    create_agent_basic_profile(Client, Input, []).
+
+-spec create_agent_basic_profile(aws_client:aws_client(), create_agent_basic_profile_request(), proplists:proplist()) ->
+    {ok, create_agent_basic_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_basic_profile_errors(), tuple()}.
+create_agent_basic_profile(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/v1/agent-basic-profile"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a context associated with an optimization profile.
 %%
 %% Contexts provide application and environment information used during
@@ -3698,6 +4321,88 @@ create_agent_goal(Client, ProfileArn, Input0, Options0) ->
     Method = post,
     Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/goals"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Organizational Profile for use with AWS Organizations
+%% integration.
+%%
+%% Organizational Profiles are scoped to an AWS Organization and do not
+%% require an execution role or aggregation configuration. The organization
+%% is inferred from the caller's identity.
+-spec create_agent_organizational_profile(aws_client:aws_client(), create_agent_organizational_profile_request()) ->
+    {ok, create_agent_organizational_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_organizational_profile_errors(), tuple()}.
+create_agent_organizational_profile(Client, Input) ->
+    create_agent_organizational_profile(Client, Input, []).
+
+-spec create_agent_organizational_profile(aws_client:aws_client(), create_agent_organizational_profile_request(), proplists:proplist()) ->
+    {ok, create_agent_organizational_profile_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_organizational_profile_errors(), tuple()}.
+create_agent_organizational_profile(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/v1/agent-organizational-profiles"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an Organizational Report, which is an
+%% asynchronously-materialized, point-in-time snapshot of recommendations
+%% across all Agent Profiles within the caller's AWS Organization.
+%%
+%% You can optionally narrow the scope with filters. The operation is
+%% idempotent on the caller-supplied clientToken. The AWS Organization the
+%% report belongs to is inferred from the caller's authorization context.
+%% Reports are retained for 90 days from creation, after which they are
+%% automatically deleted. Use DeleteAgentOrganizationalReport to delete a
+%% report earlier.
+-spec create_agent_organizational_report(aws_client:aws_client(), create_agent_organizational_report_request()) ->
+    {ok, create_agent_organizational_report_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_organizational_report_errors(), tuple()}.
+create_agent_organizational_report(Client, Input) ->
+    create_agent_organizational_report(Client, Input, []).
+
+-spec create_agent_organizational_report(aws_client:aws_client(), create_agent_organizational_report_request(), proplists:proplist()) ->
+    {ok, create_agent_organizational_report_response(), tuple()} |
+    {error, any()} |
+    {error, create_agent_organizational_report_errors(), tuple()}.
+create_agent_organizational_report(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/v1/agent-organizational-reports"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4223,6 +4928,43 @@ delete_agent_goal(Client, Id, ProfileArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an Organizational Report and its associated artifacts.
+%%
+%% The operation is idempotent, so repeated calls for a report that has
+%% already been deleted return success.
+-spec delete_agent_organizational_report(aws_client:aws_client(), binary() | list(), delete_agent_organizational_report_request()) ->
+    {ok, delete_agent_organizational_report_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_organizational_report_errors(), tuple()}.
+delete_agent_organizational_report(Client, ReportId, Input) ->
+    delete_agent_organizational_report(Client, ReportId, Input, []).
+
+-spec delete_agent_organizational_report(aws_client:aws_client(), binary() | list(), delete_agent_organizational_report_request(), proplists:proplist()) ->
+    {ok, delete_agent_organizational_report_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_organizational_report_errors(), tuple()}.
+delete_agent_organizational_report(Client, ReportId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/api/v1/agent-organizational-reports/", aws_util:encode_uri(ReportId), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an optimization profile and its associated configuration.
 %%
 %% This action cannot be undone.
@@ -4241,6 +4983,82 @@ delete_agent_profile(Client, ProfileArn, Input0, Options0) ->
     Method = delete,
     Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the resource-based policy from an Agent Profile.
+%%
+%% This revokes all cross-account access previously granted by the policy.
+%% Only the profile owner can call this operation.
+-spec delete_agent_profile_policy(aws_client:aws_client(), binary() | list(), delete_agent_profile_policy_request()) ->
+    {ok, delete_agent_profile_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_profile_policy_errors(), tuple()}.
+delete_agent_profile_policy(Client, ProfileArn, Input) ->
+    delete_agent_profile_policy(Client, ProfileArn, Input, []).
+
+-spec delete_agent_profile_policy(aws_client:aws_client(), binary() | list(), delete_agent_profile_policy_request(), proplists:proplist()) ->
+    {ok, delete_agent_profile_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_profile_policy_errors(), tuple()}.
+delete_agent_profile_policy(Client, ProfileArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/policy"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes the resource-based policy from an individual Agent
+%% Recommendation.
+%%
+%% This revokes all cross-account access previously granted by the policy.
+%% The recommendation owner or any principal with profile write access on the
+%% parent profile can call this operation.
+-spec delete_agent_recommendation_policy(aws_client:aws_client(), binary() | list(), delete_agent_recommendation_policy_request()) ->
+    {ok, delete_agent_recommendation_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_recommendation_policy_errors(), tuple()}.
+delete_agent_recommendation_policy(Client, RecommendationArn, Input) ->
+    delete_agent_recommendation_policy(Client, RecommendationArn, Input, []).
+
+-spec delete_agent_recommendation_policy(aws_client:aws_client(), binary() | list(), delete_agent_recommendation_policy_request(), proplists:proplist()) ->
+    {ok, delete_agent_recommendation_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_agent_recommendation_policy_errors(), tuple()}.
+delete_agent_recommendation_policy(Client, RecommendationArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/api/v1/agent-recommendations/", aws_util:encode_uri(RecommendationArn), "/policy"],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -4793,6 +5611,131 @@ get_agent_goal(Client, Id, ProfileArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves metadata and current state for a single Organizational
+%% Report.
+%%
+%% The coverageSummary is populated once the report reaches COMPLETED and is
+%% absent for reports still in progress or in a failed state.
+-spec get_agent_organizational_report(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_agent_organizational_report_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_organizational_report_errors(), tuple()}.
+get_agent_organizational_report(Client, ReportId)
+  when is_map(Client) ->
+    get_agent_organizational_report(Client, ReportId, #{}, #{}).
+
+-spec get_agent_organizational_report(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_agent_organizational_report_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_organizational_report_errors(), tuple()}.
+get_agent_organizational_report(Client, ReportId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_organizational_report(Client, ReportId, QueryMap, HeadersMap, []).
+
+-spec get_agent_organizational_report(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_organizational_report_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_organizational_report_errors(), tuple()}.
+get_agent_organizational_report(Client, ReportId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-organizational-reports/", aws_util:encode_uri(ReportId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the data artifact for a completed Organizational Report as
+%% a short-lived presigned S3 URL.
+%%
+%% The response contains the URL in downloadUrl and its expiration in
+%% expiresAt. To have the service write the artifact directly into a
+%% caller-owned bucket instead, use SendAgentOrganizationalReportDataToS3.
+-spec get_agent_organizational_report_data(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_agent_organizational_report_data_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_organizational_report_data_errors(), tuple()}.
+get_agent_organizational_report_data(Client, ReportId, Format)
+  when is_map(Client) ->
+    get_agent_organizational_report_data(Client, ReportId, Format, #{}, #{}).
+
+-spec get_agent_organizational_report_data(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_agent_organizational_report_data_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_organizational_report_data_errors(), tuple()}.
+get_agent_organizational_report_data(Client, ReportId, Format, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_organizational_report_data(Client, ReportId, Format, QueryMap, HeadersMap, []).
+
+-spec get_agent_organizational_report_data(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_organizational_report_data_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_organizational_report_data_errors(), tuple()}.
+get_agent_organizational_report_data(Client, ReportId, Format, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-organizational-reports/", aws_util:encode_uri(ReportId), "/data"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"format">>, Format}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the caller's complete set of Well-Architected Agent
+%% preferences with their current states.
+-spec get_agent_preferences(aws_client:aws_client()) ->
+    {ok, get_agent_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_preferences_errors(), tuple()}.
+get_agent_preferences(Client)
+  when is_map(Client) ->
+    get_agent_preferences(Client, #{}, #{}).
+
+-spec get_agent_preferences(aws_client:aws_client(), map(), map()) ->
+    {ok, get_agent_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_preferences_errors(), tuple()}.
+get_agent_preferences(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_preferences(Client, QueryMap, HeadersMap, []).
+
+-spec get_agent_preferences(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_preferences_errors(), tuple()}.
+get_agent_preferences(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-preferences"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves detailed information about an optimization profile,
 %% including its configuration and metadata.
 -spec get_agent_profile(aws_client:aws_client(), binary() | list()) ->
@@ -4831,7 +5774,53 @@ get_agent_profile(Client, ProfileArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves detailed information about a specific optimization
+%% @doc Retrieves the resource-based policy attached to an Agent Profile.
+%%
+%% Only the profile owner can call this operation.
+-spec get_agent_profile_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_agent_profile_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_profile_policy_errors(), tuple()}.
+get_agent_profile_policy(Client, ProfileArn)
+  when is_map(Client) ->
+    get_agent_profile_policy(Client, ProfileArn, #{}, #{}).
+
+-spec get_agent_profile_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_agent_profile_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_profile_policy_errors(), tuple()}.
+get_agent_profile_policy(Client, ProfileArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_profile_policy(Client, ProfileArn, QueryMap, HeadersMap, []).
+
+-spec get_agent_profile_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_profile_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_profile_policy_errors(), tuple()}.
+get_agent_profile_policy(Client, ProfileArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Application-level recommendations are a new recommendation format
+%% currently in beta.
+%%
+%% We are actively seeking customer feedback to improve their quality and
+%% relevance. As with any AI-generated content, please thoroughly review each
+%% recommendation before taking any action based on it.
+%%
+%% Retrieves detailed information about a specific optimization
 %% recommendation, including its impact analysis, content, and implementation
 %% guidance.
 -spec get_agent_recommendation(aws_client:aws_client(), binary() | list()) ->
@@ -4874,12 +5863,18 @@ get_agent_recommendation(Client, RecommendationArn, QueryMap, HeadersMap, Option
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves information about a recommendation generation process,
-%% including its status, progress, and results.
+%% @doc Application-level recommendations are a new recommendation format
+%% currently in beta.
 %%
-%% Recommendation generation is asynchronous: poll this operation until
-%% status reaches a terminal value of COMPLETED (results are ready) or ERROR
-%% (see errorDetails). Intermediate values are QUEUED and IN_PROGRESS.
+%% We are actively seeking customer feedback to improve their quality and
+%% relevance. As with any AI-generated content, please thoroughly review each
+%% recommendation before taking any action based on it.
+%%
+%% Retrieves information about a recommendation generation process, including
+%% its status, progress, and results. Recommendation generation is
+%% asynchronous: poll this operation until status reaches a terminal value of
+%% COMPLETED (results are ready) or ERROR (see errorDetails). Intermediate
+%% values are QUEUED and IN_PROGRESS.
 -spec get_agent_recommendation_generation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_agent_recommendation_generation_response(), tuple()} |
     {error, any()} |
@@ -4903,6 +5898,47 @@ get_agent_recommendation_generation(Client, GenerationId, ProfileArn, QueryMap, 
 get_agent_recommendation_generation(Client, GenerationId, ProfileArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/generations/", aws_util:encode_uri(GenerationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves the resource-based policy attached to an individual Agent
+%% Recommendation.
+%%
+%% The recommendation owner or any principal with profile write access on the
+%% parent profile can call this operation.
+-spec get_agent_recommendation_policy(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_agent_recommendation_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_recommendation_policy_errors(), tuple()}.
+get_agent_recommendation_policy(Client, RecommendationArn)
+  when is_map(Client) ->
+    get_agent_recommendation_policy(Client, RecommendationArn, #{}, #{}).
+
+-spec get_agent_recommendation_policy(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_agent_recommendation_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_recommendation_policy_errors(), tuple()}.
+get_agent_recommendation_policy(Client, RecommendationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_recommendation_policy(Client, RecommendationArn, QueryMap, HeadersMap, []).
+
+-spec get_agent_recommendation_policy(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_recommendation_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_recommendation_policy_errors(), tuple()}.
+get_agent_recommendation_policy(Client, RecommendationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-recommendations/", aws_util:encode_uri(RecommendationArn), "/policy"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5613,6 +6649,52 @@ list_agent_goals(Client, ProfileArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists Organizational Reports owned by the caller's account within
+%% the caller's AWS Organization, ordered by most recently created first.
+%%
+%% Supports pagination and an optional state filter.
+-spec list_agent_organizational_reports(aws_client:aws_client()) ->
+    {ok, list_agent_organizational_reports_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_organizational_reports_errors(), tuple()}.
+list_agent_organizational_reports(Client)
+  when is_map(Client) ->
+    list_agent_organizational_reports(Client, #{}, #{}).
+
+-spec list_agent_organizational_reports(aws_client:aws_client(), map(), map()) ->
+    {ok, list_agent_organizational_reports_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_organizational_reports_errors(), tuple()}.
+list_agent_organizational_reports(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_agent_organizational_reports(Client, QueryMap, HeadersMap, []).
+
+-spec list_agent_organizational_reports(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_agent_organizational_reports_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_organizational_reports_errors(), tuple()}.
+list_agent_organizational_reports(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/api/v1/agent-organizational-reports"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"state">>, maps:get(<<"state">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists optimization profiles in your account.
 %%
 %% Profiles define the scope and configuration for generating optimization
@@ -5658,7 +6740,14 @@ list_agent_profiles(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists recommendation generation processes for a specified profile.
+%% @doc Application-level recommendations are a new recommendation format
+%% currently in beta.
+%%
+%% We are actively seeking customer feedback to improve their quality and
+%% relevance. As with any AI-generated content, please thoroughly review each
+%% recommendation before taking any action based on it.
+%%
+%% Lists recommendation generation processes for a specified profile.
 -spec list_agent_recommendation_generations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_agent_recommendation_generations_response(), tuple()} |
     {error, any()} |
@@ -5701,10 +6790,16 @@ list_agent_recommendation_generations(Client, ProfileArn, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists recommendation items for a specific recommendation.
+%% @doc Application-level recommendations are a new recommendation format
+%% currently in beta.
 %%
-%% Recommendation items provide detailed information about individual
-%% optimization opportunities.
+%% We are actively seeking customer feedback to improve their quality and
+%% relevance. As with any AI-generated content, please thoroughly review each
+%% recommendation before taking any action based on it.
+%%
+%% Lists recommendation items for a specific recommendation. Recommendation
+%% items provide detailed information about individual optimization
+%% opportunities.
 -spec list_agent_recommendation_items(aws_client:aws_client(), binary() | list()) ->
     {ok, list_agent_recommendation_items_response(), tuple()} |
     {error, any()} |
@@ -5747,8 +6842,15 @@ list_agent_recommendation_items(Client, RecommendationArn, QueryMap, HeadersMap,
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Lists active optimization recommendations for a specified profile
-%% with optional filtering by state.
+%% @doc Application-level recommendations are a new recommendation format
+%% currently in beta.
+%%
+%% We are actively seeking customer feedback to improve their quality and
+%% relevance. As with any AI-generated content, please thoroughly review each
+%% recommendation before taking any action based on it.
+%%
+%% Lists active optimization recommendations for a specified profile with
+%% optional filtering by state.
 -spec list_agent_recommendations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_agent_recommendations_response(), tuple()} |
     {error, any()} |
@@ -6581,6 +7683,88 @@ list_workloads(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates or replaces the caller's Well-Architected Agent
+%% preferences.
+%%
+%% Each supplied update sets the desired state of one preference. Preferences
+%% not named in the request are left unchanged. Enabling or disabling is
+%% performed synchronously, so a failure to reach the requested state is
+%% returned as a modeled exception rather than a FAILED status. On success
+%% the operation returns an empty response. Call GetAgentPreferences to read
+%% the resulting state. The account the preferences belong to is inferred
+%% from the caller's authorization context.
+-spec put_agent_preferences(aws_client:aws_client(), put_agent_preferences_request()) ->
+    {ok, put_agent_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, put_agent_preferences_errors(), tuple()}.
+put_agent_preferences(Client, Input) ->
+    put_agent_preferences(Client, Input, []).
+
+-spec put_agent_preferences(aws_client:aws_client(), put_agent_preferences_request(), proplists:proplist()) ->
+    {ok, put_agent_preferences_response(), tuple()} |
+    {error, any()} |
+    {error, put_agent_preferences_errors(), tuple()}.
+put_agent_preferences(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/api/v1/agent-preferences"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Attaches or replaces a resource-based policy on an Agent Profile.
+%%
+%% The policy controls cross-account access to the profile and its child
+%% resources such as recommendations, goals, and contexts. Only the profile
+%% owner can call this operation. The policy must be valid IAM JSON with
+%% Allow-only statements and no negation condition operators.
+-spec put_agent_profile_policy(aws_client:aws_client(), binary() | list(), put_agent_profile_policy_request()) ->
+    {ok, put_agent_profile_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_agent_profile_policy_errors(), tuple()}.
+put_agent_profile_policy(Client, ProfileArn, Input) ->
+    put_agent_profile_policy(Client, ProfileArn, Input, []).
+
+-spec put_agent_profile_policy(aws_client:aws_client(), binary() | list(), put_agent_profile_policy_request(), proplists:proplist()) ->
+    {ok, put_agent_profile_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_agent_profile_policy_errors(), tuple()}.
+put_agent_profile_policy(Client, ProfileArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/api/v1/agent-profiles/", aws_util:encode_uri(ProfileArn), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Submits user feedback on a recommendation to help improve future
 %% optimization suggestions and track implementation outcomes.
 -spec put_agent_recommendation_feedback(aws_client:aws_client(), binary() | list(), put_agent_recommendation_feedback_request()) ->
@@ -6616,12 +7800,109 @@ put_agent_recommendation_feedback(Client, RecommendationArn, Input0, Options0) -
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Initiates a new recommendation generation process for the specified
-%% optimization profile.
+%% @doc Attaches or replaces a resource-based policy on an individual Agent
+%% Recommendation.
 %%
-%% This asynchronous operation analyzes your Amazon Web Services resources
-%% and generates optimization recommendations based on the configured pillars
-%% and scope. Use GetAgentRecommendationGeneration to check status.
+%% The policy controls cross-account access to the recommendation and its
+%% child resources such as items and remediations. The recommendation owner
+%% or any principal with profile write access on the parent profile can call
+%% this operation. The policy must be valid IAM JSON with Allow-only
+%% statements and no negation condition operators.
+-spec put_agent_recommendation_policy(aws_client:aws_client(), binary() | list(), put_agent_recommendation_policy_request()) ->
+    {ok, put_agent_recommendation_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_agent_recommendation_policy_errors(), tuple()}.
+put_agent_recommendation_policy(Client, RecommendationArn, Input) ->
+    put_agent_recommendation_policy(Client, RecommendationArn, Input, []).
+
+-spec put_agent_recommendation_policy(aws_client:aws_client(), binary() | list(), put_agent_recommendation_policy_request(), proplists:proplist()) ->
+    {ok, put_agent_recommendation_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_agent_recommendation_policy_errors(), tuple()}.
+put_agent_recommendation_policy(Client, RecommendationArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/api/v1/agent-recommendations/", aws_util:encode_uri(RecommendationArn), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Writes the data artifact for a completed Organizational Report
+%% directly into a caller-owned S3 bucket.
+%%
+%% The artifact is written in the requested format to the supplied bucketArn
+%% and objectKey, and the resulting S3 location is returned in deliveredTo.
+%% This operation creates an S3 object and should not be retried
+%% indiscriminately. To download the artifact through a short-lived presigned
+%% URL instead, use GetAgentOrganizationalReportData.
+-spec send_agent_organizational_report_data_to_s3(aws_client:aws_client(), binary() | list(), send_agent_organizational_report_data_to_s3_request()) ->
+    {ok, send_agent_organizational_report_data_to_s3_response(), tuple()} |
+    {error, any()} |
+    {error, send_agent_organizational_report_data_to_s3_errors(), tuple()}.
+send_agent_organizational_report_data_to_s3(Client, ReportId, Input) ->
+    send_agent_organizational_report_data_to_s3(Client, ReportId, Input, []).
+
+-spec send_agent_organizational_report_data_to_s3(aws_client:aws_client(), binary() | list(), send_agent_organizational_report_data_to_s3_request(), proplists:proplist()) ->
+    {ok, send_agent_organizational_report_data_to_s3_response(), tuple()} |
+    {error, any()} |
+    {error, send_agent_organizational_report_data_to_s3_errors(), tuple()}.
+send_agent_organizational_report_data_to_s3(Client, ReportId, Input0, Options0) ->
+    Method = post,
+    Path = ["/api/v1/agent-organizational-reports/", aws_util:encode_uri(ReportId), "/send-to-s3"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a recommendation generation process for the specified agent
+%% profile.
+%%
+%% This asynchronous operation returns immediately. Use
+%% `GetAgentRecommendationGeneration' to check the status of the
+%% generation.
+%%
+%% Currently, only the `ARCHITECTURE' recommendation type is supported.
+%% `RESOURCE' and `APPLICATION' recommendations are generated only by
+%% the scheduled generation cycle and cannot be started with this operation.
+%%
+%% For the `ARCHITECTURE' type, the generation analyzes the
+%% infrastructure as code (IaC) template that you specify in
+%% `additionalContext', and returns updated templates with best practice
+%% fixes applied. You must specify `scope' and `additionalContext'.
+%% You can optionally specify `name'.
+%%
+%% Architecture review generations are subject to a daily quota for each
+%% profile. For more information, see Quotas and limits:
+%% https://docs.aws.amazon.com/wellarchitected/latest/userguide/agent-quotas.html
+%% in the Amazon Web Services Well-Architected User Guide.
 -spec start_agent_recommendation_generation(aws_client:aws_client(), binary() | list(), start_agent_recommendation_generation_request()) ->
     {ok, start_agent_recommendation_generation_response(), tuple()} |
     {error, any()} |
@@ -6803,8 +8084,80 @@ update_agent_goal(Client, Id, ProfileArn, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an Organizational Profile.
+%%
+%% Organizational Profiles are specific to Profiles created using AWS
+%% Organizations integration. Include only the fields you want to change; any
+%% field you omit from the request keeps its current value.
+%%
+%% To clear an optional text field, supply an empty string for it; the field
+%% is then unset, and a subsequent read omits it rather than returning an
+%% empty string. Omitting the field from the request leaves the stored value
+%% in place. `description' and `businessOverview' can be cleared this
+%% way. `displayName' cannot be cleared because a display name is
+%% required, though you can change it. `pillars' cannot be cleared
+%% because a profile must target at least one pillar.
+%%
+%% `organizationalAggregationConfiguration' behaves differently because
+%% it is a structure rather than a text field. Supplying it with both its
+%% `organizationalUnits' and `accounts' lists empty removes every
+%% monitored organizational unit and account, but the field itself remains
+%% set: a subsequent read returns the structure with two empty lists rather
+%% than omitting it. Omitting the field from the request keeps the stored
+%% boundary.
+-spec update_agent_organizational_profile(aws_client:aws_client(), binary() | list(), update_agent_organizational_profile_request()) ->
+    {ok, update_agent_organizational_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_organizational_profile_errors(), tuple()}.
+update_agent_organizational_profile(Client, ProfileArn, Input) ->
+    update_agent_organizational_profile(Client, ProfileArn, Input, []).
+
+-spec update_agent_organizational_profile(aws_client:aws_client(), binary() | list(), update_agent_organizational_profile_request(), proplists:proplist()) ->
+    {ok, update_agent_organizational_profile_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_organizational_profile_errors(), tuple()}.
+update_agent_organizational_profile(Client, ProfileArn, Input0, Options0) ->
+    Method = put,
+    Path = ["/api/v1/agent-organizational-profiles/", aws_util:encode_uri(ProfileArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing optimization profile's configuration,
 %% including its pillars, execution role, and aggregation settings.
+%%
+%% Include only the fields you want to change. Any field you omit from the
+%% request keeps its current value, so you do not need to retrieve the
+%% profile first and resend the fields you are not changing.
+%%
+%% To clear an optional text field, supply an empty string for it; the field
+%% is then unset, and a subsequent read omits it rather than returning an
+%% empty string. Omitting the field from the request leaves the stored value
+%% in place. `description' and `businessOverview' can be cleared this
+%% way. `displayName' cannot be cleared because a display name is
+%% required, though you can change it. `pillars' cannot be cleared
+%% because a profile must target at least one pillar.
+%%
+%% `aggregationConfiguration' behaves differently because it is a list of
+%% per-account configurations rather than a text field. Supplying an empty
+%% list removes every account entry, but the field itself remains set: a
+%% subsequent read returns an empty list rather than omitting the field.
+%% Omitting it from the request keeps the stored entries.
 -spec update_agent_profile(aws_client:aws_client(), binary() | list(), update_agent_profile_request()) ->
     {ok, update_agent_profile_response(), tuple()} |
     {error, any()} |

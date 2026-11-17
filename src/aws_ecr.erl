@@ -407,6 +407,12 @@
 -type delete_registry_policy_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_replication() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type delete_replication() :: #{binary() => any()}.
+
+%% Example:
 %% delete_repository_creation_template_request() :: #{
 %%   <<"prefix">> := string()
 %% }
@@ -1507,6 +1513,7 @@
 
 %% Example:
 %% replication_rule() :: #{
+%%   <<"deleteReplication">> => delete_replication(),
 %%   <<"destinations">> => list(replication_destination()),
 %%   <<"repositoryFilters">> => list(repository_filter())
 %% }

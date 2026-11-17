@@ -1048,6 +1048,7 @@
 
 %% Example:
 %% list_databases_input() :: #{
+%%   <<"AttributesToGet">> => list(list(any())()),
 %%   <<"CatalogName">> := string(),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -1201,6 +1202,7 @@
 
 %% Example:
 %% list_table_metadata_input() :: #{
+%%   <<"AttributesToGet">> => list(list(any())()),
 %%   <<"CatalogName">> := string(),
 %%   <<"DatabaseName">> := string(),
 %%   <<"Expression">> => string(),

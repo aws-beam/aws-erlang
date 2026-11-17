@@ -18,17 +18,27 @@
 
 -export([activate_subscription/4,
          activate_subscription/5,
+         create_dataset/3,
+         create_dataset/4,
          create_domain/2,
          create_domain/3,
          create_subscription/3,
          create_subscription/4,
          deactivate_subscription/4,
          deactivate_subscription/5,
+         delete_dataset/4,
+         delete_dataset/5,
          delete_domain/3,
          delete_domain/4,
+         get_dataset/3,
+         get_dataset/5,
+         get_dataset/6,
          get_domain/2,
          get_domain/4,
          get_domain/5,
+         get_medical_coding_job/3,
+         get_medical_coding_job/5,
+         get_medical_coding_job/6,
          get_medical_scribe_listening_session/4,
          get_medical_scribe_listening_session/6,
          get_medical_scribe_listening_session/7,
@@ -38,6 +48,9 @@
          get_subscription/3,
          get_subscription/5,
          get_subscription/6,
+         list_datasets/2,
+         list_datasets/4,
+         list_datasets/5,
          list_domains/1,
          list_domains/3,
          list_domains/4,
@@ -47,10 +60,14 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         start_medical_coding_job/3,
+         start_medical_coding_job/4,
          start_medical_scribe_listening_session/2,
          start_medical_scribe_listening_session/3,
          start_patient_insights_job/3,
          start_patient_insights_job/4,
+         submit_feedback/3,
+         submit_feedback/4,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -91,6 +108,22 @@
 
 
 %% Example:
+%% checklist() :: #{
+%%   <<"checklistId">> => string(),
+%%   <<"items">> => list(checklist_item())
+%% }
+-type checklist() :: #{binary() => any()}.
+
+
+%% Example:
+%% checklist_item() :: #{
+%%   <<"itemKey">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type checklist_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% clinical_note_generation_result() :: #{
 %%   <<"afterVisitSummaryResult">> => artifact_details(),
 %%   <<"noteResult">> => artifact_details(),
@@ -118,6 +151,26 @@
 %%   <<"message">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_input() :: #{
+%%   <<"clientToken">> => [string()],
+%%   <<"config">> := list(),
+%%   <<"name">> := string()
+%% }
+-type create_dataset_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_dataset_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type create_dataset_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -186,6 +239,20 @@
 %% }
 -type custom_template_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% dataset_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type dataset_summary() :: #{binary() => any()}.
+
 %% Example:
 %% deactivate_subscription_input() :: #{}
 -type deactivate_subscription_input() :: #{}.
@@ -196,6 +263,19 @@
 %%   <<"subscription">> => subscription_description()
 %% }
 -type deactivate_subscription_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_input() :: #{}
+-type delete_dataset_input() :: #{}.
+
+
+%% Example:
+%% delete_dataset_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_dataset_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_domain_input() :: #{}
@@ -224,6 +304,7 @@
 
 %% Example:
 %% encounter_context() :: #{
+%%   <<"medicalCodingContext">> => medical_coding_context(),
 %%   <<"unstructuredContext">> => string()
 %% }
 -type encounter_context() :: #{binary() => any()}.
@@ -245,6 +326,26 @@
 -type fhir_server() :: #{binary() => any()}.
 
 %% Example:
+%% get_dataset_input() :: #{}
+-type get_dataset_input() :: #{}.
+
+
+%% Example:
+%% get_dataset_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"artifacts">> => list(),
+%%   <<"config">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusDetails">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_dataset_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_domain_input() :: #{}
 -type get_domain_input() :: #{}.
 
@@ -263,6 +364,28 @@
 %%   <<"webAppUrl">> => string()
 %% }
 -type get_domain_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_medical_coding_job_request() :: #{}
+-type get_medical_coding_job_request() :: #{}.
+
+
+%% Example:
+%% get_medical_coding_job_response() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"datasetId">> => string(),
+%%   <<"encounterContext">> => medical_codes_encounter_context(),
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string(),
+%%   <<"jobStatus">> => list(any()),
+%%   <<"medicalCodingOutput">> => medical_coding_output(),
+%%   <<"outputDataConfig">> => medical_coding_output_data_config(),
+%%   <<"patientContext">> => medical_codes_patient_context(),
+%%   <<"statusDetails">> => string(),
+%%   <<"text">> => string(),
+%%   <<"updatedTime">> => [non_neg_integer()]
+%% }
+-type get_medical_coding_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_medical_scribe_listening_session_input() :: #{}
@@ -340,6 +463,23 @@
 
 
 %% Example:
+%% list_datasets_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type list_datasets_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_datasets_output() :: #{
+%%   <<"items">> => list(dataset_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_datasets_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_domains_input() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
@@ -398,6 +538,91 @@
 
 
 %% Example:
+%% medical_code_generation_result() :: #{
+%%   <<"jobId">> => string(),
+%%   <<"medicalCodesResult">> => artifact_details()
+%% }
+-type medical_code_generation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_code_generation_settings() :: #{
+%%   <<"enabled">> => [boolean()]
+%% }
+-type medical_code_generation_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_code_generation_settings_response() :: #{
+%%   <<"enabled">> => boolean()
+%% }
+-type medical_code_generation_settings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_codes_encounter_context() :: #{
+%%   <<"afterHours">> => [boolean()],
+%%   <<"encounterDate">> => string(),
+%%   <<"encounterDurationMinutes">> => integer(),
+%%   <<"encounterReason">> => string(),
+%%   <<"encounterType">> => list(any())
+%% }
+-type medical_codes_encounter_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_codes_patient_context() :: #{
+%%   <<"dateOfBirth">> => string(),
+%%   <<"insurance">> => string(),
+%%   <<"sex">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type medical_codes_patient_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_coding_context() :: #{
+%%   <<"afterHours">> => [boolean()],
+%%   <<"dateOfBirth">> => string(),
+%%   <<"encounterDate">> => string(),
+%%   <<"encounterReason">> => string(),
+%%   <<"encounterType">> => list(any()),
+%%   <<"sex">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type medical_coding_context() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_coding_dataset_artifacts() :: #{
+%%   <<"evaluationS3Uri">> => string()
+%% }
+-type medical_coding_dataset_artifacts() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_coding_dataset_config() :: #{
+%%   <<"s3InputPath">> => string(),
+%%   <<"s3OutputPath">> => string()
+%% }
+-type medical_coding_dataset_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_coding_output() :: #{
+%%   <<"uri">> => string()
+%% }
+-type medical_coding_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% medical_coding_output_data_config() :: #{
+%%   <<"s3OutputPath">> => string()
+%% }
+-type medical_coding_output_data_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% medical_scribe_audio_event() :: #{
 %%   <<"audioChunk">> => binary()
 %% }
@@ -420,6 +645,14 @@
 
 
 %% Example:
+%% medical_scribe_checklist_event() :: #{
+%%   <<"checklists">> => list(checklist()),
+%%   <<"snapshotVersion">> => [float()]
+%% }
+-type medical_scribe_checklist_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% medical_scribe_configuration_event() :: #{
 %%   <<"channelDefinitions">> => list(medical_scribe_channel_definition()),
 %%   <<"encounterContext">> => encounter_context(),
@@ -436,6 +669,7 @@
 %%   <<"languageCode">> => list(any()),
 %%   <<"mediaEncoding">> => list(any()),
 %%   <<"mediaSampleRateHertz">> => integer(),
+%%   <<"medicalCodingContextProvided">> => boolean(),
 %%   <<"postStreamActionResult">> => medical_scribe_post_stream_actions_result(),
 %%   <<"postStreamActionSettings">> => medical_scribe_post_stream_action_settings_response(),
 %%   <<"sessionId">> => string(),
@@ -448,8 +682,18 @@
 
 
 %% Example:
+%% medical_scribe_periodontal_chart_event() :: #{
+%%   <<"reviewItems">> => list(periodontal_review()),
+%%   <<"snapshotVersion">> => [float()],
+%%   <<"teeth">> => list(periodontal_tooth())
+%% }
+-type medical_scribe_periodontal_chart_event() :: #{binary() => any()}.
+
+
+%% Example:
 %% medical_scribe_post_stream_action_settings() :: #{
 %%   <<"clinicalNoteGenerationSettings">> => clinical_note_generation_settings(),
+%%   <<"medicalCodeGenerationSettings">> => medical_code_generation_settings(),
 %%   <<"outputS3Uri">> => string()
 %% }
 -type medical_scribe_post_stream_action_settings() :: #{binary() => any()}.
@@ -458,6 +702,7 @@
 %% Example:
 %% medical_scribe_post_stream_action_settings_response() :: #{
 %%   <<"clinicalNoteGenerationSettings">> => clinical_note_generation_settings_response(),
+%%   <<"medicalCodeGenerationSettings">> => medical_code_generation_settings_response(),
 %%   <<"outputS3Uri">> => string()
 %% }
 -type medical_scribe_post_stream_action_settings_response() :: #{binary() => any()}.
@@ -465,7 +710,8 @@
 
 %% Example:
 %% medical_scribe_post_stream_actions_result() :: #{
-%%   <<"clinicalNoteGenerationResult">> => clinical_note_generation_result()
+%%   <<"clinicalNoteGenerationResult">> => clinical_note_generation_result(),
+%%   <<"medicalCodeGenerationResult">> => medical_code_generation_result()
 %% }
 -type medical_scribe_post_stream_actions_result() :: #{binary() => any()}.
 
@@ -520,6 +766,37 @@
 
 
 %% Example:
+%% periodontal_review() :: #{
+%%   <<"reason">> => list(any()),
+%%   <<"sites">> => list(list(any())()),
+%%   <<"toothNumber">> => integer()
+%% }
+-type periodontal_review() :: #{binary() => any()}.
+
+
+%% Example:
+%% periodontal_site() :: #{
+%%   <<"bleeding">> => [boolean()],
+%%   <<"probingDepth">> => integer(),
+%%   <<"recession">> => integer(),
+%%   <<"site">> => list(any()),
+%%   <<"suppuration">> => [boolean()]
+%% }
+-type periodontal_site() :: #{binary() => any()}.
+
+
+%% Example:
+%% periodontal_tooth() :: #{
+%%   <<"furcation">> => integer(),
+%%   <<"missing">> => [boolean()],
+%%   <<"mobility">> => integer(),
+%%   <<"sites">> => list(periodontal_site()),
+%%   <<"toothNumber">> => integer()
+%% }
+-type periodontal_tooth() :: #{binary() => any()}.
+
+
+%% Example:
 %% resource_not_found_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -538,6 +815,27 @@
 %%   <<"message">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_medical_coding_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"datasetId">> => string(),
+%%   <<"encounterContext">> => medical_codes_encounter_context(),
+%%   <<"outputDataConfig">> := medical_coding_output_data_config(),
+%%   <<"patientContext">> => medical_codes_patient_context(),
+%%   <<"text">> := string()
+%% }
+-type start_medical_coding_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_medical_coding_job_response() :: #{
+%%   <<"creationTime">> => [non_neg_integer()],
+%%   <<"jobArn">> => string(),
+%%   <<"jobId">> => string()
+%% }
+-type start_medical_coding_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -587,6 +885,23 @@
 %%   <<"jobId">> => string()
 %% }
 -type start_patient_insights_job_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% submit_feedback_request() :: #{
+%%   <<"artifactSourceId">> := string(),
+%%   <<"artifactType">> := list(any()),
+%%   <<"clientToken">> => string(),
+%%   <<"comments">> => string(),
+%%   <<"generatedArtifactS3Uri">> => string(),
+%%   <<"signedArtifactS3Uri">> := string(),
+%%   <<"subscriptionId">> => string()
+%% }
+-type submit_feedback_request() :: #{binary() => any()}.
+
+%% Example:
+%% submit_feedback_response() :: #{}
+-type submit_feedback_response() :: #{}.
 
 
 %% Example:
@@ -662,6 +977,15 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type create_dataset_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_domain_errors() ::
     service_quota_exceeded_exception().
 
@@ -678,11 +1002,33 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type delete_dataset_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type delete_domain_errors() ::
     resource_not_found_exception().
 
+-type get_dataset_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_domain_errors() ::
     resource_not_found_exception().
+
+-type get_medical_coding_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type get_medical_scribe_listening_session_errors() ::
     throttling_exception() | 
@@ -704,10 +1050,25 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_datasets_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_subscriptions_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type start_medical_coding_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type start_medical_scribe_listening_session_errors() ::
@@ -724,6 +1085,13 @@
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type submit_feedback_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 %%====================================================================
@@ -746,6 +1114,58 @@ activate_subscription(Client, DomainId, SubscriptionId, Input0, Options0) ->
     Method = post,
     Path = ["/domains/", aws_util:encode_uri(DomainId), "/subscriptions/", aws_util:encode_uri(SubscriptionId), "/activate"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a Dataset in a Domain and starts building it.
+%%
+%% A new dataset has the status CREATING. When it's ready to use, its
+%% status changes to ACTIVE, or to CREATE_FAILED if it fails to build. To
+%% check the status, call GetDataset.
+%%
+%% This operation is idempotent: if you retry a request with the same
+%% clientToken, it returns the dataset that the first request created.
+%%
+%% For a medical coding dataset, Amazon Connect Health uses the coded
+%% examples that are in the s3InputPath when you create the dataset, and
+%% writes evaluation scores to the s3OutputPath. Later changes to the
+%% s3InputPath don't change the dataset. To use this operation, you must
+%% have s3:GetObject and s3:ListBucket permissions for the input location and
+%% s3:PutObject permission for the output location, and kms:Decrypt and
+%% kms:GenerateDataKey permissions if you encrypt the locations with an AWS
+%% KMS key.
+%%
+%% Datasets are in preview release and are subject to change.
+-spec create_dataset(aws_client:aws_client(), binary() | list(), create_dataset_input()) ->
+    {ok, create_dataset_output(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_errors(), tuple()}.
+create_dataset(Client, DomainId, Input) ->
+    create_dataset(Client, DomainId, Input, []).
+
+-spec create_dataset(aws_client:aws_client(), binary() | list(), create_dataset_input(), proplists:proplist()) ->
+    {ok, create_dataset_output(), tuple()} |
+    {error, any()} |
+    {error, create_dataset_errors(), tuple()}.
+create_dataset(Client, DomainId, Input0, Options0) ->
+    Method = post,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/datasets"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -867,6 +1287,51 @@ deactivate_subscription(Client, DomainId, SubscriptionId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts deleting a Dataset and the resources that Amazon Connect
+%% Health built for it.
+%%
+%% You can delete a dataset whose status is ACTIVE, CREATE_FAILED, or
+%% DELETE_FAILED. The dataset moves to DELETING, and then to DELETED. If the
+%% delete fails, the dataset moves to DELETE_FAILED, and you can call
+%% DeleteDataset again.
+%%
+%% Medical coding jobs that already use the dataset finish. Amazon Connect
+%% Health rejects new requests that specify the dataset.
+%%
+%% Datasets are in preview release and are subject to change.
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dataset_input()) ->
+    {ok, delete_dataset_output(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_errors(), tuple()}.
+delete_dataset(Client, DatasetId, DomainId, Input) ->
+    delete_dataset(Client, DatasetId, DomainId, Input, []).
+
+-spec delete_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dataset_input(), proplists:proplist()) ->
+    {ok, delete_dataset_output(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_errors(), tuple()}.
+delete_dataset(Client, DatasetId, DomainId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/datasets/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a Domain and all associated resources.
 -spec delete_domain(aws_client:aws_client(), binary() | list(), delete_domain_input()) ->
     {ok, delete_domain_output(), tuple()} |
@@ -901,6 +1366,48 @@ delete_domain(Client, DomainId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Retrieves information about a Dataset, including its status and,
+%% after it is built, its results.
+%%
+%% A dataset whose status is DELETED returns ResourceNotFoundException.
+%%
+%% Datasets are in preview release and are subject to change.
+-spec get_dataset(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_dataset_output(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_errors(), tuple()}.
+get_dataset(Client, DatasetId, DomainId)
+  when is_map(Client) ->
+    get_dataset(Client, DatasetId, DomainId, #{}, #{}).
+
+-spec get_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_dataset_output(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_errors(), tuple()}.
+get_dataset(Client, DatasetId, DomainId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dataset(Client, DatasetId, DomainId, QueryMap, HeadersMap, []).
+
+-spec get_dataset(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_dataset_output(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_errors(), tuple()}.
+get_dataset(Client, DatasetId, DomainId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/datasets/", aws_util:encode_uri(DatasetId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves information about a Domain.
 -spec get_domain(aws_client:aws_client(), binary() | list()) ->
     {ok, get_domain_output(), tuple()} |
@@ -925,6 +1432,46 @@ get_domain(Client, DomainId, QueryMap, HeadersMap)
 get_domain(Client, DomainId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/domain/", aws_util:encode_uri(DomainId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a medical coding job, including its
+%% status and, when it succeeds, the location of its results.
+%%
+%% Medical coding jobs are in preview release and are subject to change.
+-spec get_medical_coding_job(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_medical_coding_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_medical_coding_job_errors(), tuple()}.
+get_medical_coding_job(Client, DomainId, JobId)
+  when is_map(Client) ->
+    get_medical_coding_job(Client, DomainId, JobId, #{}, #{}).
+
+-spec get_medical_coding_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_medical_coding_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_medical_coding_job_errors(), tuple()}.
+get_medical_coding_job(Client, DomainId, JobId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_medical_coding_job(Client, DomainId, JobId, QueryMap, HeadersMap, []).
+
+-spec get_medical_coding_job(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_medical_coding_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_medical_coding_job_errors(), tuple()}.
+get_medical_coding_job(Client, DomainId, JobId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domain/", aws_util:encode_uri(DomainId), "/medical-coding-job/", aws_util:encode_uri(JobId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1049,6 +1596,56 @@ get_subscription(Client, DomainId, SubscriptionId, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the Datasets in a Domain.
+%%
+%% You can list only the datasets of one type. The operation doesn't
+%% return datasets whose status is DELETED, and the order of the results
+%% isn't specified. We recommend using pagination to ensure that the
+%% operation returns quickly and successfully.
+%%
+%% Datasets are in preview release and are subject to change.
+-spec list_datasets(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_datasets_output(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
+list_datasets(Client, DomainId)
+  when is_map(Client) ->
+    list_datasets(Client, DomainId, #{}, #{}).
+
+-spec list_datasets(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_datasets_output(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
+list_datasets(Client, DomainId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_datasets(Client, DomainId, QueryMap, HeadersMap, []).
+
+-spec list_datasets(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_datasets_output(), tuple()} |
+    {error, any()} |
+    {error, list_datasets_errors(), tuple()}.
+list_datasets(Client, DomainId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/domains/", aws_util:encode_uri(DomainId), "/datasets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists Domains for a given account.
 -spec list_domains(aws_client:aws_client()) ->
     {ok, list_domains_output(), tuple()} |
@@ -1165,6 +1762,51 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Starts an asynchronous job that generates medical codes (ICD-10 and
+%% CPT) for clinical text.
+%%
+%% Call GetMedicalCodingJob to check the status of the job. When the job
+%% succeeds, Amazon Connect Health writes the results to the output Amazon S3
+%% location.
+%%
+%% To tailor the codes to your organization, specify an ACTIVE medical coding
+%% dataset in the Domain. If you don't specify a dataset, the job uses
+%% the general medical coding knowledge base.
+%%
+%% Medical coding jobs are in preview release and are subject to change.
+-spec start_medical_coding_job(aws_client:aws_client(), binary() | list(), start_medical_coding_job_request()) ->
+    {ok, start_medical_coding_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_medical_coding_job_errors(), tuple()}.
+start_medical_coding_job(Client, DomainId, Input) ->
+    start_medical_coding_job(Client, DomainId, Input, []).
+
+-spec start_medical_coding_job(aws_client:aws_client(), binary() | list(), start_medical_coding_job_request(), proplists:proplist()) ->
+    {ok, start_medical_coding_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_medical_coding_job_errors(), tuple()}.
+start_medical_coding_job(Client, DomainId, Input0, Options0) ->
+    Method = post,
+    Path = ["/domain/", aws_util:encode_uri(DomainId), "/medical-coding-job"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts a new Medical Scribe listening session for real-time audio
 %% transcription
 -spec start_medical_scribe_listening_session(aws_client:aws_client(), start_medical_scribe_listening_session_input()) ->
@@ -1245,6 +1887,41 @@ start_patient_insights_job(Client, DomainId, Input0, Options0) ->
     Method = post,
     Path = ["/domain/", aws_util:encode_uri(DomainId), "/patient-insights-job"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Submits feedback on a clinical document or a set of medical codes
+%% that Amazon Connect Health generated.
+-spec submit_feedback(aws_client:aws_client(), binary() | list(), submit_feedback_request()) ->
+    {ok, submit_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, submit_feedback_errors(), tuple()}.
+submit_feedback(Client, DomainId, Input) ->
+    submit_feedback(Client, DomainId, Input, []).
+
+-spec submit_feedback(aws_client:aws_client(), binary() | list(), submit_feedback_request(), proplists:proplist()) ->
+    {ok, submit_feedback_response(), tuple()} |
+    {error, any()} |
+    {error, submit_feedback_errors(), tuple()}.
+submit_feedback(Client, DomainId, Input0, Options0) ->
+    Method = post,
+    Path = ["/domain/", aws_util:encode_uri(DomainId), "/feedback"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

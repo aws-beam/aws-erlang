@@ -6,7 +6,10 @@
 
 -export([get_request_authorization_details/2,
          get_request_authorization_details/4,
-         get_request_authorization_details/5]).
+         get_request_authorization_details/5,
+         get_request_authorization_policy/3,
+         get_request_authorization_policy/5,
+         get_request_authorization_policy/6]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -30,8 +33,20 @@
 
 
 %% Example:
+%% check() :: #{
+%%   <<"checkType">> => list(any()),
+%%   <<"evaluatedEffect">> => list(any()),
+%%   <<"matchedPolicies">> => list(matched_policy()),
+%%   <<"relevantPolicyTypes">> => list(list(any())()),
+%%   <<"targetArn">> => [string()]
+%% }
+-type check() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluation() :: #{
 %%   <<"action">> => [string()],
+%%   <<"checks">> => list(check()),
 %%   <<"context">> => map(),
 %%   <<"evaluatedEffect">> => list(any()),
 %%   <<"matchedPolicies">> => list(matched_policy()),
@@ -55,6 +70,20 @@
 %%   <<"requestContext">> => map()
 %% }
 -type get_request_authorization_details_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_request_authorization_policy_input() :: #{
+%%   <<"policyUri">> := string()
+%% }
+-type get_request_authorization_policy_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_request_authorization_policy_output() :: #{
+%%   <<"policyDocument">> => [any()]
+%% }
+-type get_request_authorization_policy_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -84,6 +113,7 @@
 %% policy_info() :: #{
 %%   <<"attachedTo">> => list(attached_to()),
 %%   <<"inline">> => [boolean()],
+%%   <<"policySource">> => map(),
 %%   <<"type">> => list(any()),
 %%   <<"uri">> => [string()]
 %% }
@@ -109,6 +139,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_request_authorization_policy_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
@@ -122,6 +158,9 @@
 %% Use this operation to understand why a request was denied. Supported
 %% services include an authorization ID in the access denied error message.
 %% Pass that ID to this operation to retrieve the details.
+%%
+%% To retrieve the content for a policy in the `policies' list, call
+%% `GetRequestAuthorizationPolicy'.
 %%
 %% Authorization details are available for at least 24 hours after the
 %% denial.
@@ -163,6 +202,68 @@ get_request_authorization_details(Client, AuthorizationId, QueryMap, HeadersMap,
     Query0_ =
       [
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a policy that was evaluated for a specific access denied
+%% request.
+%%
+%% The operation returns the structured JSON document of the policy that was
+%% captured with the original authorization request. It doesn't retrieve
+%% the current version of the policy.
+%%
+%% For some AWS services and policy types, the returned policy document
+%% includes all actions relevant to the service that processed the denied
+%% request, but might omit actions for other services.
+%%
+%% Specify the authorization ID from the access denied error message and the
+%% policy URI returned by `GetRequestAuthorizationDetails' for the same
+%% authorization ID.
+%%
+%% Access depends on the account and organization recorded for the principal
+%% that made the denied request. If an organization was recorded, the calling
+%% principal must belong to that organization. Otherwise, the calling
+%% principal must belong to the recorded account.
+%%
+%% To use this operation, you must have the
+%% `iam:GetRequestAuthorizationPolicy' permission.
+-spec get_request_authorization_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_request_authorization_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_request_authorization_policy_errors(), tuple()}.
+get_request_authorization_policy(Client, AuthorizationId, PolicyUri)
+  when is_map(Client) ->
+    get_request_authorization_policy(Client, AuthorizationId, PolicyUri, #{}, #{}).
+
+-spec get_request_authorization_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_request_authorization_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_request_authorization_policy_errors(), tuple()}.
+get_request_authorization_policy(Client, AuthorizationId, PolicyUri, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_request_authorization_policy(Client, AuthorizationId, PolicyUri, QueryMap, HeadersMap, []).
+
+-spec get_request_authorization_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_request_authorization_policy_output(), tuple()} |
+    {error, any()} |
+    {error, get_request_authorization_policy_errors(), tuple()}.
+get_request_authorization_policy(Client, AuthorizationId, PolicyUri, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/authorization-details/", aws_util:encode_uri(AuthorizationId), "/policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"policyUri">>, PolicyUri}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

@@ -28,18 +28,31 @@
 
 -export([create_monitor/2,
          create_monitor/3,
+         create_performance_monitor/2,
+         create_performance_monitor/3,
          create_scope/2,
          create_scope/3,
          delete_monitor/3,
          delete_monitor/4,
+         delete_performance_monitor/3,
+         delete_performance_monitor/4,
          delete_scope/3,
          delete_scope/4,
          get_monitor/2,
          get_monitor/4,
          get_monitor/5,
+         get_monitor_scope_suggestions/2,
+         get_monitor_scope_suggestions/4,
+         get_monitor_scope_suggestions/5,
+         get_performance_monitor/2,
+         get_performance_monitor/4,
+         get_performance_monitor/5,
          get_query_results_monitor_top_contributors/3,
          get_query_results_monitor_top_contributors/5,
          get_query_results_monitor_top_contributors/6,
+         get_query_results_performance_monitor/3,
+         get_query_results_performance_monitor/5,
+         get_query_results_performance_monitor/6,
          get_query_results_workload_insights_top_contributors/3,
          get_query_results_workload_insights_top_contributors/5,
          get_query_results_workload_insights_top_contributors/6,
@@ -49,6 +62,9 @@
          get_query_status_monitor_top_contributors/3,
          get_query_status_monitor_top_contributors/5,
          get_query_status_monitor_top_contributors/6,
+         get_query_status_performance_monitor/3,
+         get_query_status_performance_monitor/5,
+         get_query_status_performance_monitor/6,
          get_query_status_workload_insights_top_contributors/3,
          get_query_status_workload_insights_top_contributors/5,
          get_query_status_workload_insights_top_contributors/6,
@@ -61,6 +77,9 @@
          list_monitors/1,
          list_monitors/3,
          list_monitors/4,
+         list_performance_monitors/1,
+         list_performance_monitors/3,
+         list_performance_monitors/4,
          list_scopes/1,
          list_scopes/3,
          list_scopes/4,
@@ -69,12 +88,16 @@
          list_tags_for_resource/5,
          start_query_monitor_top_contributors/3,
          start_query_monitor_top_contributors/4,
+         start_query_performance_monitor/3,
+         start_query_performance_monitor/4,
          start_query_workload_insights_top_contributors/3,
          start_query_workload_insights_top_contributors/4,
          start_query_workload_insights_top_contributors_data/3,
          start_query_workload_insights_top_contributors_data/4,
          stop_query_monitor_top_contributors/4,
          stop_query_monitor_top_contributors/5,
+         stop_query_performance_monitor/4,
+         stop_query_performance_monitor/5,
          stop_query_workload_insights_top_contributors/4,
          stop_query_workload_insights_top_contributors/5,
          stop_query_workload_insights_top_contributors_data/4,
@@ -85,6 +108,8 @@
          untag_resource/4,
          update_monitor/3,
          update_monitor/4,
+         update_performance_monitor/3,
+         update_performance_monitor/4,
          update_scope/3,
          update_scope/4]).
 
@@ -100,6 +125,32 @@
 %%   <<"message">> => [string()]
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% account_to_add() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"membership">> => list(any()),
+%%   <<"region">> => string()
+%% }
+-type account_to_add() :: #{binary() => any()}.
+
+
+%% Example:
+%% additional_flow_info() :: #{
+%%   <<"clientLocation">> => client_location(),
+%%   <<"network">> => network()
+%% }
+-type additional_flow_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_location() :: #{
+%%   <<"city">> => [string()],
+%%   <<"country">> => [string()],
+%%   <<"subdivision">> => [string()]
+%% }
+-type client_location() :: #{binary() => any()}.
 
 
 %% Example:
@@ -136,6 +187,31 @@
 
 
 %% Example:
+%% create_performance_monitor_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"monitorName">> := string(),
+%%   <<"scopeArn">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"targets">> := list(performance_monitor_target())
+%% }
+-type create_performance_monitor_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_performance_monitor_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"monitorArn">> => string(),
+%%   <<"monitorName">> => string(),
+%%   <<"monitorStatus">> => list(any()),
+%%   <<"monitorType">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"targets">> => list(performance_monitor_target())
+%% }
+-type create_performance_monitor_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_scope_input() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"tags">> => map(),
@@ -162,12 +238,29 @@
 -type delete_monitor_output() :: #{}.
 
 %% Example:
+%% delete_performance_monitor_input() :: #{}
+-type delete_performance_monitor_input() :: #{}.
+
+%% Example:
+%% delete_performance_monitor_output() :: #{}
+-type delete_performance_monitor_output() :: #{}.
+
+%% Example:
 %% delete_scope_input() :: #{}
 -type delete_scope_input() :: #{}.
 
 %% Example:
 %% delete_scope_output() :: #{}
 -type delete_scope_output() :: #{}.
+
+
+%% Example:
+%% filter_parameter() :: #{
+%%   <<"field">> => [string()],
+%%   <<"operator">> => list(any()),
+%%   <<"values">> => list([string()]())
+%% }
+-type filter_parameter() :: #{binary() => any()}.
 
 %% Example:
 %% get_monitor_input() :: #{}
@@ -189,6 +282,43 @@
 
 
 %% Example:
+%% get_monitor_scope_suggestions_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"monitorArn">> := string(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type get_monitor_scope_suggestions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_monitor_scope_suggestions_output() :: #{
+%%   <<"accountsToAdd">> => list(account_to_add()),
+%%   <<"nextToken">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_monitor_scope_suggestions_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_performance_monitor_input() :: #{}
+-type get_performance_monitor_input() :: #{}.
+
+
+%% Example:
+%% get_performance_monitor_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"monitorArn">> => string(),
+%%   <<"monitorName">> => string(),
+%%   <<"monitorStatus">> => list(any()),
+%%   <<"monitorType">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"targets">> => list(performance_monitor_target())
+%% }
+-type get_performance_monitor_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_query_results_monitor_top_contributors_input() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
@@ -203,6 +333,23 @@
 %%   <<"unit">> => list(any())
 %% }
 -type get_query_results_monitor_top_contributors_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_results_performance_monitor_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => [string()]
+%% }
+-type get_query_results_performance_monitor_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_query_results_performance_monitor_output() :: #{
+%%   <<"data">> => list(list([string()]())()),
+%%   <<"fields">> => list(query_field()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type get_query_results_performance_monitor_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -247,6 +394,17 @@
 %%   <<"status">> => list(any())
 %% }
 -type get_query_status_monitor_top_contributors_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_query_status_performance_monitor_input() :: #{}
+-type get_query_status_performance_monitor_input() :: #{}.
+
+
+%% Example:
+%% get_query_status_performance_monitor_output() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type get_query_status_performance_monitor_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_query_status_workload_insights_top_contributors_data_input() :: #{}
@@ -323,6 +481,24 @@
 
 
 %% Example:
+%% list_performance_monitors_input() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"monitorStatus">> => list(any()),
+%%   <<"monitorType">> => list(any()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_performance_monitors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_performance_monitors_output() :: #{
+%%   <<"monitors">> => list(performance_monitor_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_performance_monitors_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_scopes_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => [string()]
@@ -376,6 +552,7 @@
 
 %% Example:
 %% monitor_top_contributors_row() :: #{
+%%   <<"additionalFlowInfo">> => additional_flow_info(),
 %%   <<"destinationCategory">> => list(any()),
 %%   <<"dnatIp">> => [string()],
 %%   <<"kubernetesMetadata">> => kubernetes_metadata(),
@@ -403,6 +580,41 @@
 %%   <<"value">> => [float()]
 %% }
 -type monitor_top_contributors_row() :: #{binary() => any()}.
+
+
+%% Example:
+%% network() :: #{
+%%   <<"asName">> => [string()],
+%%   <<"asNumber">> => [float()]
+%% }
+-type network() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_monitor_summary() :: #{
+%%   <<"monitorArn">> => string(),
+%%   <<"monitorName">> => string(),
+%%   <<"monitorStatus">> => list(any()),
+%%   <<"monitorType">> => list(any()),
+%%   <<"targets">> => list(performance_monitor_target())
+%% }
+-type performance_monitor_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% performance_monitor_target() :: #{
+%%   <<"identifier">> => [string()],
+%%   <<"type">> => list(any())
+%% }
+-type performance_monitor_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_field() :: #{
+%%   <<"name">> => [string()],
+%%   <<"type">> => [string()]
+%% }
+-type query_field() :: #{binary() => any()}.
 
 
 %% Example:
@@ -447,6 +659,24 @@
 
 
 %% Example:
+%% start_query_performance_monitor_input() :: #{
+%%   <<"endTime">> := [non_neg_integer()],
+%%   <<"filterParameters">> => list(filter_parameter()),
+%%   <<"limit">> => integer(),
+%%   <<"queryType">> := list(any()),
+%%   <<"startTime">> := [non_neg_integer()]
+%% }
+-type start_query_performance_monitor_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_query_performance_monitor_output() :: #{
+%%   <<"queryId">> => [string()]
+%% }
+-type start_query_performance_monitor_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_query_workload_insights_top_contributors_data_input() :: #{
 %%   <<"destinationCategory">> := list(any()),
 %%   <<"endTime">> := [non_neg_integer()],
@@ -487,6 +717,14 @@
 %% Example:
 %% stop_query_monitor_top_contributors_output() :: #{}
 -type stop_query_monitor_top_contributors_output() :: #{}.
+
+%% Example:
+%% stop_query_performance_monitor_input() :: #{}
+-type stop_query_performance_monitor_input() :: #{}.
+
+%% Example:
+%% stop_query_performance_monitor_output() :: #{}
+-type stop_query_performance_monitor_output() :: #{}.
 
 %% Example:
 %% stop_query_workload_insights_top_contributors_data_input() :: #{}
@@ -586,6 +824,29 @@
 
 
 %% Example:
+%% update_performance_monitor_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"targetsToAdd">> => list(performance_monitor_target()),
+%%   <<"targetsToRemove">> => list(performance_monitor_target())
+%% }
+-type update_performance_monitor_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_performance_monitor_output() :: #{
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"modifiedAt">> => non_neg_integer(),
+%%   <<"monitorArn">> => string(),
+%%   <<"monitorName">> => string(),
+%%   <<"monitorStatus">> => list(any()),
+%%   <<"monitorType">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"targets">> => list(performance_monitor_target())
+%% }
+-type update_performance_monitor_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_scope_input() :: #{
 %%   <<"resourcesToAdd">> => list(target_resource()),
 %%   <<"resourcesToDelete">> => list(target_resource())
@@ -641,6 +902,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_performance_monitor_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_scope_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -650,6 +919,14 @@
     access_denied_exception().
 
 -type delete_monitor_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_performance_monitor_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -673,7 +950,29 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_monitor_scope_suggestions_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_performance_monitor_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_query_results_monitor_top_contributors_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_query_results_performance_monitor_errors() ::
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
@@ -701,6 +1000,14 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_query_status_performance_monitor_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -732,6 +1039,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_performance_monitors_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_scopes_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -754,6 +1067,14 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type start_query_performance_monitor_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type start_query_workload_insights_top_contributors_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -772,6 +1093,14 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type stop_query_performance_monitor_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -812,6 +1141,15 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type update_performance_monitor_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_scope_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -849,6 +1187,46 @@ create_monitor(Client, Input0, Options0) ->
     Method = post,
     Path = ["/monitors"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a performance monitor to monitor the traffic of the Amazon
+%% Virtual Private Clouds (VPCs) that you specify as targets, to determine
+%% whether the Amazon Web Services network is causing issues for your
+%% workloads.
+%%
+%% With a performance monitor, you can identify network degradation across
+%% paths between Availability Zones and across Amazon Web Services Regions.
+-spec create_performance_monitor(aws_client:aws_client(), create_performance_monitor_input()) ->
+    {ok, create_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, create_performance_monitor_errors(), tuple()}.
+create_performance_monitor(Client, Input) ->
+    create_performance_monitor(Client, Input, []).
+
+-spec create_performance_monitor(aws_client:aws_client(), create_performance_monitor_input(), proplists:proplist()) ->
+    {ok, create_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, create_performance_monitor_errors(), tuple()}.
+create_performance_monitor(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/performance-monitors"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -958,6 +1336,43 @@ delete_monitor(Client, MonitorName, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Delete a performance monitor.
+%%
+%% Network Flow Monitor stops tracking network performance for the resources
+%% that the monitor included.
+-spec delete_performance_monitor(aws_client:aws_client(), binary() | list(), delete_performance_monitor_input()) ->
+    {ok, delete_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, delete_performance_monitor_errors(), tuple()}.
+delete_performance_monitor(Client, MonitorName, Input) ->
+    delete_performance_monitor(Client, MonitorName, Input, []).
+
+-spec delete_performance_monitor(aws_client:aws_client(), binary() | list(), delete_performance_monitor_input(), proplists:proplist()) ->
+    {ok, delete_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, delete_performance_monitor_errors(), tuple()}.
+delete_performance_monitor(Client, MonitorName, Input0, Options0) ->
+    Method = delete,
+    Path = ["/performance-monitors/", aws_util:encode_uri(MonitorName), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a scope that has been defined.
 -spec delete_scope(aws_client:aws_client(), binary() | list(), delete_scope_input()) ->
     {ok, delete_scope_output(), tuple()} |
@@ -1034,6 +1449,92 @@ get_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the accounts that are sending traffic to, or receiving
+%% traffic from, resources in a monitor, but that aren't included in the
+%% monitoring scope for the monitor.
+%%
+%% By adding the suggested accounts to your scope, you enable Network Flow
+%% Monitor to resolve the network paths for that traffic.
+-spec get_monitor_scope_suggestions(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_monitor_scope_suggestions_output(), tuple()} |
+    {error, any()} |
+    {error, get_monitor_scope_suggestions_errors(), tuple()}.
+get_monitor_scope_suggestions(Client, MonitorArn)
+  when is_map(Client) ->
+    get_monitor_scope_suggestions(Client, MonitorArn, #{}, #{}).
+
+-spec get_monitor_scope_suggestions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_monitor_scope_suggestions_output(), tuple()} |
+    {error, any()} |
+    {error, get_monitor_scope_suggestions_errors(), tuple()}.
+get_monitor_scope_suggestions(Client, MonitorArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_monitor_scope_suggestions(Client, MonitorArn, QueryMap, HeadersMap, []).
+
+-spec get_monitor_scope_suggestions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_monitor_scope_suggestions_output(), tuple()} |
+    {error, any()} |
+    {error, get_monitor_scope_suggestions_errors(), tuple()}.
+get_monitor_scope_suggestions(Client, MonitorArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/monitor-scope-suggestions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"monitorArn">>, MonitorArn},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a performance monitor, including the
+%% resources that it monitors, its status, and the tags for the monitor.
+-spec get_performance_monitor(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_performance_monitor_errors(), tuple()}.
+get_performance_monitor(Client, MonitorName)
+  when is_map(Client) ->
+    get_performance_monitor(Client, MonitorName, #{}, #{}).
+
+-spec get_performance_monitor(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_performance_monitor_errors(), tuple()}.
+get_performance_monitor(Client, MonitorName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_performance_monitor(Client, MonitorName, QueryMap, HeadersMap, []).
+
+-spec get_performance_monitor(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_performance_monitor_errors(), tuple()}.
+get_performance_monitor(Client, MonitorName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/performance-monitors/", aws_util:encode_uri(MonitorName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Return the data for a query with the Network Flow Monitor query
 %% interface.
 %%
@@ -1072,6 +1573,55 @@ get_query_results_monitor_top_contributors(Client, MonitorName, QueryId, QueryMa
 get_query_results_monitor_top_contributors(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), "/topContributorsQueries/", aws_util:encode_uri(QueryId), "/results"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the results of a query for the Network Flow Monitor query
+%% interface, for a specified query ID and performance monitor.
+%%
+%% This call returns the top paths for a performance monitor.
+%%
+%% Create a query with StartQueryPerformanceMonitor:
+%% https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_StartQueryPerformanceMonitor.html,
+%% and then use the query ID with this call to return the results.
+-spec get_query_results_performance_monitor(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_query_results_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_query_results_performance_monitor_errors(), tuple()}.
+get_query_results_performance_monitor(Client, MonitorName, QueryId)
+  when is_map(Client) ->
+    get_query_results_performance_monitor(Client, MonitorName, QueryId, #{}, #{}).
+
+-spec get_query_results_performance_monitor(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_query_results_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_query_results_performance_monitor_errors(), tuple()}.
+get_query_results_performance_monitor(Client, MonitorName, QueryId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_query_results_performance_monitor(Client, MonitorName, QueryId, QueryMap, HeadersMap, []).
+
+-spec get_query_results_performance_monitor(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_query_results_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_query_results_performance_monitor_errors(), tuple()}.
+get_query_results_performance_monitor(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/performance-monitors/", aws_util:encode_uri(MonitorName), "/queries/", aws_util:encode_uri(QueryId), "/results"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1250,6 +1800,52 @@ get_query_status_monitor_top_contributors(Client, MonitorName, QueryId, QueryMap
 get_query_status_monitor_top_contributors(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), "/topContributorsQueries/", aws_util:encode_uri(QueryId), "/status"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the current status of a query for the Network Flow Monitor
+%% query interface, for a specified query ID and performance monitor.
+%%
+%% This call returns the query status for the top paths for a performance
+%% monitor.
+%%
+%% When you run a query, use this call to check the status of the query to
+%% make sure that the query has `SUCCEEDED' before you review the
+%% results. Use the same query ID that you used for the corresponding API
+%% call to start (create) the query, `StartQueryPerformanceMonitor'.
+-spec get_query_status_performance_monitor(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_query_status_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_query_status_performance_monitor_errors(), tuple()}.
+get_query_status_performance_monitor(Client, MonitorName, QueryId)
+  when is_map(Client) ->
+    get_query_status_performance_monitor(Client, MonitorName, QueryId, #{}, #{}).
+
+-spec get_query_status_performance_monitor(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_query_status_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_query_status_performance_monitor_errors(), tuple()}.
+get_query_status_performance_monitor(Client, MonitorName, QueryId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_query_status_performance_monitor(Client, MonitorName, QueryId, QueryMap, HeadersMap, []).
+
+-spec get_query_status_performance_monitor(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_query_status_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, get_query_status_performance_monitor_errors(), tuple()}.
+get_query_status_performance_monitor(Client, MonitorName, QueryId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/performance-monitors/", aws_util:encode_uri(MonitorName), "/queries/", aws_util:encode_uri(QueryId), "/status"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1455,6 +2051,56 @@ list_monitors(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns a list of the performance monitors in an account.
+%%
+%% You can optionally return only the monitors that have a specific status or
+%% type.
+%%
+%% Results are paginated. Use the `nextToken' parameter to return
+%% additional results.
+-spec list_performance_monitors(aws_client:aws_client()) ->
+    {ok, list_performance_monitors_output(), tuple()} |
+    {error, any()} |
+    {error, list_performance_monitors_errors(), tuple()}.
+list_performance_monitors(Client)
+  when is_map(Client) ->
+    list_performance_monitors(Client, #{}, #{}).
+
+-spec list_performance_monitors(aws_client:aws_client(), map(), map()) ->
+    {ok, list_performance_monitors_output(), tuple()} |
+    {error, any()} |
+    {error, list_performance_monitors_errors(), tuple()}.
+list_performance_monitors(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_performance_monitors(Client, QueryMap, HeadersMap, []).
+
+-spec list_performance_monitors(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_performance_monitors_output(), tuple()} |
+    {error, any()} |
+    {error, list_performance_monitors_errors(), tuple()}.
+list_performance_monitors(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/performance-monitors"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"monitorStatus">>, maps:get(<<"monitorStatus">>, QueryMap, undefined)},
+        {<<"monitorType">>, maps:get(<<"monitorType">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List all the scopes for an account.
 -spec list_scopes(aws_client:aws_client()) ->
     {ok, list_scopes_output(), tuple()} |
@@ -1562,6 +2208,54 @@ start_query_monitor_top_contributors(Client, MonitorName, Input) ->
 start_query_monitor_top_contributors(Client, MonitorName, Input0, Options0) ->
     Method = post,
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), "/topContributorsQueries"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a query that you can use with the Network Flow Monitor query
+%% interface to return the top paths for a performance monitor.
+%%
+%% Specify the performance monitor that you want to create the query for.
+%%
+%% The call returns a query ID that you can use with
+%% GetQueryResultsPerformanceMonitor:
+%% https://docs.aws.amazon.com/networkflowmonitor/2.0/APIReference/API_GetQueryResultsPerformanceMonitor.html
+%% to return the results of the query.
+%%
+%% Top paths in Network Flow Monitor are the network paths used by the
+%% traffic for the resources that a performance monitor tracks, ranked by
+%% impact score and then by traffic volume. Each path includes the traffic
+%% and round-trip time for the path, together with a breakdown of the subnet
+%% pairs that the path includes.
+-spec start_query_performance_monitor(aws_client:aws_client(), binary() | list(), start_query_performance_monitor_input()) ->
+    {ok, start_query_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, start_query_performance_monitor_errors(), tuple()}.
+start_query_performance_monitor(Client, MonitorName, Input) ->
+    start_query_performance_monitor(Client, MonitorName, Input, []).
+
+-spec start_query_performance_monitor(aws_client:aws_client(), binary() | list(), start_query_performance_monitor_input(), proplists:proplist()) ->
+    {ok, start_query_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, start_query_performance_monitor_errors(), tuple()}.
+start_query_performance_monitor(Client, MonitorName, Input0, Options0) ->
+    Method = post,
+    Path = ["/performance-monitors/", aws_util:encode_uri(MonitorName), "/queries"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1700,6 +2394,44 @@ stop_query_monitor_top_contributors(Client, MonitorName, QueryId, Input) ->
 stop_query_monitor_top_contributors(Client, MonitorName, QueryId, Input0, Options0) ->
     Method = delete,
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), "/topContributorsQueries/", aws_util:encode_uri(QueryId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stop a query for the Network Flow Monitor query interface, for a
+%% specified query ID and performance monitor.
+%%
+%% Use the same query ID that you used for the corresponding API call to
+%% start the query, `StartQueryPerformanceMonitor'.
+-spec stop_query_performance_monitor(aws_client:aws_client(), binary() | list(), binary() | list(), stop_query_performance_monitor_input()) ->
+    {ok, stop_query_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, stop_query_performance_monitor_errors(), tuple()}.
+stop_query_performance_monitor(Client, MonitorName, QueryId, Input) ->
+    stop_query_performance_monitor(Client, MonitorName, QueryId, Input, []).
+
+-spec stop_query_performance_monitor(aws_client:aws_client(), binary() | list(), binary() | list(), stop_query_performance_monitor_input(), proplists:proplist()) ->
+    {ok, stop_query_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, stop_query_performance_monitor_errors(), tuple()}.
+stop_query_performance_monitor(Client, MonitorName, QueryId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/performance-monitors/", aws_util:encode_uri(MonitorName), "/queries/", aws_util:encode_uri(QueryId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1887,6 +2619,41 @@ update_monitor(Client, MonitorName, Input) ->
 update_monitor(Client, MonitorName, Input0, Options0) ->
     Method = patch,
     Path = ["/monitors/", aws_util:encode_uri(MonitorName), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Update a performance monitor, to add or remove the resources that the
+%% monitor tracks network performance for.
+-spec update_performance_monitor(aws_client:aws_client(), binary() | list(), update_performance_monitor_input()) ->
+    {ok, update_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, update_performance_monitor_errors(), tuple()}.
+update_performance_monitor(Client, MonitorName, Input) ->
+    update_performance_monitor(Client, MonitorName, Input, []).
+
+-spec update_performance_monitor(aws_client:aws_client(), binary() | list(), update_performance_monitor_input(), proplists:proplist()) ->
+    {ok, update_performance_monitor_output(), tuple()} |
+    {error, any()} |
+    {error, update_performance_monitor_errors(), tuple()}.
+update_performance_monitor(Client, MonitorName, Input0, Options0) ->
+    Method = patch,
+    Path = ["/performance-monitors/", aws_util:encode_uri(MonitorName), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

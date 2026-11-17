@@ -108,6 +108,8 @@
          create_inference_experiment/3,
          create_inference_recommendations_job/2,
          create_inference_recommendations_job/3,
+         create_inference_router/2,
+         create_inference_router/3,
          create_job/2,
          create_job/3,
          create_labeling_job/2,
@@ -226,6 +228,8 @@
          delete_endpoint/3,
          delete_endpoint_config/2,
          delete_endpoint_config/3,
+         delete_endpoint_policy/2,
+         delete_endpoint_policy/3,
          delete_experiment/2,
          delete_experiment/3,
          delete_feature_group/2,
@@ -250,6 +254,8 @@
          delete_inference_component/3,
          delete_inference_experiment/2,
          delete_inference_experiment/3,
+         delete_inference_router/2,
+         delete_inference_router/3,
          delete_job/2,
          delete_job/3,
          delete_mlflow_app/2,
@@ -392,6 +398,8 @@
          describe_inference_experiment/3,
          describe_inference_recommendations_job/2,
          describe_inference_recommendations_job/3,
+         describe_inference_router/2,
+         describe_inference_router/3,
          describe_job/2,
          describe_job/3,
          describe_job_schema_version/2,
@@ -480,6 +488,8 @@
          extend_training_plan/3,
          get_device_fleet_report/2,
          get_device_fleet_report/3,
+         get_endpoint_policy/2,
+         get_endpoint_policy/3,
          get_lineage_group_policy/2,
          get_lineage_group_policy/3,
          get_model_package_group_policy/2,
@@ -582,6 +592,8 @@
          list_inference_recommendations_job_steps/3,
          list_inference_recommendations_jobs/2,
          list_inference_recommendations_jobs/3,
+         list_inference_routers/2,
+         list_inference_routers/3,
          list_job_schema_versions/2,
          list_job_schema_versions/3,
          list_jobs/2,
@@ -680,6 +692,8 @@
          list_workforces/3,
          list_workteams/2,
          list_workteams/3,
+         put_endpoint_policy/2,
+         put_endpoint_policy/3,
          put_model_package_group_policy/2,
          put_model_package_group_policy/3,
          query_lineage/2,
@@ -806,6 +820,8 @@
          update_inference_component_runtime_config/3,
          update_inference_experiment/2,
          update_inference_experiment/3,
+         update_inference_router/2,
+         update_inference_router/3,
          update_mlflow_app/2,
          update_mlflow_app/3,
          update_mlflow_tracking_server/2,
@@ -3295,6 +3311,7 @@
 %% Example:
 %% create_endpoint_config_input() :: #{
 %%   <<"AsyncInferenceConfig">> => async_inference_config(),
+%%   <<"CrossRegionTrafficConfig">> => cross_region_traffic_config(),
 %%   <<"DataCaptureConfig">> => data_capture_config(),
 %%   <<"EnableNetworkIsolation">> => boolean(),
 %%   <<"EndpointConfigName">> := string(),
@@ -3565,6 +3582,21 @@
 %%   <<"JobArn">> => string()
 %% }
 -type create_inference_recommendations_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_router_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InferenceRouterName">> := string(),
+%%   <<"RoutingTargets">> := list(routing_target()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_inference_router_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_inference_router_output() :: #{
+%%   <<"InferenceRouterArn">> => string()
+%% }
+-type create_inference_router_output() :: #{binary() => any()}.
 
 %% Example:
 %% create_job_request() :: #{
@@ -4273,6 +4305,13 @@
 -type create_workteam_response() :: #{binary() => any()}.
 
 %% Example:
+%% cross_region_traffic_config() :: #{
+%%   <<"MaxCrossRegionPercentPerEndpoint">> => integer(),
+%%   <<"MaxInvocationsPerSecondPerInstance">> => integer()
+%% }
+-type cross_region_traffic_config() :: #{binary() => any()}.
+
+%% Example:
 %% custom_image() :: #{
 %%   <<"AppImageConfigName">> => string(),
 %%   <<"ImageName">> => string(),
@@ -4650,6 +4689,18 @@
 -type delete_endpoint_input() :: #{binary() => any()}.
 
 %% Example:
+%% delete_endpoint_policy_request() :: #{
+%%   <<"EndpointName">> := string()
+%% }
+-type delete_endpoint_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_endpoint_policy_response() :: #{
+
+%% }
+-type delete_endpoint_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_experiment_request() :: #{
 %%   <<"ExperimentName">> := string()
 %% }
@@ -4763,6 +4814,12 @@
 %%   <<"InferenceExperimentArn">> => string()
 %% }
 -type delete_inference_experiment_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_inference_router_input() :: #{
+%%   <<"InferenceRouterName">> := string()
+%% }
+-type delete_inference_router_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_job_request() :: #{
@@ -5690,6 +5747,7 @@
 %% describe_endpoint_config_output() :: #{
 %%   <<"AsyncInferenceConfig">> => async_inference_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CrossRegionTrafficConfig">> => cross_region_traffic_config(),
 %%   <<"DataCaptureConfig">> => data_capture_config(),
 %%   <<"EnableNetworkIsolation">> => boolean(),
 %%   <<"EndpointConfigArn">> => string(),
@@ -5714,6 +5772,7 @@
 %% describe_endpoint_output() :: #{
 %%   <<"AsyncInferenceConfig">> => async_inference_config(),
 %%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CrossRegionTrafficConfig">> => cross_region_traffic_config(),
 %%   <<"DataCaptureConfig">> => data_capture_config_summary(),
 %%   <<"EndpointArn">> => string(),
 %%   <<"EndpointConfigName">> => string(),
@@ -6049,6 +6108,24 @@
 %%   <<"StoppingConditions">> => recommendation_job_stopping_conditions()
 %% }
 -type describe_inference_recommendations_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_router_input() :: #{
+%%   <<"InferenceRouterName">> := string()
+%% }
+-type describe_inference_router_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_inference_router_output() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"InferenceRouterArn">> => string(),
+%%   <<"InferenceRouterName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"RoutingTargets">> => list(routing_target()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string()
+%% }
+-type describe_inference_router_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_job_request() :: #{
@@ -6982,6 +7059,13 @@
 -type desired_weight_and_capacity() :: #{binary() => any()}.
 
 %% Example:
+%% destination() :: #{
+%%   <<"ResourceArn">> => string(),
+%%   <<"RoutingStatus">> => list(any())
+%% }
+-type destination() :: #{binary() => any()}.
+
+%% Example:
 %% detach_cluster_node_volume_request() :: #{
 %%   <<"ClusterArn">> := string(),
 %%   <<"NodeId">> := string(),
@@ -7828,6 +7912,20 @@
 -type get_device_fleet_report_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_endpoint_policy_request() :: #{
+%%   <<"EndpointName">> := string()
+%% }
+-type get_endpoint_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_endpoint_policy_response() :: #{
+%%   <<"EndpointArn">> => string(),
+%%   <<"EndpointName">> => string(),
+%%   <<"ResourcePolicy">> => string()
+%% }
+-type get_endpoint_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_lineage_group_policy_request() :: #{
 %%   <<"LineageGroupName">> := string()
 %% }
@@ -8582,6 +8680,15 @@
 %%   <<"StepType">> => list(any())
 %% }
 -type inference_recommendations_job_step() :: #{binary() => any()}.
+
+%% Example:
+%% inference_router_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"InferenceRouterArn">> => string(),
+%%   <<"InferenceRouterName">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer()
+%% }
+-type inference_router_summary() :: #{binary() => any()}.
 
 %% Example:
 %% inference_specification() :: #{
@@ -9888,6 +9995,20 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_inference_recommendations_jobs_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_routers_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_routers_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_routers_output() :: #{
+%%   <<"InferenceRouters">> => list(inference_router_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_routers_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_job_schema_versions_request() :: #{
@@ -12624,6 +12745,19 @@
 -type public_workforce_task_price() :: #{binary() => any()}.
 
 %% Example:
+%% put_endpoint_policy_request() :: #{
+%%   <<"EndpointName">> := string(),
+%%   <<"ResourcePolicy">> := string()
+%% }
+-type put_endpoint_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_endpoint_policy_response() :: #{
+%%   <<"EndpointArn">> => string()
+%% }
+-type put_endpoint_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% put_model_package_group_policy_input() :: #{
 %%   <<"ModelPackageGroupName">> := string(),
 %%   <<"ResourcePolicy">> := string()
@@ -12945,6 +13079,12 @@
 -type resolved_attributes() :: #{binary() => any()}.
 
 %% Example:
+%% resource_already_exists() :: #{
+%%   <<"Message">> => string()
+%% }
+-type resource_already_exists() :: #{binary() => any()}.
+
+%% Example:
 %% resource_catalog() :: #{
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Description">> => string(),
@@ -13068,6 +13208,44 @@
 %%   <<"WaitIntervalInSeconds">> => integer()
 %% }
 -type rolling_update_policy() :: #{binary() => any()}.
+
+%% Example:
+%% routing_target() :: #{
+%%   <<"AsyncInferenceConfig">> => routing_target_async_inference_config(),
+%%   <<"Destinations">> => list(destination()),
+%%   <<"Name">> => string(),
+%%   <<"RoutingPreference">> => list(any())
+%% }
+-type routing_target() :: #{binary() => any()}.
+
+%% Example:
+%% routing_target_async_inference_client_config() :: #{
+%%   <<"MaxTimeInBacklogSeconds">> => integer()
+%% }
+-type routing_target_async_inference_client_config() :: #{binary() => any()}.
+
+%% Example:
+%% routing_target_async_inference_config() :: #{
+%%   <<"ClientConfig">> => routing_target_async_inference_client_config(),
+%%   <<"OutputConfig">> => routing_target_async_inference_output_config()
+%% }
+-type routing_target_async_inference_config() :: #{binary() => any()}.
+
+%% Example:
+%% routing_target_async_inference_notification_config() :: #{
+%%   <<"ErrorTopic">> => string(),
+%%   <<"SuccessTopic">> => string()
+%% }
+-type routing_target_async_inference_notification_config() :: #{binary() => any()}.
+
+%% Example:
+%% routing_target_async_inference_output_config() :: #{
+%%   <<"KmsKeyId">> => string(),
+%%   <<"NotificationConfig">> => routing_target_async_inference_notification_config(),
+%%   <<"S3FailurePath">> => string(),
+%%   <<"S3OutputPath">> => string()
+%% }
+-type routing_target_async_inference_output_config() :: #{binary() => any()}.
 
 %% Example:
 %% s3_data_source() :: #{
@@ -14946,6 +15124,19 @@
 -type update_inference_experiment_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_inference_router_input() :: #{
+%%   <<"InferenceRouterName">> := string(),
+%%   <<"RoutingTargets">> := list(routing_target())
+%% }
+-type update_inference_router_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_inference_router_output() :: #{
+%%   <<"InferenceRouterArn">> => string()
+%% }
+-type update_inference_router_output() :: #{binary() => any()}.
+
+%% Example:
 %% update_mlflow_app_request() :: #{
 %%   <<"AccountDefaultStatus">> => list(any()),
 %%   <<"Arn">> := string(),
@@ -15605,6 +15796,11 @@
     resource_limit_exceeded() | 
     resource_in_use().
 
+-type create_inference_router_errors() ::
+    resource_limit_exceeded() | 
+    resource_already_exists() | 
+    conflict_exception().
+
 -type create_job_errors() ::
     resource_not_found() | 
     resource_limit_exceeded() | 
@@ -15802,6 +15998,9 @@
 -type delete_edge_deployment_stage_errors() ::
     resource_in_use().
 
+-type delete_endpoint_policy_errors() ::
+    resource_not_found().
+
 -type delete_experiment_errors() ::
     resource_not_found().
 
@@ -15835,6 +16034,10 @@
     resource_in_use().
 
 -type delete_inference_experiment_errors() ::
+    resource_not_found() | 
+    conflict_exception().
+
+-type delete_inference_router_errors() ::
     resource_not_found() | 
     conflict_exception().
 
@@ -16024,6 +16227,9 @@
 -type describe_inference_recommendations_job_errors() ::
     resource_not_found().
 
+-type describe_inference_router_errors() ::
+    resource_not_found().
+
 -type describe_job_errors() ::
     resource_not_found().
 
@@ -16121,6 +16327,9 @@
 -type extend_training_plan_errors() ::
     resource_not_found().
 
+-type get_endpoint_policy_errors() ::
+    resource_not_found().
+
 -type get_lineage_group_policy_errors() ::
     resource_not_found().
 
@@ -16214,6 +16423,9 @@
     resource_not_found().
 
 -type list_ultra_servers_by_reserved_capacity_errors() ::
+    resource_not_found().
+
+-type put_endpoint_policy_errors() ::
     resource_not_found().
 
 -type put_model_package_group_policy_errors() ::
@@ -16419,6 +16631,11 @@
 
 -type update_inference_experiment_errors() ::
     resource_not_found() | 
+    conflict_exception().
+
+-type update_inference_router_errors() ::
+    resource_not_found() | 
+    resource_limit_exceeded() | 
     conflict_exception().
 
 -type update_mlflow_app_errors() ::
@@ -17929,6 +18146,46 @@ create_inference_recommendations_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateInferenceRecommendationsJob">>, Input, Options).
 
+%% @doc Creates an inference router.
+%%
+%% An inference router is a Regional SageMaker AI resource that sends each
+%% inference request to one of the endpoints or inference components that you
+%% list for a routing target. These destinations can be in any Amazon Web
+%% Services account, and in any Amazon Web Services Region in the same
+%% partition as the router.
+%%
+%% The router's status is `Creating' until it's ready to use.
+%% SageMaker AI checks that each endpoint is a real-time or asynchronous
+%% endpoint, as the routing target requires, and rejects one of the wrong
+%% type. It checks endpoints in other accounts with your credentials, so the
+%% endpoint policy must allow `sagemaker:DescribeEndpoint'. SageMaker AI
+%% accepts an endpoint that it can't check, for example one that
+%% doesn't exist. Requests to it fail if it's the wrong type or
+%% doesn't exist. To see the status of each destination, call
+%% DescribeInferenceRouter:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeInferenceRouter.html
+%% and see the `RoutingStatus' of each destination.
+%%
+%% To invoke the router, use `InvokeInferenceRouter' or
+%% `InvokeInferenceRouterAsync'. For information about inference routers,
+%% see Route requests across Regions with inference routers:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/inference-router.html.
+-spec create_inference_router(aws_client:aws_client(), create_inference_router_input()) ->
+    {ok, create_inference_router_output(), tuple()} |
+    {error, any()} |
+    {error, create_inference_router_errors(), tuple()}.
+create_inference_router(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_inference_router(Client, Input, []).
+
+-spec create_inference_router(aws_client:aws_client(), create_inference_router_input(), proplists:proplist()) ->
+    {ok, create_inference_router_output(), tuple()} |
+    {error, any()} |
+    {error, create_inference_router_errors(), tuple()}.
+create_inference_router(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateInferenceRouter">>, Input, Options).
+
 %% @doc Creates a model customization job in Amazon SageMaker.
 %%
 %% A job runs a workload based on the job category and configuration you
@@ -17936,11 +18193,24 @@ create_inference_recommendations_job(Client, Input, Options)
 %% document, and an IAM role that grants Amazon SageMaker permission to
 %% access resources on your behalf.
 %%
-%% Use the `AgentRFT' category to fine-tune a model using multi-turn
-%% reinforcement learning with reward signals. Use the
-%% `AgentRFTEvaluation' category to evaluate a fine-tuned or base model
-%% by running multi-turn rollouts against a held-out prompt dataset and
-%% computing metrics such as pass@k and mean reward.
+%% Specify one of the following job categories, which determines the type of
+%% workload that the job runs:
+%%
+%% AgentRFT Fine-tune a model using multi-turn reinforcement learning with
+%% reward signals.
+%%
+%% AgentRFTEvaluation Evaluate a fine-tuned or base model by running
+%% multi-turn rollouts against a held-out prompt dataset. This category
+%% computes metrics such as pass@k and mean reward.
+%%
+%% DataQualityEvaluation Evaluate the quality of a generated or
+%% bring-your-own dataset using quality metrics or your own specification.
+%%
+%% DataTransformation Transform datasets into the format you need, for
+%% example for model customization.
+%%
+%% SyntheticDataGeneration Generate synthetic training and testing datasets
+%% from your context data and specifications.
 %%
 %% Before creating a job, call `ListJobSchemaVersions' and
 %% `DescribeJobSchemaVersion' to retrieve the configuration schema for
@@ -19490,6 +19760,33 @@ delete_endpoint_config(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteEndpointConfig">>, Input, Options).
 
+%% @doc Deletes the resource-based policy that is attached to an endpoint.
+%%
+%% After you delete the policy, other accounts can no longer send requests to
+%% the endpoint through an inference router. The endpoint continues to serve
+%% requests from your account. If the endpoint doesn't have a policy, the
+%% operation succeeds.
+%%
+%% The change typically takes effect within 30 seconds, and can take up to 5
+%% minutes. To revoke access for one account only, use PutEndpointPolicy:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_PutEndpointPolicy.html
+%% to replace the policy with one that doesn't include that account.
+-spec delete_endpoint_policy(aws_client:aws_client(), delete_endpoint_policy_request()) ->
+    {ok, delete_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_endpoint_policy_errors(), tuple()}.
+delete_endpoint_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_endpoint_policy(Client, Input, []).
+
+-spec delete_endpoint_policy(aws_client:aws_client(), delete_endpoint_policy_request(), proplists:proplist()) ->
+    {ok, delete_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_endpoint_policy_errors(), tuple()}.
+delete_endpoint_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteEndpointPolicy">>, Input, Options).
+
 %% @doc Deletes an SageMaker experiment.
 %%
 %% All trials associated with the experiment must be deleted first. Use the
@@ -19726,6 +20023,29 @@ delete_inference_experiment(Client, Input)
 delete_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteInferenceExperiment">>, Input, Options).
+
+%% @doc Deletes an inference router.
+%%
+%% The endpoints and inference components that the router sends requests to
+%% aren't deleted.
+%%
+%% If the router is being created, updated, or deleted, you get a
+%% `ConflictException'.
+-spec delete_inference_router(aws_client:aws_client(), delete_inference_router_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_inference_router_errors(), tuple()}.
+delete_inference_router(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_inference_router(Client, Input, []).
+
+-spec delete_inference_router(aws_client:aws_client(), delete_inference_router_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_inference_router_errors(), tuple()}.
+delete_inference_router(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteInferenceRouter">>, Input, Options).
 
 %% @doc Deletes a job.
 %%
@@ -21071,6 +21391,29 @@ describe_inference_recommendations_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeInferenceRecommendationsJob">>, Input, Options).
 
+%% @doc Returns information about an inference router, including the routing
+%% status of each destination.
+%%
+%% SageMaker AI checks each destination with your permissions when you call
+%% this operation, so callers with different permissions can see a different
+%% `RoutingStatus'. To get the router's tags, use ListTags:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListTags.html.
+-spec describe_inference_router(aws_client:aws_client(), describe_inference_router_input()) ->
+    {ok, describe_inference_router_output(), tuple()} |
+    {error, any()} |
+    {error, describe_inference_router_errors(), tuple()}.
+describe_inference_router(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_inference_router(Client, Input, []).
+
+-spec describe_inference_router(aws_client:aws_client(), describe_inference_router_input(), proplists:proplist()) ->
+    {ok, describe_inference_router_output(), tuple()} |
+    {error, any()} |
+    {error, describe_inference_router_errors(), tuple()}.
+describe_inference_router(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeInferenceRouter">>, Input, Options).
+
 %% @doc Returns detailed information about a job, including its current
 %% status, secondary status, configuration, and timestamps.
 %%
@@ -21926,6 +22269,26 @@ get_device_fleet_report(Client, Input)
 get_device_fleet_report(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDeviceFleetReport">>, Input, Options).
+
+%% @doc Returns the resource-based policy that is attached to an endpoint.
+%%
+%% If the endpoint doesn't have a policy, you get a
+%% `ValidationException'.
+-spec get_endpoint_policy(aws_client:aws_client(), get_endpoint_policy_request()) ->
+    {ok, get_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_endpoint_policy_errors(), tuple()}.
+get_endpoint_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_endpoint_policy(Client, Input, []).
+
+-spec get_endpoint_policy(aws_client:aws_client(), get_endpoint_policy_request(), proplists:proplist()) ->
+    {ok, get_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, get_endpoint_policy_errors(), tuple()}.
+get_endpoint_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetEndpointPolicy">>, Input, Options).
 
 %% @doc The resource policy for the lineage group.
 -spec get_lineage_group_policy(aws_client:aws_client(), get_lineage_group_policy_request()) ->
@@ -22793,6 +23156,24 @@ list_inference_recommendations_jobs(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceRecommendationsJobs">>, Input, Options).
 
+%% @doc Lists the inference routers in your account in the current Amazon Web
+%% Services Region.
+%%
+%% A router that you just created might not appear in the list right away.
+-spec list_inference_routers(aws_client:aws_client(), list_inference_routers_input()) ->
+    {ok, list_inference_routers_output(), tuple()} |
+    {error, any()}.
+list_inference_routers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_inference_routers(Client, Input, []).
+
+-spec list_inference_routers(aws_client:aws_client(), list_inference_routers_input(), proplists:proplist()) ->
+    {ok, list_inference_routers_output(), tuple()} |
+    {error, any()}.
+list_inference_routers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInferenceRouters">>, Input, Options).
+
 %% @doc Lists available configuration schema versions for a specified job
 %% category.
 %%
@@ -23653,6 +24034,38 @@ list_workteams(Client, Input)
 list_workteams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkteams">>, Input, Options).
+
+%% @doc Attaches a resource-based policy to an endpoint.
+%%
+%% With an endpoint policy, you can allow other Amazon Web Services accounts
+%% to send requests to your endpoint, or to inference components on it,
+%% through an inference router. The policy that you specify replaces the
+%% endpoint's existing policy, if it has one.
+%%
+%% You can't attach a policy to an endpoint whose status is
+%% `Deleting' or `Failed'. SageMaker AI rejects a policy that
+%% doesn't follow the endpoint policy rules. For information about the
+%% policy rules, see Use destinations in other accounts:
+%% https://docs.aws.amazon.com/sagemaker/latest/dg/inference-router-cross-account.html.
+%%
+%% Policy changes typically take effect within 30 seconds, and can take up to
+%% 5 minutes. If you delete the endpoint, its policy is also deleted, and a
+%% new endpoint with the same name has no policy.
+-spec put_endpoint_policy(aws_client:aws_client(), put_endpoint_policy_request()) ->
+    {ok, put_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_endpoint_policy_errors(), tuple()}.
+put_endpoint_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_endpoint_policy(Client, Input, []).
+
+-spec put_endpoint_policy(aws_client:aws_client(), put_endpoint_policy_request(), proplists:proplist()) ->
+    {ok, put_endpoint_policy_response(), tuple()} |
+    {error, any()} |
+    {error, put_endpoint_policy_errors(), tuple()}.
+put_endpoint_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutEndpointPolicy">>, Input, Options).
 
 %% @doc Adds a resouce policy to control access to a model group.
 %%
@@ -25004,6 +25417,37 @@ update_inference_experiment(Client, Input)
 update_inference_experiment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateInferenceExperiment">>, Input, Options).
+
+%% @doc Updates the routing targets of an inference router.
+%%
+%% The routing targets that you specify replace all of the router's
+%% existing routing targets. To change one routing target, call
+%% DescribeInferenceRouter:
+%% https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeInferenceRouter.html,
+%% edit the routing targets, and send all of them.
+%%
+%% The update is applied in full or not at all, and each request uses either
+%% the previous configuration or the new one. Updates typically take effect
+%% within about 2 minutes.
+%%
+%% If the router is being created, updated, or deleted, or another request
+%% changes it at the same time, you get a `ConflictException'. Describe
+%% the router, and then send your update again.
+-spec update_inference_router(aws_client:aws_client(), update_inference_router_input()) ->
+    {ok, update_inference_router_output(), tuple()} |
+    {error, any()} |
+    {error, update_inference_router_errors(), tuple()}.
+update_inference_router(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_inference_router(Client, Input, []).
+
+-spec update_inference_router(aws_client:aws_client(), update_inference_router_input(), proplists:proplist()) ->
+    {ok, update_inference_router_output(), tuple()} |
+    {error, any()} |
+    {error, update_inference_router_errors(), tuple()}.
+update_inference_router(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateInferenceRouter">>, Input, Options).
 
 %% @doc Updates an MLflow App.
 -spec update_mlflow_app(aws_client:aws_client(), update_mlflow_app_request()) ->

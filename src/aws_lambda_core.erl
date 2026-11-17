@@ -271,6 +271,13 @@
 %% delete_runtime_version_response() :: #{}
 -type delete_runtime_version_response() :: #{}.
 
+
+%% Example:
+%% elastic_ip_configuration() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type elastic_ip_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% get_network_connector_request() :: #{}
 -type get_network_connector_request() :: #{}.
@@ -489,6 +496,7 @@
 %% Example:
 %% network_connector_vpc_egress_configuration() :: #{
 %%   <<"AssociatedComputeResourceTypes">> => list(list(any())()),
+%%   <<"ElasticIpConfiguration">> => elastic_ip_configuration(),
 %%   <<"NetworkProtocol">> => list(any()),
 %%   <<"SecurityGroupIds">> => list(string()),
 %%   <<"SubnetIds">> => list(string())

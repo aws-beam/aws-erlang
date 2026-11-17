@@ -10,6 +10,8 @@
          accept_attachment/4,
          associate_connect_peer/3,
          associate_connect_peer/4,
+         associate_context_store/3,
+         associate_context_store/4,
          associate_customer_gateway/3,
          associate_customer_gateway/4,
          associate_link/3,
@@ -22,6 +24,8 @@
          create_connect_peer/3,
          create_connection/3,
          create_connection/4,
+         create_context_store/3,
+         create_context_store/4,
          create_core_network/2,
          create_core_network/3,
          create_core_network_prefix_list_association/2,
@@ -50,6 +54,8 @@
          delete_connect_peer/4,
          delete_connection/4,
          delete_connection/5,
+         delete_context_store/3,
+         delete_context_store/4,
          delete_core_network/3,
          delete_core_network/4,
          delete_core_network_policy_version/4,
@@ -75,6 +81,8 @@
          describe_global_networks/4,
          disassociate_connect_peer/4,
          disassociate_connect_peer/5,
+         disassociate_context_store/4,
+         disassociate_context_store/5,
          disassociate_customer_gateway/4,
          disassociate_customer_gateway/5,
          disassociate_link/3,
@@ -95,6 +103,15 @@
          get_connections/2,
          get_connections/4,
          get_connections/5,
+         get_context_store/2,
+         get_context_store/4,
+         get_context_store/5,
+         get_context_store_association/3,
+         get_context_store_association/5,
+         get_context_store_association/6,
+         get_context_version/2,
+         get_context_version/4,
+         get_context_version/5,
          get_core_network/2,
          get_core_network/4,
          get_core_network/5,
@@ -174,6 +191,18 @@
          list_connect_peers/1,
          list_connect_peers/3,
          list_connect_peers/4,
+         list_context_changes/3,
+         list_context_changes/5,
+         list_context_changes/6,
+         list_context_store_associations/2,
+         list_context_store_associations/4,
+         list_context_store_associations/5,
+         list_context_stores/1,
+         list_context_stores/3,
+         list_context_stores/4,
+         list_contexts/2,
+         list_contexts/4,
+         list_contexts/5,
          list_core_network_policy_versions/2,
          list_core_network_policy_versions/4,
          list_core_network_policy_versions/5,
@@ -220,6 +249,8 @@
          update_attachment_nat_configuration/4,
          update_connection/4,
          update_connection/5,
+         update_context_store/3,
+         update_context_store/4,
          update_core_network/3,
          update_core_network/4,
          update_device/4,
@@ -284,6 +315,20 @@
 %%   <<"ConnectPeerAssociation">> => connect_peer_association()
 %% }
 -type associate_connect_peer_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_context_store_request() :: #{
+%%   <<"TransitGatewayArn">> => string()
+%% }
+-type associate_context_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_context_store_response() :: #{
+%%   <<"ContextStoreAssociation">> => context_store_association()
+%% }
+-type associate_context_store_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -533,6 +578,50 @@
 %%   <<"Type">> => list(any())
 %% }
 -type connection_health() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_change() :: #{
+%%   <<"ChangeType">> => list(any()),
+%%   <<"Context">> => context_entry()
+%% }
+-type context_change() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_entry() :: #{
+%%   <<"AttachmentType">> => string(),
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"ContextId">> => string(),
+%%   <<"ContextType">> => string(),
+%%   <<"PublicId">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"SegmentType">> => string()
+%% }
+-type context_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_store() :: #{
+%%   <<"ContextStoreArn">> => string(),
+%%   <<"ContextStoreId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type context_store() :: #{binary() => any()}.
+
+
+%% Example:
+%% context_store_association() :: #{
+%%   <<"ContextStoreId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"State">> => list(any()),
+%%   <<"TransitGatewayArn">> => string()
+%% }
+-type context_store_association() :: #{binary() => any()}.
 
 
 %% Example:
@@ -788,6 +877,22 @@
 
 
 %% Example:
+%% create_context_store_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_context_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_context_store_response() :: #{
+%%   <<"ContextStore">> => context_store()
+%% }
+-type create_context_store_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_core_network_prefix_list_association_request() :: #{
 %%   <<"ClientToken">> => string(),
 %%   <<"CoreNetworkId">> := string(),
@@ -1040,6 +1145,17 @@
 -type delete_connection_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_context_store_request() :: #{}
+-type delete_context_store_request() :: #{}.
+
+
+%% Example:
+%% delete_context_store_response() :: #{
+%%   <<"ContextStore">> => context_store()
+%% }
+-type delete_context_store_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_core_network_policy_version_request() :: #{}
 -type delete_core_network_policy_version_request() :: #{}.
 
@@ -1204,6 +1320,17 @@
 -type disassociate_connect_peer_response() :: #{binary() => any()}.
 
 %% Example:
+%% disassociate_context_store_request() :: #{}
+-type disassociate_context_store_request() :: #{}.
+
+
+%% Example:
+%% disassociate_context_store_response() :: #{
+%%   <<"ContextStoreAssociation">> => context_store_association()
+%% }
+-type disassociate_context_store_response() :: #{binary() => any()}.
+
+%% Example:
 %% disassociate_customer_gateway_request() :: #{}
 -type disassociate_customer_gateway_request() :: #{}.
 
@@ -1312,6 +1439,39 @@
 %%   <<"NextToken">> => string()
 %% }
 -type get_connections_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_context_store_association_request() :: #{}
+-type get_context_store_association_request() :: #{}.
+
+
+%% Example:
+%% get_context_store_association_response() :: #{
+%%   <<"ContextStoreAssociation">> => context_store_association()
+%% }
+-type get_context_store_association_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_context_store_request() :: #{}
+-type get_context_store_request() :: #{}.
+
+
+%% Example:
+%% get_context_store_response() :: #{
+%%   <<"ContextStore">> => context_store()
+%% }
+-type get_context_store_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_context_version_request() :: #{}
+-type get_context_version_request() :: #{}.
+
+
+%% Example:
+%% get_context_version_response() :: #{
+%%   <<"VersionId">> => string()
+%% }
+-type get_context_version_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1805,6 +1965,75 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_connect_peers_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_context_changes_request() :: #{
+%%   <<"FromVersionId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_context_changes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_context_changes_response() :: #{
+%%   <<"ContextChanges">> => list(context_change()),
+%%   <<"FromVersionId">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"ToVersionId">> => string()
+%% }
+-type list_context_changes_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_context_store_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_context_store_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_context_store_associations_response() :: #{
+%%   <<"ContextStoreAssociations">> => list(context_store_association()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_context_store_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_context_stores_request() :: #{
+%%   <<"GlobalNetworkId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_context_stores_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_context_stores_response() :: #{
+%%   <<"ContextStores">> => list(context_store()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_context_stores_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contexts_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_contexts_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_contexts_response() :: #{
+%%   <<"Contexts">> => list(context_entry()),
+%%   <<"NextToken">> => string(),
+%%   <<"VersionId">> => string()
+%% }
+-type list_contexts_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2519,6 +2748,20 @@
 
 
 %% Example:
+%% update_context_store_request() :: #{
+%%   <<"Description">> => string()
+%% }
+-type update_context_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_context_store_response() :: #{
+%%   <<"ContextStore">> => context_store()
+%% }
+-type update_context_store_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_core_network_request() :: #{
 %%   <<"Description">> => string()
 %% }
@@ -2711,6 +2954,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type associate_context_store_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type associate_customer_gateway_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -2758,6 +3009,15 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_context_store_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -2879,6 +3139,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type delete_context_store_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type delete_core_network_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -2974,6 +3242,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type disassociate_context_store_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type disassociate_customer_gateway_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -3029,6 +3305,27 @@
     access_denied_exception().
 
 -type get_connections_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_context_store_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_context_store_association_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_context_version_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3222,6 +3519,34 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_context_changes_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_context_store_associations_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_context_stores_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_contexts_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_core_network_policy_versions_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -3371,6 +3696,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type update_context_store_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_core_network_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -3500,6 +3833,47 @@ associate_connect_peer(Client, GlobalNetworkId, Input) ->
 associate_connect_peer(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connect-peer-associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates a transit gateway with a context store.
+%%
+%% The transit gateway must be registered with the global network of the
+%% context store, and can't be associated with more than one context
+%% store. The context store must be in the `AVAILABLE' state.
+%%
+%% The association is in the `ASSOCIATING' state when it's created,
+%% and changes to `ASSOCIATED' when it's complete.
+-spec associate_context_store(aws_client:aws_client(), binary() | list(), associate_context_store_request()) ->
+    {ok, associate_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, associate_context_store_errors(), tuple()}.
+associate_context_store(Client, ContextStoreId, Input) ->
+    associate_context_store(Client, ContextStoreId, Input, []).
+
+-spec associate_context_store(aws_client:aws_client(), binary() | list(), associate_context_store_request(), proplists:proplist()) ->
+    {ok, associate_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, associate_context_store_errors(), tuple()}.
+associate_context_store(Client, ContextStoreId, Input0, Options0) ->
+    Method = post,
+    Path = ["/context-stores/", aws_util:encode_uri(ContextStoreId), "/associations"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3755,6 +4129,47 @@ create_connection(Client, GlobalNetworkId, Input) ->
 create_connection(Client, GlobalNetworkId, Input0, Options0) ->
     Method = post,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a context store in a global network.
+%%
+%% A context store maintains context entries, such as security groups,
+%% subnets, and attachments, for the resources connected to the transit
+%% gateways that you associate with it.
+%%
+%% The context store is in the `PENDING' state when it's created, and
+%% changes to `AVAILABLE' when it's ready to use.
+-spec create_context_store(aws_client:aws_client(), binary() | list(), create_context_store_request()) ->
+    {ok, create_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, create_context_store_errors(), tuple()}.
+create_context_store(Client, GlobalNetworkId, Input) ->
+    create_context_store(Client, GlobalNetworkId, Input, []).
+
+-spec create_context_store(aws_client:aws_client(), binary() | list(), create_context_store_request(), proplists:proplist()) ->
+    {ok, create_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, create_context_store_errors(), tuple()}.
+create_context_store(Client, GlobalNetworkId, Input0, Options0) ->
+    Method = post,
+    Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/context-stores"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4259,6 +4674,44 @@ delete_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a context store.
+%%
+%% The context store must be in the `AVAILABLE' state. You must
+%% disassociate all transit gateways from the context store before you can
+%% delete it.
+-spec delete_context_store(aws_client:aws_client(), binary() | list(), delete_context_store_request()) ->
+    {ok, delete_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, delete_context_store_errors(), tuple()}.
+delete_context_store(Client, ContextStoreId, Input) ->
+    delete_context_store(Client, ContextStoreId, Input, []).
+
+-spec delete_context_store(aws_client:aws_client(), binary() | list(), delete_context_store_request(), proplists:proplist()) ->
+    {ok, delete_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, delete_context_store_errors(), tuple()}.
+delete_context_store(Client, ContextStoreId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/context-stores/", aws_util:encode_uri(ContextStoreId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a core network along with all core network policies.
 %%
 %% This can only be done if there are no attachments on a core network.
@@ -4706,6 +5159,44 @@ disassociate_connect_peer(Client, ConnectPeerId, GlobalNetworkId, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Disassociates a transit gateway from a context store.
+%%
+%% The association must be in the `ASSOCIATED' or `FAILED' state. The
+%% association stays in the `DISASSOCIATING' state until the
+%% disassociation completes.
+-spec disassociate_context_store(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_context_store_request()) ->
+    {ok, disassociate_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_context_store_errors(), tuple()}.
+disassociate_context_store(Client, ContextStoreId, TransitGatewayArn, Input) ->
+    disassociate_context_store(Client, ContextStoreId, TransitGatewayArn, Input, []).
+
+-spec disassociate_context_store(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_context_store_request(), proplists:proplist()) ->
+    {ok, disassociate_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_context_store_errors(), tuple()}.
+disassociate_context_store(Client, ContextStoreId, TransitGatewayArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/context-stores/", aws_util:encode_uri(ContextStoreId), "/associations/", aws_util:encode_uri(TransitGatewayArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Disassociates a customer gateway from a device and a link.
 -spec disassociate_customer_gateway(aws_client:aws_client(), binary() | list(), binary() | list(), disassociate_customer_gateway_request()) ->
     {ok, disassociate_customer_gateway_response(), tuple()} |
@@ -5008,6 +5499,121 @@ get_connections(Client, GlobalNetworkId, QueryMap, HeadersMap, Options0)
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about a context store.
+-spec get_context_store(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, get_context_store_errors(), tuple()}.
+get_context_store(Client, ContextStoreId)
+  when is_map(Client) ->
+    get_context_store(Client, ContextStoreId, #{}, #{}).
+
+-spec get_context_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, get_context_store_errors(), tuple()}.
+get_context_store(Client, ContextStoreId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_context_store(Client, ContextStoreId, QueryMap, HeadersMap, []).
+
+-spec get_context_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, get_context_store_errors(), tuple()}.
+get_context_store(Client, ContextStoreId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/context-stores/", aws_util:encode_uri(ContextStoreId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns information about the association between a context store and
+%% a transit gateway.
+-spec get_context_store_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_context_store_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_context_store_association_errors(), tuple()}.
+get_context_store_association(Client, ContextStoreId, TransitGatewayArn)
+  when is_map(Client) ->
+    get_context_store_association(Client, ContextStoreId, TransitGatewayArn, #{}, #{}).
+
+-spec get_context_store_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_context_store_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_context_store_association_errors(), tuple()}.
+get_context_store_association(Client, ContextStoreId, TransitGatewayArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_context_store_association(Client, ContextStoreId, TransitGatewayArn, QueryMap, HeadersMap, []).
+
+-spec get_context_store_association(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_context_store_association_response(), tuple()} |
+    {error, any()} |
+    {error, get_context_store_association_errors(), tuple()}.
+get_context_store_association(Client, ContextStoreId, TransitGatewayArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/context-stores/", aws_util:encode_uri(ContextStoreId), "/associations/", aws_util:encode_uri(TransitGatewayArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the current version of the context entries of a context
+%% store.
+%%
+%% The context store must be in the `AVAILABLE' state.
+-spec get_context_version(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_context_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_context_version_errors(), tuple()}.
+get_context_version(Client, ContextStoreId)
+  when is_map(Client) ->
+    get_context_version(Client, ContextStoreId, #{}, #{}).
+
+-spec get_context_version(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_context_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_context_version_errors(), tuple()}.
+get_context_version(Client, ContextStoreId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_context_version(Client, ContextStoreId, QueryMap, HeadersMap, []).
+
+-spec get_context_version(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_context_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_context_version_errors(), tuple()}.
+get_context_version(Client, ContextStoreId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/context-stores/", aws_util:encode_uri(ContextStoreId), "/context-version"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -6154,6 +6760,187 @@ list_connect_peers(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the context entries that were added to or removed from a
+%% context store after the specified version.
+%%
+%% The context store must be in the `AVAILABLE' state.
+-spec list_context_changes(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_context_changes_response(), tuple()} |
+    {error, any()} |
+    {error, list_context_changes_errors(), tuple()}.
+list_context_changes(Client, ContextStoreId, FromVersionId)
+  when is_map(Client) ->
+    list_context_changes(Client, ContextStoreId, FromVersionId, #{}, #{}).
+
+-spec list_context_changes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_context_changes_response(), tuple()} |
+    {error, any()} |
+    {error, list_context_changes_errors(), tuple()}.
+list_context_changes(Client, ContextStoreId, FromVersionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_context_changes(Client, ContextStoreId, FromVersionId, QueryMap, HeadersMap, []).
+
+-spec list_context_changes(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_context_changes_response(), tuple()} |
+    {error, any()} |
+    {error, list_context_changes_errors(), tuple()}.
+list_context_changes(Client, ContextStoreId, FromVersionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/context-stores/", aws_util:encode_uri(ContextStoreId), "/context-changes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"fromVersionId">>, FromVersionId},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the transit gateway associations of a context store.
+-spec list_context_store_associations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_context_store_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_context_store_associations_errors(), tuple()}.
+list_context_store_associations(Client, ContextStoreId)
+  when is_map(Client) ->
+    list_context_store_associations(Client, ContextStoreId, #{}, #{}).
+
+-spec list_context_store_associations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_context_store_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_context_store_associations_errors(), tuple()}.
+list_context_store_associations(Client, ContextStoreId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_context_store_associations(Client, ContextStoreId, QueryMap, HeadersMap, []).
+
+-spec list_context_store_associations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_context_store_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_context_store_associations_errors(), tuple()}.
+list_context_store_associations(Client, ContextStoreId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/context-stores/", aws_util:encode_uri(ContextStoreId), "/associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the context stores in your account.
+%%
+%% You can optionally return only the context stores in a specific global
+%% network.
+-spec list_context_stores(aws_client:aws_client()) ->
+    {ok, list_context_stores_response(), tuple()} |
+    {error, any()} |
+    {error, list_context_stores_errors(), tuple()}.
+list_context_stores(Client)
+  when is_map(Client) ->
+    list_context_stores(Client, #{}, #{}).
+
+-spec list_context_stores(aws_client:aws_client(), map(), map()) ->
+    {ok, list_context_stores_response(), tuple()} |
+    {error, any()} |
+    {error, list_context_stores_errors(), tuple()}.
+list_context_stores(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_context_stores(Client, QueryMap, HeadersMap, []).
+
+-spec list_context_stores(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_context_stores_response(), tuple()} |
+    {error, any()} |
+    {error, list_context_stores_errors(), tuple()}.
+list_context_stores(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/context-stores"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"globalNetworkId">>, maps:get(<<"globalNetworkId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the context entries of a context store, and the version of
+%% the context entries.
+%%
+%% To get the context entries that were added or removed after this version,
+%% specify the returned `VersionId' in a `ListContextChanges'
+%% request. The context store must be in the `AVAILABLE' state.
+-spec list_contexts(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_contexts_response(), tuple()} |
+    {error, any()} |
+    {error, list_contexts_errors(), tuple()}.
+list_contexts(Client, ContextStoreId)
+  when is_map(Client) ->
+    list_contexts(Client, ContextStoreId, #{}, #{}).
+
+-spec list_contexts(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_contexts_response(), tuple()} |
+    {error, any()} |
+    {error, list_contexts_errors(), tuple()}.
+list_contexts(Client, ContextStoreId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_contexts(Client, ContextStoreId, QueryMap, HeadersMap, []).
+
+-spec list_contexts(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_contexts_response(), tuple()} |
+    {error, any()} |
+    {error, list_contexts_errors(), tuple()}.
+list_contexts(Client, ContextStoreId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/context-stores/", aws_util:encode_uri(ContextStoreId), "/contexts"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a list of core network policy versions.
 -spec list_core_network_policy_versions(aws_client:aws_client(), binary() | list()) ->
     {ok, list_core_network_policy_versions_response(), tuple()} |
@@ -6909,6 +7696,42 @@ update_connection(Client, ConnectionId, GlobalNetworkId, Input) ->
 update_connection(Client, ConnectionId, GlobalNetworkId, Input0, Options0) ->
     Method = patch,
     Path = ["/global-networks/", aws_util:encode_uri(GlobalNetworkId), "/connections/", aws_util:encode_uri(ConnectionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the description of a context store.
+%%
+%% The context store must be in the `AVAILABLE' state.
+-spec update_context_store(aws_client:aws_client(), binary() | list(), update_context_store_request()) ->
+    {ok, update_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_context_store_errors(), tuple()}.
+update_context_store(Client, ContextStoreId, Input) ->
+    update_context_store(Client, ContextStoreId, Input, []).
+
+-spec update_context_store(aws_client:aws_client(), binary() | list(), update_context_store_request(), proplists:proplist()) ->
+    {ok, update_context_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_context_store_errors(), tuple()}.
+update_context_store(Client, ContextStoreId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/context-stores/", aws_util:encode_uri(ContextStoreId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

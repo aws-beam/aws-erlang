@@ -1757,6 +1757,7 @@
 %%   <<"UserIdentityType">> => list(any()),
 %%   <<"WorkspaceDirectoryDescription">> => string(),
 %%   <<"WorkspaceDirectoryName">> => string(),
+%%   <<"WorkspaceOsUserMode">> => list(any()),
 %%   <<"WorkspaceType">> => list(any())
 %% }
 -type register_workspace_directory_request() :: #{binary() => any()}.
@@ -2292,6 +2293,7 @@
 %%   <<"WorkspaceCreationProperties">> => default_workspace_creation_properties(),
 %%   <<"WorkspaceDirectoryDescription">> => string(),
 %%   <<"WorkspaceDirectoryName">> => string(),
+%%   <<"WorkspaceOsUserMode">> => list(any()),
 %%   <<"WorkspaceSecurityGroupId">> => string(),
 %%   <<"WorkspaceType">> => list(any()),
 %%   <<"ipGroupIds">> => list(string())

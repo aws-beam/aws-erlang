@@ -104,6 +104,8 @@
          associate_ipam_byoasn/3,
          associate_ipam_resource_discovery/2,
          associate_ipam_resource_discovery/3,
+         associate_kms_key_id/2,
+         associate_kms_key_id/3,
          associate_nat_gateway_address/2,
          associate_nat_gateway_address/3,
          associate_networking_flex_cost_allocation_policy/2,
@@ -358,6 +360,8 @@
          create_transit_gateway_metering_policy_entry/3,
          create_transit_gateway_multicast_domain/2,
          create_transit_gateway_multicast_domain/3,
+         create_transit_gateway_network_function_attachment/2,
+         create_transit_gateway_network_function_attachment/3,
          create_transit_gateway_peering_attachment/2,
          create_transit_gateway_peering_attachment/3,
          create_transit_gateway_policy_table/2,
@@ -558,6 +562,8 @@
          delete_transit_gateway_metering_policy_entry/3,
          delete_transit_gateway_multicast_domain/2,
          delete_transit_gateway_multicast_domain/3,
+         delete_transit_gateway_network_function_attachment/2,
+         delete_transit_gateway_network_function_attachment/3,
          delete_transit_gateway_peering_attachment/2,
          delete_transit_gateway_peering_attachment/3,
          delete_transit_gateway_policy_table/2,
@@ -946,6 +952,8 @@
          describe_transit_gateway_metering_policies/3,
          describe_transit_gateway_multicast_domains/2,
          describe_transit_gateway_multicast_domains/3,
+         describe_transit_gateway_network_function_attachments/2,
+         describe_transit_gateway_network_function_attachments/3,
          describe_transit_gateway_peering_attachments/2,
          describe_transit_gateway_peering_attachments/3,
          describe_transit_gateway_policy_tables/2,
@@ -1090,6 +1098,8 @@
          disassociate_ipam_byoasn/3,
          disassociate_ipam_resource_discovery/2,
          disassociate_ipam_resource_discovery/3,
+         disassociate_kms_key_id/2,
+         disassociate_kms_key_id/3,
          disassociate_nat_gateway_address/2,
          disassociate_nat_gateway_address/3,
          disassociate_networking_flex_cost_allocation_policy/2,
@@ -1476,6 +1486,8 @@
          modify_transit_gateway_attachment_nat_configuration/3,
          modify_transit_gateway_metering_policy/2,
          modify_transit_gateway_metering_policy/3,
+         modify_transit_gateway_network_function_attachment/2,
+         modify_transit_gateway_network_function_attachment/3,
          modify_transit_gateway_policy_table_entry/2,
          modify_transit_gateway_policy_table_entry/3,
          modify_transit_gateway_prefix_list_reference/2,
@@ -1830,6 +1842,7 @@
 %% accept_vpc_endpoint_connections_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"ServiceId">> := string(),
+%%   <<"TransitGatewayAttachmentIds">> => list(string()),
 %%   <<"VpcEndpointIds">> := list(string())
 %% }
 -type accept_vpc_endpoint_connections_request() :: #{binary() => any()}.
@@ -1960,6 +1973,7 @@
 
 %% Example:
 %% added_principal() :: #{
+%%   <<"PermissionType">> => list(any()),
 %%   <<"Principal">> => string(),
 %%   <<"PrincipalType">> => list(any()),
 %%   <<"ServiceId">> => string(),
@@ -2109,6 +2123,7 @@
 
 %% Example:
 %% allowed_principal() :: #{
+%%   <<"PermissionType">> => list(any()),
 %%   <<"Principal">> => string(),
 %%   <<"PrincipalType">> => list(any()),
 %%   <<"ServiceId">> => string(),
@@ -2529,6 +2544,20 @@
 -type associate_ipam_resource_discovery_result() :: #{binary() => any()}.
 
 %% Example:
+%% associate_kms_key_id_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"KmsKeyId">> := string(),
+%%   <<"SnapshotId">> => string()
+%% }
+-type associate_kms_key_id_request() :: #{binary() => any()}.
+
+%% Example:
+%% associate_kms_key_id_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type associate_kms_key_id_result() :: #{binary() => any()}.
+
+%% Example:
 %% associate_nat_gateway_address_request() :: #{
 %%   <<"AllocationIds">> := list(string()),
 %%   <<"AvailabilityZone">> => string(),
@@ -2707,6 +2736,12 @@
 %%   <<"VpcId">> => string()
 %% }
 -type associate_vpc_cidr_block_result() :: #{binary() => any()}.
+
+%% Example:
+%% associated_kms_key() :: #{
+%%   <<"KmsKeyId">> => string()
+%% }
+-type associated_kms_key() :: #{binary() => any()}.
 
 %% Example:
 %% associated_role() :: #{
@@ -5834,6 +5869,23 @@
 -type create_transit_gateway_multicast_domain_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_transit_gateway_network_function_attachment_request() :: #{
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"ServiceName">> := string(),
+%%   <<"TagSpecifications">> => list(tag_specification()),
+%%   <<"TransitGatewayId">> := string()
+%% }
+-type create_transit_gateway_network_function_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_transit_gateway_network_function_attachment_result() :: #{
+%%   <<"TransitGatewayNetworkFunctionAttachment">> => transit_gateway_network_function_attachment()
+%% }
+-type create_transit_gateway_network_function_attachment_result() :: #{binary() => any()}.
+
+%% Example:
 %% create_transit_gateway_peering_attachment_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Options">> => create_transit_gateway_peering_attachment_request_options(),
@@ -7467,6 +7519,19 @@
 %%   <<"TransitGatewayMulticastDomain">> => transit_gateway_multicast_domain()
 %% }
 -type delete_transit_gateway_multicast_domain_result() :: #{binary() => any()}.
+
+%% Example:
+%% delete_transit_gateway_network_function_attachment_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type delete_transit_gateway_network_function_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_transit_gateway_network_function_attachment_result() :: #{
+%%   <<"TransitGatewayNetworkFunctionAttachment">> => transit_gateway_network_function_attachment()
+%% }
+-type delete_transit_gateway_network_function_attachment_result() :: #{binary() => any()}.
 
 %% Example:
 %% delete_transit_gateway_peering_attachment_request() :: #{
@@ -10680,6 +10745,23 @@
 -type describe_transit_gateway_multicast_domains_result() :: #{binary() => any()}.
 
 %% Example:
+%% describe_transit_gateway_network_function_attachments_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"TransitGatewayAttachmentIds">> => list(string())
+%% }
+-type describe_transit_gateway_network_function_attachments_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_transit_gateway_network_function_attachments_result() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TransitGatewayNetworkFunctionAttachments">> => list(transit_gateway_network_function_attachment())
+%% }
+-type describe_transit_gateway_network_function_attachments_result() :: #{binary() => any()}.
+
+%% Example:
 %% describe_transit_gateway_peering_attachments_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"Filters">> => list(filter()),
@@ -11854,6 +11936,20 @@
 %%   <<"IpamResourceDiscoveryAssociation">> => ipam_resource_discovery_association()
 %% }
 -type disassociate_ipam_resource_discovery_result() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_kms_key_id_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"KmsKeyId">> := string(),
+%%   <<"SnapshotId">> => string()
+%% }
+-type disassociate_kms_key_id_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_kms_key_id_result() :: #{
+%%   <<"Return">> => boolean()
+%% }
+-type disassociate_kms_key_id_result() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_nat_gateway_address_request() :: #{
@@ -18800,6 +18896,23 @@
 -type modify_transit_gateway_metering_policy_result() :: #{binary() => any()}.
 
 %% Example:
+%% modify_transit_gateway_network_function_attachment_request() :: #{
+%%   <<"AddAvailabilityZoneIds">> => list(string()),
+%%   <<"AddAvailabilityZones">> => list(string()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"RemoveAvailabilityZoneIds">> => list(string()),
+%%   <<"RemoveAvailabilityZones">> => list(string()),
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type modify_transit_gateway_network_function_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_transit_gateway_network_function_attachment_result() :: #{
+%%   <<"TransitGatewayNetworkFunctionAttachment">> => transit_gateway_network_function_attachment()
+%% }
+-type modify_transit_gateway_network_function_attachment_result() :: #{binary() => any()}.
+
+%% Example:
 %% modify_transit_gateway_options() :: #{
 %%   <<"AddTransitGatewayCidrBlocks">> => list(string()),
 %%   <<"AmazonSideAsn">> => float(),
@@ -19266,6 +19379,7 @@
 %% modify_vpc_endpoint_service_permissions_request() :: #{
 %%   <<"AddAllowedPrincipals">> => list(string()),
 %%   <<"DryRun">> => boolean(),
+%%   <<"PermissionType">> => list(any()),
 %%   <<"RemoveAllowedPrincipals">> => list(string()),
 %%   <<"ServiceId">> := string()
 %% }
@@ -20769,6 +20883,7 @@
 %% reject_vpc_endpoint_connections_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"ServiceId">> := string(),
+%%   <<"TransitGatewayAttachmentIds">> => list(string()),
 %%   <<"VpcEndpointIds">> := list(string())
 %% }
 -type reject_vpc_endpoint_connections_request() :: #{binary() => any()}.
@@ -22415,6 +22530,7 @@
 
 %% Example:
 %% snapshot() :: #{
+%%   <<"AssociatedKmsKeys">> => list(associated_kms_key()),
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"CompletionDurationMinutes">> => integer(),
 %%   <<"CompletionTime">> => non_neg_integer(),
@@ -23520,6 +23636,21 @@
 %%   <<"RuleNumber">> => integer()
 %% }
 -type transit_gateway_nat_rule_request() :: #{binary() => any()}.
+
+%% Example:
+%% transit_gateway_network_function_attachment() :: #{
+%%   <<"AvailabilityZoneIds">> => list(string()),
+%%   <<"AvailabilityZones">> => list(string()),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceOwnerId">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"TransitGatewayAttachmentId">> => string(),
+%%   <<"TransitGatewayId">> => string(),
+%%   <<"TransitGatewayOwnerId">> => string()
+%% }
+-type transit_gateway_network_function_attachment() :: #{binary() => any()}.
 
 %% Example:
 %% transit_gateway_options() :: #{
@@ -24707,6 +24838,8 @@
 %%   <<"PayerResponsibilities">> => list(payer_responsibility_entry()),
 %%   <<"ServiceId">> => string(),
 %%   <<"Tags">> => list(tag()),
+%%   <<"TransitGatewayAttachmentId">> => string(),
+%%   <<"TransitGatewayAttachmentOwner">> => string(),
 %%   <<"VpcEndpointConnectionId">> => string(),
 %%   <<"VpcEndpointId">> => string(),
 %%   <<"VpcEndpointOwner">> => string(),
@@ -25635,6 +25768,34 @@ associate_ipam_resource_discovery(Client, Input)
 associate_ipam_resource_discovery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateIpamResourceDiscovery">>, Input, Options).
+
+%% @doc Associates an additional KMS key with an encrypted Amazon EBS
+%% snapshot.
+%%
+%% With the
+%% associated key, you have a second, independent way to access the
+%% snapshot's data, in
+%% addition to the key the snapshot is already encrypted under. Associating a
+%% key doesn't
+%% re-encrypt the snapshot or grant access to its original key.
+%%
+%% For more information, see Associated
+%% KMS keys:
+%% https://docs.aws.amazon.com/ebs/latest/userguide/associated-kms-keys.html
+%% in the Amazon EBS User Guide.
+-spec associate_kms_key_id(aws_client:aws_client(), associate_kms_key_id_request()) ->
+    {ok, associate_kms_key_id_result(), tuple()} |
+    {error, any()}.
+associate_kms_key_id(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    associate_kms_key_id(Client, Input, []).
+
+-spec associate_kms_key_id(aws_client:aws_client(), associate_kms_key_id_request(), proplists:proplist()) ->
+    {ok, associate_kms_key_id_result(), tuple()} |
+    {error, any()}.
+associate_kms_key_id(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AssociateKmsKeyId">>, Input, Options).
 
 %% @doc Associates Elastic IP addresses (EIPs) and private IPv4 addresses
 %% with a public NAT gateway.
@@ -29271,6 +29432,32 @@ create_transit_gateway_multicast_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateTransitGatewayMulticastDomain">>, Input, Options).
 
+%% @doc Creates a network function attachment that connects the specified
+%% transit gateway to a Gateway Load Balancer endpoint service.
+%%
+%% Traffic that you route to the attachment is sent to the network function
+%% appliances behind the endpoint service.
+%% To use this operation, you must be the owner of the transit gateway.
+%%
+%% You can create one network function attachment for each combination of
+%% transit gateway and endpoint service.
+%% The attachment remains in the `pendingAcceptance' state until the
+%% endpoint service owner
+%% accepts the endpoint connection.
+-spec create_transit_gateway_network_function_attachment(aws_client:aws_client(), create_transit_gateway_network_function_attachment_request()) ->
+    {ok, create_transit_gateway_network_function_attachment_result(), tuple()} |
+    {error, any()}.
+create_transit_gateway_network_function_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_transit_gateway_network_function_attachment(Client, Input, []).
+
+-spec create_transit_gateway_network_function_attachment(aws_client:aws_client(), create_transit_gateway_network_function_attachment_request(), proplists:proplist()) ->
+    {ok, create_transit_gateway_network_function_attachment_result(), tuple()} |
+    {error, any()}.
+create_transit_gateway_network_function_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateTransitGatewayNetworkFunctionAttachment">>, Input, Options).
+
 %% @doc Requests a transit gateway peering attachment between the specified
 %% transit gateway
 %% (requester) and a peer transit gateway (accepter).
@@ -31326,6 +31513,24 @@ delete_transit_gateway_multicast_domain(Client, Input)
 delete_transit_gateway_multicast_domain(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteTransitGatewayMulticastDomain">>, Input, Options).
+
+%% @doc Deletes the specified network function attachment.
+%%
+%% The attachment must be in the `available' or `pendingAcceptance'
+%% state.
+-spec delete_transit_gateway_network_function_attachment(aws_client:aws_client(), delete_transit_gateway_network_function_attachment_request()) ->
+    {ok, delete_transit_gateway_network_function_attachment_result(), tuple()} |
+    {error, any()}.
+delete_transit_gateway_network_function_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_transit_gateway_network_function_attachment(Client, Input, []).
+
+-spec delete_transit_gateway_network_function_attachment(aws_client:aws_client(), delete_transit_gateway_network_function_attachment_request(), proplists:proplist()) ->
+    {ok, delete_transit_gateway_network_function_attachment_result(), tuple()} |
+    {error, any()}.
+delete_transit_gateway_network_function_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteTransitGatewayNetworkFunctionAttachment">>, Input, Options).
 
 %% @doc Deletes a transit gateway peering attachment.
 -spec delete_transit_gateway_peering_attachment(aws_client:aws_client(), delete_transit_gateway_peering_attachment_request()) ->
@@ -35721,6 +35926,24 @@ describe_transit_gateway_multicast_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeTransitGatewayMulticastDomains">>, Input, Options).
 
+%% @doc Describes one or more network function attachments.
+%%
+%% You can describe attachments that you own or that are attached to a
+%% transit gateway that you own.
+-spec describe_transit_gateway_network_function_attachments(aws_client:aws_client(), describe_transit_gateway_network_function_attachments_request()) ->
+    {ok, describe_transit_gateway_network_function_attachments_result(), tuple()} |
+    {error, any()}.
+describe_transit_gateway_network_function_attachments(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_transit_gateway_network_function_attachments(Client, Input, []).
+
+-spec describe_transit_gateway_network_function_attachments(aws_client:aws_client(), describe_transit_gateway_network_function_attachments_request(), proplists:proplist()) ->
+    {ok, describe_transit_gateway_network_function_attachments_result(), tuple()} |
+    {error, any()}.
+describe_transit_gateway_network_function_attachments(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeTransitGatewayNetworkFunctionAttachments">>, Input, Options).
+
 %% @doc Describes your transit gateway peering attachments.
 -spec describe_transit_gateway_peering_attachments(aws_client:aws_client(), describe_transit_gateway_peering_attachments_request()) ->
     {ok, describe_transit_gateway_peering_attachments_result(), tuple()} |
@@ -37348,6 +37571,26 @@ disassociate_ipam_resource_discovery(Client, Input)
 disassociate_ipam_resource_discovery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DisassociateIpamResourceDiscovery">>, Input, Options).
+
+%% @doc Removes an associated KMS key from an Amazon EBS snapshot.
+%%
+%% After you disassociate the
+%% key, it can no longer be used to access the snapshot's data. The
+%% snapshot's original
+%% encryption key is unaffected.
+-spec disassociate_kms_key_id(aws_client:aws_client(), disassociate_kms_key_id_request()) ->
+    {ok, disassociate_kms_key_id_result(), tuple()} |
+    {error, any()}.
+disassociate_kms_key_id(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    disassociate_kms_key_id(Client, Input, []).
+
+-spec disassociate_kms_key_id(aws_client:aws_client(), disassociate_kms_key_id_request(), proplists:proplist()) ->
+    {ok, disassociate_kms_key_id_result(), tuple()} |
+    {error, any()}.
+disassociate_kms_key_id(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DisassociateKmsKeyId">>, Input, Options).
 
 %% @doc Disassociates secondary Elastic IP addresses (EIPs) from a public NAT
 %% gateway.
@@ -41952,6 +42195,32 @@ modify_transit_gateway_metering_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTransitGatewayMeteringPolicy">>, Input, Options).
 
+%% @doc Adds Availability Zones to or removes Availability Zones from the
+%% specified network function attachment.
+%%
+%% The attachment must be in the `available' state. You must specify at
+%% least one Availability Zone to add or remove,
+%% and the attachment must keep at least one Availability Zone.
+%%
+%% Adding an Availability Zone provisions a new Gateway Load Balancer
+%% endpoint in that Availability Zone. If the endpoint service
+%% doesn't automatically accept connection requests, the endpoint service
+%% owner must accept the endpoint connection for
+%% each Availability Zone that you add.
+-spec modify_transit_gateway_network_function_attachment(aws_client:aws_client(), modify_transit_gateway_network_function_attachment_request()) ->
+    {ok, modify_transit_gateway_network_function_attachment_result(), tuple()} |
+    {error, any()}.
+modify_transit_gateway_network_function_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_transit_gateway_network_function_attachment(Client, Input, []).
+
+-spec modify_transit_gateway_network_function_attachment(aws_client:aws_client(), modify_transit_gateway_network_function_attachment_request(), proplists:proplist()) ->
+    {ok, modify_transit_gateway_network_function_attachment_result(), tuple()} |
+    {error, any()}.
+modify_transit_gateway_network_function_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyTransitGatewayNetworkFunctionAttachment">>, Input, Options).
+
 %% @doc Modifies the specified transit gateway policy table entry.
 -spec modify_transit_gateway_policy_table_entry(aws_client:aws_client(), modify_transit_gateway_policy_table_entry_request()) ->
     {ok, modify_transit_gateway_policy_table_entry_result(), tuple()} |
@@ -42374,6 +42643,16 @@ modify_vpc_endpoint_service_payer_responsibility(Client, Input, Options)
 %% public service can send a request to attach an endpoint. If the service
 %% does not require manual approval,
 %% attachments are automatically approved.
+%%
+%% By default, principals that you grant permissions to can create VPC
+%% endpoints that connect to
+%% your endpoint service. For Gateway Load Balancer endpoint services, you
+%% can instead grant permissions so that
+%% principals can create transit gateway attachments that connect to your
+%% endpoint service. To do so,
+%% specify `transit-gateway-attachment' for `PermissionType'. The two
+%% permission
+%% types are independent. A principal can have either or both.
 -spec modify_vpc_endpoint_service_permissions(aws_client:aws_client(), modify_vpc_endpoint_service_permissions_request()) ->
     {ok, modify_vpc_endpoint_service_permissions_result(), tuple()} |
     {error, any()}.

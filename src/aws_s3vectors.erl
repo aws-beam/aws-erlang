@@ -56,7 +56,9 @@
          untag_resource/3,
          untag_resource/4,
          update_index_mode/2,
-         update_index_mode/3]).
+         update_index_mode/3,
+         update_metadata_configuration/2,
+         update_metadata_configuration/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -70,6 +72,14 @@
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% bm25_score() :: #{
+%%   <<"metadataKey">> => string(),
+%%   <<"score">> => [float()]
+%% }
+-type bm25_score() :: #{binary() => any()}.
 
 
 %% Example:
@@ -392,9 +402,24 @@
 
 %% Example:
 %% metadata_configuration() :: #{
-%%   <<"nonFilterableMetadataKeys">> => list(string())
+%%   <<"nonFilterableMetadataKeys">> => list(string()),
+%%   <<"textSearchConfigurations">> => list(text_search_configuration())
 %% }
 -type metadata_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_configuration_add() :: #{
+%%   <<"textSearchConfigurations">> => list(text_search_configuration())
+%% }
+-type metadata_configuration_add() :: #{binary() => any()}.
+
+
+%% Example:
+%% metadata_configuration_delete() :: #{
+%%   <<"textSearchConfigurations">> => list(text_search_configuration_key())
+%% }
+-type metadata_configuration_delete() :: #{binary() => any()}.
 
 
 %% Example:
@@ -457,9 +482,27 @@
 %% query_output_vector() :: #{
 %%   <<"distance">> => [float()],
 %%   <<"key">> => string(),
-%%   <<"metadata">> => any()
+%%   <<"metadata">> => any(),
+%%   <<"scores">> => query_scores()
 %% }
 -type query_output_vector() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_scores() :: #{
+%%   <<"bm25Scores">> => list(bm25_score()),
+%%   <<"fused">> => [float()],
+%%   <<"vectorDistance">> => [float()]
+%% }
+-type query_scores() :: #{binary() => any()}.
+
+
+%% Example:
+%% query_text() :: #{
+%%   <<"metadataKey">> => string(),
+%%   <<"text">> => string()
+%% }
+-type query_text() :: #{binary() => any()}.
 
 
 %% Example:
@@ -469,9 +512,11 @@
 %%   <<"indexName">> => string(),
 %%   <<"nextToken">> => string(),
 %%   <<"queryMode">> => list(any()),
-%%   <<"queryVector">> := list(),
+%%   <<"queryTexts">> => list(query_text()),
+%%   <<"queryVector">> => list(),
 %%   <<"returnDistance">> => [boolean()],
 %%   <<"returnMetadata">> => [boolean()],
+%%   <<"returnScores">> => [boolean()],
 %%   <<"topK">> := integer(),
 %%   <<"vectorBucketName">> => string()
 %% }
@@ -520,6 +565,22 @@
 
 
 %% Example:
+%% text_search_configuration() :: #{
+%%   <<"language">> => list(any()),
+%%   <<"metadataKey">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type text_search_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_search_configuration_key() :: #{
+%%   <<"metadataKey">> => string()
+%% }
+-type text_search_configuration_key() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_requests_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -549,6 +610,24 @@
 %% Example:
 %% update_index_mode_output() :: #{}
 -type update_index_mode_output() :: #{}.
+
+
+%% Example:
+%% update_metadata_configuration_input() :: #{
+%%   <<"add">> => metadata_configuration_add(),
+%%   <<"delete">> => metadata_configuration_delete(),
+%%   <<"indexArn">> => string(),
+%%   <<"indexName">> => string(),
+%%   <<"vectorBucketName">> => string()
+%% }
+-type update_metadata_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_metadata_configuration_output() :: #{
+%%   <<"indexArn">> => string()
+%% }
+-type update_metadata_configuration_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -694,6 +773,11 @@
 -type update_index_mode_errors() ::
     service_unavailable_exception() | 
     not_found_exception().
+
+-type update_metadata_configuration_errors() ::
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    conflict_exception().
 
 %%====================================================================
 %% API
@@ -1432,12 +1516,20 @@ put_vectors(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Performs an approximate nearest neighbor search query in a vector
-%% index using a query vector.
+%% @doc Returns matching vector keys from a vector index ranked by vector
+%% similarity, full-text relevance, or both.
 %%
-%% By default, it returns the keys of approximate nearest neighbors. You can
-%% optionally include the computed distance (between the query vector and
-%% each vector in the response) and metadata of each vector in the response.
+%% Specify `queryVector' to perform a vector search, specify
+%% `queryTexts' to perform a full-text search, or specify both to perform
+%% a hybrid search. Full-text search ranks results using BM25. Hybrid search
+%% combines the vector and full-text rankings using Reciprocal Rank Fusion
+%% (RRF).
+%%
+%% Amazon S3 Vectors ranks results by distance for a vector-only search, by
+%% BM25 score for a full-text-only search, and by RRF score for a hybrid
+%% search. You can optionally include computed distances, relevance scores,
+%% and vector metadata in the response. Full-text and hybrid searches require
+%% a vector index in `ENHANCED' mode.
 %%
 %% To specify the vector index, you can either use both the vector bucket
 %% name and the vector index name, or use the vector index Amazon Resource
@@ -1449,15 +1541,16 @@ put_vectors(Client, Input0, Options0) ->
 %%
 %% With only `s3vectors:QueryVectors' permission, you can retrieve vector
 %% keys of approximate nearest neighbors and computed distances between these
-%% vectors. This permission is sufficient only when you don't set any
-%% metadata filters and don't request metadata (by keeping the
-%% `returnMetadata' parameter set to `false' or not specified).
+%% vectors. This permission is sufficient only when you don't set
+%% `queryTexts', don't set any metadata filters, and don't
+%% request metadata (by keeping the `returnMetadata' parameter set to
+%% `false' or not specified).
 %%
-%% If you specify a metadata filter or set `returnMetadata' to true, you
-%% must have both `s3vectors:QueryVectors' and `s3vectors:GetVectors'
-%% permissions. The request fails with a `403 Forbidden error' if you
-%% request metadata filtering or metadata without the
-%% `s3vectors:GetVectors' permission.
+%% To use `queryTexts', a metadata filter, or `returnMetadata' set to
+%% `true' with this operation, you must have both the
+%% `s3vectors:QueryVectors' and `s3vectors:GetVectors' permissions.
+%% If you use any of these options without the `s3vectors:GetVectors'
+%% permission, Amazon S3 Vectors returns an `AccessDeniedException'.
 -spec query_vectors(aws_client:aws_client(), query_vectors_input()) ->
     {ok, query_vectors_output(), tuple()} |
     {error, any()} |
@@ -1607,6 +1700,46 @@ update_index_mode(Client, Input) ->
 update_index_mode(Client, Input0, Options0) ->
     Method = post,
     Path = ["/UpdateIndexMode"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Adds or deletes text search configurations on a vector index.
+%%
+%% Specify either `add' or `delete', but not both. The vector index
+%% must be in `ENHANCED' mode.
+%%
+%% Permissions You must have the `s3vectors:UpdateMetadataConfiguration'
+%% permission to use this operation.
+-spec update_metadata_configuration(aws_client:aws_client(), update_metadata_configuration_input()) ->
+    {ok, update_metadata_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_metadata_configuration_errors(), tuple()}.
+update_metadata_configuration(Client, Input) ->
+    update_metadata_configuration(Client, Input, []).
+
+-spec update_metadata_configuration(aws_client:aws_client(), update_metadata_configuration_input(), proplists:proplist()) ->
+    {ok, update_metadata_configuration_output(), tuple()} |
+    {error, any()} |
+    {error, update_metadata_configuration_errors(), tuple()}.
+update_metadata_configuration(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateMetadataConfiguration"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
