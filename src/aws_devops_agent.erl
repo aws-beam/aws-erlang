@@ -70,6 +70,9 @@
          get_backlog_task/3,
          get_backlog_task/5,
          get_backlog_task/6,
+         get_chat/3,
+         get_chat/5,
+         get_chat/6,
          get_operator_app/2,
          get_operator_app/4,
          get_operator_app/5,
@@ -146,6 +149,8 @@
          update_association/5,
          update_backlog_task/4,
          update_backlog_task/5,
+         update_chat/4,
+         update_chat/5,
          update_goal/4,
          update_goal/5,
          update_operator_app_idp_config/3,
@@ -349,6 +354,7 @@
 
 %% Example:
 %% chat_execution() :: #{
+%%   <<"archiveStatus">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"executionId">> => string(),
 %%   <<"summary">> => [string()],
@@ -359,7 +365,8 @@
 
 %% Example:
 %% conflict_exception() :: #{
-%%   <<"message">> => [string()]
+%%   <<"message">> => [string()],
+%%   <<"reason">> => list(any())
 %% }
 -type conflict_exception() :: #{binary() => any()}.
 
@@ -797,6 +804,21 @@
 -type get_backlog_task_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_chat_request() :: #{}
+-type get_chat_request() :: #{}.
+
+
+%% Example:
+%% get_chat_response() :: #{
+%%   <<"archiveStatus">> => list(any()),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"executionId">> => string(),
+%%   <<"summary">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_chat_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_operator_app_input() :: #{}
 -type get_operator_app_input() :: #{}.
 
@@ -1124,6 +1146,7 @@
 
 %% Example:
 %% list_chats_request() :: #{
+%%   <<"archiveStatus">> => list(any()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()],
 %%   <<"userId">> => string()
@@ -2302,6 +2325,25 @@
 
 
 %% Example:
+%% update_chat_request() :: #{
+%%   <<"archiveStatus">> => list(any()),
+%%   <<"clientToken">> => [string()],
+%%   <<"summary">> => [string()]
+%% }
+-type update_chat_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_chat_response() :: #{
+%%   <<"archiveStatus">> => list(any()),
+%%   <<"executionId">> => string(),
+%%   <<"summary">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_chat_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_goal_request() :: #{
 %%   <<"clientToken">> => [string()],
 %%   <<"evaluationSchedule">> => goal_schedule_input()
@@ -2607,6 +2649,13 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type get_chat_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_operator_app_errors() ::
     validation_exception() | 
     internal_server_exception().
@@ -2675,7 +2724,8 @@
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
-    internal_server_exception().
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type list_executions_errors() ::
     validation_exception() | 
@@ -2749,6 +2799,7 @@
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type tag_resource_errors() ::
@@ -2803,6 +2854,14 @@
     conflict_exception().
 
 -type update_backlog_task_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_chat_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -3761,6 +3820,44 @@ get_backlog_task(Client, AgentSpaceId, TaskId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the details of a chat execution, including its execution
+%% ID, summary, timestamps, and archive status.
+-spec get_chat(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_chat_response(), tuple()} |
+    {error, any()} |
+    {error, get_chat_errors(), tuple()}.
+get_chat(Client, AgentSpaceId, ExecutionId)
+  when is_map(Client) ->
+    get_chat(Client, AgentSpaceId, ExecutionId, #{}, #{}).
+
+-spec get_chat(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_chat_response(), tuple()} |
+    {error, any()} |
+    {error, get_chat_errors(), tuple()}.
+get_chat(Client, AgentSpaceId, ExecutionId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_chat(Client, AgentSpaceId, ExecutionId, QueryMap, HeadersMap, []).
+
+-spec get_chat(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_chat_response(), tuple()} |
+    {error, any()} |
+    {error, get_chat_errors(), tuple()}.
+get_chat(Client, AgentSpaceId, ExecutionId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/agents/agent-space/", aws_util:encode_uri(AgentSpaceId), "/chat/get/", aws_util:encode_uri(ExecutionId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Get the full auth configuration of operator including any enabled
 %% auth flow
 -spec get_operator_app(aws_client:aws_client(), binary() | list()) ->
@@ -4230,6 +4327,7 @@ list_chats(Client, AgentSpaceId, QueryMap, HeadersMap, Options0)
 
     Query0_ =
       [
+        {<<"archiveStatus">>, maps:get(<<"archiveStatus">>, QueryMap, undefined)},
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
         {<<"userId">>, maps:get(<<"userId">>, QueryMap, undefined)}
@@ -4926,6 +5024,46 @@ update_backlog_task(Client, AgentSpaceId, TaskId, Input) ->
 update_backlog_task(Client, AgentSpaceId, TaskId, Input0, Options0) ->
     Method = patch,
     Path = ["/backlog/agent-space/", aws_util:encode_uri(AgentSpaceId), "/tasks/", aws_util:encode_uri(TaskId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a chat execution.
+%%
+%% You can use this operation to change the chat execution's summary or
+%% to archive or unarchive it.
+%%
+%% Archiving a chat execution hides it from the default chat list.
+%% Unarchiving a chat execution restores it to the default chat list.
+-spec update_chat(aws_client:aws_client(), binary() | list(), binary() | list(), update_chat_request()) ->
+    {ok, update_chat_response(), tuple()} |
+    {error, any()} |
+    {error, update_chat_errors(), tuple()}.
+update_chat(Client, AgentSpaceId, ExecutionId, Input) ->
+    update_chat(Client, AgentSpaceId, ExecutionId, Input, []).
+
+-spec update_chat(aws_client:aws_client(), binary() | list(), binary() | list(), update_chat_request(), proplists:proplist()) ->
+    {ok, update_chat_response(), tuple()} |
+    {error, any()} |
+    {error, update_chat_errors(), tuple()}.
+update_chat(Client, AgentSpaceId, ExecutionId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/agents/agent-space/", aws_util:encode_uri(AgentSpaceId), "/chat/", aws_util:encode_uri(ExecutionId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

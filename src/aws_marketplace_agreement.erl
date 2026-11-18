@@ -11,7 +11,9 @@
 %% agreements.
 -module(aws_marketplace_agreement).
 
--export([accept_agreement_cancellation_request/2,
+-export([accept_agreement_approval/2,
+         accept_agreement_approval/3,
+         accept_agreement_cancellation_request/2,
          accept_agreement_cancellation_request/3,
          accept_agreement_payment_request/2,
          accept_agreement_payment_request/3,
@@ -25,20 +27,34 @@
          cancel_agreement_cancellation_request/3,
          cancel_agreement_payment_request/2,
          cancel_agreement_payment_request/3,
+         cancel_agreement_request/2,
+         cancel_agreement_request/3,
          create_agreement_request/2,
          create_agreement_request/3,
          describe_agreement/2,
          describe_agreement/3,
+         get_agreement_approval/2,
+         get_agreement_approval/3,
          get_agreement_cancellation_request/2,
          get_agreement_cancellation_request/3,
+         get_agreement_contacts/2,
+         get_agreement_contacts/3,
          get_agreement_entitlements/2,
          get_agreement_entitlements/3,
          get_agreement_payment_request/2,
          get_agreement_payment_request/3,
+         get_agreement_request/2,
+         get_agreement_request/3,
+         get_agreement_request_approval_plans/2,
+         get_agreement_request_approval_plans/3,
+         get_agreement_request_terms/2,
+         get_agreement_request_terms/3,
          get_agreement_terms/2,
          get_agreement_terms/3,
          get_billing_adjustment_request/2,
          get_billing_adjustment_request/3,
+         list_agreement_approvals/2,
+         list_agreement_approvals/3,
          list_agreement_cancellation_requests/2,
          list_agreement_cancellation_requests/3,
          list_agreement_charges/2,
@@ -47,8 +63,12 @@
          list_agreement_invoice_line_items/3,
          list_agreement_payment_requests/2,
          list_agreement_payment_requests/3,
+         list_agreement_requests/2,
+         list_agreement_requests/3,
          list_billing_adjustment_requests/2,
          list_billing_adjustment_requests/3,
+         reject_agreement_approval/2,
+         reject_agreement_approval/3,
          reject_agreement_cancellation_request/2,
          reject_agreement_cancellation_request/3,
          reject_agreement_payment_request/2,
@@ -59,6 +79,8 @@
          send_agreement_cancellation_request/3,
          send_agreement_payment_request/2,
          send_agreement_payment_request/3,
+         start_agreement_approvals/2,
+         start_agreement_approvals/3,
          update_purchase_orders/2,
          update_purchase_orders/3]).
 
@@ -67,6 +89,18 @@
 %% hackney:body/1 is only called with hackney versions that still export it.
 -ignore_xref([{hackney, body, 1}]).
 
+
+%% Example:
+%% accept_agreement_approval_input() :: #{
+%%   <<"buyerAgreementApprovalApproverInput">> => buyer_agreement_approval_approver_input()
+%% }
+-type accept_agreement_approval_input() :: #{binary() => any()}.
+
+%% Example:
+%% accept_agreement_approval_output() :: #{
+
+%% }
+-type accept_agreement_approval_output() :: #{binary() => any()}.
 
 %% Example:
 %% accept_agreement_cancellation_request_input() :: #{
@@ -129,12 +163,75 @@
 -type acceptor() :: #{binary() => any()}.
 
 %% Example:
+%% acceptor_contact() :: #{
+%%   <<"companyName">> => string(),
+%%   <<"countryCode">> => string(),
+%%   <<"emailAddress">> => string(),
+%%   <<"firstName">> => string(),
+%%   <<"lastName">> => string()
+%% }
+-type acceptor_contact() :: #{binary() => any()}.
+
+%% Example:
 %% access_denied_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"reason">> => list(any()),
 %%   <<"requestId">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% agreement_approval_proposal_summary() :: #{
+%%   <<"offerId">> => string(),
+%%   <<"offerSetId">> => string(),
+%%   <<"resources">> => list(agreement_approval_resource()),
+%%   <<"visibilityScope">> => list(any())
+%% }
+-type agreement_approval_proposal_summary() :: #{binary() => any()}.
+
+%% Example:
+%% agreement_approval_proposer() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"legalName">> => string()
+%% }
+-type agreement_approval_proposer() :: #{binary() => any()}.
+
+%% Example:
+%% agreement_approval_purchase_order() :: #{
+%%   <<"chargeId">> => string(),
+%%   <<"purchaseOrderReference">> => string()
+%% }
+-type agreement_approval_purchase_order() :: #{binary() => any()}.
+
+%% Example:
+%% agreement_approval_requester() :: #{
+%%   <<"accountId">> => string()
+%% }
+-type agreement_approval_requester() :: #{binary() => any()}.
+
+%% Example:
+%% agreement_approval_resource() :: #{
+%%   <<"deployedOnAws">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"type">> => string()
+%% }
+-type agreement_approval_resource() :: #{binary() => any()}.
+
+%% Example:
+%% agreement_approval_summary() :: #{
+%%   <<"agreementApprovalId">> => string(),
+%%   <<"agreementRequestId">> => string(),
+%%   <<"approvalNeededBy">> => non_neg_integer(),
+%%   <<"approvalType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"name">> => string(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type agreement_approval_summary() :: #{binary() => any()}.
 
 %% Example:
 %% agreement_cancellation_request_summary() :: #{
@@ -173,6 +270,16 @@
 -type agreement_invoice_line_item_group_summary() :: #{binary() => any()}.
 
 %% Example:
+%% agreement_request_summary() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"agreementRequestId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"proposalSummary">> => proposal_summary(),
+%%   <<"status">> => list(any())
+%% }
+-type agreement_request_summary() :: #{binary() => any()}.
+
+%% Example:
 %% agreement_view_summary() :: #{
 %%   <<"acceptanceTime">> => non_neg_integer(),
 %%   <<"acceptor">> => acceptor(),
@@ -183,6 +290,7 @@
 %%   <<"endTimeBehaviorType">> => list(any()),
 %%   <<"entitlements">> => list(entitlement()),
 %%   <<"freeTrialEndTime">> => non_neg_integer(),
+%%   <<"includesContactOfType">> => list(list(any())()),
 %%   <<"initialAgreementId">> => string(),
 %%   <<"lastUpdateTime">> => non_neg_integer(),
 %%   <<"proposalSummary">> => proposal_summary(),
@@ -191,6 +299,22 @@
 %%   <<"status">> => list(any())
 %% }
 -type agreement_view_summary() :: #{binary() => any()}.
+
+%% Example:
+%% aws_organization_admin_approver() :: #{
+%%   <<"organizationId">> => string()
+%% }
+-type aws_organization_admin_approver() :: #{binary() => any()}.
+
+%% Example:
+%% aws_organization_approver_outcome() :: #{
+%%   <<"approverOutcomeId">> => string(),
+%%   <<"note">> => string(),
+%%   <<"purchaseOrders">> => list(agreement_approval_purchase_order()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type aws_organization_approver_outcome() :: #{binary() => any()}.
 
 %% Example:
 %% batch_create_billing_adjustment_error() :: #{
@@ -248,11 +372,103 @@
 -type billing_adjustment_summary() :: #{binary() => any()}.
 
 %% Example:
+%% buyer_agreement_approval() :: #{
+%%   <<"agreementApprovalId">> => string(),
+%%   <<"agreementRequestId">> => string(),
+%%   <<"approvalNeededBy">> => non_neg_integer(),
+%%   <<"approvalType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"levels">> => list(buyer_agreement_approval_level()),
+%%   <<"name">> => string(),
+%%   <<"planInput">> => buyer_agreement_approval_plan_input(),
+%%   <<"proposalSummary">> => agreement_approval_proposal_summary(),
+%%   <<"proposer">> => agreement_approval_proposer(),
+%%   <<"requester">> => agreement_approval_requester(),
+%%   <<"startedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type buyer_agreement_approval() :: #{binary() => any()}.
+
+%% Example:
+%% buyer_agreement_approval_approver_input() :: #{
+%%   <<"agreementApprovalId">> => string(),
+%%   <<"approverOutcomeIdToOverride">> => string(),
+%%   <<"note">> => string(),
+%%   <<"purchaseOrders">> => list(agreement_approval_purchase_order())
+%% }
+-type buyer_agreement_approval_approver_input() :: #{binary() => any()}.
+
+%% Example:
+%% buyer_agreement_approval_criteria() :: #{
+%%   <<"requiredApprovalCount">> => [integer()]
+%% }
+-type buyer_agreement_approval_criteria() :: #{binary() => any()}.
+
+%% Example:
+%% buyer_agreement_approval_group() :: #{
+%%   <<"approvalCriteria">> => buyer_agreement_approval_criteria(),
+%%   <<"approvers">> => list(list())
+%% }
+-type buyer_agreement_approval_group() :: #{binary() => any()}.
+
+%% Example:
+%% buyer_agreement_approval_level() :: #{
+%%   <<"groups">> => list(buyer_agreement_approval_group()),
+%%   <<"name">> => string()
+%% }
+-type buyer_agreement_approval_level() :: #{binary() => any()}.
+
+%% Example:
+%% buyer_agreement_approval_plan() :: #{
+%%   <<"levels">> => list(buyer_agreement_approval_plan_level()),
+%%   <<"name">> => string(),
+%%   <<"planReference">> => string()
+%% }
+-type buyer_agreement_approval_plan() :: #{binary() => any()}.
+
+%% Example:
+%% buyer_agreement_approval_plan_group() :: #{
+%%   <<"approvalCriteria">> => buyer_agreement_approval_criteria(),
+%%   <<"approvers">> => list(list())
+%% }
+-type buyer_agreement_approval_plan_group() :: #{binary() => any()}.
+
+%% Example:
+%% buyer_agreement_approval_plan_input() :: #{
+%%   <<"planReference">> => string(),
+%%   <<"requesterNote">> => string()
+%% }
+-type buyer_agreement_approval_plan_input() :: #{binary() => any()}.
+
+%% Example:
+%% buyer_agreement_approval_plan_level() :: #{
+%%   <<"groups">> => list(buyer_agreement_approval_plan_group()),
+%%   <<"name">> => string()
+%% }
+-type buyer_agreement_approval_plan_level() :: #{binary() => any()}.
+
+%% Example:
+%% buyer_agreement_approval_rejection_input() :: #{
+%%   <<"agreementApprovalId">> => string(),
+%%   <<"approverOutcomeIdToOverride">> => string(),
+%%   <<"note">> => string()
+%% }
+-type buyer_agreement_approval_rejection_input() :: #{binary() => any()}.
+
+%% Example:
 %% byol_pricing_term() :: #{
 %%   <<"id">> => string(),
 %%   <<"type">> => string()
 %% }
 -type byol_pricing_term() :: #{binary() => any()}.
+
+%% Example:
+%% caller_identity() :: #{
+%%   <<"principalArn">> => string()
+%% }
+-type caller_identity() :: #{binary() => any()}.
 
 %% Example:
 %% cancel_agreement_cancellation_request_input() :: #{
@@ -307,6 +523,18 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type cancel_agreement_payment_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_agreement_request_input() :: #{
+%%   <<"agreementRequestId">> := string()
+%% }
+-type cancel_agreement_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_agreement_request_output() :: #{
+
+%% }
+-type cancel_agreement_request_output() :: #{binary() => any()}.
 
 %% Example:
 %% charge() :: #{
@@ -376,6 +604,7 @@
 
 %% Example:
 %% create_agreement_request_input() :: #{
+%%   <<"acceptorContact">> => acceptor_contact(),
 %%   <<"agreementProposalIdentifier">> => string(),
 %%   <<"clientToken">> => string(),
 %%   <<"intent">> := list(any()),
@@ -388,7 +617,11 @@
 %% Example:
 %% create_agreement_request_output() :: #{
 %%   <<"agreementRequestId">> => string(),
-%%   <<"chargeSummary">> => charge_summary()
+%%   <<"agreementType">> => string(),
+%%   <<"approvalRequirement">> => list(any()),
+%%   <<"chargeSummary">> => charge_summary(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"status">> => list(any())
 %% }
 -type create_agreement_request_output() :: #{binary() => any()}.
 
@@ -432,6 +665,26 @@
 -type document_item() :: #{binary() => any()}.
 
 %% Example:
+%% email_approver() :: #{
+%%   <<"emailAddress">> => string(),
+%%   <<"name">> => string()
+%% }
+-type email_approver() :: #{binary() => any()}.
+
+%% Example:
+%% email_approver_outcome() :: #{
+%%   <<"approverOutcomeId">> => string(),
+%%   <<"emailAddress">> => string(),
+%%   <<"name">> => string(),
+%%   <<"note">> => string(),
+%%   <<"overriddenBy">> => caller_identity(),
+%%   <<"purchaseOrders">> => list(agreement_approval_purchase_order()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type email_approver_outcome() :: #{binary() => any()}.
+
+%% Example:
 %% end_time_behavior() :: #{
 %%   <<"reasonCode">> => list(any()),
 %%   <<"renewalSummary">> => renewal_summary(),
@@ -465,6 +718,7 @@
 %%   <<"amountAfterTax">> => string(),
 %%   <<"estimatedTaxes">> => estimated_taxes(),
 %%   <<"id">> => string(),
+%%   <<"purchaseOrderReference">> => string(),
 %%   <<"time">> => non_neg_integer(),
 %%   <<"timing">> => list(any())
 %% }
@@ -510,6 +764,18 @@
 -type free_trial_summary() :: #{binary() => any()}.
 
 %% Example:
+%% get_agreement_approval_input() :: #{
+%%   <<"agreementApprovalId">> := string()
+%% }
+-type get_agreement_approval_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_agreement_approval_output() :: #{
+%%   <<"buyerAgreementApproval">> => buyer_agreement_approval()
+%% }
+-type get_agreement_approval_output() :: #{binary() => any()}.
+
+%% Example:
 %% get_agreement_cancellation_request_input() :: #{
 %%   <<"agreementCancellationRequestId">> := string(),
 %%   <<"agreementId">> := string()
@@ -528,6 +794,18 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type get_agreement_cancellation_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_agreement_contacts_input() :: #{
+%%   <<"agreementId">> := string()
+%% }
+-type get_agreement_contacts_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_agreement_contacts_output() :: #{
+%%   <<"acceptorContact">> => acceptor_contact()
+%% }
+-type get_agreement_contacts_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_agreement_entitlements_input() :: #{
@@ -566,6 +844,57 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type get_agreement_payment_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_agreement_request_approval_plans_input() :: #{
+%%   <<"agreementRequestId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_agreement_request_approval_plans_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_agreement_request_approval_plans_output() :: #{
+%%   <<"items">> => list(list()),
+%%   <<"nextToken">> => string()
+%% }
+-type get_agreement_request_approval_plans_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_agreement_request_input() :: #{
+%%   <<"agreementRequestId">> := string()
+%% }
+-type get_agreement_request_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_agreement_request_output() :: #{
+%%   <<"agreementId">> => string(),
+%%   <<"agreementRequestId">> => string(),
+%%   <<"agreementType">> => string(),
+%%   <<"approvalRequirement">> => list(any()),
+%%   <<"chargeSummary">> => charge_summary(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"intent">> => list(any()),
+%%   <<"proposalSummary">> => proposal_summary(),
+%%   <<"proposer">> => proposer(),
+%%   <<"status">> => list(any())
+%% }
+-type get_agreement_request_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_agreement_request_terms_input() :: #{
+%%   <<"agreementRequestId">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type get_agreement_request_terms_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_agreement_request_terms_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"terms">> => list(list())
+%% }
+-type get_agreement_request_terms_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_agreement_terms_input() :: #{
@@ -652,6 +981,25 @@
 -type legal_term() :: #{binary() => any()}.
 
 %% Example:
+%% list_agreement_approvals_input() :: #{
+%%   <<"agreementRequestId">> => string(),
+%%   <<"approvalType">> => list(any()),
+%%   <<"catalog">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"partyType">> := list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type list_agreement_approvals_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_agreement_approvals_output() :: #{
+%%   <<"items">> => list(agreement_approval_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agreement_approvals_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_agreement_cancellation_requests_input() :: #{
 %%   <<"agreementId">> => string(),
 %%   <<"agreementType">> => string(),
@@ -726,6 +1074,23 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_agreement_payment_requests_output() :: #{binary() => any()}.
+
+%% Example:
+%% list_agreement_requests_input() :: #{
+%%   <<"catalog">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_agreement_requests_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_agreement_requests_output() :: #{
+%%   <<"items">> => list(agreement_request_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agreement_requests_output() :: #{binary() => any()}.
 
 %% Example:
 %% list_billing_adjustment_requests_input() :: #{
@@ -809,6 +1174,24 @@
 -type pricing_currency_amount() :: #{binary() => any()}.
 
 %% Example:
+%% procurement_tool_approver() :: #{
+%%   <<"name">> => string()
+%% }
+-type procurement_tool_approver() :: #{binary() => any()}.
+
+%% Example:
+%% procurement_tool_approver_outcome() :: #{
+%%   <<"approverOutcomeId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"note">> => string(),
+%%   <<"overriddenBy">> => caller_identity(),
+%%   <<"purchaseOrders">> => list(agreement_approval_purchase_order()),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type procurement_tool_approver_outcome() :: #{binary() => any()}.
+
+%% Example:
 %% proposal_summary() :: #{
 %%   <<"offerId">> => string(),
 %%   <<"offerSetId">> => string(),
@@ -847,6 +1230,18 @@
 %%   <<"type">> => string()
 %% }
 -type recurring_payment_term() :: #{binary() => any()}.
+
+%% Example:
+%% reject_agreement_approval_input() :: #{
+%%   <<"buyerAgreementApprovalRejectionInput">> => buyer_agreement_approval_rejection_input()
+%% }
+-type reject_agreement_approval_input() :: #{binary() => any()}.
+
+%% Example:
+%% reject_agreement_approval_output() :: #{
+
+%% }
+-type reject_agreement_approval_output() :: #{binary() => any()}.
 
 %% Example:
 %% reject_agreement_cancellation_request_input() :: #{
@@ -1035,6 +1430,20 @@
 -type sort() :: #{binary() => any()}.
 
 %% Example:
+%% start_agreement_approvals_input() :: #{
+%%   <<"agreementRequestId">> := string(),
+%%   <<"planInputs">> := list(list()),
+%%   <<"purchaseOrders">> => list(agreement_approval_purchase_order())
+%% }
+-type start_agreement_approvals_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_agreement_approvals_output() :: #{
+%%   <<"approvalSummaries">> => list(agreement_approval_summary())
+%% }
+-type start_agreement_approvals_output() :: #{binary() => any()}.
+
+%% Example:
 %% support_term() :: #{
 %%   <<"id">> => string(),
 %%   <<"refundPolicy">> => string(),
@@ -1133,6 +1542,14 @@
 %% }
 -type variable_payment_term_configuration() :: #{binary() => any()}.
 
+-type accept_agreement_approval_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type accept_agreement_cancellation_request_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1152,6 +1569,7 @@
 -type accept_agreement_request_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -1188,6 +1606,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type cancel_agreement_request_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_agreement_request_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1204,7 +1630,21 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_agreement_approval_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_agreement_cancellation_request_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agreement_contacts_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -1225,6 +1665,27 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_agreement_request_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agreement_request_approval_plans_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_agreement_request_terms_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_agreement_terms_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1236,6 +1697,12 @@
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_agreement_approvals_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -1264,10 +1731,24 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_agreement_requests_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_billing_adjustment_requests_errors() ::
     validation_exception() | 
     throttling_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type reject_agreement_approval_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type reject_agreement_cancellation_request_errors() ::
@@ -1308,6 +1789,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type start_agreement_approvals_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_purchase_orders_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1319,6 +1808,30 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Allows the management account or a delegated administrator of the
+%% buyer's AWS organization to approve an agreement approval that is in
+%% `PENDING_APPROVAL' status, as the organization administrator approver
+%% or on behalf of another approver.
+%%
+%% Once every level is approved, the agreement approval transitions to
+%% `APPROVED' status. You can optionally provide purchase order
+%% references and a note.
+-spec accept_agreement_approval(aws_client:aws_client(), accept_agreement_approval_input()) ->
+    {ok, accept_agreement_approval_output(), tuple()} |
+    {error, any()} |
+    {error, accept_agreement_approval_errors(), tuple()}.
+accept_agreement_approval(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    accept_agreement_approval(Client, Input, []).
+
+-spec accept_agreement_approval(aws_client:aws_client(), accept_agreement_approval_input(), proplists:proplist()) ->
+    {ok, accept_agreement_approval_output(), tuple()} |
+    {error, any()} |
+    {error, accept_agreement_approval_errors(), tuple()}.
+accept_agreement_approval(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcceptAgreementApproval">>, Input, Options).
 
 %% @doc Allows buyers (acceptors) to accept a cancellation request that is in
 %% `PENDING_APPROVAL' status.
@@ -1485,6 +1998,28 @@ cancel_agreement_payment_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelAgreementPaymentRequest">>, Input, Options).
 
+%% @doc Allows buyers (acceptors) to cancel an agreement request that is in
+%% `PENDING_APPROVAL' status, or in `APPROVED' status when no
+%% agreement has been created from it.
+%%
+%% Once cancelled, the agreement request transitions to `CANCELLED'
+%% status and its open agreement approvals are cancelled.
+-spec cancel_agreement_request(aws_client:aws_client(), cancel_agreement_request_input()) ->
+    {ok, cancel_agreement_request_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_agreement_request_errors(), tuple()}.
+cancel_agreement_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_agreement_request(Client, Input, []).
+
+-spec cancel_agreement_request(aws_client:aws_client(), cancel_agreement_request_input(), proplists:proplist()) ->
+    {ok, cancel_agreement_request_output(), tuple()} |
+    {error, any()} |
+    {error, cancel_agreement_request_errors(), tuple()}.
+cancel_agreement_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelAgreementRequest">>, Input, Options).
+
 %% @doc Creates an agreement request that acts as a quote for the terms you
 %% want to accept.
 %%
@@ -1525,6 +2060,28 @@ describe_agreement(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAgreement">>, Input, Options).
 
+%% @doc Retrieves detailed information about a specific agreement approval,
+%% including its approval levels, the approvers at each level, and the
+%% decision of each approver.
+%%
+%% The acceptor, or the management account or a delegated administrator of
+%% the acceptor's AWS organization, can call this operation.
+-spec get_agreement_approval(aws_client:aws_client(), get_agreement_approval_input()) ->
+    {ok, get_agreement_approval_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_approval_errors(), tuple()}.
+get_agreement_approval(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_agreement_approval(Client, Input, []).
+
+-spec get_agreement_approval(aws_client:aws_client(), get_agreement_approval_input(), proplists:proplist()) ->
+    {ok, get_agreement_approval_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_approval_errors(), tuple()}.
+get_agreement_approval(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAgreementApproval">>, Input, Options).
+
 %% @doc Retrieves detailed information about a specific agreement
 %% cancellation request.
 %%
@@ -1545,6 +2102,30 @@ get_agreement_cancellation_request(Client, Input)
 get_agreement_cancellation_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAgreementCancellationRequest">>, Input, Options).
+
+%% @doc Obtains details about the acceptor's contact information for an
+%% active agreement that you participate in as the proposer, acceptor, or
+%% manufacturer.
+%%
+%% If the acceptor's contact information isn't available, the
+%% operation succeeds but doesn't return `acceptorContact'. This
+%% happens when the acceptor didn't provide it, the information was
+%% removed, or the agreement isn't active.
+-spec get_agreement_contacts(aws_client:aws_client(), get_agreement_contacts_input()) ->
+    {ok, get_agreement_contacts_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_contacts_errors(), tuple()}.
+get_agreement_contacts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_agreement_contacts(Client, Input, []).
+
+-spec get_agreement_contacts(aws_client:aws_client(), get_agreement_contacts_input(), proplists:proplist()) ->
+    {ok, get_agreement_contacts_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_contacts_errors(), tuple()}.
+get_agreement_contacts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAgreementContacts">>, Input, Options).
 
 %% @doc Obtains details about the entitlements of an agreement.
 -spec get_agreement_entitlements(aws_client:aws_client(), get_agreement_entitlements_input()) ->
@@ -1588,6 +2169,72 @@ get_agreement_payment_request(Client, Input)
 get_agreement_payment_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAgreementPaymentRequest">>, Input, Options).
+
+%% @doc Retrieves detailed information about a specific agreement request,
+%% including its status, intent, approval requirement, and charges.
+%%
+%% The acceptor, or the management account or a delegated administrator of
+%% the acceptor's AWS organization, can call this operation.
+-spec get_agreement_request(aws_client:aws_client(), get_agreement_request_input()) ->
+    {ok, get_agreement_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_request_errors(), tuple()}.
+get_agreement_request(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_agreement_request(Client, Input, []).
+
+-spec get_agreement_request(aws_client:aws_client(), get_agreement_request_input(), proplists:proplist()) ->
+    {ok, get_agreement_request_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_request_errors(), tuple()}.
+get_agreement_request(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAgreementRequest">>, Input, Options).
+
+%% @doc Retrieves the approval plans that apply to an agreement request.
+%%
+%% Only the acceptor of the agreement request can call this operation. Each
+%% approval plan lists its approval levels and the approvers at each level.
+%% Pass the `planReference' of an approval plan to
+%% `StartAgreementApprovals' to start an agreement approval for it.
+-spec get_agreement_request_approval_plans(aws_client:aws_client(), get_agreement_request_approval_plans_input()) ->
+    {ok, get_agreement_request_approval_plans_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_request_approval_plans_errors(), tuple()}.
+get_agreement_request_approval_plans(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_agreement_request_approval_plans(Client, Input, []).
+
+-spec get_agreement_request_approval_plans(aws_client:aws_client(), get_agreement_request_approval_plans_input(), proplists:proplist()) ->
+    {ok, get_agreement_request_approval_plans_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_request_approval_plans_errors(), tuple()}.
+get_agreement_request_approval_plans(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAgreementRequestApprovalPlans">>, Input, Options).
+
+%% @doc Retrieves the terms proposed for an agreement request, such as
+%% pricing, legal, and renewal terms.
+%%
+%% The acceptor, or the management account or a delegated administrator of
+%% the acceptor's AWS organization, can call this operation. This
+%% operation is similar to `GetAgreementTerms', but it takes an
+%% `agreementRequestId' instead of an `agreementId'.
+-spec get_agreement_request_terms(aws_client:aws_client(), get_agreement_request_terms_input()) ->
+    {ok, get_agreement_request_terms_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_request_terms_errors(), tuple()}.
+get_agreement_request_terms(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_agreement_request_terms(Client, Input, []).
+
+-spec get_agreement_request_terms(aws_client:aws_client(), get_agreement_request_terms_input(), proplists:proplist()) ->
+    {ok, get_agreement_request_terms_output(), tuple()} |
+    {error, any()} |
+    {error, get_agreement_request_terms_errors(), tuple()}.
+get_agreement_request_terms(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetAgreementRequestTerms">>, Input, Options).
 
 %% @doc Obtains details about the terms in an agreement that you participated
 %% in as proposer or acceptor.
@@ -1644,6 +2291,29 @@ get_billing_adjustment_request(Client, Input)
 get_billing_adjustment_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetBillingAdjustmentRequest">>, Input, Options).
+
+%% @doc Lists agreement approvals available to you as a buyer.
+%%
+%% Use `REQUESTER' as the `partyType' to list the agreement approvals
+%% that your account started. Use `AWS_ORGANIZATION_ADMIN' to list the
+%% agreement approvals in your AWS organization, if your account is the
+%% management account or a delegated administrator of the organization. You
+%% can filter the results by agreement request, approval type, and status.
+-spec list_agreement_approvals(aws_client:aws_client(), list_agreement_approvals_input()) ->
+    {ok, list_agreement_approvals_output(), tuple()} |
+    {error, any()} |
+    {error, list_agreement_approvals_errors(), tuple()}.
+list_agreement_approvals(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_agreement_approvals(Client, Input, []).
+
+-spec list_agreement_approvals(aws_client:aws_client(), list_agreement_approvals_input(), proplists:proplist()) ->
+    {ok, list_agreement_approvals_output(), tuple()} |
+    {error, any()} |
+    {error, list_agreement_approvals_errors(), tuple()}.
+list_agreement_approvals(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAgreementApprovals">>, Input, Options).
 
 %% @doc Lists agreement cancellation requests available to you as a seller or
 %% buyer.
@@ -1741,6 +2411,26 @@ list_agreement_payment_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAgreementPaymentRequests">>, Input, Options).
 
+%% @doc Lists agreement requests available to you as a buyer (acceptor).
+%%
+%% You can filter the results by `catalog', `status', and
+%% `resourceId'.
+-spec list_agreement_requests(aws_client:aws_client(), list_agreement_requests_input()) ->
+    {ok, list_agreement_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_agreement_requests_errors(), tuple()}.
+list_agreement_requests(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_agreement_requests(Client, Input, []).
+
+-spec list_agreement_requests(aws_client:aws_client(), list_agreement_requests_input(), proplists:proplist()) ->
+    {ok, list_agreement_requests_output(), tuple()} |
+    {error, any()} |
+    {error, list_agreement_requests_errors(), tuple()}.
+list_agreement_requests(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAgreementRequests">>, Input, Options).
+
 %% @doc Lists billing adjustment requests for a specific agreement.
 %%
 %% Sellers (proposers) can use this operation to view all billing adjustment
@@ -1760,6 +2450,29 @@ list_billing_adjustment_requests(Client, Input)
 list_billing_adjustment_requests(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListBillingAdjustmentRequests">>, Input, Options).
+
+%% @doc Allows the management account or a delegated administrator of the
+%% buyer's AWS organization to reject an agreement approval that is in
+%% `PENDING_APPROVAL' status, as the organization administrator approver
+%% or on behalf of another approver.
+%%
+%% Once rejected, the agreement approval and its agreement request transition
+%% to `REJECTED' status. You must provide a reason for the rejection.
+-spec reject_agreement_approval(aws_client:aws_client(), reject_agreement_approval_input()) ->
+    {ok, reject_agreement_approval_output(), tuple()} |
+    {error, any()} |
+    {error, reject_agreement_approval_errors(), tuple()}.
+reject_agreement_approval(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    reject_agreement_approval(Client, Input, []).
+
+-spec reject_agreement_approval(aws_client:aws_client(), reject_agreement_approval_input(), proplists:proplist()) ->
+    {ok, reject_agreement_approval_output(), tuple()} |
+    {error, any()} |
+    {error, reject_agreement_approval_errors(), tuple()}.
+reject_agreement_approval(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RejectAgreementApproval">>, Input, Options).
 
 %% @doc Allows buyers (acceptors) to reject a cancellation request that is in
 %% `PENDING_APPROVAL' status.
@@ -1880,6 +2593,29 @@ send_agreement_payment_request(Client, Input)
 send_agreement_payment_request(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SendAgreementPaymentRequest">>, Input, Options).
+
+%% @doc Allows buyers (acceptors) to start the approvals that their
+%% organization requires for an agreement request.
+%%
+%% You start one agreement approval for each approval plan that you specify.
+%% Use `GetAgreementRequestApprovalPlans' to retrieve the approval plans
+%% of the agreement request. Once the agreement approvals start, the
+%% agreement request transitions to `PENDING_APPROVAL' status.
+-spec start_agreement_approvals(aws_client:aws_client(), start_agreement_approvals_input()) ->
+    {ok, start_agreement_approvals_output(), tuple()} |
+    {error, any()} |
+    {error, start_agreement_approvals_errors(), tuple()}.
+start_agreement_approvals(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_agreement_approvals(Client, Input, []).
+
+-spec start_agreement_approvals(aws_client:aws_client(), start_agreement_approvals_input(), proplists:proplist()) ->
+    {ok, start_agreement_approvals_output(), tuple()} |
+    {error, any()} |
+    {error, start_agreement_approvals_errors(), tuple()}.
+start_agreement_approvals(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartAgreementApprovals">>, Input, Options).
 
 %% @doc Allows acceptors to associate purchase orders with agreement charges
 %% after an agreement is created.

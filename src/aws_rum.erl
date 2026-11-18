@@ -482,6 +482,7 @@
 %%   <<"AppMonitorDetails">> := app_monitor_details(),
 %%   <<"BatchId">> := [string()],
 %%   <<"RumEvents">> := list(rum_event()),
+%%   <<"SessionMetadata">> => string(),
 %%   <<"UserDetails">> := user_details()
 %% }
 -type put_rum_events_request() :: #{binary() => any()}.

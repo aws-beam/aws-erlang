@@ -687,6 +687,7 @@
 %%   <<"DnsSupport">> => boolean(),
 %%   <<"EdgeLocations">> => list(string()),
 %%   <<"InsideCidrBlocks">> => list(string()),
+%%   <<"MultipathResilience">> => multipath_resilience_change_values(),
 %%   <<"NetworkFunctionGroupName">> => string(),
 %%   <<"PeerEdgeLocations">> => list(string()),
 %%   <<"RoutingPolicy">> => string(),
@@ -2166,6 +2167,14 @@
 %%   <<"Longitude">> => string()
 %% }
 -type location() :: #{binary() => any()}.
+
+
+%% Example:
+%% multipath_resilience_change_values() :: #{
+%%   <<"EdgeSets">> => list(list(string())()),
+%%   <<"Mode">> => list(any())
+%% }
+-type multipath_resilience_change_values() :: #{binary() => any()}.
 
 
 %% Example:

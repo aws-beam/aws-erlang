@@ -558,7 +558,8 @@
 
 %% Example:
 %% enabled_baseline_drift_types() :: #{
-%%   <<"inheritance">> => enabled_baseline_inheritance_drift()
+%%   <<"inheritance">> => enabled_baseline_inheritance_drift(),
+%%   <<"source">> => enabled_baseline_source_drift()
 %% }
 -type enabled_baseline_drift_types() :: #{binary() => any()}.
 
@@ -568,6 +569,7 @@
 %%   <<"baselineIdentifiers">> => list(string()),
 %%   <<"inheritanceDriftStatuses">> => list(list(any())()),
 %%   <<"parentIdentifiers">> => list(string()),
+%%   <<"sourceDriftStatuses">> => list(list(any())()),
 %%   <<"statuses">> => list(list(any())()),
 %%   <<"targetIdentifiers">> => list(string())
 %% }
@@ -595,6 +597,13 @@
 %%   <<"value">> => any()
 %% }
 -type enabled_baseline_parameter_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% enabled_baseline_source_drift() :: #{
+%%   <<"status">> => list(any())
+%% }
+-type enabled_baseline_source_drift() :: #{binary() => any()}.
 
 
 %% Example:

@@ -23,6 +23,8 @@
 
 -export([create_centralization_rule_for_organization/2,
          create_centralization_rule_for_organization/3,
+         create_connector/2,
+         create_connector/3,
          create_dataset_integration/2,
          create_dataset_integration/3,
          create_s3_table_integration/2,
@@ -35,6 +37,8 @@
          create_telemetry_rule_for_organization/3,
          delete_centralization_rule_for_organization/2,
          delete_centralization_rule_for_organization/3,
+         delete_connector/2,
+         delete_connector/3,
          delete_dataset_integration/2,
          delete_dataset_integration/3,
          delete_s3_table_integration/2,
@@ -47,6 +51,12 @@
          delete_telemetry_rule_for_organization/3,
          get_centralization_rule_for_organization/2,
          get_centralization_rule_for_organization/3,
+         get_connector/2,
+         get_connector/3,
+         get_connector_telemetry_manifest/2,
+         get_connector_telemetry_manifest/3,
+         get_connector_telemetry_setup/2,
+         get_connector_telemetry_setup/3,
          get_dataset_integration/2,
          get_dataset_integration/3,
          get_s3_table_integration/2,
@@ -63,14 +73,20 @@
          get_telemetry_rule/3,
          get_telemetry_rule_for_organization/2,
          get_telemetry_rule_for_organization/3,
+         get_third_party_telemetry_enrichment/2,
+         get_third_party_telemetry_enrichment/3,
          list_centralization_rules_for_organization/2,
          list_centralization_rules_for_organization/3,
+         list_connectors/2,
+         list_connectors/3,
          list_dataset_integrations/2,
          list_dataset_integrations/3,
          list_resource_telemetry/2,
          list_resource_telemetry/3,
          list_resource_telemetry_for_organization/2,
          list_resource_telemetry_for_organization/3,
+         list_resources_by_connector/2,
+         list_resources_by_connector/3,
          list_s3_table_integrations/2,
          list_s3_table_integrations/3,
          list_tags_for_resource/2,
@@ -81,18 +97,28 @@
          list_telemetry_rules/3,
          list_telemetry_rules_for_organization/2,
          list_telemetry_rules_for_organization/3,
+         list_third_party_telemetry_enrichments/2,
+         list_third_party_telemetry_enrichments/3,
+         put_connector_telemetry_manifest/2,
+         put_connector_telemetry_manifest/3,
          start_telemetry_enrichment/2,
          start_telemetry_enrichment/3,
          start_telemetry_evaluation/2,
          start_telemetry_evaluation/3,
          start_telemetry_evaluation_for_organization/2,
          start_telemetry_evaluation_for_organization/3,
+         start_telemetry_pipeline_refresh/2,
+         start_telemetry_pipeline_refresh/3,
+         start_third_party_telemetry_enrichment/2,
+         start_third_party_telemetry_enrichment/3,
          stop_telemetry_enrichment/2,
          stop_telemetry_enrichment/3,
          stop_telemetry_evaluation/2,
          stop_telemetry_evaluation/3,
          stop_telemetry_evaluation_for_organization/2,
          stop_telemetry_evaluation_for_organization/3,
+         stop_third_party_telemetry_enrichment/2,
+         stop_third_party_telemetry_enrichment/3,
          tag_resource/2,
          tag_resource/3,
          test_telemetry_pipeline/2,
@@ -154,6 +180,196 @@
 %% }
 -type advanced_field_selector() :: #{binary() => any()}.
 
+%% Example:
+%% all_subscriptions() :: #{}
+-type all_subscriptions() :: #{}.
+
+
+%% Example:
+%% azure_aws_managed_flow_logs() :: #{
+%%   <<"RetentionDays">> => integer()
+%% }
+-type azure_aws_managed_flow_logs() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_connector_configuration() :: #{
+%%   <<"ClientIdentifier">> => string(),
+%%   <<"TenantIdentifier">> => string()
+%% }
+-type azure_connector_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_customer_managed_flow_logs() :: #{
+%%   <<"StorageAccounts">> => list(azure_flow_log_storage_account_scope())
+%% }
+-type azure_customer_managed_flow_logs() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_event_hub_configuration() :: #{
+%%   <<"PartitionCount">> => integer(),
+%%   <<"Tier">> => list(any())
+%% }
+-type azure_event_hub_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_event_hub_summary() :: #{
+%%   <<"EventHubName">> => [string()],
+%%   <<"FullyQualifiedNamespace">> => [string()],
+%%   <<"NamespaceName">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"SubscriptionId">> => string()
+%% }
+-type azure_event_hub_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_event_hubs_query() :: #{
+%%   <<"NamespaceName">> => string(),
+%%   <<"Region">> => string(),
+%%   <<"Scope">> => azure_query_scope()
+%% }
+-type azure_event_hubs_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_flow_log_storage_account_scope() :: #{
+%%   <<"Region">> => string(),
+%%   <<"StorageAccountIds">> => list(string())
+%% }
+-type azure_flow_log_storage_account_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_infrastructure() :: #{
+%%   <<"EventHubs">> => list(azure_event_hub_configuration()),
+%%   <<"FlowLogs">> => list(),
+%%   <<"SubscriptionId">> => string()
+%% }
+-type azure_infrastructure() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_management_group_summary() :: #{
+%%   <<"DisplayName">> => [string()],
+%%   <<"Id">> => string(),
+%%   <<"Name">> => [string()]
+%% }
+-type azure_management_group_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_management_groups_query() :: #{
+%%   <<"ParentManagementGroupId">> => string()
+%% }
+-type azure_management_groups_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_query_scope() :: #{
+%%   <<"ManagementGroupId">> => string(),
+%%   <<"SubscriptionIds">> => list(string())
+%% }
+-type azure_query_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_regions_query() :: #{
+%%   <<"Scope">> => azure_query_scope()
+%% }
+-type azure_regions_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_resource_id_scope() :: #{
+%%   <<"Region">> => string(),
+%%   <<"ResourceIds">> => list(string())
+%% }
+-type azure_resource_id_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_resource_identifier_summary() :: #{
+%%   <<"Region">> => string(),
+%%   <<"ResourceId">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"SubscriptionId">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type azure_resource_identifier_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_resource_ids_query() :: #{
+%%   <<"Region">> => string(),
+%%   <<"ResourceType">> => string(),
+%%   <<"Scope">> => azure_query_scope(),
+%%   <<"TagFilters">> => list(tag_filter())
+%% }
+-type azure_resource_ids_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_resource_types_query() :: #{
+%%   <<"Scope">> => azure_query_scope()
+%% }
+-type azure_resource_types_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_scope() :: #{
+%%   <<"Regions">> => list(string()),
+%%   <<"ResourceTypes">> => list(string()),
+%%   <<"Resources">> => list(azure_resource_id_scope()),
+%%   <<"Subscriptions">> => list(),
+%%   <<"TagFilters">> => list(tag_filter())
+%% }
+-type azure_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_scope_item() :: #{
+%%   <<"Scope">> => azure_scope(),
+%%   <<"TelemetryTypes">> => list(list(any())())
+%% }
+-type azure_scope_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_subscription_summary() :: #{
+%%   <<"DisplayName">> => [string()],
+%%   <<"ManagementGroupId">> => string(),
+%%   <<"State">> => [string()],
+%%   <<"SubscriptionId">> => string()
+%% }
+-type azure_subscription_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_subscriptions_query() :: #{
+%%   <<"ManagementGroupId">> => string()
+%% }
+-type azure_subscriptions_query() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_telemetry_source_configuration_input() :: #{
+%%   <<"AwsConfigConnectorArn">> => string()
+%% }
+-type azure_telemetry_source_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% azure_telemetry_source_configuration_output() :: #{
+%%   <<"AwsConfigConnectorArn">> => string(),
+%%   <<"ServiceLinkedRecorderArn">> => string()
+%% }
+-type azure_telemetry_source_configuration_output() :: #{binary() => any()}.
+
 
 %% Example:
 %% centralization_rule() :: #{
@@ -168,6 +384,7 @@
 %%   <<"Account">> => string(),
 %%   <<"DestinationLogsConfiguration">> => destination_logs_configuration(),
 %%   <<"DestinationMetricsConfiguration">> => destination_metrics_configuration(),
+%%   <<"DestinationProfilesConfiguration">> => destination_profiles_configuration(),
 %%   <<"Region">> => string()
 %% }
 -type centralization_rule_destination() :: #{binary() => any()}.
@@ -179,7 +396,8 @@
 %%   <<"Scope">> => string(),
 %%   <<"SourceContextGraphConfiguration">> => source_context_graph_configuration(),
 %%   <<"SourceLogsConfiguration">> => source_logs_configuration(),
-%%   <<"SourceMetricsConfiguration">> => source_metrics_configuration()
+%%   <<"SourceMetricsConfiguration">> => source_metrics_configuration(),
+%%   <<"SourceProfilesConfiguration">> => source_profiles_configuration()
 %% }
 -type centralization_rule_source() :: #{binary() => any()}.
 
@@ -239,6 +457,28 @@
 
 
 %% Example:
+%% connector() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ConnectorConfiguration">> => list(),
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"Name">> => string(),
+%%   <<"Provider">> => list(any()),
+%%   <<"RoleArn">> => string()
+%% }
+-type connector() :: #{binary() => any()}.
+
+
+%% Example:
+%% connector_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"Name">> => string(),
+%%   <<"Provider">> => list(any())
+%% }
+-type connector_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_centralization_rule_for_organization_input() :: #{
 %%   <<"Rule">> := centralization_rule(),
 %%   <<"RuleName">> := string(),
@@ -252,6 +492,24 @@
 %%   <<"RuleArn">> => string()
 %% }
 -type create_centralization_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ConnectorConfiguration">> := list(),
+%%   <<"Name">> := string(),
+%%   <<"RoleArn">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_connector_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_connector_output() :: #{
+%%   <<"Connector">> => connector()
+%% }
+-type create_connector_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -362,6 +620,17 @@
 
 
 %% Example:
+%% delete_connector_input() :: #{
+%%   <<"ConnectorIdentifier">> := string()
+%% }
+-type delete_connector_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_connector_output() :: #{}
+-type delete_connector_output() :: #{}.
+
+
+%% Example:
 %% delete_dataset_integration_input() :: #{
 %%   <<"Arn">> := string()
 %% }
@@ -416,6 +685,13 @@
 %%   <<"BackupConfiguration">> => metrics_backup_configuration()
 %% }
 -type destination_metrics_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% destination_profiles_configuration() :: #{
+%%   <<"BackupConfiguration">> => profiles_backup_configuration()
+%% }
+-type destination_profiles_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -476,6 +752,55 @@
 %%   <<"TagPropagationStatus">> => list(any())
 %% }
 -type get_centralization_rule_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connector_input() :: #{
+%%   <<"ConnectorIdentifier">> := string()
+%% }
+-type get_connector_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connector_output() :: #{
+%%   <<"Connector">> => connector()
+%% }
+-type get_connector_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connector_telemetry_manifest_input() :: #{
+%%   <<"ConnectorIdentifier">> := string()
+%% }
+-type get_connector_telemetry_manifest_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connector_telemetry_manifest_output() :: #{
+%%   <<"LastUpdateTimeStamp">> => [float()],
+%%   <<"Manifest">> => telemetry_manifest(),
+%%   <<"Version">> => [float()]
+%% }
+-type get_connector_telemetry_manifest_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connector_telemetry_setup_input() :: #{
+%%   <<"ConnectorIdentifier">> := string(),
+%%   <<"Format">> => list(any())
+%% }
+-type get_connector_telemetry_setup_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_connector_telemetry_setup_output() :: #{
+%%   <<"Artifacts">> => list(setup_artifact()),
+%%   <<"Format">> => list(any()),
+%%   <<"ManifestVersion">> => [float()],
+%%   <<"Provider">> => list(any()),
+%%   <<"RequiredPermissionsToApply">> => list(string())
+%% }
+-type get_connector_telemetry_setup_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -599,6 +924,25 @@
 
 
 %% Example:
+%% get_third_party_telemetry_enrichment_input() :: #{
+%%   <<"TelemetryEnrichmentIdentifier">> := string()
+%% }
+-type get_third_party_telemetry_enrichment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_third_party_telemetry_enrichment_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TelemetrySourceConfiguration">> => list()
+%% }
+-type get_third_party_telemetry_enrichment_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% integration_summary() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Status">> => list(any())
@@ -645,6 +989,22 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_centralization_rules_for_organization_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connectors_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connectors_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_connectors_output() :: #{
+%%   <<"ConnectorSummaries">> => list(connector_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_connectors_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -702,6 +1062,24 @@
 %%   <<"TelemetryConfigurations">> => list(telemetry_configuration())
 %% }
 -type list_resource_telemetry_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_by_connector_input() :: #{
+%%   <<"ConnectorIdentifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Selector">> := list()
+%% }
+-type list_resources_by_connector_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resources_by_connector_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list()
+%% }
+-type list_resources_by_connector_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -787,6 +1165,24 @@
 
 
 %% Example:
+%% list_third_party_telemetry_enrichments_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TelemetrySource">> => list(any())
+%% }
+-type list_third_party_telemetry_enrichments_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_third_party_telemetry_enrichments_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"TelemetryEnrichments">> => list(third_party_telemetry_enrichment_summary())
+%% }
+-type list_third_party_telemetry_enrichments_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% log_delivery_parameters() :: #{
 %%   <<"LogTypes">> => list(list(any())())
 %% }
@@ -864,6 +1260,30 @@
 
 
 %% Example:
+%% profiles_backup_configuration() :: #{
+%%   <<"Region">> => string()
+%% }
+-type profiles_backup_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_connector_telemetry_manifest_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ConnectorIdentifier">> := string(),
+%%   <<"ExpectedVersion">> => [float()],
+%%   <<"Manifest">> := telemetry_manifest()
+%% }
+-type put_connector_telemetry_manifest_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_connector_telemetry_manifest_output() :: #{
+%%   <<"Version">> => [float()]
+%% }
+-type put_connector_telemetry_manifest_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% region_status() :: #{
 %%   <<"FailureReason">> => [string()],
 %%   <<"Region">> => string(),
@@ -892,6 +1312,16 @@
 %%   <<"amznErrorType">> => [string()]
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% setup_artifact() :: #{
+%%   <<"Content">> => string(),
+%%   <<"ContentType">> => string(),
+%%   <<"FileName">> => string(),
+%%   <<"Format">> => list(any())
+%% }
+-type setup_artifact() :: #{binary() => any()}.
 
 
 %% Example:
@@ -929,6 +1359,21 @@
 
 
 %% Example:
+%% source_profiles_configuration() :: #{
+%%   <<"ProfilesSelectionCriteria">> => string()
+%% }
+-type source_profiles_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_progress() :: #{
+%%   <<"Active">> => [integer()],
+%%   <<"Total">> => [integer()]
+%% }
+-type source_progress() :: #{binary() => any()}.
+
+
+%% Example:
 %% start_telemetry_enrichment_output() :: #{
 %%   <<"AwsResourceExplorerManagedViewArn">> => string(),
 %%   <<"Status">> => list(any())
@@ -953,10 +1398,67 @@
 
 
 %% Example:
+%% start_telemetry_pipeline_refresh_input() :: #{
+%%   <<"PipelineIdentifier">> := string()
+%% }
+-type start_telemetry_pipeline_refresh_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_telemetry_pipeline_refresh_output() :: #{}
+-type start_telemetry_pipeline_refresh_output() :: #{}.
+
+
+%% Example:
+%% start_third_party_telemetry_enrichment_input() :: #{
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"TelemetrySourceConfiguration">> := list()
+%% }
+-type start_third_party_telemetry_enrichment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_third_party_telemetry_enrichment_output() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"Tags">> => map(),
+%%   <<"TelemetrySourceConfiguration">> => list()
+%% }
+-type start_third_party_telemetry_enrichment_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% stop_telemetry_enrichment_output() :: #{
 %%   <<"Status">> => list(any())
 %% }
 -type stop_telemetry_enrichment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_third_party_telemetry_enrichment_input() :: #{
+%%   <<"TelemetryEnrichmentIdentifier">> := string()
+%% }
+-type stop_third_party_telemetry_enrichment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% stop_third_party_telemetry_enrichment_output() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"TelemetrySource">> => list(any())
+%% }
+-type stop_third_party_telemetry_enrichment_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% tag_filter() :: #{
+%%   <<"Key">> => string(),
+%%   <<"Values">> => list(string())
+%% }
+-type tag_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1005,12 +1507,23 @@
 
 
 %% Example:
+%% telemetry_manifest() :: #{
+%%   <<"Infrastructure">> => list(),
+%%   <<"Source">> => list()
+%% }
+-type telemetry_manifest() :: #{binary() => any()}.
+
+
+%% Example:
 %% telemetry_pipeline() :: #{
 %%   <<"Arn">> => string(),
 %%   <<"Configuration">> => telemetry_pipeline_configuration(),
+%%   <<"ConfigurationSummary">> => configuration_summary(),
 %%   <<"CreatedTimeStamp">> => [float()],
+%%   <<"LastRefreshTimeStamp">> => [float()],
 %%   <<"LastUpdateTimeStamp">> => [float()],
 %%   <<"Name">> => string(),
+%%   <<"SourceProgress">> => source_progress(),
 %%   <<"Status">> => list(any()),
 %%   <<"StatusReason">> => telemetry_pipeline_status_reason(),
 %%   <<"Tags">> => map()
@@ -1087,6 +1600,15 @@
 %%   <<"Results">> => list(pipeline_output())
 %% }
 -type test_telemetry_pipeline_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% third_party_telemetry_enrichment_summary() :: #{
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TelemetrySource">> => list(any())
+%% }
+-type third_party_telemetry_enrichment_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1235,6 +1757,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_connector_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_dataset_integration_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
@@ -1281,6 +1811,14 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type delete_connector_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    invalid_state_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type delete_dataset_integration_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
@@ -1319,6 +1857,27 @@
     access_denied_exception().
 
 -type get_centralization_rule_for_organization_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_connector_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_connector_telemetry_manifest_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_connector_telemetry_setup_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
     resource_not_found_exception() | 
@@ -1377,7 +1936,20 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_third_party_telemetry_enrichment_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_centralization_rules_for_organization_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_connectors_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
     internal_server_exception() | 
@@ -1398,6 +1970,13 @@
 -type list_resource_telemetry_for_organization_errors() ::
     validation_exception() | 
     too_many_requests_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_resources_by_connector_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -1432,6 +2011,20 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_third_party_telemetry_enrichments_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_connector_telemetry_manifest_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type start_telemetry_enrichment_errors() ::
     too_many_requests_exception() | 
     internal_server_exception() | 
@@ -1450,6 +2043,22 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type start_telemetry_pipeline_refresh_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type start_third_party_telemetry_enrichment_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type stop_telemetry_enrichment_errors() ::
     too_many_requests_exception() | 
     internal_server_exception() | 
@@ -1466,6 +2075,14 @@
     validation_exception() | 
     too_many_requests_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type stop_third_party_telemetry_enrichment_errors() ::
+    validation_exception() | 
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type tag_resource_errors() ::
@@ -1558,6 +2175,44 @@ create_centralization_rule_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/CreateCentralizationRuleForOrganization"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a connector to a third-party cloud provider.
+%%
+%% With a connector, you can discover resources in the provider and collect
+%% their telemetry. Currently, Microsoft Azure is the only supported
+%% provider.
+-spec create_connector(aws_client:aws_client(), create_connector_input()) ->
+    {ok, create_connector_output(), tuple()} |
+    {error, any()} |
+    {error, create_connector_errors(), tuple()}.
+create_connector(Client, Input) ->
+    create_connector(Client, Input, []).
+
+-spec create_connector(aws_client:aws_client(), create_connector_input(), proplists:proplist()) ->
+    {ok, create_connector_output(), tuple()} |
+    {error, any()} |
+    {error, create_connector_errors(), tuple()}.
+create_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateConnector"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1808,6 +2463,40 @@ delete_centralization_rule_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a connector and its telemetry manifest.
+-spec delete_connector(aws_client:aws_client(), delete_connector_input()) ->
+    {ok, delete_connector_output(), tuple()} |
+    {error, any()} |
+    {error, delete_connector_errors(), tuple()}.
+delete_connector(Client, Input) ->
+    delete_connector(Client, Input, []).
+
+-spec delete_connector(aws_client:aws_client(), delete_connector_input(), proplists:proplist()) ->
+    {ok, delete_connector_output(), tuple()} |
+    {error, any()} |
+    {error, delete_connector_errors(), tuple()}.
+delete_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteConnector"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a dataset integration for the caller's account in the
 %% current region.
 %%
@@ -2012,6 +2701,117 @@ get_centralization_rule_for_organization(Client, Input) ->
 get_centralization_rule_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetCentralizationRuleForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the details of a connector.
+-spec get_connector(aws_client:aws_client(), get_connector_input()) ->
+    {ok, get_connector_output(), tuple()} |
+    {error, any()} |
+    {error, get_connector_errors(), tuple()}.
+get_connector(Client, Input) ->
+    get_connector(Client, Input, []).
+
+-spec get_connector(aws_client:aws_client(), get_connector_input(), proplists:proplist()) ->
+    {ok, get_connector_output(), tuple()} |
+    {error, any()} |
+    {error, get_connector_errors(), tuple()}.
+get_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetConnector"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the telemetry manifest of a connector and its current
+%% version.
+%%
+%% If the connector has no telemetry manifest, this operation returns a
+%% `ResourceNotFoundException'.
+-spec get_connector_telemetry_manifest(aws_client:aws_client(), get_connector_telemetry_manifest_input()) ->
+    {ok, get_connector_telemetry_manifest_output(), tuple()} |
+    {error, any()} |
+    {error, get_connector_telemetry_manifest_errors(), tuple()}.
+get_connector_telemetry_manifest(Client, Input) ->
+    get_connector_telemetry_manifest(Client, Input, []).
+
+-spec get_connector_telemetry_manifest(aws_client:aws_client(), get_connector_telemetry_manifest_input(), proplists:proplist()) ->
+    {ok, get_connector_telemetry_manifest_output(), tuple()} |
+    {error, any()} |
+    {error, get_connector_telemetry_manifest_errors(), tuple()}.
+get_connector_telemetry_manifest(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetConnectorTelemetryManifest"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Generates the artifacts that you use to create the infrastructure in
+%% your cloud provider that delivers the telemetry declared in the
+%% connector's telemetry manifest.
+%%
+%% This operation doesn't change any resources in your cloud provider or
+%% in Amazon Web Services.
+-spec get_connector_telemetry_setup(aws_client:aws_client(), get_connector_telemetry_setup_input()) ->
+    {ok, get_connector_telemetry_setup_output(), tuple()} |
+    {error, any()} |
+    {error, get_connector_telemetry_setup_errors(), tuple()}.
+get_connector_telemetry_setup(Client, Input) ->
+    get_connector_telemetry_setup(Client, Input, []).
+
+-spec get_connector_telemetry_setup(aws_client:aws_client(), get_connector_telemetry_setup_input(), proplists:proplist()) ->
+    {ok, get_connector_telemetry_setup_output(), tuple()} |
+    {error, any()} |
+    {error, get_connector_telemetry_setup_errors(), tuple()}.
+get_connector_telemetry_setup(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetConnectorTelemetrySetup"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2318,6 +3118,41 @@ get_telemetry_rule_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the details of a third-party telemetry enrichment, including
+%% its status and source configuration.
+-spec get_third_party_telemetry_enrichment(aws_client:aws_client(), get_third_party_telemetry_enrichment_input()) ->
+    {ok, get_third_party_telemetry_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, get_third_party_telemetry_enrichment_errors(), tuple()}.
+get_third_party_telemetry_enrichment(Client, Input) ->
+    get_third_party_telemetry_enrichment(Client, Input, []).
+
+-spec get_third_party_telemetry_enrichment(aws_client:aws_client(), get_third_party_telemetry_enrichment_input(), proplists:proplist()) ->
+    {ok, get_third_party_telemetry_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, get_third_party_telemetry_enrichment_errors(), tuple()}.
+get_third_party_telemetry_enrichment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetThirdPartyTelemetryEnrichment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all centralization rules in your organization.
 %%
 %% This operation can only be called by the organization's management
@@ -2336,6 +3171,44 @@ list_centralization_rules_for_organization(Client, Input) ->
 list_centralization_rules_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListCentralizationRulesForOrganization"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the connectors in the account and Region.
+%%
+%% This operation returns results in pages. To get the next page, pass the
+%% returned `NextToken' in the next call. We recommend that you use
+%% pagination to ensure that the operation returns quickly and successfully.
+-spec list_connectors(aws_client:aws_client(), list_connectors_input()) ->
+    {ok, list_connectors_output(), tuple()} |
+    {error, any()} |
+    {error, list_connectors_errors(), tuple()}.
+list_connectors(Client, Input) ->
+    list_connectors(Client, Input, []).
+
+-spec list_connectors(aws_client:aws_client(), list_connectors_input(), proplists:proplist()) ->
+    {ok, list_connectors_output(), tuple()} |
+    {error, any()} |
+    {error, list_connectors_errors(), tuple()}.
+list_connectors(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListConnectors"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2462,6 +3335,47 @@ list_resource_telemetry_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists resources in your cloud provider that the connector can access,
+%% such as management groups, subscriptions, resource types, Regions,
+%% resources, and Event Hubs.
+%%
+%% Use the results to build a telemetry manifest. This operation returns
+%% results in pages. To get the next page, pass the returned `NextToken'
+%% in the next call. We recommend that you use pagination to ensure that the
+%% operation returns quickly and successfully.
+-spec list_resources_by_connector(aws_client:aws_client(), list_resources_by_connector_input()) ->
+    {ok, list_resources_by_connector_output(), tuple()} |
+    {error, any()} |
+    {error, list_resources_by_connector_errors(), tuple()}.
+list_resources_by_connector(Client, Input) ->
+    list_resources_by_connector(Client, Input, []).
+
+-spec list_resources_by_connector(aws_client:aws_client(), list_resources_by_connector_input(), proplists:proplist()) ->
+    {ok, list_resources_by_connector_output(), tuple()} |
+    {error, any()} |
+    {error, list_resources_by_connector_errors(), tuple()}.
+list_resources_by_connector(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListResourcesByConnector"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all S3 Table integrations in your account.
 %%
 %% We recommend using pagination to ensure that the operation returns quickly
@@ -2501,7 +3415,8 @@ list_s3_table_integrations(Client, Input0, Options0) ->
 
 %% @doc Lists all tags attached to the specified resource.
 %%
-%% Supports telemetry rule resources and telemetry pipeline resources.
+%% Supports telemetry rule resources, telemetry pipeline resources, and
+%% third-party telemetry enrichment resources.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_input()) ->
     {ok, list_tags_for_resource_output(), tuple()} |
     {error, any()} |
@@ -2646,6 +3561,83 @@ list_telemetry_rules_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a summary of each third-party telemetry enrichment in your
+%% account and Region.
+%%
+%% To get the full configuration of an enrichment, use
+%% `GetThirdPartyTelemetryEnrichment'. The results are paginated. To get
+%% the next page of results, use `NextToken'.
+-spec list_third_party_telemetry_enrichments(aws_client:aws_client(), list_third_party_telemetry_enrichments_input()) ->
+    {ok, list_third_party_telemetry_enrichments_output(), tuple()} |
+    {error, any()} |
+    {error, list_third_party_telemetry_enrichments_errors(), tuple()}.
+list_third_party_telemetry_enrichments(Client, Input) ->
+    list_third_party_telemetry_enrichments(Client, Input, []).
+
+-spec list_third_party_telemetry_enrichments(aws_client:aws_client(), list_third_party_telemetry_enrichments_input(), proplists:proplist()) ->
+    {ok, list_third_party_telemetry_enrichments_output(), tuple()} |
+    {error, any()} |
+    {error, list_third_party_telemetry_enrichments_errors(), tuple()}.
+list_third_party_telemetry_enrichments(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListThirdPartyTelemetryEnrichments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates or replaces the telemetry manifest of a connector.
+%%
+%% The telemetry manifest declares which resources in your cloud provider to
+%% collect telemetry from and which telemetry types to collect. To avoid
+%% overwriting changes made by another caller, specify `ExpectedVersion'.
+-spec put_connector_telemetry_manifest(aws_client:aws_client(), put_connector_telemetry_manifest_input()) ->
+    {ok, put_connector_telemetry_manifest_output(), tuple()} |
+    {error, any()} |
+    {error, put_connector_telemetry_manifest_errors(), tuple()}.
+put_connector_telemetry_manifest(Client, Input) ->
+    put_connector_telemetry_manifest(Client, Input, []).
+
+-spec put_connector_telemetry_manifest(aws_client:aws_client(), put_connector_telemetry_manifest_input(), proplists:proplist()) ->
+    {ok, put_connector_telemetry_manifest_output(), tuple()} |
+    {error, any()} |
+    {error, put_connector_telemetry_manifest_errors(), tuple()}.
+put_connector_telemetry_manifest(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/PutConnectorTelemetryManifest"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Enables the resource tags for telemetry feature for your account,
 %% which enhances telemetry data with additional resource metadata from
 %% Resource Explorer to provide richer context for monitoring and
@@ -2735,6 +3727,95 @@ start_telemetry_evaluation_for_organization(Client, Input0, Options0) ->
     Method = post,
     Path = ["/StartTelemetryEvaluationForOrganization"],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a refresh of an external-cloud telemetry pipeline.
+%%
+%% The refresh re-reads the connector's telemetry manifest and
+%% re-discovers the sources in scope.
+%%
+%% The pipeline must be in the `ACTIVE' or `UPDATE_FAILED' state,
+%% with no refresh already running. You can use `GetTelemetryPipeline' to
+%% track the refresh.
+-spec start_telemetry_pipeline_refresh(aws_client:aws_client(), start_telemetry_pipeline_refresh_input()) ->
+    {ok, start_telemetry_pipeline_refresh_output(), tuple()} |
+    {error, any()} |
+    {error, start_telemetry_pipeline_refresh_errors(), tuple()}.
+start_telemetry_pipeline_refresh(Client, Input) ->
+    start_telemetry_pipeline_refresh(Client, Input, []).
+
+-spec start_telemetry_pipeline_refresh(aws_client:aws_client(), start_telemetry_pipeline_refresh_input(), proplists:proplist()) ->
+    {ok, start_telemetry_pipeline_refresh_output(), tuple()} |
+    {error, any()} |
+    {error, start_telemetry_pipeline_refresh_errors(), tuple()}.
+start_telemetry_pipeline_refresh(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartTelemetryPipelineRefresh"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a third-party telemetry enrichment.
+%%
+%% An enrichment adds resource metadata, such as tags, from a third-party
+%% telemetry source to the telemetry that CloudWatch receives from the
+%% resources of that source.
+%%
+%% You specify an Amazon Web Services Config connector for your third-party
+%% environment, such as a Microsoft Azure tenant. You can use each connector
+%% for only one enrichment.
+%%
+%% To use this operation, you must have the
+%% `config:PutThirdPartyServiceLinkedConfigurationRecorder' permission.
+%% If the Amazon Web Services Config service-linked role does not exist in
+%% your account, you must also have the `iam:CreateServiceLinkedRole'
+%% permission.
+-spec start_third_party_telemetry_enrichment(aws_client:aws_client(), start_third_party_telemetry_enrichment_input()) ->
+    {ok, start_third_party_telemetry_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, start_third_party_telemetry_enrichment_errors(), tuple()}.
+start_third_party_telemetry_enrichment(Client, Input) ->
+    start_third_party_telemetry_enrichment(Client, Input, []).
+
+-spec start_third_party_telemetry_enrichment(aws_client:aws_client(), start_third_party_telemetry_enrichment_input(), proplists:proplist()) ->
+    {ok, start_third_party_telemetry_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, start_third_party_telemetry_enrichment_errors(), tuple()}.
+start_third_party_telemetry_enrichment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartThirdPartyTelemetryEnrichment"],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -2859,9 +3940,50 @@ stop_telemetry_evaluation_for_organization(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Stops a third-party telemetry enrichment.
+%%
+%% CloudWatch stops adding resource metadata from the third-party telemetry
+%% source to your telemetry.
+%%
+%% To use this operation, you must have the
+%% `config:DeleteServiceLinkedConfigurationRecorder' permission.
+-spec stop_third_party_telemetry_enrichment(aws_client:aws_client(), stop_third_party_telemetry_enrichment_input()) ->
+    {ok, stop_third_party_telemetry_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, stop_third_party_telemetry_enrichment_errors(), tuple()}.
+stop_third_party_telemetry_enrichment(Client, Input) ->
+    stop_third_party_telemetry_enrichment(Client, Input, []).
+
+-spec stop_third_party_telemetry_enrichment(aws_client:aws_client(), stop_third_party_telemetry_enrichment_input(), proplists:proplist()) ->
+    {ok, stop_third_party_telemetry_enrichment_output(), tuple()} |
+    {error, any()} |
+    {error, stop_third_party_telemetry_enrichment_errors(), tuple()}.
+stop_third_party_telemetry_enrichment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StopThirdPartyTelemetryEnrichment"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds or updates tags for a resource.
 %%
-%% Supports telemetry rule resources and telemetry pipeline resources.
+%% Supports telemetry rule resources, telemetry pipeline resources, and
+%% third-party telemetry enrichment resources.
 -spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -2934,7 +4056,8 @@ test_telemetry_pipeline(Client, Input0, Options0) ->
 
 %% @doc Removes tags from a resource.
 %%
-%% Supports telemetry rule resources and telemetry pipeline resources.
+%% Supports telemetry rule resources, telemetry pipeline resources, and
+%% third-party telemetry enrichment resources.
 -spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

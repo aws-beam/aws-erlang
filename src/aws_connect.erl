@@ -4977,10 +4977,13 @@
 %%   <<"EvaluationArn">> => string(),
 %%   <<"EvaluationId">> => string(),
 %%   <<"EvaluationType">> => list(any()),
+%%   <<"ItemEnablementStatus">> => map(),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Metadata">> => evaluation_metadata(),
 %%   <<"Notes">> => map(),
 %%   <<"Scores">> => map(),
+%%   <<"SourceResolutionStatus">> => list(any()),
+%%   <<"SourceValues">> => list(evaluation_resolved_source()),
 %%   <<"Status">> => list(any()),
 %%   <<"Tags">> => map()
 %% }
@@ -5142,7 +5145,12 @@
 
 %% Example:
 %% evaluation_form_item_enablement_source() :: #{
+%%   <<"AiMetricsField">> => list(any()),
+%%   <<"ContactAttributeKey">> => string(),
+%%   <<"ContactField">> => list(any()),
+%%   <<"EvaluationMetadataField">> => list(any()),
 %%   <<"RefId">> => string(),
+%%   <<"SegmentAttributeKey">> => string(),
 %%   <<"Type">> => list(any())
 %% }
 -type evaluation_form_item_enablement_source() :: #{binary() => any()}.
@@ -5150,7 +5158,11 @@
 
 %% Example:
 %% evaluation_form_item_enablement_source_value() :: #{
+%%   <<"BooleanValue">> => boolean(),
+%%   <<"DateTimeValue">> => non_neg_integer(),
+%%   <<"NumericValue">> => float(),
 %%   <<"RefId">> => string(),
+%%   <<"StringValue">> => string(),
 %%   <<"Type">> => list(any())
 %% }
 -type evaluation_form_item_enablement_source_value() :: #{binary() => any()}.
@@ -5318,6 +5330,7 @@
 
 %% Example:
 %% evaluation_form_section() :: #{
+%%   <<"Enablement">> => evaluation_form_item_enablement_configuration(),
 %%   <<"Instructions">> => string(),
 %%   <<"IsExcludedFromScoring">> => boolean(),
 %%   <<"Items">> => list(list()),
@@ -5467,6 +5480,15 @@
 %%   <<"TranscriptType">> => list(any())
 %% }
 -type evaluation_question_input_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% evaluation_resolved_source() :: #{
+%%   <<"Source">> => evaluation_form_item_enablement_source(),
+%%   <<"Status">> => list(any()),
+%%   <<"Values">> => list(evaluation_form_item_enablement_source_value())
+%% }
+-type evaluation_resolved_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10418,6 +10440,14 @@
 %%   <<"Region">> => string()
 %% }
 -type sign_in_distribution() :: #{binary() => any()}.
+
+
+%% Example:
+%% single_select_question_automation_rule() :: #{
+%%   <<"Condition">> => evaluation_form_item_enablement_condition(),
+%%   <<"OptionRefId">> => string()
+%% }
+-type single_select_question_automation_rule() :: #{binary() => any()}.
 
 
 %% Example:

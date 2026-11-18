@@ -129,6 +129,9 @@
          delete_resource_policy/4,
          delete_workload_identity/2,
          delete_workload_identity/3,
+         get_agent_insight_store/2,
+         get_agent_insight_store/4,
+         get_agent_insight_store/5,
          get_agent_runtime/2,
          get_agent_runtime/4,
          get_agent_runtime/5,
@@ -228,6 +231,8 @@
          get_token_vault/3,
          get_workload_identity/2,
          get_workload_identity/3,
+         list_agent_insight_stores/2,
+         list_agent_insight_stores/3,
          list_agent_runtime_endpoints/3,
          list_agent_runtime_endpoints/4,
          list_agent_runtime_versions/3,
@@ -252,15 +257,12 @@
          list_configuration_bundles/3,
          list_consent_portals/2,
          list_consent_portals/3,
-         list_dataset_examples/2,
+         list_dataset_examples/3,
          list_dataset_examples/4,
-         list_dataset_examples/5,
-         list_dataset_versions/2,
+         list_dataset_versions/3,
          list_dataset_versions/4,
-         list_dataset_versions/5,
-         list_datasets/1,
+         list_datasets/2,
          list_datasets/3,
-         list_datasets/4,
          list_evaluators/2,
          list_evaluators/3,
          list_gateway_rate_limits/2,
@@ -346,6 +348,8 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_agent_insight_store/3,
+         update_agent_insight_store/4,
          update_agent_runtime/3,
          update_agent_runtime/4,
          update_agent_runtime_endpoint/4,
@@ -448,6 +452,27 @@
 %%   <<"schemaVersion">> => string()
 %% }
 -type agent_card_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_insight_store_encryption_configuration() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"mode">> => list(any())
+%% }
+-type agent_insight_store_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_insight_store_summary() :: #{
+%%   <<"agentInsightStoreArn">> => string(),
+%%   <<"agentInsightStoreId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"enablementStatus">> => list(any()),
+%%   <<"encryptionConfiguration">> => agent_insight_store_encryption_configuration(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type agent_insight_store_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1211,8 +1236,8 @@
 %%   <<"datasetName">> := string(),
 %%   <<"description">> => [string()],
 %%   <<"kmsKeyArn">> => string(),
-%%   <<"schemaType">> := list(any()),
-%%   <<"source">> := list(),
+%%   <<"schemaType">> => list(any()),
+%%   <<"source">> => list(),
 %%   <<"tags">> => map()
 %% }
 -type create_dataset_request() :: #{binary() => any()}.
@@ -1826,6 +1851,7 @@
 %%   <<"description">> => [string()],
 %%   <<"draftStatus">> => list(any()),
 %%   <<"exampleCount">> => [float()],
+%%   <<"exampleCountByField">> => example_count_by_field(),
 %%   <<"schemaType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()]
@@ -1837,7 +1863,8 @@
 %% dataset_version_summary() :: #{
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"datasetVersion">> => string(),
-%%   <<"exampleCount">> => [float()]
+%%   <<"exampleCount">> => [float()],
+%%   <<"exampleCountByField">> => example_count_by_field()
 %% }
 -type dataset_version_summary() :: #{binary() => any()}.
 
@@ -2498,6 +2525,31 @@
 
 
 %% Example:
+%% example_count_by_field() :: #{
+%%   <<"actorProfile">> => [float()],
+%%   <<"input">> => [float()],
+%%   <<"turns">> => [float()]
+%% }
+-type example_count_by_field() :: #{binary() => any()}.
+
+
+%% Example:
+%% example_count_by_field_condition() :: #{
+%%   <<"anyOf">> => list(list(any())()),
+%%   <<"max">> => [float()],
+%%   <<"min">> => [float()]
+%% }
+-type example_count_by_field_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% example_field_condition() :: #{
+%%   <<"anyOf">> => list(list(any())())
+%% }
+-type example_field_condition() :: #{binary() => any()}.
+
+
+%% Example:
 %% fallback() :: #{
 %%   <<"circuitBreaker">> => circuit_breaker_configuration(),
 %%   <<"firstByteTimeoutMilliseconds">> => [integer()],
@@ -2642,6 +2694,24 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type gateway_target() :: #{binary() => any()}.
+
+%% Example:
+%% get_agent_insight_store_request() :: #{}
+-type get_agent_insight_store_request() :: #{}.
+
+
+%% Example:
+%% get_agent_insight_store_response() :: #{
+%%   <<"agentInsightStoreArn">> => string(),
+%%   <<"agentInsightStoreId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"enablementStatus">> => list(any()),
+%%   <<"encryptionConfiguration">> => agent_insight_store_encryption_configuration(),
+%%   <<"failureReason">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_agent_insight_store_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_agent_runtime_endpoint_request() :: #{}
@@ -2898,6 +2968,7 @@
 %%   <<"downloadUrlExpiresAt">> => [non_neg_integer()],
 %%   <<"draftStatus">> => list(any()),
 %%   <<"exampleCount">> => [float()],
+%%   <<"exampleCountByField">> => example_count_by_field(),
 %%   <<"failureReason">> => [string()],
 %%   <<"kmsKeyArn">> => string(),
 %%   <<"schemaType">> => list(any()),
@@ -4066,6 +4137,22 @@
 
 
 %% Example:
+%% list_agent_insight_stores_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_agent_insight_stores_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_insight_stores_response() :: #{
+%%   <<"agentInsightStores">> => list(agent_insight_store_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_agent_insight_stores_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_agent_runtime_endpoints_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string()
@@ -4262,8 +4349,17 @@
 
 
 %% Example:
+%% list_dataset_examples_filter() :: #{
+%%   <<"exampleFields">> => list(example_field_condition()),
+%%   <<"generationIds">> => list(string())
+%% }
+-type list_dataset_examples_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_dataset_examples_request() :: #{
 %%   <<"datasetVersion">> => string(),
+%%   <<"filter">> => list_dataset_examples_filter(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -4282,7 +4378,15 @@
 
 
 %% Example:
+%% list_dataset_versions_filter() :: #{
+%%   <<"exampleCountByField">> => list(example_count_by_field_condition())
+%% }
+-type list_dataset_versions_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_dataset_versions_request() :: #{
+%%   <<"filter">> => list_dataset_versions_filter(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -4298,7 +4402,15 @@
 
 
 %% Example:
+%% list_datasets_filter() :: #{
+%%   <<"exampleCountByField">> => list(example_count_by_field_condition())
+%% }
+-type list_datasets_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_datasets_request() :: #{
+%%   <<"filter">> => list_datasets_filter(),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
 %% }
@@ -6175,6 +6287,27 @@
 
 
 %% Example:
+%% update_agent_insight_store_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"enablementStatus">> => list(any()),
+%%   <<"encryptionConfiguration">> => agent_insight_store_encryption_configuration()
+%% }
+-type update_agent_insight_store_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_insight_store_response() :: #{
+%%   <<"agentInsightStoreArn">> => string(),
+%%   <<"agentInsightStoreId">> => string(),
+%%   <<"enablementStatus">> => list(any()),
+%%   <<"failureReason">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_agent_insight_store_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_agent_runtime_endpoint_request() :: #{
 %%   <<"agentRuntimeVersion">> => string(),
 %%   <<"clientToken">> => string(),
@@ -7667,6 +7800,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_agent_insight_store_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_agent_runtime_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -7920,6 +8060,12 @@
     unauthorized_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_agent_insight_stores_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -8264,6 +8410,15 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type update_agent_insight_store_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type update_agent_runtime_errors() ::
@@ -10762,6 +10917,49 @@ delete_workload_identity(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the account's service-defined default Agent Insight
+%% Store.
+%%
+%% The
+%% logical default exists for every enrolled account; its backing state may
+%% be
+%% initialized on first access.
+-spec get_agent_insight_store(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_agent_insight_store_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_insight_store_errors(), tuple()}.
+get_agent_insight_store(Client, AgentInsightStoreId)
+  when is_map(Client) ->
+    get_agent_insight_store(Client, AgentInsightStoreId, #{}, #{}).
+
+-spec get_agent_insight_store(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_agent_insight_store_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_insight_store_errors(), tuple()}.
+get_agent_insight_store(Client, AgentInsightStoreId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_insight_store(Client, AgentInsightStoreId, QueryMap, HeadersMap, []).
+
+-spec get_agent_insight_store(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_insight_store_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_insight_store_errors(), tuple()}.
+get_agent_insight_store(Client, AgentInsightStoreId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/agent-insight-stores/", aws_util:encode_uri(AgentInsightStoreId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets an Amazon Bedrock AgentCore Runtime.
 -spec get_agent_runtime(aws_client:aws_client(), binary() | list()) ->
     {ok, get_agent_runtime_response(), tuple()} |
@@ -12118,6 +12316,45 @@ get_workload_identity(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists the account's service-defined default Agent Insight Store.
+%%
+%% The
+%% singleton backing state may be initialized on first access.
+-spec list_agent_insight_stores(aws_client:aws_client(), list_agent_insight_stores_request()) ->
+    {ok, list_agent_insight_stores_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_insight_stores_errors(), tuple()}.
+list_agent_insight_stores(Client, Input) ->
+    list_agent_insight_stores(Client, Input, []).
+
+-spec list_agent_insight_stores(aws_client:aws_client(), list_agent_insight_stores_request(), proplists:proplist()) ->
+    {ok, list_agent_insight_stores_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_insight_stores_errors(), tuple()}.
+list_agent_insight_stores(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/agent-insight-stores"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"maxResults">>, <<"maxResults">>},
+                     {<<"nextToken">>, <<"nextToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists all endpoints for a specific Amazon Secure Agent.
 -spec list_agent_runtime_endpoints(aws_client:aws_client(), binary() | list(), list_agent_runtime_endpoints_request()) ->
     {ok, list_agent_runtime_endpoints_response(), tuple()} |
@@ -12563,135 +12800,112 @@ list_consent_portals(Client, Input0, Options0) ->
 %%
 %% The server embeds the resolved version in the pagination token. Once
 %% pagination begins, all subsequent pages are pinned to that version
-%% regardless of concurrent mutations.
--spec list_dataset_examples(aws_client:aws_client(), binary() | list()) ->
+%% regardless of concurrent mutations. A request with a pagination token can
+%% omit `datasetVersion'. If it sets a version that differs from the
+%% token's version, the request fails with a `ValidationException'.
+-spec list_dataset_examples(aws_client:aws_client(), binary() | list(), list_dataset_examples_request()) ->
     {ok, list_dataset_examples_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_examples_errors(), tuple()}.
-list_dataset_examples(Client, DatasetId)
-  when is_map(Client) ->
-    list_dataset_examples(Client, DatasetId, #{}, #{}).
+list_dataset_examples(Client, DatasetId, Input) ->
+    list_dataset_examples(Client, DatasetId, Input, []).
 
--spec list_dataset_examples(aws_client:aws_client(), binary() | list(), map(), map()) ->
+-spec list_dataset_examples(aws_client:aws_client(), binary() | list(), list_dataset_examples_request(), proplists:proplist()) ->
     {ok, list_dataset_examples_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_examples_errors(), tuple()}.
-list_dataset_examples(Client, DatasetId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_dataset_examples(Client, DatasetId, QueryMap, HeadersMap, []).
-
--spec list_dataset_examples(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
-    {ok, list_dataset_examples_response(), tuple()} |
-    {error, any()} |
-    {error, list_dataset_examples_errors(), tuple()}.
-list_dataset_examples(Client, DatasetId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/examples"],
+list_dataset_examples(Client, DatasetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/examples/list"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
                | Options2],
 
     Headers = [],
+    Input1 = Input0,
 
-    Query0_ =
-      [
-        {<<"datasetVersion">>, maps:get(<<"datasetVersion">>, QueryMap, undefined)},
-        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all published versions of a dataset, sorted by version number
 %% descending (newest first).
 %%
 %% Does not include the DRAFT working copy.
--spec list_dataset_versions(aws_client:aws_client(), binary() | list()) ->
+-spec list_dataset_versions(aws_client:aws_client(), binary() | list(), list_dataset_versions_request()) ->
     {ok, list_dataset_versions_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_versions_errors(), tuple()}.
-list_dataset_versions(Client, DatasetId)
-  when is_map(Client) ->
-    list_dataset_versions(Client, DatasetId, #{}, #{}).
+list_dataset_versions(Client, DatasetId, Input) ->
+    list_dataset_versions(Client, DatasetId, Input, []).
 
--spec list_dataset_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+-spec list_dataset_versions(aws_client:aws_client(), binary() | list(), list_dataset_versions_request(), proplists:proplist()) ->
     {ok, list_dataset_versions_response(), tuple()} |
     {error, any()} |
     {error, list_dataset_versions_errors(), tuple()}.
-list_dataset_versions(Client, DatasetId, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_dataset_versions(Client, DatasetId, QueryMap, HeadersMap, []).
-
--spec list_dataset_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
-    {ok, list_dataset_versions_response(), tuple()} |
-    {error, any()} |
-    {error, list_dataset_versions_errors(), tuple()}.
-list_dataset_versions(Client, DatasetId, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/versions"],
+list_dataset_versions(Client, DatasetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/versions/list"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
                | Options2],
 
     Headers = [],
+    Input1 = Input0,
 
-    Query0_ =
-      [
-        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all datasets in the caller's account, paginated.
--spec list_datasets(aws_client:aws_client()) ->
+-spec list_datasets(aws_client:aws_client(), list_datasets_request()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
-list_datasets(Client)
-  when is_map(Client) ->
-    list_datasets(Client, #{}, #{}).
+list_datasets(Client, Input) ->
+    list_datasets(Client, Input, []).
 
--spec list_datasets(aws_client:aws_client(), map(), map()) ->
+-spec list_datasets(aws_client:aws_client(), list_datasets_request(), proplists:proplist()) ->
     {ok, list_datasets_response(), tuple()} |
     {error, any()} |
     {error, list_datasets_errors(), tuple()}.
-list_datasets(Client, QueryMap, HeadersMap)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
-    list_datasets(Client, QueryMap, HeadersMap, []).
-
--spec list_datasets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
-    {ok, list_datasets_response(), tuple()} |
-    {error, any()} |
-    {error, list_datasets_errors(), tuple()}.
-list_datasets(Client, QueryMap, HeadersMap, Options0)
-  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
-    Path = ["/datasets"],
+list_datasets(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/list"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
-               {receive_body_as_binary, ReceiveBodyAsBinary}
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
                | Options2],
 
     Headers = [],
+    Input1 = Input0,
 
-    Query0_ =
-      [
-        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
-        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
-      ],
-    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+    CustomHeaders = [],
+    Input2 = Input1,
 
-    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Lists all available evaluators, including both builtin evaluators
 %% provided by the service and custom evaluators created by the user.
@@ -14127,6 +14341,41 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"tagKeys">>, <<"tagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the enablement status or encryption configuration of an Agent
+%% Insight Store.
+-spec update_agent_insight_store(aws_client:aws_client(), binary() | list(), update_agent_insight_store_request()) ->
+    {ok, update_agent_insight_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_insight_store_errors(), tuple()}.
+update_agent_insight_store(Client, AgentInsightStoreId, Input) ->
+    update_agent_insight_store(Client, AgentInsightStoreId, Input, []).
+
+-spec update_agent_insight_store(aws_client:aws_client(), binary() | list(), update_agent_insight_store_request(), proplists:proplist()) ->
+    {ok, update_agent_insight_store_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_insight_store_errors(), tuple()}.
+update_agent_insight_store(Client, AgentInsightStoreId, Input0, Options0) ->
+    Method = put,
+    Path = ["/agent-insight-stores/", aws_util:encode_uri(AgentInsightStoreId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Amazon Secure Agent.

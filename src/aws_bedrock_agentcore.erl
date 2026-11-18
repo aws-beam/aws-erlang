@@ -29,6 +29,8 @@
          delete_batch_evaluation/4,
          delete_capacity_provider_session/4,
          delete_capacity_provider_session/5,
+         delete_dataset_generation/4,
+         delete_dataset_generation/5,
          delete_event/6,
          delete_event/7,
          delete_memory_record/4,
@@ -47,6 +49,9 @@
          get_agent_card/2,
          get_agent_card/4,
          get_agent_card/5,
+         get_agent_insight/3,
+         get_agent_insight/5,
+         get_agent_insight/6,
          get_batch_evaluation/2,
          get_batch_evaluation/4,
          get_batch_evaluation/5,
@@ -56,6 +61,9 @@
          get_code_interpreter_session/3,
          get_code_interpreter_session/5,
          get_code_interpreter_session/6,
+         get_dataset_generation/3,
+         get_dataset_generation/5,
+         get_dataset_generation/6,
          get_event/5,
          get_event/7,
          get_event/8,
@@ -102,6 +110,9 @@
          list_a_b_tests/4,
          list_actors/3,
          list_actors/4,
+         list_agent_insights/1,
+         list_agent_insights/3,
+         list_agent_insights/4,
          list_batch_evaluations/1,
          list_batch_evaluations/3,
          list_batch_evaluations/4,
@@ -109,6 +120,9 @@
          list_browser_sessions/4,
          list_code_interpreter_sessions/3,
          list_code_interpreter_sessions/4,
+         list_dataset_generations/2,
+         list_dataset_generations/4,
+         list_dataset_generations/5,
          list_events/5,
          list_events/6,
          list_memory_extraction_jobs/3,
@@ -138,6 +152,8 @@
          start_browser_session/4,
          start_code_interpreter_session/3,
          start_code_interpreter_session/4,
+         start_dataset_generation/3,
+         start_dataset_generation/4,
          start_memory_extraction_job/3,
          start_memory_extraction_job/4,
          start_recommendation/2,
@@ -152,6 +168,8 @@
          stop_runtime_session/4,
          update_a_b_test/3,
          update_a_b_test/4,
+         update_agent_insight/3,
+         update_agent_insight/4,
          update_browser_stream/3,
          update_browser_stream/4]).
 
@@ -223,6 +241,41 @@
 %%   <<"schemaVersion">> => string()
 %% }
 -type agent_card_definition() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_core_runtime_invocation() :: #{
+%%   <<"agentRuntimeEndpointArn">> => string(),
+%%   <<"requestTemplate">> => string()
+%% }
+-type agent_core_runtime_invocation() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_core_runtime_invocation_details() :: #{
+%%   <<"agentRuntimeEndpointArn">> => string(),
+%%   <<"agentRuntimeVersion">> => string(),
+%%   <<"requestTemplate">> => string()
+%% }
+-type agent_core_runtime_invocation_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_insight_summary() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"agentInsightId">> => string(),
+%%   <<"applicationName">> => string(),
+%%   <<"archiveStatus">> => list(any()),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"customerMetadataStatus">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"lastSeenAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type agent_insight_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -301,6 +354,13 @@
 %%   <<"successfulRecords">> => list(memory_record_output())
 %% }
 -type batch_delete_memory_records_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_evaluation_source_config() :: #{
+%%   <<"batchEvaluationArn">> => string()
+%% }
+-type batch_evaluation_source_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -442,6 +502,17 @@
 %%   <<"serviceNames">> => list([string()]())
 %% }
 -type cloud_watch_logs_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% cloud_watch_logs_source_config() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"logGroupNamePrefixes">> => list(string()),
+%%   <<"logGroupNames">> => list(string()),
+%%   <<"serviceNames">> => list(string()),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type cloud_watch_logs_source_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -707,10 +778,64 @@
 
 
 %% Example:
+%% custom_data_identifier() :: #{
+%%   <<"name">> => [string()],
+%%   <<"regex">> => [string()]
+%% }
+-type custom_data_identifier() :: #{binary() => any()}.
+
+
+%% Example:
 %% custom_descriptor() :: #{
 %%   <<"inlineContent">> => string()
 %% }
 -type custom_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_details() :: #{
+%%   <<"datasetId">> => string(),
+%%   <<"datasetVersion">> => string()
+%% }
+-type dataset_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_execution_config() :: #{
+%%   <<"agentInvocation">> => list(),
+%%   <<"dataset">> => dataset_source()
+%% }
+-type dataset_execution_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_execution_details() :: #{
+%%   <<"agentInvocation">> => list(),
+%%   <<"dataset">> => dataset_details()
+%% }
+-type dataset_execution_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_generation_summary() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"generationId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"scenarioType">> => list(any()),
+%%   <<"status">> => list(any())
+%% }
+-type dataset_generation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% dataset_source() :: #{
+%%   <<"datasetId">> => string(),
+%%   <<"datasetVersion">> => string()
+%% }
+-type dataset_source() :: #{binary() => any()}.
 
 %% Example:
 %% delete_a_b_test_request() :: #{}
@@ -750,6 +875,18 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_capacity_provider_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_dataset_generation_request() :: #{}
+-type delete_dataset_generation_request() :: #{}.
+
+
+%% Example:
+%% delete_dataset_generation_response() :: #{
+%%   <<"generationId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_dataset_generation_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_event_input() :: #{}
@@ -937,6 +1074,17 @@
 
 
 %% Example:
+%% evaluator_filter() :: #{
+%%   <<"aggregation">> => list(any()),
+%%   <<"evaluationDimensionName">> => string(),
+%%   <<"evaluatorId">> => string(),
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => list()
+%% }
+-type evaluator_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% evaluator_metric() :: #{
 %%   <<"controlStats">> => control_stats(),
 %%   <<"evaluatorArn">> => [string()],
@@ -1112,6 +1260,71 @@
 %% }
 -type gateway_filter() :: #{binary() => any()}.
 
+
+%% Example:
+%% generation_attribute_filter() :: #{
+%%   <<"key">> => [string()],
+%%   <<"operator">> => list(any()),
+%%   <<"value">> => list()
+%% }
+-type generation_attribute_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% generation_error_detail() :: #{
+%%   <<"count">> => [integer()],
+%%   <<"errorCode">> => string(),
+%%   <<"errorMessage">> => string(),
+%%   <<"sessionIds">> => list(string())
+%% }
+-type generation_error_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% generation_filters() :: #{
+%%   <<"attributeFilters">> => list(generation_attribute_filter()),
+%%   <<"evaluatorFilters">> => list(evaluator_filter()),
+%%   <<"turnCount">> => turn_count_range()
+%% }
+-type generation_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% generation_identifier_counts() :: #{
+%%   <<"sessionIdCount">> => [integer()],
+%%   <<"traceIdCount">> => [integer()]
+%% }
+-type generation_identifier_counts() :: #{binary() => any()}.
+
+
+%% Example:
+%% generation_identifiers() :: #{
+%%   <<"sessionIds">> => list(string()),
+%%   <<"traceIds">> => list(string())
+%% }
+-type generation_identifiers() :: #{binary() => any()}.
+
+
+%% Example:
+%% generation_results() :: #{
+%%   <<"examplesWithGroundTruth">> => [integer()],
+%%   <<"examplesWritten">> => [integer()],
+%%   <<"scenariosDeduplicated">> => [integer()],
+%%   <<"scenariosGenerated">> => [integer()],
+%%   <<"sessionsFailed">> => [integer()],
+%%   <<"sessionsMatched">> => [integer()],
+%%   <<"sessionsSelected">> => [integer()],
+%%   <<"sessionsUnscored">> => [integer()]
+%% }
+-type generation_results() :: #{binary() => any()}.
+
+
+%% Example:
+%% generation_sampling_config() :: #{
+%%   <<"maxScenarios">> => [integer()]
+%% }
+-type generation_sampling_config() :: #{binary() => any()}.
+
 %% Example:
 %% get_a_b_test_request() :: #{}
 -type get_a_b_test_request() :: #{}.
@@ -1158,6 +1371,33 @@
 %% }
 -type get_agent_card_response() :: #{binary() => any()}.
 
+
+%% Example:
+%% get_agent_insight_request() :: #{
+%%   <<"applicationName">> := string()
+%% }
+-type get_agent_insight_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_agent_insight_response() :: #{
+%%   <<"affectedSessionCount">> => [integer()],
+%%   <<"agentInsightId">> => string(),
+%%   <<"applicationName">> => string(),
+%%   <<"archiveStatus">> => list(any()),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"customerMetadataStatus">> => list(any()),
+%%   <<"description">> => string(),
+%%   <<"lastSeenAt">> => [non_neg_integer()],
+%%   <<"name">> => string(),
+%%   <<"rootCauses">> => list(insight_root_cause()),
+%%   <<"sampleSessions">> => list(sample_session()),
+%%   <<"type">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_agent_insight_response() :: #{binary() => any()}.
+
 %% Example:
 %% get_batch_evaluation_request() :: #{}
 -type get_batch_evaluation_request() :: #{}.
@@ -1170,6 +1410,7 @@
 %%   <<"batchEvaluationName">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"dataSourceConfig">> => list(),
+%%   <<"datasetExecutionDetails">> => dataset_execution_details(),
 %%   <<"description">> => string(),
 %%   <<"errorDetails">> => list([string()]()),
 %%   <<"evaluationResults">> => evaluation_job_results(),
@@ -1235,6 +1476,30 @@
 %%   <<"status">> => list(any())
 %% }
 -type get_code_interpreter_session_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_dataset_generation_request() :: #{}
+-type get_dataset_generation_request() :: #{}.
+
+
+%% Example:
+%% get_dataset_generation_response() :: #{
+%%   <<"completedAt">> => [non_neg_integer()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetId">> => string(),
+%%   <<"description">> => string(),
+%%   <<"errorDetails">> => list(generation_error_detail()),
+%%   <<"failureReason">> => [string()],
+%%   <<"generationId">> => string(),
+%%   <<"generationResults">> => generation_results(),
+%%   <<"name">> => string(),
+%%   <<"redactionSummary">> => redaction_summary(),
+%%   <<"scenarioType">> => list(any()),
+%%   <<"source">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type get_dataset_generation_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_event_input() :: #{}
@@ -1439,6 +1704,14 @@
 %%   <<"workloadAccessToken">> => string()
 %% }
 -type get_workload_access_token_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% ground_truth_config() :: #{
+%%   <<"fields">> => list(list(any())()),
+%%   <<"qualityFilters">> => list(evaluator_filter())
+%% }
+-type ground_truth_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2089,6 +2362,25 @@
 
 
 %% Example:
+%% list_agent_insights_request() :: #{
+%%   <<"applicationName">> => string(),
+%%   <<"archiveStatus">> => list(any()),
+%%   <<"batchEvaluationId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_agent_insights_response() :: #{
+%%   <<"agentInsights">> => list(agent_insight_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_agent_insights_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_batch_evaluations_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
@@ -2136,6 +2428,22 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_code_interpreter_sessions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_generations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_dataset_generations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_dataset_generations_response() :: #{
+%%   <<"datasetGenerations">> => list(dataset_generation_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_dataset_generations_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2496,6 +2804,15 @@
 
 
 %% Example:
+%% online_evaluation_source_config() :: #{
+%%   <<"endTime">> => [non_neg_integer()],
+%%   <<"onlineEvaluationConfigArn">> => string(),
+%%   <<"startTime">> => [non_neg_integer()]
+%% }
+-type online_evaluation_source_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% online_evaluation_trace_config() :: #{
 %%   <<"endTime">> => [non_neg_integer()],
 %%   <<"onlineEvaluationConfigArn">> => string(),
@@ -2653,6 +2970,22 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type recommendation_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% redaction_configuration() :: #{
+%%   <<"customDataIdentifiers">> => list(custom_data_identifier()),
+%%   <<"identifiers">> => list(list(any())())
+%% }
+-type redaction_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% redaction_summary() :: #{
+%%   <<"findingCounts">> => map(),
+%%   <<"scenariosScanned">> => [integer()]
+%% }
+-type redaction_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2961,6 +3294,7 @@
 %%   <<"batchEvaluationName">> := string(),
 %%   <<"clientToken">> => string(),
 %%   <<"dataSourceConfig">> := list(),
+%%   <<"datasetExecutionConfig">> => dataset_execution_config(),
 %%   <<"description">> => string(),
 %%   <<"evaluationMetadata">> => list(),
 %%   <<"evaluators">> => list(evaluator()),
@@ -3037,6 +3371,28 @@
 %%   <<"sessionId">> => string()
 %% }
 -type start_code_interpreter_session_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_dataset_generation_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"scenarioType">> => list(any()),
+%%   <<"source">> := list()
+%% }
+-type start_dataset_generation_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_dataset_generation_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"datasetId">> => string(),
+%%   <<"generationId">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_dataset_generation_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3338,6 +3694,36 @@
 
 
 %% Example:
+%% trace_generation_record() :: #{
+%%   <<"groundTruth">> => ground_truth_config(),
+%%   <<"redactionConfiguration">> => redaction_configuration(),
+%%   <<"sampling">> => generation_sampling_config(),
+%%   <<"selection">> => list(),
+%%   <<"sourceConfig">> => list()
+%% }
+-type trace_generation_record() :: #{binary() => any()}.
+
+
+%% Example:
+%% trace_generation_source() :: #{
+%%   <<"groundTruth">> => ground_truth_config(),
+%%   <<"redactionConfiguration">> => redaction_configuration(),
+%%   <<"sampling">> => generation_sampling_config(),
+%%   <<"selection">> => list(),
+%%   <<"sourceConfig">> => list()
+%% }
+-type trace_generation_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% turn_count_range() :: #{
+%%   <<"max">> => [integer()],
+%%   <<"min">> => [integer()]
+%% }
+-type turn_count_range() :: #{binary() => any()}.
+
+
+%% Example:
 %% unauthorized_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -3367,6 +3753,23 @@
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type update_a_b_test_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_insight_request() :: #{
+%%   <<"applicationName">> := string(),
+%%   <<"archiveStatus">> := list(any())
+%% }
+-type update_agent_insight_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_agent_insight_response() :: #{
+%%   <<"agentInsightId">> => string(),
+%%   <<"archiveStatus">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type update_agent_insight_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3582,6 +3985,15 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type delete_dataset_generation_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type delete_event_errors() ::
     validation_exception() | 
     throttled_exception() | 
@@ -3651,6 +4063,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_agent_insight_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_batch_evaluation_errors() ::
     validation_exception() | 
     unauthorized_exception() | 
@@ -3668,6 +4087,14 @@
 
 -type get_code_interpreter_session_errors() ::
     validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_dataset_generation_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -3845,6 +4272,12 @@
     invalid_input_exception() | 
     access_denied_exception().
 
+-type list_agent_insights_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_batch_evaluations_errors() ::
     validation_exception() | 
     unauthorized_exception() | 
@@ -3861,6 +4294,14 @@
 
 -type list_code_interpreter_sessions_errors() ::
     validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_dataset_generations_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -3981,6 +4422,16 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type start_dataset_generation_errors() ::
+    validation_exception() | 
+    unauthorized_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type start_memory_extraction_job_errors() ::
     validation_exception() | 
     throttled_exception() | 
@@ -4041,6 +4492,14 @@
     unauthorized_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_agent_insight_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -4460,6 +4919,44 @@ delete_capacity_provider_session(Client, CapacityProviderId, SessionId, Input0, 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the record of a dataset generation.
+%%
+%% The examples the generation added stay in the dataset's draft. To
+%% remove them, find them with the `generationIds' filter of
+%% `ListDatasetExamples', then call `DeleteDatasetExamples'.
+-spec delete_dataset_generation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dataset_generation_request()) ->
+    {ok, delete_dataset_generation_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_generation_errors(), tuple()}.
+delete_dataset_generation(Client, DatasetId, GenerationId, Input) ->
+    delete_dataset_generation(Client, DatasetId, GenerationId, Input, []).
+
+-spec delete_dataset_generation(aws_client:aws_client(), binary() | list(), binary() | list(), delete_dataset_generation_request(), proplists:proplist()) ->
+    {ok, delete_dataset_generation_response(), tuple()} |
+    {error, any()} |
+    {error, delete_dataset_generation_errors(), tuple()}.
+delete_dataset_generation(Client, DatasetId, GenerationId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/generations/", aws_util:encode_uri(GenerationId), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes an event from an AgentCore Memory resource.
 %%
 %% When you delete an event, it is permanently removed.
@@ -4788,6 +5285,54 @@ get_agent_card(Client, AgentRuntimeArn, QueryMap, HeadersMap, Options0)
         Result
     end.
 
+%% @doc Amazon Bedrock AgentCore Agent Insights identifies patterns detected
+%% across your agent sessions.
+%%
+%% Use Agent Insights to identify recurring issues and prioritize fixes.
+%%
+%% Retrieves detailed information about an Amazon Bedrock AgentCore Agent
+%% Insight, including its archive status, affected sessions, and, when
+%% applicable, the batch evaluation that produced it.
+-spec get_agent_insight(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_agent_insight_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_insight_errors(), tuple()}.
+get_agent_insight(Client, AgentInsightId, ApplicationName)
+  when is_map(Client) ->
+    get_agent_insight(Client, AgentInsightId, ApplicationName, #{}, #{}).
+
+-spec get_agent_insight(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_agent_insight_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_insight_errors(), tuple()}.
+get_agent_insight(Client, AgentInsightId, ApplicationName, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_agent_insight(Client, AgentInsightId, ApplicationName, QueryMap, HeadersMap, []).
+
+-spec get_agent_insight(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_agent_insight_response(), tuple()} |
+    {error, any()} |
+    {error, get_agent_insight_errors(), tuple()}.
+get_agent_insight(Client, AgentInsightId, ApplicationName, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/agentinsights/", aws_util:encode_uri(AgentInsightId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"applicationName">>, ApplicationName}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves detailed information about a batch evaluation, including
 %% its status, configuration, results, and any error details.
 -spec get_batch_evaluation(aws_client:aws_client(), binary() | list()) ->
@@ -4943,6 +5488,47 @@ get_code_interpreter_session(Client, CodeInterpreterIdentifier, SessionId, Query
         {<<"sessionId">>, SessionId}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a dataset generation, including its status, the request it was
+%% started with, its progress counts, its redaction summary and its errors.
+%%
+%% Call this operation to track a generation that you started with
+%% `StartDatasetGeneration'.
+-spec get_dataset_generation(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_dataset_generation_response(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_generation_errors(), tuple()}.
+get_dataset_generation(Client, DatasetId, GenerationId)
+  when is_map(Client) ->
+    get_dataset_generation(Client, DatasetId, GenerationId, #{}, #{}).
+
+-spec get_dataset_generation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_dataset_generation_response(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_generation_errors(), tuple()}.
+get_dataset_generation(Client, DatasetId, GenerationId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_dataset_generation(Client, DatasetId, GenerationId, QueryMap, HeadersMap, []).
+
+-spec get_dataset_generation(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_dataset_generation_response(), tuple()} |
+    {error, any()} |
+    {error, get_dataset_generation_errors(), tuple()}.
+get_dataset_generation(Client, DatasetId, GenerationId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/generations/", aws_util:encode_uri(GenerationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -5920,6 +6506,56 @@ list_actors(Client, MemoryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists Amazon Bedrock AgentCore Agent Insight summaries in your
+%% account and Region.
+%%
+%% Use this operation to review patterns across sessions before you
+%% investigate or archive an insight. The response paginates the results. Use
+%% the `nextToken' parameter to retrieve additional results.
+-spec list_agent_insights(aws_client:aws_client()) ->
+    {ok, list_agent_insights_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_insights_errors(), tuple()}.
+list_agent_insights(Client)
+  when is_map(Client) ->
+    list_agent_insights(Client, #{}, #{}).
+
+-spec list_agent_insights(aws_client:aws_client(), map(), map()) ->
+    {ok, list_agent_insights_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_insights_errors(), tuple()}.
+list_agent_insights(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_agent_insights(Client, QueryMap, HeadersMap, []).
+
+-spec list_agent_insights(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_agent_insights_response(), tuple()} |
+    {error, any()} |
+    {error, list_agent_insights_errors(), tuple()}.
+list_agent_insights(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/agentinsights"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"applicationName">>, maps:get(<<"applicationName">>, QueryMap, undefined)},
+        {<<"archiveStatus">>, maps:get(<<"archiveStatus">>, QueryMap, undefined)},
+        {<<"batchEvaluationId">>, maps:get(<<"batchEvaluationId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists all batch evaluations in the account, providing summary
 %% information about each evaluation's status and configuration.
 -spec list_batch_evaluations(aws_client:aws_client()) ->
@@ -6067,6 +6703,53 @@ list_code_interpreter_sessions(Client, CodeInterpreterIdentifier, Input0, Option
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the generations for a dataset.
+%%
+%% AgentCore keeps a generation until you delete it with
+%% `DeleteDatasetGeneration' or delete the dataset. To get a
+%% generation's counts and the request it was started with, call
+%% `GetDatasetGeneration'.
+-spec list_dataset_generations(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_dataset_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_generations_errors(), tuple()}.
+list_dataset_generations(Client, DatasetId)
+  when is_map(Client) ->
+    list_dataset_generations(Client, DatasetId, #{}, #{}).
+
+-spec list_dataset_generations(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_dataset_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_generations_errors(), tuple()}.
+list_dataset_generations(Client, DatasetId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_dataset_generations(Client, DatasetId, QueryMap, HeadersMap, []).
+
+-spec list_dataset_generations(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_dataset_generations_response(), tuple()} |
+    {error, any()} |
+    {error, list_dataset_generations_errors(), tuple()}.
+list_dataset_generations(Client, DatasetId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/generations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Lists events in an AgentCore Memory resource based on specified
 %% criteria.
@@ -6686,6 +7369,58 @@ start_code_interpreter_session(Client, CodeInterpreterIdentifier, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts a dataset generation, which creates examples for an existing
+%% dataset from your agent's traces.
+%%
+%% The dataset must be `ACTIVE'. Each generation produces one scenario
+%% type, set by `scenarioType'. When the generation finishes, AgentCore
+%% adds the examples to the dataset's draft. Examples that duplicate each
+%% other, or that duplicate examples already in the draft, are left out.
+%%
+%% A dataset can have only one generation in progress at a time. While it
+%% runs, requests that change the dataset's draft or publish a version
+%% are rejected with a `ConflictException'.
+%%
+%% AgentCore reads the traces with your credentials, so you need read access
+%% to the trace log groups, and to the dataset's KMS key if the dataset
+%% uses a customer managed key. The draft can hold at most 1,000 examples,
+%% including the examples this generation can add (`maxScenarios').
+%%
+%% The operation returns immediately. To track progress, call
+%% `GetDatasetGeneration'.
+-spec start_dataset_generation(aws_client:aws_client(), binary() | list(), start_dataset_generation_request()) ->
+    {ok, start_dataset_generation_response(), tuple()} |
+    {error, any()} |
+    {error, start_dataset_generation_errors(), tuple()}.
+start_dataset_generation(Client, DatasetId, Input) ->
+    start_dataset_generation(Client, DatasetId, Input, []).
+
+-spec start_dataset_generation(aws_client:aws_client(), binary() | list(), start_dataset_generation_request(), proplists:proplist()) ->
+    {ok, start_dataset_generation_response(), tuple()} |
+    {error, any()} |
+    {error, start_dataset_generation_errors(), tuple()}.
+start_dataset_generation(Client, DatasetId, Input0, Options0) ->
+    Method = post,
+    Path = ["/datasets/", aws_util:encode_uri(DatasetId), "/generations"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Starts a memory extraction job that processes events that failed
 %% extraction previously in an AgentCore Memory resource and produces
 %% structured memory records.
@@ -6995,6 +7730,42 @@ update_a_b_test(Client, AbTestId, Input0, Options0) ->
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the archive status of an Amazon Bedrock AgentCore Agent
+%% Insight.
+-spec update_agent_insight(aws_client:aws_client(), binary() | list(), update_agent_insight_request()) ->
+    {ok, update_agent_insight_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_insight_errors(), tuple()}.
+update_agent_insight(Client, AgentInsightId, Input) ->
+    update_agent_insight(Client, AgentInsightId, Input, []).
+
+-spec update_agent_insight(aws_client:aws_client(), binary() | list(), update_agent_insight_request(), proplists:proplist()) ->
+    {ok, update_agent_insight_response(), tuple()} |
+    {error, any()} |
+    {error, update_agent_insight_errors(), tuple()}.
+update_agent_insight(Client, AgentInsightId, Input0, Options0) ->
+    Method = put,
+    Path = ["/agentinsights/", aws_util:encode_uri(AgentInsightId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"applicationName">>, <<"applicationName">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates a browser stream.

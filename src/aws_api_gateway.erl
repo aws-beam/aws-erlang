@@ -8,7 +8,7 @@
 %%
 %% API Gateway allows developers to securely connect mobile and web
 %% applications to APIs that run on Lambda, Amazon EC2, or other publicly
-%% addressable web services that are hosted outside of AWS.
+%% addressable web services that are hosted outside of Amazon Web Services.
 -module(aws_api_gateway).
 
 -export([create_api_key/2,
@@ -383,6 +383,7 @@
 %%   <<"id">> => string(),
 %%   <<"identitySource">> => string(),
 %%   <<"identityValidationExpression">> => string(),
+%%   <<"jwtConfiguration">> => jwt_configuration(),
 %%   <<"name">> => string(),
 %%   <<"providerARNs">> => list(string()),
 %%   <<"type">> => list(any())
@@ -481,6 +482,7 @@
 %%   <<"authorizerUri">> => string(),
 %%   <<"identitySource">> => string(),
 %%   <<"identityValidationExpression">> => string(),
+%%   <<"jwtConfiguration">> => jwt_configuration_input(),
 %%   <<"name">> := string(),
 %%   <<"providerARNs">> => list(string()),
 %%   <<"type">> := list(any())
@@ -1306,6 +1308,51 @@
 %%   <<"statusCode">> => string()
 %% }
 -type integration_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% jwt_additional_claim() :: #{
+%%   <<"claimName">> => string(),
+%%   <<"expectedValues">> => list(string()),
+%%   <<"format">> => list(any()),
+%%   <<"required">> => boolean()
+%% }
+-type jwt_additional_claim() :: #{binary() => any()}.
+
+
+%% Example:
+%% jwt_configuration() :: #{
+%%   <<"defaultAlgorithms">> => list(list(any())()),
+%%   <<"issuers">> => list(jwt_issuer())
+%% }
+-type jwt_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% jwt_configuration_input() :: #{
+%%   <<"defaultAlgorithms">> => list(list(any())()),
+%%   <<"issuers">> => list(jwt_issuer_input())
+%% }
+-type jwt_configuration_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% jwt_issuer() :: #{
+%%   <<"additionalClaims">> => list(jwt_additional_claim()),
+%%   <<"audiences">> => list(string()),
+%%   <<"issuer">> => string(),
+%%   <<"jwksUri">> => string()
+%% }
+-type jwt_issuer() :: #{binary() => any()}.
+
+
+%% Example:
+%% jwt_issuer_input() :: #{
+%%   <<"additionalClaims">> => list(jwt_additional_claim()),
+%%   <<"audiences">> => list(string()),
+%%   <<"issuer">> => string()
+%% }
+-type jwt_issuer_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3707,10 +3754,11 @@ delete_domain_name(Client, DomainName, Input0, Options0) ->
 
 %% @doc Deletes the DomainNameAccessAssociation resource.
 %%
-%% Only the AWS account that created the DomainNameAccessAssociation resource
-%% can delete it. To stop an access association source in another AWS account
-%% from accessing your private custom domain name, use the
-%% RejectDomainNameAccessAssociation operation.
+%% Only the Amazon Web Services account that created the
+%% DomainNameAccessAssociation resource can delete it. To stop an access
+%% association source in another Amazon Web Services account from accessing
+%% your private custom domain name, use the RejectDomainNameAccessAssociation
+%% operation.
 -spec delete_domain_name_access_association(aws_client:aws_client(), binary() | list(), delete_domain_name_access_association_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6554,9 +6602,9 @@ put_rest_api(Client, RestApiId, Input0, Options0) ->
 %% name.
 %%
 %% To reject a domain name access association with an access association
-%% source in another AWS account, use this operation. To remove a domain name
-%% access association with an access association source in your own account,
-%% use the DeleteDomainNameAccessAssociation operation.
+%% source in another Amazon Web Services account, use this operation. To
+%% remove a domain name access association with an access association source
+%% in your own account, use the DeleteDomainNameAccessAssociation operation.
 -spec reject_domain_name_access_association(aws_client:aws_client(), reject_domain_name_access_association_request()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -6800,6 +6848,13 @@ update_api_key(Client, ApiKey, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Updates an existing Authorizer resource.
+%%
+%% For a `JWT' authorizer, the only JWT patch operation is `replace'
+%% on the path `/jwtConfiguration'. Its value is the complete
+%% configuration as a JSON string in the `JwtConfigurationInput' shape.
+%% This replaces the entire configuration; nothing from the previous
+%% configuration is retained. A `replace' operation on the path
+%% `/type' is supported in both directions.
 -spec update_authorizer(aws_client:aws_client(), binary() | list(), binary() | list(), update_authorizer_request()) ->
     {ok, authorizer(), tuple()} |
     {error, any()} |

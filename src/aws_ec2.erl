@@ -1488,6 +1488,8 @@
          modify_transit_gateway_metering_policy/3,
          modify_transit_gateway_network_function_attachment/2,
          modify_transit_gateway_network_function_attachment/3,
+         modify_transit_gateway_peering_attachment/2,
+         modify_transit_gateway_peering_attachment/3,
          modify_transit_gateway_policy_table_entry/2,
          modify_transit_gateway_policy_table_entry/3,
          modify_transit_gateway_prefix_list_reference/2,
@@ -1939,11 +1941,20 @@
 -type active_instance() :: #{binary() => any()}.
 
 %% Example:
+%% active_vpn_tunnel_additional_key_exchange() :: #{
+%%   <<"AdditionalKeyExchangeRound">> => integer(),
+%%   <<"KeyExchangeMethod">> => integer()
+%% }
+-type active_vpn_tunnel_additional_key_exchange() :: #{binary() => any()}.
+
+%% Example:
 %% active_vpn_tunnel_status() :: #{
 %%   <<"IkeVersion">> => string(),
+%%   <<"Phase1AdditionalKeyExchanges">> => list(active_vpn_tunnel_additional_key_exchange()),
 %%   <<"Phase1DHGroup">> => integer(),
 %%   <<"Phase1EncryptionAlgorithm">> => string(),
 %%   <<"Phase1IntegrityAlgorithm">> => string(),
+%%   <<"Phase2AdditionalKeyExchanges">> => list(active_vpn_tunnel_additional_key_exchange()),
 %%   <<"Phase2DHGroup">> => integer(),
 %%   <<"Phase2EncryptionAlgorithm">> => string(),
 %%   <<"Phase2IntegrityAlgorithm">> => string(),
@@ -1993,6 +2004,18 @@
 %%   <<"VpcEndpointService">> => analysis_component()
 %% }
 -type additional_detail() :: #{binary() => any()}.
+
+%% Example:
+%% additional_key_exchange_methods_list_value() :: #{
+%%   <<"Value">> => integer()
+%% }
+-type additional_key_exchange_methods_list_value() :: #{binary() => any()}.
+
+%% Example:
+%% additional_key_exchange_methods_request_list_value() :: #{
+%%   <<"Value">> => integer()
+%% }
+-type additional_key_exchange_methods_request_list_value() :: #{binary() => any()}.
 
 %% Example:
 %% address() :: #{
@@ -3407,11 +3430,18 @@
 -type capacity_block_extension_offering() :: #{binary() => any()}.
 
 %% Example:
+%% capacity_block_instance_type_preference() :: #{
+%%   <<"InstanceType">> => string()
+%% }
+-type capacity_block_instance_type_preference() :: #{binary() => any()}.
+
+%% Example:
 %% capacity_block_offering() :: #{
 %%   <<"AvailabilityZone">> => string(),
 %%   <<"CapacityBlockDurationHours">> => integer(),
 %%   <<"CapacityBlockDurationMinutes">> => integer(),
 %%   <<"CapacityBlockOfferingId">> => string(),
+%%   <<"CapacityBlockOfferingSegments">> => list(capacity_block_offering_segment()),
 %%   <<"CurrencyCode">> => string(),
 %%   <<"EndDate">> => non_neg_integer(),
 %%   <<"InstanceCount">> => integer(),
@@ -3424,6 +3454,22 @@
 %%   <<"ZoneType">> => string()
 %% }
 -type capacity_block_offering() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_block_offering_segment() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"CapacityBlockDurationHours">> => integer(),
+%%   <<"CapacityBlockDurationMinutes">> => integer(),
+%%   <<"CurrencyCode">> => string(),
+%%   <<"EndDate">> => non_neg_integer(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"InstanceType">> => string(),
+%%   <<"StartDate">> => non_neg_integer(),
+%%   <<"UpfrontFee">> => string(),
+%%   <<"ZoneType">> => string()
+%% }
+-type capacity_block_offering_segment() :: #{binary() => any()}.
 
 %% Example:
 %% capacity_block_status() :: #{
@@ -5346,6 +5392,13 @@
 -type create_networking_flex_cost_allocation_policy_result() :: #{binary() => any()}.
 
 %% Example:
+%% create_peering_connection_options_request() :: #{
+%%   <<"AllowMultipathResilience">> => boolean(),
+%%   <<"MultipathResilienceMode">> => list(any())
+%% }
+-type create_peering_connection_options_request() :: #{binary() => any()}.
+
+%% Example:
 %% create_placement_group_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"GroupName">> => string(),
@@ -5899,7 +5952,9 @@
 
 %% Example:
 %% create_transit_gateway_peering_attachment_request_options() :: #{
-%%   <<"DynamicRouting">> => list(any())
+%%   <<"AllowMultipathResilience">> => boolean(),
+%%   <<"DynamicRouting">> => list(any()),
+%%   <<"MultipathResilienceMode">> => list(any())
 %% }
 -type create_transit_gateway_peering_attachment_request_options() :: #{binary() => any()}.
 
@@ -6345,6 +6400,7 @@
 %%   <<"PeerOwnerId">> => string(),
 %%   <<"PeerRegion">> => string(),
 %%   <<"PeerVpcId">> => string(),
+%%   <<"RequesterPeeringConnectionOptions">> => create_peering_connection_options_request(),
 %%   <<"TagSpecifications">> => list(tag_specification()),
 %%   <<"VpcId">> := string()
 %% }
@@ -8210,6 +8266,7 @@
 %%   <<"EndDateRange">> => non_neg_integer(),
 %%   <<"InstanceCount">> => integer(),
 %%   <<"InstanceType">> => string(),
+%%   <<"InstanceTypePreferences">> => list(capacity_block_instance_type_preference()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"StartDateRange">> => non_neg_integer(),
@@ -18930,6 +18987,27 @@
 -type modify_transit_gateway_options() :: #{binary() => any()}.
 
 %% Example:
+%% modify_transit_gateway_peering_attachment_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"Options">> => modify_transit_gateway_peering_attachment_request_options(),
+%%   <<"TransitGatewayAttachmentId">> := string()
+%% }
+-type modify_transit_gateway_peering_attachment_request() :: #{binary() => any()}.
+
+%% Example:
+%% modify_transit_gateway_peering_attachment_request_options() :: #{
+%%   <<"AllowMultipathResilience">> => boolean(),
+%%   <<"MultipathResilienceMode">> => list(any())
+%% }
+-type modify_transit_gateway_peering_attachment_request_options() :: #{binary() => any()}.
+
+%% Example:
+%% modify_transit_gateway_peering_attachment_result() :: #{
+%%   <<"TransitGatewayPeeringAttachment">> => transit_gateway_peering_attachment()
+%% }
+-type modify_transit_gateway_peering_attachment_result() :: #{binary() => any()}.
+
+%% Example:
 %% modify_transit_gateway_policy_table_entry_request() :: #{
 %%   <<"DryRun">> => boolean(),
 %%   <<"PolicyRule">> => transit_gateway_request_policy_rule(),
@@ -19494,10 +19572,12 @@
 %%   <<"EnableTunnelLifecycleControl">> => boolean(),
 %%   <<"IKEVersions">> => list(i_k_e_versions_request_list_value()),
 %%   <<"LogOptions">> => vpn_tunnel_log_options_specification(),
+%%   <<"Phase1AdditionalKeyExchanges">> => list(vpn_additional_key_exchange_request()),
 %%   <<"Phase1DHGroupNumbers">> => list(phase1_d_h_group_numbers_request_list_value()),
 %%   <<"Phase1EncryptionAlgorithms">> => list(phase1_encryption_algorithms_request_list_value()),
 %%   <<"Phase1IntegrityAlgorithms">> => list(phase1_integrity_algorithms_request_list_value()),
 %%   <<"Phase1LifetimeSeconds">> => integer(),
+%%   <<"Phase2AdditionalKeyExchanges">> => list(vpn_additional_key_exchange_request()),
 %%   <<"Phase2DHGroupNumbers">> => list(phase2_d_h_group_numbers_request_list_value()),
 %%   <<"Phase2EncryptionAlgorithms">> => list(phase2_encryption_algorithms_request_list_value()),
 %%   <<"Phase2IntegrityAlgorithms">> => list(phase2_integrity_algorithms_request_list_value()),
@@ -20158,7 +20238,9 @@
 %% peering_connection_options() :: #{
 %%   <<"AllowDnsResolutionFromRemoteVpc">> => boolean(),
 %%   <<"AllowEgressFromLocalClassicLinkToRemoteVpc">> => boolean(),
-%%   <<"AllowEgressFromLocalVpcToRemoteClassicLink">> => boolean()
+%%   <<"AllowEgressFromLocalVpcToRemoteClassicLink">> => boolean(),
+%%   <<"AllowMultipathResilience">> => boolean(),
+%%   <<"MultipathResilienceMode">> => list(any())
 %% }
 -type peering_connection_options() :: #{binary() => any()}.
 
@@ -20166,7 +20248,9 @@
 %% peering_connection_options_request() :: #{
 %%   <<"AllowDnsResolutionFromRemoteVpc">> => boolean(),
 %%   <<"AllowEgressFromLocalClassicLinkToRemoteVpc">> => boolean(),
-%%   <<"AllowEgressFromLocalVpcToRemoteClassicLink">> => boolean()
+%%   <<"AllowEgressFromLocalVpcToRemoteClassicLink">> => boolean(),
+%%   <<"AllowMultipathResilience">> => boolean(),
+%%   <<"MultipathResilienceMode">> => list(any())
 %% }
 -type peering_connection_options_request() :: #{binary() => any()}.
 
@@ -20612,7 +20696,8 @@
 %% Example:
 %% purchase_capacity_block_result() :: #{
 %%   <<"CapacityBlocks">> => list(capacity_block()),
-%%   <<"CapacityReservation">> => capacity_reservation()
+%%   <<"CapacityReservation">> => capacity_reservation(),
+%%   <<"CapacityReservations">> => list(capacity_reservation())
 %% }
 -type purchase_capacity_block_result() :: #{binary() => any()}.
 
@@ -23685,7 +23770,12 @@
 
 %% Example:
 %% transit_gateway_peering_attachment_options() :: #{
-%%   <<"DynamicRouting">> => list(any())
+%%   <<"AccepterAllowMultipathResilience">> => boolean(),
+%%   <<"AccepterMultipathResilienceMode">> => list(any()),
+%%   <<"DynamicRouting">> => list(any()),
+%%   <<"MultipathResilienceStatus">> => list(any()),
+%%   <<"RequesterAllowMultipathResilience">> => boolean(),
+%%   <<"RequesterMultipathResilienceMode">> => list(any())
 %% }
 -type transit_gateway_peering_attachment_options() :: #{binary() => any()}.
 
@@ -23919,10 +24009,12 @@
 %%   <<"IkeVersions">> => list(i_k_e_versions_list_value()),
 %%   <<"LogOptions">> => vpn_tunnel_log_options(),
 %%   <<"OutsideIpAddress">> => string(),
+%%   <<"Phase1AdditionalKeyExchanges">> => list(vpn_additional_key_exchange()),
 %%   <<"Phase1DHGroupNumbers">> => list(phase1_d_h_group_numbers_list_value()),
 %%   <<"Phase1EncryptionAlgorithms">> => list(phase1_encryption_algorithms_list_value()),
 %%   <<"Phase1IntegrityAlgorithms">> => list(phase1_integrity_algorithms_list_value()),
 %%   <<"Phase1LifetimeSeconds">> => integer(),
+%%   <<"Phase2AdditionalKeyExchanges">> => list(vpn_additional_key_exchange()),
 %%   <<"Phase2DHGroupNumbers">> => list(phase2_d_h_group_numbers_list_value()),
 %%   <<"Phase2EncryptionAlgorithms">> => list(phase2_encryption_algorithms_list_value()),
 %%   <<"Phase2IntegrityAlgorithms">> => list(phase2_integrity_algorithms_list_value()),
@@ -24864,6 +24956,7 @@
 %% vpc_peering_connection() :: #{
 %%   <<"AccepterVpcInfo">> => vpc_peering_connection_vpc_info(),
 %%   <<"ExpirationTime">> => non_neg_integer(),
+%%   <<"MultipathResilienceStatus">> => list(any()),
 %%   <<"RequesterVpcInfo">> => vpc_peering_connection_vpc_info(),
 %%   <<"Status">> => vpc_peering_connection_state_reason(),
 %%   <<"Tags">> => list(tag()),
@@ -24875,7 +24968,9 @@
 %% vpc_peering_connection_options_description() :: #{
 %%   <<"AllowDnsResolutionFromRemoteVpc">> => boolean(),
 %%   <<"AllowEgressFromLocalClassicLinkToRemoteVpc">> => boolean(),
-%%   <<"AllowEgressFromLocalVpcToRemoteClassicLink">> => boolean()
+%%   <<"AllowEgressFromLocalVpcToRemoteClassicLink">> => boolean(),
+%%   <<"AllowMultipathResilience">> => boolean(),
+%%   <<"MultipathResilienceMode">> => list(any())
 %% }
 -type vpc_peering_connection_options_description() :: #{binary() => any()}.
 
@@ -24897,6 +24992,22 @@
 %%   <<"VpcId">> => string()
 %% }
 -type vpc_peering_connection_vpc_info() :: #{binary() => any()}.
+
+%% Example:
+%% vpn_additional_key_exchange() :: #{
+%%   <<"AdditionalKeyExchangeRound">> => integer(),
+%%   <<"KeyExchangeMethods">> => list(additional_key_exchange_methods_list_value()),
+%%   <<"Requirement">> => list(any())
+%% }
+-type vpn_additional_key_exchange() :: #{binary() => any()}.
+
+%% Example:
+%% vpn_additional_key_exchange_request() :: #{
+%%   <<"AdditionalKeyExchangeRound">> => integer(),
+%%   <<"KeyExchangeMethods">> => list(additional_key_exchange_methods_request_list_value()),
+%%   <<"Requirement">> => list(any())
+%% }
+-type vpn_additional_key_exchange_request() :: #{binary() => any()}.
 
 %% Example:
 %% vpn_concentrator() :: #{
@@ -25011,10 +25122,12 @@
 %%   <<"EnableTunnelLifecycleControl">> => boolean(),
 %%   <<"IKEVersions">> => list(i_k_e_versions_request_list_value()),
 %%   <<"LogOptions">> => vpn_tunnel_log_options_specification(),
+%%   <<"Phase1AdditionalKeyExchanges">> => list(vpn_additional_key_exchange_request()),
 %%   <<"Phase1DHGroupNumbers">> => list(phase1_d_h_group_numbers_request_list_value()),
 %%   <<"Phase1EncryptionAlgorithms">> => list(phase1_encryption_algorithms_request_list_value()),
 %%   <<"Phase1IntegrityAlgorithms">> => list(phase1_integrity_algorithms_request_list_value()),
 %%   <<"Phase1LifetimeSeconds">> => integer(),
+%%   <<"Phase2AdditionalKeyExchanges">> => list(vpn_additional_key_exchange_request()),
 %%   <<"Phase2DHGroupNumbers">> => list(phase2_d_h_group_numbers_request_list_value()),
 %%   <<"Phase2EncryptionAlgorithms">> => list(phase2_encryption_algorithms_request_list_value()),
 %%   <<"Phase2IntegrityAlgorithms">> => list(phase2_integrity_algorithms_request_list_value()),
@@ -25204,6 +25317,16 @@ accept_vpc_endpoint_connections(Client, Input, Options)
 %% For an inter-Region VPC peering connection request, you must accept the
 %% VPC peering
 %% connection in the Region of the accepter VPC.
+%%
+%% If the requester allows multipath resilience, accepting the request also
+%% allows multipath resilience
+%% for the accepter VPC, and the `multipathResilienceStatus' of the VPC
+%% peering connection becomes
+%% `enabled'. Additional charges apply. For more information, see Amazon
+%% VPC pricing: http://aws.amazon.com/vpc/pricing/. To stop allowing
+%% multipath resilience for the accepter VPC, use
+%% `ModifyVpcPeeringConnectionOptions' and set
+%% `AllowMultipathResilience' to `false'.
 -spec accept_vpc_peering_connection(aws_client:aws_client(), accept_vpc_peering_connection_request()) ->
     {ok, accept_vpc_peering_connection_result(), tuple()} |
     {error, any()}.
@@ -29914,6 +30037,10 @@ create_vpc_endpoint_service_configuration(Client, Input, Options)
 %% connection. The VPC peering connection request expires after 7 days, after
 %% which it
 %% cannot be accepted or rejected.
+%%
+%% Multipath resilience replicates the traffic of an inter-Region VPC peering
+%% connection across
+%% multiple network paths.
 %%
 %% If you create a VPC peering connection request between VPCs with
 %% overlapping CIDR
@@ -42221,6 +42348,37 @@ modify_transit_gateway_network_function_attachment(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ModifyTransitGatewayNetworkFunctionAttachment">>, Input, Options).
 
+%% @doc Modifies the options for a transit gateway peering attachment.
+%%
+%% The peering attachment must be in the `available' state.
+%%
+%% You can allow multipath resilience for your side of an inter-Region
+%% transit gateway peering attachment between
+%% supported Regions.
+%% Multipath resilience isn't supported for transit gateway peering
+%% attachments in the same Region. It takes
+%% effect only when both the requester and the accepter allow it. To modify
+%% the requester side, send the
+%% request in the Region of the requester transit gateway. To modify the
+%% accepter side, send the request in the
+%% Region of the accepter transit gateway. To check whether multipath
+%% resilience is in effect, use
+%% `DescribeTransitGatewayPeeringAttachments' and check
+%% `multipathResilienceStatus'.
+-spec modify_transit_gateway_peering_attachment(aws_client:aws_client(), modify_transit_gateway_peering_attachment_request()) ->
+    {ok, modify_transit_gateway_peering_attachment_result(), tuple()} |
+    {error, any()}.
+modify_transit_gateway_peering_attachment(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    modify_transit_gateway_peering_attachment(Client, Input, []).
+
+-spec modify_transit_gateway_peering_attachment(aws_client:aws_client(), modify_transit_gateway_peering_attachment_request(), proplists:proplist()) ->
+    {ok, modify_transit_gateway_peering_attachment_result(), tuple()} |
+    {error, any()}.
+modify_transit_gateway_peering_attachment(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ModifyTransitGatewayPeeringAttachment">>, Input, Options).
+
 %% @doc Modifies the specified transit gateway policy table entry.
 -spec modify_transit_gateway_policy_table_entry(aws_client:aws_client(), modify_transit_gateway_policy_table_entry_request()) ->
     {ok, modify_transit_gateway_policy_table_entry_result(), tuple()} |
@@ -42690,6 +42848,19 @@ modify_vpc_endpoint_service_permissions(Client, Input, Options)
 %% and the
 %% requester for a VPC peering connection, use the
 %% `DescribeVpcPeeringConnections' command.
+%%
+%% Multipath resilience replicates the traffic of an inter-Region VPC peering
+%% connection across
+%% multiple network paths. You can allow multipath resilience for your side
+%% of the connection if both of its
+%% Regions are supported. It takes effect only when both the requester and
+%% the
+%% accepter allow it. Additional charges apply when multipath resilience is
+%% in effect. For more
+%% information, see Amazon VPC pricing: http://aws.amazon.com/vpc/pricing/.
+%% To check whether multipath resilience is in effect, use
+%% `DescribeVpcPeeringConnections' and check
+%% `multipathResilienceStatus'.
 -spec modify_vpc_peering_connection_options(aws_client:aws_client(), modify_vpc_peering_connection_options_request()) ->
     {ok, modify_vpc_peering_connection_options_result(), tuple()} |
     {error, any()}.

@@ -18,6 +18,12 @@
          create_dictionary/3,
          create_feed/2,
          create_feed/3,
+         create_function/2,
+         create_function/3,
+         create_question_set/2,
+         create_question_set/3,
+         create_question_set_version/3,
+         create_question_set_version/4,
          create_schedule_action/3,
          create_schedule_action/4,
          delete_dictionary/3,
@@ -26,6 +32,12 @@
          delete_feed/4,
          delete_feed_policy/3,
          delete_feed_policy/4,
+         delete_function/3,
+         delete_function/4,
+         delete_question_set/3,
+         delete_question_set/4,
+         delete_question_set_version/4,
+         delete_question_set_version/5,
          delete_schedule_action/3,
          delete_schedule_action/4,
          disassociate_feed/3,
@@ -45,12 +57,27 @@
          get_fixture/2,
          get_fixture/4,
          get_fixture/5,
+         get_function/2,
+         get_function/4,
+         get_function/5,
+         get_question_set/2,
+         get_question_set/4,
+         get_question_set/5,
          list_dictionaries/1,
          list_dictionaries/3,
          list_dictionaries/4,
          list_feeds/1,
          list_feeds/3,
          list_feeds/4,
+         list_functions/1,
+         list_functions/3,
+         list_functions/4,
+         list_question_set_versions/2,
+         list_question_set_versions/4,
+         list_question_set_versions/5,
+         list_question_sets/1,
+         list_question_sets/3,
+         list_question_sets/4,
          list_schedule_actions/2,
          list_schedule_actions/4,
          list_schedule_actions/5,
@@ -68,7 +95,11 @@
          update_dictionary/3,
          update_dictionary/4,
          update_feed/3,
-         update_feed/4]).
+         update_feed/4,
+         update_function/3,
+         update_function/4,
+         update_question_set/3,
+         update_question_set/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -110,11 +141,39 @@
 
 
 %% Example:
+%% bedrock_function_target() :: #{
+%%   <<"api">> => list(any()),
+%%   <<"model">> => [string()]
+%% }
+-type bedrock_function_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% choose_one_question() :: #{
+%%   <<"name">> => string(),
+%%   <<"options">> => list(question_option()),
+%%   <<"question">> => string()
+%% }
+-type choose_one_question() :: #{binary() => any()}.
+
+%% Example:
+%% clip_trigger() :: #{}
+-type clip_trigger() :: #{}.
+
+
+%% Example:
 %% clipping_config() :: #{
 %%   <<"callbackMetadata">> => string(),
 %%   <<"dataSourceConfiguration">> => data_source_configuration()
 %% }
 -type clipping_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% clipping_settings() :: #{
+%%   <<"outputName">> => string()
+%% }
+-type clipping_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -134,10 +193,18 @@
 
 %% Example:
 %% contextual_metadata_config() :: #{
+%%   <<"customQuestions">> => custom_questions_config(),
 %%   <<"extendedAnalysis">> => list(any()),
 %%   <<"summaryGeneration">> => list(any())
 %% }
 -type contextual_metadata_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% contextual_metadata_settings() :: #{
+%%   <<"outputName">> => string()
+%% }
+-type contextual_metadata_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -189,6 +256,37 @@
 
 
 %% Example:
+%% create_function_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"eventBridgeDelivery">> => list(any()),
+%%   <<"name">> := string(),
+%%   <<"requestExpression">> := string(),
+%%   <<"responseExpression">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"target">> := list()
+%% }
+-type create_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_function_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"contextTypes">> => list(list(any())()),
+%%   <<"description">> => string(),
+%%   <<"eventBridgeDelivery">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"references">> => list(string()),
+%%   <<"requestExpression">> => string(),
+%%   <<"responseExpression">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"target">> => list()
+%% }
+-type create_function_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_output() :: #{
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
@@ -196,6 +294,61 @@
 %%   <<"status">> => list(any())
 %% }
 -type create_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_question_set_request() :: #{
+%%   <<"chooseOne">> => list(choose_one_question()),
+%%   <<"name">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"yesNo">> => list(yes_no_question()),
+%%   <<"yesNoPerOption">> => list(yes_no_per_option_question())
+%% }
+-type create_question_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_question_set_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"chooseOne">> => list(choose_one_question()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"latestVersion">> => string(),
+%%   <<"name">> => string(),
+%%   <<"references">> => list(string()),
+%%   <<"sha256">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"version">> => string(),
+%%   <<"yesNo">> => list(yes_no_question()),
+%%   <<"yesNoPerOption">> => list(yes_no_per_option_question())
+%% }
+-type create_question_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_question_set_version_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"sha256">> => string()
+%% }
+-type create_question_set_version_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_question_set_version_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"chooseOne">> => list(choose_one_question()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"latestVersion">> => string(),
+%%   <<"name">> => string(),
+%%   <<"references">> => list(string()),
+%%   <<"sha256">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"version">> => string(),
+%%   <<"yesNo">> => list(yes_no_question()),
+%%   <<"yesNoPerOption">> => list(yes_no_per_option_question())
+%% }
+-type create_question_set_version_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -223,6 +376,14 @@
 %%   <<"templateGroups">> => list(template_group())
 %% }
 -type cropping_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% custom_questions_config() :: #{
+%%   <<"scene">> => question_set_reference(),
+%%   <<"shot">> => question_set_reference()
+%% }
+-type custom_questions_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -260,6 +421,39 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_feed_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_function_request() :: #{}
+-type delete_function_request() :: #{}.
+
+
+%% Example:
+%% delete_function_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type delete_function_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_question_set_request() :: #{}
+-type delete_question_set_request() :: #{}.
+
+
+%% Example:
+%% delete_question_set_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string()
+%% }
+-type delete_question_set_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_question_set_version_request() :: #{}
+-type delete_question_set_version_request() :: #{}.
+
+%% Example:
+%% delete_question_set_version_response() :: #{}
+-type delete_question_set_version_response() :: #{}.
 
 
 %% Example:
@@ -333,6 +527,13 @@
 
 
 %% Example:
+%% fixed_interval_trigger() :: #{
+%%   <<"intervalSeconds">> => [integer()]
+%% }
+-type fixed_interval_trigger() :: #{binary() => any()}.
+
+
+%% Example:
 %% fixed_mode_schedule_action_start_settings() :: #{
 %%   <<"scheduledAt">> => [non_neg_integer()]
 %% }
@@ -349,6 +550,55 @@
 %%   <<"status">> => [string()]
 %% }
 -type fixture_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_sampling_strategy() :: #{
+%%   <<"count">> => [integer()],
+%%   <<"mode">> => list(any())
+%% }
+-type frame_sampling_strategy() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_settings() :: #{
+%%   <<"frameSampling">> => frame_sampling_strategy(),
+%%   <<"frameSize">> => frame_size()
+%% }
+-type frame_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% frame_size() :: #{
+%%   <<"heightPixels">> => [integer()],
+%%   <<"widthPixels">> => [integer()]
+%% }
+-type frame_size() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_config() :: #{
+%%   <<"clippingSettings">> => clipping_settings(),
+%%   <<"contextualMetadataSettings">> => contextual_metadata_settings(),
+%%   <<"frameSettings">> => frame_settings(),
+%%   <<"functionArn">> => string(),
+%%   <<"subtitlingSettings">> => subtitling_settings(),
+%%   <<"trigger">> => list()
+%% }
+-type function_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% function_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"contextTypes">> => list(list(any())()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"target">> => list()
+%% }
+-type function_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -420,6 +670,28 @@
 %% }
 -type get_fixture_response() :: #{binary() => any()}.
 
+%% Example:
+%% get_function_request() :: #{}
+-type get_function_request() :: #{}.
+
+
+%% Example:
+%% get_function_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"contextTypes">> => list(list(any())()),
+%%   <<"description">> => string(),
+%%   <<"eventBridgeDelivery">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"references">> => list(string()),
+%%   <<"requestExpression">> => string(),
+%%   <<"responseExpression">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"target">> => list()
+%% }
+-type get_function_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% get_output() :: #{
@@ -430,6 +702,31 @@
 %%   <<"status">> => list(any())
 %% }
 -type get_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_question_set_request() :: #{
+%%   <<"questionSetVersion">> => string()
+%% }
+-type get_question_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_question_set_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"chooseOne">> => list(choose_one_question()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"latestVersion">> => string(),
+%%   <<"name">> => string(),
+%%   <<"references">> => list(string()),
+%%   <<"sha256">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"version">> => string(),
+%%   <<"yesNo">> => list(yes_no_question()),
+%%   <<"yesNoPerOption">> => list(yes_no_per_option_question())
+%% }
+-type get_question_set_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -472,6 +769,54 @@
 
 
 %% Example:
+%% list_functions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_functions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_functions_response() :: #{
+%%   <<"functions">> => list(function_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_functions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_question_set_versions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_question_set_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_question_set_versions_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"versions">> => list(question_set_version_summary())
+%% }
+-type list_question_set_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_question_sets_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_question_sets_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_question_sets_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"questionSets">> => list(question_set_summary())
+%% }
+-type list_question_sets_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_schedule_actions_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
@@ -497,6 +842,10 @@
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
+%% Example:
+%% passthrough_function_target() :: #{}
+-type passthrough_function_target() :: #{}.
+
 
 %% Example:
 %% put_feed_policy_request() :: #{
@@ -507,6 +856,42 @@
 %% Example:
 %% put_feed_policy_response() :: #{}
 -type put_feed_policy_response() :: #{}.
+
+
+%% Example:
+%% question_option() :: #{
+%%   <<"name">> => string(),
+%%   <<"text">> => string()
+%% }
+-type question_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% question_set_reference() :: #{
+%%   <<"questionSetId">> => string(),
+%%   <<"version">> => string()
+%% }
+-type question_set_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% question_set_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string(),
+%%   <<"latestVersion">> => string(),
+%%   <<"name">> => string()
+%% }
+-type question_set_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% question_set_version_summary() :: #{
+%%   <<"description">> => string(),
+%%   <<"lastModifiedAt">> => [non_neg_integer()],
+%%   <<"sha256">> => string(),
+%%   <<"version">> => string()
+%% }
+-type question_set_version_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -521,6 +906,10 @@
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% scene_trigger() :: #{}
+-type scene_trigger() :: #{}.
 
 
 %% Example:
@@ -583,6 +972,10 @@
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
 
+%% Example:
+%% shot_trigger() :: #{}
+-type shot_trigger() :: #{}.
+
 
 %% Example:
 %% subtitling_config() :: #{
@@ -592,6 +985,13 @@
 %%   <<"profanityFilter">> => list(any())
 %% }
 -type subtitling_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% subtitling_settings() :: #{
+%%   <<"outputName">> => string()
+%% }
+-type subtitling_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -678,6 +1078,36 @@
 
 
 %% Example:
+%% update_function_request() :: #{
+%%   <<"description">> => string(),
+%%   <<"eventBridgeDelivery">> => list(any()),
+%%   <<"name">> => string(),
+%%   <<"requestExpression">> => string(),
+%%   <<"responseExpression">> => string(),
+%%   <<"target">> => list()
+%% }
+-type update_function_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_function_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"contextTypes">> => list(list(any())()),
+%%   <<"description">> => string(),
+%%   <<"eventBridgeDelivery">> => list(any()),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"references">> => list(string()),
+%%   <<"requestExpression">> => string(),
+%%   <<"responseExpression">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"tags">> => map(),
+%%   <<"target">> => list()
+%% }
+-type update_function_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_output() :: #{
 %%   <<"description">> => string(),
 %%   <<"fromAssociation">> => [boolean()],
@@ -697,10 +1127,55 @@
 
 
 %% Example:
+%% update_question_set_request() :: #{
+%%   <<"chooseOne">> => list(choose_one_question()),
+%%   <<"name">> => string(),
+%%   <<"yesNo">> => list(yes_no_question()),
+%%   <<"yesNoPerOption">> => list(yes_no_per_option_question())
+%% }
+-type update_question_set_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_question_set_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"chooseOne">> => list(choose_one_question()),
+%%   <<"description">> => string(),
+%%   <<"id">> => string(),
+%%   <<"latestVersion">> => string(),
+%%   <<"name">> => string(),
+%%   <<"references">> => list(string()),
+%%   <<"sha256">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"version">> => string(),
+%%   <<"yesNo">> => list(yes_no_question()),
+%%   <<"yesNoPerOption">> => list(yes_no_per_option_question())
+%% }
+-type update_question_set_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% yes_no_per_option_question() :: #{
+%%   <<"name">> => string(),
+%%   <<"options">> => list(question_option()),
+%%   <<"question">> => string()
+%% }
+-type yes_no_per_option_question() :: #{binary() => any()}.
+
+
+%% Example:
+%% yes_no_question() :: #{
+%%   <<"name">> => string(),
+%%   <<"question">> => string()
+%% }
+-type yes_no_question() :: #{binary() => any()}.
 
 -type associate_feed_errors() ::
     validation_exception() | 
@@ -723,6 +1198,31 @@
     validation_exception() | 
     too_many_request_exception() | 
     service_quota_exceeded_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_function_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_question_set_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_question_set_version_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
     internal_server_error_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -757,6 +1257,30 @@
     too_many_request_exception() | 
     resource_not_found_exception() | 
     internal_server_error_exception() | 
+    access_denied_exception().
+
+-type delete_function_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_question_set_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_question_set_version_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type delete_schedule_action_errors() ::
@@ -811,6 +1335,20 @@
     gateway_timed_out_exception() | 
     access_denied_exception().
 
+-type get_function_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
+-type get_question_set_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
 -type list_dictionaries_errors() ::
     validation_exception() | 
     too_many_request_exception() | 
@@ -821,6 +1359,25 @@
     validation_exception() | 
     too_many_request_exception() | 
     resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
+-type list_functions_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
+-type list_question_set_versions_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    access_denied_exception().
+
+-type list_question_sets_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
     internal_server_error_exception() | 
     access_denied_exception().
 
@@ -882,6 +1439,22 @@
     validation_exception() | 
     too_many_request_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_function_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
+    resource_not_found_exception() | 
+    internal_server_error_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_question_set_errors() ::
+    validation_exception() | 
+    too_many_request_exception() | 
     resource_not_found_exception() | 
     internal_server_error_exception() | 
     conflict_exception() | 
@@ -1011,6 +1584,165 @@ create_feed(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/feed"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a function.
+%%
+%% A function analyzes a feed by building a request from the feed's media
+%% and metadata, optionally sending that request to an Amazon Bedrock model
+%% in your account, and publishing the result to the feed's metadata
+%% timeline.
+%%
+%% A function runs only after you attach it to a feed as a function output.
+%% For more information, see Using functions:
+%% https://docs.aws.amazon.com/elemental-inference/latest/userguide/functions.html
+%% in the AWS Elemental Inference User Guide.
+-spec create_function(aws_client:aws_client(), create_function_request()) ->
+    {ok, create_function_response(), tuple()} |
+    {error, any()} |
+    {error, create_function_errors(), tuple()}.
+create_function(Client, Input) ->
+    create_function(Client, Input, []).
+
+-spec create_function(aws_client:aws_client(), create_function_request(), proplists:proplist()) ->
+    {ok, create_function_response(), tuple()} |
+    {error, any()} |
+    {error, create_function_errors(), tuple()}.
+create_function(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/function"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a question set.
+%%
+%% Use a question set to get answers about content that's specific to
+%% your business, in addition to the built-in contextual metadata
+%% classifications. A question set contains your own questions. You ask
+%% Elemental Inference these questions about each shot or scene of the media
+%% in a contextual metadata output, and Elemental Inference answers each
+%% question with scores. To use a question set, reference it in the
+%% customQuestions property of the contextual metadata configuration of a
+%% feed output.
+%%
+%% CreateQuestionSet creates the question set with a DRAFT version that
+%% contains the questions in the request. To change DRAFT, use
+%% UpdateQuestionSet. To publish DRAFT as a numbered version, use
+%% CreateQuestionSetVersion. You can't change a published version.
+%%
+%% A question set can contain the following types of questions. You must
+%% specify at least one question.
+%%
+%% yesNo – Elemental Inference answers yes or no.
+%%
+%% yesNoPerOption – Elemental Inference answers yes or no for each option.
+%%
+%% chooseOne – Elemental Inference chooses one of the options.
+%%
+%% A version can contain up to 100 scored items, where each yesNo question,
+%% each option of a yesNoPerOption question, and each chooseOne question
+%% counts as one item. The name of each question must be unique across all
+%% three types.
+-spec create_question_set(aws_client:aws_client(), create_question_set_request()) ->
+    {ok, create_question_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_question_set_errors(), tuple()}.
+create_question_set(Client, Input) ->
+    create_question_set(Client, Input, []).
+
+-spec create_question_set(aws_client:aws_client(), create_question_set_request(), proplists:proplist()) ->
+    {ok, create_question_set_response(), tuple()} |
+    {error, any()} |
+    {error, create_question_set_errors(), tuple()}.
+create_question_set(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/question-set"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Publishes the DRAFT version of the specified question set as a new
+%% version.
+%%
+%% The new version has the same name and questions as DRAFT, and you
+%% can't change it. DRAFT doesn't change, so you can continue to
+%% update it.
+%%
+%% Version numbers start at 1, and each new version has the next number.
+%% Elemental Inference never reuses a version number, even after you delete
+%% that version.
+%%
+%% If DRAFT hasn't changed since the latest published version, Elemental
+%% Inference doesn't create a version. Instead, it returns the latest
+%% version. A change to the name of the question set counts as a change to
+%% DRAFT.
+%%
+%% A question set can have a limited number of versions. If the question set
+%% already has the maximum number of versions, Elemental Inference returns
+%% ServiceQuotaExceededException. To free space for a new version, delete a
+%% version that you no longer need, or create a new question set.
+-spec create_question_set_version(aws_client:aws_client(), binary() | list(), create_question_set_version_request()) ->
+    {ok, create_question_set_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_question_set_version_errors(), tuple()}.
+create_question_set_version(Client, Id, Input) ->
+    create_question_set_version(Client, Id, Input, []).
+
+-spec create_question_set_version(aws_client:aws_client(), binary() | list(), create_question_set_version_request(), proplists:proplist()) ->
+    {ok, create_question_set_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_question_set_version_errors(), tuple()}.
+create_question_set_version(Client, Id, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/question-set/", aws_util:encode_uri(Id), "/versions"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1166,6 +1898,132 @@ delete_feed_policy(Client, Id, Input0, Options0) ->
     Method = delete,
     Path = ["/v1/feed/", aws_util:encode_uri(Id), "/policy"],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a function.
+%%
+%% If any feed still references the function, the operation returns a
+%% ConflictException. A disabled function output still references the
+%% function. Use GetFunction to find those feeds, then remove the function
+%% output from each one with UpdateFeed, or delete the feed, before retrying.
+%%
+%% Deleting a function doesn't delete the metadata that it has already
+%% produced.
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request()) ->
+    {ok, delete_function_response(), tuple()} |
+    {error, any()} |
+    {error, delete_function_errors(), tuple()}.
+delete_function(Client, Id, Input) ->
+    delete_function(Client, Id, Input, []).
+
+-spec delete_function(aws_client:aws_client(), binary() | list(), delete_function_request(), proplists:proplist()) ->
+    {ok, delete_function_response(), tuple()} |
+    {error, any()} |
+    {error, delete_function_errors(), tuple()}.
+delete_function(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/function/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the specified question set, including its DRAFT version and
+%% all its published versions.
+%%
+%% You can't delete a question set while any feed references any of its
+%% versions, including an archived feed. You must first remove the question
+%% set from the customQuestions configuration of each feed output that
+%% references it, or delete those feeds.
+-spec delete_question_set(aws_client:aws_client(), binary() | list(), delete_question_set_request()) ->
+    {ok, delete_question_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_question_set_errors(), tuple()}.
+delete_question_set(Client, Id, Input) ->
+    delete_question_set(Client, Id, Input, []).
+
+-spec delete_question_set(aws_client:aws_client(), binary() | list(), delete_question_set_request(), proplists:proplist()) ->
+    {ok, delete_question_set_response(), tuple()} |
+    {error, any()} |
+    {error, delete_question_set_errors(), tuple()}.
+delete_question_set(Client, Id, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/question-set/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a published version of the specified question set.
+%%
+%% You can't delete a version while a feed references it, including an
+%% archived feed. You can't restore a deleted version, and Elemental
+%% Inference doesn't reuse its number.
+%%
+%% You can't delete the DRAFT version on its own. To delete DRAFT, delete
+%% the question set by using DeleteQuestionSet.
+%%
+%% Deleting a version doesn't change the latestVersion of the question
+%% set, even if you delete the highest version.
+-spec delete_question_set_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_question_set_version_request()) ->
+    {ok, delete_question_set_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_question_set_version_errors(), tuple()}.
+delete_question_set_version(Client, Id, QuestionSetVersion, Input) ->
+    delete_question_set_version(Client, Id, QuestionSetVersion, Input, []).
+
+-spec delete_question_set_version(aws_client:aws_client(), binary() | list(), binary() | list(), delete_question_set_version_request(), proplists:proplist()) ->
+    {ok, delete_question_set_version_response(), tuple()} |
+    {error, any()} |
+    {error, delete_question_set_version_errors(), tuple()}.
+delete_question_set_version(Client, Id, QuestionSetVersion, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/question-set/", aws_util:encode_uri(Id), "/versions/", aws_util:encode_uri(QuestionSetVersion), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1452,6 +2310,90 @@ get_fixture(Client, FixtureId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves the details of a function, including its expressions, the
+%% media context that Elemental Inference derived from the request
+%% expression, and the feeds that currently reference it.
+-spec get_function(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_function_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_errors(), tuple()}.
+get_function(Client, Id)
+  when is_map(Client) ->
+    get_function(Client, Id, #{}, #{}).
+
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_function_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_errors(), tuple()}.
+get_function(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_function(Client, Id, QueryMap, HeadersMap, []).
+
+-spec get_function(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_function_response(), tuple()} |
+    {error, any()} |
+    {error, get_function_errors(), tuple()}.
+get_function(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/function/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about the specified question set at one
+%% version.
+%%
+%% By default, GetQuestionSet returns the DRAFT version. To retrieve a
+%% published version, specify questionSetVersion.
+-spec get_question_set(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_question_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_question_set_errors(), tuple()}.
+get_question_set(Client, Id)
+  when is_map(Client) ->
+    get_question_set(Client, Id, #{}, #{}).
+
+-spec get_question_set(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_question_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_question_set_errors(), tuple()}.
+get_question_set(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_question_set(Client, Id, QueryMap, HeadersMap, []).
+
+-spec get_question_set(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_question_set_response(), tuple()} |
+    {error, any()} |
+    {error, get_question_set_errors(), tuple()}.
+get_question_set(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/question-set/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"questionSetVersion">>, maps:get(<<"questionSetVersion">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the dictionaries in your account.
 -spec list_dictionaries(aws_client:aws_client()) ->
     {ok, list_dictionaries_response(), tuple()} |
@@ -1518,6 +2460,145 @@ list_feeds(Client, QueryMap, HeadersMap)
 list_feeds(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/feeds"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the functions in this account, in this Region.
+%%
+%% Each entry is a summary. To get the expressions of a function, use
+%% GetFunction.
+-spec list_functions(aws_client:aws_client()) ->
+    {ok, list_functions_response(), tuple()} |
+    {error, any()} |
+    {error, list_functions_errors(), tuple()}.
+list_functions(Client)
+  when is_map(Client) ->
+    list_functions(Client, #{}, #{}).
+
+-spec list_functions(aws_client:aws_client(), map(), map()) ->
+    {ok, list_functions_response(), tuple()} |
+    {error, any()} |
+    {error, list_functions_errors(), tuple()}.
+list_functions(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_functions(Client, QueryMap, HeadersMap, []).
+
+-spec list_functions(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_functions_response(), tuple()} |
+    {error, any()} |
+    {error, list_functions_errors(), tuple()}.
+list_functions(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/functions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the versions of the specified question set.
+%%
+%% The list starts with the DRAFT version, followed by the published versions
+%% from the highest version number to the lowest. The list doesn't
+%% include deleted versions.
+%%
+%% The response doesn't include the questions in each version. To
+%% retrieve them, use GetQuestionSet and specify questionSetVersion.
+-spec list_question_set_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_question_set_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_question_set_versions_errors(), tuple()}.
+list_question_set_versions(Client, Id)
+  when is_map(Client) ->
+    list_question_set_versions(Client, Id, #{}, #{}).
+
+-spec list_question_set_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_question_set_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_question_set_versions_errors(), tuple()}.
+list_question_set_versions(Client, Id, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_question_set_versions(Client, Id, QueryMap, HeadersMap, []).
+
+-spec list_question_set_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_question_set_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_question_set_versions_errors(), tuple()}.
+list_question_set_versions(Client, Id, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/question-set/", aws_util:encode_uri(Id), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the question sets in your account.
+%%
+%% The response doesn't include the questions in each question set. To
+%% retrieve them, use GetQuestionSet.
+-spec list_question_sets(aws_client:aws_client()) ->
+    {ok, list_question_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_question_sets_errors(), tuple()}.
+list_question_sets(Client)
+  when is_map(Client) ->
+    list_question_sets(Client, #{}, #{}).
+
+-spec list_question_sets(aws_client:aws_client(), map(), map()) ->
+    {ok, list_question_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_question_sets_errors(), tuple()}.
+list_question_sets(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_question_sets(Client, QueryMap, HeadersMap, []).
+
+-spec list_question_sets(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_question_sets_response(), tuple()} |
+    {error, any()} |
+    {error, list_question_sets_errors(), tuple()}.
+list_question_sets(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/question-sets"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1833,6 +2914,101 @@ update_feed(Client, Id, Input) ->
 update_feed(Client, Id, Input0, Options0) ->
     Method = put,
     Path = ["/v1/feed/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a function.
+%%
+%% Include only the parameters that you want to change; parameters that you
+%% don't include aren't affected. Elemental Inference validates the
+%% updated expressions in the same way as CreateFunction.
+%%
+%% While a feed references the function, you can change only its expressions
+%% and its description, and you can set eventBridgeDelivery to DISABLED but
+%% not to ENABLED. The request expression must keep referencing the same
+%% media context, as reported in contextTypes. Changing an expression changes
+%% the behavior of every feed that references the function.
+-spec update_function(aws_client:aws_client(), binary() | list(), update_function_request()) ->
+    {ok, update_function_response(), tuple()} |
+    {error, any()} |
+    {error, update_function_errors(), tuple()}.
+update_function(Client, Id, Input) ->
+    update_function(Client, Id, Input, []).
+
+-spec update_function(aws_client:aws_client(), binary() | list(), update_function_request(), proplists:proplist()) ->
+    {ok, update_function_response(), tuple()} |
+    {error, any()} |
+    {error, update_function_errors(), tuple()}.
+update_function(Client, Id, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v1/function/", aws_util:encode_uri(Id), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the DRAFT version of the specified question set.
+%%
+%% UpdateQuestionSet doesn't create a version and doesn't change
+%% published versions. To publish the updated DRAFT as a new version, use
+%% CreateQuestionSetVersion.
+%%
+%% UpdateQuestionSet replaces questions one type at a time. For each of
+%% yesNo, yesNoPerOption, and chooseOne: if you omit the array, DRAFT keeps
+%% its questions of that type. If you include the array, it replaces all the
+%% questions of that type in DRAFT. If you include an empty array, DRAFT no
+%% longer has questions of that type. The updated DRAFT must follow the same
+%% rules as in CreateQuestionSet, and Elemental Inference applies those rules
+%% to the questions that DRAFT keeps as well as to the questions in the
+%% request.
+%%
+%% Feeds that reference the DRAFT version use the updated questions. To make
+%% sure that the questions for a feed don't change, reference a published
+%% version instead.
+-spec update_question_set(aws_client:aws_client(), binary() | list(), update_question_set_request()) ->
+    {ok, update_question_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_question_set_errors(), tuple()}.
+update_question_set(Client, Id, Input) ->
+    update_question_set(Client, Id, Input, []).
+
+-spec update_question_set(aws_client:aws_client(), binary() | list(), update_question_set_request(), proplists:proplist()) ->
+    {ok, update_question_set_response(), tuple()} |
+    {error, any()} |
+    {error, update_question_set_errors(), tuple()}.
+update_question_set(Client, Id, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v1/question-set/", aws_util:encode_uri(Id), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

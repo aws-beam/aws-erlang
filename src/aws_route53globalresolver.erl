@@ -29,6 +29,8 @@
          create_access_source/3,
          create_access_token/3,
          create_access_token/4,
+         create_core_network_endpoint/2,
+         create_core_network_endpoint/3,
          create_dns_view/3,
          create_dns_view/4,
          create_firewall_domain_list/3,
@@ -41,6 +43,8 @@
          delete_access_source/4,
          delete_access_token/3,
          delete_access_token/4,
+         delete_core_network_endpoint/3,
+         delete_core_network_endpoint/4,
          delete_dns_view/3,
          delete_dns_view/4,
          delete_firewall_domain_list/3,
@@ -61,6 +65,9 @@
          get_access_token/2,
          get_access_token/4,
          get_access_token/5,
+         get_core_network_endpoint/2,
+         get_core_network_endpoint/4,
+         get_core_network_endpoint/5,
          get_dns_view/2,
          get_dns_view/4,
          get_dns_view/5,
@@ -87,6 +94,9 @@
          list_access_tokens/2,
          list_access_tokens/4,
          list_access_tokens/5,
+         list_core_network_endpoints/1,
+         list_core_network_endpoints/3,
+         list_core_network_endpoints/4,
          list_dns_views/2,
          list_dns_views/4,
          list_dns_views/5,
@@ -121,6 +131,8 @@
          update_access_source/4,
          update_access_token/3,
          update_access_token/4,
+         update_core_network_endpoint/3,
+         update_core_network_endpoint/4,
          update_dns_view/3,
          update_dns_view/4,
          update_firewall_domains/3,
@@ -150,12 +162,14 @@
 %% access_sources_item() :: #{
 %%   <<"arn">> => string(),
 %%   <<"cidr">> => string(),
+%%   <<"coreNetworkEndpointId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dnsViewId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"protocol">> => list(any()),
+%%   <<"segment">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
@@ -384,13 +398,54 @@
 
 
 %% Example:
+%% core_network_endpoint_dns_ip_input_item() :: #{
+%%   <<"dnsLabel">> => string(),
+%%   <<"ipv4Address">> => string(),
+%%   <<"ipv6Address">> => string(),
+%%   <<"regionScope">> => list(any()),
+%%   <<"regions">> => list(string())
+%% }
+-type core_network_endpoint_dns_ip_input_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% core_network_endpoint_dns_ip_item() :: #{
+%%   <<"dnsLabel">> => string(),
+%%   <<"dnsName">> => string(),
+%%   <<"ipv4Address">> => string(),
+%%   <<"ipv6Address">> => string(),
+%%   <<"regionScope">> => list(any()),
+%%   <<"regions">> => list(string())
+%% }
+-type core_network_endpoint_dns_ip_item() :: #{binary() => any()}.
+
+
+%% Example:
+%% core_network_endpoints_item() :: #{
+%%   <<"arn">> => string(),
+%%   <<"availableRegions">> => list(string()),
+%%   <<"coreNetworkArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddresses">> => list(core_network_endpoint_dns_ip_item()),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type core_network_endpoints_item() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_access_source_input() :: #{
-%%   <<"cidr">> := string(),
+%%   <<"cidr">> => string(),
 %%   <<"clientToken">> => string(),
+%%   <<"coreNetworkEndpointId">> => string(),
 %%   <<"dnsViewId">> := string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"protocol">> := list(any()),
+%%   <<"segment">> => string(),
 %%   <<"tags">> => map()
 %% }
 -type create_access_source_input() :: #{binary() => any()}.
@@ -400,12 +455,14 @@
 %% create_access_source_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"cidr">> => string(),
+%%   <<"coreNetworkEndpointId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dnsViewId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"protocol">> => list(any()),
+%%   <<"segment">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
@@ -435,6 +492,34 @@
 %%   <<"value">> => string()
 %% }
 -type create_access_token_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_core_network_endpoint_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"coreNetworkArn">> := string(),
+%%   <<"globalResolverId">> := string(),
+%%   <<"ipAddresses">> := list(core_network_endpoint_dns_ip_input_item()),
+%%   <<"name">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type create_core_network_endpoint_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_core_network_endpoint_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"availableRegions">> => list(string()),
+%%   <<"coreNetworkArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddresses">> => list(core_network_endpoint_dns_ip_item()),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type create_core_network_endpoint_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -543,6 +628,7 @@
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> := string(),
 %%   <<"observabilityRegion">> => string(),
+%%   <<"publicIpStatus">> => list(any()),
 %%   <<"regions">> := list(string()),
 %%   <<"tags">> => map()
 %% }
@@ -562,6 +648,7 @@
 %%   <<"ipv6Addresses">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"observabilityRegion">> => string(),
+%%   <<"publicIpStatus">> => list(any()),
 %%   <<"regions">> => list(string()),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -577,12 +664,14 @@
 %% delete_access_source_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"cidr">> => string(),
+%%   <<"coreNetworkEndpointId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dnsViewId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"protocol">> => list(any()),
+%%   <<"segment">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
@@ -600,6 +689,26 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_access_token_output() :: #{binary() => any()}.
+
+%% Example:
+%% delete_core_network_endpoint_input() :: #{}
+-type delete_core_network_endpoint_input() :: #{}.
+
+
+%% Example:
+%% delete_core_network_endpoint_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"availableRegions">> => list(string()),
+%%   <<"coreNetworkArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddresses">> => list(core_network_endpoint_dns_ip_item()),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type delete_core_network_endpoint_output() :: #{binary() => any()}.
 
 %% Example:
 %% delete_dns_view_input() :: #{}
@@ -814,12 +923,14 @@
 %% get_access_source_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"cidr">> => string(),
+%%   <<"coreNetworkEndpointId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dnsViewId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"protocol">> => list(any()),
+%%   <<"segment">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
@@ -845,6 +956,26 @@
 %%   <<"value">> => string()
 %% }
 -type get_access_token_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_core_network_endpoint_input() :: #{}
+-type get_core_network_endpoint_input() :: #{}.
+
+
+%% Example:
+%% get_core_network_endpoint_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"availableRegions">> => list(string()),
+%%   <<"coreNetworkArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddresses">> => list(core_network_endpoint_dns_ip_item()),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_core_network_endpoint_output() :: #{binary() => any()}.
 
 %% Example:
 %% get_dns_view_input() :: #{}
@@ -934,6 +1065,7 @@
 %%   <<"ipv6Addresses">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"observabilityRegion">> => string(),
+%%   <<"publicIpStatus">> => list(any()),
 %%   <<"regions">> => list(string()),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -986,6 +1118,7 @@
 %%   <<"ipv6Addresses">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"observabilityRegion">> => string(),
+%%   <<"publicIpStatus">> => list(any()),
 %%   <<"regions">> => list(string()),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -1064,6 +1197,23 @@
 %%   <<"nextToken">> => [string()]
 %% }
 -type list_access_tokens_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_network_endpoints_input() :: #{
+%%   <<"filters">> => map(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_core_network_endpoints_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_core_network_endpoints_output() :: #{
+%%   <<"coreNetworkEndpoints">> => list(core_network_endpoints_item()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_core_network_endpoints_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1298,6 +1448,7 @@
 %% Example:
 %% update_access_source_input() :: #{
 %%   <<"cidr">> => string(),
+%%   <<"dnsViewId">> => string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"protocol">> => list(any())
@@ -1309,12 +1460,14 @@
 %% update_access_source_output() :: #{
 %%   <<"arn">> => string(),
 %%   <<"cidr">> => string(),
+%%   <<"coreNetworkEndpointId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"dnsViewId">> => string(),
 %%   <<"id">> => string(),
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"protocol">> => list(any()),
+%%   <<"segment">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
@@ -1334,6 +1487,30 @@
 %%   <<"name">> => string()
 %% }
 -type update_access_token_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_core_network_endpoint_input() :: #{
+%%   <<"name">> => string(),
+%%   <<"updateIpAddresses">> => list(update_ip_address_entry())
+%% }
+-type update_core_network_endpoint_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_core_network_endpoint_output() :: #{
+%%   <<"arn">> => string(),
+%%   <<"availableRegions">> => list(string()),
+%%   <<"coreNetworkArn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"globalResolverId">> => string(),
+%%   <<"id">> => string(),
+%%   <<"ipAddresses">> => list(core_network_endpoint_dns_ip_item()),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type update_core_network_endpoint_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1428,6 +1605,7 @@
 %%   <<"ipAddressType">> => list(any()),
 %%   <<"name">> => string(),
 %%   <<"observabilityRegion">> => string(),
+%%   <<"publicIpStatus">> => list(any()),
 %%   <<"regions">> => list(string())
 %% }
 -type update_global_resolver_input() :: #{binary() => any()}.
@@ -1446,6 +1624,7 @@
 %%   <<"ipv6Addresses">> => list(string()),
 %%   <<"name">> => string(),
 %%   <<"observabilityRegion">> => string(),
+%%   <<"publicIpStatus">> => list(any()),
 %%   <<"regions">> => list(string()),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
@@ -1472,6 +1651,18 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type update_hosted_zone_association_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_ip_address_entry() :: #{
+%%   <<"dnsLabel">> => string(),
+%%   <<"ipv4Address">> => string(),
+%%   <<"ipv6Address">> => string(),
+%%   <<"operation">> => list(any()),
+%%   <<"regionScope">> => list(any()),
+%%   <<"regions">> => list(string())
+%% }
+-type update_ip_address_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1535,6 +1726,15 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_core_network_endpoint_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_dns_view_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1579,6 +1779,14 @@
     access_denied_exception().
 
 -type delete_access_token_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_core_network_endpoint_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -1658,6 +1866,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_core_network_endpoint_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_dns_view_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1722,6 +1937,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_core_network_endpoints_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_dns_views_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1776,16 +1997,25 @@
     access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     service_quota_exceeded_exception() | 
-    resource_not_found_exception().
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     validation_exception() | 
-    resource_not_found_exception().
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type update_access_source_errors() ::
     validation_exception() | 
@@ -1797,6 +2027,15 @@
     access_denied_exception().
 
 -type update_access_token_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_core_network_endpoint_errors() ::
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
@@ -2112,6 +2351,51 @@ create_access_token(Client, DnsViewId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a core network endpoint, which enables DNS resolution for
+%% Amazon Web Services Cloud WAN core network segments.
+%%
+%% The endpoint connects a Route 53 Global Resolver to an Amazon Web Services
+%% Cloud WAN core network so that resources attached to the core network can
+%% send DNS queries to the resolver.
+%%
+%% Route 53 Global Resolver is a global service that supports resolvers in
+%% multiple Amazon Web Services Regions, but you must specify the US East
+%% (Ohio) Region to create, update, or otherwise work with Route 53 Global
+%% Resolver resources. That is, for example, specify `--region us-east-2'
+%% on Amazon Web Services CLI commands.
+-spec create_core_network_endpoint(aws_client:aws_client(), create_core_network_endpoint_input()) ->
+    {ok, create_core_network_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, create_core_network_endpoint_errors(), tuple()}.
+create_core_network_endpoint(Client, Input) ->
+    create_core_network_endpoint(Client, Input, []).
+
+-spec create_core_network_endpoint(aws_client:aws_client(), create_core_network_endpoint_input(), proplists:proplist()) ->
+    {ok, create_core_network_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, create_core_network_endpoint_errors(), tuple()}.
+create_core_network_endpoint(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/core-network-endpoints"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a DNS view within a Route 53 Global Resolver.
 %%
 %% A DNS view models end users, user groups, networks, and devices, and
@@ -2353,6 +2637,48 @@ delete_access_token(Client, AccessTokenId, Input) ->
 delete_access_token(Client, AccessTokenId, Input0, Options0) ->
     Method = delete,
     Path = ["/tokens/", aws_util:encode_uri(AccessTokenId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a core network endpoint.
+%%
+%% This operation cannot be undone.
+%%
+%% Route 53 Global Resolver is a global service that supports resolvers in
+%% multiple Amazon Web Services Regions, but you must specify the US East
+%% (Ohio) Region to create, update, or otherwise work with Route 53 Global
+%% Resolver resources. That is, for example, specify `--region us-east-2'
+%% on Amazon Web Services CLI commands.
+-spec delete_core_network_endpoint(aws_client:aws_client(), binary() | list(), delete_core_network_endpoint_input()) ->
+    {ok, delete_core_network_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, delete_core_network_endpoint_errors(), tuple()}.
+delete_core_network_endpoint(Client, CoreNetworkEndpointId, Input) ->
+    delete_core_network_endpoint(Client, CoreNetworkEndpointId, Input, []).
+
+-spec delete_core_network_endpoint(aws_client:aws_client(), binary() | list(), delete_core_network_endpoint_input(), proplists:proplist()) ->
+    {ok, delete_core_network_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, delete_core_network_endpoint_errors(), tuple()}.
+delete_core_network_endpoint(Client, CoreNetworkEndpointId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/core-network-endpoints/", aws_util:encode_uri(CoreNetworkEndpointId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -2735,6 +3061,49 @@ get_access_token(Client, AccessTokenId, QueryMap, HeadersMap)
 get_access_token(Client, AccessTokenId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tokens/", aws_util:encode_uri(AccessTokenId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves information about a core network endpoint.
+%%
+%% Route 53 Global Resolver is a global service that supports resolvers in
+%% multiple Amazon Web Services Regions, but you must specify the US East
+%% (Ohio) Region to create, update, or otherwise work with Route 53 Global
+%% Resolver resources. That is, for example, specify `--region us-east-2'
+%% on Amazon Web Services CLI commands.
+-spec get_core_network_endpoint(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_core_network_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, get_core_network_endpoint_errors(), tuple()}.
+get_core_network_endpoint(Client, CoreNetworkEndpointId)
+  when is_map(Client) ->
+    get_core_network_endpoint(Client, CoreNetworkEndpointId, #{}, #{}).
+
+-spec get_core_network_endpoint(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_core_network_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, get_core_network_endpoint_errors(), tuple()}.
+get_core_network_endpoint(Client, CoreNetworkEndpointId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_core_network_endpoint(Client, CoreNetworkEndpointId, QueryMap, HeadersMap, []).
+
+-spec get_core_network_endpoint(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_core_network_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, get_core_network_endpoint_errors(), tuple()}.
+get_core_network_endpoint(Client, CoreNetworkEndpointId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/core-network-endpoints/", aws_util:encode_uri(CoreNetworkEndpointId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3132,6 +3501,56 @@ list_access_tokens(Client, DnsViewId, QueryMap, HeadersMap)
 list_access_tokens(Client, DnsViewId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/tokens/dns-view/", aws_util:encode_uri(DnsViewId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"filters">>, maps:get(<<"filters">>, QueryMap, undefined)},
+        {<<"max_results">>, maps:get(<<"max_results">>, QueryMap, undefined)},
+        {<<"next_token">>, maps:get(<<"next_token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the core network endpoints in your Amazon Web Services account,
+%% with pagination support.
+%%
+%% Route 53 Global Resolver is a global service that supports resolvers in
+%% multiple Amazon Web Services Regions, but you must specify the US East
+%% (Ohio) Region to create, update, or otherwise work with Route 53 Global
+%% Resolver resources. That is, for example, specify `--region us-east-2'
+%% on Amazon Web Services CLI commands.
+-spec list_core_network_endpoints(aws_client:aws_client()) ->
+    {ok, list_core_network_endpoints_output(), tuple()} |
+    {error, any()} |
+    {error, list_core_network_endpoints_errors(), tuple()}.
+list_core_network_endpoints(Client)
+  when is_map(Client) ->
+    list_core_network_endpoints(Client, #{}, #{}).
+
+-spec list_core_network_endpoints(aws_client:aws_client(), map(), map()) ->
+    {ok, list_core_network_endpoints_output(), tuple()} |
+    {error, any()} |
+    {error, list_core_network_endpoints_errors(), tuple()}.
+list_core_network_endpoints(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_core_network_endpoints(Client, QueryMap, HeadersMap, []).
+
+-spec list_core_network_endpoints(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_core_network_endpoints_output(), tuple()} |
+    {error, any()} |
+    {error, list_core_network_endpoints_errors(), tuple()}.
+list_core_network_endpoints(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/core-network-endpoints"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3735,6 +4154,49 @@ update_access_token(Client, AccessTokenId, Input) ->
 update_access_token(Client, AccessTokenId, Input0, Options0) ->
     Method = patch,
     Path = ["/tokens/", aws_util:encode_uri(AccessTokenId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the configuration of a core network endpoint.
+%%
+%% You can change the name and modify the IP addresses that the endpoint uses
+%% for DNS resolution.
+%%
+%% Route 53 Global Resolver is a global service that supports resolvers in
+%% multiple Amazon Web Services Regions, but you must specify the US East
+%% (Ohio) Region to create, update, or otherwise work with Route 53 Global
+%% Resolver resources. That is, for example, specify `--region us-east-2'
+%% on Amazon Web Services CLI commands.
+-spec update_core_network_endpoint(aws_client:aws_client(), binary() | list(), update_core_network_endpoint_input()) ->
+    {ok, update_core_network_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, update_core_network_endpoint_errors(), tuple()}.
+update_core_network_endpoint(Client, CoreNetworkEndpointId, Input) ->
+    update_core_network_endpoint(Client, CoreNetworkEndpointId, Input, []).
+
+-spec update_core_network_endpoint(aws_client:aws_client(), binary() | list(), update_core_network_endpoint_input(), proplists:proplist()) ->
+    {ok, update_core_network_endpoint_output(), tuple()} |
+    {error, any()} |
+    {error, update_core_network_endpoint_errors(), tuple()}.
+update_core_network_endpoint(Client, CoreNetworkEndpointId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/core-network-endpoints/", aws_util:encode_uri(CoreNetworkEndpointId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

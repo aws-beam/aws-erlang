@@ -111,6 +111,8 @@
          delete_capacity_provider/4,
          delete_code_signing_config/3,
          delete_code_signing_config/4,
+         delete_durable_execution/3,
+         delete_durable_execution/4,
          delete_event_source_mapping/3,
          delete_event_source_mapping/4,
          delete_function/3,
@@ -249,6 +251,8 @@
          list_versions_by_function/2,
          list_versions_by_function/4,
          list_versions_by_function/5,
+         pause_durable_execution/3,
+         pause_durable_execution/4,
          publish_layer_version/3,
          publish_layer_version/4,
          publish_version/3,
@@ -273,6 +277,8 @@
          remove_layer_version_permission/6,
          remove_permission/4,
          remove_permission/5,
+         resume_durable_execution/3,
+         resume_durable_execution/4,
          send_durable_execution_callback_failure/3,
          send_durable_execution_callback_failure/4,
          send_durable_execution_callback_heartbeat/3,
@@ -917,6 +923,17 @@
 -type delete_code_signing_config_response() :: #{}.
 
 %% Example:
+%% delete_durable_execution_request() :: #{}
+-type delete_durable_execution_request() :: #{}.
+
+
+%% Example:
+%% delete_durable_execution_response() :: #{
+%%   <<"DeletionRequestTimestamp">> => non_neg_integer()
+%% }
+-type delete_durable_execution_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_event_source_mapping_request() :: #{}
 -type delete_event_source_mapping_request() :: #{}.
 
@@ -1140,6 +1157,8 @@
 %%   <<"EventTimestamp">> => non_neg_integer(),
 %%   <<"EventType">> => list(any()),
 %%   <<"ExecutionFailedDetails">> => execution_failed_details(),
+%%   <<"ExecutionPausedDetails">> => execution_paused_details(),
+%%   <<"ExecutionResumedDetails">> => execution_resumed_details(),
 %%   <<"ExecutionStartedDetails">> => execution_started_details(),
 %%   <<"ExecutionStoppedDetails">> => execution_stopped_details(),
 %%   <<"ExecutionSucceededDetails">> => execution_succeeded_details(),
@@ -1176,11 +1195,27 @@
 
 
 %% Example:
+%% event_pause_reason() :: #{
+%%   <<"Payload">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type event_pause_reason() :: #{binary() => any()}.
+
+
+%% Example:
 %% event_result() :: #{
 %%   <<"Payload">> => string(),
 %%   <<"Truncated">> => boolean()
 %% }
 -type event_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% event_resume_reason() :: #{
+%%   <<"Payload">> => string(),
+%%   <<"Truncated">> => boolean()
+%% }
+-type event_resume_reason() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1261,6 +1296,23 @@
 %%   <<"Error">> => event_error()
 %% }
 -type execution_failed_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_paused_details() :: #{
+%%   <<"ExecutionTimeoutPaused">> => boolean(),
+%%   <<"PauseRequestTimestamp">> => non_neg_integer(),
+%%   <<"Reason">> => event_pause_reason()
+%% }
+-type execution_paused_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% execution_resumed_details() :: #{
+%%   <<"Reason">> => event_resume_reason(),
+%%   <<"ResumeRequestTimestamp">> => non_neg_integer()
+%% }
+-type execution_resumed_details() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1532,8 +1584,10 @@
 %%   <<"EndTimestamp">> => non_neg_integer(),
 %%   <<"Error">> => error_object(),
 %%   <<"ExecutionDataIncluded">> => boolean(),
+%%   <<"ExpectedExecutionTimeoutTimestamp">> => non_neg_integer(),
 %%   <<"FunctionArn">> => string(),
 %%   <<"InputPayload">> => string(),
+%%   <<"PauseDetails">> => pause_details(),
 %%   <<"Result">> => string(),
 %%   <<"StartTimestamp">> => non_neg_integer(),
 %%   <<"Status">> => list(any()),
@@ -2396,6 +2450,28 @@
 
 
 %% Example:
+%% pause_details() :: #{
+%%   <<"ExecutionTimeoutPaused">> => boolean(),
+%%   <<"PauseRequestTimestamp">> => non_neg_integer(),
+%%   <<"Reason">> => string()
+%% }
+-type pause_details() :: #{binary() => any()}.
+
+
+%% Example:
+%% pause_durable_execution_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ExecutionTimeoutPaused">> => boolean(),
+%%   <<"Reason">> => string()
+%% }
+-type pause_durable_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% pause_durable_execution_response() :: #{}
+-type pause_durable_execution_response() :: #{}.
+
+
+%% Example:
 %% policy_length_exceeded_exception() :: #{
 %%   <<"Type">> => string(),
 %%   <<"message">> => string()
@@ -2678,6 +2754,18 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_ready_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resume_durable_execution_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"Reason">> => string()
+%% }
+-type resume_durable_execution_request() :: #{binary() => any()}.
+
+%% Example:
+%% resume_durable_execution_response() :: #{}
+-type resume_durable_execution_response() :: #{}.
 
 
 %% Example:
@@ -3313,6 +3401,13 @@
     resource_conflict_exception() | 
     invalid_parameter_value_exception().
 
+-type delete_durable_execution_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    invalid_parameter_value_exception().
+
 -type delete_event_source_mapping_errors() ::
     too_many_requests_exception() | 
     service_exception() | 
@@ -3732,6 +3827,17 @@
     resource_not_found_exception() | 
     invalid_parameter_value_exception().
 
+-type pause_durable_execution_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_parameter_value_exception().
+
 -type publish_layer_version_errors() ::
     too_many_requests_exception() | 
     service_exception() | 
@@ -3823,6 +3929,17 @@
     resource_not_found_exception() | 
     public_policy_exception() | 
     precondition_failed_exception() | 
+    invalid_parameter_value_exception().
+
+-type resume_durable_execution_errors() ::
+    too_many_requests_exception() | 
+    service_exception() | 
+    resource_not_found_exception() | 
+    resource_conflict_exception() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
     invalid_parameter_value_exception().
 
 -type send_durable_execution_callback_failure_errors() ::
@@ -4554,6 +4671,50 @@ delete_code_signing_config(Client, CodeSigningConfigArn, Input0, Options0) ->
     Method = delete,
     Path = ["/2020-04-22/code-signing-configs/", aws_util:encode_uri(CodeSigningConfigArn), ""],
     SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a completed Lambda durable execution:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html and
+%% its data.
+%%
+%% The execution must be in a terminal state (`SUCCEEDED', `FAILED',
+%% `STOPPED', or `TIMED_OUT'). Otherwise, this operation returns a
+%% `ResourceConflictException'.
+%%
+%% The execution has `DELETING' status until the deletion finishes. For
+%% more information, see Deleting durable executions:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-delete.html.
+-spec delete_durable_execution(aws_client:aws_client(), binary() | list(), delete_durable_execution_request()) ->
+    {ok, delete_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, delete_durable_execution_errors(), tuple()}.
+delete_durable_execution(Client, DurableExecutionArn, Input) ->
+    delete_durable_execution(Client, DurableExecutionArn, Input, []).
+
+-spec delete_durable_execution(aws_client:aws_client(), binary() | list(), delete_durable_execution_request(), proplists:proplist()) ->
+    {ok, delete_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, delete_durable_execution_errors(), tuple()}.
+delete_durable_execution(Client, DurableExecutionArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2025-12-01/durable-executions/", aws_util:encode_uri(DurableExecutionArn), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -6823,6 +6984,52 @@ list_versions_by_function(Client, FunctionName, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Pauses a running durable execution:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html.
+%%
+%% While an execution is paused, Lambda doesn't invoke your function, but
+%% pending operations such as waits and callbacks continue to complete.
+%%
+%% If an invocation is in progress, the execution status changes to
+%% `PAUSING' until the invocation reaches its next checkpoint, and then
+%% changes to `PAUSED'. This operation returns a successful response
+%% while the execution status is still `RUNNING', and the status changes
+%% when Lambda processes the request. For more information about pausing
+%% executions, see Pausing and resuming durable executions:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-pause-resume.html.
+-spec pause_durable_execution(aws_client:aws_client(), binary() | list(), pause_durable_execution_request()) ->
+    {ok, pause_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, pause_durable_execution_errors(), tuple()}.
+pause_durable_execution(Client, DurableExecutionArn, Input) ->
+    pause_durable_execution(Client, DurableExecutionArn, Input, []).
+
+-spec pause_durable_execution(aws_client:aws_client(), binary() | list(), pause_durable_execution_request(), proplists:proplist()) ->
+    {ok, pause_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, pause_durable_execution_errors(), tuple()}.
+pause_durable_execution(Client, DurableExecutionArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/2025-12-01/durable-executions/", aws_util:encode_uri(DurableExecutionArn), "/pause"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates an Lambda layer:
 %% https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html
 %% from a ZIP archive.
@@ -7348,6 +7555,53 @@ remove_permission(Client, FunctionName, StatementId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Resumes a paused durable execution:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html.
+%%
+%% If the pause interrupted an invocation, or an operation completed while
+%% the execution was paused, Lambda invokes your function. Otherwise, the
+%% execution continues to wait for its pending operations.
+%%
+%% If the execution status is `PAUSING', this operation cancels the
+%% pause, and the in-progress invocation continues. This operation returns a
+%% successful response while the execution status is still `PAUSED' or
+%% `PAUSING', and the status changes to `RUNNING' when Lambda
+%% processes the request. For more information about resuming executions, see
+%% Pausing and resuming durable executions:
+%% https://docs.aws.amazon.com/lambda/latest/dg/durable-pause-resume.html.
+-spec resume_durable_execution(aws_client:aws_client(), binary() | list(), resume_durable_execution_request()) ->
+    {ok, resume_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, resume_durable_execution_errors(), tuple()}.
+resume_durable_execution(Client, DurableExecutionArn, Input) ->
+    resume_durable_execution(Client, DurableExecutionArn, Input, []).
+
+-spec resume_durable_execution(aws_client:aws_client(), binary() | list(), resume_durable_execution_request(), proplists:proplist()) ->
+    {ok, resume_durable_execution_response(), tuple()} |
+    {error, any()} |
+    {error, resume_durable_execution_errors(), tuple()}.
+resume_durable_execution(Client, DurableExecutionArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/2025-12-01/durable-executions/", aws_util:encode_uri(DurableExecutionArn), "/resume"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Sends a failure response for a callback operation in a durable
 %% execution.
 %%
@@ -7462,7 +7716,7 @@ send_durable_execution_callback_success(Client, CallbackId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Stops a running durable execution:
+%% @doc Stops a running or paused durable execution:
 %% https://docs.aws.amazon.com/lambda/latest/dg/durable-functions.html.
 %%
 %% The execution transitions to STOPPED status and cannot be resumed. Any

@@ -1372,6 +1372,13 @@
 
 
 %% Example:
+%% int_access_tiers() :: #{
+%%   <<"IsEnabled">> => boolean()
+%% }
+-type int_access_tiers() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_service_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -2647,16 +2654,41 @@
 %% storage_lens_configuration() :: #{
 %%   <<"AccountLevel">> => account_level(),
 %%   <<"AwsOrg">> => storage_lens_aws_org(),
+%%   <<"CostAndUsageReportsPublish">> => storage_lens_cost_and_usage_reports_publish(),
 %%   <<"DataExport">> => storage_lens_data_export(),
 %%   <<"Exclude">> => exclude(),
 %%   <<"ExpandedPrefixesDataExport">> => storage_lens_expanded_prefixes_data_export(),
 %%   <<"Id">> => string(),
 %%   <<"Include">> => include(),
+%%   <<"IntAccessTiers">> => int_access_tiers(),
 %%   <<"IsEnabled">> => boolean(),
 %%   <<"PrefixDelimiter">> => string(),
 %%   <<"StorageLensArn">> => string()
 %% }
 -type storage_lens_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_cost_and_usage_reports_prefix_level() :: #{
+%%   <<"IsEnabled">> => boolean(),
+%%   <<"SelectionCriteria">> => storage_lens_cost_and_usage_reports_selection_criteria()
+%% }
+-type storage_lens_cost_and_usage_reports_prefix_level() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_cost_and_usage_reports_publish() :: #{
+%%   <<"PrefixLevel">> => storage_lens_cost_and_usage_reports_prefix_level()
+%% }
+-type storage_lens_cost_and_usage_reports_publish() :: #{binary() => any()}.
+
+
+%% Example:
+%% storage_lens_cost_and_usage_reports_selection_criteria() :: #{
+%%   <<"MaxDepth">> => integer(),
+%%   <<"MinDepth">> => integer()
+%% }
+-type storage_lens_cost_and_usage_reports_selection_criteria() :: #{binary() => any()}.
 
 
 %% Example:

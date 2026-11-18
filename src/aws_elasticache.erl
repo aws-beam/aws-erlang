@@ -765,6 +765,7 @@
 %%   <<"DailySnapshotTime">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Engine">> := string(),
+%%   <<"Integrations">> => list(integration_request()),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MajorEngineVersion">> => string(),
 %%   <<"NetworkType">> => list(any()),
@@ -1436,6 +1437,19 @@
 %%   <<"message">> => string()
 %% }
 -type insufficient_cache_cluster_capacity_fault() :: #{binary() => any()}.
+
+%% Example:
+%% integration() :: #{
+%%   <<"IntegrationType">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type integration() :: #{binary() => any()}.
+
+%% Example:
+%% integration_request() :: #{
+%%   <<"IntegrationType">> => list(any())
+%% }
+-type integration_request() :: #{binary() => any()}.
 
 %% Example:
 %% invalid_arn_fault() :: #{
@@ -2223,6 +2237,7 @@
 %%   <<"Endpoint">> => endpoint(),
 %%   <<"Engine">> => string(),
 %%   <<"FullEngineVersion">> => string(),
+%%   <<"Integrations">> => list(integration()),
 %%   <<"KmsKeyId">> => string(),
 %%   <<"MajorEngineVersion">> => string(),
 %%   <<"Migration">> => migration_summary(),

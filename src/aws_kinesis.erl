@@ -3,21 +3,30 @@
 
 %% @doc Amazon Kinesis Data Streams Service API Reference
 %%
-%% Amazon Kinesis Data Streams is a managed service that scales elastically
-%% for real-time
-%% processing of streaming big data.
+%% Amazon Kinesis Data Streams is a serverless data streaming service that
+%% ingests data
+%% once and fans it out to multiple consumer applications for real-time
+%% processing.
 -module(aws_kinesis).
 
--export([add_tags_to_stream/2,
+-export([acknowledge_dead_letter_queue_records/2,
+         acknowledge_dead_letter_queue_records/3,
+         acknowledge_queue_records/2,
+         acknowledge_queue_records/3,
+         add_tags_to_stream/2,
          add_tags_to_stream/3,
          create_channel/2,
          create_channel/3,
+         create_queue/2,
+         create_queue/3,
          create_stream/2,
          create_stream/3,
          decrease_stream_retention_period/2,
          decrease_stream_retention_period/3,
          delete_channel/2,
          delete_channel/3,
+         delete_queue/2,
+         delete_queue/3,
          delete_resource_policy/2,
          delete_resource_policy/3,
          delete_stream/2,
@@ -30,6 +39,8 @@
          describe_channel/3,
          describe_limits/2,
          describe_limits/3,
+         describe_queue/2,
+         describe_queue/3,
          describe_stream/2,
          describe_stream/3,
          describe_stream_consumer/2,
@@ -50,6 +61,8 @@
          increase_stream_retention_period/3,
          list_channels/2,
          list_channels/3,
+         list_queues/2,
+         list_queues/3,
          list_shards/2,
          list_shards/3,
          list_stream_consumers/2,
@@ -68,10 +81,16 @@
          put_records/3,
          put_resource_policy/2,
          put_resource_policy/3,
+         receive_dead_letter_queue_records/2,
+         receive_dead_letter_queue_records/3,
+         receive_queue_records/2,
+         receive_queue_records/3,
          register_stream_consumer/2,
          register_stream_consumer/3,
          remove_tags_from_stream/2,
          remove_tags_from_stream/3,
+         restore_dead_letter_queue_records/2,
+         restore_dead_letter_queue_records/3,
          split_shard/2,
          split_shard/3,
          start_stream_encryption/2,
@@ -88,8 +107,14 @@
          update_account_settings/3,
          update_channel/2,
          update_channel/3,
+         update_dead_letter_queue_records_visibility/2,
+         update_dead_letter_queue_records_visibility/3,
          update_max_record_size/2,
          update_max_record_size/3,
+         update_queue/2,
+         update_queue/3,
+         update_queue_records_visibility/2,
+         update_queue_records_visibility/3,
          update_shard_count/2,
          update_shard_count/3,
          update_stream_mode/2,
@@ -110,6 +135,74 @@
 %%   <<"message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_dead_letter_queue_records_error_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type acknowledge_dead_letter_queue_records_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_dead_letter_queue_records_input() :: #{
+%%   <<"Entries">> := list(acknowledge_dead_letter_queue_records_request_entry()),
+%%   <<"QueueARN">> := string()
+%% }
+-type acknowledge_dead_letter_queue_records_input() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_dead_letter_queue_records_output() :: #{
+%%   <<"Failed">> => list(acknowledge_dead_letter_queue_records_error_entry()),
+%%   <<"Successful">> => list(acknowledge_dead_letter_queue_records_result_entry())
+%% }
+-type acknowledge_dead_letter_queue_records_output() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_dead_letter_queue_records_request_entry() :: #{
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type acknowledge_dead_letter_queue_records_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_dead_letter_queue_records_result_entry() :: #{
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type acknowledge_dead_letter_queue_records_result_entry() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_queue_records_error_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type acknowledge_queue_records_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_queue_records_input() :: #{
+%%   <<"Entries">> := list(acknowledge_queue_records_request_entry()),
+%%   <<"QueueARN">> := string()
+%% }
+-type acknowledge_queue_records_input() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_queue_records_output() :: #{
+%%   <<"Failed">> => list(acknowledge_queue_records_error_entry()),
+%%   <<"Successful">> => list(acknowledge_queue_records_result_entry())
+%% }
+-type acknowledge_queue_records_output() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_queue_records_request_entry() :: #{
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type acknowledge_queue_records_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% acknowledge_queue_records_result_entry() :: #{
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type acknowledge_queue_records_result_entry() :: #{binary() => any()}.
 
 %% Example:
 %% add_tags_to_stream_input() :: #{
@@ -254,6 +347,21 @@
 -type create_channel_output() :: #{binary() => any()}.
 
 %% Example:
+%% create_queue_input() :: #{
+%%   <<"QueueAttributes">> => queue_attributes(),
+%%   <<"QueueName">> := string(),
+%%   <<"StreamConfigurationList">> := list(queue_stream_configuration()),
+%%   <<"Tags">> => map()
+%% }
+-type create_queue_input() :: #{binary() => any()}.
+
+%% Example:
+%% create_queue_output() :: #{
+%%   <<"QueueDescription">> => queue_description()
+%% }
+-type create_queue_output() :: #{binary() => any()}.
+
+%% Example:
 %% create_stream_input() :: #{
 %%   <<"MaxRecordSizeInKiB">> => integer(),
 %%   <<"RecordDistributionStrategy">> => list(any()),
@@ -264,6 +372,13 @@
 %%   <<"WarmThroughputMiBps">> => integer()
 %% }
 -type create_stream_input() :: #{binary() => any()}.
+
+%% Example:
+%% dead_letter_configuration() :: #{
+%%   <<"MaxReceiveCount">> => integer(),
+%%   <<"TargetType">> => list(any())
+%% }
+-type dead_letter_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% dead_letter_queue_s3_configuration() :: #{
@@ -287,6 +402,12 @@
 %%   <<"ChannelARN">> := string()
 %% }
 -type delete_channel_input() :: #{binary() => any()}.
+
+%% Example:
+%% delete_queue_input() :: #{
+%%   <<"QueueARN">> := string()
+%% }
+-type delete_queue_input() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_policy_input() :: #{
@@ -353,6 +474,18 @@
 %%   <<"ShardLimit">> => integer()
 %% }
 -type describe_limits_output() :: #{binary() => any()}.
+
+%% Example:
+%% describe_queue_input() :: #{
+%%   <<"QueueARN">> := string()
+%% }
+-type describe_queue_input() :: #{binary() => any()}.
+
+%% Example:
+%% describe_queue_output() :: #{
+%%   <<"QueueDescription">> => queue_description()
+%% }
+-type describe_queue_output() :: #{binary() => any()}.
 
 %% Example:
 %% describe_stream_consumer_input() :: #{
@@ -597,6 +730,21 @@
 -type list_channels_output() :: #{binary() => any()}.
 
 %% Example:
+%% list_queues_input() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StreamFilter">> => list(queue_stream_filter())
+%% }
+-type list_queues_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_queues_output() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"QueueSummaries">> => list(queue_summary())
+%% }
+-type list_queues_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_shards_input() :: #{
 %%   <<"ExclusiveStartShardId">> => string(),
 %%   <<"MaxResults">> => integer(),
@@ -789,6 +937,104 @@
 -type put_resource_policy_input() :: #{binary() => any()}.
 
 %% Example:
+%% queue_attributes() :: #{
+%%   <<"DeadLetterConfiguration">> => dead_letter_configuration(),
+%%   <<"VisibilityTimeoutSeconds">> => integer()
+%% }
+-type queue_attributes() :: #{binary() => any()}.
+
+%% Example:
+%% queue_description() :: #{
+%%   <<"QueueARN">> => string(),
+%%   <<"QueueAttributes">> => queue_attributes(),
+%%   <<"QueueCreationTimestamp">> => non_neg_integer(),
+%%   <<"QueueName">> => string(),
+%%   <<"QueueStatus">> => list(any()),
+%%   <<"StreamConfigurationList">> => list(queue_stream_configuration())
+%% }
+-type queue_description() :: #{binary() => any()}.
+
+%% Example:
+%% queue_record() :: #{
+%%   <<"ApproximateArrivalTimestamp">> => non_neg_integer(),
+%%   <<"Data">> => binary(),
+%%   <<"FirstReceiveTimestamp">> => non_neg_integer(),
+%%   <<"PartitionKey">> => string(),
+%%   <<"ReceiptHandle">> => string(),
+%%   <<"ReceiveCount">> => integer(),
+%%   <<"RecordId">> => string()
+%% }
+-type queue_record() :: #{binary() => any()}.
+
+%% Example:
+%% queue_starting_position() :: #{
+%%   <<"Timestamp">> => non_neg_integer(),
+%%   <<"Type">> => list(any())
+%% }
+-type queue_starting_position() :: #{binary() => any()}.
+
+%% Example:
+%% queue_stream_configuration() :: #{
+%%   <<"StartingPosition">> => queue_starting_position(),
+%%   <<"StreamARN">> => string()
+%% }
+-type queue_stream_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% queue_stream_filter() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamCreationTimestamp">> => non_neg_integer()
+%% }
+-type queue_stream_filter() :: #{binary() => any()}.
+
+%% Example:
+%% queue_stream_identifier() :: #{
+%%   <<"StreamARN">> => string(),
+%%   <<"StreamCreationTimestamp">> => non_neg_integer()
+%% }
+-type queue_stream_identifier() :: #{binary() => any()}.
+
+%% Example:
+%% queue_summary() :: #{
+%%   <<"QueueARN">> => string(),
+%%   <<"QueueCreationTimestamp">> => non_neg_integer(),
+%%   <<"QueueName">> => string(),
+%%   <<"QueueStatus">> => list(any()),
+%%   <<"Streams">> => list(queue_stream_identifier())
+%% }
+-type queue_summary() :: #{binary() => any()}.
+
+%% Example:
+%% receive_dead_letter_queue_records_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"QueueARN">> := string(),
+%%   <<"VisibilityTimeoutSeconds">> => integer(),
+%%   <<"WaitTimeSeconds">> => integer()
+%% }
+-type receive_dead_letter_queue_records_input() :: #{binary() => any()}.
+
+%% Example:
+%% receive_dead_letter_queue_records_output() :: #{
+%%   <<"QueueRecords">> => list(queue_record())
+%% }
+-type receive_dead_letter_queue_records_output() :: #{binary() => any()}.
+
+%% Example:
+%% receive_queue_records_input() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"QueueARN">> := string(),
+%%   <<"VisibilityTimeoutSeconds">> => integer(),
+%%   <<"WaitTimeSeconds">> => integer()
+%% }
+-type receive_queue_records_input() :: #{binary() => any()}.
+
+%% Example:
+%% receive_queue_records_output() :: #{
+%%   <<"QueueRecords">> => list(queue_record())
+%% }
+-type receive_queue_records_output() :: #{binary() => any()}.
+
+%% Example:
 %% record_configuration() :: #{
 %%   <<"GSRSchemaARN">> => string(),
 %%   <<"RecordFormatType">> => list(any())
@@ -830,6 +1076,40 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+%% Example:
+%% restore_dead_letter_queue_records_error_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type restore_dead_letter_queue_records_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% restore_dead_letter_queue_records_input() :: #{
+%%   <<"Entries">> := list(restore_dead_letter_queue_records_request_entry()),
+%%   <<"QueueARN">> := string()
+%% }
+-type restore_dead_letter_queue_records_input() :: #{binary() => any()}.
+
+%% Example:
+%% restore_dead_letter_queue_records_output() :: #{
+%%   <<"Failed">> => list(restore_dead_letter_queue_records_error_entry()),
+%%   <<"Successful">> => list(restore_dead_letter_queue_records_result_entry())
+%% }
+-type restore_dead_letter_queue_records_output() :: #{binary() => any()}.
+
+%% Example:
+%% restore_dead_letter_queue_records_request_entry() :: #{
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type restore_dead_letter_queue_records_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% restore_dead_letter_queue_records_result_entry() :: #{
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type restore_dead_letter_queue_records_result_entry() :: #{binary() => any()}.
 
 %% Example:
 %% s3_destination_configuration() :: #{
@@ -983,6 +1263,7 @@
 %%   <<"KeyId">> => string(),
 %%   <<"MaxRecordSizeInKiB">> => integer(),
 %%   <<"OpenShardCount">> => integer(),
+%%   <<"QueueCount">> => integer(),
 %%   <<"RecordDistributionStrategy">> => list(any()),
 %%   <<"RetentionPeriodHours">> => integer(),
 %%   <<"StreamARN">> => string(),
@@ -1059,6 +1340,12 @@
 -type tag_resource_input() :: #{binary() => any()}.
 
 %% Example:
+%% throttling_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type throttling_exception() :: #{binary() => any()}.
+
+%% Example:
 %% untag_resource_input() :: #{
 %%   <<"ResourceARN">> := string(),
 %%   <<"StreamId">> => string(),
@@ -1094,12 +1381,95 @@
 -type update_channel_output() :: #{binary() => any()}.
 
 %% Example:
+%% update_dead_letter_queue_records_visibility_error_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type update_dead_letter_queue_records_visibility_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% update_dead_letter_queue_records_visibility_input() :: #{
+%%   <<"Entries">> := list(update_dead_letter_queue_records_visibility_request_entry()),
+%%   <<"QueueARN">> := string()
+%% }
+-type update_dead_letter_queue_records_visibility_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_dead_letter_queue_records_visibility_output() :: #{
+%%   <<"Failed">> => list(update_dead_letter_queue_records_visibility_error_entry()),
+%%   <<"Successful">> => list(update_dead_letter_queue_records_visibility_result_entry())
+%% }
+-type update_dead_letter_queue_records_visibility_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_dead_letter_queue_records_visibility_request_entry() :: #{
+%%   <<"ReceiptHandle">> => string(),
+%%   <<"VisibilityTimeoutSeconds">> => integer()
+%% }
+-type update_dead_letter_queue_records_visibility_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% update_dead_letter_queue_records_visibility_result_entry() :: #{
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type update_dead_letter_queue_records_visibility_result_entry() :: #{binary() => any()}.
+
+%% Example:
 %% update_max_record_size_input() :: #{
 %%   <<"MaxRecordSizeInKiB">> := integer(),
 %%   <<"StreamARN">> => string(),
 %%   <<"StreamId">> => string()
 %% }
 -type update_max_record_size_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_input() :: #{
+%%   <<"QueueARN">> := string(),
+%%   <<"QueueAttributes">> := queue_attributes()
+%% }
+-type update_queue_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_output() :: #{
+%%   <<"QueueDescription">> => queue_description()
+%% }
+-type update_queue_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_records_visibility_error_entry() :: #{
+%%   <<"ErrorCode">> => string(),
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type update_queue_records_visibility_error_entry() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_records_visibility_input() :: #{
+%%   <<"Entries">> := list(update_queue_records_visibility_request_entry()),
+%%   <<"QueueARN">> := string()
+%% }
+-type update_queue_records_visibility_input() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_records_visibility_output() :: #{
+%%   <<"Failed">> => list(update_queue_records_visibility_error_entry()),
+%%   <<"Successful">> => list(update_queue_records_visibility_result_entry())
+%% }
+-type update_queue_records_visibility_output() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_records_visibility_request_entry() :: #{
+%%   <<"ReceiptHandle">> => string(),
+%%   <<"VisibilityTimeoutSeconds">> => integer()
+%% }
+-type update_queue_records_visibility_request_entry() :: #{binary() => any()}.
+
+%% Example:
+%% update_queue_records_visibility_result_entry() :: #{
+%%   <<"ReceiptHandle">> => string()
+%% }
+-type update_queue_records_visibility_result_entry() :: #{binary() => any()}.
 
 %% Example:
 %% update_shard_count_input() :: #{
@@ -1167,6 +1537,20 @@
 %% }
 -type warm_throughput_object() :: #{binary() => any()}.
 
+-type acknowledge_dead_letter_queue_records_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type acknowledge_queue_records_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type add_tags_to_stream_errors() ::
     resource_not_found_exception() | 
     resource_in_use_exception() | 
@@ -1186,6 +1570,15 @@
     kms_disabled_exception() | 
     kms_access_denied_exception() | 
     invalid_argument_exception() | 
+    access_denied_exception().
+
+-type create_queue_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type create_stream_errors() ::
@@ -1208,11 +1601,21 @@
     invalid_argument_exception() | 
     access_denied_exception().
 
+-type delete_queue_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type delete_resource_policy_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type delete_stream_errors() ::
@@ -1239,6 +1642,14 @@
 
 -type describe_limits_errors() ::
     limit_exceeded_exception().
+
+-type describe_queue_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
 
 -type describe_stream_errors() ::
     resource_not_found_exception() | 
@@ -1287,10 +1698,12 @@
     access_denied_exception().
 
 -type get_resource_policy_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type get_shard_iterator_errors() ::
@@ -1315,6 +1728,14 @@
     expired_next_token_exception() | 
     access_denied_exception().
 
+-type list_queues_errors() ::
+    validation_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    expired_next_token_exception() | 
+    access_denied_exception().
+
 -type list_shards_errors() ::
     resource_not_found_exception() | 
     resource_in_use_exception() | 
@@ -1336,10 +1757,12 @@
     expired_next_token_exception().
 
 -type list_tags_for_resource_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type list_tags_for_stream_errors() ::
@@ -1385,10 +1808,38 @@
     access_denied_exception().
 
 -type put_resource_policy_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type receive_dead_letter_queue_records_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type receive_queue_records_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    kms_throttling_exception() | 
+    kms_opt_in_required() | 
+    kms_not_found_exception() | 
+    kms_invalid_state_exception() | 
+    kms_disabled_exception() | 
+    kms_access_denied_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type register_stream_consumer_errors() ::
@@ -1402,6 +1853,13 @@
     resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
+    access_denied_exception().
+
+-type restore_dead_letter_queue_records_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type split_shard_errors() ::
@@ -1441,17 +1899,21 @@
     access_denied_exception().
 
 -type tag_resource_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type untag_resource_errors() ::
+    validation_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type update_account_settings_errors() ::
@@ -1467,12 +1929,35 @@
     invalid_argument_exception() | 
     access_denied_exception().
 
+-type update_dead_letter_queue_records_visibility_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type update_max_record_size_errors() ::
     validation_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
     limit_exceeded_exception() | 
     invalid_argument_exception() | 
+    access_denied_exception().
+
+-type update_queue_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
+    limit_exceeded_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type update_queue_records_visibility_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_argument_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type update_shard_count_errors() ::
@@ -1509,6 +1994,72 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Acknowledges up to 10 dead-letter records in the specified queue, so
+%% the
+%% queue doesn't return them again.
+%%
+%% The result for each entry is reported individually
+%% in the response.
+%%
+%% Acknowledging a record does not affect the record in the data stream. That
+%% record remains available to stream consumers and to other queues on the
+%% same stream for the rest of its retention period.
+%%
+%% Because the request can result in a combination of successful and
+%% unsuccessful entries, check the `Failed' list even when the call
+%% returns an HTTP status code of `200'.
+-spec acknowledge_dead_letter_queue_records(aws_client:aws_client(), acknowledge_dead_letter_queue_records_input()) ->
+    {ok, acknowledge_dead_letter_queue_records_output(), tuple()} |
+    {error, any()} |
+    {error, acknowledge_dead_letter_queue_records_errors(), tuple()}.
+acknowledge_dead_letter_queue_records(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    acknowledge_dead_letter_queue_records(Client, Input, []).
+
+-spec acknowledge_dead_letter_queue_records(aws_client:aws_client(), acknowledge_dead_letter_queue_records_input(), proplists:proplist()) ->
+    {ok, acknowledge_dead_letter_queue_records_output(), tuple()} |
+    {error, any()} |
+    {error, acknowledge_dead_letter_queue_records_errors(), tuple()}.
+acknowledge_dead_letter_queue_records(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcknowledgeDeadLetterQueueRecords">>, Input, Options).
+
+%% @doc Acknowledges up to 10 records from the specified queue.
+%%
+%% After a record is acknowledged,
+%% the queue does not deliver it again. The result for each entry is reported
+%% individually in
+%% the response.
+%%
+%% Acknowledging a record does not affect the record in the data stream. That
+%% record remains available to stream consumers and to other queues on the
+%% same stream for the rest of its retention period.
+%%
+%% Because the request can result in a combination of successful and
+%% unsuccessful entries, check the `Failed' list even when the call
+%% returns an HTTP status code of `200'.
+%%
+%% On rare occasions, you can receive a record again after you acknowledge
+%% it. Design your
+%% queue consumer to be idempotent, so that processing the same record more
+%% than once is
+%% safe.
+-spec acknowledge_queue_records(aws_client:aws_client(), acknowledge_queue_records_input()) ->
+    {ok, acknowledge_queue_records_output(), tuple()} |
+    {error, any()} |
+    {error, acknowledge_queue_records_errors(), tuple()}.
+acknowledge_queue_records(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    acknowledge_queue_records(Client, Input, []).
+
+-spec acknowledge_queue_records(aws_client:aws_client(), acknowledge_queue_records_input(), proplists:proplist()) ->
+    {ok, acknowledge_queue_records_output(), tuple()} |
+    {error, any()} |
+    {error, acknowledge_queue_records_errors(), tuple()}.
+acknowledge_queue_records(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AcknowledgeQueueRecords">>, Input, Options).
 
 %% @doc Adds or updates tags for the specified Kinesis data stream.
 %%
@@ -1581,6 +2132,76 @@ create_channel(Client, Input)
 create_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateChannel">>, Input, Options).
+
+%% @doc Creates a queue on the specified data stream.
+%%
+%% A queue delivers records from the stream to
+%% a queue consumer, tracks the delivery state of each record, and redelivers
+%% any record that
+%% is not acknowledged before its visibility timeout expires.
+%%
+%% A queue does not extend how long the stream keeps a record. When a record
+%% reaches the
+%% end of the data stream's retention period, the queue stops delivering
+%% it.
+%%
+%% Your queue consumer calls `ReceiveQueueRecords' to receive up to 10
+%% records at a time. After it processes records, it calls
+%% `AcknowledgeQueueRecords' so the queue does not deliver them
+%% again.
+%%
+%% Queues are supported only on data streams in on-demand capacity mode.
+%%
+%% Creating a queue does not change how producers write to the stream, and it
+%% does not change
+%% how existing stream consumers read from it. A queue counts as a registered
+%% consumer on the
+%% stream and shares the stream's registered consumer limit with enhanced
+%% fan-out
+%% consumers: 20 on On-demand Standard and 50 on On-demand Advantage.
+%%
+%% Use `StartingPosition' to set the position in the stream where
+%% delivery
+%% begins. The default is `LATEST'.
+%%
+%% `CreateQueue' is an asynchronous operation. Upon receiving a
+%% `CreateQueue' request, Amazon Kinesis Data Streams immediately returns
+%% a queue
+%% description with a `QueueStatus' of `CREATING'. After the queue is
+%% created, Kinesis Data Streams sets the `QueueStatus' to `ACTIVE'.
+%% You can begin receiving records after the queue is `ACTIVE'. Use
+%% `DescribeQueue' to check the status of the queue.
+%%
+%% Each queue has built-in dead-letter handling. When a record has been
+%% received
+%% `MaxReceiveCount' times without being acknowledged, it becomes a
+%% dead-letter
+%% record, and `ReceiveQueueRecords' no longer returns it. You work with
+%% dead-letter records through a separate set of operations that use the same
+%% queue ARN: `ReceiveDeadLetterQueueRecords',
+%% `AcknowledgeDeadLetterQueueRecords',
+%% `UpdateDeadLetterQueueRecordsVisibility', and
+%% `RestoreDeadLetterQueueRecords'.
+%%
+%% Dead-letter handling is enabled by default, with a `MaxReceiveCount'
+%% of 6. To
+%% use a different value, or to turn dead-letter handling off, specify
+%% `DeadLetterConfiguration' in `QueueAttributes'.
+-spec create_queue(aws_client:aws_client(), create_queue_input()) ->
+    {ok, create_queue_output(), tuple()} |
+    {error, any()} |
+    {error, create_queue_errors(), tuple()}.
+create_queue(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_queue(Client, Input, []).
+
+-spec create_queue(aws_client:aws_client(), create_queue_input(), proplists:proplist()) ->
+    {ok, create_queue_output(), tuple()} |
+    {error, any()} |
+    {error, create_queue_errors(), tuple()}.
+create_queue(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateQueue">>, Input, Options).
 
 %% @doc Creates a Kinesis data stream.
 %%
@@ -1733,7 +2354,43 @@ delete_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteChannel">>, Input, Options).
 
-%% @doc Delete a policy for the specified data stream or consumer.
+%% @doc Deletes the specified queue.
+%%
+%% Records that are in flight when you delete the queue are not
+%% delivered again, and receipt handles issued by the queue stop being valid.
+%%
+%% Deleting a queue does not delete the data stream the queue was created on,
+%% and does not
+%% delete any records in that stream. Those records remain available to
+%% stream consumers and
+%% to other queues on the same stream for the rest of their retention period.
+%%
+%% `DeleteQueue' is an asynchronous operation. Upon receiving a
+%% `DeleteQueue' request, Amazon Kinesis Data Streams sets the
+%% `QueueStatus' to `DELETING'. The queue is deleted when the
+%% operation
+%% completes. A queue in the `DELETING' state does not deliver records.
+%%
+%% You must delete every queue on a data stream before you can delete the
+%% stream, or switch
+%% it from on-demand to provisioned capacity mode.
+-spec delete_queue(aws_client:aws_client(), delete_queue_input()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_queue_errors(), tuple()}.
+delete_queue(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_queue(Client, Input, []).
+
+-spec delete_queue(aws_client:aws_client(), delete_queue_input(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_queue_errors(), tuple()}.
+delete_queue(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteQueue">>, Input, Options).
+
+%% @doc Delete a policy for the specified data stream, consumer, or queue.
 %%
 %% Request patterns can be one of the following:
 %%
@@ -1741,6 +2398,8 @@ delete_channel(Client, Input, Options)
 %%
 %% Consumer pattern:
 %% `^(arn):aws.*:kinesis:.*:\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+'
+%%
+%% Queue pattern: `arn:aws.*:kinesis:.*:\d{12}:queue/\S+'
 -spec delete_resource_policy(aws_client:aws_client(), delete_resource_policy_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -1783,6 +2442,9 @@ delete_resource_policy(Client, Input, Options)
 %% When you delete a stream, any shards in that stream are also deleted, and
 %% any tags are
 %% dissociated from the stream.
+%%
+%% Before you can delete a data stream that has queues, you must delete every
+%% queue on the stream with `DeleteQueue'.
 %%
 %% You can use the `DescribeStreamSummary' operation to check the state
 %% of the stream, which is returned in `StreamStatus'.
@@ -1908,6 +2570,25 @@ describe_limits(Client, Input)
 describe_limits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeLimits">>, Input, Options).
+
+%% @doc Returns a description of the specified queue, including its status,
+%% the data stream it
+%% delivers records from, and its configuration attributes.
+-spec describe_queue(aws_client:aws_client(), describe_queue_input()) ->
+    {ok, describe_queue_output(), tuple()} |
+    {error, any()} |
+    {error, describe_queue_errors(), tuple()}.
+describe_queue(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_queue(Client, Input, []).
+
+-spec describe_queue(aws_client:aws_client(), describe_queue_input(), proplists:proplist()) ->
+    {ok, describe_queue_output(), tuple()} |
+    {error, any()} |
+    {error, describe_queue_errors(), tuple()}.
+describe_queue(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeQueue">>, Input, Options).
 
 %% @doc Describes the specified Kinesis data stream.
 %%
@@ -2187,7 +2868,8 @@ get_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRecords">>, Input, Options).
 
-%% @doc Returns a policy attached to the specified data stream or consumer.
+%% @doc Returns a policy attached to the specified data stream, consumer, or
+%% queue.
 %%
 %% Request patterns can be one of the following:
 %%
@@ -2195,6 +2877,8 @@ get_records(Client, Input, Options)
 %%
 %% Consumer pattern:
 %% `^(arn):aws.*:kinesis:.*:\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+'
+%%
+%% Queue pattern: `arn:aws.*:kinesis:.*:\d{12}:queue/\S+'
 -spec get_resource_policy(aws_client:aws_client(), get_resource_policy_input()) ->
     {ok, get_resource_policy_output(), tuple()} |
     {error, any()} |
@@ -2354,6 +3038,32 @@ list_channels(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListChannels">>, Input, Options).
 
+%% @doc Returns a summary of each queue in the Amazon Web Services account
+%% and Region used by the
+%% request.
+%%
+%% Use `StreamFilter' to list only the queues on a particular data
+%% stream.
+%%
+%% If the response contains a `NextToken', more queues are available.
+%% Call
+%% `ListQueues' again with that value to retrieve the next page.
+-spec list_queues(aws_client:aws_client(), list_queues_input()) ->
+    {ok, list_queues_output(), tuple()} |
+    {error, any()} |
+    {error, list_queues_errors(), tuple()}.
+list_queues(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_queues(Client, Input, []).
+
+-spec list_queues(aws_client:aws_client(), list_queues_input(), proplists:proplist()) ->
+    {ok, list_queues_output(), tuple()} |
+    {error, any()} |
+    {error, list_queues_errors(), tuple()}.
+list_queues(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListQueues">>, Input, Options).
+
 %% @doc Lists the shards in a stream and provides information about each
 %% shard.
 %%
@@ -2458,6 +3168,9 @@ list_streams(Client, Input, Options)
 %%
 %% Each tag is a label consisting of a user-defined key and value. Tags can
 %% help you manage, identify, organize, search for, and filter resources.
+%%
+%% The Kinesis resource can be a data stream, a queue, or an enhanced fan-out
+%% consumer.
 %%
 %% For more information about tagging Kinesis resources, see Tag your Amazon
 %% Kinesis Data Streams resources:
@@ -2792,8 +3505,8 @@ put_records(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutRecords">>, Input, Options).
 
-%% @doc Attaches a resource-based policy to a data stream or registered
-%% consumer.
+%% @doc Attaches a resource-based policy to a data stream, a queue, or an
+%% enhanced fan-out consumer.
 %%
 %% If you are using an identity other than the root user of
 %% the Amazon Web Services account that owns the resource, the calling
@@ -2811,6 +3524,8 @@ put_records(Client, Input, Options)
 %%
 %% Consumer pattern:
 %% `^(arn):aws.*:kinesis:.*:\d{12}:.*stream\/[a-zA-Z0-9_.-]+\/consumer\/[a-zA-Z0-9_.-]+:[0-9]+'
+%%
+%% Queue pattern: `arn:aws.*:kinesis:.*:\d{12}:queue/\S+'
 %%
 %% For more information, see Controlling Access to Amazon Kinesis Data
 %% Streams Resources Using IAM:
@@ -2831,6 +3546,102 @@ put_resource_policy(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutResourcePolicy">>, Input, Options).
 
+%% @doc Receives up to 10 dead-letter records from the specified queue.
+%%
+%% Each queue has built-in
+%% dead-letter handling: when a record has been received
+%% `MaxReceiveCount' times
+%% without being acknowledged, it becomes a dead-letter record, which usually
+%% means your queue
+%% consumer could not process it. The dead-letter record stays in the same
+%% queue, and
+%% `ReceiveQueueRecords' no longer returns it.
+%%
+%% Dead-letter records carry the same data and partition key as when
+%% they were first delivered, and are returned with a receipt handle. Use the
+%% receipt
+%% handle to acknowledge the record with
+%% `AcknowledgeDeadLetterQueueRecords', which discards it, to change its
+%% visibility with `UpdateDeadLetterQueueRecordsVisibility', or to
+%% restore
+%% it with `RestoreDeadLetterQueueRecords', which returns it to the
+%% normal
+%% receive path so that `ReceiveQueueRecords' can return it again.
+%%
+%% Use this operation to inspect the records your queue consumer could not
+%% process, so you
+%% can correct the cause and then either acknowledge or restore them.
+%%
+%% A queue delivers dead-letter records while it is in the `ACTIVE'
+%% state.
+-spec receive_dead_letter_queue_records(aws_client:aws_client(), receive_dead_letter_queue_records_input()) ->
+    {ok, receive_dead_letter_queue_records_output(), tuple()} |
+    {error, any()} |
+    {error, receive_dead_letter_queue_records_errors(), tuple()}.
+receive_dead_letter_queue_records(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    receive_dead_letter_queue_records(Client, Input, []).
+
+-spec receive_dead_letter_queue_records(aws_client:aws_client(), receive_dead_letter_queue_records_input(), proplists:proplist()) ->
+    {ok, receive_dead_letter_queue_records_output(), tuple()} |
+    {error, any()} |
+    {error, receive_dead_letter_queue_records_errors(), tuple()}.
+receive_dead_letter_queue_records(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ReceiveDeadLetterQueueRecords">>, Input, Options).
+
+%% @doc Receives up to 10 records from the specified queue.
+%%
+%% Each record is returned with a
+%% receipt handle, which is the identifier you use to acknowledge the record
+%% or change its
+%% visibility.
+%%
+%% A record returned by `ReceiveQueueRecords' becomes in flight: it is
+%% not visible
+%% to any consumer instance for the duration of its visibility timeout, so
+%% subsequent
+%% receive requests do not return it while your queue consumer processes it.
+%% Acknowledge the record with
+%% `AcknowledgeQueueRecords' when you finish processing it. A record that
+%% is
+%% not acknowledged before its visibility timeout expires becomes visible in
+%% the queue again
+%% and can be received by any consumer instance.
+%%
+%% Use `WaitTimeSeconds' to control how long the call waits for a record
+%% to
+%% become visible before returning. If a record becomes visible sooner, the
+%% call returns
+%% sooner. If the wait time expires and no records are visible, the call
+%% returns an empty
+%% list of records.
+%%
+%% Records are not necessarily received in the order they were written to the
+%% data
+%% stream.
+%%
+%% A queue delivers records while it is in the `ACTIVE' state.
+%%
+%% On rare occasions, a queue can deliver a record more than once. Design
+%% your queue consumer to be idempotent, so that processing the same record
+%% more than once is safe.
+-spec receive_queue_records(aws_client:aws_client(), receive_queue_records_input()) ->
+    {ok, receive_queue_records_output(), tuple()} |
+    {error, any()} |
+    {error, receive_queue_records_errors(), tuple()}.
+receive_queue_records(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    receive_queue_records(Client, Input, []).
+
+-spec receive_queue_records(aws_client:aws_client(), receive_queue_records_input(), proplists:proplist()) ->
+    {ok, receive_queue_records_output(), tuple()} |
+    {error, any()} |
+    {error, receive_queue_records_errors(), tuple()}.
+receive_queue_records(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ReceiveQueueRecords">>, Input, Options).
+
 %% @doc Registers a consumer with a Kinesis data stream.
 %%
 %% When you use this operation, the
@@ -2850,13 +3661,18 @@ put_resource_policy(Client, Input, Options)
 %% consumer.
 %%
 %% With On-demand Advantage streams, you can register up to 50 consumers per
-%% stream to use Enhanced Fan-out. With On-demand Standard and Provisioned
-%% streams, you can register up to 20 consumers per stream to use Enhanced
-%% Fan-out. A given consumer can only be
-%% registered with one stream at a time.
+%% stream to use
+%% enhanced fan-out. With On-demand Standard and Provisioned streams, you can
+%% register up
+%% to 20 consumers per stream to use enhanced fan-out. Queues share this
+%% limit with
+%% enhanced fan-out consumers: both count as registered consumers on the
+%% stream. A given
+%% consumer can only be registered with one stream at a time.
 %%
-%% For an example of how to use this operation, see Enhanced Fan-Out
-%% Using the Kinesis Data Streams API:
+%% For an example of how to use this operation, see Develop enhanced fan-out
+%% consumers
+%% with the Amazon Web Services SDK for Java:
 %% https://docs.aws.amazon.com/streams/latest/dev/building-enhanced-consumers-api.html.
 %%
 %% The use of this operation has a limit of five transactions per second per
@@ -2911,6 +3727,37 @@ remove_tags_from_stream(Client, Input)
 remove_tags_from_stream(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RemoveTagsFromStream">>, Input, Options).
+
+%% @doc Restores up to 10 dead-letter records in the specified queue.
+%%
+%% Restoring a record clears
+%% its dead-letter state and resets its receive count, so
+%% `ReceiveQueueRecords' can return it again, up to `MaxReceiveCount'
+%% times before it becomes a dead-letter record
+%% again. The result for each entry is reported individually in the response.
+%%
+%% Restore records after you have corrected the condition that prevented your
+%% queue consumer
+%% from processing them.
+%%
+%% Because the request can result in a combination of successful and
+%% unsuccessful entries, check the `Failed' list even when the call
+%% returns an HTTP status code of `200'.
+-spec restore_dead_letter_queue_records(aws_client:aws_client(), restore_dead_letter_queue_records_input()) ->
+    {ok, restore_dead_letter_queue_records_output(), tuple()} |
+    {error, any()} |
+    {error, restore_dead_letter_queue_records_errors(), tuple()}.
+restore_dead_letter_queue_records(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    restore_dead_letter_queue_records(Client, Input, []).
+
+-spec restore_dead_letter_queue_records(aws_client:aws_client(), restore_dead_letter_queue_records_input(), proplists:proplist()) ->
+    {ok, restore_dead_letter_queue_records_output(), tuple()} |
+    {error, any()} |
+    {error, restore_dead_letter_queue_records_errors(), tuple()}.
+restore_dead_letter_queue_records(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RestoreDeadLetterQueueRecords">>, Input, Options).
 
 %% @doc Splits a shard into two new shards in the Kinesis data stream, to
 %% increase the
@@ -3137,8 +3984,9 @@ stop_stream_encryption(Client, Input, Options)
 %% the previous connection expires or fails with a
 %% `ResourceInUseException'.
 %%
-%% For an example of how to use this operation, see Enhanced Fan-Out
-%% Using the Kinesis Data Streams API:
+%% For an example of how to use this operation, see Develop enhanced fan-out
+%% consumers
+%% with the Amazon Web Services SDK for Java:
 %% https://docs.aws.amazon.com/streams/latest/dev/building-enhanced-consumers-api.html.
 -spec subscribe_to_shard(aws_client:aws_client(), subscribe_to_shard_input()) ->
     {ok, subscribe_to_shard_output(), tuple()} |
@@ -3161,6 +4009,9 @@ subscribe_to_shard(Client, Input, Options)
 %% Each tag is a label consisting of a user-defined key and value. Tags can
 %% help you manage, identify, organize, search for, and filter resources. You
 %% can assign up to 50 tags to a Kinesis resource.
+%%
+%% The Kinesis resource can be a data stream, a queue, or an enhanced fan-out
+%% consumer.
 -spec tag_resource(aws_client:aws_client(), tag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3181,6 +4032,9 @@ tag_resource(Client, Input, Options)
 %%
 %% Removed tags are deleted and can't be recovered after this operation
 %% completes successfully.
+%%
+%% The Kinesis resource can be a data stream, a queue, or an enhanced fan-out
+%% consumer.
 -spec untag_resource(aws_client:aws_client(), untag_resource_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |
@@ -3261,6 +4115,32 @@ update_channel(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateChannel">>, Input, Options).
 
+%% @doc Changes the visibility timeout of up to 10 dead-letter records that
+%% you have received
+%% from the specified queue but not yet acknowledged.
+%%
+%% The result for each entry is reported
+%% individually in the response.
+%%
+%% Because the request can result in a combination of successful and
+%% unsuccessful entries, check the `Failed' list even when the call
+%% returns an HTTP status code of `200'.
+-spec update_dead_letter_queue_records_visibility(aws_client:aws_client(), update_dead_letter_queue_records_visibility_input()) ->
+    {ok, update_dead_letter_queue_records_visibility_output(), tuple()} |
+    {error, any()} |
+    {error, update_dead_letter_queue_records_visibility_errors(), tuple()}.
+update_dead_letter_queue_records_visibility(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_dead_letter_queue_records_visibility(Client, Input, []).
+
+-spec update_dead_letter_queue_records_visibility(aws_client:aws_client(), update_dead_letter_queue_records_visibility_input(), proplists:proplist()) ->
+    {ok, update_dead_letter_queue_records_visibility_output(), tuple()} |
+    {error, any()} |
+    {error, update_dead_letter_queue_records_visibility_errors(), tuple()}.
+update_dead_letter_queue_records_visibility(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateDeadLetterQueueRecordsVisibility">>, Input, Options).
+
 %% @doc This allows you to update the `MaxRecordSize' of a single record
 %% that you can write to, and read from a stream.
 %%
@@ -3280,6 +4160,79 @@ update_max_record_size(Client, Input)
 update_max_record_size(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateMaxRecordSize">>, Input, Options).
+
+%% @doc Updates the configuration attributes of the specified queue.
+%%
+%% You can change the queue's
+%% visibility timeout, its dead-letter handling configuration, or both.
+%%
+%% A new visibility timeout applies to records received after the update
+%% completes. Records
+%% that are already in flight keep the visibility timeout they were received
+%% with. To change
+%% the visibility timeout of a record that is already in flight, use
+%% `UpdateQueueRecordsVisibility'.
+%%
+%% `UpdateQueue' is an asynchronous operation. Upon receiving an
+%% `UpdateQueue' request, Amazon Kinesis Data Streams sets the
+%% `QueueStatus' to `UPDATING', and sets it back to
+%% `ACTIVE' when the update is complete. You can continue to receive and
+%% acknowledge records while the queue is `UPDATING'.
+%%
+%% You can't change the data stream or the starting position of a queue
+%% after you create
+%% it. To read from a different stream or position, create a new queue.
+-spec update_queue(aws_client:aws_client(), update_queue_input()) ->
+    {ok, update_queue_output(), tuple()} |
+    {error, any()} |
+    {error, update_queue_errors(), tuple()}.
+update_queue(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_queue(Client, Input, []).
+
+-spec update_queue(aws_client:aws_client(), update_queue_input(), proplists:proplist()) ->
+    {ok, update_queue_output(), tuple()} |
+    {error, any()} |
+    {error, update_queue_errors(), tuple()}.
+update_queue(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateQueue">>, Input, Options).
+
+%% @doc Changes the visibility timeout of up to 10 records that you have
+%% received from the
+%% specified queue but not yet acknowledged.
+%%
+%% The result for each entry is reported
+%% individually in the response.
+%%
+%% Extend the visibility timeout of a record when your queue consumer needs
+%% more time to
+%% finish processing it, so the record does not become visible and get
+%% redelivered while it is
+%% still being processed. Set the visibility timeout to `0' to make a
+%% record
+%% visible in the queue immediately, so that it can be received again without
+%% waiting for its
+%% current timeout to expire.
+%%
+%% Because the request can result in a combination of successful and
+%% unsuccessful entries, check the `Failed' list even when the call
+%% returns an HTTP status code of `200'.
+-spec update_queue_records_visibility(aws_client:aws_client(), update_queue_records_visibility_input()) ->
+    {ok, update_queue_records_visibility_output(), tuple()} |
+    {error, any()} |
+    {error, update_queue_records_visibility_errors(), tuple()}.
+update_queue_records_visibility(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_queue_records_visibility(Client, Input, []).
+
+-spec update_queue_records_visibility(aws_client:aws_client(), update_queue_records_visibility_input(), proplists:proplist()) ->
+    {ok, update_queue_records_visibility_output(), tuple()} |
+    {error, any()} |
+    {error, update_queue_records_visibility_errors(), tuple()}.
+update_queue_records_visibility(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateQueueRecordsVisibility">>, Input, Options).
 
 %% @doc Updates the shard count of the specified stream to the specified
 %% number of shards.
@@ -3375,6 +4328,10 @@ update_shard_count(Client, Input, Options)
 %% account. Once your account has `MinimumThroughputBillingCommitment'
 %% enabled, you can specify the warm throughput in MiB per second that your
 %% stream can support in writes.
+%%
+%% You can't switch a data stream from on-demand to provisioned capacity
+%% mode while the stream has one or more queues. Delete the queues with
+%% `DeleteQueue' before you change the capacity mode.
 -spec update_stream_mode(aws_client:aws_client(), update_stream_mode_input()) ->
     {ok, undefined, tuple()} |
     {error, any()} |

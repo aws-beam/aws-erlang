@@ -67,8 +67,12 @@
          list_tags_for_resource/3,
          redeem_credits/2,
          redeem_credits/3,
+         split_credit/2,
+         split_credit/3,
          tag_resource/2,
          tag_resource/3,
+         transfer_credit/2,
+         transfer_credit/3,
          untag_resource/2,
          untag_resource/3,
          update_billing_preferences/2,
@@ -327,6 +331,13 @@
 %%   <<"chargePercentage">> => [string()]
 %% }
 -type charge_account() :: #{binary() => any()}.
+
+%% Example:
+%% child_credit() :: #{
+%%   <<"amount">> => string(),
+%%   <<"creditId">> => string()
+%% }
+-type child_credit() :: #{binary() => any()}.
 
 %% Example:
 %% conflict_exception() :: #{
@@ -999,6 +1010,30 @@
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
 %% Example:
+%% split_credit_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"creditId">> := string(),
+%%   <<"dryRun">> => [boolean()],
+%%   <<"portions">> := list(split_portion())
+%% }
+-type split_credit_request() :: #{binary() => any()}.
+
+%% Example:
+%% split_credit_response() :: #{
+%%   <<"childCredits">> => list(child_credit()),
+%%   <<"dryRun">> => [boolean()],
+%%   <<"parentCreditId">> => string()
+%% }
+-type split_credit_response() :: #{binary() => any()}.
+
+%% Example:
+%% split_portion() :: #{
+%%   <<"amount">> => string(),
+%%   <<"description">> => [string()]
+%% }
+-type split_portion() :: #{binary() => any()}.
+
+%% Example:
 %% string_search() :: #{
 %%   <<"searchOption">> => list(any()),
 %%   <<"searchValue">> => string()
@@ -1037,6 +1072,25 @@
 %%   <<"endDateInclusive">> => [non_neg_integer()]
 %% }
 -type time_range() :: #{binary() => any()}.
+
+%% Example:
+%% transfer_credit_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"creditId">> := string(),
+%%   <<"destinationAccountId">> := string(),
+%%   <<"dryRun">> => [boolean()]
+%% }
+-type transfer_credit_request() :: #{binary() => any()}.
+
+%% Example:
+%% transfer_credit_response() :: #{
+%%   <<"amount">> => string(),
+%%   <<"destinationAccountId">> => string(),
+%%   <<"dryRun">> => [boolean()],
+%%   <<"newCreditId">> => string(),
+%%   <<"sourceCreditId">> => string()
+%% }
+-type transfer_credit_response() :: #{binary() => any()}.
 
 %% Example:
 %% untag_resource_request() :: #{
@@ -1297,11 +1351,29 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type split_credit_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type tag_resource_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type transfer_credit_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type untag_resource_errors() ::
@@ -1498,7 +1570,8 @@ disassociate_source_views(Client, Input, Options)
 %%
 %% Each feature controls a distinct billing capability: which accounts can
 %% share Reserved Instances or credits, whether billing alerts are enabled,
-%% the historical record of sharing changes, and per-credit options.
+%% the historical record of sharing changes, per-credit options, and which
+%% accounts an individual Reserved Instance or Savings Plan is shared with.
 -spec get_billing_preferences(aws_client:aws_client(), get_billing_preferences_request()) ->
     {ok, get_billing_preferences_response(), tuple()} |
     {error, any()} |
@@ -1896,6 +1969,43 @@ redeem_credits(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RedeemCredits">>, Input, Options).
 
+%% @doc Splits the available balance of a credit into 2 to 99 new credits in
+%% the same account, and cancels the original credit.
+%%
+%% The new credits keep the original credit's end date and applicable
+%% products.
+%%
+%% The available balance is the remaining balance minus any amount reserved
+%% for a bill that isn't finalized. The portions must add up to exactly
+%% the available balance. Each portion must be at least 100.00 in the
+%% currency of the credit. For example, if the credit is in USD, each portion
+%% must be at least USD $100.00. A reserved amount stays on the original
+%% credit and still applies to that bill.
+%%
+%% A credit and every credit split from it count toward a limit of 100
+%% credits. After a split, you can't split or transfer the original
+%% credit. You can split or transfer its new credits, and you can split a
+%% credit after you transfer it.
+%%
+%% You must own the credit or be the payer of the account that owns it. You
+%% can't undo a split. This operation is idempotent and supports a dry
+%% run.
+-spec split_credit(aws_client:aws_client(), split_credit_request()) ->
+    {ok, split_credit_response(), tuple()} |
+    {error, any()} |
+    {error, split_credit_errors(), tuple()}.
+split_credit(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    split_credit(Client, Input, []).
+
+-spec split_credit(aws_client:aws_client(), split_credit_request(), proplists:proplist()) ->
+    {ok, split_credit_response(), tuple()} |
+    {error, any()} |
+    {error, split_credit_errors(), tuple()}.
+split_credit(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SplitCredit">>, Input, Options).
+
 %% @doc An API operation for adding one or more tags (key-value pairs) to a
 %% resource.
 -spec tag_resource(aws_client:aws_client(), tag_resource_request()) ->
@@ -1913,6 +2023,37 @@ tag_resource(Client, Input)
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Moves a credit to another account in the same consolidated billing
+%% family.
+%%
+%% The credit keeps its ID, balance, end date, and applicable products. Only
+%% the account that owns the credit changes.
+%%
+%% The transfer removes the credit's sharing settings. The new owner or
+%% the payer can set them again. Any amount reserved for a bill that
+%% isn't finalized moves with the credit and still applies to that bill.
+%%
+%% You must be the payer of both accounts. You can't transfer a credit
+%% that has ended, has no available balance, or is the original credit of a
+%% split. A transfer creates no credit, so it doesn't count toward the
+%% split limit, and the payer can transfer the credit back. This operation is
+%% idempotent and supports a dry run.
+-spec transfer_credit(aws_client:aws_client(), transfer_credit_request()) ->
+    {ok, transfer_credit_response(), tuple()} |
+    {error, any()} |
+    {error, transfer_credit_errors(), tuple()}.
+transfer_credit(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    transfer_credit(Client, Input, []).
+
+-spec transfer_credit(aws_client:aws_client(), transfer_credit_request(), proplists:proplist()) ->
+    {ok, transfer_credit_response(), tuple()} |
+    {error, any()} |
+    {error, transfer_credit_errors(), tuple()}.
+transfer_credit(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TransferCredit">>, Input, Options).
 
 %% @doc Removes one or more tags from a resource.
 %%
@@ -1939,12 +2080,12 @@ untag_resource(Client, Input, Options)
 %% supported keys. The action sets the value for each provided key; keys not
 %% present in the request are unchanged.
 %%
-%% Sharing keys (`RI_SHARING', `CREDIT_SHARING',
-%% `CREDIT_LEVEL_SHARING', and sharing keys under
-%% `CREDIT_PREFERENCE_OPTIONS') may only be set by the management account
-%% of a consolidated billing family. The `credit/{creditId}/status' key
-%% may be set by member accounts for credits they own, or by the management
-%% account for any credit in the family.
+%% To set sharing keys (`RI_SHARING', `CREDIT_SHARING',
+%% `CREDIT_LEVEL_SHARING', `BENEFIT_LEVEL_SHARING', and sharing keys
+%% under `CREDIT_PREFERENCE_OPTIONS'), you must use the management
+%% account of a consolidated billing family. To set the
+%% `credit/{creditId}/status' key, you must own the credit or use the
+%% management account of its family.
 -spec update_billing_preferences(aws_client:aws_client(), update_billing_preferences_request()) ->
     {ok, update_billing_preferences_response(), tuple()} |
     {error, any()} |

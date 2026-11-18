@@ -7567,6 +7567,40 @@
 %% }
 -type free_trial_status() :: #{binary() => any()}.
 
+
+%% Example:
+%% gcp_detail() :: #{
+%%   <<"AWSConfigConnectorArn">> => string(),
+%%   <<"GCPRegions">> => list(string()),
+%%   <<"ScopeConfiguration">> => gcp_scope_configuration()
+%% }
+-type gcp_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% gcp_provider_configuration() :: #{
+%%   <<"AWSConfigConnectorArn">> => string(),
+%%   <<"GCPRegions">> => list(string()),
+%%   <<"ScopeConfiguration">> => gcp_scope_configuration()
+%% }
+-type gcp_provider_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% gcp_scope_configuration() :: #{
+%%   <<"ScopeType">> => list(any()),
+%%   <<"ScopeValues">> => list(string())
+%% }
+-type gcp_scope_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% gcp_update_configuration() :: #{
+%%   <<"GCPRegions">> => list(string()),
+%%   <<"ScopeConfiguration">> => gcp_scope_configuration()
+%% }
+-type gcp_update_configuration() :: #{binary() => any()}.
+
 %% Example:
 %% generate_recommended_policy_v2_request() :: #{}
 -type generate_recommended_policy_v2_request() :: #{}.
@@ -9400,6 +9434,7 @@
 %%   <<"AzureResource">> => any(),
 %%   <<"CodeRepository">> => code_repository_details(),
 %%   <<"Container">> => container_details(),
+%%   <<"GcpResource">> => any(),
 %%   <<"Other">> => map()
 %% }
 -type resource_details() :: #{binary() => any()}.

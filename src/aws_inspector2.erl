@@ -1053,6 +1053,8 @@
 %%   <<"description">> => string(),
 %%   <<"enablementStatus">> => list(any()),
 %%   <<"enablementStatusReason">> => [string()],
+%%   <<"gcpRegions">> => list(string()),
+%%   <<"gcpScopeConfiguration">> => gcp_scope_configuration(),
 %%   <<"health">> => connector_health(),
 %%   <<"name">> => string(),
 %%   <<"provider">> => list(any()),
@@ -2062,6 +2064,61 @@
 %%   <<"message">> => [string()]
 %% }
 -type free_trial_info_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% gcp_capability_scope() :: #{
+%%   <<"scopeType">> => list(any()),
+%%   <<"scopeValues">> => list(string()),
+%%   <<"state">> => list(any()),
+%%   <<"stateReason">> => [string()]
+%% }
+-type gcp_capability_scope() :: #{binary() => any()}.
+
+
+%% Example:
+%% gcp_capability_scope_input() :: #{
+%%   <<"scopeType">> => list(any()),
+%%   <<"scopeValues">> => list(string())
+%% }
+-type gcp_capability_scope_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% gcp_provider_detail_create() :: #{
+%%   <<"autoInstallVMScanner">> => [boolean()],
+%%   <<"awsConfigConnectorArn">> => string(),
+%%   <<"gcpRegions">> => list(string()),
+%%   <<"scopeConfiguration">> => gcp_scope_configuration_input()
+%% }
+-type gcp_provider_detail_create() :: #{binary() => any()}.
+
+
+%% Example:
+%% gcp_provider_detail_update() :: #{
+%%   <<"autoInstallVMScanner">> => [boolean()],
+%%   <<"gcpRegions">> => list(string()),
+%%   <<"scopeConfiguration">> => gcp_scope_configuration_input()
+%% }
+-type gcp_provider_detail_update() :: #{binary() => any()}.
+
+
+%% Example:
+%% gcp_scope_configuration() :: #{
+%%   <<"containerImageScanning">> => gcp_capability_scope(),
+%%   <<"serverlessScanning">> => gcp_capability_scope(),
+%%   <<"vmScanning">> => gcp_capability_scope()
+%% }
+-type gcp_scope_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% gcp_scope_configuration_input() :: #{
+%%   <<"containerImageScanning">> => gcp_capability_scope_input(),
+%%   <<"serverlessScanning">> => gcp_capability_scope_input(),
+%%   <<"vmScanning">> => gcp_capability_scope_input()
+%% }
+-type gcp_scope_configuration_input() :: #{binary() => any()}.
 
 
 %% Example:

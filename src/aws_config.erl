@@ -708,7 +708,10 @@
 %%   <<"DeliveryS3Bucket">> => string(),
 %%   <<"DeliveryS3KeyPrefix">> => string(),
 %%   <<"LastUpdateRequestedTime">> => non_neg_integer(),
-%%   <<"TemplateSSMDocumentDetails">> => template_s_s_m_document_details()
+%%   <<"Scope">> => conformance_pack_scope(),
+%%   <<"Source">> => conformance_pack_source(),
+%%   <<"TemplateSSMDocumentDetails">> => template_s_s_m_document_details(),
+%%   <<"Type">> => list(any())
 %% }
 -type conformance_pack_detail() :: #{binary() => any()}.
 
@@ -747,6 +750,19 @@
 -type conformance_pack_rule_compliance() :: #{binary() => any()}.
 
 %% Example:
+%% conformance_pack_scope() :: #{
+%%   <<"TagKey">> => string(),
+%%   <<"TagValue">> => string()
+%% }
+-type conformance_pack_scope() :: #{binary() => any()}.
+
+%% Example:
+%% conformance_pack_source() :: #{
+%%   <<"SourceIdentifier">> => string()
+%% }
+-type conformance_pack_source() :: #{binary() => any()}.
+
+%% Example:
 %% conformance_pack_status_detail() :: #{
 %%   <<"ConformancePackArn">> => string(),
 %%   <<"ConformancePackId">> => string(),
@@ -755,7 +771,8 @@
 %%   <<"ConformancePackStatusReason">> => string(),
 %%   <<"LastUpdateCompletedTime">> => non_neg_integer(),
 %%   <<"LastUpdateRequestedTime">> => non_neg_integer(),
-%%   <<"StackArn">> => string()
+%%   <<"StackArn">> => string(),
+%%   <<"Type">> => list(any())
 %% }
 -type conformance_pack_status_detail() :: #{binary() => any()}.
 
@@ -1173,6 +1190,7 @@
 %% Example:
 %% describe_conformance_pack_status_request() :: #{
 %%   <<"ConformancePackNames">> => list(string()),
+%%   <<"Filters">> => describe_conformance_packs_filters(),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -1186,8 +1204,15 @@
 -type describe_conformance_pack_status_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_conformance_packs_filters() :: #{
+%%   <<"Types">> => list(list(any())())
+%% }
+-type describe_conformance_packs_filters() :: #{binary() => any()}.
+
+%% Example:
 %% describe_conformance_packs_request() :: #{
 %%   <<"ConformancePackNames">> => list(string()),
+%%   <<"Filters">> => describe_conformance_packs_filters(),
 %%   <<"Limit">> => integer(),
 %%   <<"NextToken">> => string()
 %% }
@@ -2397,6 +2422,8 @@
 %%   <<"ConformancePackName">> := string(),
 %%   <<"DeliveryS3Bucket">> => string(),
 %%   <<"DeliveryS3KeyPrefix">> => string(),
+%%   <<"Scope">> => conformance_pack_scope(),
+%%   <<"Source">> => conformance_pack_source(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"TemplateBody">> => string(),
 %%   <<"TemplateS3Uri">> => string(),
@@ -5751,8 +5778,13 @@ put_configuration_recorder(Client, Input, Options)
 %% The service-linked role is created only when the role does not exist in
 %% your account.
 %%
-%% You must specify only one of the follow parameters: `TemplateS3Uri',
-%% `TemplateBody' or `TemplateSSMDocumentDetails'.
+%% For custom conformance packs, you must specify only one of
+%% `TemplateS3Uri', `TemplateBody', `TemplateSSMDocumentDetails'.
+%%
+%% For managed conformance packs, you must specify `Source'. Do not
+%% specify `TemplateS3Uri', `TemplateBody',
+%% `TemplateSSMDocumentDetails', `DeliveryS3Bucket', or
+%% `DeliveryS3KeyPrefix'.
 %%
 %% Tags are added at creation and cannot be updated with this operation
 %%

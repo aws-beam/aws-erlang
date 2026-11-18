@@ -207,6 +207,7 @@
 %%   <<"EndOffsetMillis">> => integer(),
 %%   <<"Id">> => string(),
 %%   <<"IssuesDetected">> => list(issue_detected()),
+%%   <<"LanguageCode">> => string(),
 %%   <<"ParticipantId">> => string(),
 %%   <<"ParticipantRole">> => string(),
 %%   <<"Sentiment">> => list(any())

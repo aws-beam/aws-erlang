@@ -320,6 +320,7 @@
 
 %% Example:
 %% case_event_included_data() :: #{
+%%   <<"autoIncludeFields">> => string(),
 %%   <<"fields">> => list(field_identifier())
 %% }
 -type case_event_included_data() :: #{binary() => any()}.

@@ -22,6 +22,8 @@
          create_launch_configuration_template/3,
          create_network_migration_definition/2,
          create_network_migration_definition/3,
+         create_remote_source_action/2,
+         create_remote_source_action/3,
          create_replication_configuration_template/2,
          create_replication_configuration_template/3,
          create_wave/2,
@@ -36,6 +38,8 @@
          delete_launch_configuration_template/3,
          delete_network_migration_definition/2,
          delete_network_migration_definition/3,
+         delete_remote_source_action/2,
+         delete_remote_source_action/3,
          delete_replication_configuration_template/2,
          delete_replication_configuration_template/3,
          delete_source_server/2,
@@ -67,6 +71,8 @@
          finalize_cutover/3,
          get_launch_configuration/2,
          get_launch_configuration/3,
+         get_launch_configuration_defaults/2,
+         get_launch_configuration_defaults/3,
          get_network_migration_definition/2,
          get_network_migration_definition/3,
          get_network_migration_mapper_segment_construct/2,
@@ -107,6 +113,8 @@
          list_network_migration_deployments/3,
          list_network_migration_executions/2,
          list_network_migration_executions/3,
+         list_network_migration_insights/2,
+         list_network_migration_insights/3,
          list_network_migration_mapper_segment_constructs/2,
          list_network_migration_mapper_segment_constructs/3,
          list_network_migration_mapper_segments/2,
@@ -115,6 +123,14 @@
          list_network_migration_mapping_updates/3,
          list_network_migration_mappings/2,
          list_network_migration_mappings/3,
+         list_remote_source_action_invocation_results/2,
+         list_remote_source_action_invocation_results/3,
+         list_remote_source_action_invocations/2,
+         list_remote_source_action_invocations/3,
+         list_remote_source_action_jobs/2,
+         list_remote_source_action_jobs/3,
+         list_remote_source_actions/2,
+         list_remote_source_actions/3,
          list_source_server_actions/2,
          list_source_server_actions/3,
          list_tags_for_resource/2,
@@ -158,6 +174,8 @@
          start_network_migration_mapping/3,
          start_network_migration_mapping_update/2,
          start_network_migration_mapping_update/3,
+         start_remote_source_action_job/2,
+         start_remote_source_action_job/3,
          start_replication/2,
          start_replication/3,
          start_test/2,
@@ -180,12 +198,16 @@
          update_connector/3,
          update_launch_configuration/2,
          update_launch_configuration/3,
+         update_launch_configuration_defaults/2,
+         update_launch_configuration_defaults/3,
          update_launch_configuration_template/2,
          update_launch_configuration_template/3,
          update_network_migration_definition/2,
          update_network_migration_definition/3,
          update_network_migration_mapper_segment/2,
          update_network_migration_mapper_segment/3,
+         update_remote_source_action/2,
+         update_remote_source_action/3,
          update_replication_configuration/2,
          update_replication_configuration/3,
          update_replication_configuration_template/2,
@@ -392,6 +414,7 @@
 %%   <<"largeVolumeConf">> => launch_template_disk_conf(),
 %%   <<"launchDisposition">> => string(),
 %%   <<"licensing">> => licensing(),
+%%   <<"mapAutoTaggingKey">> => string(),
 %%   <<"mapAutoTaggingMpeID">> => string(),
 %%   <<"parametersEncryptionKey">> => string(),
 %%   <<"postLaunchActions">> => post_launch_actions(),
@@ -407,6 +430,7 @@
 %% create_network_migration_definition_request() :: #{
 %%   <<"cidrMappings">> => list(cidr_mapping()),
 %%   <<"clientToken">> => string(),
+%%   <<"definitionType">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"scopeTags">> => map(),
@@ -421,6 +445,43 @@
 
 
 %% Example:
+%% create_operation() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"excluded">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"properties">> => map()
+%% }
+-type create_operation() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_remote_source_action_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> := string(),
+%%   <<"operatingSystem">> => string(),
+%%   <<"ssmParameterName">> := string(),
+%%   <<"tags">> => map(),
+%%   <<"timeoutSeconds">> => integer()
+%% }
+-type create_remote_source_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_remote_source_action_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"operatingSystem">> => string(),
+%%   <<"remoteSourceActionID">> => string(),
+%%   <<"ssmParameterName">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timeoutSeconds">> => integer()
+%% }
+-type create_remote_source_action_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_replication_configuration_template_request() :: #{
 %%   <<"associateDefaultSecurityGroup">> := [boolean()],
 %%   <<"bandwidthThrottling">> := float(),
@@ -430,6 +491,7 @@
 %%   <<"ebsEncryption">> := string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
 %%   <<"internetProtocol">> => string(),
+%%   <<"outpostSnapshotLocation">> => string(),
 %%   <<"replicationServerInstanceType">> := string(),
 %%   <<"replicationServersSecurityGroupsIDs">> := list(string()),
 %%   <<"stagingAreaSubnetId">> := string(),
@@ -470,7 +532,8 @@
 %%   <<"lagDuration">> => string(),
 %%   <<"lastSnapshotDateTime">> => string(),
 %%   <<"replicatedDisks">> => list(data_replication_info_replicated_disk()),
-%%   <<"replicatorId">> => string()
+%%   <<"replicatorId">> => string(),
+%%   <<"stagingOutpostArn">> => string()
 %% }
 -type data_replication_info() :: #{binary() => any()}.
 
@@ -558,6 +621,18 @@
 %% Example:
 %% delete_operation() :: #{}
 -type delete_operation() :: #{}.
+
+
+%% Example:
+%% delete_remote_source_action_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"remoteSourceActionID">> := string()
+%% }
+-type delete_remote_source_action_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_remote_source_action_response() :: #{}
+-type delete_remote_source_action_response() :: #{}.
 
 
 %% Example:
@@ -854,6 +929,24 @@
 
 
 %% Example:
+%% get_launch_configuration_defaults_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type get_launch_configuration_defaults_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_launch_configuration_defaults_response() :: #{
+%%   <<"largeVolumeConfiguration">> => source_server_volume_configuration(),
+%%   <<"smallVolumeConfiguration">> => source_server_volume_configuration(),
+%%   <<"smallVolumeMaxSize">> => float(),
+%%   <<"sourceServerID">> => string()
+%% }
+-type get_launch_configuration_defaults_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_launch_configuration_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"sourceServerID">> := string()
@@ -996,6 +1089,15 @@
 
 
 %% Example:
+%% insight_message() :: #{
+%%   <<"code">> => string(),
+%%   <<"message">> => string(),
+%%   <<"topic">> => string()
+%% }
+-type insight_message() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => string(),
 %%   <<"retryAfterSeconds">> => float()
@@ -1070,6 +1172,7 @@
 %%   <<"enableMapAutoTagging">> => [boolean()],
 %%   <<"launchDisposition">> => string(),
 %%   <<"licensing">> => licensing(),
+%%   <<"mapAutoTaggingKey">> => string(),
 %%   <<"mapAutoTaggingMpeID">> => string(),
 %%   <<"name">> => string(),
 %%   <<"postLaunchActions">> => post_launch_actions(),
@@ -1093,6 +1196,7 @@
 %%   <<"launchConfigurationTemplateID">> := string(),
 %%   <<"launchDisposition">> => string(),
 %%   <<"licensing">> => licensing(),
+%%   <<"mapAutoTaggingKey">> => string(),
 %%   <<"mapAutoTaggingMpeID">> => string(),
 %%   <<"parametersEncryptionKey">> => string(),
 %%   <<"postLaunchActions">> => post_launch_actions(),
@@ -1580,6 +1684,35 @@
 
 
 %% Example:
+%% list_network_migration_insights_filters() :: #{
+%%   <<"insightTypes">> => list(string())
+%% }
+-type list_network_migration_insights_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_insights_request() :: #{
+%%   <<"constructID">> => string(),
+%%   <<"filters">> => list_network_migration_insights_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"networkMigrationDefinitionID">> := string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"nextToken">> => string(),
+%%   <<"producerID">> => string(),
+%%   <<"segmentID">> => string()
+%% }
+-type list_network_migration_insights_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_network_migration_insights_response() :: #{
+%%   <<"items">> => list(network_migration_insight()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_network_migration_insights_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_network_migration_mapper_segment_constructs_filters() :: #{
 %%   <<"constructIDs">> => list(string()),
 %%   <<"constructTypes">> => list(string())
@@ -1590,6 +1723,8 @@
 %% Example:
 %% list_network_migration_mapper_segment_constructs_request() :: #{
 %%   <<"filters">> => list_network_migration_mapper_segment_constructs_filters(),
+%%   <<"includeConfiguration">> => [boolean()],
+%%   <<"includeEnrichedProperties">> => [boolean()],
 %%   <<"maxResults">> => integer(),
 %%   <<"networkMigrationDefinitionID">> := string(),
 %%   <<"networkMigrationExecutionID">> := string(),
@@ -1683,6 +1818,102 @@
 %%   <<"nextToken">> => string()
 %% }
 -type list_network_migration_mappings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_remote_source_action_invocation_results_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type list_remote_source_action_invocation_results_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_remote_source_action_invocation_results_response() :: #{
+%%   <<"items">> => list(remote_source_action_invocation_result()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_remote_source_action_invocation_results_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_remote_source_action_invocations_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"filters">> => list_remote_source_action_invocations_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"remoteSourceActionJobID">> := string()
+%% }
+-type list_remote_source_action_invocations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_remote_source_action_invocations_request_filters() :: #{
+%%   <<"remoteSourceActionArns">> => list(string()),
+%%   <<"sourceServerArns">> => list(string()),
+%%   <<"statuses">> => list(string())
+%% }
+-type list_remote_source_action_invocations_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_remote_source_action_invocations_response() :: #{
+%%   <<"items">> => list(remote_source_action_invocation()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_remote_source_action_invocations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_remote_source_action_jobs_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"filters">> => list_remote_source_action_jobs_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_remote_source_action_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_remote_source_action_jobs_request_filters() :: #{
+%%   <<"remoteSourceActionJobIDs">> => list(string())
+%% }
+-type list_remote_source_action_jobs_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_remote_source_action_jobs_response() :: #{
+%%   <<"items">> => list(remote_source_action_job()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_remote_source_action_jobs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_remote_source_actions_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"filters">> => list_remote_source_actions_request_filters(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_remote_source_actions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_remote_source_actions_request_filters() :: #{
+%%   <<"remoteSourceActionIDs">> => list(string())
+%% }
+-type list_remote_source_actions_request_filters() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_remote_source_actions_response() :: #{
+%%   <<"items">> => list(remote_source_action()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_remote_source_actions_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1889,6 +2120,7 @@
 %%   <<"arn">> => string(),
 %%   <<"cidrMappings">> => list(cidr_mapping()),
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"definitionType">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"networkMigrationDefinitionID">> => string(),
@@ -1907,6 +2139,7 @@
 %% Example:
 %% network_migration_definition_summary() :: #{
 %%   <<"arn">> => string(),
+%%   <<"definitionType">> => string(),
 %%   <<"name">> => string(),
 %%   <<"networkMigrationDefinitionID">> => string(),
 %%   <<"scopeTags">> => map(),
@@ -1965,6 +2198,24 @@
 
 
 %% Example:
+%% network_migration_insight() :: #{
+%%   <<"constructID">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"insightID">> => string(),
+%%   <<"insightLevel">> => string(),
+%%   <<"insightMessage">> => insight_message(),
+%%   <<"insightType">> => string(),
+%%   <<"networkMigrationDefinitionID">> => string(),
+%%   <<"networkMigrationExecutionID">> => string(),
+%%   <<"producerID">> => string(),
+%%   <<"producerName">> => string(),
+%%   <<"producerType">> => string(),
+%%   <<"segmentID">> => string()
+%% }
+-type network_migration_insight() :: #{binary() => any()}.
+
+
+%% Example:
 %% network_migration_mapper_segment() :: #{
 %%   <<"checksum">> => checksum(),
 %%   <<"createdAt">> => [non_neg_integer()],
@@ -1987,10 +2238,12 @@
 
 %% Example:
 %% network_migration_mapper_segment_construct() :: #{
+%%   <<"configuration">> => list(),
 %%   <<"constructID">> => string(),
 %%   <<"constructType">> => string(),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
+%%   <<"enrichedProperties">> => map(),
 %%   <<"excluded">> => [boolean()],
 %%   <<"logicalID">> => string(),
 %%   <<"name">> => string(),
@@ -2111,6 +2364,59 @@
 
 
 %% Example:
+%% remote_source_action() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"operatingSystem">> => string(),
+%%   <<"remoteSourceActionID">> => string(),
+%%   <<"ssmParameterName">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timeoutSeconds">> => integer()
+%% }
+-type remote_source_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_source_action_invocation() :: #{
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"remoteSourceActionArn">> => string(),
+%%   <<"sourceServerArn">> => string(),
+%%   <<"ssmCommandInvocationID">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => string()
+%% }
+-type remote_source_action_invocation() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_source_action_invocation_result() :: #{
+%%   <<"connectorOwnerAccountID">> => string(),
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"remoteSourceActionID">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => string()
+%% }
+-type remote_source_action_invocation_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% remote_source_action_job() :: #{
+%%   <<"arn">> => string(),
+%%   <<"connectorArn">> => string(),
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"remoteSourceActionArns">> => list(string()),
+%%   <<"remoteSourceActionJobID">> => string(),
+%%   <<"sourceServerArns">> => list(string()),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => string(),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map()
+%% }
+-type remote_source_action_job() :: #{binary() => any()}.
+
+
+%% Example:
 %% remove_source_server_action_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"actionID">> := string(),
@@ -2146,6 +2452,7 @@
 %%   <<"ebsEncryptionKeyArn">> => string(),
 %%   <<"internetProtocol">> => string(),
 %%   <<"name">> => string(),
+%%   <<"outpostSnapshotLocation">> => string(),
 %%   <<"replicatedDisks">> => list(replication_configuration_replicated_disk()),
 %%   <<"replicationServerInstanceType">> => string(),
 %%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
@@ -2182,6 +2489,7 @@
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
 %%   <<"internetProtocol">> => string(),
+%%   <<"outpostSnapshotLocation">> => string(),
 %%   <<"replicationConfigurationTemplateID">> := string(),
 %%   <<"replicationServerInstanceType">> => string(),
 %%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
@@ -2238,6 +2546,53 @@
 %%   <<"s3Key">> => string()
 %% }
 -type s3_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_group_associations() :: #{
+%%   <<"cidrs">> => list(string()),
+%%   <<"userProvidedIDs">> => list(string()),
+%%   <<"vmUUIDs">> => list(string())
+%% }
+-type security_group_associations() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_group_configuration() :: #{
+%%   <<"associations">> => security_group_associations()
+%% }
+-type security_group_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% security_group_rule_configuration() :: #{
+%%   <<"enableReferencing">> => [boolean()]
+%% }
+-type security_group_rule_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% segment_create_operation() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"scopeTags">> => map(),
+%%   <<"targetAccount">> => string()
+%% }
+-type segment_create_operation() :: #{binary() => any()}.
+
+%% Example:
+%% segment_delete_operation() :: #{}
+-type segment_delete_operation() :: #{}.
+
+
+%% Example:
+%% segment_update_operation() :: #{
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"scopeTags">> => map(),
+%%   <<"targetAccount">> => string()
+%% }
+-type segment_update_operation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2335,6 +2690,17 @@
 %%   <<"credentialsSecretArn">> => string()
 %% }
 -type source_server_connector_action() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_server_volume_configuration() :: #{
+%%   <<"deleteOnTermination">> => string(),
+%%   <<"iops">> => float(),
+%%   <<"throughput">> => float(),
+%%   <<"volumeInitializationRate">> => float(),
+%%   <<"volumeType">> => string()
+%% }
+-type source_server_volume_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2502,9 +2868,11 @@
 %% Example:
 %% start_network_migration_mapping_update_construct() :: #{
 %%   <<"constructID">> => string(),
+%%   <<"constructLogicalID">> => string(),
 %%   <<"constructType">> => string(),
 %%   <<"operation">> => list(),
-%%   <<"segmentID">> => string()
+%%   <<"segmentID">> => string(),
+%%   <<"segmentLogicalID">> => string()
 %% }
 -type start_network_migration_mapping_update_construct() :: #{binary() => any()}.
 
@@ -2528,11 +2896,32 @@
 
 %% Example:
 %% start_network_migration_mapping_update_segment() :: #{
+%%   <<"operation">> => list(),
 %%   <<"scopeTags">> => map(),
 %%   <<"segmentID">> => string(),
+%%   <<"segmentLogicalID">> => string(),
 %%   <<"targetAccount">> => string()
 %% }
 -type start_network_migration_mapping_update_segment() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_remote_source_action_job_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"clientToken">> => string(),
+%%   <<"connectorArn">> := string(),
+%%   <<"remoteSourceActionArns">> := list(string()),
+%%   <<"sourceServerArns">> := list(string()),
+%%   <<"tags">> => map()
+%% }
+-type start_remote_source_action_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_remote_source_action_job_response() :: #{
+%%   <<"remoteSourceActionJob">> => remote_source_action_job()
+%% }
+-type start_remote_source_action_job_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2721,6 +3110,27 @@
 
 
 %% Example:
+%% update_launch_configuration_defaults_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"largeVolumeConfiguration">> => source_server_volume_configuration(),
+%%   <<"smallVolumeConfiguration">> => source_server_volume_configuration(),
+%%   <<"smallVolumeMaxSize">> => float(),
+%%   <<"sourceServerID">> := string()
+%% }
+-type update_launch_configuration_defaults_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_launch_configuration_defaults_response() :: #{
+%%   <<"largeVolumeConfiguration">> => source_server_volume_configuration(),
+%%   <<"smallVolumeConfiguration">> => source_server_volume_configuration(),
+%%   <<"smallVolumeMaxSize">> => float(),
+%%   <<"sourceServerID">> => string()
+%% }
+-type update_launch_configuration_defaults_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_launch_configuration_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"bootMode">> => string(),
@@ -2729,6 +3139,7 @@
 %%   <<"enableMapAutoTagging">> => [boolean()],
 %%   <<"launchDisposition">> => string(),
 %%   <<"licensing">> => licensing(),
+%%   <<"mapAutoTaggingKey">> => string(),
 %%   <<"mapAutoTaggingMpeID">> => string(),
 %%   <<"name">> => string(),
 %%   <<"postLaunchActions">> => post_launch_actions(),
@@ -2750,6 +3161,7 @@
 %%   <<"launchConfigurationTemplateID">> := string(),
 %%   <<"launchDisposition">> => string(),
 %%   <<"licensing">> => licensing(),
+%%   <<"mapAutoTaggingKey">> => string(),
 %%   <<"mapAutoTaggingMpeID">> => string(),
 %%   <<"parametersEncryptionKey">> => string(),
 %%   <<"postLaunchActions">> => post_launch_actions(),
@@ -2763,6 +3175,7 @@
 %% Example:
 %% update_network_migration_definition_request() :: #{
 %%   <<"cidrMappings">> => list(cidr_mapping()),
+%%   <<"definitionType">> => string(),
 %%   <<"description">> => string(),
 %%   <<"name">> => string(),
 %%   <<"networkMigrationDefinitionID">> := string(),
@@ -2796,6 +3209,44 @@
 
 
 %% Example:
+%% update_operation_v2() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"excluded">> => [boolean()],
+%%   <<"name">> => string(),
+%%   <<"properties">> => map(),
+%%   <<"propertiesToDelete">> => list(string())
+%% }
+-type update_operation_v2() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_remote_source_action_request() :: #{
+%%   <<"accountID">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"operatingSystem">> => string(),
+%%   <<"remoteSourceActionID">> := string(),
+%%   <<"ssmParameterName">> => string(),
+%%   <<"timeoutSeconds">> => integer()
+%% }
+-type update_remote_source_action_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_remote_source_action_response() :: #{
+%%   <<"arn">> => string(),
+%%   <<"description">> => string(),
+%%   <<"name">> => string(),
+%%   <<"operatingSystem">> => string(),
+%%   <<"remoteSourceActionID">> => string(),
+%%   <<"ssmParameterName">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"timeoutSeconds">> => integer()
+%% }
+-type update_remote_source_action_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_replication_configuration_request() :: #{
 %%   <<"accountID">> => string(),
 %%   <<"associateDefaultSecurityGroup">> => [boolean()],
@@ -2807,6 +3258,7 @@
 %%   <<"ebsEncryptionKeyArn">> => string(),
 %%   <<"internetProtocol">> => string(),
 %%   <<"name">> => string(),
+%%   <<"outpostSnapshotLocation">> => string(),
 %%   <<"replicatedDisks">> => list(replication_configuration_replicated_disk()),
 %%   <<"replicationServerInstanceType">> => string(),
 %%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
@@ -2832,6 +3284,7 @@
 %%   <<"ebsEncryption">> => string(),
 %%   <<"ebsEncryptionKeyArn">> => string(),
 %%   <<"internetProtocol">> => string(),
+%%   <<"outpostSnapshotLocation">> => string(),
 %%   <<"replicationConfigurationTemplateID">> := string(),
 %%   <<"replicationServerInstanceType">> => string(),
 %%   <<"replicationServersSecurityGroupsIDs">> => list(string()),
@@ -2981,6 +3434,12 @@
     validation_exception() | 
     service_quota_exceeded_exception().
 
+-type create_remote_source_action_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception() | 
+    conflict_exception().
+
 -type create_replication_configuration_template_errors() ::
     validation_exception() | 
     uninitialized_account_exception() | 
@@ -3015,6 +3474,12 @@
     resource_not_found_exception() | 
     conflict_exception() | 
     access_denied_exception().
+
+-type delete_remote_source_action_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type delete_replication_configuration_template_errors() ::
     uninitialized_account_exception() | 
@@ -3085,6 +3550,11 @@
     conflict_exception().
 
 -type get_launch_configuration_errors() ::
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type get_launch_configuration_defaults_errors() ::
+    validation_exception() | 
     uninitialized_account_exception() | 
     resource_not_found_exception().
 
@@ -3177,6 +3647,12 @@
     resource_not_found_exception() | 
     access_denied_exception().
 
+-type list_network_migration_insights_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    access_denied_exception().
+
 -type list_network_migration_mapper_segment_constructs_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -3200,6 +3676,24 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
+
+-type list_remote_source_action_invocation_results_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type list_remote_source_action_invocations_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
+-type list_remote_source_action_jobs_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception().
+
+-type list_remote_source_actions_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception().
 
 -type list_source_server_actions_errors() ::
     uninitialized_account_exception() | 
@@ -3329,6 +3823,13 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type start_remote_source_action_job_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
+
 -type start_replication_errors() ::
     validation_exception() | 
     uninitialized_account_exception() | 
@@ -3393,6 +3894,11 @@
     resource_not_found_exception() | 
     conflict_exception().
 
+-type update_launch_configuration_defaults_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception().
+
 -type update_launch_configuration_template_errors() ::
     validation_exception() | 
     uninitialized_account_exception() | 
@@ -3408,6 +3914,12 @@
     validation_exception() | 
     resource_not_found_exception() | 
     access_denied_exception().
+
+-type update_remote_source_action_errors() ::
+    validation_exception() | 
+    uninitialized_account_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type update_replication_configuration_errors() ::
     validation_exception() | 
@@ -3754,6 +4266,42 @@ create_network_migration_definition(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a source action, which references a script in AWS Systems
+%% Manager Parameter Store that Application Migration Service runs on source
+%% environment.
+-spec create_remote_source_action(aws_client:aws_client(), create_remote_source_action_request()) ->
+    {ok, create_remote_source_action_response(), tuple()} |
+    {error, any()} |
+    {error, create_remote_source_action_errors(), tuple()}.
+create_remote_source_action(Client, Input) ->
+    create_remote_source_action(Client, Input, []).
+
+-spec create_remote_source_action(aws_client:aws_client(), create_remote_source_action_request(), proplists:proplist()) ->
+    {ok, create_remote_source_action_response(), tuple()} |
+    {error, any()} |
+    {error, create_remote_source_action_errors(), tuple()}.
+create_remote_source_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/CreateRemoteSourceAction"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a new ReplicationConfigurationTemplate.
 -spec create_replication_configuration_template(aws_client:aws_client(), create_replication_configuration_template_request()) ->
     {ok, replication_configuration_template(), tuple()} |
@@ -3976,6 +4524,42 @@ delete_network_migration_definition(Client, Input) ->
 delete_network_migration_definition(Client, Input0, Options0) ->
     Method = post,
     Path = ["/network-migration/DeleteNetworkMigrationDefinition"],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a source action.
+%%
+%% This operation also deletes the invocation results of the source action.
+-spec delete_remote_source_action(aws_client:aws_client(), delete_remote_source_action_request()) ->
+    {ok, delete_remote_source_action_response(), tuple()} |
+    {error, any()} |
+    {error, delete_remote_source_action_errors(), tuple()}.
+delete_remote_source_action(Client, Input) ->
+    delete_remote_source_action(Client, Input, []).
+
+-spec delete_remote_source_action(aws_client:aws_client(), delete_remote_source_action_request(), proplists:proplist()) ->
+    {ok, delete_remote_source_action_response(), tuple()} |
+    {error, any()} |
+    {error, delete_remote_source_action_errors(), tuple()}.
+delete_remote_source_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/DeleteRemoteSourceAction"],
     SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4530,6 +5114,43 @@ get_launch_configuration(Client, Input) ->
 get_launch_configuration(Client, Input0, Options0) ->
     Method = post,
     Path = ["/GetLaunchConfiguration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Gets the launch configuration defaults of a source server: the Amazon
+%% Elastic Block Store (Amazon EBS) volume configuration used for the disk
+%% mappings created later in the source server's Amazon Elastic Compute
+%% Cloud (Amazon EC2) launch template.
+-spec get_launch_configuration_defaults(aws_client:aws_client(), get_launch_configuration_defaults_request()) ->
+    {ok, get_launch_configuration_defaults_response(), tuple()} |
+    {error, any()} |
+    {error, get_launch_configuration_defaults_errors(), tuple()}.
+get_launch_configuration_defaults(Client, Input) ->
+    get_launch_configuration_defaults(Client, Input, []).
+
+-spec get_launch_configuration_defaults(aws_client:aws_client(), get_launch_configuration_defaults_request(), proplists:proplist()) ->
+    {ok, get_launch_configuration_defaults_response(), tuple()} |
+    {error, any()} |
+    {error, get_launch_configuration_defaults_errors(), tuple()}.
+get_launch_configuration_defaults(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/GetLaunchConfigurationDefaults"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -5239,6 +5860,40 @@ list_network_migration_executions(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists network migration insights for a network migration definition.
+-spec list_network_migration_insights(aws_client:aws_client(), list_network_migration_insights_request()) ->
+    {ok, list_network_migration_insights_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_insights_errors(), tuple()}.
+list_network_migration_insights(Client, Input) ->
+    list_network_migration_insights(Client, Input, []).
+
+-spec list_network_migration_insights(aws_client:aws_client(), list_network_migration_insights_request(), proplists:proplist()) ->
+    {ok, list_network_migration_insights_response(), tuple()} |
+    {error, any()} |
+    {error, list_network_migration_insights_errors(), tuple()}.
+list_network_migration_insights(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/network-migration/ListNetworkMigrationInsights"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Lists constructs within a mapper segment, representing individual
 %% infrastructure components like VPCs, subnets, or security groups.
 -spec list_network_migration_mapper_segment_constructs(aws_client:aws_client(), list_network_migration_mapper_segment_constructs_request()) ->
@@ -5360,6 +6015,144 @@ list_network_migration_mappings(Client, Input) ->
 list_network_migration_mappings(Client, Input0, Options0) ->
     Method = post,
     Path = ["/network-migration/ListNetworkMigrationMappings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the latest invocation result of each source action that ran on
+%% a source server.
+-spec list_remote_source_action_invocation_results(aws_client:aws_client(), list_remote_source_action_invocation_results_request()) ->
+    {ok, list_remote_source_action_invocation_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_remote_source_action_invocation_results_errors(), tuple()}.
+list_remote_source_action_invocation_results(Client, Input) ->
+    list_remote_source_action_invocation_results(Client, Input, []).
+
+-spec list_remote_source_action_invocation_results(aws_client:aws_client(), list_remote_source_action_invocation_results_request(), proplists:proplist()) ->
+    {ok, list_remote_source_action_invocation_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_remote_source_action_invocation_results_errors(), tuple()}.
+list_remote_source_action_invocation_results(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListRemoteSourceActionInvocationResults"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the invocations of a source action job, one for each source
+%% server and source action, with optional filtering.
+-spec list_remote_source_action_invocations(aws_client:aws_client(), list_remote_source_action_invocations_request()) ->
+    {ok, list_remote_source_action_invocations_response(), tuple()} |
+    {error, any()} |
+    {error, list_remote_source_action_invocations_errors(), tuple()}.
+list_remote_source_action_invocations(Client, Input) ->
+    list_remote_source_action_invocations(Client, Input, []).
+
+-spec list_remote_source_action_invocations(aws_client:aws_client(), list_remote_source_action_invocations_request(), proplists:proplist()) ->
+    {ok, list_remote_source_action_invocations_response(), tuple()} |
+    {error, any()} |
+    {error, list_remote_source_action_invocations_errors(), tuple()}.
+list_remote_source_action_invocations(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListRemoteSourceActionInvocations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the source action jobs in the account, with optional filtering.
+-spec list_remote_source_action_jobs(aws_client:aws_client(), list_remote_source_action_jobs_request()) ->
+    {ok, list_remote_source_action_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_remote_source_action_jobs_errors(), tuple()}.
+list_remote_source_action_jobs(Client, Input) ->
+    list_remote_source_action_jobs(Client, Input, []).
+
+-spec list_remote_source_action_jobs(aws_client:aws_client(), list_remote_source_action_jobs_request(), proplists:proplist()) ->
+    {ok, list_remote_source_action_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_remote_source_action_jobs_errors(), tuple()}.
+list_remote_source_action_jobs(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListRemoteSourceActionJobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists the source actions in the account, with optional filtering.
+-spec list_remote_source_actions(aws_client:aws_client(), list_remote_source_actions_request()) ->
+    {ok, list_remote_source_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_remote_source_actions_errors(), tuple()}.
+list_remote_source_actions(Client, Input) ->
+    list_remote_source_actions(Client, Input, []).
+
+-spec list_remote_source_actions(aws_client:aws_client(), list_remote_source_actions_request(), proplists:proplist()) ->
+    {ok, list_remote_source_actions_response(), tuple()} |
+    {error, any()} |
+    {error, list_remote_source_actions_errors(), tuple()}.
+list_remote_source_actions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ListRemoteSourceActions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -6117,6 +6910,41 @@ start_network_migration_mapping_update(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Starts a job that runs a source action on source servers through a
+%% connector.
+-spec start_remote_source_action_job(aws_client:aws_client(), start_remote_source_action_job_request()) ->
+    {ok, start_remote_source_action_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_remote_source_action_job_errors(), tuple()}.
+start_remote_source_action_job(Client, Input) ->
+    start_remote_source_action_job(Client, Input, []).
+
+-spec start_remote_source_action_job(aws_client:aws_client(), start_remote_source_action_job_request(), proplists:proplist()) ->
+    {ok, start_remote_source_action_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_remote_source_action_job_errors(), tuple()}.
+start_remote_source_action_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartRemoteSourceActionJob"],
+    SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Start replication for source server irrespective of its replication
 %% type.
 -spec start_replication(aws_client:aws_client(), start_replication_request()) ->
@@ -6508,6 +7336,44 @@ update_launch_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates the launch configuration defaults of a source server.
+%%
+%% They apply only to disk mappings created later in the source server's
+%% Amazon Elastic Compute Cloud (Amazon EC2) launch template, and members you
+%% omit keep their current values.
+-spec update_launch_configuration_defaults(aws_client:aws_client(), update_launch_configuration_defaults_request()) ->
+    {ok, update_launch_configuration_defaults_response(), tuple()} |
+    {error, any()} |
+    {error, update_launch_configuration_defaults_errors(), tuple()}.
+update_launch_configuration_defaults(Client, Input) ->
+    update_launch_configuration_defaults(Client, Input, []).
+
+-spec update_launch_configuration_defaults(aws_client:aws_client(), update_launch_configuration_defaults_request(), proplists:proplist()) ->
+    {ok, update_launch_configuration_defaults_response(), tuple()} |
+    {error, any()} |
+    {error, update_launch_configuration_defaults_errors(), tuple()}.
+update_launch_configuration_defaults(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateLaunchConfigurationDefaults"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing Launch Configuration Template by ID.
 -spec update_launch_configuration_template(aws_client:aws_client(), update_launch_configuration_template_request()) ->
     {ok, launch_configuration_template(), tuple()} |
@@ -6593,6 +7459,40 @@ update_network_migration_mapper_segment(Client, Input) ->
 update_network_migration_mapper_segment(Client, Input0, Options0) ->
     Method = post,
     Path = ["/network-migration/UpdateNetworkMigrationMapperSegment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates a source action.
+-spec update_remote_source_action(aws_client:aws_client(), update_remote_source_action_request()) ->
+    {ok, update_remote_source_action_response(), tuple()} |
+    {error, any()} |
+    {error, update_remote_source_action_errors(), tuple()}.
+update_remote_source_action(Client, Input) ->
+    update_remote_source_action(Client, Input, []).
+
+-spec update_remote_source_action(aws_client:aws_client(), update_remote_source_action_request(), proplists:proplist()) ->
+    {ok, update_remote_source_action_response(), tuple()} |
+    {error, any()} |
+    {error, update_remote_source_action_errors(), tuple()}.
+update_remote_source_action(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/UpdateRemoteSourceAction"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

@@ -29,11 +29,11 @@
 %%
 %% Amazon S3 supports the REST API.
 %%
-%% Support for SOAP over HTTP is deprecated, but it is still available over
-%% HTTPS.
-%% However, new Amazon S3 features will not be supported for SOAP. We
-%% recommend that
-%% you use either this REST API or the Amazon Web Services SDKs.
+%% As announced on May 5, 2025, SOAP API support is discontinued. Requests
+%% that use the
+%% SOAP API return an HTTP `400 Bad Request' error. Use this REST API or
+%% the
+%% Amazon Web Services SDKs instead.
 -module(aws_s3).
 
 -export([abort_multipart_upload/4,
@@ -330,7 +330,8 @@
 
 %% Example:
 %% abort_multipart_upload_output() :: #{
-%%   <<"RequestCharged">> => list(any())
+%%   <<"RequestCharged">> => list(any()),
+%%   <<"VersionId">> => string()
 %% }
 -type abort_multipart_upload_output() :: #{binary() => any()}.
 
@@ -810,7 +811,8 @@
 %%   <<"SSEKMSEncryptionContext">> => string(),
 %%   <<"SSEKMSKeyId">> => string(),
 %%   <<"ServerSideEncryption">> => list(any()),
-%%   <<"UploadId">> => string()
+%%   <<"UploadId">> => string(),
+%%   <<"VersionId">> => string()
 %% }
 -type create_multipart_upload_output() :: #{binary() => any()}.
 
@@ -2509,7 +2511,8 @@
 %%   <<"Parts">> => list(part()),
 %%   <<"RequestCharged">> => list(any()),
 %%   <<"StorageClass">> => list(any()),
-%%   <<"UploadId">> => string()
+%%   <<"UploadId">> => string(),
+%%   <<"VersionId">> => string()
 %% }
 -type list_parts_output() :: #{binary() => any()}.
 
@@ -2629,7 +2632,8 @@
 %%   <<"Key">> => string(),
 %%   <<"Owner">> => owner(),
 %%   <<"StorageClass">> => list(any()),
-%%   <<"UploadId">> => string()
+%%   <<"UploadId">> => string(),
+%%   <<"VersionId">> => string()
 %% }
 -type multipart_upload() :: #{binary() => any()}.
 
@@ -3825,7 +3829,8 @@
 %%   <<"SSECustomerAlgorithm">> => string(),
 %%   <<"SSECustomerKeyMD5">> => string(),
 %%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ServerSideEncryption">> => list(any())
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"VersionId">> => string()
 %% }
 -type upload_part_copy_output() :: #{binary() => any()}.
 
@@ -3871,7 +3876,8 @@
 %%   <<"SSECustomerAlgorithm">> => string(),
 %%   <<"SSECustomerKeyMD5">> => string(),
 %%   <<"SSEKMSKeyId">> => string(),
-%%   <<"ServerSideEncryption">> => list(any())
+%%   <<"ServerSideEncryption">> => list(any()),
+%%   <<"VersionId">> => string()
 %% }
 -type upload_part_output() :: #{binary() => any()}.
 
@@ -4190,7 +4196,8 @@ abort_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
       {ok, Body0, {_, ResponseHeaders, _} = Response} ->
         ResponseHeadersParams =
           [
-            {<<"x-amz-request-charged">>, <<"RequestCharged">>}
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
+            {<<"x-amz-version-id">>, <<"VersionId">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -5333,6 +5340,19 @@ create_bucket_metadata_table_configuration(Client, Bucket, Input0, Options0) ->
 %% after you either complete
 %% or abort a multipart upload.
 %%
+%% When you initiate a multipart upload, Amazon S3 records the bucket
+%% configuration in place at that
+%% time and uses it for the rest of the upload. Changes that you make to the
+%% bucket configuration
+%% after you initiate the upload don't apply to that upload. To apply new
+%% bucket configuration to
+%% uploads in progress, use ListMultipartUploads:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html
+%% to find
+%% them and AbortMultipartUpload:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html
+%% to stop them. Then start the uploads again.
+%%
 %% If you have configured a lifecycle rule to abort incomplete multipart
 %% uploads, the created multipart
 %% upload must be completed within the number of days specified in the bucket
@@ -5697,7 +5717,8 @@ create_multipart_upload(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
             {<<"x-amz-server-side-encryption-context">>, <<"SSEKMSEncryptionContext">>},
             {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
-            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>}
+            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+            {<<"x-amz-version-id">>, <<"VersionId">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -6679,8 +6700,8 @@ delete_bucket_metadata_configuration(Client, Bucket, Input0, Options0) ->
 %%
 %% We recommend that you delete your S3 Metadata configurations by using the
 %% V2
-%% DeleteBucketMetadataTableConfiguration:
-%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetadataTableConfiguration.html
+%% DeleteBucketMetadataConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetadataConfiguration.html
 %% API operation.
 %%
 %% We no longer recommend using
@@ -8683,8 +8704,6 @@ get_bucket_inventory_configuration(Client, Bucket, Id, QueryMap, HeadersMap, Opt
 %%
 %% HTTP Status Code: 404 Not Found
 %%
-%% SOAP Fault Code Prefix: Client
-%%
 %% The following operations are related to
 %% `GetBucketLifecycleConfiguration':
 %%
@@ -8990,8 +9009,8 @@ get_bucket_metadata_configuration(Client, Bucket, QueryMap, HeadersMap, Options0
 %%
 %% We recommend that you retrieve your S3 Metadata configurations by using
 %% the V2
-%% GetBucketMetadataTableConfiguration:
-%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetadataTableConfiguration.html
+%% GetBucketMetadataConfiguration:
+%% https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetadataConfiguration.html
 %% API operation.
 %%
 %% We no longer recommend using the V1
@@ -13070,7 +13089,8 @@ list_parts(Client, Bucket, Key, UploadId, QueryMap, HeadersMap, Options0)
           [
             {<<"x-amz-abort-date">>, <<"AbortDate">>},
             {<<"x-amz-abort-rule-id">>, <<"AbortRuleId">>},
-            {<<"x-amz-request-charged">>, <<"RequestCharged">>}
+            {<<"x-amz-request-charged">>, <<"RequestCharged">>},
+            {<<"x-amz-version-id">>, <<"VersionId">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -16880,8 +16900,6 @@ rename_object(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% HTTP Status Code: 409 Conflict
 %%
-%% SOAP Fault Code Prefix: Client
-%%
 %% Code: GlacierExpeditedRetrievalNotAvailable
 %%
 %% Cause: expedited retrievals are currently not available. Try again later.
@@ -16891,8 +16909,6 @@ rename_object(Client, Bucket, Key, Input0, Options0) ->
 %% retrievals.)
 %%
 %% HTTP Status Code: 503
-%%
-%% SOAP Fault Code Prefix: N/A
 %%
 %% The following operations are related to `RestoreObject':
 %%
@@ -17794,8 +17810,6 @@ update_object_encryption(Client, Bucket, Key, Input0, Options0) ->
 %%
 %% HTTP Status Code: 404 Not Found
 %%
-%% SOAP Fault Code Prefix: Client
-%%
 %% HTTP Host header syntax
 %%
 %% Directory buckets - The HTTP Host header syntax is
@@ -17893,7 +17907,8 @@ upload_part(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
             {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
             {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
-            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>}
+            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+            {<<"x-amz-version-id">>, <<"VersionId">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
@@ -18215,7 +18230,8 @@ upload_part_copy(Client, Bucket, Key, Input0, Options0) ->
             {<<"x-amz-server-side-encryption-customer-algorithm">>, <<"SSECustomerAlgorithm">>},
             {<<"x-amz-server-side-encryption-customer-key-MD5">>, <<"SSECustomerKeyMD5">>},
             {<<"x-amz-server-side-encryption-aws-kms-key-id">>, <<"SSEKMSKeyId">>},
-            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>}
+            {<<"x-amz-server-side-encryption">>, <<"ServerSideEncryption">>},
+            {<<"x-amz-version-id">>, <<"VersionId">>}
           ],
         FoldFun = fun({Name_, Key_}, Acc_) ->
                       case lists:keyfind(Name_, 1, ResponseHeaders) of
