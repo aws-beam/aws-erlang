@@ -126,6 +126,8 @@
          describe_orderable_db_instance_options/3,
          describe_pending_maintenance_actions/2,
          describe_pending_maintenance_actions/3,
+         describe_serverless_v2_platform_versions/2,
+         describe_serverless_v2_platform_versions/3,
          describe_valid_db_instance_modifications/2,
          describe_valid_db_instance_modifications/3,
          failover_db_cluster/2,
@@ -579,6 +581,7 @@
 %%   <<"ReadReplicaIdentifiers">> => list(string()),
 %%   <<"ReaderEndpoint">> => string(),
 %%   <<"ReplicationSourceIdentifier">> => string(),
+%%   <<"ServerlessV2PlatformVersion">> => string(),
 %%   <<"ServerlessV2ScalingConfiguration">> => serverless_v2_scaling_configuration_info(),
 %%   <<"Status">> => string(),
 %%   <<"StorageEncrypted">> => boolean(),
@@ -1340,6 +1343,18 @@
 %%   <<"ResourceIdentifier">> => string()
 %% }
 -type describe_pending_maintenance_actions_message() :: #{binary() => any()}.
+
+%% Example:
+%% describe_serverless_v2_platform_versions_message() :: #{
+%%   <<"DefaultOnly">> => boolean(),
+%%   <<"Engine">> => string(),
+%%   <<"Filters">> => list(filter()),
+%%   <<"IncludeAll">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxRecords">> => integer(),
+%%   <<"ServerlessV2PlatformVersion">> => string()
+%% }
+-type describe_serverless_v2_platform_versions_message() :: #{binary() => any()}.
 
 %% Example:
 %% describe_valid_db_instance_modifications_message() :: #{
@@ -2144,6 +2159,31 @@
 -type s_n_s_topic_arn_not_found_fault() :: #{binary() => any()}.
 
 %% Example:
+%% serverless_v2_features_support() :: #{
+%%   <<"MaxCapacity">> => float(),
+%%   <<"MinCapacity">> => float()
+%% }
+-type serverless_v2_features_support() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_platform_version_info() :: #{
+%%   <<"Engine">> => string(),
+%%   <<"IsDefault">> => boolean(),
+%%   <<"ServerlessV2FeaturesSupport">> => serverless_v2_features_support(),
+%%   <<"ServerlessV2PlatformVersion">> => string(),
+%%   <<"ServerlessV2PlatformVersionDescription">> => string(),
+%%   <<"Status">> => string()
+%% }
+-type serverless_v2_platform_version_info() :: #{binary() => any()}.
+
+%% Example:
+%% serverless_v2_platform_versions_message() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"ServerlessV2PlatformVersions">> => list(serverless_v2_platform_version_info())
+%% }
+-type serverless_v2_platform_versions_message() :: #{binary() => any()}.
+
+%% Example:
 %% serverless_v2_scaling_configuration() :: #{
 %%   <<"MaxCapacity">> => float(),
 %%   <<"MinCapacity">> => float()
@@ -2899,21 +2939,6 @@ create_db_cluster_endpoint(Client, Input, Options)
 %% you need to reboot the DB instances in the DB cluster without failover for
 %% the
 %% new DB cluster parameter group and associated settings to take effect.
-%%
-%% After you create a DB cluster parameter group, you should wait at least
-%% 5 minutes before creating your first DB cluster that uses that DB cluster
-%% parameter group as the default parameter group. This allows Amazon Neptune
-%% to fully complete the create action before the DB cluster parameter group
-%% is used as the default for a new DB cluster. This is especially important
-%% for
-%% parameters that are critical when creating the default database for a DB
-%% cluster, such as the character set for the default database defined by the
-%% `character_set_database' parameter. You can use the Parameter
-%% Groups option of the Amazon Neptune
-%% console: https://console.aws.amazon.com/rds/ or the
-%% `DescribeDBClusterParameters'
-%% command to verify that your DB cluster parameter group has been created or
-%% modified.
 -spec create_db_cluster_parameter_group(aws_client:aws_client(), create_db_cluster_parameter_group_message()) ->
     {ok, create_db_cluster_parameter_group_result(), tuple()} |
     {error, any()} |
@@ -3697,6 +3722,22 @@ describe_pending_maintenance_actions(Client, Input)
 describe_pending_maintenance_actions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribePendingMaintenanceActions">>, Input, Options).
+
+%% @doc Describes the properties of specific platform versions for Neptune
+%% Serverless.
+-spec describe_serverless_v2_platform_versions(aws_client:aws_client(), describe_serverless_v2_platform_versions_message()) ->
+    {ok, serverless_v2_platform_versions_message(), tuple()} |
+    {error, any()}.
+describe_serverless_v2_platform_versions(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_serverless_v2_platform_versions(Client, Input, []).
+
+-spec describe_serverless_v2_platform_versions(aws_client:aws_client(), describe_serverless_v2_platform_versions_message(), proplists:proplist()) ->
+    {ok, serverless_v2_platform_versions_message(), tuple()} |
+    {error, any()}.
+describe_serverless_v2_platform_versions(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeServerlessV2PlatformVersions">>, Input, Options).
 
 %% @doc You can call `DescribeValidDBInstanceModifications'
 %% to learn what modifications you can make to your DB instance.

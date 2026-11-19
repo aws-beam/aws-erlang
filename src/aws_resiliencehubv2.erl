@@ -1485,13 +1485,18 @@
 %% }
 -type list_test_sources_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% list_test_templates_request() :: #{}
--type list_test_templates_request() :: #{}.
+%% list_test_templates_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_test_templates_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% list_test_templates_response() :: #{
+%%   <<"nextToken">> => string(),
 %%   <<"testTemplates">> => list(test_template_summary())
 %% }
 -type list_test_templates_response() :: #{binary() => any()}.
@@ -2339,6 +2344,7 @@
 %% test_run() :: #{
 %%   <<"accountTargeting">> => list(any()),
 %%   <<"devOpsAgentInvestigation">> => dev_ops_agent_investigation(),
+%%   <<"effectivePolicyValues">> => test_run_effective_policy_values(),
 %%   <<"endedAt">> => [non_neg_integer()],
 %%   <<"errorMessage">> => [string()],
 %%   <<"eventCount">> => [integer()],
@@ -2376,6 +2382,20 @@
 %%   <<"sourceRegions">> => list(string())
 %% }
 -type test_run_dependency_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% test_run_effective_policy_values() :: #{
+%%   <<"availabilitySlo">> => slo_source(),
+%%   <<"dataRecoveryTimeBetweenBackups">> => target_source(),
+%%   <<"multiAzDrApproach">> => disaster_recovery_source(),
+%%   <<"multiAzRpo">> => target_source(),
+%%   <<"multiAzRto">> => target_source(),
+%%   <<"multiRegionDrApproach">> => disaster_recovery_source(),
+%%   <<"multiRegionRpo">> => target_source(),
+%%   <<"multiRegionRto">> => target_source()
+%% }
+-type test_run_effective_policy_values() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2938,6 +2958,7 @@
 
 -type get_test_template_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
@@ -3102,6 +3123,7 @@
 
 -type list_test_templates_errors() ::
     validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -5449,7 +5471,12 @@ list_test_templates(Client, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 

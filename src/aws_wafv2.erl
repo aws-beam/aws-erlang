@@ -222,6 +222,12 @@
 -type allow_action() :: #{binary() => any()}.
 
 %% Example:
+%% analytics_config() :: #{
+%%   <<"Mode">> => list(any())
+%% }
+-type analytics_config() :: #{binary() => any()}.
+
+%% Example:
 %% and_statement() :: #{
 %%   <<"Statements">> => list(statement())
 %% }
@@ -530,6 +536,7 @@
 
 %% Example:
 %% create_web_acl_request() :: #{
+%%   <<"AnalyticsConfig">> => analytics_config(),
 %%   <<"ApplicationConfig">> => application_config(),
 %%   <<"AssociationConfig">> => association_config(),
 %%   <<"CaptchaConfig">> => captcha_config(),
@@ -2316,6 +2323,7 @@
 
 %% Example:
 %% update_web_acl_request() :: #{
+%%   <<"AnalyticsConfig">> => analytics_config(),
 %%   <<"ApplicationConfig">> => application_config(),
 %%   <<"AssociationConfig">> => association_config(),
 %%   <<"CaptchaConfig">> => captcha_config(),
@@ -2503,6 +2511,7 @@
 %% Example:
 %% web_acl() :: #{
 %%   <<"ARN">> => string(),
+%%   <<"AnalyticsConfig">> => analytics_config(),
 %%   <<"ApplicationConfig">> => application_config(),
 %%   <<"AssociationConfig">> => association_config(),
 %%   <<"Capacity">> => float(),

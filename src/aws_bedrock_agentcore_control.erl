@@ -709,7 +709,8 @@
 
 %% Example:
 %% capacity_provider_configuration() :: #{
-%%   <<"capacityProviderArn">> => string()
+%%   <<"capacityProviderArn">> => string(),
+%%   <<"operatingSystemConfiguration">> => list()
 %% }
 -type capacity_provider_configuration() :: #{binary() => any()}.
 
@@ -4137,6 +4138,13 @@
 
 
 %% Example:
+%% linux_operating_system_configuration() :: #{
+%%   <<"privilegeMode">> => list(any())
+%% }
+-type linux_operating_system_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_agent_insight_stores_request() :: #{
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => [string()]
@@ -5662,6 +5670,17 @@
 %%   <<"schema">> => http_api_schema_configuration()
 %% }
 -type runtime_target_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_bucket_mount_configuration() :: #{
+%%   <<"bucket">> => [string()],
+%%   <<"mountPath">> => string(),
+%%   <<"prefix">> => [string()],
+%%   <<"s3BucketOwner">> => [string()],
+%%   <<"s3BucketRegion">> => [string()]
+%% }
+-type s3_bucket_mount_configuration() :: #{binary() => any()}.
 
 
 %% Example:

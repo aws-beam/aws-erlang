@@ -1843,6 +1843,32 @@
 -type record_handler_progress_output() :: #{binary() => any()}.
 
 %% Example:
+%% regional_stack_instances_deployment() :: #{
+%%   <<"CancelledStackInstancesCount">> => integer(),
+%%   <<"CompletedStackInstancesCount">> => integer(),
+%%   <<"FailedStackInstancesCount">> => integer(),
+%%   <<"PendingStackInstancesCount">> => integer(),
+%%   <<"PercentageCompleted">> => float(),
+%%   <<"SkippedStackInstancesCount">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"SucceededStackInstancesCount">> => integer(),
+%%   <<"TotalStackInstancesCount">> => integer()
+%% }
+-type regional_stack_instances_deployment() :: #{binary() => any()}.
+
+%% Example:
+%% regional_stages() :: #{
+%%   <<"RegionalStackInstancesDeployment">> => regional_stack_instances_deployment()
+%% }
+-type regional_stages() :: #{binary() => any()}.
+
+%% Example:
+%% regional_status_detail() :: #{
+%%   <<"Stages">> => regional_stages()
+%% }
+-type regional_status_detail() :: #{binary() => any()}.
+
+%% Example:
 %% register_publisher_input() :: #{
 %%   <<"AcceptTermsAndConditions">> => boolean(),
 %%   <<"ConnectionArn">> => string()
@@ -2016,6 +2042,17 @@
 %%   <<"ResourceType">> => string()
 %% }
 -type resource_to_import() :: #{binary() => any()}.
+
+%% Example:
+%% role_provisioning() :: #{
+%%   <<"CompletedAccountsCount">> => integer(),
+%%   <<"FailedAccountsCount">> => integer(),
+%%   <<"PendingAccountsCount">> => integer(),
+%%   <<"PercentageCompleted">> => float(),
+%%   <<"Status">> => list(any()),
+%%   <<"SucceededAccountsCount">> => integer()
+%% }
+-type role_provisioning() :: #{binary() => any()}.
 
 %% Example:
 %% rollback_configuration() :: #{
@@ -2269,6 +2306,19 @@
 -type stack_instance_summary() :: #{binary() => any()}.
 
 %% Example:
+%% stack_instances_deployment() :: #{
+%%   <<"CancelledStackInstancesCount">> => integer(),
+%%   <<"CompletedStackInstancesCount">> => integer(),
+%%   <<"FailedStackInstancesCount">> => integer(),
+%%   <<"PendingStackInstancesCount">> => integer(),
+%%   <<"PercentageCompleted">> => float(),
+%%   <<"SkippedStackInstancesCount">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"SucceededStackInstancesCount">> => integer()
+%% }
+-type stack_instances_deployment() :: #{binary() => any()}.
+
+%% Example:
 %% stack_not_found_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -2447,6 +2497,7 @@
 %%   <<"ExecutionRoleName">> => string(),
 %%   <<"OperationId">> => string(),
 %%   <<"OperationPreferences">> => stack_set_operation_preferences(),
+%%   <<"RegionalStatusDetails">> => map(),
 %%   <<"RetainStacks">> => boolean(),
 %%   <<"StackSetDriftDetectionDetails">> => stack_set_drift_detection_details(),
 %%   <<"StackSetId">> => string(),
@@ -2481,7 +2532,10 @@
 
 %% Example:
 %% stack_set_operation_status_details() :: #{
-%%   <<"FailedStackInstancesCount">> => integer()
+%%   <<"FailedStackInstancesCount">> => integer(),
+%%   <<"Stages">> => stages(),
+%%   <<"TotalAccountsCount">> => integer(),
+%%   <<"TotalStackInstancesCount">> => integer()
 %% }
 -type stack_set_operation_status_details() :: #{binary() => any()}.
 
@@ -2528,6 +2582,13 @@
 %%   <<"TemplateDescription">> => string()
 %% }
 -type stack_summary() :: #{binary() => any()}.
+
+%% Example:
+%% stages() :: #{
+%%   <<"RoleProvisioning">> => role_provisioning(),
+%%   <<"StackInstancesDeployment">> => stack_instances_deployment()
+%% }
+-type stages() :: #{binary() => any()}.
 
 %% Example:
 %% stale_request_exception() :: #{
@@ -3257,7 +3318,7 @@ cancel_update_stack(Client, Input, Options)
 %% https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed.
 %%
 %% `ForceRollback' and `ResourcesToSkip' are mutually exclusive.
-%% For details, see `ContinueUpdateRollbackInput$ForceRollback'.
+%% For details, see the `ForceRollback' parameter.
 -spec continue_update_rollback(aws_client:aws_client(), continue_update_rollback_input()) ->
     {ok, continue_update_rollback_output(), tuple()} |
     {error, any()} |
@@ -4113,6 +4174,10 @@ describe_stack_set(Client, Input, Options)
 
 %% @doc Returns the description of the specified StackSet operation.
 %%
+%% Reports role provisioning and stack instances deployment progress in
+%% `StatusDetails.Stages'. A breakdown for each Amazon Web Services
+%% Region is available in `RegionalStatusDetails'.
+%%
 %% This API provides strongly consistent reads meaning it will always
 %% return the most up-to-date data.
 -spec describe_stack_set_operation(aws_client:aws_client(), describe_stack_set_operation_input()) ->
@@ -4909,6 +4974,10 @@ list_stack_set_operation_results(Client, Input, Options)
     request(Client, <<"ListStackSetOperationResults">>, Input, Options).
 
 %% @doc Returns summary information about operations performed on a StackSet.
+%%
+%% Reports role provisioning and stack instances deployment progress in
+%% `StatusDetails.Stages'. The breakdown for each Amazon Web Services
+%% Region is available only from `DescribeStackSetOperation'.
 %%
 %% This API provides eventually consistent reads meaning it may take
 %% some time but will eventually return the most up-to-date data.

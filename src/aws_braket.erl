@@ -287,6 +287,16 @@
 
 
 %% Example:
+%% device_status_reason() :: #{
+%%   <<"estimatedEndAt">> => [non_neg_integer()],
+%%   <<"reason">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type device_status_reason() :: #{binary() => any()}.
+
+
+%% Example:
 %% device_summary() :: #{
 %%   <<"deviceArn">> => string(),
 %%   <<"deviceName">> => [string()],
@@ -308,6 +318,7 @@
 %%   <<"deviceName">> := [string()],
 %%   <<"deviceQueueInfo">> => list(device_queue_info()),
 %%   <<"deviceStatus">> := string(),
+%%   <<"deviceStatusReason">> => device_status_reason(),
 %%   <<"deviceType">> := string(),
 %%   <<"providerName">> := [string()]
 %% }

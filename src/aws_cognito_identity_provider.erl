@@ -126,6 +126,8 @@
          admin_user_global_sign_out/3,
          associate_software_token/2,
          associate_software_token/3,
+         cancel_point_in_time_recovery/2,
+         cancel_point_in_time_recovery/3,
          change_password/2,
          change_password/3,
          complete_web_authn_registration/2,
@@ -188,6 +190,8 @@
          describe_managed_login_branding/3,
          describe_managed_login_branding_by_client/2,
          describe_managed_login_branding_by_client/3,
+         describe_point_in_time_recovery/2,
+         describe_point_in_time_recovery/3,
          describe_resource_server/2,
          describe_resource_server/3,
          describe_risk_configuration/2,
@@ -246,12 +250,16 @@
          global_sign_out/3,
          initiate_auth/2,
          initiate_auth/3,
+         initiate_point_in_time_recovery/2,
+         initiate_point_in_time_recovery/3,
          list_devices/2,
          list_devices/3,
          list_groups/2,
          list_groups/3,
          list_identity_providers/2,
          list_identity_providers/3,
+         list_point_in_time_recoveries/2,
+         list_point_in_time_recoveries/3,
          list_resource_servers/2,
          list_resource_servers/3,
          list_tags_for_resource/2,
@@ -302,6 +310,8 @@
          set_user_settings/3,
          sign_up/2,
          sign_up/3,
+         start_point_in_time_recovery/2,
+         start_point_in_time_recovery/3,
          start_user_import_job/2,
          start_user_import_job/3,
          start_web_authn_registration/2,
@@ -946,6 +956,19 @@
 -type authentication_result_type() :: #{binary() => any()}.
 
 %% Example:
+%% cancel_point_in_time_recovery_request() :: #{
+%%   <<"RestoreId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type cancel_point_in_time_recovery_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_point_in_time_recovery_response() :: #{
+%%   <<"Restoration">> => restoration_type()
+%% }
+-type cancel_point_in_time_recovery_response() :: #{binary() => any()}.
+
+%% Example:
 %% challenge_response_type() :: #{
 %%   <<"ChallengeName">> => list(any()),
 %%   <<"ChallengeResponse">> => list(any())
@@ -1504,6 +1527,19 @@
 %%   <<"ManagedLoginBranding">> => managed_login_branding_type()
 %% }
 -type describe_managed_login_branding_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_point_in_time_recovery_request() :: #{
+%%   <<"RestoreId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_point_in_time_recovery_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_point_in_time_recovery_response() :: #{
+%%   <<"Restoration">> => restoration_type()
+%% }
+-type describe_point_in_time_recovery_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_resource_server_request() :: #{
@@ -2112,6 +2148,19 @@
 -type initiate_auth_response() :: #{binary() => any()}.
 
 %% Example:
+%% initiate_point_in_time_recovery_request() :: #{
+%%   <<"RestoreTimestamp">> := non_neg_integer(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type initiate_point_in_time_recovery_request() :: #{binary() => any()}.
+
+%% Example:
+%% initiate_point_in_time_recovery_response() :: #{
+%%   <<"Restoration">> => restoration_type()
+%% }
+-type initiate_point_in_time_recovery_response() :: #{binary() => any()}.
+
+%% Example:
 %% internal_error_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2270,6 +2319,21 @@
 %%   <<"Providers">> => list(provider_description())
 %% }
 -type list_identity_providers_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_point_in_time_recoveries_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_point_in_time_recoveries_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_point_in_time_recoveries_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Restorations">> => list(restoration_description_type())
+%% }
+-type list_point_in_time_recoveries_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_resource_servers_request() :: #{
@@ -2687,6 +2751,33 @@
 -type respond_to_auth_challenge_response() :: #{binary() => any()}.
 
 %% Example:
+%% restoration_description_type() :: #{
+%%   <<"RestoreId">> => string(),
+%%   <<"RestoreStatus">> => list(any()),
+%%   <<"RestoreTimestamp">> => non_neg_integer()
+%% }
+-type restoration_description_type() :: #{binary() => any()}.
+
+%% Example:
+%% restoration_type() :: #{
+%%   <<"RestoreId">> => string(),
+%%   <<"RestorePreview">> => list(restore_preview_type()),
+%%   <<"RestoreStatus">> => list(any()),
+%%   <<"RestoreTimestamp">> => non_neg_integer(),
+%%   <<"TriggerTimestamp">> => non_neg_integer()
+%% }
+-type restoration_type() :: #{binary() => any()}.
+
+%% Example:
+%% restore_preview_type() :: #{
+%%   <<"CreateCount">> => float(),
+%%   <<"DeleteCount">> => float(),
+%%   <<"Entity">> => string(),
+%%   <<"UpdateCount">> => float()
+%% }
+-type restore_preview_type() :: #{binary() => any()}.
+
+%% Example:
 %% revoke_token_request() :: #{
 %%   <<"ClientId">> := string(),
 %%   <<"ClientSecret">> => string(),
@@ -2987,6 +3078,19 @@
 %%   <<"PreferredMfa">> => boolean()
 %% }
 -type software_token_mfa_settings_type() :: #{binary() => any()}.
+
+%% Example:
+%% start_point_in_time_recovery_request() :: #{
+%%   <<"RestoreId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type start_point_in_time_recovery_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_point_in_time_recovery_response() :: #{
+%%   <<"Restoration">> => restoration_type()
+%% }
+-type start_point_in_time_recovery_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_user_import_job_request() :: #{
@@ -4091,6 +4195,16 @@
     forbidden_exception() | 
     concurrent_modification_exception().
 
+-type cancel_point_in_time_recovery_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    concurrent_modification_exception().
+
 -type change_password_errors() ::
     user_not_found_exception() | 
     user_not_confirmed_exception() | 
@@ -4425,6 +4539,15 @@
     invalid_parameter_exception() | 
     internal_error_exception().
 
+-type describe_point_in_time_recovery_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception().
+
 -type describe_resource_server_errors() ::
     too_many_requests_exception() | 
     resource_not_found_exception() | 
@@ -4720,6 +4843,17 @@
     forbidden_exception() | 
     feature_unavailable_in_tier_exception().
 
+-type initiate_point_in_time_recovery_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    concurrent_modification_exception().
+
 -type list_devices_errors() ::
     user_not_found_exception() | 
     user_not_confirmed_exception() | 
@@ -4747,6 +4881,15 @@
     not_authorized_exception() | 
     invalid_parameter_exception() | 
     internal_error_exception().
+
+-type list_point_in_time_recoveries_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception().
 
 -type list_resource_servers_errors() ::
     too_many_requests_exception() | 
@@ -5012,6 +5155,16 @@
     internal_error_exception() | 
     forbidden_exception() | 
     code_delivery_failure_exception().
+
+-type start_point_in_time_recovery_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    concurrent_modification_exception().
 
 -type start_user_import_job_errors() ::
     too_many_requests_exception() | 
@@ -6766,6 +6919,48 @@ associate_software_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateSoftwareToken">>, Input, Options).
 
+%% @doc Cancels a point-in-time recovery of a user pool before Amazon Cognito
+%% applies any changes.
+%%
+%% You can cancel a recovery when its status is `PREVIEW_GENERATING' or
+%% `PREVIEW_GENERATED'. When you cancel a recovery, Amazon Cognito
+%% discards the
+%% recovery preview, resumes write operations in the user pool, and sets the
+%% status of
+%% the recovery to `PREVIEW_CANCELLED'. Your user pool data doesn't
+%% change.
+%%
+%% You can't cancel a recovery after you start it with a request.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec cancel_point_in_time_recovery(aws_client:aws_client(), cancel_point_in_time_recovery_request()) ->
+    {ok, cancel_point_in_time_recovery_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_point_in_time_recovery_errors(), tuple()}.
+cancel_point_in_time_recovery(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_point_in_time_recovery(Client, Input, []).
+
+-spec cancel_point_in_time_recovery(aws_client:aws_client(), cancel_point_in_time_recovery_request(), proplists:proplist()) ->
+    {ok, cancel_point_in_time_recovery_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_point_in_time_recovery_errors(), tuple()}.
+cancel_point_in_time_recovery(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelPointInTimeRecovery">>, Input, Options).
+
 %% @doc Changes the password for the currently signed-in user.
 %%
 %% Authorize this action with a signed-in user's access token. It must
@@ -7860,6 +8055,46 @@ describe_managed_login_branding_by_client(Client, Input)
 describe_managed_login_branding_by_client(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeManagedLoginBrandingByClient">>, Input, Options).
+
+%% @doc Returns details about a point-in-time recovery of a user pool,
+%% including its status
+%% and the point in time that it restores the user pool to.
+%%
+%% After Amazon Cognito generates the
+%% recovery preview, the response also includes the number of entities that
+%% the recovery
+%% creates, updates, and deletes. Review the preview before you apply the
+%% recovery with a
+%% request or discard it with a request.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec describe_point_in_time_recovery(aws_client:aws_client(), describe_point_in_time_recovery_request()) ->
+    {ok, describe_point_in_time_recovery_response(), tuple()} |
+    {error, any()} |
+    {error, describe_point_in_time_recovery_errors(), tuple()}.
+describe_point_in_time_recovery(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_point_in_time_recovery(Client, Input, []).
+
+-spec describe_point_in_time_recovery(aws_client:aws_client(), describe_point_in_time_recovery_request(), proplists:proplist()) ->
+    {ok, describe_point_in_time_recovery_response(), tuple()} |
+    {error, any()} |
+    {error, describe_point_in_time_recovery_errors(), tuple()}.
+describe_point_in_time_recovery(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribePointInTimeRecovery">>, Input, Options).
 
 %% @doc Describes a resource server.
 %%
@@ -8981,6 +9216,159 @@ initiate_auth(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitiateAuth">>, Input, Options).
 
+%% @doc Initiates a point-in-time recovery of a user pool to a time in the
+%% past that you
+%% specify.
+%%
+%% This operation is the first step of a recovery and doesn't change your
+%% user pool data. Amazon Cognito pauses write operations in the user pool
+%% and
+%% generates a recovery preview when capacity is available in the Amazon Web
+%% Services Region, so the
+%% preview might not be available immediately. The preview shows the number
+%% of entities that the recovery creates, updates,
+%% and deletes. To check the status of the recovery and review the preview,
+%% make a request. When the status is
+%% `PREVIEW_GENERATED', apply the recovery with a request or discard it
+%% with a request. The time that it takes to
+%% generate the recovery preview doesn't depend on the size of your user
+%% pool.
+%%
+%% Point-in-time recovery is a disaster recovery feature. Use it to recover
+%% from
+%% accidental or unauthorized changes that affect your user data, for example
+%% the
+%% deletion or corruption of many users. Don't use point-in-time recovery
+%% to
+%% remove users that were created recently or to revert changes to individual
+%% users.
+%% To delete or update individual users, use operations like and .
+%%
+%% While a recovery is in progress, Amazon Cognito blocks operations that
+%% write to the user pool,
+%% for example user sign-up, user creation, and attribute updates. Sign-in
+%% and read
+%% operations continue to work, with the following exceptions.
+%%
+%% Users who must set a new password, set up MFA, or respond to a TOTP MFA
+%% challenge can't complete sign-in. Sign-in with the
+%% `NEW_PASSWORD_REQUIRED', `MFA_SETUP', and
+%% `SOFTWARE_TOKEN_MFA' challenges fails until the recovery
+%% ends.
+%%
+%% Federated users can sign in only if they have previously signed in to the
+%% user
+%% pool and their attributes from the external identity provider haven't
+%% changed.
+%%
+%% You can't create or start user import jobs. Start your import jobs
+%% after the recovery ends.
+%%
+%% If you don't start or cancel the recovery within 24 hours after you
+%% initiate it,
+%% the recovery preview expires. Amazon Cognito then resumes write operations
+%% and doesn't
+%% change your user pool data. The 24-hour period includes the time that
+%% Amazon Cognito waits for
+%% available capacity.
+%%
+%% A point-in-time recovery restores user data, including user profiles and
+%% attributes,
+%% group memberships, passwords, MFA settings, and passkeys. It doesn't
+%% restore user
+%% pool configuration, for example app clients, the attribute schema,
+%% encryption
+%% settings, or multi-Region replication settings. Users who changed their
+%% password after
+%% the recovery point keep their current password.
+%%
+%% The following requirements and limits apply to point-in-time recovery.
+%%
+%% Your user pool must be on the Essentials or Plus feature plan:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html.
+%% With the Essentials feature
+%% plan, you can recover your user pool to a point in time up to 1 day in the
+%% past. With the Plus feature plan, you can recover up to 14 days in the
+%% past.
+%% Your user pool must have been on the required feature plan at the recovery
+%% point. For example, to recover to a point in time 14 days ago, your user
+%% pool
+%% must have been on the Plus feature plan for the past 14 days.
+%%
+%% The recovery point must be at least 15 minutes in the past and can't
+%% be
+%% earlier than the creation time of the user pool.
+%%
+%% A user pool can have only one active recovery at a time.
+%%
+%% An Amazon Web Services account can have up to five active recoveries at a
+%% time
+%% across all of its user pools. An organization in Amazon Web Services
+%% Organizations can have up
+%% to ten active recoveries at a time across all of its accounts.
+%%
+%% You can complete one recovery of a user pool in a 24-hour period.
+%%
+%% You can create up to three recovery previews of a user pool, ten recovery
+%% previews in an Amazon Web Services account, and 15 recovery previews in an
+%% organization in Amazon Web Services Organizations in a 24-hour period. You
+%% can create up to
+%% ten recovery previews of a user pool in a 30-day period.
+%%
+%% You can't initiate a recovery while a user import job is in progress
+%% in
+%% your user pool. Wait for the import job to complete, or stop it with a
+%% request, and then initiate the
+%% recovery.
+%%
+%% In a user pool with multi-Region replication, you can initiate a recovery
+%% only
+%% in the primary Amazon Web Services Region, and only after replication is
+%% complete.
+%%
+%% If your user pool uses a customer managed key in KMS for encryption, the
+%% key
+%% must remain enabled and accessible to Amazon Cognito for the duration of
+%% the
+%% recovery.
+%%
+%% Some user pools don't support point-in-time recovery, for example some
+%% older user pools and user pools that contain user data with characters or
+%% formats that point-in-time recovery doesn't support. If your user pool
+%% doesn't support it, Amazon Cognito returns an error when you initiate
+%% a
+%% recovery. To get help with this limitation, contact Amazon Web Services
+%% Support.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec initiate_point_in_time_recovery(aws_client:aws_client(), initiate_point_in_time_recovery_request()) ->
+    {ok, initiate_point_in_time_recovery_response(), tuple()} |
+    {error, any()} |
+    {error, initiate_point_in_time_recovery_errors(), tuple()}.
+initiate_point_in_time_recovery(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    initiate_point_in_time_recovery(Client, Input, []).
+
+-spec initiate_point_in_time_recovery(aws_client:aws_client(), initiate_point_in_time_recovery_request(), proplists:proplist()) ->
+    {ok, initiate_point_in_time_recovery_response(), tuple()} |
+    {error, any()} |
+    {error, initiate_point_in_time_recovery_errors(), tuple()}.
+initiate_point_in_time_recovery(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"InitiatePointInTimeRecovery">>, Input, Options).
+
 %% @doc Lists the devices that Amazon Cognito has registered to the currently
 %% signed-in user.
 %%
@@ -9082,6 +9470,43 @@ list_identity_providers(Client, Input)
 list_identity_providers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListIdentityProviders">>, Input, Options).
+
+%% @doc Lists the point-in-time recoveries of a user pool, including the
+%% active recovery
+%% and past recoveries.
+%%
+%% The response lists the most recent recoveries first and doesn't
+%% include recovery previews. To get the recovery preview of a recovery, make
+%% a request.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_point_in_time_recoveries(aws_client:aws_client(), list_point_in_time_recoveries_request()) ->
+    {ok, list_point_in_time_recoveries_response(), tuple()} |
+    {error, any()} |
+    {error, list_point_in_time_recoveries_errors(), tuple()}.
+list_point_in_time_recoveries(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_point_in_time_recoveries(Client, Input, []).
+
+-spec list_point_in_time_recoveries(aws_client:aws_client(), list_point_in_time_recoveries_request(), proplists:proplist()) ->
+    {ok, list_point_in_time_recoveries_response(), tuple()} |
+    {error, any()} |
+    {error, list_point_in_time_recoveries_errors(), tuple()}.
+list_point_in_time_recoveries(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListPointInTimeRecoveries">>, Input, Options).
 
 %% @doc Given a user pool ID, returns all resource servers and their details.
 %%
@@ -10036,6 +10461,54 @@ sign_up(Client, Input)
 sign_up(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"SignUp">>, Input, Options).
+
+%% @doc Applies a point-in-time recovery to a user pool.
+%%
+%% Before you start a recovery, review
+%% the recovery preview in the response to a request. You can start a
+%% recovery when
+%% its status is `PREVIEW_GENERATED'.
+%%
+%% When you start a recovery, Amazon Cognito sets its status to
+%% `RESTORING' and
+%% restores user data in the user pool to its state at the recovery point.
+%% Write
+%% operations in the user pool remain paused until the recovery is complete.
+%% Sign-in and
+%% read operations continue to work. When the status of the recovery changes
+%% to
+%% `RESTORE_COMPLETED', Amazon Cognito resumes write operations.
+%%
+%% You can't cancel a recovery after you start it.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec start_point_in_time_recovery(aws_client:aws_client(), start_point_in_time_recovery_request()) ->
+    {ok, start_point_in_time_recovery_response(), tuple()} |
+    {error, any()} |
+    {error, start_point_in_time_recovery_errors(), tuple()}.
+start_point_in_time_recovery(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_point_in_time_recovery(Client, Input, []).
+
+-spec start_point_in_time_recovery(aws_client:aws_client(), start_point_in_time_recovery_request(), proplists:proplist()) ->
+    {ok, start_point_in_time_recovery_response(), tuple()} |
+    {error, any()} |
+    {error, start_point_in_time_recovery_errors(), tuple()}.
+start_point_in_time_recovery(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartPointInTimeRecovery">>, Input, Options).
 
 %% @doc Instructs your user pool to start importing users from a CSV file
 %% that contains their

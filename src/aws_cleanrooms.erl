@@ -2974,6 +2974,13 @@
 
 
 %% Example:
+%% population_analysis_job_parameters() :: #{
+%%   <<"analysisTemplateArn">> => string()
+%% }
+-type population_analysis_job_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% population_analysis_sql_parameters() :: #{
 %%   <<"analysisTemplateArn">> => string(),
 %%   <<"queryString">> => [string()]
@@ -3172,6 +3179,7 @@
 %% protected_job_summary() :: #{
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"id">> => string(),
+%%   <<"intermediateTableConfiguration">> => intermediate_table_output_configuration(),
 %%   <<"jobComputePayerAccountId">> => string(),
 %%   <<"membershipArn">> => string(),
 %%   <<"membershipId">> => string(),

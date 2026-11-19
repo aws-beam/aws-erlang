@@ -7,7 +7,9 @@
 %% capabilities.
 -module(aws_signin).
 
--export([create_bearer_token/2,
+-export([batch_revoke_sessions/2,
+         batch_revoke_sessions/3,
+         create_bearer_token/2,
          create_bearer_token/3,
          create_o_auth2_token/2,
          create_o_auth2_token/3,
@@ -23,10 +25,14 @@
          get_console_authorization_configuration/3,
          get_resource_policy/2,
          get_resource_policy/3,
+         get_session/2,
+         get_session/3,
          introspect_o_auth2_token_with_iam/2,
          introspect_o_auth2_token_with_iam/3,
          list_resource_permission_statements/2,
          list_resource_permission_statements/3,
+         list_sessions/2,
+         list_sessions/3,
          put_console_authorization_configuration/2,
          put_console_authorization_configuration/3,
          put_resource_permission_statement/2,
@@ -56,6 +62,32 @@
 %%   <<"sessionToken">> => [string()]
 %% }
 -type access_token() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_revoke_session_error() :: #{
+%%   <<"code">> => [string()],
+%%   <<"message">> => [string()],
+%%   <<"sessionArn">> => string()
+%% }
+-type batch_revoke_session_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_revoke_sessions_input() :: #{
+%%   <<"principalArn">> => string(),
+%%   <<"reason">> => string(),
+%%   <<"sessionArns">> := list(string())
+%% }
+-type batch_revoke_sessions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_revoke_sessions_output() :: #{
+%%   <<"errors">> => list(batch_revoke_session_error()),
+%%   <<"revokedSessions">> => list(revoked_session())
+%% }
+-type batch_revoke_sessions_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -140,6 +172,8 @@
 
 %% Example:
 %% create_o_auth2_token_with_token_exchange_request() :: #{
+%%   <<"assertion">> => string(),
+%%   <<"clientId">> => string(),
 %%   <<"grantType">> := string(),
 %%   <<"resource">> => string(),
 %%   <<"scope">> => string(),
@@ -154,6 +188,8 @@
 %%   <<"accessToken">> => string(),
 %%   <<"expiresIn">> => integer(),
 %%   <<"issuedTokenType">> => string(),
+%%   <<"resource">> => string(),
+%%   <<"scope">> => string(),
 %%   <<"tokenType">> => string()
 %% }
 -type create_o_auth2_token_with_token_exchange_response() :: #{binary() => any()}.
@@ -212,6 +248,33 @@
 %%   <<"signinResourceBasedPolicy">> => signin_resource_based_policy()
 %% }
 -type get_resource_policy_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_session_input() :: #{
+%%   <<"principalArn">> => string(),
+%%   <<"sessionArn">> := string()
+%% }
+-type get_session_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_session_output() :: #{
+%%   <<"clientId">> => [string()],
+%%   <<"clientType">> => list(any()),
+%%   <<"expiresAt">> => [float()],
+%%   <<"issuedAt">> => [float()],
+%%   <<"issuedInRegion">> => [string()],
+%%   <<"lastUsedAt">> => [float()],
+%%   <<"originSessionArn">> => string(),
+%%   <<"principalArn">> => string(),
+%%   <<"resource">> => [string()],
+%%   <<"role">> => string(),
+%%   <<"sessionArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"userAgent">> => [string()]
+%% }
+-type get_session_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -280,6 +343,27 @@
 %%   <<"permissionStatements">> => list(permission_statement_summary())
 %% }
 -type list_resource_permission_statements_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_input() :: #{
+%%   <<"clientId">> => [string()],
+%%   <<"issuedAfter">> => [float()],
+%%   <<"issuedBefore">> => [float()],
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"principalArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type list_sessions_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_sessions_output() :: #{
+%%   <<"items">> => list(session()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_sessions_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -358,6 +442,13 @@
 
 
 %% Example:
+%% revoked_session() :: #{
+%%   <<"sessionArn">> => string()
+%% }
+-type revoked_session() :: #{binary() => any()}.
+
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"error">> => list(any()),
 %%   <<"message">> => [string()]
@@ -371,6 +462,21 @@
 %%   <<"message">> => [string()]
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% session() :: #{
+%%   <<"clientId">> => [string()],
+%%   <<"clientType">> => list(any()),
+%%   <<"expiresAt">> => [float()],
+%%   <<"issuedAt">> => [float()],
+%%   <<"principalArn">> => string(),
+%%   <<"resource">> => [string()],
+%%   <<"role">> => string(),
+%%   <<"sessionArn">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type session() :: #{binary() => any()}.
 
 
 %% Example:
@@ -395,6 +501,13 @@
 %%   <<"message">> => [string()]
 %% }
 -type validation_exception() :: #{binary() => any()}.
+
+-type batch_revoke_sessions_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
 
 -type create_bearer_token_errors() ::
     validation_exception() | 
@@ -449,6 +562,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_session_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type introspect_o_auth2_token_with_iam_errors() ::
     validation_exception() | 
     too_many_requests_error() | 
@@ -459,6 +579,12 @@
     validation_exception() | 
     too_many_requests_error() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_sessions_errors() ::
+    validation_exception() | 
+    too_many_requests_error() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -487,6 +613,47 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Revokes up to five sign-in sessions.
+%%
+%% A revoked session can no longer be refreshed. Revoking a session that is
+%% already revoked succeeds. Each session must belong to the identity
+%% specified by principalArn, or to the caller if
+%% principalArn is omitted. Failures for individual sessions are returned in
+%% the errors list and do not fail the
+%% whole request.
+-spec batch_revoke_sessions(aws_client:aws_client(), batch_revoke_sessions_input()) ->
+    {ok, batch_revoke_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, batch_revoke_sessions_errors(), tuple()}.
+batch_revoke_sessions(Client, Input) ->
+    batch_revoke_sessions(Client, Input, []).
+
+-spec batch_revoke_sessions(aws_client:aws_client(), batch_revoke_sessions_input(), proplists:proplist()) ->
+    {ok, batch_revoke_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, batch_revoke_sessions_errors(), tuple()}.
+batch_revoke_sessions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/batch-revoke-sessions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a bearer token that represents your IAM credentials and can
 %% be used to access a supported AWS service.
@@ -769,6 +936,45 @@ get_resource_policy(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns the details of a single sign-in session.
+%%
+%% The session must belong to the identity specified by
+%% principalArn, or to the caller if principalArn is omitted. A session that
+%% belongs to a different identity or
+%% account is reported as not found.
+-spec get_session(aws_client:aws_client(), get_session_input()) ->
+    {ok, get_session_output(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, Input) ->
+    get_session(Client, Input, []).
+
+-spec get_session(aws_client:aws_client(), get_session_input(), proplists:proplist()) ->
+    {ok, get_session_output(), tuple()} |
+    {error, any()} |
+    {error, get_session_errors(), tuple()}.
+get_session(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/get-session"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Inspects the metadata and active state of an OAuth 2.0 access token
 %% or refresh token.
 %%
@@ -825,6 +1031,46 @@ list_resource_permission_statements(Client, Input) ->
 list_resource_permission_statements(Client, Input0, Options0) ->
     Method = post,
     Path = ["/list-resource-permission-statements"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Lists sign-in sessions for an IAM identity in your account.
+%%
+%% If you omit principalArn, the operation lists the
+%% caller's own sessions. Specify a user or role ARN to list that
+%% identity's sessions, or specify
+%% arn:aws:iam::{account-id}:* to list all sessions in the account. Filters
+%% are combined with a logical AND.
+-spec list_sessions(aws_client:aws_client(), list_sessions_input()) ->
+    {ok, list_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, Input) ->
+    list_sessions(Client, Input, []).
+
+-spec list_sessions(aws_client:aws_client(), list_sessions_input(), proplists:proplist()) ->
+    {ok, list_sessions_output(), tuple()} |
+    {error, any()} |
+    {error, list_sessions_errors(), tuple()}.
+list_sessions(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/list-sessions"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

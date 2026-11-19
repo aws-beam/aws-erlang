@@ -165,6 +165,8 @@
          list_threat_models/3,
          list_threats/2,
          list_threats/3,
+         resume_pentest_job/2,
+         resume_pentest_job/3,
          start_code_remediation/2,
          start_code_remediation/3,
          start_code_review_job/2,
@@ -2547,6 +2549,7 @@
 %%   <<"title">> => [string()],
 %%   <<"trustedCaCertificates">> => list(trusted_ca_certificate()),
 %%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => [string()],
 %%   <<"vpcConfig">> => vpc_config()
 %% }
 -type pentest_job() :: #{binary() => any()}.
@@ -2561,7 +2564,8 @@
 %%   <<"reportUrl">> => [string()],
 %%   <<"status">> => list(any()),
 %%   <<"title">> => [string()],
-%%   <<"updatedAt">> => [non_neg_integer()]
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => [string()]
 %% }
 -type pentest_job_summary() :: #{binary() => any()}.
 
@@ -2623,6 +2627,32 @@
 %%   <<"message">> => [string()]
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% resume_pentest_job_input() :: #{
+%%   <<"actors">> => list(actor()),
+%%   <<"agentSpaceId">> => [string()],
+%%   <<"copyConfigFromPentest">> => [boolean()],
+%%   <<"maxTaskHours">> => [float()],
+%%   <<"networkTrafficConfig">> => network_traffic_config(),
+%%   <<"pentestJobId">> => [string()],
+%%   <<"vpcConfig">> => vpc_config()
+%% }
+-type resume_pentest_job_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% resume_pentest_job_output() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"pentestId">> => [string()],
+%%   <<"pentestJobId">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"title">> => [string()],
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => [string()]
+%% }
+-type resume_pentest_job_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2821,6 +2851,7 @@
 %% Example:
 %% stop_pentest_job_input() :: #{
 %%   <<"agentSpaceId">> := [string()],
+%%   <<"pause">> => [boolean()],
 %%   <<"pentestJobId">> := [string()]
 %% }
 -type stop_pentest_job_input() :: #{binary() => any()}.
@@ -6235,6 +6266,43 @@ list_threats(Client, Input) ->
 list_threats(Client, Input0, Options0) ->
     Method = post,
     Path = ["/ListThreats"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Resumes a stopped or paused pentest job from its last saved
+%% checkpoint.
+%%
+%% The job keeps its pentest job identifier and continues as a new version,
+%% keeping the findings and progress from earlier runs. You can resume a job
+%% within 7 days of when it was created.
+-spec resume_pentest_job(aws_client:aws_client(), resume_pentest_job_input()) ->
+    {ok, resume_pentest_job_output(), tuple()} |
+    {error, any()}.
+resume_pentest_job(Client, Input) ->
+    resume_pentest_job(Client, Input, []).
+
+-spec resume_pentest_job(aws_client:aws_client(), resume_pentest_job_input(), proplists:proplist()) ->
+    {ok, resume_pentest_job_output(), tuple()} |
+    {error, any()}.
+resume_pentest_job(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/ResumePentestJob"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

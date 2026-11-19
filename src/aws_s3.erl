@@ -1174,7 +1174,8 @@
 
 %% Example:
 %% encryption_configuration() :: #{
-%%   <<"ReplicaKmsKeyID">> => string()
+%%   <<"ReplicaKmsKeyID">> => string(),
+%%   <<"UseSourceMultiRegionKey">> => use_source_multi_region_key()
 %% }
 -type encryption_configuration() :: #{binary() => any()}.
 
@@ -3430,6 +3431,7 @@
 
 %% Example:
 %% replication_rule_and_operator() :: #{
+%%   <<"Not">> => replication_rule_not_operator(),
 %%   <<"Prefix">> => string(),
 %%   <<"Tags">> => list(tag())
 %% }
@@ -3439,10 +3441,28 @@
 %% Example:
 %% replication_rule_filter() :: #{
 %%   <<"And">> => replication_rule_and_operator(),
+%%   <<"Not">> => replication_rule_not_operator(),
 %%   <<"Prefix">> => string(),
 %%   <<"Tag">> => tag()
 %% }
 -type replication_rule_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule_not_operator() :: #{
+%%   <<"Or">> => replication_rule_or_operator(),
+%%   <<"Prefix">> => string(),
+%%   <<"Tag">> => tag()
+%% }
+-type replication_rule_not_operator() :: #{binary() => any()}.
+
+
+%% Example:
+%% replication_rule_or_operator() :: #{
+%%   <<"Prefixes">> => list(string()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type replication_rule_or_operator() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3907,6 +3927,13 @@
 %%   <<"UploadId">> := string()
 %% }
 -type upload_part_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% use_source_multi_region_key() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type use_source_multi_region_key() :: #{binary() => any()}.
 
 
 %% Example:

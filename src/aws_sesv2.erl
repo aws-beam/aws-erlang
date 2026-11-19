@@ -203,6 +203,8 @@
          list_tenants/3,
          put_account_dedicated_ip_warmup_attributes/2,
          put_account_dedicated_ip_warmup_attributes/3,
+         put_account_delivery_attributes/2,
+         put_account_delivery_attributes/3,
          put_account_details/2,
          put_account_details/3,
          put_account_pricing_attributes/2,
@@ -938,9 +940,17 @@
 
 
 %% Example:
+%% delivery_attributes() :: #{
+%%   <<"SharedPoolDeliveryMode">> => list(any())
+%% }
+-type delivery_attributes() :: #{binary() => any()}.
+
+
+%% Example:
 %% delivery_options() :: #{
 %%   <<"MaxDeliverySeconds">> => float(),
 %%   <<"SendingPoolName">> => string(),
+%%   <<"SharedPoolDeliveryMode">> => list(any()),
 %%   <<"TlsPolicy">> => list(any())
 %% }
 -type delivery_options() :: #{binary() => any()}.
@@ -1192,6 +1202,7 @@
 %% Example:
 %% get_account_response() :: #{
 %%   <<"DedicatedIpAutoWarmupEnabled">> => boolean(),
+%%   <<"DeliveryAttributes">> => delivery_attributes(),
 %%   <<"Details">> => account_details(),
 %%   <<"EnforcementStatus">> => string(),
 %%   <<"PricingAttributes">> => pricing_attributes(),
@@ -2214,6 +2225,17 @@
 
 
 %% Example:
+%% put_account_delivery_attributes_request() :: #{
+%%   <<"SharedPoolDeliveryMode">> := list(any())
+%% }
+-type put_account_delivery_attributes_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_account_delivery_attributes_response() :: #{}
+-type put_account_delivery_attributes_response() :: #{}.
+
+
+%% Example:
 %% put_account_details_request() :: #{
 %%   <<"AdditionalContactEmailAddresses">> => list(string()),
 %%   <<"ContactLanguage">> => list(any()),
@@ -2289,6 +2311,7 @@
 %% put_configuration_set_delivery_options_request() :: #{
 %%   <<"MaxDeliverySeconds">> => float(),
 %%   <<"SendingPoolName">> => string(),
+%%   <<"SharedPoolDeliveryMode">> => list(any()),
 %%   <<"TlsPolicy">> => list(any())
 %% }
 -type put_configuration_set_delivery_options_request() :: #{binary() => any()}.
@@ -3477,6 +3500,10 @@
     bad_request_exception().
 
 -type put_account_dedicated_ip_warmup_attributes_errors() ::
+    too_many_requests_exception() | 
+    bad_request_exception().
+
+-type put_account_delivery_attributes_errors() ::
     too_many_requests_exception() | 
     bad_request_exception().
 
@@ -7016,6 +7043,49 @@ put_account_dedicated_ip_warmup_attributes(Client, Input) ->
 put_account_dedicated_ip_warmup_attributes(Client, Input0, Options0) ->
     Method = put,
     Path = ["/v2/email/account/dedicated-ips/warmup"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Set the shared pool delivery mode for your Amazon SES account in the
+%% current Amazon Web Services Region.
+%%
+%% The mode controls whether Amazon SES can deliver your email from shared IP
+%% addresses in other
+%% Amazon Web Services Regions within the same Amazon Web Services partition.
+%%
+%% A change may take a few minutes to take effect. Messages that are already
+%% queued for
+%% delivery keep the mode that they were sent with.
+-spec put_account_delivery_attributes(aws_client:aws_client(), put_account_delivery_attributes_request()) ->
+    {ok, put_account_delivery_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_delivery_attributes_errors(), tuple()}.
+put_account_delivery_attributes(Client, Input) ->
+    put_account_delivery_attributes(Client, Input, []).
+
+-spec put_account_delivery_attributes(aws_client:aws_client(), put_account_delivery_attributes_request(), proplists:proplist()) ->
+    {ok, put_account_delivery_attributes_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_delivery_attributes_errors(), tuple()}.
+put_account_delivery_attributes(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v2/email/account/delivery"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

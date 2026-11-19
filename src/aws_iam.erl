@@ -675,6 +675,7 @@
 
 %% Example:
 %% create_login_profile_request() :: #{
+%%   <<"MaxSigninSessionDuration">> => integer(),
 %%   <<"Password">> => string(),
 %%   <<"PasswordResetRequired">> => boolean(),
 %%   <<"UserName">> => string()
@@ -738,6 +739,7 @@
 %%   <<"AssumeRolePolicyDocument">> := string(),
 %%   <<"Description">> => string(),
 %%   <<"MaxSessionDuration">> => integer(),
+%%   <<"MaxSigninSessionDuration">> => integer(),
 %%   <<"Path">> => string(),
 %%   <<"PermissionsBoundary">> => string(),
 %%   <<"RoleName">> := string(),
@@ -2336,6 +2338,7 @@
 %% Example:
 %% login_profile() :: #{
 %%   <<"CreateDate">> => non_neg_integer(),
+%%   <<"MaxSigninSessionDuration">> => integer(),
 %%   <<"PasswordResetRequired">> => boolean(),
 %%   <<"UserName">> => string()
 %% }
@@ -2686,6 +2689,7 @@
 %%   <<"CreateDate">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"MaxSessionDuration">> => integer(),
+%%   <<"MaxSigninSessionDuration">> => integer(),
 %%   <<"Path">> => string(),
 %%   <<"PermissionsBoundary">> => attached_permissions_boundary(),
 %%   <<"RoleId">> => string(),
@@ -3161,8 +3165,10 @@
 
 %% Example:
 %% update_login_profile_request() :: #{
+%%   <<"MaxSigninSessionDuration">> => integer(),
 %%   <<"Password">> => string(),
 %%   <<"PasswordResetRequired">> => boolean(),
+%%   <<"ResetMaxSigninSessionDuration">> => boolean(),
 %%   <<"UserName">> := string()
 %% }
 -type update_login_profile_request() :: #{binary() => any()}.
@@ -3191,6 +3197,8 @@
 %% update_role_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"MaxSessionDuration">> => integer(),
+%%   <<"MaxSigninSessionDuration">> => integer(),
+%%   <<"ResetMaxSigninSessionDuration">> => boolean(),
 %%   <<"RoleName">> := string()
 %% }
 -type update_role_request() :: #{binary() => any()}.
@@ -4219,6 +4227,7 @@
     password_policy_violation_exception() | 
     no_such_entity_exception() | 
     limit_exceeded_exception() | 
+    invalid_input_exception() | 
     entity_temporarily_unmodifiable_exception().
 
 -type update_open_id_connect_provider_thumbprint_errors() ::
@@ -4230,7 +4239,8 @@
 -type update_role_errors() ::
     unmodifiable_entity_exception() | 
     service_failure_exception() | 
-    no_such_entity_exception().
+    no_such_entity_exception() | 
+    invalid_input_exception().
 
 -type update_role_description_errors() ::
     unmodifiable_entity_exception() | 
@@ -10294,7 +10304,9 @@ update_group(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateGroup">>, Input, Options).
 
-%% @doc Changes the password for the specified IAM user.
+%% @doc Changes the password or the maximum sign-in session duration for the
+%% specified
+%% IAM user.
 %%
 %% You can use the CLI, the Amazon Web Services
 %% API, or the Users page in the IAM console to change
@@ -10370,7 +10382,11 @@ update_open_id_connect_provider_thumbprint(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateOpenIDConnectProviderThumbprint">>, Input, Options).
 
-%% @doc Updates the description or maximum session duration setting of a
+%% @doc Updates the description, maximum session duration, or maximum sign-in
+%% session duration
+%% of a role.
+%%
+%% You cannot change the maximum sign-in session duration of a service-linked
 %% role.
 -spec update_role(aws_client:aws_client(), update_role_request()) ->
     {ok, update_role_response(), tuple()} |

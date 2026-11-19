@@ -186,8 +186,7 @@
 %%   <<"eventArn">> => string(),
 %%   <<"lastUpdatedTime">> => non_neg_integer(),
 %%   <<"resourceTags">> => map(),
-%%   <<"statusCode">> => list(any()),
-%%   <<"tags">> => map()
+%%   <<"statusCode">> => list(any())
 %% }
 -type affected_entity() :: #{binary() => any()}.
 
@@ -205,13 +204,13 @@
 
 %% Example:
 %% configure_tags_for_organization_response() :: #{
-%%   <<"configuredTagKeys">> => list(tag_key_for_organization())
+%%   <<"configuredTagKeys">> => list(organization_tag_key())
 %% }
 -type configure_tags_for_organization_response() :: #{binary() => any()}.
 
 %% Example:
 %% configure_tags_request() :: #{
-%%   <<"tagKeys">> := list(resource_tag_key())
+%%   <<"tagKeys">> := list(configure_tags_tag_key())
 %% }
 -type configure_tags_request() :: #{binary() => any()}.
 
@@ -220,6 +219,13 @@
 %%   <<"configuredTagKeys">> => list(resource_tag_key())
 %% }
 -type configure_tags_response() :: #{binary() => any()}.
+
+%% Example:
+%% configure_tags_tag_key() :: #{
+%%   <<"enabledForEventBridge">> => boolean(),
+%%   <<"key">> => string()
+%% }
+-type configure_tags_tag_key() :: #{binary() => any()}.
 
 %% Example:
 %% date_time_range() :: #{
