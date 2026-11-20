@@ -66,6 +66,8 @@
          get_delegated_access_token/3,
          get_federation_token/2,
          get_federation_token/3,
+         get_scoped_credentials/2,
+         get_scoped_credentials/3,
          get_session_token/2,
          get_session_token/3,
          get_web_identity_token/2,
@@ -130,7 +132,8 @@
 %%   <<"SessionTokenUtilization">> => integer(),
 %%   <<"SourceIdentity">> => string(),
 %%   <<"Subject">> => string(),
-%%   <<"SubjectType">> => string()
+%%   <<"SubjectType">> => string(),
+%%   <<"TrustedIdentityPropagationContext">> => trusted_identity_propagation_context()
 %% }
 -type assume_role_with_saml_response() :: #{binary() => any()}.
 
@@ -157,7 +160,8 @@
 %%   <<"SessionTokenSize">> => integer(),
 %%   <<"SessionTokenUtilization">> => integer(),
 %%   <<"SourceIdentity">> => string(),
-%%   <<"SubjectFromWebIdentityToken">> => string()
+%%   <<"SubjectFromWebIdentityToken">> => string(),
+%%   <<"TrustedIdentityPropagationContext">> => trusted_identity_propagation_context()
 %% }
 -type assume_role_with_web_identity_response() :: #{binary() => any()}.
 
@@ -288,6 +292,26 @@
 -type get_federation_token_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_scoped_credentials_request() :: #{
+%%   <<"DurationSeconds">> => integer(),
+%%   <<"MinimumSessionTokenSize">> => integer(),
+%%   <<"Policy">> => string(),
+%%   <<"ScopedSessionDescription">> => string()
+%% }
+-type get_scoped_credentials_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_scoped_credentials_response() :: #{
+%%   <<"Credentials">> => credentials(),
+%%   <<"ScopedPoliciesCount">> => integer(),
+%%   <<"SessionInfo">> => scoped_session(),
+%%   <<"SessionTokenSize">> => integer(),
+%%   <<"SessionTokenUtilization">> => integer(),
+%%   <<"SourceIdentity">> => string()
+%% }
+-type get_scoped_credentials_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_session_token_request() :: #{
 %%   <<"DurationSeconds">> => integer(),
 %%   <<"MinimumSessionTokenSize">> => integer(),
@@ -308,7 +332,9 @@
 %% get_web_identity_token_request() :: #{
 %%   <<"Audience">> := list(string()),
 %%   <<"DurationSeconds">> => integer(),
+%%   <<"Scope">> => string(),
 %%   <<"SigningAlgorithm">> := string(),
+%%   <<"SubjectMode">> => list(any()),
 %%   <<"Tags">> => list(tag())
 %% }
 -type get_web_identity_token_request() :: #{binary() => any()}.
@@ -333,16 +359,34 @@
 -type id_p_rejected_claim_exception() :: #{binary() => any()}.
 
 %% Example:
+%% insufficient_session_lifetime_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type insufficient_session_lifetime_exception() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_authorization_message_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_authorization_message_exception() :: #{binary() => any()}.
 
 %% Example:
+%% invalid_context_assertion_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_context_assertion_exception() :: #{binary() => any()}.
+
+%% Example:
 %% invalid_identity_token_exception() :: #{
 %%   <<"message">> => string()
 %% }
 -type invalid_identity_token_exception() :: #{binary() => any()}.
+
+%% Example:
+%% invalid_subject_credentials_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type invalid_subject_credentials_exception() :: #{binary() => any()}.
 
 %% Example:
 %% j_w_t_payload_size_exceeded_exception() :: #{
@@ -355,6 +399,15 @@
 %%   <<"message">> => string()
 %% }
 -type malformed_policy_document_exception() :: #{binary() => any()}.
+
+%% Example:
+%% origin_identity() :: #{
+%%   <<"FederatedProviderArn">> => string(),
+%%   <<"Issuer">> => string(),
+%%   <<"Subject">> => string(),
+%%   <<"SubjectType">> => string()
+%% }
+-type origin_identity() :: #{binary() => any()}.
 
 %% Example:
 %% outbound_web_identity_federation_disabled_exception() :: #{
@@ -388,6 +441,13 @@
 -type region_disabled_exception() :: #{binary() => any()}.
 
 %% Example:
+%% scoped_session() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ScopedSessionId">> => string()
+%% }
+-type scoped_session() :: #{binary() => any()}.
+
+%% Example:
 %% session_duration_escalation_exception() :: #{
 %%   <<"message">> => string()
 %% }
@@ -400,10 +460,24 @@
 %% }
 -type tag() :: #{binary() => any()}.
 
+%% Example:
+%% transaction_context() :: #{
+%%   <<"IdentityProvider">> => map()
+%% }
+-type transaction_context() :: #{binary() => any()}.
+
+%% Example:
+%% trusted_identity_propagation_context() :: #{
+%%   <<"OriginIdentity">> => origin_identity(),
+%%   <<"TransactionContext">> => transaction_context()
+%% }
+-type trusted_identity_propagation_context() :: #{binary() => any()}.
+
 -type assume_role_errors() ::
     region_disabled_exception() | 
     packed_policy_too_large_exception() | 
     malformed_policy_document_exception() | 
+    invalid_context_assertion_exception() | 
     expired_token_exception().
 
 -type assume_role_with_saml_errors() ::
@@ -439,6 +513,12 @@
     region_disabled_exception() | 
     packed_policy_too_large_exception() | 
     malformed_policy_document_exception().
+
+-type get_scoped_credentials_errors() ::
+    packed_policy_too_large_exception() | 
+    malformed_policy_document_exception() | 
+    invalid_subject_credentials_exception() | 
+    insufficient_session_lifetime_exception().
 
 -type get_session_token_errors() ::
     region_disabled_exception().
@@ -762,16 +842,6 @@ assume_role(Client, Input, Options)
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length
 %% in the IAM User Guide.
 %%
-%% An Amazon Web Services conversion compresses the passed inline session
-%% policy, managed policy ARNs,
-%% and session tags into a packed binary format that has a separate limit.
-%% Your request can
-%% fail for this limit even if your plaintext meets the other requirements.
-%% The
-%% `PackedPolicySize' response element indicates by percentage how close
-%% the
-%% policies and tags for your request are to the upper size limit.
-%%
 %% You can pass a session tag with the same key as a tag that is attached to
 %% the role. When
 %% you do, session tags override the role's tags with the same key.
@@ -970,16 +1040,6 @@ assume_role_with_saml(Client, Input, Options)
 %% and STS Character Limits:
 %% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length
 %% in the IAM User Guide.
-%%
-%% An Amazon Web Services conversion compresses the passed inline session
-%% policy, managed policy ARNs,
-%% and session tags into a packed binary format that has a separate limit.
-%% Your request can
-%% fail for this limit even if your plaintext meets the other requirements.
-%% The
-%% `PackedPolicySize' response element indicates by percentage how close
-%% the
-%% policies and tags for your request are to the upper size limit.
 %%
 %% You can pass a session tag with the same key as a tag that is attached to
 %% the role. When
@@ -1348,7 +1408,8 @@ get_delegated_access_token(Client, Input, Options)
 %% Services API. This
 %% limitation does not apply to console sessions.
 %%
-%% You cannot call any STS operations except `GetCallerIdentity'.
+%% You cannot call any STS operations except `GetCallerIdentity',
+%% `GetScopedCredentials', or `GetDelegatedAccessToken'.
 %%
 %% You can use temporary credentials for single sign-on (SSO) to the console.
 %%
@@ -1447,6 +1508,55 @@ get_federation_token(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetFederationToken">>, Input, Options).
 
+%% @doc Returns a set of temporary security credentials that are scoped down
+%% from the caller's
+%% existing temporary security credentials.
+%%
+%% `GetScopedCredentials' preserves the
+%% caller's identity while narrowing the permissions and optionally
+%% shortening the session
+%% lifetime.
+%%
+%% For a comparison of `GetScopedCredentials' with the other API
+%% operations that
+%% produce temporary security credentials, see Requesting Temporary Security
+%% Credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html
+%% and Compare STS
+%% credentials:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_sts-comparison.html
+%% in the IAM User Guide.
+%%
+%% Credential requirements
+%%
+%% You can only call `GetScopedCredentials' with temporary security
+%% credentials,
+%% for example, credentials from an assumed role or a federated session. You
+%% cannot call it
+%% with IAM user credentials or root credentials. If you want to scope down
+%% IAM user
+%% credentials, first call `GetSessionToken' to get temporary security
+%% credentials,
+%% and then call `GetScopedCredentials' with those credentials.
+%%
+%% The `GetScopedCredentials' API is not available on the STS Global
+%% endpoint.
+-spec get_scoped_credentials(aws_client:aws_client(), get_scoped_credentials_request()) ->
+    {ok, get_scoped_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_scoped_credentials_errors(), tuple()}.
+get_scoped_credentials(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_scoped_credentials(Client, Input, []).
+
+-spec get_scoped_credentials(aws_client:aws_client(), get_scoped_credentials_request(), proplists:proplist()) ->
+    {ok, get_scoped_credentials_response(), tuple()} |
+    {error, any()} |
+    {error, get_scoped_credentials_errors(), tuple()}.
+get_scoped_credentials(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetScopedCredentials">>, Input, Options).
+
 %% @doc Returns a set of temporary credentials for an Amazon Web Services
 %% account or IAM user.
 %%
@@ -1510,7 +1620,9 @@ get_federation_token(Client, Input, Options)
 %% included in the request.
 %%
 %% You cannot call any STS API except
-%% `AssumeRole' or `GetCallerIdentity'.
+%% `AssumeRole', `GetCallerIdentity',
+%% `GetScopedCredentials', `GetWebIdentityToken', or
+%% `GetDelegatedAccessToken'.
 %%
 %% The credentials that `GetSessionToken' returns are based on
 %% permissions
@@ -1553,13 +1665,24 @@ get_session_token(Client, Input, Options)
     request(Client, <<"GetSessionToken">>, Input, Options).
 
 %% @doc Returns a signed JSON Web Token (JWT) that represents the calling
-%% Amazon Web Services identity.
+%% Amazon Web Services identity or, if you set
+%% `SubjectMode' to `OriginIdentity', the human user or workload on
+%% whose behalf the
+%% calling session acts.
 %%
 %% The returned JWT can be used to authenticate with external services that
 %% support OIDC discovery.
 %% The token is signed by Amazon Web Services STS and can be publicly
 %% verified using the verification keys published at the issuer's JWKS
 %% endpoint.
+%%
+%% The `sub' (subject) claim contains the identity that `SubjectMode'
+%% selects. Whichever
+%% subject mode you use, the `principal_id' claim under the
+%% `https://sts.amazonaws.com/'
+%% namespace contains the ARN of the principal that requested the token, when
+%% that principal has an ARN. For a
+%% role session, this is the ARN of the role.
 %%
 %% The `GetWebIdentityToken' API is not available on the STS Global
 %% endpoint.

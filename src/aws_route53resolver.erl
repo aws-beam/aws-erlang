@@ -139,6 +139,8 @@
          list_firewall_domain_lists/3,
          list_firewall_domains/2,
          list_firewall_domains/3,
+         list_firewall_rule_domains/2,
+         list_firewall_rule_domains/3,
          list_firewall_rule_group_associations/2,
          list_firewall_rule_group_associations/3,
          list_firewall_rule_groups/2,
@@ -265,6 +267,14 @@
 %%   <<"ResolverRuleAssociation">> => resolver_rule_association()
 %% }
 -type associate_resolver_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% auto_allowlist_config() :: #{
+%%   <<"AutoAllowlistFirewallDomainListId">> => string(),
+%%   <<"ImportFromFirewallDomainListId">> => string(),
+%%   <<"InitialDataTimeframeHours">> => integer()
+%% }
+-type auto_allowlist_config() :: #{binary() => any()}.
 
 %% Example:
 %% batch_create_firewall_rule_error() :: #{
@@ -689,10 +699,13 @@
 %%   <<"Arn">> => string(),
 %%   <<"Category">> => string(),
 %%   <<"CreatorRequestId">> => string(),
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"FirewallThreatProtectionId">> => string(),
 %%   <<"Id">> => string(),
 %%   <<"ManagedListType">> => list(any()),
 %%   <<"ManagedOwnerName">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
 %% }
 -type firewall_domain_list_metadata() :: #{binary() => any()}.
 
@@ -720,6 +733,16 @@
 %%   <<"StatusMessage">> => string()
 %% }
 -type firewall_rule() :: #{binary() => any()}.
+
+%% Example:
+%% firewall_rule_domain() :: #{
+%%   <<"AddedTime">> => string(),
+%%   <<"DomainName">> => string(),
+%%   <<"DomainStatus">> => list(any()),
+%%   <<"Last24HourRequests">> => float(),
+%%   <<"TotalRequests">> => float()
+%% }
+-type firewall_rule_domain() :: #{binary() => any()}.
 
 %% Example:
 %% firewall_rule_group() :: #{
@@ -768,6 +791,7 @@
 
 %% Example:
 %% firewall_rule_type() :: #{
+%%   <<"AutoAllowlist">> => auto_allowlist_config(),
 %%   <<"DnsThreatProtection">> => dns_threat_protection_rule_type_config(),
 %%   <<"FirewallAdvancedContentCategory">> => firewall_advanced_content_category_config(),
 %%   <<"FirewallAdvancedThreatCategory">> => firewall_advanced_threat_category_config(),
@@ -805,7 +829,9 @@
 
 %% Example:
 %% get_firewall_domain_list_response() :: #{
-%%   <<"FirewallDomainList">> => firewall_domain_list()
+%%   <<"FirewallDomainList">> => firewall_domain_list(),
+%%   <<"FirewallRuleGroupId">> => string(),
+%%   <<"FirewallThreatProtectionId">> => string()
 %% }
 -type get_firewall_domain_list_response() :: #{binary() => any()}.
 
@@ -1098,6 +1124,33 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_firewall_domains_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_domains_query_options() :: #{
+%%   <<"DomainNameFilter">> => string(),
+%%   <<"DomainStatus">> => list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type list_firewall_rule_domains_query_options() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_domains_request() :: #{
+%%   <<"FirewallDomainListId">> => string(),
+%%   <<"FirewallRuleGroupId">> := string(),
+%%   <<"FirewallThreatProtectionId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"QueryOptions">> => list_firewall_rule_domains_query_options()
+%% }
+-type list_firewall_rule_domains_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_firewall_rule_domains_response() :: #{
+%%   <<"Domains">> => list(firewall_rule_domain()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_firewall_rule_domains_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_firewall_rule_group_associations_request() :: #{
@@ -1784,7 +1837,8 @@
     limit_exceeded_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type associate_resolver_query_log_config_errors() ::
     throttling_exception() | 
@@ -1804,7 +1858,8 @@
     limit_exceeded_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type batch_create_firewall_rule_errors() ::
     validation_exception() | 
@@ -1923,7 +1978,8 @@
     resource_not_found_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type delete_resolver_query_log_config_errors() ::
     throttling_exception() | 
@@ -1939,7 +1995,8 @@
     resource_in_use_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type disassociate_firewall_rule_group_errors() ::
     validation_exception() | 
@@ -1955,7 +2012,8 @@
     resource_exists_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type disassociate_resolver_query_log_config_errors() ::
     throttling_exception() | 
@@ -1970,7 +2028,8 @@
     resource_not_found_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_firewall_config_errors() ::
     validation_exception() | 
@@ -2031,7 +2090,8 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_resolver_query_log_config_errors() ::
     throttling_exception() | 
@@ -2060,13 +2120,15 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_resolver_rule_association_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_parameter_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type get_resolver_rule_policy_errors() ::
     unknown_resource_exception() | 
@@ -2096,6 +2158,13 @@
     access_denied_exception().
 
 -type list_firewall_domains_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_service_error_exception() | 
+    access_denied_exception().
+
+-type list_firewall_rule_domains_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -2156,14 +2225,16 @@
     resource_not_found_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_resolver_endpoints_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_resolver_query_log_config_associations_errors() ::
     throttling_exception() | 
@@ -2186,14 +2257,16 @@
     invalid_request_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_resolver_rules_errors() ::
     throttling_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type list_tags_for_resource_errors() ::
     throttling_exception() | 
@@ -2201,7 +2274,8 @@
     invalid_request_exception() | 
     invalid_parameter_exception() | 
     invalid_next_token_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type put_firewall_rule_group_policy_errors() ::
     validation_exception() | 
@@ -2232,14 +2306,16 @@
     invalid_tag_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type untag_resource_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_request_exception() | 
     invalid_parameter_exception() | 
-    internal_service_error_exception().
+    internal_service_error_exception() | 
+    access_denied_exception().
 
 -type update_firewall_config_errors() ::
     validation_exception() | 
@@ -2512,20 +2588,25 @@ create_firewall_domain_list(Client, Input, Options)
 %% `DnsThreatProtection' — match a built-in DNS Firewall Advanced threat
 %% detector (`DGA', `DNS_TUNNELING', or `DICTIONARY_DGA').
 %%
-%% `FirewallRuleType' — match one of the rule-type variants returned by
-%% `ListFirewallRuleTypes': `FirewallAdvancedContentCategory',
-%% `FirewallAdvancedThreatCategory', `DnsThreatProtection', or
-%% `PartnerThreatProtection'. The `PartnerThreatProtection' variant
-%% requires an active Amazon Web Services Marketplace subscription to the
-%% named partner product.
+%% `FirewallRuleType' — match one of the rule-type variants:
+%% `FirewallAdvancedContentCategory',
+%% `FirewallAdvancedThreatCategory', `DnsThreatProtection',
+%% `PartnerThreatProtection', or `AutoAllowlist'.
+%% `ListFirewallRuleTypes' returns the first four. The
+%% `PartnerThreatProtection' variant requires an active Amazon Web
+%% Services Marketplace subscription to the named partner product.
 %%
-%% For rules that require asynchronous provisioning (today, the
-%% `PartnerThreatProtection' rule type), the rule's `Status'
-%% begins at `CREATING' and transitions to `COMPLETE' once the rule
-%% is provisioned and the marketplace entitlement is verified. If
-%% provisioning fails, `Status' becomes `CREATION_FAILED' and
-%% `StatusMessage' contains a human-readable reason; the rule is then
-%% immutable and must be removed with `DeleteFirewallRule'.
+%% For rules that require asynchronous provisioning (the
+%% `PartnerThreatProtection' and `AutoAllowlist' rule types), the
+%% rule's `Status' begins at `CREATING' and transitions to
+%% `COMPLETE' once the rule is provisioned: for
+%% `PartnerThreatProtection', when the marketplace entitlement is
+%% verified, and for `AutoAllowlist', when DNS Firewall has read the
+%% look-back window of every VPC that uses the rule group, which can take
+%% hours for a rule group that many VPCs use. If provisioning fails,
+%% `Status' becomes `CREATION_FAILED' and `StatusMessage'
+%% contains a human-readable reason; the rule is then immutable and must be
+%% removed with `DeleteFirewallRule'.
 -spec create_firewall_rule(aws_client:aws_client(), create_firewall_rule_request()) ->
     {ok, create_firewall_rule_response(), tuple()} |
     {error, any()} |
@@ -3226,6 +3307,10 @@ get_resolver_rule_policy(Client, Input, Options)
 %% @doc Imports domain names from a file into a domain list, for use in a DNS
 %% firewall rule group.
 %%
+%% You can't import into an AutoAllowlist rule's managed domain list.
+%% To seed such a list, specify `ImportFromFirewallDomainListId' when you
+%% create the rule.
+%%
 %% Each domain specification in your domain list must satisfy the following
 %% requirements:
 %%
@@ -3319,6 +3404,38 @@ list_firewall_domains(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFirewallDomains">>, Input, Options).
 
+%% @doc Retrieves the domains of an AutoAllowlist firewall rule.
+%%
+%% Only the owner of the rule group can call this operation. Results are
+%% paginated. Use `MaxResults' and `NextToken' to retrieve additional
+%% domains.
+%%
+%% Identify the rule by `FirewallThreatProtectionId' to get the domains
+%% that DNS Firewall observed in the VPCs that use the rule group, through a
+%% rule group association or through a Route 53 Profile that includes the
+%% rule group, including VPCs in other accounts. Each domain is returned with
+%% its `DomainStatus' and request counts. Use `QueryOptions' to
+%% filter and sort the results.
+%%
+%% Identify the rule's managed domain list by `FirewallDomainListId'
+%% to get the domains that the rule currently allows. For any other domain
+%% list, use `ListFirewallDomains'.
+-spec list_firewall_rule_domains(aws_client:aws_client(), list_firewall_rule_domains_request()) ->
+    {ok, list_firewall_rule_domains_response(), tuple()} |
+    {error, any()} |
+    {error, list_firewall_rule_domains_errors(), tuple()}.
+list_firewall_rule_domains(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_firewall_rule_domains(Client, Input, []).
+
+-spec list_firewall_rule_domains(aws_client:aws_client(), list_firewall_rule_domains_request(), proplists:proplist()) ->
+    {ok, list_firewall_rule_domains_response(), tuple()} |
+    {error, any()} |
+    {error, list_firewall_rule_domains_errors(), tuple()}.
+list_firewall_rule_domains(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListFirewallRuleDomains">>, Input, Options).
+
 %% @doc Retrieves the firewall rule group associations that you have defined.
 %%
 %% Each association enables DNS filtering for a VPC with one rule group.
@@ -3381,6 +3498,9 @@ list_firewall_rule_groups(Client, Input, Options)
 %% product that backs it; absence of `SubscriptionInfo' means the variant
 %% is fully managed by Amazon Web Services and requires no separate
 %% subscription.
+%%
+%% This operation doesn't return the `AutoAllowlist' variant.
+%% Configure an AutoAllowlist rule with `AutoAllowlistConfig'.
 -spec list_firewall_rule_types(aws_client:aws_client(), list_firewall_rule_types_request()) ->
     {ok, list_firewall_rule_types_response(), tuple()} |
     {error, any()} |
@@ -3407,8 +3527,8 @@ list_firewall_rule_types(Client, Input, Options)
 %% information, see `MaxResults'.
 %%
 %% For rules that require asynchronous provisioning, the response includes
-%% `Status' (see `FirewallRuleStatus') and, on failure,
-%% `StatusMessage' with the reason.
+%% `Status' (see `FirewallRule') and, on failure, `StatusMessage'
+%% with the reason.
 -spec list_firewall_rules(aws_client:aws_client(), list_firewall_rules_request()) ->
     {ok, list_firewall_rules_response(), tuple()} |
     {error, any()} |
@@ -3726,6 +3846,23 @@ update_firewall_config(Client, Input, Options)
 
 %% @doc Updates the firewall domain list from an array of domain
 %% specifications.
+%%
+%% For an AutoAllowlist rule's managed domain list, use `ADD' to
+%% approve observed domains, `REMOVE' to stop allowing domains, unless a
+%% wildcard entry that's still on the list matches them, and `DENY'
+%% to dismiss observed domains. `REPLACE' and `ImportFirewallDomains'
+%% aren't supported for these lists.
+%%
+%% DNS Firewall throttles `UpdateFirewallDomains' requests based on both
+%% the request rate and the total number of domains across your requests.
+%%
+%% Best Practice for Updating Domain Lists
+%%
+%% If you only need to modify a subset of domains, use the `ADD' or
+%% `REMOVE' operations instead of `REPLACE'. With `REPLACE', you
+%% send the complete list you want to end up with, and throttling counts
+%% every domain in that request, including domains that aren't changing,
+%% which can use up your available throttling capacity.
 -spec update_firewall_domains(aws_client:aws_client(), update_firewall_domains_request()) ->
     {ok, update_firewall_domains_response(), tuple()} |
     {error, any()} |

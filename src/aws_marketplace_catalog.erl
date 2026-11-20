@@ -43,6 +43,8 @@
          list_tags_for_resource/3,
          put_resource_policy/2,
          put_resource_policy/3,
+         start_assessment/2,
+         start_assessment/3,
          start_change_set/2,
          start_change_set/3,
          tag_resource/2,
@@ -76,6 +78,23 @@
 %%   <<"Message">> => string()
 %% }
 -type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% additional_resource() :: #{
+%%   <<"Text">> => string(),
+%%   <<"Type">> => string(),
+%%   <<"Url">> => string()
+%% }
+-type additional_resource() :: #{binary() => any()}.
+
+
+%% Example:
+%% additional_resources_alternative() :: #{
+%%   <<"Rationale">> => string(),
+%%   <<"Value">> => list(additional_resource())
+%% }
+-type additional_resources_alternative() :: #{binary() => any()}.
 
 
 %% Example:
@@ -158,7 +177,8 @@
 %% Example:
 %% assessment_target_filter() :: #{
 %%   <<"ChangeSetId">> => string(),
-%%   <<"EntityId">> => string()
+%%   <<"EntityId">> => string(),
+%%   <<"EntityIds">> => list(string())
 %% }
 -type assessment_target_filter() :: #{binary() => any()}.
 
@@ -208,6 +228,14 @@
 %%   <<"ChangeSetId">> => string()
 %% }
 -type cancel_change_set_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_studies_alternative() :: #{
+%%   <<"Rationale">> => string(),
+%%   <<"Value">> => list(listing_case_study())
+%% }
+-type case_studies_alternative() :: #{binary() => any()}.
 
 
 %% Example:
@@ -326,10 +354,22 @@
 
 
 %% Example:
+%% content_recommendation() :: #{
+%%   <<"Alternatives">> => list(),
+%%   <<"Findings">> => list(listing_finding()),
+%%   <<"FollowUpQuestions">> => list(follow_up_question()),
+%%   <<"Status">> => list(any())
+%% }
+-type content_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
 %% control_assessment() :: #{
 %%   <<"ControlAssessmentResult">> => list(any()),
 %%   <<"ControlId">> => string(),
-%%   <<"Errors">> => list(control_error())
+%%   <<"ControlSummary">> => list(),
+%%   <<"Errors">> => list(control_error()),
+%%   <<"VerificationSource">> => list(any())
 %% }
 -type control_assessment() :: #{binary() => any()}.
 
@@ -341,6 +381,14 @@
 %%   <<"Scope">> => list(error_scope())
 %% }
 -type control_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% control_input() :: #{
+%%   <<"ControlId">> => string(),
+%%   <<"Input">> => any()
+%% }
+-type control_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -599,11 +647,37 @@
 
 
 %% Example:
+%% feature_recommendation() :: #{
+%%   <<"Action">> => string(),
+%%   <<"FeatureId">> => list(any()),
+%%   <<"Rationale">> => string(),
+%%   <<"Severity">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type feature_recommendation() :: #{binary() => any()}.
+
+
+%% Example:
+%% feature_recommendations() :: #{
+%%   <<"Recommendations">> => list(feature_recommendation())
+%% }
+-type feature_recommendations() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter() :: #{
 %%   <<"Name">> => string(),
 %%   <<"ValueList">> => list(string())
 %% }
 -type filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% follow_up_question() :: #{
+%%   <<"Justification">> => string(),
+%%   <<"Question">> => string()
+%% }
+-type follow_up_question() :: #{binary() => any()}.
 
 
 %% Example:
@@ -702,6 +776,54 @@
 %%   <<"Tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_case_study() :: #{
+%%   <<"Id">> => string(),
+%%   <<"Rationale">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type listing_case_study() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_finding() :: #{
+%%   <<"Action">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Severity">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type listing_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_quality_summary() :: #{
+%%   <<"EntityRevision">> => string(),
+%%   <<"Tier">> => list(any())
+%% }
+-type listing_quality_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_recommendations_summary() :: #{
+%%   <<"EntityRevision">> => string(),
+%%   <<"Tier">> => list(any())
+%% }
+-type listing_recommendations_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% listing_use_case() :: #{
+%%   <<"Group">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Rank">> => integer(),
+%%   <<"Rationale">> => string(),
+%%   <<"Subgroup">> => string(),
+%%   <<"UseCaseDetails">> => string()
+%% }
+-type listing_use_case() :: #{binary() => any()}.
 
 
 %% Example:
@@ -816,6 +938,7 @@
 %%   <<"ReleaseDate">> => offer_release_date_filter(),
 %%   <<"ResaleAuthorizationId">> => offer_resale_authorization_id_filter(),
 %%   <<"State">> => offer_state_filter(),
+%%   <<"SubsidiaryAuthorizationId">> => offer_subsidiary_authorization_id_filter(),
 %%   <<"TargetAgreementId">> => offer_target_agreement_id_filter(),
 %%   <<"TargetAgreementIntent">> => offer_target_agreement_intent_filter(),
 %%   <<"Targeting">> => offer_targeting_filter()
@@ -995,6 +1118,13 @@
 
 
 %% Example:
+%% offer_subsidiary_authorization_id_filter() :: #{
+%%   <<"ValueList">> => list(string())
+%% }
+-type offer_subsidiary_authorization_id_filter() :: #{binary() => any()}.
+
+
+%% Example:
 %% offer_summary() :: #{
 %%   <<"AvailabilityEndDate">> => string(),
 %%   <<"BuyerAccounts">> => list(string()),
@@ -1005,6 +1135,7 @@
 %%   <<"ReleaseDate">> => string(),
 %%   <<"ResaleAuthorizationId">> => string(),
 %%   <<"State">> => list(any()),
+%%   <<"SubsidiaryAuthorizationId">> => string(),
 %%   <<"TargetAgreementId">> => string(),
 %%   <<"TargetAgreementIntent">> => list(any()),
 %%   <<"Targeting">> => list(list(any())())
@@ -1034,6 +1165,21 @@
 
 
 %% Example:
+%% product_content_recommendations() :: #{
+%%   <<"AdditionalResources">> => content_recommendation(),
+%%   <<"Categories">> => content_recommendation(),
+%%   <<"Citations">> => list(recommendation_citation()),
+%%   <<"Highlights">> => content_recommendation(),
+%%   <<"LongDescription">> => content_recommendation(),
+%%   <<"ProductTitle">> => content_recommendation(),
+%%   <<"SearchKeywords">> => content_recommendation(),
+%%   <<"ShortDescription">> => content_recommendation(),
+%%   <<"SupportDescription">> => content_recommendation()
+%% }
+-type product_content_recommendations() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_resource_policy_request() :: #{
 %%   <<"Policy">> := string(),
 %%   <<"ResourceArn">> := string()
@@ -1043,6 +1189,13 @@
 %% Example:
 %% put_resource_policy_response() :: #{}
 -type put_resource_policy_response() :: #{}.
+
+
+%% Example:
+%% recommendation_citation() :: #{
+%%   <<"Url">> => string()
+%% }
+-type recommendation_citation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1332,11 +1485,44 @@
 
 
 %% Example:
+%% solution_content_recommendations() :: #{
+%%   <<"AdditionalResources">> => content_recommendation(),
+%%   <<"CaseStudies">> => content_recommendation(),
+%%   <<"Citations">> => list(recommendation_citation()),
+%%   <<"IntegrationDetails">> => content_recommendation(),
+%%   <<"LongDescription">> => content_recommendation(),
+%%   <<"ShortDescription">> => content_recommendation(),
+%%   <<"Title">> => content_recommendation(),
+%%   <<"UseCases">> => content_recommendation()
+%% }
+-type solution_content_recommendations() :: #{binary() => any()}.
+
+
+%% Example:
 %% sort() :: #{
 %%   <<"SortBy">> => string(),
 %%   <<"SortOrder">> => list(any())
 %% }
 -type sort() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_assessment_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"Controls">> => list(control_input()),
+%%   <<"EntityId">> := string(),
+%%   <<"FrameworkId">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type start_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_assessment_response() :: #{
+%%   <<"AssessmentId">> => string()
+%% }
+-type start_assessment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1488,6 +1674,22 @@
 
 
 %% Example:
+%% text_alternative() :: #{
+%%   <<"Rationale">> => string(),
+%%   <<"Value">> => string()
+%% }
+-type text_alternative() :: #{binary() => any()}.
+
+
+%% Example:
+%% text_list_alternative() :: #{
+%%   <<"Rationale">> => string(),
+%%   <<"Value">> => list(string())
+%% }
+-type text_list_alternative() :: #{binary() => any()}.
+
+
+%% Example:
 %% throttling_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1504,6 +1706,14 @@
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% use_cases_alternative() :: #{
+%%   <<"Rationale">> => string(),
+%%   <<"Value">> => list(listing_use_case())
+%% }
+-type use_cases_alternative() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1605,6 +1815,15 @@
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
+    internal_service_exception() | 
+    access_denied_exception().
+
+-type start_assessment_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    resource_in_use_exception() | 
     internal_service_exception() | 
     access_denied_exception().
 
@@ -2104,6 +2323,53 @@ put_resource_policy(Client, Input) ->
 put_resource_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/PutResourcePolicy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts an assessment of a product entity against a framework.
+%%
+%% An
+%% assessment is the result of evaluating an entity against the
+%% controls of a framework. You choose the controls to run and provide the
+%% input that each
+%% control needs.
+%%
+%% The assessment runs asynchronously. This action returns the ID of the
+%% assessment
+%% immediately. To get its status and the results of each control, use the
+%% `DescribeAssessment' action. To find assessments that you started
+%% earlier,
+%% use the `ListAssessments' action.
+-spec start_assessment(aws_client:aws_client(), start_assessment_request()) ->
+    {ok, start_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, start_assessment_errors(), tuple()}.
+start_assessment(Client, Input) ->
+    start_assessment(Client, Input, []).
+
+-spec start_assessment(aws_client:aws_client(), start_assessment_request(), proplists:proplist()) ->
+    {ok, start_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, start_assessment_errors(), tuple()}.
+start_assessment(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/StartAssessment"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

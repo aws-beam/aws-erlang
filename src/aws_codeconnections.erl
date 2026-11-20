@@ -175,6 +175,7 @@
 %%   <<"ConnectionStatus">> => list(any()),
 %%   <<"HostArn">> => string(),
 %%   <<"OwnerAccountId">> => string(),
+%%   <<"ProviderEndpoint">> => string(),
 %%   <<"ProviderType">> => list(any())
 %% }
 -type connection() :: #{binary() => any()}.
@@ -183,6 +184,7 @@
 %% create_connection_input() :: #{
 %%   <<"ConnectionName">> := string(),
 %%   <<"HostArn">> => string(),
+%%   <<"ProviderEndpoint">> => string(),
 %%   <<"ProviderType">> => list(any()),
 %%   <<"Tags">> => list(tag())
 %% }
@@ -790,15 +792,18 @@
 -type vpc_configuration() :: #{binary() => any()}.
 
 -type create_connection_errors() ::
+    unsupported_provider_type_exception() | 
     resource_unavailable_exception() | 
     resource_not_found_exception() | 
-    limit_exceeded_exception().
+    limit_exceeded_exception() | 
+    invalid_input_exception().
 
 -type create_host_errors() ::
     limit_exceeded_exception().
 
 -type create_repository_link_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
     invalid_input_exception() | 
@@ -808,6 +813,7 @@
 
 -type create_sync_configuration_errors() ::
     throttling_exception() | 
+    resource_not_found_exception() | 
     resource_already_exists_exception() | 
     limit_exceeded_exception() | 
     invalid_input_exception() | 

@@ -318,6 +318,30 @@
 
 
 %% Example:
+%% aws_billing_payment_options() :: #{
+%%   <<"dpopJwk">> => dpop_jwk()
+%% }
+-type aws_billing_payment_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_billing_x402_payment_input() :: #{
+%%   <<"options">> => aws_billing_payment_options(),
+%%   <<"payload">> => any(),
+%%   <<"version">> => string()
+%% }
+-type aws_billing_x402_payment_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% aws_billing_x402_payment_output() :: #{
+%%   <<"paymentToken">> => string(),
+%%   <<"version">> => string()
+%% }
+-type aws_billing_x402_payment_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% basic_auth() :: #{
 %%   <<"secretArn">> => string()
 %% }
@@ -975,6 +999,16 @@
 %%   <<"include">> => list(string())
 %% }
 -type domain_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% dpop_jwk() :: #{
+%%   <<"crv">> => list(any()),
+%%   <<"kty">> => list(any()),
+%%   <<"x">> => [string()],
+%%   <<"y">> => [string()]
+%% }
+-type dpop_jwk() :: #{binary() => any()}.
 
 
 %% Example:

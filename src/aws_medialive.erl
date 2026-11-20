@@ -960,6 +960,7 @@
 %%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"JpegXsInputSpecification">> => jpeg_xs_input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
@@ -1023,6 +1024,7 @@
 %%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"JpegXsInputSpecification">> => jpeg_xs_input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
@@ -1246,6 +1248,7 @@
 %%   <<"InferenceSettings">> => inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"JpegXsInputSpecification">> => jpeg_xs_input_specification(),
 %%   <<"LinkedChannelSettings">> => linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_create_settings(),
@@ -1672,6 +1675,7 @@
 %%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"JpegXsInputSpecification">> => jpeg_xs_input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
@@ -1936,6 +1940,7 @@
 %%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"JpegXsInputSpecification">> => jpeg_xs_input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
@@ -3527,6 +3532,15 @@
 
 
 %% Example:
+%% jpeg_xs_input_specification() :: #{
+%%   <<"Codec">> => list(any()),
+%%   <<"MaximumBitrate">> => list(any()),
+%%   <<"Resolution">> => list(any())
+%% }
+-type jpeg_xs_input_specification() :: #{binary() => any()}.
+
+
+%% Example:
 %% key_provider_settings() :: #{
 %%   <<"StaticKeySettings">> => static_key_settings()
 %% }
@@ -4965,6 +4979,7 @@
 %%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"JpegXsInputSpecification">> => jpeg_xs_input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
@@ -5464,6 +5479,7 @@
 %%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"JpegXsInputSpecification">> => jpeg_xs_input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
@@ -5693,6 +5709,7 @@
 %%   <<"InferenceSettings">> => describe_inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"JpegXsInputSpecification">> => jpeg_xs_input_specification(),
 %%   <<"LinkedChannelSettings">> => describe_linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_status(),
@@ -5961,6 +5978,7 @@
 %%   <<"InferenceSettings">> => inference_settings(),
 %%   <<"InputAttachments">> => list(input_attachment()),
 %%   <<"InputSpecification">> => input_specification(),
+%%   <<"JpegXsInputSpecification">> => jpeg_xs_input_specification(),
 %%   <<"LinkedChannelSettings">> => linked_channel_settings(),
 %%   <<"LogLevel">> => list(any()),
 %%   <<"Maintenance">> => maintenance_update_settings(),

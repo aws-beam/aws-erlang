@@ -48,6 +48,12 @@
          delete_responder_gateway/4,
          disassociate_certificate/3,
          disassociate_certificate/4,
+         get_available_module/2,
+         get_available_module/4,
+         get_available_module/5,
+         get_available_module_version/3,
+         get_available_module_version/5,
+         get_available_module_version/6,
          get_certificate_association/3,
          get_certificate_association/5,
          get_certificate_association/6,
@@ -69,6 +75,15 @@
          get_responder_gateway/2,
          get_responder_gateway/4,
          get_responder_gateway/5,
+         get_update/3,
+         get_update/5,
+         get_update/6,
+         list_available_module_versions/2,
+         list_available_module_versions/4,
+         list_available_module_versions/5,
+         list_available_modules/1,
+         list_available_modules/3,
+         list_available_modules/4,
          list_certificate_associations/2,
          list_certificate_associations/4,
          list_certificate_associations/5,
@@ -87,6 +102,11 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_updates/2,
+         list_updates/4,
+         list_updates/5,
+         put_link_flows/4,
+         put_link_flows/5,
          reject_link/4,
          reject_link/5,
          tag_resource/3,
@@ -126,6 +146,7 @@
 %%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"direction">> => list(any()),
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"flowModules">> => list(module_configuration()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
@@ -169,6 +190,28 @@
 %%   <<"roleArn">> => [string()]
 %% }
 -type auto_scaling_groups_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% available_module_summary() :: #{
+%%   <<"marketplaceProductId">> => [string()],
+%%   <<"moduleArn">> => string(),
+%%   <<"moduleId">> => string(),
+%%   <<"moduleName">> => string(),
+%%   <<"subscriptionStatus">> => list(any()),
+%%   <<"subscriptionType">> => list(any())
+%% }
+-type available_module_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% available_module_version_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"moduleVersionArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"version">> => string()
+%% }
+-type available_module_version_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -227,6 +270,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"customerProvidedId">> => [string()],
 %%   <<"direction">> => list(any()),
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"flowModules">> => list(module_configuration()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
@@ -431,6 +475,15 @@
 
 
 %% Example:
+%% error_detail() :: #{
+%%   <<"code">> => list(any()),
+%%   <<"message">> => [string()],
+%%   <<"resourceIds">> => list(string())
+%% }
+-type error_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% filter() :: #{
 %%   <<"criteria">> => list(filter_criterion())
 %% }
@@ -446,6 +499,71 @@
 
 
 %% Example:
+%% flow() :: #{
+%%   <<"name">> => string(),
+%%   <<"pipeline">> => list()
+%% }
+-type flow() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_module() :: #{
+%%   <<"activationPercentage">> => float(),
+%%   <<"configurationValues">> => string(),
+%%   <<"failureMode">> => list(any()),
+%%   <<"moduleVersionArn">> => string(),
+%%   <<"name">> => string(),
+%%   <<"selectedActions">> => list(list(any())())
+%% }
+-type flow_module() :: #{binary() => any()}.
+
+
+%% Example:
+%% flow_phase() :: #{
+%%   <<"modules">> => list(flow_module())
+%% }
+-type flow_phase() :: #{binary() => any()}.
+
+%% Example:
+%% get_available_module_request() :: #{}
+-type get_available_module_request() :: #{}.
+
+
+%% Example:
+%% get_available_module_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"description">> => string(),
+%%   <<"marketplaceProductId">> => [string()],
+%%   <<"moduleArn">> => string(),
+%%   <<"moduleId">> => string(),
+%%   <<"moduleName">> => string(),
+%%   <<"subscriptionStatus">> => list(any()),
+%%   <<"subscriptionType">> => list(any())
+%% }
+-type get_available_module_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_available_module_version_request() :: #{}
+-type get_available_module_version_request() :: #{}.
+
+
+%% Example:
+%% get_available_module_version_response() :: #{
+%%   <<"configurableActions">> => list(list(any())()),
+%%   <<"configurationSchema">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"moduleId">> => string(),
+%%   <<"moduleVersionArn">> => string(),
+%%   <<"permissions">> => list(list(any())()),
+%%   <<"releaseNotes">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"version">> => string()
+%% }
+-type get_available_module_version_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_certificate_association_request() :: #{
 %%   <<"acmCertificateArn">> := string()
 %% }
@@ -456,6 +574,7 @@
 %% get_certificate_association_response() :: #{
 %%   <<"acmCertificateArn">> => string(),
 %%   <<"associatedAt">> => [non_neg_integer()],
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"gatewayId">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()]
@@ -473,9 +592,12 @@
 %%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"domainName">> => string(),
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"flowModules">> => list(module_configuration()),
+%%   <<"flows">> => list(flow()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
+%%   <<"lockToken">> => string(),
 %%   <<"logSettings">> => link_log_settings(),
 %%   <<"pendingFlowModules">> => list(module_configuration()),
 %%   <<"status">> => list(any()),
@@ -495,10 +617,13 @@
 %%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"direction">> => list(any()),
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"flowModules">> => list(module_configuration()),
+%%   <<"flows">> => list(flow()),
 %%   <<"gatewayId">> => string(),
 %%   <<"httpResponderAllowed">> => [boolean()],
 %%   <<"linkId">> => string(),
+%%   <<"lockToken">> => string(),
 %%   <<"logSettings">> => link_log_settings(),
 %%   <<"peerGatewayId">> => string(),
 %%   <<"pendingFlowModules">> => list(module_configuration()),
@@ -518,6 +643,7 @@
 %% get_link_routing_rule_response() :: #{
 %%   <<"conditions">> => rule_condition(),
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
 %%   <<"priority">> => integer(),
@@ -538,9 +664,12 @@
 %%   <<"attributes">> => link_attributes(),
 %%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"flowModules">> => list(module_configuration()),
+%%   <<"flows">> => list(flow()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
+%%   <<"lockToken">> => string(),
 %%   <<"logSettings">> => link_log_settings(),
 %%   <<"pendingFlowModules">> => list(module_configuration()),
 %%   <<"publicEndpoint">> => string(),
@@ -561,6 +690,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => [string()],
 %%   <<"domainName">> => string(),
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"gatewayId">> => string(),
 %%   <<"securityGroupIds">> => list(string()),
 %%   <<"status">> => list(any()),
@@ -584,6 +714,7 @@
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => [string()],
 %%   <<"domainName">> => string(),
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"externalInboundEndpoint">> => string(),
 %%   <<"gatewayId">> => string(),
 %%   <<"gatewayType">> => list(any()),
@@ -602,6 +733,17 @@
 %%   <<"vpcId">> => string()
 %% }
 -type get_responder_gateway_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_update_request() :: #{}
+-type get_update_request() :: #{}.
+
+
+%% Example:
+%% get_update_response() :: #{
+%%   <<"update">> => update()
+%% }
+-type get_update_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -657,6 +799,14 @@
 
 
 %% Example:
+%% link_config_parameters() :: #{
+%%   <<"logSettings">> => link_log_settings(),
+%%   <<"timeoutInMillis">> => float()
+%% }
+-type link_config_parameters() :: #{binary() => any()}.
+
+
+%% Example:
 %% link_log_settings() :: #{
 %%   <<"applicationLogs">> => link_application_log_configuration()
 %% }
@@ -667,12 +817,55 @@
 %% link_routing_rule_summary() :: #{
 %%   <<"conditions">> => rule_condition(),
 %%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"priority">> => integer(),
 %%   <<"ruleId">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type link_routing_rule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% link_target() :: #{
+%%   <<"linkId">> => string()
+%% }
+-type link_target() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_available_module_versions_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type list_available_module_versions_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_available_module_versions_response() :: #{
+%%   <<"moduleId">> => string(),
+%%   <<"nextToken">> => [string()],
+%%   <<"versions">> => list(available_module_version_summary())
+%% }
+-type list_available_module_versions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_available_modules_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"subscriptionType">> => list(any())
+%% }
+-type list_available_modules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_available_modules_response() :: #{
+%%   <<"modules">> => list(available_module_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_available_modules_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -729,6 +922,7 @@
 %%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"direction">> => list(any()),
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"flowModules">> => list(module_configuration()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
@@ -787,6 +981,26 @@
 
 
 %% Example:
+%% list_updates_request() :: #{
+%%   <<"linkId">> => string(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
+%%   <<"ruleId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any())
+%% }
+-type list_updates_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_updates_response() :: #{
+%%   <<"nextToken">> => [string()],
+%%   <<"updates">> => list(update_summary())
+%% }
+-type list_updates_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% listener_config() :: #{
 %%   <<"protocols">> => list(list(any())())
 %% }
@@ -830,6 +1044,32 @@
 
 
 %% Example:
+%% phased_pipeline() :: #{
+%%   <<"phases">> => list(flow_phase())
+%% }
+-type phased_pipeline() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_link_flows_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"flows">> := list(flow()),
+%%   <<"lockToken">> := string()
+%% }
+-type put_link_flows_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_link_flows_response() :: #{
+%%   <<"gatewayId">> => string(),
+%%   <<"linkId">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"updateId">> => string()
+%% }
+-type put_link_flows_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% query_string_key_value_pair() :: #{
 %%   <<"key">> => [string()],
 %%   <<"value">> => [string()]
@@ -854,6 +1094,7 @@
 %%   <<"connectivityType">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"direction">> => list(any()),
+%%   <<"errorDetails">> => list(error_detail()),
 %%   <<"flowModules">> => list(module_configuration()),
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
@@ -884,6 +1125,36 @@
 
 
 %% Example:
+%% responder_gateway_config_parameters() :: #{
+%%   <<"clientRoutingPolicy">> => list(any()),
+%%   <<"description">> => [string()],
+%%   <<"domainName">> => string(),
+%%   <<"listenerConfig">> => listener_config(),
+%%   <<"managedEndpointConfiguration">> => list(),
+%%   <<"port">> => [integer()],
+%%   <<"protocol">> => list(any()),
+%%   <<"trustStoreConfiguration">> => trust_store_configuration()
+%% }
+-type responder_gateway_config_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule_parameters() :: #{
+%%   <<"conditions">> => rule_condition(),
+%%   <<"priority">> => integer()
+%% }
+-type routing_rule_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% routing_rule_target() :: #{
+%%   <<"linkId">> => string(),
+%%   <<"ruleId">> => string()
+%% }
+-type routing_rule_target() :: #{binary() => any()}.
+
+
+%% Example:
 %% rule_condition() :: #{
 %%   <<"hostHeader">> => [string()],
 %%   <<"hostHeaderWildcard">> => [string()],
@@ -893,6 +1164,13 @@
 %%   <<"queryStringExists">> => [string()]
 %% }
 -type rule_condition() :: #{binary() => any()}.
+
+
+%% Example:
+%% sequential_pipeline() :: #{
+%%   <<"modules">> => list(flow_module())
+%% }
+-type sequential_pipeline() :: #{binary() => any()}.
 
 
 %% Example:
@@ -939,6 +1217,19 @@
 
 
 %% Example:
+%% update() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"errorDetails">> => list(error_detail()),
+%%   <<"parameters">> => list(),
+%%   <<"status">> => list(any()),
+%%   <<"target">> => list(),
+%%   <<"type">> => list(any()),
+%%   <<"updateId">> => string()
+%% }
+-type update() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_link_module_flow_request() :: #{
 %%   <<"clientToken">> := [string()],
 %%   <<"modules">> := list(module_configuration())
@@ -950,13 +1241,15 @@
 %% update_link_module_flow_response() :: #{
 %%   <<"gatewayId">> => string(),
 %%   <<"linkId">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"updateId">> => string()
 %% }
 -type update_link_module_flow_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_link_request() :: #{
+%%   <<"clientToken">> => [string()],
 %%   <<"logSettings">> => link_log_settings(),
 %%   <<"timeoutInMillis">> => float()
 %% }
@@ -966,13 +1259,15 @@
 %% Example:
 %% update_link_response() :: #{
 %%   <<"linkId">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"updateId">> => string()
 %% }
 -type update_link_response() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_link_routing_rule_request() :: #{
+%%   <<"clientToken">> => [string()],
 %%   <<"conditions">> := rule_condition(),
 %%   <<"priority">> := integer()
 %% }
@@ -983,6 +1278,7 @@
 %% update_link_routing_rule_response() :: #{
 %%   <<"ruleId">> => string(),
 %%   <<"status">> => list(any()),
+%%   <<"updateId">> => string(),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type update_link_routing_rule_response() :: #{binary() => any()}.
@@ -1023,9 +1319,20 @@
 %% update_responder_gateway_response() :: #{
 %%   <<"clientRoutingPolicy">> => list(any()),
 %%   <<"gatewayId">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"updateId">> => string()
 %% }
 -type update_responder_gateway_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_summary() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
+%%   <<"updateId">> => string()
+%% }
+-type update_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1160,6 +1467,20 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type get_available_module_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_available_module_version_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_certificate_association_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1210,6 +1531,26 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_update_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_available_module_versions_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_available_modules_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_certificate_associations_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1244,6 +1585,22 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type list_updates_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type put_link_flows_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type reject_link_errors() ::
@@ -1840,6 +2197,88 @@ disassociate_certificate(Client, GatewayId, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Returns a module that you can attach.
+%%
+%% If you can't attach the module, the operation returns
+%% ResourceNotFoundException, the same as for a missing one.
+-spec get_available_module(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_available_module_response(), tuple()} |
+    {error, any()} |
+    {error, get_available_module_errors(), tuple()}.
+get_available_module(Client, ModuleId)
+  when is_map(Client) ->
+    get_available_module(Client, ModuleId, #{}, #{}).
+
+-spec get_available_module(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_available_module_response(), tuple()} |
+    {error, any()} |
+    {error, get_available_module_errors(), tuple()}.
+get_available_module(Client, ModuleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_available_module(Client, ModuleId, QueryMap, HeadersMap, []).
+
+-spec get_available_module(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_available_module_response(), tuple()} |
+    {error, any()} |
+    {error, get_available_module_errors(), tuple()}.
+get_available_module(Client, ModuleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/available-modules/", aws_util:encode_uri(ModuleId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns an ACTIVE or DEPRECATED version of a module that you can
+%% attach.
+%%
+%% If you can't attach the module, or the version is in another status,
+%% the operation returns ResourceNotFoundException, the same as for a missing
+%% one.
+-spec get_available_module_version(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_available_module_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_available_module_version_errors(), tuple()}.
+get_available_module_version(Client, ModuleId, Version)
+  when is_map(Client) ->
+    get_available_module_version(Client, ModuleId, Version, #{}, #{}).
+
+-spec get_available_module_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_available_module_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_available_module_version_errors(), tuple()}.
+get_available_module_version(Client, ModuleId, Version, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_available_module_version(Client, ModuleId, Version, QueryMap, HeadersMap, []).
+
+-spec get_available_module_version(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_available_module_version_response(), tuple()} |
+    {error, any()} |
+    {error, get_available_module_version_errors(), tuple()}.
+get_available_module_version(Client, ModuleId, Version, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/available-modules/", aws_util:encode_uri(ModuleId), "/versions/", aws_util:encode_uri(Version), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the details of a certificate association with a responder
 %% gateway.
 -spec get_certificate_association(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -2107,6 +2546,143 @@ get_responder_gateway(Client, GatewayId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns ResourceNotFoundException for an updateId past the 90-day
+%% retention window, indistinguishable in the response from an id that never
+%% existed.
+-spec get_update(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_update_response(), tuple()} |
+    {error, any()} |
+    {error, get_update_errors(), tuple()}.
+get_update(Client, GatewayId, UpdateId)
+  when is_map(Client) ->
+    get_update(Client, GatewayId, UpdateId, #{}, #{}).
+
+-spec get_update(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_update_response(), tuple()} |
+    {error, any()} |
+    {error, get_update_errors(), tuple()}.
+get_update(Client, GatewayId, UpdateId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_update(Client, GatewayId, UpdateId, QueryMap, HeadersMap, []).
+
+-spec get_update(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_update_response(), tuple()} |
+    {error, any()} |
+    {error, get_update_errors(), tuple()}.
+get_update(Client, GatewayId, UpdateId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/gateway/", aws_util:encode_uri(GatewayId), "/updates/", aws_util:encode_uri(UpdateId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the ACTIVE and DEPRECATED versions of a module that you can
+%% attach, highest version first (numerically by MAJOR, then MINOR, then
+%% PATCH).
+%%
+%% If you can't attach the module, the operation returns
+%% ResourceNotFoundException, the same as for a missing one. If the module
+%% has no ACTIVE or DEPRECATED versions, the operation returns an empty list.
+%% The operation lists DEPRECATED versions so that you can inspect one that
+%% you've attached, but you can't attach them. Results are paginated.
+%% Use `nextToken' to get the next page.
+-spec list_available_module_versions(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_available_module_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_available_module_versions_errors(), tuple()}.
+list_available_module_versions(Client, ModuleId)
+  when is_map(Client) ->
+    list_available_module_versions(Client, ModuleId, #{}, #{}).
+
+-spec list_available_module_versions(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_available_module_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_available_module_versions_errors(), tuple()}.
+list_available_module_versions(Client, ModuleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_available_module_versions(Client, ModuleId, QueryMap, HeadersMap, []).
+
+-spec list_available_module_versions(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_available_module_versions_response(), tuple()} |
+    {error, any()} |
+    {error, list_available_module_versions_errors(), tuple()}.
+list_available_module_versions(Client, ModuleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/available-modules/", aws_util:encode_uri(ModuleId), "/versions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the modules that you can attach, newest first by
+%% `createdAt'.
+%%
+%% Results are paginated. Use `nextToken' to get the next page.
+-spec list_available_modules(aws_client:aws_client()) ->
+    {ok, list_available_modules_response(), tuple()} |
+    {error, any()} |
+    {error, list_available_modules_errors(), tuple()}.
+list_available_modules(Client)
+  when is_map(Client) ->
+    list_available_modules(Client, #{}, #{}).
+
+-spec list_available_modules(aws_client:aws_client(), map(), map()) ->
+    {ok, list_available_modules_response(), tuple()} |
+    {error, any()} |
+    {error, list_available_modules_errors(), tuple()}.
+list_available_modules(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_available_modules(Client, QueryMap, HeadersMap, []).
+
+-spec list_available_modules(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_available_modules_response(), tuple()} |
+    {error, any()} |
+    {error, list_available_modules_errors(), tuple()}.
+list_available_modules(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/available-modules"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"subscriptionType">>, maps:get(<<"subscriptionType">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the certificate associations for a responder gateway.
 -spec list_certificate_associations(aws_client:aws_client(), binary() | list()) ->
     {ok, list_certificate_associations_response(), tuple()} |
@@ -2356,6 +2932,95 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
     Query_ = [],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the updates on a gateway.
+%%
+%% Results are paginated. Use `nextToken' to get the next page.
+-spec list_updates(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_updates_response(), tuple()} |
+    {error, any()} |
+    {error, list_updates_errors(), tuple()}.
+list_updates(Client, GatewayId)
+  when is_map(Client) ->
+    list_updates(Client, GatewayId, #{}, #{}).
+
+-spec list_updates(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_updates_response(), tuple()} |
+    {error, any()} |
+    {error, list_updates_errors(), tuple()}.
+list_updates(Client, GatewayId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_updates(Client, GatewayId, QueryMap, HeadersMap, []).
+
+-spec list_updates(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_updates_response(), tuple()} |
+    {error, any()} |
+    {error, list_updates_errors(), tuple()}.
+list_updates(Client, GatewayId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/gateway/", aws_util:encode_uri(GatewayId), "/updates"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"linkId">>, maps:get(<<"linkId">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"ruleId">>, maps:get(<<"ruleId">>, QueryMap, undefined)},
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Replaces a link's flow configuration.
+%%
+%% The change applies asynchronously. The call returns once the change is
+%% accepted, and the link serves its prior flows until the update commits
+%% atomically. RTB Fabric validates the request before accepting it, and a
+%% request that fails validation changes nothing. After the call, use
+%% GetLink. Once the change completes, the link's status is ACTIVE again
+%% and its flows show the change.
+-spec put_link_flows(aws_client:aws_client(), binary() | list(), binary() | list(), put_link_flows_request()) ->
+    {ok, put_link_flows_response(), tuple()} |
+    {error, any()} |
+    {error, put_link_flows_errors(), tuple()}.
+put_link_flows(Client, GatewayId, LinkId, Input) ->
+    put_link_flows(Client, GatewayId, LinkId, Input, []).
+
+-spec put_link_flows(aws_client:aws_client(), binary() | list(), binary() | list(), put_link_flows_request(), proplists:proplist()) ->
+    {ok, put_link_flows_response(), tuple()} |
+    {error, any()} |
+    {error, put_link_flows_errors(), tuple()}.
+put_link_flows(Client, GatewayId, LinkId, Input0, Options0) ->
+    Method = put,
+    Path = ["/gateway/", aws_util:encode_uri(GatewayId), "/link/", aws_util:encode_uri(LinkId), "/flows"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Rejects a link request between gateways.
 %%

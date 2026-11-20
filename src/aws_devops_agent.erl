@@ -181,6 +181,7 @@
 %% Example:
 %% agent_space() :: #{
 %%   <<"agentSpaceId">> => string(),
+%%   <<"awsSourceMode">> => list(any()),
 %%   <<"createdAt">> => [non_neg_integer()],
 %%   <<"description">> => string(),
 %%   <<"kmsKeyArn">> => string(),
@@ -323,7 +324,8 @@
 %%   <<"accountType">> => list(any()),
 %%   <<"agentElevatedRoleArn">> => string(),
 %%   <<"agentElevatedRoleArnStatus">> => list(any()),
-%%   <<"assumableRoleArn">> => string()
+%%   <<"assumableRoleArn">> => string(),
+%%   <<"serviceManagementRoleArn">> => string()
 %% }
 -type aws_configuration() :: #{binary() => any()}.
 
@@ -380,6 +382,7 @@
 
 %% Example:
 %% create_agent_space_input() :: #{
+%%   <<"awsSourceMode">> => list(any()),
 %%   <<"clientToken">> => [string()],
 %%   <<"description">> => string(),
 %%   <<"kmsKeyArn">> => string(),
@@ -1531,6 +1534,25 @@
 
 
 %% Example:
+%% org_source_deployment_state() :: #{
+%%   <<"deployedAccountCount">> => [integer()],
+%%   <<"issues">> => list(org_source_issue()),
+%%   <<"lastEvaluatedAt">> => [non_neg_integer()]
+%% }
+-type org_source_deployment_state() :: #{binary() => any()}.
+
+
+%% Example:
+%% org_source_issue() :: #{
+%%   <<"accountCount">> => [integer()],
+%%   <<"accountIds">> => list(string()),
+%%   <<"message">> => string(),
+%%   <<"reasonCode">> => list(any())
+%% }
+-type org_source_issue() :: #{binary() => any()}.
+
+
+%% Example:
 %% pager_duty_configuration() :: #{
 %%   <<"customerEmail">> => string(),
 %%   <<"services">> => list([string()]())
@@ -2130,6 +2152,23 @@
 
 
 %% Example:
+%% source_aws_org_configuration() :: #{
+%%   <<"accountType">> => list(any()),
+%%   <<"deploymentState">> => org_source_deployment_state(),
+%%   <<"organizationalUnit">> => source_aws_org_unit()
+%% }
+-type source_aws_org_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% source_aws_org_unit() :: #{
+%%   <<"accountIds">> => list(string()),
+%%   <<"organizationalUnitId">> => string()
+%% }
+-type source_aws_org_unit() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> := map()
 %% }
@@ -2226,6 +2265,7 @@
 
 %% Example:
 %% update_agent_space_input() :: #{
+%%   <<"awsSourceMode">> => list(any()),
 %%   <<"description">> => string(),
 %%   <<"locale">> => string(),
 %%   <<"name">> => string(),

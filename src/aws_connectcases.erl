@@ -1316,6 +1316,13 @@
 
 
 %% Example:
+%% sla_update_configuration() :: #{
+%%   <<"targetSlaMinutes">> => float()
+%% }
+-type sla_update_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% sort() :: #{
 %%   <<"fieldId">> => string(),
 %%   <<"sortOrder">> => string()
@@ -2342,6 +2349,10 @@ create_layout(Client, DomainId, Input0, Options0) ->
 %%
 %% There's a quota for the number of fields allowed in a Custom type
 %% related item. See Connect Customer Cases quotas:
+%% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#cases-quotas.
+%%
+%% There's a quota for the number of SLAs that can be attached to a case.
+%% See Connect Customer Cases quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#cases-quotas.
 %%
 %% Use cases
@@ -3915,6 +3926,11 @@ update_layout(Client, DomainId, LayoutId, Input0, Options0) ->
 %% number of fields allowed in a Custom type related item. See Connect
 %% Customer Cases quotas:
 %% https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html#cases-quotas.
+%%
+%% Sla - Update the target duration (`targetSlaMinutes') of an SLA. The
+%% new deadline is counted from when the SLA was created. The SLA status is
+%% recalculated against the new deadline: an open SLA becomes Active or
+%% Overdue, and a completed SLA becomes Met or NotMet.
 %%
 %% Important things to know
 %%

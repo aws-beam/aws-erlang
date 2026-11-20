@@ -608,6 +608,13 @@
 
 
 %% Example:
+%% aws_billing_connector_configuration() :: #{
+%%   <<"iamRoleArn">> => string()
+%% }
+-type aws_billing_connector_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_put_gateway_rate_limits_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"rateLimits">> := list(batch_put_limit_entry())
@@ -999,6 +1006,13 @@
 %%   <<"type">> => list(any())
 %% }
 -type content_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% cpu_options() :: #{
+%%   <<"nestedVirtualization">> => list(any())
+%% }
+-type cpu_options() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1564,7 +1578,7 @@
 %% Example:
 %% create_payment_connector_request() :: #{
 %%   <<"clientToken">> => string(),
-%%   <<"credentialProviderConfigurations">> := list(list()),
+%%   <<"credentialProviderConfigurations">> => list(list()),
 %%   <<"description">> => string(),
 %%   <<"name">> := string(),
 %%   <<"provisionMode">> => list(any()),
@@ -4075,6 +4089,7 @@
 %% Example:
 %% launch_parameters() :: #{
 %%   <<"capacityReservationSpecification">> => capacity_reservation_specification(),
+%%   <<"cpuOptions">> => cpu_options(),
 %%   <<"ephemeralVolumes">> => list(ephemeral_block_device_mapping()),
 %%   <<"instanceProfileArn">> => string(),
 %%   <<"instanceRequirements">> => instance_requirements(),

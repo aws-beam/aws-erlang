@@ -932,7 +932,10 @@
 %% code_remediation_task_details() :: #{
 %%   <<"codeDiffLink">> => [string()],
 %%   <<"pullRequestLink">> => [string()],
-%%   <<"repoName">> => [string()]
+%%   <<"repoName">> => [string()],
+%%   <<"status">> => list(any()),
+%%   <<"statusCode">> => [string()],
+%%   <<"statusReason">> => [string()]
 %% }
 -type code_remediation_task_details() :: #{binary() => any()}.
 

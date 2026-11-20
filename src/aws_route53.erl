@@ -39,6 +39,8 @@
          create_cidr_collection/3,
          create_health_check/2,
          create_health_check/3,
+         create_health_check_source/2,
+         create_health_check_source/3,
          create_hosted_zone/2,
          create_hosted_zone/3,
          create_key_signing_key/2,
@@ -63,6 +65,8 @@
          delete_cidr_collection/4,
          delete_health_check/3,
          delete_health_check/4,
+         delete_health_check_source/3,
+         delete_health_check_source/4,
          delete_hosted_zone/3,
          delete_hosted_zone/4,
          delete_key_signing_key/4,
@@ -109,6 +113,9 @@
          get_health_check_last_failure_reason/2,
          get_health_check_last_failure_reason/4,
          get_health_check_last_failure_reason/5,
+         get_health_check_source/2,
+         get_health_check_source/4,
+         get_health_check_source/5,
          get_health_check_status/2,
          get_health_check_status/4,
          get_health_check_status/5,
@@ -151,9 +158,15 @@
          list_geo_locations/1,
          list_geo_locations/3,
          list_geo_locations/4,
+         list_health_check_sources/1,
+         list_health_check_sources/3,
+         list_health_check_sources/4,
          list_health_checks/1,
          list_health_checks/3,
          list_health_checks/4,
+         list_health_checks_by_source/2,
+         list_health_checks_by_source/4,
+         list_health_checks_by_source/5,
          list_hosted_zones/1,
          list_hosted_zones/3,
          list_hosted_zones/4,
@@ -486,6 +499,24 @@
 
 
 %% Example:
+%% create_health_check_source_request() :: #{
+%%   <<"CallerReference">> => string(),
+%%   <<"HealthCheckSourceConfig">> := health_check_source_config(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_health_check_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_health_check_source_response() :: #{
+%%   <<"HealthCheckSourceId">> => string(),
+%%   <<"HealthCheckSourceStatus">> => list(any()),
+%%   <<"Location">> => string()
+%% }
+-type create_health_check_source_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_hosted_zone_request() :: #{
 %%   <<"CallerReference">> := string(),
 %%   <<"DelegationSetId">> => string(),
@@ -706,6 +737,18 @@
 %% Example:
 %% delete_health_check_response() :: #{}
 -type delete_health_check_response() :: #{}.
+
+%% Example:
+%% delete_health_check_source_request() :: #{}
+-type delete_health_check_source_request() :: #{}.
+
+
+%% Example:
+%% delete_health_check_source_response() :: #{
+%%   <<"HealthCheckSourceId">> => string(),
+%%   <<"HealthCheckSourceStatus">> => list(any())
+%% }
+-type delete_health_check_source_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_hosted_zone_request() :: #{}
@@ -970,6 +1013,17 @@
 -type get_health_check_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_health_check_source_request() :: #{}
+-type get_health_check_source_request() :: #{}.
+
+
+%% Example:
+%% get_health_check_source_response() :: #{
+%%   <<"HealthCheckSource">> => health_check_source()
+%% }
+-type get_health_check_source_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_health_check_status_request() :: #{}
 -type get_health_check_status_request() :: #{}.
 
@@ -1109,8 +1163,10 @@
 %%   <<"ChildHealthChecks">> => list(string()),
 %%   <<"Disabled">> => boolean(),
 %%   <<"EnableSNI">> => boolean(),
+%%   <<"EndpointType">> => list(any()),
 %%   <<"FailureThreshold">> => integer(),
 %%   <<"FullyQualifiedDomainName">> => string(),
+%%   <<"HealthCheckSourceId">> => string(),
 %%   <<"HealthThreshold">> => integer(),
 %%   <<"IPAddress">> => string(),
 %%   <<"InsufficientDataHealthStatus">> => list(any()),
@@ -1141,6 +1197,32 @@
 %%   <<"StatusReport">> => status_report()
 %% }
 -type health_check_observation() :: #{binary() => any()}.
+
+
+%% Example:
+%% health_check_source() :: #{
+%%   <<"HealthCheckSourceConfig">> => health_check_source_config(),
+%%   <<"HealthCheckSourceId">> => string(),
+%%   <<"HealthCheckSourceStatus">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"StatusReasonCode">> => list(any())
+%% }
+-type health_check_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% health_check_source_already_exists() :: #{
+%%   <<"message">> => string()
+%% }
+-type health_check_source_already_exists() :: #{binary() => any()}.
+
+
+%% Example:
+%% health_check_source_config() :: #{
+%%   <<"SubnetConfigurationList">> => list(subnet_configuration()),
+%%   <<"VpcId">> => string()
+%% }
+-type health_check_source_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1487,6 +1569,41 @@
 %%   <<"NextSubdivisionCode">> => string()
 %% }
 -type list_geo_locations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_health_check_sources_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string()
+%% }
+-type list_health_check_sources_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_health_check_sources_response() :: #{
+%%   <<"HealthCheckSources">> => list(health_check_source()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_health_check_sources_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_health_checks_by_source_request() :: #{
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()]
+%% }
+-type list_health_checks_by_source_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_health_checks_by_source_response() :: #{
+%%   <<"HealthChecks">> => list(health_check()),
+%%   <<"IsTruncated">> => boolean(),
+%%   <<"Marker">> => string(),
+%%   <<"MaxItems">> => [integer()],
+%%   <<"NextMarker">> => string()
+%% }
+-type list_health_checks_by_source_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1848,6 +1965,13 @@
 
 
 %% Example:
+%% no_such_health_check_source() :: #{
+%%   <<"message">> => string()
+%% }
+-type no_such_health_check_source() :: #{binary() => any()}.
+
+
+%% Example:
 %% no_such_hosted_zone() :: #{
 %%   <<"message">> => string()
 %% }
@@ -2017,6 +2141,15 @@
 
 
 %% Example:
+%% subnet_configuration() :: #{
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"SecurityGroupIdList">> => list(string()),
+%%   <<"SubnetId">> => string()
+%% }
+-type subnet_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -2053,6 +2186,13 @@
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% too_many_health_check_sources() :: #{
+%%   <<"message">> => string()
+%% }
+-type too_many_health_check_sources() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2171,6 +2311,7 @@
 %%   <<"EnableSNI">> => boolean(),
 %%   <<"FailureThreshold">> => integer(),
 %%   <<"FullyQualifiedDomainName">> => string(),
+%%   <<"HealthCheckSourceId">> => string(),
 %%   <<"HealthCheckVersion">> => float(),
 %%   <<"HealthThreshold">> => integer(),
 %%   <<"IPAddress">> => string(),
@@ -2305,6 +2446,7 @@
     throttling_exception() | 
     prior_request_not_complete() | 
     no_such_hosted_zone() | 
+    no_such_health_check_source() | 
     no_such_health_check() | 
     invalid_input().
 
@@ -2318,6 +2460,12 @@
     too_many_health_checks() | 
     invalid_input() | 
     health_check_already_exists().
+
+-type create_health_check_source_errors() ::
+    too_many_health_check_sources() | 
+    invalid_vpc_id() | 
+    invalid_input() | 
+    health_check_source_already_exists().
 
 -type create_hosted_zone_errors() ::
     too_many_hosted_zones() | 
@@ -2413,6 +2561,11 @@
     no_such_health_check() | 
     invalid_input() | 
     health_check_in_use().
+
+-type delete_health_check_source_errors() ::
+    prior_request_not_complete() | 
+    no_such_health_check_source() | 
+    invalid_input().
 
 -type delete_hosted_zone_errors() ::
     prior_request_not_complete() | 
@@ -2517,6 +2670,10 @@
     no_such_health_check() | 
     invalid_input().
 
+-type get_health_check_source_errors() ::
+    no_such_health_check_source() | 
+    invalid_input().
+
 -type get_health_check_status_errors() ::
     no_such_health_check() | 
     invalid_input().
@@ -2569,9 +2726,16 @@
 -type list_geo_locations_errors() ::
     invalid_input().
 
+-type list_health_check_sources_errors() ::
+    invalid_input().
+
 -type list_health_checks_errors() ::
     invalid_input() | 
     incompatible_version().
+
+-type list_health_checks_by_source_errors() ::
+    no_such_health_check_source() | 
+    invalid_input().
 
 -type list_hosted_zones_errors() ::
     no_such_delegation_set() | 
@@ -2607,6 +2771,7 @@
     throttling_exception() | 
     prior_request_not_complete() | 
     no_such_hosted_zone() | 
+    no_such_health_check_source() | 
     no_such_health_check() | 
     invalid_input().
 
@@ -2614,6 +2779,7 @@
     throttling_exception() | 
     prior_request_not_complete() | 
     no_such_hosted_zone() | 
+    no_such_health_check_source() | 
     no_such_health_check() | 
     invalid_input().
 
@@ -3007,7 +3173,8 @@ change_resource_record_sets(Client, HostedZoneId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Adds, edits, or deletes tags for a health check or a hosted zone.
+%% @doc Adds, edits, or deletes tags for a health check, a health check
+%% source, or a hosted zone.
 %%
 %% For information about using tags for cost allocation, see Using Cost
 %% Allocation
@@ -3121,10 +3288,16 @@ create_cidr_collection(Client, Input0, Options0) ->
 %% private hosted
 %% zone. Note the following:
 %%
-%% Route 53 health checkers are outside the VPC. To check the health of an
-%% endpoint within a VPC by IP address, you must assign a public IP address
-%% to the
-%% instance in the VPC.
+%% For a public health check, Route 53 health checkers are outside the VPC.
+%% To
+%% check the health of an endpoint within a VPC by IP address, you must
+%% assign a
+%% public IP address to the instance in the VPC.
+%%
+%% To check the health of an endpoint within a VPC by using a private IP
+%% address, use a private endpoint health check (`EndpointType' of
+%% `PRIVATE'). For more information, see
+%% `CreateHealthCheckSource'.
 %%
 %% You can configure a health checker to check the health of an external
 %% resource
@@ -3158,6 +3331,77 @@ create_health_check(Client, Input) ->
 create_health_check(Client, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/healthcheck"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    case request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode) of
+      {ok, Body0, {_, ResponseHeaders, _} = Response} ->
+        ResponseHeadersParams =
+          [
+            {<<"Location">>, <<"Location">>}
+          ],
+        FoldFun = fun({Name_, Key_}, Acc_) ->
+                      case lists:keyfind(Name_, 1, ResponseHeaders) of
+                        false -> Acc_;
+                        {_, Value_} -> Acc_#{Key_ => Value_}
+                      end
+                  end,
+        Body = lists:foldl(FoldFun, Body0, ResponseHeadersParams),
+        {ok, Body, Response};
+      Result ->
+        Result
+    end.
+
+%% @doc Creates a health check source, which defines the virtual private
+%% cloud (VPC), subnets, and security groups from which Route 53 sends
+%% private endpoint health check requests.
+%%
+%% To use this operation, you must have the
+%% `route53:CreateHealthCheckSource' permission. You must also have
+%% permission to create a service-linked role.
+%%
+%% Specify a VPC, one subnet in each Availability Zone that Route 53 uses for
+%% private endpoint health checks in the Amazon Web Services Region, and one
+%% or more security groups for each subnet. The security groups must allow
+%% outbound traffic to the endpoints that you want to check.
+%%
+%% Route 53 creates a health check source asynchronously, and the initial
+%% `HealthCheckSourceStatus' is `CREATE_PENDING'. Call
+%% `GetHealthCheckSource' until the status is `CREATE_COMPLETED'
+%% before you create health checks that use the source. You can't change
+%% the configuration of a health check source after you create it.
+%%
+%% If AWS Identity and Access Management (IAM) is still deleting the Route 53
+%% service-linked role for your account, the request fails with
+%% `InvalidInput'. Retry after the deletion completes.
+-spec create_health_check_source(aws_client:aws_client(), create_health_check_source_request()) ->
+    {ok, create_health_check_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_health_check_source_errors(), tuple()}.
+create_health_check_source(Client, Input) ->
+    create_health_check_source(Client, Input, []).
+
+-spec create_health_check_source(aws_client:aws_client(), create_health_check_source_request(), proplists:proplist()) ->
+    {ok, create_health_check_source_response(), tuple()} |
+    {error, any()} |
+    {error, create_health_check_source_errors(), tuple()}.
+create_health_check_source(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2013-04-01/healthchecksource"],
     SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -4132,6 +4376,60 @@ delete_health_check(Client, HealthCheckId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes a health check source.
+%%
+%% Before you delete a health check source, delete or update any health
+%% checks that reference it. Otherwise, the request fails with
+%% `InvalidInput'. The request also fails with `InvalidInput' if the
+%% status of the health check source is `CREATE_PENDING' or
+%% `CREATE_IN_PROGRESS'. Wait until the status is `CREATE_COMPLETED'
+%% or `CREATE_FAILED', and then try again.
+%%
+%% Route 53 deletes a health check source asynchronously, and the initial
+%% `HealthCheckSourceStatus' is `DELETE_PENDING'. Call
+%% `GetHealthCheckSource' to track progress. After the deletion
+%% completes, `GetHealthCheckSource' returns
+%% `NoSuchHealthCheckSource' and the health check source no longer
+%% appears in the results of `ListHealthCheckSources'. If you delete a
+%% health check source that is already deleted, the request fails with
+%% `NoSuchHealthCheckSource'.
+%%
+%% To use this operation, you must have the
+%% `route53:DeleteHealthCheckSource' permission. You must also have
+%% permission to create a service-linked role.
+-spec delete_health_check_source(aws_client:aws_client(), binary() | list(), delete_health_check_source_request()) ->
+    {ok, delete_health_check_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_health_check_source_errors(), tuple()}.
+delete_health_check_source(Client, HealthCheckSourceId, Input) ->
+    delete_health_check_source(Client, HealthCheckSourceId, Input, []).
+
+-spec delete_health_check_source(aws_client:aws_client(), binary() | list(), delete_health_check_source_request(), proplists:proplist()) ->
+    {ok, delete_health_check_source_response(), tuple()} |
+    {error, any()} |
+    {error, delete_health_check_source_errors(), tuple()}.
+delete_health_check_source(Client, HealthCheckSourceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/2013-04-01/healthchecksource/", aws_util:encode_uri(HealthCheckSourceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a hosted zone.
 %%
 %% If the hosted zone was created by another service, such as Cloud Map, see
@@ -5073,6 +5371,45 @@ get_health_check_last_failure_reason(Client, HealthCheckId, QueryMap, HeadersMap
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Gets information about a specified health check source, including its
+%% status and the virtual private cloud (VPC), subnets, and security groups
+%% that it uses.
+-spec get_health_check_source(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_health_check_source_response(), tuple()} |
+    {error, any()} |
+    {error, get_health_check_source_errors(), tuple()}.
+get_health_check_source(Client, HealthCheckSourceId)
+  when is_map(Client) ->
+    get_health_check_source(Client, HealthCheckSourceId, #{}, #{}).
+
+-spec get_health_check_source(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_health_check_source_response(), tuple()} |
+    {error, any()} |
+    {error, get_health_check_source_errors(), tuple()}.
+get_health_check_source(Client, HealthCheckSourceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_health_check_source(Client, HealthCheckSourceId, QueryMap, HeadersMap, []).
+
+-spec get_health_check_source(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_health_check_source_response(), tuple()} |
+    {error, any()} |
+    {error, get_health_check_source_errors(), tuple()}.
+get_health_check_source(Client, HealthCheckSourceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2013-04-01/healthchecksource/", aws_util:encode_uri(HealthCheckSourceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets status of a specified health check.
 %%
 %% This API is intended for use during development to diagnose behavior. It
@@ -5692,6 +6029,52 @@ list_geo_locations(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Retrieves a list of the health check sources that are associated with
+%% the current Amazon Web Services account.
+%%
+%% Results are paginated. To get more results, specify the `NextToken'
+%% value from the previous response for `NextToken'.
+-spec list_health_check_sources(aws_client:aws_client()) ->
+    {ok, list_health_check_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_health_check_sources_errors(), tuple()}.
+list_health_check_sources(Client)
+  when is_map(Client) ->
+    list_health_check_sources(Client, #{}, #{}).
+
+-spec list_health_check_sources(aws_client:aws_client(), map(), map()) ->
+    {ok, list_health_check_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_health_check_sources_errors(), tuple()}.
+list_health_check_sources(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_health_check_sources(Client, QueryMap, HeadersMap, []).
+
+-spec list_health_check_sources(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_health_check_sources_response(), tuple()} |
+    {error, any()} |
+    {error, list_health_check_sources_errors(), tuple()}.
+list_health_check_sources(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2013-04-01/healthchecksource"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxresults">>, maps:get(<<"maxresults">>, QueryMap, undefined)},
+        {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieve a list of the health checks that are associated with the
 %% current Amazon Web Services account.
 -spec list_health_checks(aws_client:aws_client()) ->
@@ -5717,6 +6100,52 @@ list_health_checks(Client, QueryMap, HeadersMap)
 list_health_checks(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/2013-04-01/healthcheck"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"marker">>, maps:get(<<"marker">>, QueryMap, undefined)},
+        {<<"maxitems">>, maps:get(<<"maxitems">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a list of the health checks that use a specified health
+%% check source.
+%%
+%% Results are paginated. If `IsTruncated' is `true', specify the
+%% `NextMarker' value for `marker' to get more results.
+-spec list_health_checks_by_source(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_health_checks_by_source_response(), tuple()} |
+    {error, any()} |
+    {error, list_health_checks_by_source_errors(), tuple()}.
+list_health_checks_by_source(Client, HealthCheckSourceId)
+  when is_map(Client) ->
+    list_health_checks_by_source(Client, HealthCheckSourceId, #{}, #{}).
+
+-spec list_health_checks_by_source(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_health_checks_by_source_response(), tuple()} |
+    {error, any()} |
+    {error, list_health_checks_by_source_errors(), tuple()}.
+list_health_checks_by_source(Client, HealthCheckSourceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_health_checks_by_source(Client, HealthCheckSourceId, QueryMap, HeadersMap, []).
+
+-spec list_health_checks_by_source(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_health_checks_by_source_response(), tuple()} |
+    {error, any()} |
+    {error, list_health_checks_by_source_errors(), tuple()}.
+list_health_checks_by_source(Client, HealthCheckSourceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2013-04-01/healthchecks/source/", aws_util:encode_uri(HealthCheckSourceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

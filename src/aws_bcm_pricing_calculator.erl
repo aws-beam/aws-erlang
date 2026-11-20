@@ -49,6 +49,8 @@
          get_bill_scenario/3,
          get_preferences/2,
          get_preferences/3,
+         get_usage_lines_estimated_cost/2,
+         get_usage_lines_estimated_cost/3,
          get_workload_estimate/2,
          get_workload_estimate/3,
          list_bill_estimate_commitments/2,
@@ -754,6 +756,63 @@
 -type get_preferences_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_usage_lines_estimated_cost_error() :: #{
+%%   <<"errorCode">> => list(any()),
+%%   <<"errorMessage">> => [string()],
+%%   <<"key">> => string(),
+%%   <<"operation">> => string(),
+%%   <<"serviceCode">> => string(),
+%%   <<"usageType">> => string()
+%% }
+-type get_usage_lines_estimated_cost_error() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_lines_estimated_cost_estimated_cost() :: #{
+%%   <<"cost">> => [float()],
+%%   <<"currency">> => list(any()),
+%%   <<"usageAmount">> => [float()],
+%%   <<"usageUnit">> => [string()]
+%% }
+-type get_usage_lines_estimated_cost_estimated_cost() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_lines_estimated_cost_input() :: #{
+%%   <<"amount">> => float(),
+%%   <<"key">> => string(),
+%%   <<"operation">> => string(),
+%%   <<"serviceCode">> => string(),
+%%   <<"usageType">> => string()
+%% }
+-type get_usage_lines_estimated_cost_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_lines_estimated_cost_line_item() :: #{
+%%   <<"estimatedCost">> => get_usage_lines_estimated_cost_estimated_cost(),
+%%   <<"key">> => string(),
+%%   <<"operation">> => string(),
+%%   <<"serviceCode">> => string(),
+%%   <<"usageType">> => string()
+%% }
+-type get_usage_lines_estimated_cost_line_item() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_lines_estimated_cost_request() :: #{
+%%   <<"rateType">> := list(any()),
+%%   <<"usage">> := list(get_usage_lines_estimated_cost_input())
+%% }
+-type get_usage_lines_estimated_cost_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_usage_lines_estimated_cost_response() :: #{
+%%   <<"currency">> => list(any()),
+%%   <<"errors">> => list(get_usage_lines_estimated_cost_error()),
+%%   <<"lineItems">> => list(get_usage_lines_estimated_cost_line_item()),
+%%   <<"rateType">> => list(any()),
+%%   <<"totalCost">> => [float()]
+%% }
+-type get_usage_lines_estimated_cost_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_workload_estimate_request() :: #{
 %%   <<"identifier">> := string()
 %% }
@@ -1319,6 +1378,13 @@
 -type get_preferences_errors() ::
     data_unavailable_exception().
 
+-type get_usage_lines_estimated_cost_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    data_unavailable_exception() | 
+    access_denied_exception().
+
 -type get_workload_estimate_errors() ::
     resource_not_found_exception() | 
     data_unavailable_exception().
@@ -1466,7 +1532,7 @@ batch_create_workload_estimate_usage(Client, Input, Options)
 
 %% @doc Delete commitment that you have created in a Bill Scenario.
 %%
-%% You can only delete a commitment that you had added and cannot model
+%% You can only delete a commitment that you had added and can't model
 %% deletion (or removal) of a existing commitment. If you want model deletion
 %% of an existing commitment, see the negate
 %% BillScenarioCommitmentModificationAction:
@@ -1498,8 +1564,8 @@ batch_delete_bill_scenario_commitment_modification(Client, Input, Options)
 
 %% @doc Delete usage that you have created in a Bill Scenario.
 %%
-%% You can only delete usage that you had added and cannot model deletion (or
-%% removal) of a existing usage. If you want model removal of an existing
+%% You can only delete usage that you had added and can't model deletion
+%% (or removal) of a existing usage. If you want model removal of an existing
 %% usage, see BatchUpdateBillScenarioUsageModification:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateBillScenarioUsageModification.html.
 %%
@@ -1526,8 +1592,8 @@ batch_delete_bill_scenario_usage_modification(Client, Input, Options)
 
 %% @doc Delete usage that you have created in a Workload estimate.
 %%
-%% You can only delete usage that you had added and cannot model deletion (or
-%% removal) of a existing usage. If you want model removal of an existing
+%% You can only delete usage that you had added and can't model deletion
+%% (or removal) of a existing usage. If you want model removal of an existing
 %% usage, see BatchUpdateWorkloadEstimateUsage:
 %% https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_AWSBCMPricingCalculator_BatchUpdateWorkloadEstimateUsage.html.
 %%
@@ -1791,6 +1857,32 @@ get_preferences(Client, Input)
 get_preferences(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetPreferences">>, Input, Options).
+
+%% @doc Retrieves the estimated cost of a list of usage lines.
+%%
+%% Each usage line identifies a billing line by its service code, usage type,
+%% and operation, and includes the usage amount to price. The estimate is
+%% based on Amazon Web Services pricing data and the rate type you choose. It
+%% doesn't include taxes, and your actual charges depend on your usage.
+%%
+%% The response includes the estimated cost of each usage line that was
+%% priced. It also includes each usage line that couldn't be priced, and
+%% the reason it couldn't be priced.
+-spec get_usage_lines_estimated_cost(aws_client:aws_client(), get_usage_lines_estimated_cost_request()) ->
+    {ok, get_usage_lines_estimated_cost_response(), tuple()} |
+    {error, any()} |
+    {error, get_usage_lines_estimated_cost_errors(), tuple()}.
+get_usage_lines_estimated_cost(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_usage_lines_estimated_cost(Client, Input, []).
+
+-spec get_usage_lines_estimated_cost(aws_client:aws_client(), get_usage_lines_estimated_cost_request(), proplists:proplist()) ->
+    {ok, get_usage_lines_estimated_cost_response(), tuple()} |
+    {error, any()} |
+    {error, get_usage_lines_estimated_cost_errors(), tuple()}.
+get_usage_lines_estimated_cost(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetUsageLinesEstimatedCost">>, Input, Options).
 
 %% @doc Retrieves details of a specific workload estimate.
 -spec get_workload_estimate(aws_client:aws_client(), get_workload_estimate_request()) ->

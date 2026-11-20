@@ -759,7 +759,8 @@
 %%   <<"StorageConnectors">> => list(storage_connector()),
 %%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
 %%   <<"Tags">> => map(),
-%%   <<"UserSettings">> => list(user_setting())
+%%   <<"UserSettings">> => list(user_setting()),
+%%   <<"WebAuthnRedirection">> => web_authn_redirection()
 %% }
 -type create_stack_request() :: #{binary() => any()}.
 
@@ -1902,7 +1903,8 @@
 %%   <<"StorageConnectorAuthentication">> => list(any()),
 %%   <<"StorageConnectors">> => list(storage_connector()),
 %%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
-%%   <<"UserSettings">> => list(user_setting())
+%%   <<"UserSettings">> => list(user_setting()),
+%%   <<"WebAuthnRedirection">> => web_authn_redirection()
 %% }
 -type stack() :: #{binary() => any()}.
 
@@ -2215,7 +2217,8 @@
 %%   <<"StorageConnectorAuthentication">> => list(any()),
 %%   <<"StorageConnectors">> => list(storage_connector()),
 %%   <<"StreamingExperienceSettings">> => streaming_experience_settings(),
-%%   <<"UserSettings">> => list(user_setting())
+%%   <<"UserSettings">> => list(user_setting()),
+%%   <<"WebAuthnRedirection">> => web_authn_redirection()
 %% }
 -type update_stack_request() :: #{binary() => any()}.
 
@@ -2311,6 +2314,13 @@
 %%   <<"SubnetIds">> => list(string())
 %% }
 -type vpc_config() :: #{binary() => any()}.
+
+%% Example:
+%% web_authn_redirection() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"ProcessCompatibilityList">> => list(string())
+%% }
+-type web_authn_redirection() :: #{binary() => any()}.
 
 -type associate_app_block_builder_app_block_errors() ::
     resource_not_found_exception() | 

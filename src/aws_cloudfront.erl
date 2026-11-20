@@ -852,7 +852,8 @@
 %%   <<"Name">> => string(),
 %%   <<"RoutingEndpoint">> => string(),
 %%   <<"Status">> => string(),
-%%   <<"Tags">> => tags()
+%%   <<"Tags">> => tags(),
+%%   <<"ViewerFallback">> => viewer_fallback()
 %% }
 -type connection_group() :: #{binary() => any()}.
 
@@ -876,7 +877,8 @@
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"Name">> => string(),
 %%   <<"RoutingEndpoint">> => string(),
-%%   <<"Status">> => string()
+%%   <<"Status">> => string(),
+%%   <<"ViewerFallback">> => viewer_fallback()
 %% }
 -type connection_group_summary() :: #{binary() => any()}.
 
@@ -1082,7 +1084,8 @@
 %%   <<"Enabled">> => boolean(),
 %%   <<"Ipv6Enabled">> => boolean(),
 %%   <<"Name">> := string(),
-%%   <<"Tags">> => tags()
+%%   <<"Tags">> => tags(),
+%%   <<"ViewerFallback">> => viewer_fallback()
 %% }
 -type create_connection_group_request() :: #{binary() => any()}.
 
@@ -1136,6 +1139,7 @@
 %%   <<"Enabled">> => boolean(),
 %%   <<"ManagedCertificateRequest">> => managed_certificate_request(),
 %%   <<"Name">> := string(),
+%%   <<"OnDomainTakeover">> => list(any()),
 %%   <<"Parameters">> => list(parameter()),
 %%   <<"Tags">> => tags()
 %% }
@@ -1980,7 +1984,8 @@
 
 %% Example:
 %% domain_item() :: #{
-%%   <<"Domain">> => string()
+%%   <<"Domain">> => string(),
+%%   <<"ServeOn">> => list(any())
 %% }
 -type domain_item() :: #{binary() => any()}.
 
@@ -1988,6 +1993,7 @@
 %% Example:
 %% domain_result() :: #{
 %%   <<"Domain">> => string(),
+%%   <<"ServeOn">> => list(any()),
 %%   <<"Status">> => list(any())
 %% }
 -type domain_result() :: #{binary() => any()}.
@@ -5419,7 +5425,8 @@
 %%   <<"AnycastIpListId">> => string(),
 %%   <<"Enabled">> => boolean(),
 %%   <<"IfMatch">> := string(),
-%%   <<"Ipv6Enabled">> => boolean()
+%%   <<"Ipv6Enabled">> => boolean(),
+%%   <<"ViewerFallback">> => viewer_fallback()
 %% }
 -type update_connection_group_request() :: #{binary() => any()}.
 
@@ -5473,6 +5480,7 @@
 %%   <<"Enabled">> => boolean(),
 %%   <<"IfMatch">> := string(),
 %%   <<"ManagedCertificateRequest">> => managed_certificate_request(),
+%%   <<"OnDomainTakeover">> => list(any()),
 %%   <<"Parameters">> => list(parameter())
 %% }
 -type update_distribution_tenant_request() :: #{binary() => any()}.
@@ -5767,6 +5775,13 @@
 %%   <<"SSLSupportMethod">> => list(any())
 %% }
 -type viewer_certificate() :: #{binary() => any()}.
+
+
+%% Example:
+%% viewer_fallback() :: #{
+%%   <<"DistributionId">> => string()
+%% }
+-type viewer_fallback() :: #{binary() => any()}.
 
 
 %% Example:
@@ -7007,6 +7022,7 @@
     illegal_origin_access_configuration() | 
     illegal_field_level_encryption_config_association_with_cache_behavior() | 
     entity_not_found() | 
+    entity_limit_exceeded() | 
     continuous_deployment_policy_in_use() | 
     cname_already_exists() | 
     access_denied().
@@ -7090,9 +7106,11 @@
 -type update_domain_association_errors() ::
     precondition_failed() | 
     invalid_if_match_version() | 
+    invalid_association() | 
     invalid_argument() | 
     illegal_update() | 
     entity_not_found() | 
+    entity_limit_exceeded() | 
     access_denied().
 
 -type update_field_level_encryption_config_errors() ::

@@ -2671,16 +2671,18 @@ get_dimension_values(Client, Input, Options)
 
 %% @doc Retrieves the reservation coverage for your account, which you can
 %% use to see how much
-%% of your Amazon Elastic Compute Cloud, Amazon ElastiCache, Amazon
-%% Relational Database Service,
-%% or Amazon Redshift usage is covered by a reservation.
+%% of your Amazon Elastic Compute Cloud, Amazon Relational Database Service,
+%% Amazon ElastiCache,
+%% Amazon MemoryDB, Amazon Redshift, Amazon Elasticsearch Service, or Amazon
+%% OpenSearch Service
+%% usage is covered by a reservation.
 %%
-%% An organization's management account can
-%% see the coverage of the associated member accounts. This supports
-%% dimensions, cost categories,
-%% and nested expressions. For any time period, you can filter data about
-%% reservation usage by
-%% the following dimensions:
+%% An organization's management account can see the coverage
+%% of the associated member accounts. This supports dimensions, cost
+%% categories, and nested
+%% expressions. For any time period, you can filter data about reservation
+%% usage by the following
+%% dimensions:
 %%
 %% AZ
 %%
@@ -2692,9 +2694,9 @@ get_dimension_values(Client, Input, Options)
 %%
 %% INSTANCE_TYPE
 %%
-%% LINKED_ACCOUNT
+%% INSTANCE_TYPE_FAMILY
 %%
-%% OPERATING_SYSTEM
+%% LINKED_ACCOUNT
 %%
 %% PLATFORM
 %%
@@ -2705,6 +2707,10 @@ get_dimension_values(Client, Input, Options)
 %% TAG
 %%
 %% TENANCY
+%%
+%% The dimensions that you can use depend on the service in the `SERVICE'
+%% filter.
+%% For details, see `Filter'.
 %%
 %% To determine valid values for a dimension, use the
 %% `GetDimensionValues'

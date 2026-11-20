@@ -53,6 +53,8 @@
          assign_opportunity/3,
          associate_opportunity/2,
          associate_opportunity/3,
+         create_customer_account/2,
+         create_customer_account/3,
          create_engagement/2,
          create_engagement/3,
          create_engagement_context/2,
@@ -65,18 +67,30 @@
          create_resource_snapshot/3,
          create_resource_snapshot_job/2,
          create_resource_snapshot_job/3,
+         delete_customer_account/2,
+         delete_customer_account/3,
          delete_resource_snapshot_job/2,
          delete_resource_snapshot_job/3,
          disassociate_opportunity/2,
          disassociate_opportunity/3,
          get_aws_opportunity_summary/2,
          get_aws_opportunity_summary/3,
+         get_customer_account/2,
+         get_customer_account/3,
+         get_customer_account_bulk_job/2,
+         get_customer_account_bulk_job/3,
+         get_customer_account_bulk_job_report_url/2,
+         get_customer_account_bulk_job_report_url/3,
+         get_customer_account_statistics/2,
+         get_customer_account_statistics/3,
          get_engagement/2,
          get_engagement/3,
          get_engagement_invitation/2,
          get_engagement_invitation/3,
          get_opportunity/2,
          get_opportunity/3,
+         get_opportunity_bulk_job_report_url/2,
+         get_opportunity_bulk_job_report_url/3,
          get_prospecting_from_engagement_task/2,
          get_prospecting_from_engagement_task/3,
          get_resource_snapshot/2,
@@ -85,10 +99,16 @@
          get_resource_snapshot_job/3,
          get_selling_system_settings/2,
          get_selling_system_settings/3,
+         list_customer_account_bulk_job_results/2,
+         list_customer_account_bulk_job_results/3,
+         list_customer_account_bulk_jobs/2,
+         list_customer_account_bulk_jobs/3,
          list_engagement_by_accepting_invitation_tasks/2,
          list_engagement_by_accepting_invitation_tasks/3,
          list_engagement_from_opportunity_tasks/2,
          list_engagement_from_opportunity_tasks/3,
+         list_engagement_groups/2,
+         list_engagement_groups/3,
          list_engagement_invitations/2,
          list_engagement_invitations/3,
          list_engagement_members/2,
@@ -99,6 +119,10 @@
          list_engagements/3,
          list_opportunities/2,
          list_opportunities/3,
+         list_opportunity_bulk_job_results/2,
+         list_opportunity_bulk_job_results/3,
+         list_opportunity_bulk_jobs/2,
+         list_opportunity_bulk_jobs/3,
          list_opportunity_from_engagement_tasks/2,
          list_opportunity_from_engagement_tasks/3,
          list_prospecting_from_engagement_tasks/2,
@@ -115,10 +139,20 @@
          put_selling_system_settings/3,
          reject_engagement_invitation/2,
          reject_engagement_invitation/3,
+         search_customer_accounts/2,
+         search_customer_accounts/3,
+         search_engagements/2,
+         search_engagements/3,
+         search_opportunities/2,
+         search_opportunities/3,
+         start_customer_account_bulk_job/2,
+         start_customer_account_bulk_job/3,
          start_engagement_by_accepting_invitation_task/2,
          start_engagement_by_accepting_invitation_task/3,
          start_engagement_from_opportunity_task/2,
          start_engagement_from_opportunity_task/3,
+         start_opportunity_bulk_job/2,
+         start_opportunity_bulk_job/3,
          start_opportunity_from_engagement_task/2,
          start_opportunity_from_engagement_task/3,
          start_prospecting_from_engagement_task/2,
@@ -133,6 +167,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_customer_account/2,
+         update_customer_account/3,
          update_engagement_context/2,
          update_engagement_context/3,
          update_opportunity/2,
@@ -171,6 +207,24 @@
 -type account() :: #{binary() => any()}.
 
 %% Example:
+%% account_customer() :: #{
+%%   <<"CompanyName">> => string(),
+%%   <<"CountryCode">> => list(any()),
+%%   <<"Industry">> => string(),
+%%   <<"WebsiteUrl">> => string()
+%% }
+-type account_customer() :: #{binary() => any()}.
+
+%% Example:
+%% account_planning_invitation_payload() :: #{
+%%   <<"AccountIdentifier">> => string(),
+%%   <<"Customer">> => account_customer(),
+%%   <<"PreferredContact">> => preferred_contact_window(),
+%%   <<"SenderContacts">> => list(sender_contact())
+%% }
+-type account_planning_invitation_payload() :: #{binary() => any()}.
+
+%% Example:
 %% account_receiver() :: #{
 %%   <<"Alias">> => string(),
 %%   <<"AwsAccountId">> => string()
@@ -207,6 +261,20 @@
 -type address_summary() :: #{binary() => any()}.
 
 %% Example:
+%% aggregation_request() :: #{
+%%   <<"GroupBy">> => list(list(any())())
+%% }
+-type aggregation_request() :: #{binary() => any()}.
+
+%% Example:
+%% aggregation_result() :: #{
+%%   <<"Buckets">> => list(bucket()),
+%%   <<"GroupBy">> => list(list(any())()),
+%%   <<"OtherCount">> => [integer()]
+%% }
+-type aggregation_result() :: #{binary() => any()}.
+
+%% Example:
 %% assign_opportunity_request() :: #{
 %%   <<"Assignee">> := assignee_contact(),
 %%   <<"Catalog">> := string(),
@@ -232,6 +300,65 @@
 %%   <<"RelatedEntityType">> := list(any())
 %% }
 -type associate_opportunity_request() :: #{binary() => any()}.
+
+%% Example:
+%% aws_enrichment() :: #{
+%%   <<"Customer">> => aws_enrichment_customer(),
+%%   <<"Insights">> => aws_enrichment_insights()
+%% }
+-type aws_enrichment() :: #{binary() => any()}.
+
+%% Example:
+%% aws_enrichment_customer() :: #{
+%%   <<"AccountName">> => [string()],
+%%   <<"CompanySize">> => [string()],
+%%   <<"Country">> => [string()],
+%%   <<"CustomerAccountPlanningQualification">> => [string()],
+%%   <<"EligiblePrograms">> => list([string()]()),
+%%   <<"Geo">> => [string()],
+%%   <<"Industry">> => [string()],
+%%   <<"Region">> => [string()],
+%%   <<"Sector">> => [string()],
+%%   <<"Segment">> => [string()],
+%%   <<"SubIndustry">> => [string()],
+%%   <<"SubRegion">> => [string()]
+%% }
+-type aws_enrichment_customer() :: #{binary() => any()}.
+
+%% Example:
+%% aws_enrichment_customer_summary() :: #{
+%%   <<"AccountPlanningQualification">> => string(),
+%%   <<"Country">> => [string()],
+%%   <<"EligiblePrograms">> => list([string()]()),
+%%   <<"Geo">> => [string()],
+%%   <<"Industry">> => [string()],
+%%   <<"Segment">> => [string()]
+%% }
+-type aws_enrichment_customer_summary() :: #{binary() => any()}.
+
+%% Example:
+%% aws_enrichment_insights() :: #{
+%%   <<"MarketplaceEngagementScore">> => [string()],
+%%   <<"SolutionCategory">> => [string()],
+%%   <<"SolutionScore">> => [string()],
+%%   <<"SolutionSubCategory">> => [string()]
+%% }
+-type aws_enrichment_insights() :: #{binary() => any()}.
+
+%% Example:
+%% aws_enrichment_insights_summary() :: #{
+%%   <<"MarketplaceEngagementScore">> => [string()],
+%%   <<"SolutionCategory">> => [string()],
+%%   <<"SolutionScore">> => [string()]
+%% }
+-type aws_enrichment_insights_summary() :: #{binary() => any()}.
+
+%% Example:
+%% aws_enrichment_summary() :: #{
+%%   <<"Customer">> => aws_enrichment_customer_summary(),
+%%   <<"Insights">> => aws_enrichment_insights_summary()
+%% }
+-type aws_enrichment_summary() :: #{binary() => any()}.
 
 %% Example:
 %% aws_opportunity_customer() :: #{
@@ -278,6 +405,7 @@
 %% Example:
 %% aws_opportunity_summary_full_view() :: #{
 %%   <<"CosellMotion">> => [string()],
+%%   <<"CosellMotionReason">> => [string()],
 %%   <<"Customer">> => aws_opportunity_customer(),
 %%   <<"Insights">> => aws_opportunity_insights(),
 %%   <<"InvolvementType">> => list(any()),
@@ -357,6 +485,38 @@
 -type aws_team_member() :: #{binary() => any()}.
 
 %% Example:
+%% best_outreach_window() :: #{
+%%   <<"Day">> => list(any()),
+%%   <<"EndTimeUtc">> => string(),
+%%   <<"StartTimeUtc">> => string()
+%% }
+-type best_outreach_window() :: #{binary() => any()}.
+
+%% Example:
+%% bucket() :: #{
+%%   <<"Count">> => [integer()],
+%%   <<"Values">> => list([string()]())
+%% }
+-type bucket() :: #{binary() => any()}.
+
+%% Example:
+%% bulk_job_result() :: #{
+%%   <<"ErrorCode">> => [string()],
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"RequestId">> => [string()],
+%%   <<"ResourceIdentifier">> => [string()],
+%%   <<"Status">> => list(any())
+%% }
+-type bulk_job_result() :: #{binary() => any()}.
+
+%% Example:
+%% channel_recommendation() :: #{
+%%   <<"BestOutreachWindows">> => list(best_outreach_window()),
+%%   <<"RecommendedChannel">> => string()
+%% }
+-type channel_recommendation() :: #{binary() => any()}.
+
+%% Example:
 %% conflict_exception() :: #{
 %%   <<"Message">> => [string()]
 %% }
@@ -371,6 +531,27 @@
 %%   <<"Phone">> => string()
 %% }
 -type contact() :: #{binary() => any()}.
+
+%% Example:
+%% create_customer_account_request() :: #{
+%%   <<"Account">> := customer_account_data(),
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> => string(),
+%%   <<"PartnerAccountIdentifier">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_customer_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_customer_account_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"PartnerAccountIdentifier">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type create_customer_account_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_engagement_context_request() :: #{
@@ -504,6 +685,77 @@
 -type customer() :: #{binary() => any()}.
 
 %% Example:
+%% customer_account_bulk_job_filter() :: #{
+%%   <<"Identifier">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type customer_account_bulk_job_filter() :: #{binary() => any()}.
+
+%% Example:
+%% customer_account_bulk_job_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CompletedAt">> => non_neg_integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DeletedCount">> => [integer()],
+%%   <<"FailureCount">> => [integer()],
+%%   <<"FailureReason">> => [string()],
+%%   <<"FileName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ProcessedRecords">> => [integer()],
+%%   <<"Status">> => list(any()),
+%%   <<"SuccessCount">> => [integer()],
+%%   <<"TotalRecords">> => [integer()]
+%% }
+-type customer_account_bulk_job_summary() :: #{binary() => any()}.
+
+%% Example:
+%% customer_account_context() :: #{
+%%   <<"AccountIdentifier">> => string(),
+%%   <<"Customer">> => account_customer()
+%% }
+-type customer_account_context() :: #{binary() => any()}.
+
+%% Example:
+%% customer_account_data() :: #{
+%%   <<"Address">> => address(),
+%%   <<"CompanyName">> => string(),
+%%   <<"Domain">> => string(),
+%%   <<"Duns">> => string(),
+%%   <<"Industry">> => [string()],
+%%   <<"OtherIndustry">> => [string()],
+%%   <<"ParentCompanyName">> => string(),
+%%   <<"WebsiteUrl">> => string()
+%% }
+-type customer_account_data() :: #{binary() => any()}.
+
+%% Example:
+%% customer_account_details_summary() :: #{
+%%   <<"CompanyName">> => string()
+%% }
+-type customer_account_details_summary() :: #{binary() => any()}.
+
+%% Example:
+%% customer_account_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type customer_account_sort() :: #{binary() => any()}.
+
+%% Example:
+%% customer_account_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"AwsEnrichment">> => aws_enrichment_summary(),
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"CustomerAccount">> => customer_account_details_summary(),
+%%   <<"EnrichmentStatus">> => list(any()),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"PartnerAccountIdentifier">> => string()
+%% }
+-type customer_account_summary() :: #{binary() => any()}.
+
+%% Example:
 %% customer_projects_context() :: #{
 %%   <<"Customer">> => engagement_customer(),
 %%   <<"Project">> => engagement_customer_project_details()
@@ -515,6 +767,19 @@
 %%   <<"Account">> => account_summary()
 %% }
 -type customer_summary() :: #{binary() => any()}.
+
+%% Example:
+%% delete_customer_account_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type delete_customer_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_customer_account_response() :: #{
+
+%% }
+-type delete_customer_account_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_resource_snapshot_job_request() :: #{
@@ -556,6 +821,26 @@
 %%   <<"Title">> => string()
 %% }
 -type engagement_customer_project_details() :: #{binary() => any()}.
+
+%% Example:
+%% engagement_group_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type engagement_group_sort() :: #{binary() => any()}.
+
+%% Example:
+%% engagement_group_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"Count">> => [integer()],
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"ReadinessLevel">> => list(any()),
+%%   <<"UpdatedAt">> => non_neg_integer()
+%% }
+-type engagement_group_summary() :: #{binary() => any()}.
 
 %% Example:
 %% engagement_invitation_summary() :: #{
@@ -611,6 +896,50 @@
 -type engagement_resource_association_summary() :: #{binary() => any()}.
 
 %% Example:
+%% engagement_search_filter() :: #{
+%%   <<"AndAllFilters">> => list(engagement_search_filter()),
+%%   <<"ContainsAll">> => engagement_search_predicate(),
+%%   <<"ContainsAny">> => engagement_search_predicate(),
+%%   <<"EqualsTo">> => engagement_search_predicate(),
+%%   <<"GreaterThan">> => engagement_search_predicate(),
+%%   <<"GreaterThanOrEquals">> => engagement_search_predicate(),
+%%   <<"LessThan">> => engagement_search_predicate(),
+%%   <<"LessThanOrEquals">> => engagement_search_predicate(),
+%%   <<"NotFilter">> => engagement_search_filter(),
+%%   <<"OrAllFilters">> => list(engagement_search_filter())
+%% }
+-type engagement_search_filter() :: #{binary() => any()}.
+
+%% Example:
+%% engagement_search_predicate() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Value">> => list()
+%% }
+-type engagement_search_predicate() :: #{binary() => any()}.
+
+%% Example:
+%% engagement_search_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type engagement_search_sort() :: #{binary() => any()}.
+
+%% Example:
+%% engagement_search_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Contexts">> => list(engagement_context_details()),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"CreatedBy">> => string(),
+%%   <<"Description">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"MemberCount">> => [integer()],
+%%   <<"ModifiedAt">> => non_neg_integer(),
+%%   <<"ModifiedBy">> => string(),
+%%   <<"Title">> => string()
+%% }
+-type engagement_search_summary() :: #{binary() => any()}.
+
+%% Example:
 %% engagement_sort() :: #{
 %%   <<"SortBy">> => list(any()),
 %%   <<"SortOrder">> => list(any())
@@ -656,6 +985,28 @@
 -type expected_customer_spend() :: #{binary() => any()}.
 
 %% Example:
+%% filter() :: #{
+%%   <<"AndAllFilters">> => list(filter()),
+%%   <<"ContainsAll">> => filter_condition(),
+%%   <<"ContainsAny">> => filter_condition(),
+%%   <<"EqualsTo">> => filter_condition(),
+%%   <<"GreaterThan">> => filter_condition(),
+%%   <<"GreaterThanOrEquals">> => filter_condition(),
+%%   <<"LessThan">> => filter_condition(),
+%%   <<"LessThanOrEquals">> => filter_condition(),
+%%   <<"NotFilter">> => filter(),
+%%   <<"OrAllFilters">> => list(filter())
+%% }
+-type filter() :: #{binary() => any()}.
+
+%% Example:
+%% filter_condition() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Value">> => list()
+%% }
+-type filter_condition() :: #{binary() => any()}.
+
+%% Example:
 %% get_aws_opportunity_summary_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"RelatedOpportunityIdentifier">> := string()
@@ -666,6 +1017,7 @@
 %% get_aws_opportunity_summary_response() :: #{
 %%   <<"Catalog">> => string(),
 %%   <<"CosellMotion">> => [string()],
+%%   <<"CosellMotionReason">> => [string()],
 %%   <<"Customer">> => aws_opportunity_customer(),
 %%   <<"Insights">> => aws_opportunity_insights(),
 %%   <<"InvolvementType">> => list(any()),
@@ -680,6 +1032,90 @@
 %%   <<"Visibility">> => list(any())
 %% }
 -type get_aws_opportunity_summary_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_customer_account_bulk_job_report_url_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"ReportType">> => list(any())
+%% }
+-type get_customer_account_bulk_job_report_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_customer_account_bulk_job_report_url_response() :: #{
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"FailureReason">> => [string()],
+%%   <<"ReportStatus">> => list(any()),
+%%   <<"ReportType">> => list(any()),
+%%   <<"Url">> => string()
+%% }
+-type get_customer_account_bulk_job_report_url_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_customer_account_bulk_job_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_customer_account_bulk_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_customer_account_bulk_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CompletedAt">> => non_neg_integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"DeletedCount">> => [integer()],
+%%   <<"FailureCount">> => [integer()],
+%%   <<"FailureReason">> => [string()],
+%%   <<"FileName">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"ProcessedRecords">> => [integer()],
+%%   <<"Status">> => list(any()),
+%%   <<"SuccessCount">> => [integer()],
+%%   <<"TotalRecords">> => [integer()]
+%% }
+-type get_customer_account_bulk_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_customer_account_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string()
+%% }
+-type get_customer_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_customer_account_response() :: #{
+%%   <<"Account">> => customer_account_data(),
+%%   <<"Arn">> => string(),
+%%   <<"AwsEnrichment">> => aws_enrichment(),
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"EnrichmentStatus">> => list(any()),
+%%   <<"ExistingCustomerAccountArn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Issues">> => list(issue()),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"Message">> => [string()],
+%%   <<"PartnerAccountIdentifier">> => string(),
+%%   <<"ReasonCode">> => list(any()),
+%%   <<"Tags">> => list(tag())
+%% }
+-type get_customer_account_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_customer_account_statistics_request() :: #{
+%%   <<"Aggregations">> => list(aggregation_request()),
+%%   <<"Catalog">> := string(),
+%%   <<"Filter">> => filter(),
+%%   <<"IncludeMissing">> => [boolean()]
+%% }
+-type get_customer_account_statistics_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_customer_account_statistics_response() :: #{
+%%   <<"Aggregations">> => list(aggregation_result()),
+%%   <<"TotalCount">> => [integer()]
+%% }
+-type get_customer_account_statistics_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_engagement_invitation_request() :: #{
@@ -732,6 +1168,26 @@
 %%   <<"Title">> => string()
 %% }
 -type get_engagement_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_opportunity_bulk_job_report_url_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"JobId">> := string(),
+%%   <<"ReportFormat">> := list(any()),
+%%   <<"ReportType">> => list(any())
+%% }
+-type get_opportunity_bulk_job_report_url_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_opportunity_bulk_job_report_url_response() :: #{
+%%   <<"ExpiresAt">> => non_neg_integer(),
+%%   <<"FailureReason">> => [string()],
+%%   <<"ReportFormat">> => list(any()),
+%%   <<"ReportStatus">> => list(any()),
+%%   <<"ReportType">> => list(any()),
+%%   <<"Url">> => string()
+%% }
+-type get_opportunity_bulk_job_report_url_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_opportunity_request() :: #{
@@ -865,6 +1321,14 @@
 -type invitation_prospecting_result_aws() :: #{binary() => any()}.
 
 %% Example:
+%% issue() :: #{
+%%   <<"Code">> => [string()],
+%%   <<"Message">> => [string()],
+%%   <<"Severity">> => [string()]
+%% }
+-type issue() :: #{binary() => any()}.
+
+%% Example:
 %% last_modified_date() :: #{
 %%   <<"AfterLastModifiedDate">> => non_neg_integer(),
 %%   <<"BeforeLastModifiedDate">> => non_neg_integer()
@@ -912,6 +1376,7 @@
 
 %% Example:
 %% lead_insights() :: #{
+%%   <<"ChannelRecommendation">> => channel_recommendation(),
 %%   <<"LeadReadinessScore">> => [string()]
 %% }
 -type lead_insights() :: #{binary() => any()}.
@@ -992,6 +1457,39 @@
 -type life_cycle_summary() :: #{binary() => any()}.
 
 %% Example:
+%% list_customer_account_bulk_job_results_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type list_customer_account_bulk_job_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_customer_account_bulk_job_results_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Results">> => list(bulk_job_result())
+%% }
+-type list_customer_account_bulk_job_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_customer_account_bulk_jobs_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Filter">> => customer_account_bulk_job_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_customer_account_bulk_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_customer_account_bulk_jobs_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"items">> => list(customer_account_bulk_job_summary())
+%% }
+-type list_customer_account_bulk_jobs_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_engagement_by_accepting_invitation_task_summary() :: #{
 %%   <<"EngagementInvitationId">> => string(),
 %%   <<"Message">> => [string()],
@@ -1059,6 +1557,24 @@
 %%   <<"TaskSummaries">> => list(list_engagement_from_opportunity_task_summary())
 %% }
 -type list_engagement_from_opportunity_tasks_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_groups_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"EngagementGroupIdentifiers">> => list(string()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ReadinessLevel">> => list(any()),
+%%   <<"Sort">> => engagement_group_sort()
+%% }
+-type list_engagement_groups_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_engagement_groups_response() :: #{
+%%   <<"EngagementGroupSummaries">> => list(engagement_group_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_engagement_groups_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_engagement_invitations_request() :: #{
@@ -1159,6 +1675,40 @@
 %%   <<"OpportunitySummaries">> => list(opportunity_summary())
 %% }
 -type list_opportunities_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_opportunity_bulk_job_results_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"JobId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Status">> => list(any())
+%% }
+-type list_opportunity_bulk_job_results_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_opportunity_bulk_job_results_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"Results">> => list(bulk_job_result())
+%% }
+-type list_opportunity_bulk_job_results_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_opportunity_bulk_jobs_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"JobId">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Status">> => list(any())
+%% }
+-type list_opportunity_bulk_jobs_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_opportunity_bulk_jobs_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"OpportunityBulkJobSummaries">> => list(opportunity_bulk_job_summary())
+%% }
+-type list_opportunity_bulk_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_opportunity_from_engagement_task_summary() :: #{
@@ -1318,6 +1868,23 @@
 -type next_steps_history() :: #{binary() => any()}.
 
 %% Example:
+%% opportunity_bulk_job_summary() :: #{
+%%   <<"CompletedAt">> => non_neg_integer(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"FailureCount">> => [integer()],
+%%   <<"FailureReason">> => [string()],
+%%   <<"FileName">> => string(),
+%%   <<"JobId">> => string(),
+%%   <<"OperationType">> => list(any()),
+%%   <<"ProcessedRecords">> => [integer()],
+%%   <<"StartedAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"SuccessCount">> => [integer()],
+%%   <<"TotalRecords">> => [integer()]
+%% }
+-type opportunity_bulk_job_summary() :: #{binary() => any()}.
+
+%% Example:
 %% opportunity_engagement_invitation_sort() :: #{
 %%   <<"SortBy">> => list(any()),
 %%   <<"SortOrder">> => list(any())
@@ -1327,6 +1894,7 @@
 %% Example:
 %% opportunity_invitation_payload() :: #{
 %%   <<"Customer">> => engagement_customer(),
+%%   <<"OpportunityType">> => list(any()),
 %%   <<"Project">> => project_details(),
 %%   <<"ReceiverResponsibilities">> => list(list(any())()),
 %%   <<"SenderContacts">> => list(sender_contact())
@@ -1339,6 +1907,135 @@
 %%   <<"Trend">> => [string()]
 %% }
 -type opportunity_quality() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_account() :: #{
+%%   <<"Address">> => opportunity_search_address(),
+%%   <<"AwsAccountId">> => string(),
+%%   <<"CompanyName">> => string(),
+%%   <<"Industry">> => list(any())
+%% }
+-type opportunity_search_account() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_address() :: #{
+%%   <<"CountryCode">> => list(any())
+%% }
+-type opportunity_search_address() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_aws_summary() :: #{
+%%   <<"CosellMotion">> => string(),
+%%   <<"Insights">> => opportunity_search_insights(),
+%%   <<"Origin">> => list(any())
+%% }
+-type opportunity_search_aws_summary() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_customer() :: #{
+%%   <<"Account">> => opportunity_search_account()
+%% }
+-type opportunity_search_customer() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_expected_customer_spend() :: #{
+%%   <<"Amount">> => string(),
+%%   <<"CurrencyCode">> => list(any())
+%% }
+-type opportunity_search_expected_customer_spend() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_filter() :: #{
+%%   <<"AndAllFilters">> => list(opportunity_search_filter()),
+%%   <<"ContainsAll">> => opportunity_search_predicate(),
+%%   <<"ContainsAny">> => opportunity_search_predicate(),
+%%   <<"EqualsTo">> => opportunity_search_predicate(),
+%%   <<"GreaterThan">> => opportunity_search_predicate(),
+%%   <<"GreaterThanOrEquals">> => opportunity_search_predicate(),
+%%   <<"LessThan">> => opportunity_search_predicate(),
+%%   <<"LessThanOrEquals">> => opportunity_search_predicate(),
+%%   <<"NotFilter">> => opportunity_search_filter(),
+%%   <<"OrAllFilters">> => list(opportunity_search_filter())
+%% }
+-type opportunity_search_filter() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_insights() :: #{
+%%   <<"EngagementScore">> => list(any()),
+%%   <<"OpportunityQuality">> => opportunity_search_opportunity_quality()
+%% }
+-type opportunity_search_insights() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_life_cycle() :: #{
+%%   <<"NextSteps">> => string(),
+%%   <<"ReviewStatus">> => list(any()),
+%%   <<"Stage">> => list(any()),
+%%   <<"TargetCloseDate">> => string()
+%% }
+-type opportunity_search_life_cycle() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_opportunity_quality() :: #{
+%%   <<"Score">> => [integer()]
+%% }
+-type opportunity_search_opportunity_quality() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_predicate() :: #{
+%%   <<"Key">> => list(any()),
+%%   <<"Value">> => list()
+%% }
+-type opportunity_search_predicate() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_project() :: #{
+%%   <<"ApnPrograms">> => list([string()]()),
+%%   <<"ExpectedCustomerSpend">> => list(opportunity_search_expected_customer_spend()),
+%%   <<"Title">> => string()
+%% }
+-type opportunity_search_project() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_related_entity_identifiers() :: #{
+%%   <<"AwsMarketplaceOfferSets">> => list(string()),
+%%   <<"AwsMarketplaceOffers">> => list(string()),
+%%   <<"AwsMarketplaceSolutions">> => list(string()),
+%%   <<"Solutions">> => list(string())
+%% }
+-type opportunity_search_related_entity_identifiers() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_sort() :: #{
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any())
+%% }
+-type opportunity_search_sort() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_summary() :: #{
+%%   <<"AwsOpportunitySummary">> => opportunity_search_aws_summary(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Customer">> => opportunity_search_customer(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"LifeCycle">> => opportunity_search_life_cycle(),
+%%   <<"OpportunityTeam">> => list(opportunity_search_team_member()),
+%%   <<"OpportunityType">> => list(any()),
+%%   <<"PartnerOpportunityIdentifier">> => [string()],
+%%   <<"Project">> => opportunity_search_project(),
+%%   <<"RelatedEntityIdentifiers">> => opportunity_search_related_entity_identifiers(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type opportunity_search_summary() :: #{binary() => any()}.
+
+%% Example:
+%% opportunity_search_team_member() :: #{
+%%   <<"BusinessTitle">> => string(),
+%%   <<"FirstName">> => string(),
+%%   <<"LastName">> => string()
+%% }
+-type opportunity_search_team_member() :: #{binary() => any()}.
 
 %% Example:
 %% opportunity_sort() :: #{
@@ -1373,6 +2070,13 @@
 %%   <<"RelatedEntityIdentifiers">> => related_entity_identifiers()
 %% }
 -type opportunity_summary_view() :: #{binary() => any()}.
+
+%% Example:
+%% preferred_contact_window() :: #{
+%%   <<"Timezone">> => [string()],
+%%   <<"Window">> => list(any())
+%% }
+-type preferred_contact_window() :: #{binary() => any()}.
 
 %% Example:
 %% profile_next_steps_history() :: #{
@@ -1559,6 +2263,60 @@
 -type resource_snapshot_summary() :: #{binary() => any()}.
 
 %% Example:
+%% search_customer_accounts_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Filter">> => filter(),
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"Sort">> => customer_account_sort()
+%% }
+-type search_customer_accounts_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_customer_accounts_response() :: #{
+%%   <<"CustomerAccountSummaries">> => list(customer_account_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_customer_accounts_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_engagements_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Filter">> => engagement_search_filter(),
+%%   <<"GroupId">> => string(),
+%%   <<"Keyword">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Sort">> => engagement_search_sort()
+%% }
+-type search_engagements_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_engagements_response() :: #{
+%%   <<"EngagementSearchSummaries">> => list(engagement_search_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type search_engagements_response() :: #{binary() => any()}.
+
+%% Example:
+%% search_opportunities_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"Filter">> => opportunity_search_filter(),
+%%   <<"Keyword">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Sort">> => opportunity_search_sort()
+%% }
+-type search_opportunities_request() :: #{binary() => any()}.
+
+%% Example:
+%% search_opportunities_response() :: #{
+%%   <<"NextToken">> => [string()],
+%%   <<"OpportunitySearchSummaries">> => list(opportunity_search_summary())
+%% }
+-type search_opportunities_response() :: #{binary() => any()}.
+
+%% Example:
 %% sender_contact() :: #{
 %%   <<"BusinessTitle">> => string(),
 %%   <<"Email">> => string(),
@@ -1611,6 +2369,23 @@
 -type sort_object() :: #{binary() => any()}.
 
 %% Example:
+%% start_customer_account_bulk_job_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"FileUri">> := string()
+%% }
+-type start_customer_account_bulk_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_customer_account_bulk_job_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type start_customer_account_bulk_job_response() :: #{binary() => any()}.
+
+%% Example:
 %% start_engagement_by_accepting_invitation_task_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"ClientToken">> := string(),
@@ -1657,6 +2432,21 @@
 %%   <<"TaskStatus">> => list(any())
 %% }
 -type start_engagement_from_opportunity_task_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_opportunity_bulk_job_request() :: #{
+%%   <<"Catalog">> := string(),
+%%   <<"ClientToken">> := string(),
+%%   <<"FileFormat">> := list(any()),
+%%   <<"FileURI">> := string()
+%% }
+-type start_opportunity_bulk_job_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_opportunity_bulk_job_response() :: #{
+%%   <<"JobId">> => string()
+%% }
+-type start_opportunity_bulk_job_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_opportunity_from_engagement_task_request() :: #{
@@ -1775,6 +2565,28 @@
 -type untag_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_customer_account_request() :: #{
+%%   <<"Account">> := customer_account_data(),
+%%   <<"Catalog">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"LastModifiedDate">> := non_neg_integer(),
+%%   <<"PartnerAccountIdentifier">> => string()
+%% }
+-type update_customer_account_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_customer_account_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Catalog">> => string(),
+%%   <<"CreatedDate">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"PartnerAccountIdentifier">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_customer_account_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_engagement_context_request() :: #{
 %%   <<"Catalog">> := string(),
 %%   <<"ContextIdentifier">> := string(),
@@ -1865,6 +2677,14 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type create_customer_account_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_engagement_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1918,6 +2738,12 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type delete_customer_account_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type delete_resource_snapshot_job_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1940,6 +2766,34 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_customer_account_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_customer_account_bulk_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_customer_account_bulk_job_report_url_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type get_customer_account_statistics_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_engagement_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1959,6 +2813,14 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type get_opportunity_bulk_job_report_url_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type get_prospecting_from_engagement_task_errors() ::
@@ -1989,6 +2851,19 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_customer_account_bulk_job_results_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_customer_account_bulk_jobs_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_engagement_by_accepting_invitation_tasks_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -2000,6 +2875,12 @@
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_engagement_groups_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -2032,6 +2913,20 @@
     access_denied_exception().
 
 -type list_opportunities_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_opportunity_bulk_job_results_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_opportunity_bulk_jobs_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -2094,6 +2989,33 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type search_customer_accounts_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type search_engagements_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type search_opportunities_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type start_customer_account_bulk_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type start_engagement_by_accepting_invitation_task_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -2108,6 +3030,14 @@
     throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type start_opportunity_bulk_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -2159,6 +3089,14 @@
     access_denied_exception().
 
 -type untag_resource_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_customer_account_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -2291,6 +3229,32 @@ associate_opportunity(Client, Input)
 associate_opportunity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AssociateOpportunity">>, Input, Options).
+
+%% @doc Use `CreateCustomerAccount' to map a customer account from your
+%% records to an AWS customer.
+%%
+%% Provide details about the customer, such as the company name and website.
+%% AWS then matches the account to a customer and adds enrichment information
+%% about it.
+%%
+%% Matching runs asynchronously. The response returns the new customer
+%% account with a status of `PENDING'. Use `GetCustomerAccount' to
+%% check the result and read the enrichment information.
+-spec create_customer_account(aws_client:aws_client(), create_customer_account_request()) ->
+    {ok, create_customer_account_response(), tuple()} |
+    {error, any()} |
+    {error, create_customer_account_errors(), tuple()}.
+create_customer_account(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_customer_account(Client, Input, []).
+
+-spec create_customer_account(aws_client:aws_client(), create_customer_account_request(), proplists:proplist()) ->
+    {ok, create_customer_account_response(), tuple()} |
+    {error, any()} |
+    {error, create_customer_account_errors(), tuple()}.
+create_customer_account(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCustomerAccount">>, Input, Options).
 
 %% @doc The `CreateEngagement' action allows you to create an
 %% `Engagement', which serves as a collaborative space between different
@@ -2436,6 +3400,26 @@ create_resource_snapshot_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateResourceSnapshotJob">>, Input, Options).
 
+%% @doc Use `DeleteCustomerAccount' to delete a customer account.
+%%
+%% This operation is idempotent. Deleting a customer account that was already
+%% deleted succeeds.
+-spec delete_customer_account(aws_client:aws_client(), delete_customer_account_request()) ->
+    {ok, delete_customer_account_response(), tuple()} |
+    {error, any()} |
+    {error, delete_customer_account_errors(), tuple()}.
+delete_customer_account(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_customer_account(Client, Input, []).
+
+-spec delete_customer_account(aws_client:aws_client(), delete_customer_account_request(), proplists:proplist()) ->
+    {ok, delete_customer_account_response(), tuple()} |
+    {error, any()} |
+    {error, delete_customer_account_errors(), tuple()}.
+delete_customer_account(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCustomerAccount">>, Input, Options).
+
 %% @doc Use this action to deletes a previously created resource snapshot
 %% job.
 %%
@@ -2507,6 +3491,91 @@ get_aws_opportunity_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAwsOpportunitySummary">>, Input, Options).
 
+%% @doc Use `GetCustomerAccount' to retrieve the details of a customer
+%% account, including the customer information that you provided, the
+%% enrichment status, and the enrichment information that AWS provides when
+%% the status is `ENRICHED'.
+-spec get_customer_account(aws_client:aws_client(), get_customer_account_request()) ->
+    {ok, get_customer_account_response(), tuple()} |
+    {error, any()} |
+    {error, get_customer_account_errors(), tuple()}.
+get_customer_account(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_customer_account(Client, Input, []).
+
+-spec get_customer_account(aws_client:aws_client(), get_customer_account_request(), proplists:proplist()) ->
+    {ok, get_customer_account_response(), tuple()} |
+    {error, any()} |
+    {error, get_customer_account_errors(), tuple()}.
+get_customer_account(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCustomerAccount">>, Input, Options).
+
+%% @doc Use `GetCustomerAccountBulkJob' to retrieve the status and record
+%% counts of a bulk job.
+-spec get_customer_account_bulk_job(aws_client:aws_client(), get_customer_account_bulk_job_request()) ->
+    {ok, get_customer_account_bulk_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_customer_account_bulk_job_errors(), tuple()}.
+get_customer_account_bulk_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_customer_account_bulk_job(Client, Input, []).
+
+-spec get_customer_account_bulk_job(aws_client:aws_client(), get_customer_account_bulk_job_request(), proplists:proplist()) ->
+    {ok, get_customer_account_bulk_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_customer_account_bulk_job_errors(), tuple()}.
+get_customer_account_bulk_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCustomerAccountBulkJob">>, Input, Options).
+
+%% @doc Use `GetCustomerAccountBulkJobReportUrl' to get a temporary URL
+%% for downloading the report of a bulk job, such as the list of records that
+%% failed.
+%%
+%% A report is available only after the job is `COMPLETED' or
+%% `FAILED'. For a job that is still running, the request fails with a
+%% `ConflictException'.
+%%
+%% The report is generated on request. If `ReportStatus' is not
+%% `AVAILABLE', call the operation again later.
+-spec get_customer_account_bulk_job_report_url(aws_client:aws_client(), get_customer_account_bulk_job_report_url_request()) ->
+    {ok, get_customer_account_bulk_job_report_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_customer_account_bulk_job_report_url_errors(), tuple()}.
+get_customer_account_bulk_job_report_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_customer_account_bulk_job_report_url(Client, Input, []).
+
+-spec get_customer_account_bulk_job_report_url(aws_client:aws_client(), get_customer_account_bulk_job_report_url_request(), proplists:proplist()) ->
+    {ok, get_customer_account_bulk_job_report_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_customer_account_bulk_job_report_url_errors(), tuple()}.
+get_customer_account_bulk_job_report_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCustomerAccountBulkJobReportUrl">>, Input, Options).
+
+%% @doc Use `GetCustomerAccountStatistics' to count your customer
+%% accounts and group them by fields such as industry, geography, or
+%% enrichment status.
+%%
+%% You can use the same filters as `SearchCustomerAccounts'.
+-spec get_customer_account_statistics(aws_client:aws_client(), get_customer_account_statistics_request()) ->
+    {ok, get_customer_account_statistics_response(), tuple()} |
+    {error, any()} |
+    {error, get_customer_account_statistics_errors(), tuple()}.
+get_customer_account_statistics(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_customer_account_statistics(Client, Input, []).
+
+-spec get_customer_account_statistics(aws_client:aws_client(), get_customer_account_statistics_request(), proplists:proplist()) ->
+    {ok, get_customer_account_statistics_response(), tuple()} |
+    {error, any()} |
+    {error, get_customer_account_statistics_errors(), tuple()}.
+get_customer_account_statistics(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCustomerAccountStatistics">>, Input, Options).
+
 %% @doc Use this action to retrieve the engagement record for a given
 %% `EngagementIdentifier'.
 -spec get_engagement(aws_client:aws_client(), get_engagement_request()) ->
@@ -2568,6 +3637,29 @@ get_opportunity(Client, Input)
 get_opportunity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetOpportunity">>, Input, Options).
+
+%% @doc Gets the status of the failed-records report for a finished
+%% opportunity bulk job and, when the report is ready, a temporary URL to
+%% download it.
+%%
+%% A report is available only after the job is `COMPLETED' or
+%% `FAILED'. The URL expires after 15 minutes, and the report expires
+%% after about 7 days.
+-spec get_opportunity_bulk_job_report_url(aws_client:aws_client(), get_opportunity_bulk_job_report_url_request()) ->
+    {ok, get_opportunity_bulk_job_report_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_opportunity_bulk_job_report_url_errors(), tuple()}.
+get_opportunity_bulk_job_report_url(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_opportunity_bulk_job_report_url(Client, Input, []).
+
+-spec get_opportunity_bulk_job_report_url(aws_client:aws_client(), get_opportunity_bulk_job_report_url_request(), proplists:proplist()) ->
+    {ok, get_opportunity_bulk_job_report_url_response(), tuple()} |
+    {error, any()} |
+    {error, get_opportunity_bulk_job_report_url_errors(), tuple()}.
+get_opportunity_bulk_job_report_url(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetOpportunityBulkJobReportUrl">>, Input, Options).
 
 %% @doc Retrieves the details and current status of a prospecting task
 %% previously started with `StartProspectingFromEngagementTask' to enable
@@ -2641,6 +3733,51 @@ get_selling_system_settings(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetSellingSystemSettings">>, Input, Options).
 
+%% @doc Use `ListCustomerAccountBulkJobResults' to list the outcome of
+%% each record in a bulk job.
+%%
+%% You can filter the results to records that succeeded or failed. A job that
+%% failed before it processed any records returns an empty list.
+%%
+%% Results are paginated. Use `NextToken' to retrieve additional results.
+-spec list_customer_account_bulk_job_results(aws_client:aws_client(), list_customer_account_bulk_job_results_request()) ->
+    {ok, list_customer_account_bulk_job_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_customer_account_bulk_job_results_errors(), tuple()}.
+list_customer_account_bulk_job_results(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_customer_account_bulk_job_results(Client, Input, []).
+
+-spec list_customer_account_bulk_job_results(aws_client:aws_client(), list_customer_account_bulk_job_results_request(), proplists:proplist()) ->
+    {ok, list_customer_account_bulk_job_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_customer_account_bulk_job_results_errors(), tuple()}.
+list_customer_account_bulk_job_results(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCustomerAccountBulkJobResults">>, Input, Options).
+
+%% @doc Use `ListCustomerAccountBulkJobs' to list the bulk jobs in the
+%% specified catalog.
+%%
+%% You can filter the results by job identifier or status.
+%%
+%% Results are paginated. Use `NextToken' to retrieve additional results.
+-spec list_customer_account_bulk_jobs(aws_client:aws_client(), list_customer_account_bulk_jobs_request()) ->
+    {ok, list_customer_account_bulk_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_customer_account_bulk_jobs_errors(), tuple()}.
+list_customer_account_bulk_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_customer_account_bulk_jobs(Client, Input, []).
+
+-spec list_customer_account_bulk_jobs(aws_client:aws_client(), list_customer_account_bulk_jobs_request(), proplists:proplist()) ->
+    {ok, list_customer_account_bulk_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_customer_account_bulk_jobs_errors(), tuple()}.
+list_customer_account_bulk_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCustomerAccountBulkJobs">>, Input, Options).
+
 %% @doc Lists all in-progress, completed, or failed
 %% StartEngagementByAcceptingInvitationTask tasks that were initiated by the
 %% caller's account.
@@ -2660,9 +3797,8 @@ list_engagement_by_accepting_invitation_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEngagementByAcceptingInvitationTasks">>, Input, Options).
 
-%% @doc Lists all in-progress, completed, or failed
-%% `EngagementFromOpportunity' tasks that were initiated by the
-%% caller's account.
+%% @doc Lists all in-progress, completed, or failed EngagementFromOpportunity
+%% tasks that were initiated by the caller's account.
 -spec list_engagement_from_opportunity_tasks(aws_client:aws_client(), list_engagement_from_opportunity_tasks_request()) ->
     {ok, list_engagement_from_opportunity_tasks_response(), tuple()} |
     {error, any()} |
@@ -2678,6 +3814,30 @@ list_engagement_from_opportunity_tasks(Client, Input)
 list_engagement_from_opportunity_tasks(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListEngagementFromOpportunityTasks">>, Input, Options).
+
+%% @doc Lists the active, fully curated AWS Partner Central engagement groups
+%% that are available to you in the specified catalog.
+%%
+%% An engagement group is a curated set of engagements that share common
+%% characteristics, such as customer geography, industry, or solution
+%% category. To retrieve the engagements in a group, pass the group `Id'
+%% to `SearchEngagements' as `GroupId', and use `NextToken' to
+%% retrieve additional pages of groups.
+-spec list_engagement_groups(aws_client:aws_client(), list_engagement_groups_request()) ->
+    {ok, list_engagement_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_engagement_groups_errors(), tuple()}.
+list_engagement_groups(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_engagement_groups(Client, Input, []).
+
+-spec list_engagement_groups(aws_client:aws_client(), list_engagement_groups_request(), proplists:proplist()) ->
+    {ok, list_engagement_groups_response(), tuple()} |
+    {error, any()} |
+    {error, list_engagement_groups_errors(), tuple()}.
+list_engagement_groups(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEngagementGroups">>, Input, Options).
 
 %% @doc Retrieves a list of engagement invitations sent to the partner.
 %%
@@ -2799,6 +3959,49 @@ list_opportunities(Client, Input)
 list_opportunities(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListOpportunities">>, Input, Options).
+
+%% @doc Lists the outcome of each record in an opportunity bulk job.
+%%
+%% You can filter the results by record status.
+%%
+%% Results are paginated. Use `NextToken' to retrieve additional results.
+-spec list_opportunity_bulk_job_results(aws_client:aws_client(), list_opportunity_bulk_job_results_request()) ->
+    {ok, list_opportunity_bulk_job_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_opportunity_bulk_job_results_errors(), tuple()}.
+list_opportunity_bulk_job_results(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_opportunity_bulk_job_results(Client, Input, []).
+
+-spec list_opportunity_bulk_job_results(aws_client:aws_client(), list_opportunity_bulk_job_results_request(), proplists:proplist()) ->
+    {ok, list_opportunity_bulk_job_results_response(), tuple()} |
+    {error, any()} |
+    {error, list_opportunity_bulk_job_results_errors(), tuple()}.
+list_opportunity_bulk_job_results(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOpportunityBulkJobResults">>, Input, Options).
+
+%% @doc Lists the opportunity bulk jobs in the specified catalog, newest
+%% first.
+%%
+%% You can filter the results by job identifier or status.
+%%
+%% Results are paginated. Use `NextToken' to retrieve additional results.
+-spec list_opportunity_bulk_jobs(aws_client:aws_client(), list_opportunity_bulk_jobs_request()) ->
+    {ok, list_opportunity_bulk_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_opportunity_bulk_jobs_errors(), tuple()}.
+list_opportunity_bulk_jobs(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_opportunity_bulk_jobs(Client, Input, []).
+
+-spec list_opportunity_bulk_jobs(aws_client:aws_client(), list_opportunity_bulk_jobs_request(), proplists:proplist()) ->
+    {ok, list_opportunity_bulk_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_opportunity_bulk_jobs_errors(), tuple()}.
+list_opportunity_bulk_jobs(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOpportunityBulkJobs">>, Input, Options).
 
 %% @doc Lists all in-progress, completed, or failed opportunity creation
 %% tasks from engagements that were initiated by the caller's account.
@@ -2968,6 +4171,106 @@ reject_engagement_invitation(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RejectEngagementInvitation">>, Input, Options).
 
+%% @doc Use `SearchCustomerAccounts' to find customer accounts in the
+%% specified catalog.
+%%
+%% You can filter the results by fields such as enrichment status, industry,
+%% geography, and creation date, and sort them by company name, date, or
+%% score.
+%%
+%% Results are paginated. Use `NextToken' to retrieve additional results.
+-spec search_customer_accounts(aws_client:aws_client(), search_customer_accounts_request()) ->
+    {ok, search_customer_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, search_customer_accounts_errors(), tuple()}.
+search_customer_accounts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search_customer_accounts(Client, Input, []).
+
+-spec search_customer_accounts(aws_client:aws_client(), search_customer_accounts_request(), proplists:proplist()) ->
+    {ok, search_customer_accounts_response(), tuple()} |
+    {error, any()} |
+    {error, search_customer_accounts_errors(), tuple()}.
+search_customer_accounts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SearchCustomerAccounts">>, Input, Options).
+
+%% @doc Searches the engagements in AWS Partner Central that match your
+%% criteria, such as customer industry or geography.
+%%
+%% You can combine a free-text `Keyword', a structured `Filter' tree,
+%% an engagement group (`GroupId'), and `Sort' options, and each
+%% search criterion that you specify narrows the results. Results are
+%% paginated, so use `NextToken' to retrieve additional results.
+-spec search_engagements(aws_client:aws_client(), search_engagements_request()) ->
+    {ok, search_engagements_response(), tuple()} |
+    {error, any()} |
+    {error, search_engagements_errors(), tuple()}.
+search_engagements(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search_engagements(Client, Input, []).
+
+-spec search_engagements(aws_client:aws_client(), search_engagements_request(), proplists:proplist()) ->
+    {ok, search_engagements_response(), tuple()} |
+    {error, any()} |
+    {error, search_engagements_errors(), tuple()}.
+search_engagements(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SearchEngagements">>, Input, Options).
+
+%% @doc The `SearchOpportunities' operation in the AWS Partner Central
+%% Selling API searches and filters the opportunities available to you in AWS
+%% Partner Central.
+%%
+%% You can optionally provide a free-text `Keyword', a structured
+%% `Filter' tree, and `Sort' options. The operation returns a curated
+%% summary view of each matching opportunity. If you supply both
+%% `Keyword' and `Filter', the operation combines them with a logical
+%% AND, so each one narrows the result set.
+%%
+%% Results are paginated. Use the `NextToken' parameter to retrieve
+%% additional pages of results.
+-spec search_opportunities(aws_client:aws_client(), search_opportunities_request()) ->
+    {ok, search_opportunities_response(), tuple()} |
+    {error, any()} |
+    {error, search_opportunities_errors(), tuple()}.
+search_opportunities(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    search_opportunities(Client, Input, []).
+
+-spec search_opportunities(aws_client:aws_client(), search_opportunities_request(), proplists:proplist()) ->
+    {ok, search_opportunities_response(), tuple()} |
+    {error, any()} |
+    {error, search_opportunities_errors(), tuple()}.
+search_opportunities(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"SearchOpportunities">>, Input, Options).
+
+%% @doc Use `StartCustomerAccountBulkJob' to create many customer
+%% accounts from a single file.
+%%
+%% The job starts processing as soon as it is created.
+%%
+%% Use `GetCustomerAccountBulkJob' to track progress,
+%% `ListCustomerAccountBulkJobResults' to review the outcome of each
+%% record, and `GetCustomerAccountBulkJobReportUrl' to download a report
+%% when the job finishes.
+-spec start_customer_account_bulk_job(aws_client:aws_client(), start_customer_account_bulk_job_request()) ->
+    {ok, start_customer_account_bulk_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_customer_account_bulk_job_errors(), tuple()}.
+start_customer_account_bulk_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_customer_account_bulk_job(Client, Input, []).
+
+-spec start_customer_account_bulk_job(aws_client:aws_client(), start_customer_account_bulk_job_request(), proplists:proplist()) ->
+    {ok, start_customer_account_bulk_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_customer_account_bulk_job_errors(), tuple()}.
+start_customer_account_bulk_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartCustomerAccountBulkJob">>, Input, Options).
+
 %% @doc This action starts the engagement by accepting an
 %% `EngagementInvitation'.
 %%
@@ -3017,6 +4320,33 @@ start_engagement_from_opportunity_task(Client, Input)
 start_engagement_from_opportunity_task(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartEngagementFromOpportunityTask">>, Input, Options).
+
+%% @doc The `StartOpportunityBulkJob' operation creates or updates many
+%% opportunities in AWS Partner Central (Partner Central) from a single CSV
+%% file.
+%%
+%% The column headers in the file determine whether the job creates or
+%% updates opportunities.
+%%
+%% Returns a `JobId' for the job. Use `ListOpportunityBulkJobs' to
+%% track the job, `ListOpportunityBulkJobResults' to review each record,
+%% and `GetOpportunityBulkJobReportUrl' to download a report of the
+%% failed records.
+-spec start_opportunity_bulk_job(aws_client:aws_client(), start_opportunity_bulk_job_request()) ->
+    {ok, start_opportunity_bulk_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_opportunity_bulk_job_errors(), tuple()}.
+start_opportunity_bulk_job(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_opportunity_bulk_job(Client, Input, []).
+
+-spec start_opportunity_bulk_job(aws_client:aws_client(), start_opportunity_bulk_job_request(), proplists:proplist()) ->
+    {ok, start_opportunity_bulk_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_opportunity_bulk_job_errors(), tuple()}.
+start_opportunity_bulk_job(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartOpportunityBulkJob">>, Input, Options).
 
 %% @doc This action creates an opportunity from an existing engagement
 %% context.
@@ -3153,6 +4483,31 @@ untag_resource(Client, Input)
 untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
+
+%% @doc Use `UpdateCustomerAccount' to replace the customer information
+%% on an existing customer account.
+%%
+%% AWS matches the account again with the updated information.
+%%
+%% To prevent concurrent changes from overwriting each other, specify the
+%% `LastModifiedDate' value that you last read for the account. If the
+%% account changed since then, the request fails with a
+%% `ConflictException'.
+-spec update_customer_account(aws_client:aws_client(), update_customer_account_request()) ->
+    {ok, update_customer_account_response(), tuple()} |
+    {error, any()} |
+    {error, update_customer_account_errors(), tuple()}.
+update_customer_account(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_customer_account(Client, Input, []).
+
+-spec update_customer_account(aws_client:aws_client(), update_customer_account_request(), proplists:proplist()) ->
+    {ok, update_customer_account_response(), tuple()} |
+    {error, any()} |
+    {error, update_customer_account_errors(), tuple()}.
+update_customer_account(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCustomerAccount">>, Input, Options).
 
 %% @doc Updates the context information for an existing engagement with new
 %% or modified data.

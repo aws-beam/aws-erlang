@@ -44,6 +44,8 @@
          delete_table_policy/6,
          delete_table_replication/2,
          delete_table_replication/3,
+         disassociate_table_replication/2,
+         disassociate_table_replication/3,
          get_namespace/3,
          get_namespace/5,
          get_namespace/6,
@@ -322,6 +324,17 @@
 %%   <<"tags">> => map()
 %% }
 -type destination_table() :: #{binary() => any()}.
+
+
+%% Example:
+%% disassociate_table_replication_request() :: #{
+%%   <<"tableArn">> := string()
+%% }
+-type disassociate_table_replication_request() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_table_replication_response() :: #{}
+-type disassociate_table_replication_response() :: #{}.
 
 
 %% Example:
@@ -1508,6 +1521,15 @@
     bad_request_exception() | 
     access_denied_exception().
 
+-type disassociate_table_replication_errors() ::
+    too_many_requests_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception() | 
+    access_denied_exception().
+
 -type get_namespace_errors() ::
     too_many_requests_exception() | 
     not_found_exception() | 
@@ -2442,6 +2464,64 @@ delete_table_replication(Client, Input0, Options0) ->
     QueryMapping = [
                      {<<"tableArn">>, <<"tableArn">>},
                      {<<"versionToken">>, <<"versionToken">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Disassociates a replica table from replication, making it a
+%% standalone writable table.
+%%
+%% Any in-progress replication to the table stops, and in-flight commits fail
+%% without being committed to the table. Disassociating a table from
+%% replication is permanent and can't be reversed.
+%%
+%% You can only disassociate a replica table. If you call this operation on a
+%% table that isn't a replica table, including a table that you have
+%% already disassociated, the request fails.
+%%
+%% After you disassociate a table from replication, you can write to the
+%% table as you do any other table. `GetTable' no longer returns
+%% `managedByService' and `managedTableInformation' for the table,
+%% and `ListTables' no longer returns `managedByService' for it. On
+%% the source table, `GetTableReplicationStatus' reports a failure for
+%% this destination the next time replication to it is attempted.
+%%
+%% Disassociating a table from replication doesn't change its maintenance
+%% configuration. Review the maintenance settings of the table, such as
+%% compaction, after you disassociate it.
+%%
+%% Permissions You must have the `s3tables:DisassociateTableReplication'
+%% permission to use this operation.
+-spec disassociate_table_replication(aws_client:aws_client(), disassociate_table_replication_request()) ->
+    {ok, disassociate_table_replication_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_table_replication_errors(), tuple()}.
+disassociate_table_replication(Client, Input) ->
+    disassociate_table_replication(Client, Input, []).
+
+-spec disassociate_table_replication(aws_client:aws_client(), disassociate_table_replication_request(), proplists:proplist()) ->
+    {ok, disassociate_table_replication_response(), tuple()} |
+    {error, any()} |
+    {error, disassociate_table_replication_errors(), tuple()}.
+disassociate_table_replication(Client, Input0, Options0) ->
+    Method = put,
+    Path = ["/table-replication/disassociate"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"tableArn">>, <<"tableArn">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).

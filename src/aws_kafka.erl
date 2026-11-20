@@ -8,6 +8,8 @@
          batch_associate_scram_secret/4,
          batch_disassociate_scram_secret/3,
          batch_disassociate_scram_secret/4,
+         create_assessment/3,
+         create_assessment/4,
          create_channel/3,
          create_channel/4,
          create_cluster/2,
@@ -22,6 +24,8 @@
          create_topic/4,
          create_vpc_connection/2,
          create_vpc_connection/3,
+         delete_assessment/4,
+         delete_assessment/5,
          delete_channel/4,
          delete_channel/5,
          delete_cluster/3,
@@ -36,6 +40,9 @@
          delete_topic/5,
          delete_vpc_connection/3,
          delete_vpc_connection/4,
+         describe_assessment/3,
+         describe_assessment/5,
+         describe_assessment/6,
          describe_channel/3,
          describe_channel/5,
          describe_channel/6,
@@ -66,6 +73,9 @@
          describe_topic_partitions/3,
          describe_topic_partitions/5,
          describe_topic_partitions/6,
+         describe_topic_reassignment/3,
+         describe_topic_reassignment/5,
+         describe_topic_reassignment/6,
          describe_vpc_connection/2,
          describe_vpc_connection/4,
          describe_vpc_connection/5,
@@ -78,6 +88,12 @@
          get_compatible_kafka_versions/1,
          get_compatible_kafka_versions/3,
          get_compatible_kafka_versions/4,
+         list_assessment_findings/3,
+         list_assessment_findings/5,
+         list_assessment_findings/6,
+         list_assessments/2,
+         list_assessments/4,
+         list_assessments/5,
          list_channels/2,
          list_channels/4,
          list_channels/5,
@@ -117,6 +133,9 @@
          list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
+         list_topic_reassignments/2,
+         list_topic_reassignments/4,
+         list_topic_reassignments/5,
          list_topics/2,
          list_topics/4,
          list_topics/5,
@@ -129,6 +148,10 @@
          reboot_broker/4,
          reject_client_vpc_connection/3,
          reject_client_vpc_connection/4,
+         start_topic_reassignment/3,
+         start_topic_reassignment/4,
+         stop_topic_reassignment/4,
+         stop_topic_reassignment/5,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -182,6 +205,48 @@
 %%   <<"BootstrapBrokerString">> => string()
 %% }
 -type apache_kafka_cluster() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_finding() :: #{
+%%   <<"Category">> => list(any()),
+%%   <<"FindingId">> => string(),
+%%   <<"Message">> => string(),
+%%   <<"Remediation">> => finding_remediation(),
+%%   <<"Resource">> => string(),
+%%   <<"Severity">> => list(any())
+%% }
+-type assessment_finding() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_info() :: #{
+%%   <<"AssessmentArn">> => string(),
+%%   <<"AssessmentType">> => list(any()),
+%%   <<"ClusterArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type assessment_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_parameters() :: #{
+%%   <<"TargetInstanceType">> => string()
+%% }
+-type assessment_parameters() :: #{binary() => any()}.
+
+
+%% Example:
+%% assessment_summary() :: #{
+%%   <<"ByCategory">> => map(),
+%%   <<"BySeverity">> => map(),
+%%   <<"FindingsCapped">> => boolean(),
+%%   <<"HasBlockingFindings">> => boolean(),
+%%   <<"TotalFindings">> => integer()
+%% }
+-type assessment_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -274,6 +339,7 @@
 %% broker_node_info() :: #{
 %%   <<"AttachedENIId">> => string(),
 %%   <<"BrokerId">> => float(),
+%%   <<"BrokerNodeType">> => list(any()),
 %%   <<"ClientSubnet">> => string(),
 %%   <<"ClientVpcIpAddress">> => string(),
 %%   <<"CurrentBrokerSoftwareInfo">> => broker_software_info(),
@@ -289,6 +355,14 @@
 %%   <<"KafkaVersion">> => string()
 %% }
 -type broker_software_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% broker_type_upgrade_info() :: #{
+%%   <<"TopicReassignmentMode">> => list(any()),
+%%   <<"TopicReassignmentOperationArn">> => string()
+%% }
+-type broker_type_upgrade_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -410,6 +484,7 @@
 
 %% Example:
 %% cluster_operation_info() :: #{
+%%   <<"BrokerTypeUpgradeInfo">> => broker_type_upgrade_info(),
 %%   <<"ClientRequestId">> => string(),
 %%   <<"ClusterArn">> => string(),
 %%   <<"CreationTime">> => non_neg_integer(),
@@ -459,6 +534,7 @@
 
 %% Example:
 %% cluster_operation_v2_provisioned() :: #{
+%%   <<"BrokerTypeUpgradeInfo">> => broker_type_upgrade_info(),
 %%   <<"OperationSteps">> => list(cluster_operation_step()),
 %%   <<"SourceClusterInfo">> => mutable_cluster_info(),
 %%   <<"TargetClusterInfo">> => mutable_cluster_info(),
@@ -578,6 +654,26 @@
 %%   <<"Endpoints">> => list(string())
 %% }
 -type controller_node_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assessment_request() :: #{
+%%   <<"AssessmentParameters">> => assessment_parameters(),
+%%   <<"AssessmentType">> := list(any()),
+%%   <<"Tags">> => map()
+%% }
+-type create_assessment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_assessment_response() :: #{
+%%   <<"AssessmentArn">> => string(),
+%%   <<"AssessmentType">> => list(any()),
+%%   <<"ClusterArn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type create_assessment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -746,6 +842,18 @@
 -type dead_letter_queue_s3() :: #{binary() => any()}.
 
 %% Example:
+%% delete_assessment_request() :: #{}
+-type delete_assessment_request() :: #{}.
+
+
+%% Example:
+%% delete_assessment_response() :: #{
+%%   <<"AssessmentArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type delete_assessment_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_channel_request() :: #{}
 -type delete_channel_request() :: #{}.
 
@@ -831,6 +939,26 @@
 %%   <<"VpcConnectionArn">> => string()
 %% }
 -type delete_vpc_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_assessment_request() :: #{}
+-type describe_assessment_request() :: #{}.
+
+
+%% Example:
+%% describe_assessment_response() :: #{
+%%   <<"AssessmentArn">> => string(),
+%%   <<"AssessmentParameters">> => assessment_parameters(),
+%%   <<"AssessmentType">> => list(any()),
+%%   <<"ClusterArn">> => string(),
+%%   <<"CompletionTime">> => non_neg_integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusMessage">> => string(),
+%%   <<"Summary">> => assessment_summary(),
+%%   <<"Tags">> => map()
+%% }
+-type describe_assessment_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_channel_request() :: #{}
@@ -972,6 +1100,29 @@
 -type describe_topic_partitions_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_topic_reassignment_request() :: #{}
+-type describe_topic_reassignment_request() :: #{}.
+
+
+%% Example:
+%% describe_topic_reassignment_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"CompletedTopics">> => integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"ErrorInfo">> => error_info(),
+%%   <<"LastUpdateTime">> => non_neg_integer(),
+%%   <<"MigratedPartitions">> => integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetInstanceType">> => string(),
+%%   <<"TopicReassignmentOperationArn">> => string(),
+%%   <<"TopicsToExclude">> => list(string()),
+%%   <<"TopicsToInclude">> => list(string()),
+%%   <<"TotalPartitions">> => integer(),
+%%   <<"TotalTopics">> => integer()
+%% }
+-type describe_topic_reassignment_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_topic_request() :: #{}
 -type describe_topic_request() :: #{}.
 
@@ -980,6 +1131,7 @@
 %% describe_topic_response() :: #{
 %%   <<"Configs">> => string(),
 %%   <<"PartitionCount">> => integer(),
+%%   <<"ReplicaIds">> => list(integer()),
 %%   <<"ReplicationFactor">> => integer(),
 %%   <<"Status">> => list(any()),
 %%   <<"TopicArn">> => string(),
@@ -1060,6 +1212,14 @@
 %%   <<"ErrorString">> => string()
 %% }
 -type error_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% finding_remediation() :: #{
+%%   <<"Action">> => string(),
+%%   <<"DocumentationUrl">> => string()
+%% }
+-type finding_remediation() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1322,6 +1482,41 @@
 
 
 %% Example:
+%% list_assessment_findings_request() :: #{
+%%   <<"Category">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"Severity">> => string()
+%% }
+-type list_assessment_findings_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessment_findings_response() :: #{
+%%   <<"Findings">> => list(assessment_finding()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assessment_findings_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessments_request() :: #{
+%%   <<"AssessmentType">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assessments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_assessments_response() :: #{
+%%   <<"Assessments">> => list(assessment_info()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_assessments_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_channels_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
@@ -1527,6 +1722,23 @@
 %%   <<"Tags">> => map()
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_topic_reassignments_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StatusFilter">> => string()
+%% }
+-type list_topic_reassignments_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_topic_reassignments_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Reassignments">> => list(topic_reassignment_info())
+%% }
+-type list_topic_reassignments_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2017,11 +2229,42 @@
 
 
 %% Example:
+%% start_topic_reassignment_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"TargetInstanceType">> := string(),
+%%   <<"TopicsToExclude">> => list(string()),
+%%   <<"TopicsToInclude">> := list(string())
+%% }
+-type start_topic_reassignment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_topic_reassignment_response() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TopicReassignmentOperationArn">> => string()
+%% }
+-type start_topic_reassignment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% state_info() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
 %% }
 -type state_info() :: #{binary() => any()}.
+
+%% Example:
+%% stop_topic_reassignment_request() :: #{}
+-type stop_topic_reassignment_request() :: #{}.
+
+
+%% Example:
+%% stop_topic_reassignment_response() :: #{
+%%   <<"Status">> => list(any()),
+%%   <<"TopicReassignmentOperationArn">> => string()
+%% }
+-type stop_topic_reassignment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2082,6 +2325,7 @@
 %% topic_info() :: #{
 %%   <<"OutOfSyncReplicaCount">> => integer(),
 %%   <<"PartitionCount">> => integer(),
+%%   <<"ReplicaIds">> => list(integer()),
 %%   <<"ReplicationFactor">> => integer(),
 %%   <<"TopicArn">> => string(),
 %%   <<"TopicName">> => string()
@@ -2097,6 +2341,18 @@
 %%   <<"Replicas">> => list(integer())
 %% }
 -type topic_partition_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% topic_reassignment_info() :: #{
+%%   <<"CompletedTopics">> => integer(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TargetInstanceType">> => string(),
+%%   <<"TopicReassignmentOperationArn">> => string(),
+%%   <<"TotalTopics">> => integer()
+%% }
+-type topic_reassignment_info() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2197,7 +2453,8 @@
 %% Example:
 %% update_broker_type_request() :: #{
 %%   <<"CurrentVersion">> := string(),
-%%   <<"TargetInstanceType">> := string()
+%%   <<"TargetInstanceType">> := string(),
+%%   <<"TopicReassignment">> => list(any())
 %% }
 -type update_broker_type_request() :: #{binary() => any()}.
 
@@ -2527,6 +2784,16 @@
     forbidden_exception() | 
     bad_request_exception().
 
+-type create_assessment_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
 -type create_channel_errors() ::
     unauthorized_exception() | 
     too_many_requests_exception() | 
@@ -2600,6 +2867,16 @@
     forbidden_exception() | 
     bad_request_exception().
 
+-type delete_assessment_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
 -type delete_channel_errors() ::
     unauthorized_exception() | 
     too_many_requests_exception() | 
@@ -2651,6 +2928,15 @@
     bad_request_exception().
 
 -type delete_vpc_connection_errors() ::
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
+
+-type describe_assessment_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
     not_found_exception() | 
     internal_server_error_exception() | 
     forbidden_exception() | 
@@ -2734,6 +3020,15 @@
     forbidden_exception() | 
     bad_request_exception().
 
+-type describe_topic_reassignment_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
+
 -type describe_vpc_connection_errors() ::
     unauthorized_exception() | 
     service_unavailable_exception() | 
@@ -2756,6 +3051,25 @@
     bad_request_exception().
 
 -type get_compatible_kafka_versions_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
+
+-type list_assessment_findings_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
+-type list_assessments_errors() ::
     unauthorized_exception() | 
     too_many_requests_exception() | 
     service_unavailable_exception() | 
@@ -2857,6 +3171,15 @@
     internal_server_error_exception() | 
     bad_request_exception().
 
+-type list_topic_reassignments_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
+
 -type list_topics_errors() ::
     unauthorized_exception() | 
     service_unavailable_exception() | 
@@ -2888,6 +3211,25 @@
 -type reject_client_vpc_connection_errors() ::
     unauthorized_exception() | 
     service_unavailable_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    bad_request_exception().
+
+-type start_topic_reassignment_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
+    internal_server_error_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    bad_request_exception().
+
+-type stop_topic_reassignment_errors() ::
+    unauthorized_exception() | 
+    too_many_requests_exception() | 
+    service_unavailable_exception() | 
+    not_found_exception() | 
     internal_server_error_exception() | 
     forbidden_exception() | 
     bad_request_exception().
@@ -3079,6 +3421,42 @@ batch_disassociate_scram_secret(Client, ClusterArn, Input) ->
 batch_disassociate_scram_secret(Client, ClusterArn, Input0, Options0) ->
     Method = patch,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/scram-secrets"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a new assessment for the specified cluster.
+%%
+%% Kicks off an asynchronous scan.
+-spec create_assessment(aws_client:aws_client(), binary() | list(), create_assessment_request()) ->
+    {ok, create_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, create_assessment_errors(), tuple()}.
+create_assessment(Client, ClusterArn, Input) ->
+    create_assessment(Client, ClusterArn, Input, []).
+
+-spec create_assessment(aws_client:aws_client(), binary() | list(), create_assessment_request(), proplists:proplist()) ->
+    {ok, create_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, create_assessment_errors(), tuple()}.
+create_assessment(Client, ClusterArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/assessments"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3318,6 +3696,42 @@ create_vpc_connection(Client, Input) ->
 create_vpc_connection(Client, Input0, Options0) ->
     Method = post,
     Path = ["/v1/vpc-connection"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an assessment and its findings.
+%%
+%% Frees one slot against the cluster's assessment quota.
+-spec delete_assessment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_assessment_request()) ->
+    {ok, delete_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_assessment_errors(), tuple()}.
+delete_assessment(Client, AssessmentArn, ClusterArn, Input) ->
+    delete_assessment(Client, AssessmentArn, ClusterArn, Input, []).
+
+-spec delete_assessment(aws_client:aws_client(), binary() | list(), binary() | list(), delete_assessment_request(), proplists:proplist()) ->
+    {ok, delete_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_assessment_errors(), tuple()}.
+delete_assessment(Client, AssessmentArn, ClusterArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/assessments/", aws_util:encode_uri(AssessmentArn), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -3582,6 +3996,43 @@ delete_vpc_connection(Client, Arn, Input0, Options0) ->
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the status and summary of an assessment.
+-spec describe_assessment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_assessment_errors(), tuple()}.
+describe_assessment(Client, AssessmentArn, ClusterArn)
+  when is_map(Client) ->
+    describe_assessment(Client, AssessmentArn, ClusterArn, #{}, #{}).
+
+-spec describe_assessment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_assessment_errors(), tuple()}.
+describe_assessment(Client, AssessmentArn, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_assessment(Client, AssessmentArn, ClusterArn, QueryMap, HeadersMap, []).
+
+-spec describe_assessment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_assessment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_assessment_errors(), tuple()}.
+describe_assessment(Client, AssessmentArn, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/assessments/", aws_util:encode_uri(AssessmentArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Returns the current configuration and state of a channel.
 -spec describe_channel(aws_client:aws_client(), binary() | list(), binary() | list()) ->
@@ -3960,6 +4411,43 @@ describe_topic_partitions(Client, ClusterArn, TopicName, QueryMap, HeadersMap, O
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the status and progress of a topic reassignment operation.
+-spec describe_topic_reassignment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_topic_reassignment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_reassignment_errors(), tuple()}.
+describe_topic_reassignment(Client, ClusterArn, TopicReassignmentOperationArn)
+  when is_map(Client) ->
+    describe_topic_reassignment(Client, ClusterArn, TopicReassignmentOperationArn, #{}, #{}).
+
+-spec describe_topic_reassignment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_topic_reassignment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_reassignment_errors(), tuple()}.
+describe_topic_reassignment(Client, ClusterArn, TopicReassignmentOperationArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_topic_reassignment(Client, ClusterArn, TopicReassignmentOperationArn, QueryMap, HeadersMap, []).
+
+-spec describe_topic_reassignment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_topic_reassignment_response(), tuple()} |
+    {error, any()} |
+    {error, describe_topic_reassignment_errors(), tuple()}.
+describe_topic_reassignment(Client, ClusterArn, TopicReassignmentOperationArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/topic-reassignments/", aws_util:encode_uri(TopicReassignmentOperationArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Returns a description of this MSK VPC connection.
 -spec describe_vpc_connection(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_vpc_connection_response(), tuple()} |
@@ -4115,6 +4603,97 @@ get_compatible_kafka_versions(Client, QueryMap, HeadersMap, Options0)
     Query0_ =
       [
         {<<"clusterArn">>, maps:get(<<"clusterArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the findings for a completed assessment.
+%%
+%% Paginated.
+-spec list_assessment_findings(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_assessment_findings_response(), tuple()} |
+    {error, any()} |
+    {error, list_assessment_findings_errors(), tuple()}.
+list_assessment_findings(Client, AssessmentArn, ClusterArn)
+  when is_map(Client) ->
+    list_assessment_findings(Client, AssessmentArn, ClusterArn, #{}, #{}).
+
+-spec list_assessment_findings(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_assessment_findings_response(), tuple()} |
+    {error, any()} |
+    {error, list_assessment_findings_errors(), tuple()}.
+list_assessment_findings(Client, AssessmentArn, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_assessment_findings(Client, AssessmentArn, ClusterArn, QueryMap, HeadersMap, []).
+
+-spec list_assessment_findings(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_assessment_findings_response(), tuple()} |
+    {error, any()} |
+    {error, list_assessment_findings_errors(), tuple()}.
+list_assessment_findings(Client, AssessmentArn, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/assessments/", aws_util:encode_uri(AssessmentArn), "/findings"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"category">>, maps:get(<<"category">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"severity">>, maps:get(<<"severity">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a list of assessments for the specified cluster.
+%%
+%% Optionally filterable by assessment type.
+-spec list_assessments(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_assessments_response(), tuple()} |
+    {error, any()} |
+    {error, list_assessments_errors(), tuple()}.
+list_assessments(Client, ClusterArn)
+  when is_map(Client) ->
+    list_assessments(Client, ClusterArn, #{}, #{}).
+
+-spec list_assessments(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_assessments_response(), tuple()} |
+    {error, any()} |
+    {error, list_assessments_errors(), tuple()}.
+list_assessments(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_assessments(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+-spec list_assessments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_assessments_response(), tuple()} |
+    {error, any()} |
+    {error, list_assessments_errors(), tuple()}.
+list_assessments(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/assessments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"assessmentType">>, maps:get(<<"assessmentType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -4669,6 +5248,49 @@ list_tags_for_resource(Client, ResourceArn, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists topic reassignment operations for a cluster.
+-spec list_topic_reassignments(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_topic_reassignments_response(), tuple()} |
+    {error, any()} |
+    {error, list_topic_reassignments_errors(), tuple()}.
+list_topic_reassignments(Client, ClusterArn)
+  when is_map(Client) ->
+    list_topic_reassignments(Client, ClusterArn, #{}, #{}).
+
+-spec list_topic_reassignments(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_topic_reassignments_response(), tuple()} |
+    {error, any()} |
+    {error, list_topic_reassignments_errors(), tuple()}.
+list_topic_reassignments(Client, ClusterArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_topic_reassignments(Client, ClusterArn, QueryMap, HeadersMap, []).
+
+-spec list_topic_reassignments(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_topic_reassignments_response(), tuple()} |
+    {error, any()} |
+    {error, list_topic_reassignments_errors(), tuple()}.
+list_topic_reassignments(Client, ClusterArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/topic-reassignments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"statusFilter">>, maps:get(<<"statusFilter">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc List topics in a MSK cluster.
 -spec list_topics(aws_client:aws_client(), binary() | list()) ->
     {ok, list_topics_response(), tuple()} |
@@ -4838,6 +5460,75 @@ reject_client_vpc_connection(Client, ClusterArn, Input) ->
 reject_client_vpc_connection(Client, ClusterArn, Input0, Options0) ->
     Method = put,
     Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/client-vpc-connection"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Initiates topic partition reassignment between broker types in a
+%% mixed-mode cluster.
+-spec start_topic_reassignment(aws_client:aws_client(), binary() | list(), start_topic_reassignment_request()) ->
+    {ok, start_topic_reassignment_response(), tuple()} |
+    {error, any()} |
+    {error, start_topic_reassignment_errors(), tuple()}.
+start_topic_reassignment(Client, ClusterArn, Input) ->
+    start_topic_reassignment(Client, ClusterArn, Input, []).
+
+-spec start_topic_reassignment(aws_client:aws_client(), binary() | list(), start_topic_reassignment_request(), proplists:proplist()) ->
+    {ok, start_topic_reassignment_response(), tuple()} |
+    {error, any()} |
+    {error, start_topic_reassignment_errors(), tuple()}.
+start_topic_reassignment(Client, ClusterArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/topic-reassignments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Stops an active topic reassignment operation.
+-spec stop_topic_reassignment(aws_client:aws_client(), binary() | list(), binary() | list(), stop_topic_reassignment_request()) ->
+    {ok, stop_topic_reassignment_response(), tuple()} |
+    {error, any()} |
+    {error, stop_topic_reassignment_errors(), tuple()}.
+stop_topic_reassignment(Client, ClusterArn, TopicReassignmentOperationArn, Input) ->
+    stop_topic_reassignment(Client, ClusterArn, TopicReassignmentOperationArn, Input, []).
+
+-spec stop_topic_reassignment(aws_client:aws_client(), binary() | list(), binary() | list(), stop_topic_reassignment_request(), proplists:proplist()) ->
+    {ok, stop_topic_reassignment_response(), tuple()} |
+    {error, any()} |
+    {error, stop_topic_reassignment_errors(), tuple()}.
+stop_topic_reassignment(Client, ClusterArn, TopicReassignmentOperationArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/clusters/", aws_util:encode_uri(ClusterArn), "/topic-reassignments/", aws_util:encode_uri(TopicReassignmentOperationArn), "/stop"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

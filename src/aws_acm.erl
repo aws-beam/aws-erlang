@@ -108,6 +108,7 @@
 %%   <<"AcmeAccountId">> => string(),
 %%   <<"AcmeEndpointArn">> => string(),
 %%   <<"CertificateKeyPairOrigin">> => list(any()),
+%%   <<"CertificateUsage">> => list(any()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"ExportOption">> => list(any()),
 %%   <<"Exported">> => boolean(),
@@ -118,6 +119,7 @@
 %%   <<"RenewalEligibility">> => list(any()),
 %%   <<"RenewalStatus">> => list(any()),
 %%   <<"RevokedAt">> => non_neg_integer(),
+%%   <<"RootHierarchyType">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"Type">> => list(any()),
 %%   <<"ValidationMethod">> => list(any())
@@ -244,6 +246,7 @@
 %%   <<"CertificateArn">> => string(),
 %%   <<"CertificateAuthorityArn">> => string(),
 %%   <<"CertificateKeyPairOrigin">> => list(any()),
+%%   <<"CertificateUsage">> => list(any()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
 %%   <<"DomainValidationOptions">> => list(domain_validation()),
@@ -263,6 +266,7 @@
 %%   <<"RenewalSummary">> => renewal_summary(),
 %%   <<"RevocationReason">> => list(any()),
 %%   <<"RevokedAt">> => non_neg_integer(),
+%%   <<"RootHierarchyType">> => list(any()),
 %%   <<"Serial">> => string(),
 %%   <<"SignatureAlgorithm">> => string(),
 %%   <<"Status">> => list(any()),
@@ -293,6 +297,7 @@
 %% certificate_summary() :: #{
 %%   <<"CertificateArn">> => string(),
 %%   <<"CertificateKeyPairOrigin">> => list(any()),
+%%   <<"CertificateUsage">> => list(any()),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"DomainName">> => string(),
 %%   <<"ExportOption">> => list(any()),
@@ -309,6 +314,7 @@
 %%   <<"NotBefore">> => non_neg_integer(),
 %%   <<"RenewalEligibility">> => list(any()),
 %%   <<"RevokedAt">> => non_neg_integer(),
+%%   <<"RootHierarchyType">> => list(any()),
 %%   <<"Status">> => list(any()),
 %%   <<"SubjectAlternativeNameSummaries">> => list(string()),
 %%   <<"Type">> => list(any())
@@ -809,6 +815,7 @@
 %%   <<"Includes">> => filters(),
 %%   <<"MaxItems">> => integer(),
 %%   <<"NextToken">> => string(),
+%%   <<"RootHierarchyTypes">> => list(list(any())()),
 %%   <<"SortBy">> => list(any()),
 %%   <<"SortOrder">> => list(any())
 %% }
@@ -890,12 +897,14 @@
 %% Example:
 %% request_certificate_request() :: #{
 %%   <<"CertificateAuthorityArn">> => string(),
+%%   <<"CertificateUsage">> => list(any()),
 %%   <<"DomainName">> := string(),
 %%   <<"DomainValidationOptions">> => list(domain_validation_option()),
 %%   <<"IdempotencyToken">> => string(),
 %%   <<"KeyAlgorithm">> => list(any()),
 %%   <<"ManagedBy">> => list(any()),
 %%   <<"Options">> => certificate_options(),
+%%   <<"RootHierarchyType">> => list(any()),
 %%   <<"SubjectAlternativeNames">> => list(string()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"ValidationMethod">> => list(any())
@@ -1975,6 +1984,11 @@ list_certificate_domain_validations(Client, Input, Options)
 %% `CertificateKeyPairOrigin' of `ACME'. To include ACME
 %% certificates, specify `ACME' in the `CertificateKeyPairOrigins'
 %% filter.
+%%
+%% By default, this action does not return certificates with a
+%% `RootHierarchyType' of `N2_AMAZON_MANAGED' or
+%% `N2_SFG2_AMAZON_MANAGED'. To list only Amazon N2 certificates, specify
+%% one or both of these values in the `RootHierarchyTypes' filter.
 -spec list_certificates(aws_client:aws_client(), list_certificates_request()) ->
     {ok, list_certificates_response(), tuple()} |
     {error, any()} |

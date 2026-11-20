@@ -200,6 +200,14 @@
 
 
 %% Example:
+%% registry_record_artifact_download() :: #{
+%%   <<"downloadUrl">> => string(),
+%%   <<"sha256">> => string()
+%% }
+-type registry_record_artifact_download() :: #{binary() => any()}.
+
+
+%% Example:
 %% registry_record_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"values">> => list(string())
@@ -209,6 +217,7 @@
 
 %% Example:
 %% registry_record_summary() :: #{
+%%   <<"artifact">> => registry_record_artifact_download(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"customMetadata">> => any(),
 %%   <<"description">> => string(),
@@ -245,15 +254,19 @@
 %% search_discoverable_registry_records_request() :: #{
 %%   <<"filters">> => any(),
 %%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()],
 %%   <<"registryIds">> := list(string()),
-%%   <<"searchQuery">> := string()
+%%   <<"searchQuery">> := string(),
+%%   <<"searchType">> => list(any())
 %% }
 -type search_discoverable_registry_records_request() :: #{binary() => any()}.
 
 
 %% Example:
 %% search_discoverable_registry_records_response() :: #{
-%%   <<"registryRecords">> => list(registry_record_summary())
+%%   <<"nextToken">> => [string()],
+%%   <<"registryRecords">> => list(registry_record_summary()),
+%%   <<"searchType">> => list(any())
 %% }
 -type search_discoverable_registry_records_response() :: #{binary() => any()}.
 
@@ -320,7 +333,12 @@
 %% registry.
 %%
 %% Records that cannot be retrieved are reported individually in the
-%% `errors' list rather than failing the entire request.
+%% `errors' list rather than failing the entire request. For each skill
+%% record that has a skill package, the operation also returns
+%% `artifact'. It contains a short-lived download URL and a SHA-256
+%% checksum for the package of the record's latest approved revision. If
+%% the registry can't create a download URL for a package, the whole
+%% request fails.
 -spec batch_get_discoverable_registry_record(aws_client:aws_client(), batch_get_discoverable_registry_record_request()) ->
     {ok, batch_get_discoverable_registry_record_response(), tuple()} |
     {error, any()} |
@@ -394,6 +412,11 @@ list_discoverable_registry_records(Client, RegistryId, Input0, Options0) ->
 %% natural language query.
 %%
 %% Returns metadata for the matching records ordered by relevance.
+%%
+%% Returns at most 1000 results across all pages when `searchType' is
+%% `KEYWORD', and at most 20 results when it is `HYBRID' or
+%% `SEMANTIC'. To retrieve more records, refine the query or filters, or
+%% use `ListDiscoverableRegistryRecords' to list every record.
 -spec search_discoverable_registry_records(aws_client:aws_client(), search_discoverable_registry_records_request()) ->
     {ok, search_discoverable_registry_records_response(), tuple()} |
     {error, any()} |

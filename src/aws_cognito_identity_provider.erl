@@ -138,6 +138,8 @@
          confirm_forgot_password/3,
          confirm_sign_up/2,
          confirm_sign_up/3,
+         create_c_i_m_d_policy/2,
+         create_c_i_m_d_policy/3,
          create_group/2,
          create_group/3,
          create_identity_provider/2,
@@ -158,6 +160,8 @@
          create_user_pool_domain/3,
          create_user_pool_replica/2,
          create_user_pool_replica/3,
+         delete_c_i_m_d_policy/2,
+         delete_c_i_m_d_policy/3,
          delete_group/2,
          delete_group/3,
          delete_identity_provider/2,
@@ -184,6 +188,8 @@
          delete_user_pool_replica/3,
          delete_web_authn_credential/2,
          delete_web_authn_credential/3,
+         describe_c_i_m_d_policy/2,
+         describe_c_i_m_d_policy/3,
          describe_identity_provider/2,
          describe_identity_provider/3,
          describe_managed_login_branding/2,
@@ -252,6 +258,10 @@
          initiate_auth/3,
          initiate_point_in_time_recovery/2,
          initiate_point_in_time_recovery/3,
+         list_c_i_m_d_policies/2,
+         list_c_i_m_d_policies/3,
+         list_client_metadata_urls/2,
+         list_client_metadata_urls/3,
          list_devices/2,
          list_devices/3,
          list_groups/2,
@@ -324,6 +334,10 @@
          untag_resource/3,
          update_auth_event_feedback/2,
          update_auth_event_feedback/3,
+         update_c_i_m_d_policy/2,
+         update_c_i_m_d_policy/3,
+         update_client_metadata_url_state/2,
+         update_client_metadata_url_state/3,
          update_device_status/2,
          update_device_status/3,
          update_group/2,
@@ -956,6 +970,36 @@
 -type authentication_result_type() :: #{binary() => any()}.
 
 %% Example:
+%% c_i_m_d_policy_summary_type() :: #{
+%%   <<"CIMDPolicyId">> => string(),
+%%   <<"CacheDuration">> => integer(),
+%%   <<"ClientId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"PolicyName">> => string()
+%% }
+-type c_i_m_d_policy_summary_type() :: #{binary() => any()}.
+
+%% Example:
+%% c_i_m_d_policy_type() :: #{
+%%   <<"CIMDPolicyId">> => string(),
+%%   <<"CacheDuration">> => integer(),
+%%   <<"ClientId">> => string(),
+%%   <<"CreationDate">> => non_neg_integer(),
+%%   <<"LastModifiedDate">> => non_neg_integer(),
+%%   <<"PolicyName">> => string(),
+%%   <<"URLPatterns">> => list(string()),
+%%   <<"UserPoolId">> => string()
+%% }
+-type c_i_m_d_policy_type() :: #{binary() => any()}.
+
+%% Example:
+%% cached_c_i_m_d_url_does_not_exist_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type cached_c_i_m_d_url_does_not_exist_exception() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_point_in_time_recovery_request() :: #{
 %%   <<"RestoreId">> := string(),
 %%   <<"UserPoolId">> := string()
@@ -996,6 +1040,14 @@
 %%   <<"TokenType">> => string()
 %% }
 -type client_authentication_result_type() :: #{binary() => any()}.
+
+%% Example:
+%% client_metadata_url_type() :: #{
+%%   <<"CachedDate">> => non_neg_integer(),
+%%   <<"ExpirationDate">> => non_neg_integer(),
+%%   <<"URL">> => string()
+%% }
+-type client_metadata_url_type() :: #{binary() => any()}.
 
 %% Example:
 %% client_s_s_o_session_config_type() :: #{
@@ -1134,6 +1186,22 @@
 -type context_data_type() :: #{binary() => any()}.
 
 %% Example:
+%% create_c_i_m_d_policy_request() :: #{
+%%   <<"CacheDuration">> => integer(),
+%%   <<"ClientId">> := string(),
+%%   <<"PolicyName">> := string(),
+%%   <<"URLPatterns">> := list(string()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type create_c_i_m_d_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_c_i_m_d_policy_response() :: #{
+%%   <<"CIMDPolicy">> => c_i_m_d_policy_type()
+%% }
+-type create_c_i_m_d_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_group_request() :: #{
 %%   <<"Description">> => string(),
 %%   <<"GroupName">> := string(),
@@ -1249,6 +1317,7 @@
 %%   <<"IdTokenValidity">> => integer(),
 %%   <<"LogoutURLs">> => list(string()),
 %%   <<"PreventUserExistenceErrors">> => list(any()),
+%%   <<"PublishSecretsInAWSSecretsManager">> => boolean(),
 %%   <<"ReadAttributes">> => list(string()),
 %%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
 %%   <<"RefreshTokenValidity">> => integer(),
@@ -1366,6 +1435,19 @@
 %%   <<"OpenDcrGrantTypes">> => list(list(any())())
 %% }
 -type dcr_configuration_type() :: #{binary() => any()}.
+
+%% Example:
+%% delete_c_i_m_d_policy_request() :: #{
+%%   <<"CIMDPolicyId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type delete_c_i_m_d_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_c_i_m_d_policy_response() :: #{
+
+%% }
+-type delete_c_i_m_d_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_group_request() :: #{
@@ -1486,6 +1568,19 @@
 
 %% }
 -type delete_web_authn_credential_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_c_i_m_d_policy_request() :: #{
+%%   <<"CIMDPolicyId">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type describe_c_i_m_d_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_c_i_m_d_policy_response() :: #{
+%%   <<"CIMDPolicy">> => c_i_m_d_policy_type()
+%% }
+-type describe_c_i_m_d_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_identity_provider_request() :: #{
@@ -2274,6 +2369,37 @@
 %%   <<"ProvisionedLimitValue">> => integer()
 %% }
 -type limit_type() :: #{binary() => any()}.
+
+%% Example:
+%% list_c_i_m_d_policies_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_c_i_m_d_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_c_i_m_d_policies_response() :: #{
+%%   <<"CIMDPolicies">> => list(c_i_m_d_policy_summary_type()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_c_i_m_d_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_client_metadata_urls_request() :: #{
+%%   <<"CIMDPolicyId">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type list_client_metadata_urls_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_client_metadata_urls_response() :: #{
+%%   <<"ClientMetadataURLs">> => list(client_metadata_url_type()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_client_metadata_urls_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_devices_request() :: #{
@@ -3284,6 +3410,38 @@
 -type update_auth_event_feedback_response() :: #{binary() => any()}.
 
 %% Example:
+%% update_c_i_m_d_policy_request() :: #{
+%%   <<"CIMDPolicyId">> := string(),
+%%   <<"CacheDuration">> => integer(),
+%%   <<"ClientId">> := string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"URLPatterns">> := list(string()),
+%%   <<"UserPoolId">> := string()
+%% }
+-type update_c_i_m_d_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_c_i_m_d_policy_response() :: #{
+%%   <<"CIMDPolicy">> => c_i_m_d_policy_type()
+%% }
+-type update_c_i_m_d_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_client_metadata_url_state_request() :: #{
+%%   <<"Action">> := list(any()),
+%%   <<"CIMDPolicyId">> := string(),
+%%   <<"URL">> := string(),
+%%   <<"UserPoolId">> := string()
+%% }
+-type update_client_metadata_url_state_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_client_metadata_url_state_response() :: #{
+
+%% }
+-type update_client_metadata_url_state_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_device_status_request() :: #{
 %%   <<"AccessToken">> := string(),
 %%   <<"DeviceKey">> := string(),
@@ -3423,6 +3581,7 @@
 %%   <<"IdTokenValidity">> => integer(),
 %%   <<"LogoutURLs">> => list(string()),
 %%   <<"PreventUserExistenceErrors">> => list(any()),
+%%   <<"PublishSecretsInAWSSecretsManager">> => boolean(),
 %%   <<"ReadAttributes">> => list(string()),
 %%   <<"RefreshTokenRotation">> => refresh_token_rotation_type(),
 %%   <<"RefreshTokenValidity">> => integer(),
@@ -3596,6 +3755,7 @@
 %%   <<"ClientId">> => string(),
 %%   <<"ClientName">> => string(),
 %%   <<"ClientSecret">> => string(),
+%%   <<"ClientSecretArn">> => string(),
 %%   <<"ClientType">> => list(any()),
 %%   <<"CreationDate">> => non_neg_integer(),
 %%   <<"DefaultRedirectURI">> => string(),
@@ -4291,6 +4451,17 @@
     code_mismatch_exception() | 
     alias_exists_exception().
 
+-type create_c_i_m_d_policy_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    concurrent_modification_exception().
+
 -type create_group_errors() ::
     too_many_requests_exception() | 
     resource_not_found_exception() | 
@@ -4396,6 +4567,15 @@
     invalid_parameter_exception() | 
     internal_error_exception() | 
     feature_unavailable_in_tier_exception().
+
+-type delete_c_i_m_d_policy_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    concurrent_modification_exception().
 
 -type delete_group_errors() ::
     too_many_requests_exception() | 
@@ -4515,6 +4695,13 @@
     invalid_parameter_exception() | 
     internal_error_exception() | 
     forbidden_exception().
+
+-type describe_c_i_m_d_policy_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type describe_identity_provider_errors() ::
     too_many_requests_exception() | 
@@ -4853,6 +5040,20 @@
     internal_error_exception() | 
     feature_unavailable_in_tier_exception() | 
     concurrent_modification_exception().
+
+-type list_c_i_m_d_policies_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
+
+-type list_client_metadata_urls_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception().
 
 -type list_devices_errors() ::
     user_not_found_exception() | 
@@ -5221,6 +5422,27 @@
     not_authorized_exception() | 
     invalid_parameter_exception() | 
     internal_error_exception().
+
+-type update_c_i_m_d_policy_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    concurrent_modification_exception().
+
+-type update_client_metadata_url_state_errors() ::
+    too_many_requests_exception() | 
+    resource_not_found_exception() | 
+    operation_not_enabled_exception() | 
+    not_authorized_exception() | 
+    invalid_parameter_exception() | 
+    internal_error_exception() | 
+    feature_unavailable_in_tier_exception() | 
+    cached_c_i_m_d_url_does_not_exist_exception().
 
 -type update_device_status_errors() ::
     user_not_found_exception() | 
@@ -7125,6 +7347,47 @@ confirm_sign_up(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ConfirmSignUp">>, Input, Options).
 
+%% @doc Creates a Client ID Metadata Document (CIMD) policy for an app
+%% client.
+%%
+%% A CIMD policy
+%% lets OAuth clients identify themselves to your user pool with an HTTPS URL
+%% as their
+%% client ID. Amazon Cognito retrieves the client metadata document from that
+%% URL and
+%% accepts the client only when the URL matches one of the URL patterns in
+%% the
+%% policy.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec create_c_i_m_d_policy(aws_client:aws_client(), create_c_i_m_d_policy_request()) ->
+    {ok, create_c_i_m_d_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_c_i_m_d_policy_errors(), tuple()}.
+create_c_i_m_d_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_c_i_m_d_policy(Client, Input, []).
+
+-spec create_c_i_m_d_policy(aws_client:aws_client(), create_c_i_m_d_policy_request(), proplists:proplist()) ->
+    {ok, create_c_i_m_d_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_c_i_m_d_policy_errors(), tuple()}.
+create_c_i_m_d_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateCIMDPolicy">>, Input, Options).
+
 %% @doc Creates a new group in the specified user pool.
 %%
 %% For more information about user pool
@@ -7581,6 +7844,37 @@ create_user_pool_replica(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateUserPoolReplica">>, Input, Options).
 
+%% @doc Deletes a Client ID Metadata Document (CIMD) policy.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec delete_c_i_m_d_policy(aws_client:aws_client(), delete_c_i_m_d_policy_request()) ->
+    {ok, delete_c_i_m_d_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_c_i_m_d_policy_errors(), tuple()}.
+delete_c_i_m_d_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_c_i_m_d_policy(Client, Input, []).
+
+-spec delete_c_i_m_d_policy(aws_client:aws_client(), delete_c_i_m_d_policy_request(), proplists:proplist()) ->
+    {ok, delete_c_i_m_d_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_c_i_m_d_policy_errors(), tuple()}.
+delete_c_i_m_d_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteCIMDPolicy">>, Input, Options).
+
 %% @doc Deletes a group from the specified user pool.
 %%
 %% When you delete a group, that group no
@@ -7998,6 +8292,38 @@ delete_web_authn_credential(Client, Input)
 delete_web_authn_credential(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteWebAuthnCredential">>, Input, Options).
+
+%% @doc Returns the configuration of a Client ID Metadata Document (CIMD)
+%% policy.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec describe_c_i_m_d_policy(aws_client:aws_client(), describe_c_i_m_d_policy_request()) ->
+    {ok, describe_c_i_m_d_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_c_i_m_d_policy_errors(), tuple()}.
+describe_c_i_m_d_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_c_i_m_d_policy(Client, Input, []).
+
+-spec describe_c_i_m_d_policy(aws_client:aws_client(), describe_c_i_m_d_policy_request(), proplists:proplist()) ->
+    {ok, describe_c_i_m_d_policy_response(), tuple()} |
+    {error, any()} |
+    {error, describe_c_i_m_d_policy_errors(), tuple()}.
+describe_c_i_m_d_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCIMDPolicy">>, Input, Options).
 
 %% @doc Given a user pool ID and identity provider (IdP) name, returns
 %% details about the
@@ -9223,10 +9549,9 @@ initiate_auth(Client, Input, Options)
 %% This operation is the first step of a recovery and doesn't change your
 %% user pool data. Amazon Cognito pauses write operations in the user pool
 %% and
-%% generates a recovery preview when capacity is available in the Amazon Web
-%% Services Region, so the
-%% preview might not be available immediately. The preview shows the number
-%% of entities that the recovery creates, updates,
+%% generates a recovery preview, which might not be available immediately.
+%% The preview shows the number of entities that the recovery creates,
+%% updates,
 %% and deletes. To check the status of the recovery and review the preview,
 %% make a request. When the status is
 %% `PREVIEW_GENERATED', apply the recovery with a request or discard it
@@ -9248,7 +9573,7 @@ initiate_auth(Client, Input, Options)
 %% write to the user pool,
 %% for example user sign-up, user creation, and attribute updates. Sign-in
 %% and read
-%% operations continue to work, with the following exceptions.
+%% operations continue to work, with the following exceptions:
 %%
 %% Users who must set a new password, set up MFA, or respond to a TOTP MFA
 %% challenge can't complete sign-in. Sign-in with the
@@ -9269,8 +9594,7 @@ initiate_auth(Client, Input, Options)
 %% the recovery preview expires. Amazon Cognito then resumes write operations
 %% and doesn't
 %% change your user pool data. The 24-hour period includes the time that
-%% Amazon Cognito waits for
-%% available capacity.
+%% Amazon Cognito takes to generate the recovery preview.
 %%
 %% A point-in-time recovery restores user data, including user profiles and
 %% attributes,
@@ -9282,7 +9606,7 @@ initiate_auth(Client, Input, Options)
 %% password after
 %% the recovery point keep their current password.
 %%
-%% The following requirements and limits apply to point-in-time recovery.
+%% The following requirements and limits apply to point-in-time recovery:
 %%
 %% Your user pool must be on the Essentials or Plus feature plan:
 %% https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-sign-in-feature-plans.html.
@@ -9368,6 +9692,71 @@ initiate_point_in_time_recovery(Client, Input)
 initiate_point_in_time_recovery(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"InitiatePointInTimeRecovery">>, Input, Options).
+
+%% @doc Lists the Client ID Metadata Document (CIMD) policies in a user pool.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_c_i_m_d_policies(aws_client:aws_client(), list_c_i_m_d_policies_request()) ->
+    {ok, list_c_i_m_d_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_c_i_m_d_policies_errors(), tuple()}.
+list_c_i_m_d_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_c_i_m_d_policies(Client, Input, []).
+
+-spec list_c_i_m_d_policies(aws_client:aws_client(), list_c_i_m_d_policies_request(), proplists:proplist()) ->
+    {ok, list_c_i_m_d_policies_response(), tuple()} |
+    {error, any()} |
+    {error, list_c_i_m_d_policies_errors(), tuple()}.
+list_c_i_m_d_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCIMDPolicies">>, Input, Options).
+
+%% @doc Lists the client ID metadata document URLs that Amazon Cognito has
+%% received for a
+%% Client ID Metadata Document (CIMD) policy, with the cache state of each
+%% URL.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec list_client_metadata_urls(aws_client:aws_client(), list_client_metadata_urls_request()) ->
+    {ok, list_client_metadata_urls_response(), tuple()} |
+    {error, any()} |
+    {error, list_client_metadata_urls_errors(), tuple()}.
+list_client_metadata_urls(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_client_metadata_urls(Client, Input, []).
+
+-spec list_client_metadata_urls(aws_client:aws_client(), list_client_metadata_urls_request(), proplists:proplist()) ->
+    {ok, list_client_metadata_urls_response(), tuple()} |
+    {error, any()} |
+    {error, list_client_metadata_urls_errors(), tuple()}.
+list_client_metadata_urls(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListClientMetadataURLs">>, Input, Options).
 
 %% @doc Lists the devices that Amazon Cognito has registered to the currently
 %% signed-in user.
@@ -10696,6 +11085,74 @@ update_auth_event_feedback(Client, Input)
 update_auth_event_feedback(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAuthEventFeedback">>, Input, Options).
+
+%% @doc Updates the configuration of a Client ID Metadata Document (CIMD)
+%% policy.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_c_i_m_d_policy(aws_client:aws_client(), update_c_i_m_d_policy_request()) ->
+    {ok, update_c_i_m_d_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_c_i_m_d_policy_errors(), tuple()}.
+update_c_i_m_d_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_c_i_m_d_policy(Client, Input, []).
+
+-spec update_c_i_m_d_policy(aws_client:aws_client(), update_c_i_m_d_policy_request(), proplists:proplist()) ->
+    {ok, update_c_i_m_d_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_c_i_m_d_policy_errors(), tuple()}.
+update_c_i_m_d_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateCIMDPolicy">>, Input, Options).
+
+%% @doc Changes the cache state of a client metadata document URL for a
+%% client ID metadata
+%% document (CIMD) policy.
+%%
+%% Refresh a URL to make Amazon Cognito retrieve the client
+%% metadata document again, or invalidate it to remove the cached document.
+%%
+%% Amazon Cognito evaluates Identity and Access Management (IAM) policies in
+%% requests for this API operation. For
+%% this operation, you must use IAM credentials to authorize requests, and
+%% you must
+%% grant yourself the corresponding IAM permission in a policy.
+%%
+%% == Learn more ==
+%%
+%% Signing Amazon Web Services API Requests:
+%% https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html
+%%
+%% Using the Amazon Cognito user pools API and user pool endpoints:
+%% https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html
+-spec update_client_metadata_url_state(aws_client:aws_client(), update_client_metadata_url_state_request()) ->
+    {ok, update_client_metadata_url_state_response(), tuple()} |
+    {error, any()} |
+    {error, update_client_metadata_url_state_errors(), tuple()}.
+update_client_metadata_url_state(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_client_metadata_url_state(Client, Input, []).
+
+-spec update_client_metadata_url_state(aws_client:aws_client(), update_client_metadata_url_state_request(), proplists:proplist()) ->
+    {ok, update_client_metadata_url_state_response(), tuple()} |
+    {error, any()} |
+    {error, update_client_metadata_url_state_errors(), tuple()}.
+update_client_metadata_url_state(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateClientMetadataURLState">>, Input, Options).
 
 %% @doc Updates the status of a the currently signed-in user's device so
 %% that it is

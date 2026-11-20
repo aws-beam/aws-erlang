@@ -127,7 +127,8 @@
 %%   <<"requireInstanceProperties">> => [boolean()],
 %%   <<"roleArns">> := list(string()),
 %%   <<"sessionPolicy">> => [string()],
-%%   <<"tags">> => list(tag())
+%%   <<"tags">> => list(tag()),
+%%   <<"tipConfiguration">> => tip_configuration()
 %% }
 -type create_profile_request() :: #{binary() => any()}.
 
@@ -325,6 +326,7 @@
 %%   <<"requireInstanceProperties">> => [boolean()],
 %%   <<"roleArns">> => list(string()),
 %%   <<"sessionPolicy">> => [string()],
+%%   <<"tipConfiguration">> => tip_configuration(),
 %%   <<"updatedAt">> => [non_neg_integer()]
 %% }
 -type profile_detail() :: #{binary() => any()}.
@@ -477,6 +479,15 @@
 
 
 %% Example:
+%% tip_configuration() :: #{
+%%   <<"status">> => string(),
+%%   <<"subjectSource">> => string(),
+%%   <<"subjectType">> => string()
+%% }
+-type tip_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% too_many_tags_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -537,7 +548,8 @@
 %%   <<"managedPolicyArns">> => list([string()]()),
 %%   <<"name">> => string(),
 %%   <<"roleArns">> => list(string()),
-%%   <<"sessionPolicy">> => [string()]
+%%   <<"sessionPolicy">> => [string()],
+%%   <<"tipConfiguration">> => tip_configuration()
 %% }
 -type update_profile_request() :: #{binary() => any()}.
 

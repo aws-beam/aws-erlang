@@ -6,17 +6,34 @@
 %% products.
 %%
 %% Quick Launch simplifies and reduces the time, resources, and steps
-%% required to configure, deploy, and launch a products.
-%% The AWS Marketplace Deployment Service provides sellers with a secure
-%% method for passing deployment parameters, such as
-%% API keys and external IDs, to buyers during the Quick Launch experience.
+%% required to configure, deploy, and launch a product. The AWS Marketplace
+%% Deployment Service provides sellers with a secure method for passing
+%% deployment parameters, such as API keys and external IDs, to buyers during
+%% the Quick Launch experience.
+%%
+%% You can also use the AWS Marketplace Deployment Service to publish
+%% deployment configurations. A deployment configuration defines how buyers
+%% access a product's delivery option after they subscribe. For example,
+%% for the Data as a Service delivery option, it specifies the seller's
+%% fulfillment URL.
 -module(aws_marketplace_deployment).
 
--export([list_tags_for_resource/2,
+-export([get_deployment_configuration/4,
+         get_deployment_configuration/6,
+         get_deployment_configuration/7,
+         get_deployment_configuration_job/5,
+         get_deployment_configuration_job/7,
+         get_deployment_configuration_job/8,
+         list_deployment_configuration_jobs/4,
+         list_deployment_configuration_jobs/6,
+         list_deployment_configuration_jobs/7,
+         list_tags_for_resource/2,
          list_tags_for_resource/4,
          list_tags_for_resource/5,
          put_deployment_parameter/4,
          put_deployment_parameter/5,
+         start_deployment_configuration_job/5,
+         start_deployment_configuration_job/6,
          tag_resource/3,
          tag_resource/4,
          untag_resource/3,
@@ -45,11 +62,57 @@
 
 
 %% Example:
+%% data_as_a_service_configuration_detail() :: #{
+%%   <<"fulfillmentUrl">> => string()
+%% }
+-type data_as_a_service_configuration_detail() :: #{binary() => any()}.
+
+
+%% Example:
+%% deployment_configuration_job_summary() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"jobId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type deployment_configuration_job_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% deployment_parameter_input() :: #{
 %%   <<"name">> => string(),
 %%   <<"secretString">> => string()
 %% }
 -type deployment_parameter_input() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_configuration_job_request() :: #{}
+-type get_deployment_configuration_job_request() :: #{}.
+
+
+%% Example:
+%% get_deployment_configuration_job_response() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"configurationArn">> => string(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"endedAt">> => [non_neg_integer()],
+%%   <<"errorCode">> => list(any()),
+%%   <<"jobId">> => string(),
+%%   <<"message">> => [string()],
+%%   <<"status">> => list(any())
+%% }
+-type get_deployment_configuration_job_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_deployment_configuration_request() :: #{}
+-type get_deployment_configuration_request() :: #{}.
+
+
+%% Example:
+%% get_deployment_configuration_response() :: #{
+%%   <<"configuration">> => list()
+%% }
+-type get_deployment_configuration_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -57,6 +120,22 @@
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_configuration_jobs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_configuration_jobs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_deployment_configuration_jobs_response() :: #{
+%%   <<"jobs">> => list(deployment_configuration_job_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_deployment_configuration_jobs_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_tags_for_resource_request() :: #{}
@@ -106,6 +185,25 @@
 
 
 %% Example:
+%% start_deployment_configuration_job_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configuration">> := list(),
+%%   <<"tags">> => map()
+%% }
+-type start_deployment_configuration_job_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% start_deployment_configuration_job_response() :: #{
+%%   <<"configuration">> => list(),
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"jobId">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type start_deployment_configuration_job_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% tag_resource_request() :: #{
 %%   <<"tags">> => map()
 %% }
@@ -141,6 +239,26 @@
 %% }
 -type validation_exception() :: #{binary() => any()}.
 
+-type get_deployment_configuration_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_deployment_configuration_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_deployment_configuration_jobs_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_tags_for_resource_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -152,6 +270,14 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type start_deployment_configuration_job_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -177,8 +303,143 @@
 %% API
 %%====================================================================
 
-%% @doc Lists all tags that have been added to a deployment parameter
-%% resource.
+%% @doc Returns the active deployment configuration for a product and
+%% delivery option.
+%%
+%% The active deployment configuration is the configuration from the most
+%% recent successful deployment configuration job. The seller that owns the
+%% product and buyers entitled to the product can call this operation.
+%%
+%% If the product and delivery option have no active deployment
+%% configuration, the operation returns a `ResourceNotFoundException'.
+-spec get_deployment_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_deployment_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_configuration_errors(), tuple()}.
+get_deployment_configuration(Client, Catalog, DeliveryOptionType, ProductId)
+  when is_map(Client) ->
+    get_deployment_configuration(Client, Catalog, DeliveryOptionType, ProductId, #{}, #{}).
+
+-spec get_deployment_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_deployment_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_configuration_errors(), tuple()}.
+get_deployment_configuration(Client, Catalog, DeliveryOptionType, ProductId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deployment_configuration(Client, Catalog, DeliveryOptionType, ProductId, QueryMap, HeadersMap, []).
+
+-spec get_deployment_configuration(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_deployment_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_configuration_errors(), tuple()}.
+get_deployment_configuration(Client, Catalog, DeliveryOptionType, ProductId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/catalogs/", aws_util:encode_uri(Catalog), "/products/", aws_util:encode_uri(ProductId), "/delivery-options/", aws_util:encode_uri(DeliveryOptionType), "/deployment-configuration"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the details of a deployment configuration job.
+%%
+%% Only the seller that started the job can call this operation.
+%%
+%% If the job doesn't belong to the product and delivery option in the
+%% request path, the operation returns a `ResourceNotFoundException'.
+-spec get_deployment_configuration_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_deployment_configuration_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_configuration_job_errors(), tuple()}.
+get_deployment_configuration_job(Client, Catalog, DeliveryOptionType, JobId, ProductId)
+  when is_map(Client) ->
+    get_deployment_configuration_job(Client, Catalog, DeliveryOptionType, JobId, ProductId, #{}, #{}).
+
+-spec get_deployment_configuration_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_deployment_configuration_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_configuration_job_errors(), tuple()}.
+get_deployment_configuration_job(Client, Catalog, DeliveryOptionType, JobId, ProductId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_deployment_configuration_job(Client, Catalog, DeliveryOptionType, JobId, ProductId, QueryMap, HeadersMap, []).
+
+-spec get_deployment_configuration_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_deployment_configuration_job_response(), tuple()} |
+    {error, any()} |
+    {error, get_deployment_configuration_job_errors(), tuple()}.
+get_deployment_configuration_job(Client, Catalog, DeliveryOptionType, JobId, ProductId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/catalogs/", aws_util:encode_uri(Catalog), "/products/", aws_util:encode_uri(ProductId), "/delivery-options/", aws_util:encode_uri(DeliveryOptionType), "/deployment-configuration/jobs/", aws_util:encode_uri(JobId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the deployment configuration jobs that you started for a
+%% product and delivery option, ordered from newest to oldest.
+%%
+%% Results are paginated. Use the `nextToken' parameter to retrieve
+%% additional results.
+%%
+%% If you haven't started any jobs for the product and delivery option,
+%% the operation returns an empty `jobs' list.
+-spec list_deployment_configuration_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, list_deployment_configuration_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_deployment_configuration_jobs_errors(), tuple()}.
+list_deployment_configuration_jobs(Client, Catalog, DeliveryOptionType, ProductId)
+  when is_map(Client) ->
+    list_deployment_configuration_jobs(Client, Catalog, DeliveryOptionType, ProductId, #{}, #{}).
+
+-spec list_deployment_configuration_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_deployment_configuration_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_deployment_configuration_jobs_errors(), tuple()}.
+list_deployment_configuration_jobs(Client, Catalog, DeliveryOptionType, ProductId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_deployment_configuration_jobs(Client, Catalog, DeliveryOptionType, ProductId, QueryMap, HeadersMap, []).
+
+-spec list_deployment_configuration_jobs(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_deployment_configuration_jobs_response(), tuple()} |
+    {error, any()} |
+    {error, list_deployment_configuration_jobs_errors(), tuple()}.
+list_deployment_configuration_jobs(Client, Catalog, DeliveryOptionType, ProductId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/catalogs/", aws_util:encode_uri(Catalog), "/products/", aws_util:encode_uri(ProductId), "/delivery-options/", aws_util:encode_uri(DeliveryOptionType), "/deployment-configuration/jobs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists all tags that have been added to a resource.
 -spec list_tags_for_resource(aws_client:aws_client(), binary() | list()) ->
     {ok, list_tags_for_resource_response(), tuple()} |
     {error, any()} |
@@ -231,6 +492,49 @@ put_deployment_parameter(Client, Catalog, ProductId, Input) ->
 put_deployment_parameter(Client, Catalog, ProductId, Input0, Options0) ->
     Method = post,
     Path = ["/catalogs/", aws_util:encode_uri(Catalog), "/products/", aws_util:encode_uri(ProductId), "/deployment-parameters"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Starts a job that publishes a deployment configuration for a product
+%% and delivery option.
+%%
+%% The job runs asynchronously. Use `GetDeploymentConfigurationJob' to
+%% track its status. When the job reaches the `SUCCEEDED' status, its
+%% configuration becomes the active deployment configuration for the product
+%% and delivery option.
+%%
+%% The populated member of `configuration' must match the
+%% `deliveryOptionType' in the request path.
+-spec start_deployment_configuration_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_deployment_configuration_job_request()) ->
+    {ok, start_deployment_configuration_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_deployment_configuration_job_errors(), tuple()}.
+start_deployment_configuration_job(Client, Catalog, DeliveryOptionType, ProductId, Input) ->
+    start_deployment_configuration_job(Client, Catalog, DeliveryOptionType, ProductId, Input, []).
+
+-spec start_deployment_configuration_job(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), start_deployment_configuration_job_request(), proplists:proplist()) ->
+    {ok, start_deployment_configuration_job_response(), tuple()} |
+    {error, any()} |
+    {error, start_deployment_configuration_job_errors(), tuple()}.
+start_deployment_configuration_job(Client, Catalog, DeliveryOptionType, ProductId, Input0, Options0) ->
+    Method = post,
+    Path = ["/catalogs/", aws_util:encode_uri(Catalog), "/products/", aws_util:encode_uri(ProductId), "/delivery-options/", aws_util:encode_uri(DeliveryOptionType), "/deployment-configuration/jobs"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

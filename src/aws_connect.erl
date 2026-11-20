@@ -2214,6 +2214,7 @@
 %%   <<"TaskTemplateInfo">> => task_template_info_v2(),
 %%   <<"TotalPauseCount">> => integer(),
 %%   <<"TotalPauseDurationInSeconds">> => integer(),
+%%   <<"VoicemailInfo">> => voicemail_info(),
 %%   <<"WisdomInfo">> => wisdom_info()
 %% }
 -type contact() :: #{binary() => any()}.
@@ -12604,6 +12605,33 @@
 %%   <<"VoiceRecordingTrack">> => list(any())
 %% }
 -type voice_recording_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% voicemail_analysis_reference() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type voicemail_analysis_reference() :: #{binary() => any()}.
+
+
+%% Example:
+%% voicemail_info() :: #{
+%%   <<"NumberOfVoicemails">> => integer()
+%% }
+-type voicemail_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% voicemail_recording_reference() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type voicemail_recording_reference() :: #{binary() => any()}.
 
 
 %% Example:

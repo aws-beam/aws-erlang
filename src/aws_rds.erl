@@ -684,11 +684,13 @@
 %%   <<"DBClusterIdentifier">> => string(),
 %%   <<"EngineVersion">> => string(),
 %%   <<"IAMDatabaseAuthenticationEnabled">> => boolean(),
+%%   <<"InternetAccessGatewayEnabled">> => boolean(),
 %%   <<"Iops">> => integer(),
 %%   <<"MasterUserPassword">> => string(),
 %%   <<"PendingCloudwatchLogsExports">> => pending_cloudwatch_logs_exports(),
 %%   <<"RdsCustomClusterConfiguration">> => rds_custom_cluster_configuration(),
-%%   <<"StorageType">> => string()
+%%   <<"StorageType">> => string(),
+%%   <<"VPCNetworkingEnabled">> => boolean()
 %% }
 -type cluster_pending_modified_values() :: #{binary() => any()}.
 
@@ -909,9 +911,11 @@
 %%   <<"EnableGlobalWriteForwarding">> => boolean(),
 %%   <<"EnableHttpEndpoint">> => boolean(),
 %%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnableInternetAccessGateway">> => boolean(),
 %%   <<"EnableLimitlessDatabase">> => boolean(),
 %%   <<"EnableLocalWriteForwarding">> => boolean(),
 %%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"EnableVPCNetworking">> => boolean(),
 %%   <<"Engine">> := string(),
 %%   <<"EngineLifecycleSupport">> => string(),
 %%   <<"EngineMode">> => string(),
@@ -1923,6 +1927,7 @@
 %%   <<"PerformanceInsightsRetentionPeriod">> => integer(),
 %%   <<"PreferredBackupWindow">> => string(),
 %%   <<"PreferredMaintenanceWindow">> => string(),
+%%   <<"PrimaryEndpoint">> => primary_endpoint(),
 %%   <<"ProcessorFeatures">> => list(processor_feature()),
 %%   <<"PromotionTier">> => integer(),
 %%   <<"PubliclyAccessible">> => boolean(),
@@ -1945,6 +1950,7 @@
 %%   <<"TdeCredentialArn">> => string(),
 %%   <<"Timezone">> => string(),
 %%   <<"UpgradeRolloutOrder">> => list(any()),
+%%   <<"VPCNetworkingEnabled">> => boolean(),
 %%   <<"VpcSecurityGroups">> => list(vpc_security_group_membership())
 %% }
 -type db_instance() :: #{binary() => any()}.
@@ -4125,6 +4131,7 @@
 %%   <<"DBClusterInstanceClass">> => string(),
 %%   <<"DBClusterParameterGroupName">> => string(),
 %%   <<"DBInstanceParameterGroupName">> => string(),
+%%   <<"DBSubnetGroupName">> => string(),
 %%   <<"DatabaseInsightsMode">> => list(any()),
 %%   <<"DeletionProtection">> => boolean(),
 %%   <<"Domain">> => string(),
@@ -4132,9 +4139,11 @@
 %%   <<"EnableGlobalWriteForwarding">> => boolean(),
 %%   <<"EnableHttpEndpoint">> => boolean(),
 %%   <<"EnableIAMDatabaseAuthentication">> => boolean(),
+%%   <<"EnableInternetAccessGateway">> => boolean(),
 %%   <<"EnableLimitlessDatabase">> => boolean(),
 %%   <<"EnableLocalWriteForwarding">> => boolean(),
 %%   <<"EnablePerformanceInsights">> => boolean(),
+%%   <<"EnableVPCNetworking">> => boolean(),
 %%   <<"EngineLifecycleSupport">> => string(),
 %%   <<"EngineMode">> => string(),
 %%   <<"EngineVersion">> => string(),
@@ -4757,6 +4766,13 @@
 %%   <<"message">> => string()
 %% }
 -type point_in_time_restore_not_enabled_fault() :: #{binary() => any()}.
+
+%% Example:
+%% primary_endpoint() :: #{
+%%   <<"Address">> => string(),
+%%   <<"HostedZoneId">> => string()
+%% }
+-type primary_endpoint() :: #{binary() => any()}.
 
 %% Example:
 %% processor_feature() :: #{
@@ -7581,6 +7597,9 @@ create_db_capacity_reservation(Client, Input, Options)
 %% seconds. Express configuration provides a cluster with a writer instance
 %% and feature specific values set to all other input parameters of this API.
 %%
+%% To create an Aurora PostgreSQL DB cluster without VPC networking, see
+%% `EnableVPCNetworking'.
+%%
 %% You can use the `AssociatedRoles' parameter to associate one or more
 %% Amazon Web Services Identity and Access Management (IAM) roles with an
 %% Aurora DB cluster. Each associated role lets the DB cluster access other
@@ -10051,6 +10070,11 @@ modify_db_capacity_reservation(Client, Input, Options)
 %%
 %% You can change one or more settings by specifying these parameters and the
 %% new values in the request.
+%%
+%% To change the VPC networking configuration of an Aurora PostgreSQL DB
+%% cluster, see `EnableVPCNetworking'. To move an Aurora MySQL or Aurora
+%% PostgreSQL DB cluster to a different DB subnet group, in the same VPC or a
+%% different VPC, see `DBSubnetGroupName'.
 %%
 %% For more information on Amazon Aurora DB clusters, see What is Amazon
 %% Aurora?:

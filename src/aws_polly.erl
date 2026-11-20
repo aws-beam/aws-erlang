@@ -17,8 +17,12 @@
 %% the IAM User Guide.
 -module(aws_polly).
 
--export([delete_lexicon/3,
+-export([create_voice/2,
+         create_voice/3,
+         delete_lexicon/3,
          delete_lexicon/4,
+         delete_voice/3,
+         delete_voice/4,
          describe_voices/1,
          describe_voices/3,
          describe_voices/4,
@@ -28,6 +32,9 @@
          get_speech_synthesis_task/2,
          get_speech_synthesis_task/4,
          get_speech_synthesis_task/5,
+         get_voice/2,
+         get_voice/4,
+         get_voice/5,
          list_lexicons/1,
          list_lexicons/3,
          list_lexicons/4,
@@ -58,6 +65,13 @@
 
 
 %% Example:
+%% access_denied_exception() :: #{
+%%   <<"Message">> => string()
+%% }
+-type access_denied_exception() :: #{binary() => any()}.
+
+
+%% Example:
 %% audio_event() :: #{
 %%   <<"AudioChunk">> => binary()
 %% }
@@ -67,6 +81,43 @@
 %% close_stream_event() :: #{}
 -type close_stream_event() :: #{}.
 
+
+%% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => string(),
+%%   <<"resourceId">> => string(),
+%%   <<"resourceType">> => list(any())
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_voice_input() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"CustomerManagedEncryption">> => customer_managed_encryption(),
+%%   <<"LanguageCode">> := list(any()),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => map(),
+%%   <<"TermsAccepted">> := boolean(),
+%%   <<"VoiceCreationData">> := voice_creation_data()
+%% }
+-type create_voice_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_voice_output() :: #{
+%%   <<"Voice">> => voice()
+%% }
+-type create_voice_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% customer_managed_encryption() :: #{
+%%   <<"EncryptionContext">> => map(),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type customer_managed_encryption() :: #{binary() => any()}.
+
 %% Example:
 %% delete_lexicon_input() :: #{}
 -type delete_lexicon_input() :: #{}.
@@ -74,6 +125,14 @@
 %% Example:
 %% delete_lexicon_output() :: #{}
 -type delete_lexicon_output() :: #{}.
+
+%% Example:
+%% delete_voice_input() :: #{}
+-type delete_voice_input() :: #{}.
+
+%% Example:
+%% delete_voice_output() :: #{}
+-type delete_voice_output() :: #{}.
 
 
 %% Example:
@@ -129,6 +188,17 @@
 %%   <<"SynthesisTask">> => synthesis_task()
 %% }
 -type get_speech_synthesis_task_output() :: #{binary() => any()}.
+
+%% Example:
+%% get_voice_input() :: #{}
+-type get_voice_input() :: #{}.
+
+
+%% Example:
+%% get_voice_output() :: #{
+%%   <<"Voice">> => voice()
+%% }
+-type get_voice_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -320,6 +390,22 @@
 %% Example:
 %% put_lexicon_output() :: #{}
 -type put_lexicon_output() :: #{}.
+
+
+%% Example:
+%% recording() :: #{
+%%   <<"Data">> => recording_data(),
+%%   <<"Format">> => list(any())
+%% }
+-type recording() :: #{binary() => any()}.
+
+
+%% Example:
+%% recording_data() :: #{
+%%   <<"Bytes">> => binary(),
+%%   <<"S3Url">> => string()
+%% }
+-type recording_data() :: #{binary() => any()}.
 
 
 %% Example:
@@ -555,18 +641,48 @@
 %% Example:
 %% voice() :: #{
 %%   <<"AdditionalLanguageCodes">> => list(list(any())()),
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomerManagedEncryption">> => customer_managed_encryption(),
 %%   <<"Gender">> => list(any()),
 %%   <<"Id">> => list(any()),
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"LanguageName">> => string(),
 %%   <<"Name">> => string(),
-%%   <<"SupportedEngines">> => list(list(any())())
+%%   <<"Origin">> => list(any()),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => string(),
+%%   <<"SupportedEngines">> => list(list(any())()),
+%%   <<"VoiceCreationData">> => voice_creation_data()
 %% }
 -type voice() :: #{binary() => any()}.
+
+
+%% Example:
+%% voice_creation_data() :: #{
+%%   <<"Recordings">> => list(recording())
+%% }
+-type voice_creation_data() :: #{binary() => any()}.
+
+-type create_voice_errors() ::
+    validation_exception() | 
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    service_failure_exception() | 
+    invalid_tag_parameter_exception() | 
+    access_denied_exception().
 
 -type delete_lexicon_errors() ::
     service_failure_exception() | 
     lexicon_not_found_exception().
+
+-type delete_voice_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_failure_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type describe_voices_errors() ::
     service_failure_exception() | 
@@ -580,6 +696,12 @@
     synthesis_task_not_found_exception() | 
     service_failure_exception() | 
     invalid_task_id_exception().
+
+-type get_voice_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_failure_exception() | 
+    resource_not_found_exception().
 
 -type list_lexicons_errors() ::
     service_failure_exception() | 
@@ -612,12 +734,15 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
-    service_failure_exception().
+    service_failure_exception() | 
+    resource_not_found_exception() | 
+    conflict_exception().
 
 -type start_speech_synthesis_task_errors() ::
     text_length_exceeded_exception() | 
     ssml_marks_not_supported_for_text_type_exception() | 
     service_failure_exception() | 
+    resource_not_found_exception() | 
     marks_not_supported_for_format_exception() | 
     lexicon_not_found_exception() | 
     language_not_supported_exception() | 
@@ -626,18 +751,21 @@
     invalid_sample_rate_exception() | 
     invalid_s3_key_exception() | 
     invalid_s3_bucket_exception() | 
-    engine_not_supported_exception().
+    engine_not_supported_exception() | 
+    conflict_exception().
 
 -type synthesize_speech_errors() ::
     text_length_exceeded_exception() | 
     ssml_marks_not_supported_for_text_type_exception() | 
     service_failure_exception() | 
+    resource_not_found_exception() | 
     marks_not_supported_for_format_exception() | 
     lexicon_not_found_exception() | 
     language_not_supported_exception() | 
     invalid_ssml_exception() | 
     invalid_sample_rate_exception() | 
-    engine_not_supported_exception().
+    engine_not_supported_exception() | 
+    conflict_exception().
 
 -type tag_resource_errors() ::
     validation_exception() | 
@@ -657,6 +785,60 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Creates a custom voice from recordings of a speaker and returns it
+%% in `pending' status.
+%%
+%% Use `GetVoice' to check the
+%% status. When the status is `active', you can use the voice ID
+%% in `SynthesizeSpeech', `StartSpeechSynthesisTask',
+%% and `StartSpeechSynthesisStream'.
+%%
+%% The `custom-voice-max-count' service quota limits the
+%% number of custom voices in your account in each Region. If you reach the
+%% quota, the request fails with
+%% `ServiceQuotaExceededException'.
+%%
+%% This operation requires permissions to perform the
+%% `polly:CreateVoice' action. You also need
+%% `s3:GetObject' permission on each recording that you specify by
+%% `S3Url'. If you specify a customer managed key, you also need
+%% `kms:DescribeKey', `kms:GenerateDataKey', and
+%% `kms:Decrypt' permissions on the key. If you specify
+%% `Tags', you also need the `polly:TagResource'
+%% permission.
+-spec create_voice(aws_client:aws_client(), create_voice_input()) ->
+    {ok, create_voice_output(), tuple()} |
+    {error, any()} |
+    {error, create_voice_errors(), tuple()}.
+create_voice(Client, Input) ->
+    create_voice(Client, Input, []).
+
+-spec create_voice(aws_client:aws_client(), create_voice_input(), proplists:proplist()) ->
+    {ok, create_voice_output(), tuple()} |
+    {error, any()} |
+    {error, create_voice_errors(), tuple()}.
+create_voice(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/voices"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes the specified pronunciation lexicon stored in an Amazon Web
 %% Services Region.
@@ -700,25 +882,92 @@ delete_lexicon(Client, Name, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the list of voices that are available for use when
-%% requesting speech synthesis.
+%% @doc Deletes a custom voice.
 %%
-%% Each voice speaks a specified language, is
-%% either male or female, and is identified by an ID, which is the ASCII
-%% version of the voice name.
+%% `DescribeVoices' and
+%% `GetVoice' stop returning the voice immediately. You can't
+%% restore a deleted voice.
 %%
-%% When synthesizing speech ( `SynthesizeSpeech' ), you
+%% You can delete a voice in `active' or `failed'
+%% status. If the voice is in `pending' status, the request fails
+%% with `ConflictException'. If no custom voice with the specified
+%% ID exists in your account and Region, the request fails with
+%% `ResourceNotFoundException'. You can delete the voice even if
+%% you disabled its Amazon Web Services KMS key or scheduled it for deletion.
+%%
+%% This operation requires permissions to perform the
+%% `polly:DeleteVoice' action.
+-spec delete_voice(aws_client:aws_client(), binary() | list(), delete_voice_input()) ->
+    {ok, delete_voice_output(), tuple()} |
+    {error, any()} |
+    {error, delete_voice_errors(), tuple()}.
+delete_voice(Client, VoiceId, Input) ->
+    delete_voice(Client, VoiceId, Input, []).
+
+-spec delete_voice(aws_client:aws_client(), binary() | list(), delete_voice_input(), proplists:proplist()) ->
+    {ok, delete_voice_output(), tuple()} |
+    {error, any()} |
+    {error, delete_voice_errors(), tuple()}.
+delete_voice(Client, VoiceId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/voices/", aws_util:encode_uri(VoiceId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Returns the list of voices: the voices that Amazon Polly provides and
+%% the custom voices in your account.
+%%
+%% Each voice speaks a specified language
+%% and is identified by an ID. A voice that Amazon Polly provides is either
+%% male or
+%% female, and its ID is the ASCII version of the voice name.
+%%
+%% When synthesizing speech (`SynthesizeSpeech'), you
 %% provide the voice ID for the voice you want from the list of voices
 %% returned by `DescribeVoices'.
 %%
-%% For example, you want your news reader application to read news in
-%% a specific language, but giving a user the option to choose the voice.
-%% Using the `DescribeVoices' operation you can provide the user
-%% with a list of available voices to select from.
+%% For example, your news reader application reads news in a specific
+%% language, and you want to give users the option to choose the voice. With
+%% the `DescribeVoices' operation, you can provide a list of
+%% available voices for users to choose from.
 %%
 %% You can optionally specify a language code to filter the available
 %% voices. For example, if you specify `en-US', the operation
 %% returns a list of all available US English voices.
+%%
+%% The list includes custom voices in every status. For each voice,
+%% `Origin' indicates whether Amazon Polly
+%% provides the voice or you created it. You can use a custom voice for
+%% synthesis only when its status is `active'. A voice in
+%% `failed' status stays in the list until you delete it.
+%%
+%% For a custom voice, `DescribeVoices' returns
+%% `Origin', `Id', `Name',
+%% `Status', `LanguageCode', `LanguageName',
+%% `SupportedEngines', and `CreationTime'. To get
+%% `Arn', `StatusReason',
+%% `VoiceCreationData', and
+%% `CustomerManagedEncryption', use `GetVoice'.
+%%
+%% The `LanguageCode' and `Engine' filters apply
+%% to custom voices in the same way as to voices that Amazon Polly
+%% provides.
 %%
 %% This operation requires permissions to perform the
 %% `polly:DescribeVoices' action.
@@ -834,6 +1083,56 @@ get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap)
 get_speech_synthesis_task(Client, TaskId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/synthesisTasks/", aws_util:encode_uri(TaskId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns the status and properties of a custom voice.
+%%
+%% Use this
+%% operation after `CreateVoice' to check whether the status of
+%% the voice is `active' or `failed'. Unlike
+%% `DescribeVoices', `GetVoice' also returns
+%% `Arn', `VoiceCreationData',
+%% `CustomerManagedEncryption', and
+%% `StatusReason'. If no custom voice with the specified ID exists
+%% in your account and Region, the request fails with
+%% `ResourceNotFoundException'.
+%%
+%% This operation requires permissions to perform the
+%% `polly:GetVoice' action.
+-spec get_voice(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_voice_output(), tuple()} |
+    {error, any()} |
+    {error, get_voice_errors(), tuple()}.
+get_voice(Client, VoiceId)
+  when is_map(Client) ->
+    get_voice(Client, VoiceId, #{}, #{}).
+
+-spec get_voice(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_voice_output(), tuple()} |
+    {error, any()} |
+    {error, get_voice_errors(), tuple()}.
+get_voice(Client, VoiceId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_voice(Client, VoiceId, QueryMap, HeadersMap, []).
+
+-spec get_voice(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_voice_output(), tuple()} |
+    {error, any()} |
+    {error, get_voice_errors(), tuple()}.
+get_voice(Client, VoiceId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/voices/", aws_util:encode_uri(VoiceId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -1041,6 +1340,21 @@ put_lexicon(Client, Name, Input0, Options0) ->
 %%
 %% SynthesizeSpeech:
 %% https://docs.aws.amazon.com/polly/latest/dg/API_SynthesizeSpeech.html
+%%
+%% To use a custom voice, specify its ID in `VoiceId'. The
+%% voice must be in `active' status. If the voice is in
+%% `pending' or `failed' status, the request fails with
+%% `ConflictException'. If no custom voice with the specified ID
+%% exists in your account and Region, the request fails with
+%% `ResourceNotFoundException'. If the custom voice uses a
+%% customer managed key, you need `kms:Decrypt' permission on the
+%% key. If you disabled the key or scheduled it for deletion, the request
+%% fails with `ValidationException'. If you don't have permission
+%% to use the key, the request fails with
+%% `AccessDeniedException'. If Amazon Web Services KMS throttles Amazon
+%% Polly's
+%% request to use the key, the request fails with
+%% `ThrottlingException'.
 -spec start_speech_synthesis_stream(aws_client:aws_client(), start_speech_synthesis_stream_input()) ->
     {ok, start_speech_synthesis_stream_output(), tuple()} |
     {error, any()} |
@@ -1081,18 +1395,29 @@ start_speech_synthesis_stream(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Allows the creation of an asynchronous synthesis task, by starting a
-%% new `SpeechSynthesisTask'.
+%% @doc Starts an asynchronous synthesis task by creating a new
+%% `SpeechSynthesisTask'.
 %%
-%% This operation requires all the
-%% standard information needed for speech synthesis, plus the name of an
-%% Amazon S3 bucket for the service to store the output of the synthesis task
-%% and two optional parameters (`OutputS3KeyPrefix' and
-%% `SnsTopicArn'). Once the synthesis task is created, this
-%% operation will return a `SpeechSynthesisTask' object, which
-%% will include an identifier of this task as well as the current status. The
+%% This operation requires all the standard
+%% information needed for speech synthesis, plus the name of an Amazon S3
+%% bucket for the service to store the output of the synthesis task and two
+%% optional parameters (`OutputS3KeyPrefix' and
+%% `SnsTopicArn'). After Amazon Polly creates the synthesis task, the
+%% operation returns a `SpeechSynthesisTask' object that includes
+%% an identifier for the task and its current status. The
 %% `SpeechSynthesisTask' object is available for 72 hours after
-%% starting the asynchronous synthesis task.
+%% you start the asynchronous synthesis task.
+%%
+%% To use a custom voice, specify its ID in `VoiceId'. The
+%% voice must be in `active' status. If the voice is in
+%% `pending' or `failed' status, the request fails with
+%% `ConflictException'. If no custom voice with the specified ID
+%% exists in your account and Region, the request fails with
+%% `ResourceNotFoundException'. If the custom voice uses a
+%% customer managed key, you need `kms:Decrypt' permission on the
+%% key. If you disable the key or schedule it for deletion before the task
+%% runs, the task fails and `TaskStatusReason' describes the
+%% cause.
 -spec start_speech_synthesis_task(aws_client:aws_client(), start_speech_synthesis_task_input()) ->
     {ok, start_speech_synthesis_task_output(), tuple()} |
     {error, any()} |
@@ -1133,6 +1458,23 @@ start_speech_synthesis_task(Client, Input0, Options0) ->
 %% all by English voices) unless phoneme mapping is used. For more
 %% information, see How it Works:
 %% https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html.
+%%
+%% To use a custom voice, specify its ID in `VoiceId'. The
+%% voice must be in `active' status. If the voice is in
+%% `pending' or `failed' status, the request fails with
+%% `ConflictException'. If no custom voice with the specified ID
+%% exists in your account and Region, the request fails with
+%% `ResourceNotFoundException'.
+%%
+%% If the custom voice uses a customer managed key, you need
+%% `kms:Decrypt' permission on the key. If you disabled the key or
+%% scheduled it for deletion, the request fails with
+%% `ValidationException'. If you don't have permission to use the
+%% key, the request fails with `AccessDeniedException'. If Amazon Web
+%% Services
+%% KMS throttles Amazon Polly's request to use the key, the request fails
+%% with
+%% `ThrottlingException'.
 -spec synthesize_speech(aws_client:aws_client(), synthesize_speech_input()) ->
     {ok, synthesize_speech_output(), tuple()} |
     {error, any()} |

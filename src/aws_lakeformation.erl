@@ -1462,7 +1462,9 @@
 %%   <<"AttachmentColumns">> => list(column()),
 %%   <<"CatalogId">> => string(),
 %%   <<"FilterExpression">> => string(),
-%%   <<"Name">> => string()
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"StatusReason">> => list(any())
 %% }
 -type r_l_s_policy() :: #{binary() => any()}.
 

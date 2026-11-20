@@ -125,6 +125,7 @@
 %%   <<"accounting">> => accounting(),
 %%   <<"authKey">> => slurm_auth_key(),
 %%   <<"cgroupCustomSettings">> => list(cgroup_custom_setting()),
+%%   <<"jobSubmitPlugins">> => list(job_submit_plugin()),
 %%   <<"jwtAuth">> => jwt_auth(),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
@@ -137,6 +138,7 @@
 %% cluster_slurm_configuration_request() :: #{
 %%   <<"accounting">> => accounting_request(),
 %%   <<"cgroupCustomSettings">> => list(cgroup_custom_setting()),
+%%   <<"jobSubmitPlugins">> => list(job_submit_plugin()),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
 %%   <<"slurmRest">> => slurm_rest_request(),
@@ -400,6 +402,22 @@
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% job_submit_plugin() :: #{
+%%   <<"name">> => [string()],
+%%   <<"scriptSource">> => job_submit_script_source(),
+%%   <<"type">> => list(any())
+%% }
+-type job_submit_plugin() :: #{binary() => any()}.
+
+%% Example:
+%% job_submit_script_source() :: #{
+%%   <<"checksum">> => [string()],
+%%   <<"s3VersionId">> => [string()],
+%%   <<"scriptLocation">> => [string()]
+%% }
+-type job_submit_script_source() :: #{binary() => any()}.
 
 %% Example:
 %% jwt_auth() :: #{
@@ -727,6 +745,7 @@
 %% update_cluster_slurm_configuration_request() :: #{
 %%   <<"accounting">> => update_accounting_request(),
 %%   <<"cgroupCustomSettings">> => list(cgroup_custom_setting()),
+%%   <<"jobSubmitPlugins">> => list(job_submit_plugin()),
 %%   <<"scaleDownIdleTimeInSeconds">> => [integer()],
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting()),
 %%   <<"slurmRest">> => update_slurm_rest_request(),

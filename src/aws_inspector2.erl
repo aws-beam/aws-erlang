@@ -962,6 +962,18 @@
 
 
 %% Example:
+%% code_security_integration_vpc_configuration() :: #{
+%%   <<"codeConnectionsHostArn">> => string(),
+%%   <<"securityGroups">> => list(string()),
+%%   <<"subnetIds">> => list(string()),
+%%   <<"tlsCertificate">> => string(),
+%%   <<"vpcEndpointId">> => string(),
+%%   <<"vpcId">> => string()
+%% }
+-type code_security_integration_vpc_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% code_security_scan_configuration() :: #{
 %%   <<"continuousIntegrationScanConfiguration">> => continuous_integration_scan_configuration(),
 %%   <<"periodicScanConfiguration">> => periodic_scan_configuration(),
@@ -1418,9 +1430,18 @@
 
 
 %% Example:
+%% create_git_hub_enterprise_integration_detail() :: #{
+%%   <<"instanceUrl">> => string(),
+%%   <<"vpcConfiguration">> => code_security_integration_vpc_configuration()
+%% }
+-type create_git_hub_enterprise_integration_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_git_lab_self_managed_integration_detail() :: #{
 %%   <<"accessToken">> => string(),
-%%   <<"instanceUrl">> => string()
+%%   <<"instanceUrl">> => string(),
+%%   <<"vpcConfiguration">> => code_security_integration_vpc_configuration()
 %% }
 -type create_git_lab_self_managed_integration_detail() :: #{binary() => any()}.
 
@@ -2189,13 +2210,15 @@
 %% get_code_security_integration_response() :: #{
 %%   <<"authorizationUrl">> => string(),
 %%   <<"createdOn">> => [non_neg_integer()],
+%%   <<"instanceUrl">> => string(),
 %%   <<"integrationArn">> => string(),
 %%   <<"lastUpdateOn">> => [non_neg_integer()],
 %%   <<"name">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()],
 %%   <<"tags">> => map(),
-%%   <<"type">> => list(any())
+%%   <<"type">> => list(any()),
+%%   <<"vpcConfiguration">> => code_security_integration_vpc_configuration()
 %% }
 -type get_code_security_integration_response() :: #{binary() => any()}.
 
@@ -2372,6 +2395,13 @@
 %%   <<"status">> => string()
 %% }
 -type get_sbom_export_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_hub_enterprise_server_app_registration_detail() :: #{
+%%   <<"manifestCode">> => string()
+%% }
+-type git_hub_enterprise_server_app_registration_detail() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3813,16 +3843,27 @@
 
 
 %% Example:
+%% update_git_hub_enterprise_server_app_installation_detail() :: #{
+%%   <<"code">> => string(),
+%%   <<"installationId">> => string(),
+%%   <<"stateToken">> => string()
+%% }
+-type update_git_hub_enterprise_server_app_installation_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_git_hub_integration_detail() :: #{
 %%   <<"code">> => string(),
-%%   <<"installationId">> => string()
+%%   <<"installationId">> => string(),
+%%   <<"stateToken">> => string()
 %% }
 -type update_git_hub_integration_detail() :: #{binary() => any()}.
 
 
 %% Example:
 %% update_git_lab_self_managed_integration_detail() :: #{
-%%   <<"authCode">> => string()
+%%   <<"authCode">> => string(),
+%%   <<"stateToken">> => string()
 %% }
 -type update_git_lab_self_managed_integration_detail() :: #{binary() => any()}.
 

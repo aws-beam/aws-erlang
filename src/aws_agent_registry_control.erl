@@ -104,7 +104,10 @@
 
 %% Example:
 %% agent_skills_additional_data() :: #{
-%%   <<"skillMd">> => agent_skills_md_descriptor()
+%%   <<"repositoryProvider">> => list(any()),
+%%   <<"skillMd">> => agent_skills_md_descriptor(),
+%%   <<"skillPackage">> => agent_skills_package_descriptor(),
+%%   <<"sourceConfiguration">> => list()
 %% }
 -type agent_skills_additional_data() :: #{binary() => any()}.
 
@@ -125,6 +128,13 @@
 %%   <<"source">> => descriptor_source()
 %% }
 -type agent_skills_md_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% agent_skills_package_descriptor() :: #{
+%%   <<"source">> => descriptor_source()
+%% }
+-type agent_skills_package_descriptor() :: #{binary() => any()}.
 
 
 %% Example:
@@ -168,6 +178,7 @@
 
 %% Example:
 %% create_registry_record_request() :: #{
+%%   <<"artifact">> => registry_record_artifact_upload(),
 %%   <<"clientToken">> => string(),
 %%   <<"customMetadata">> => any(),
 %%   <<"description">> => string(),
@@ -184,6 +195,7 @@
 
 %% Example:
 %% create_registry_record_response() :: #{
+%%   <<"authorizationData">> => list(),
 %%   <<"recordArn">> => string(),
 %%   <<"status">> => list(any())
 %% }
@@ -316,6 +328,7 @@
 
 %% Example:
 %% get_registry_record_response() :: #{
+%%   <<"artifact">> => registry_record_artifact_download(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"createdByAutoDetection">> => [boolean()],
@@ -333,6 +346,7 @@
 %%   <<"registryArn">> => string(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()],
+%%   <<"synchronizedSource">> => list(),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type get_registry_record_response() :: #{binary() => any()}.
@@ -359,6 +373,15 @@
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type get_registry_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% git_hub_synchronized_source() :: #{
+%%   <<"commitId">> => string(),
+%%   <<"synchronizedAt">> => non_neg_integer(),
+%%   <<"url">> => string()
+%% }
+-type git_hub_synchronized_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -458,6 +481,16 @@
 
 
 %% Example:
+%% o_auth2_authorization_data() :: #{
+%%   <<"authorizationAttemptId">> => string(),
+%%   <<"authorizationUrl">> => string(),
+%%   <<"expiresAt">> => non_neg_integer(),
+%%   <<"userId">> => string()
+%% }
+-type o_auth2_authorization_data() :: #{binary() => any()}.
+
+
+%% Example:
 %% private_endpoint_override() :: #{
 %%   <<"domain">> => string(),
 %%   <<"privateEndpoint">> => list()
@@ -501,6 +534,22 @@
 
 
 %% Example:
+%% registry_record_artifact_download() :: #{
+%%   <<"downloadUrl">> => string(),
+%%   <<"sha256">> => string()
+%% }
+-type registry_record_artifact_download() :: #{binary() => any()}.
+
+
+%% Example:
+%% registry_record_artifact_upload() :: #{
+%%   <<"content">> => binary(),
+%%   <<"sha256">> => string()
+%% }
+-type registry_record_artifact_upload() :: #{binary() => any()}.
+
+
+%% Example:
 %% registry_record_credential_provider_configuration() :: #{
 %%   <<"credentialProvider">> => list(),
 %%   <<"credentialProviderType">> => list(any())
@@ -530,6 +579,7 @@
 %%   <<"customParameters">> => map(),
 %%   <<"grantType">> => list(any()),
 %%   <<"providerArn">> => string(),
+%%   <<"returnUrl">> => string(),
 %%   <<"scopes">> => list([string()]())
 %% }
 -type registry_record_o_auth_credential_provider() :: #{binary() => any()}.
@@ -577,6 +627,23 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_source_configuration() :: #{
+%%   <<"bucketOwnerAccountId">> => string()
+%% }
+-type s3_source_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% s3_synchronized_source() :: #{
+%%   <<"eTag">> => string(),
+%%   <<"synchronizedAt">> => non_neg_integer(),
+%%   <<"url">> => string(),
+%%   <<"versionId">> => string()
+%% }
+-type s3_synchronized_source() :: #{binary() => any()}.
 
 
 %% Example:
@@ -632,10 +699,12 @@
 
 %% Example:
 %% update_registry_record_request() :: #{
+%%   <<"artifact">> => updated_registry_record_artifact(),
 %%   <<"customMetadata">> => updated_custom_metadata_map(),
 %%   <<"description">> => updated_description(),
 %%   <<"descriptors">> => updated_descriptors(),
 %%   <<"displayName">> => updated_display_name(),
+%%   <<"forceAuthentication">> => [boolean()],
 %%   <<"name">> => string(),
 %%   <<"provenance">> => list(provenance()),
 %%   <<"recordType">> => list(any()),
@@ -647,6 +716,7 @@
 
 %% Example:
 %% update_registry_record_response() :: #{
+%%   <<"authorizationData">> => list(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"createdBy">> => string(),
 %%   <<"createdByAutoDetection">> => [boolean()],
@@ -759,7 +829,10 @@
 
 %% Example:
 %% updated_agent_skills_additional_data_fields() :: #{
-%%   <<"skillMd">> => updated_agent_skills_md_descriptor()
+%%   <<"repositoryProvider">> => updated_agent_skills_repository_provider(),
+%%   <<"skillMd">> => updated_agent_skills_md_descriptor(),
+%%   <<"skillPackage">> => updated_agent_skills_package_descriptor(),
+%%   <<"sourceConfiguration">> => updated_agent_skills_source_configuration()
 %% }
 -type updated_agent_skills_additional_data_fields() :: #{binary() => any()}.
 
@@ -794,6 +867,27 @@
 %%   <<"source">> => updated_descriptor_source()
 %% }
 -type updated_agent_skills_md_descriptor_fields() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_agent_skills_package_descriptor() :: #{
+%%   <<"optionalValue">> => agent_skills_package_descriptor()
+%% }
+-type updated_agent_skills_package_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_agent_skills_repository_provider() :: #{
+%%   <<"optionalValue">> => list(any())
+%% }
+-type updated_agent_skills_repository_provider() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_agent_skills_source_configuration() :: #{
+%%   <<"optionalValue">> => list()
+%% }
+-type updated_agent_skills_source_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -964,6 +1058,13 @@
 %%   <<"dataSchemaVersion">> => updated_data_schema_version()
 %% }
 -type updated_mcp_tools_descriptor_fields() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_registry_record_artifact() :: #{
+%%   <<"optionalValue">> => registry_record_artifact_upload()
+%% }
+-type updated_registry_record_artifact() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1151,9 +1252,13 @@ create_registry(Client, Input0, Options0) ->
 %% @doc Creates a registry record within a registry.
 %%
 %% A registry record describes a discoverable resource, such as an MCP
-%% server, an agent, an agent skill, or a custom resource. Creation is
-%% asynchronous: the record is returned with the CREATING status while it is
-%% processed.
+%% server, an agent, an agent skill, or a custom resource. For an agent
+%% skill, you can upload a skill package in `artifact', or synchronize
+%% the skill from an Amazon S3 or GitHub source. Creation is asynchronous:
+%% the operation returns the record with the `CREATING' status while the
+%% registry processes it. If a GitHub user must first authorize access to the
+%% source, the operation returns the record with the
+%% `CREATE_PENDING_AUTH' status instead.
 -spec create_registry_record(aws_client:aws_client(), binary() | list(), create_registry_record_request()) ->
     {ok, create_registry_record_response(), tuple()} |
     {error, any()} |
@@ -1295,7 +1400,12 @@ get_registry(Client, RegistryId, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Retrieves the details of a registry record
+%% @doc Retrieves the details of a registry record.
+%%
+%% The response describes the record's latest revision, including a
+%% revision that isn't approved yet. For a skill record, the operation
+%% also returns the skill package in `artifact' and the source that the
+%% registry last synchronized the skill from in `synchronizedSource'.
 -spec get_registry_record(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_registry_record_response(), tuple()} |
     {error, any()} |
@@ -1600,9 +1710,12 @@ update_registry(Client, RegistryId, Input0, Options0) ->
 
 %% @doc Updates a registry record.
 %%
-%% The update is asynchronous: the record is returned with the UPDATING
-%% status while it is processed. Fields that use update wrappers follow PATCH
-%% semantics: omit the field to leave it unchanged.
+%% The update is asynchronous: the operation returns the record with the
+%% `UPDATING' status while the registry processes it. If a GitHub user
+%% must first authorize access to the record's skill source, the
+%% operation returns the record with the `UPDATE_PENDING_AUTH' status
+%% instead. Fields that use update wrappers follow PATCH semantics: omit the
+%% field to leave it unchanged.
 -spec update_registry_record(aws_client:aws_client(), binary() | list(), binary() | list(), update_registry_record_request()) ->
     {ok, update_registry_record_response(), tuple()} |
     {error, any()} |

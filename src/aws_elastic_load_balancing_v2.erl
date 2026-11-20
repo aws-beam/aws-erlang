@@ -331,6 +331,15 @@
 -type cipher() :: #{binary() => any()}.
 
 %% Example:
+%% client_certificate_identity_filter() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"Field">> => list(any()),
+%%   <<"MatchType">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type client_certificate_identity_filter() :: #{binary() => any()}.
+
+%% Example:
 %% create_listener_input() :: #{
 %%   <<"AlpnPolicy">> => list(string()),
 %%   <<"Certificates">> => list(certificate()),
@@ -1207,6 +1216,7 @@
 %% Example:
 %% mutual_authentication_attributes() :: #{
 %%   <<"AdvertiseTrustStoreCaNames">> => list(any()),
+%%   <<"ClientCertificateIdentityFilters">> => list(client_certificate_identity_filter()),
 %%   <<"IgnoreClientCertificateExpiry">> => boolean(),
 %%   <<"Mode">> => string(),
 %%   <<"TrustStoreArn">> => string(),
@@ -2261,7 +2271,9 @@ create_target_group(Client, Input, Options)
 %% @doc Creates a trust store.
 %%
 %% For more information, see Mutual TLS for Application Load Balancers:
-%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html.
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/application/mutual-authentication.html
+%% or Mutual TLS for Network Load Balancers:
+%% https://docs.aws.amazon.com/elasticloadbalancing/latest/network/mutual-authentication.html.
 -spec create_trust_store(aws_client:aws_client(), create_trust_store_input()) ->
     {ok, create_trust_store_output(), tuple()} |
     {error, any()} |
