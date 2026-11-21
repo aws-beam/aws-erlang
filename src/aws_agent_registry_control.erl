@@ -12,20 +12,37 @@
 %% operations are provided by the companion Agent Registry API.
 -module(aws_agent_registry_control).
 
--export([create_registry/2,
+-export([associate_publisher/2,
+         associate_publisher/3,
+         create_publisher/2,
+         create_publisher/3,
+         create_registry/2,
          create_registry/3,
          create_registry_record/3,
          create_registry_record/4,
+         delete_publisher/3,
+         delete_publisher/4,
          delete_registry/3,
          delete_registry/4,
          delete_registry_record/4,
          delete_registry_record/5,
+         disassociate_publisher/3,
+         disassociate_publisher/4,
+         get_publisher/2,
+         get_publisher/4,
+         get_publisher/5,
          get_registry/2,
          get_registry/4,
          get_registry/5,
          get_registry_record/3,
          get_registry_record/5,
          get_registry_record/6,
+         list_publisher_associations/1,
+         list_publisher_associations/3,
+         list_publisher_associations/4,
+         list_publishers/1,
+         list_publishers/3,
+         list_publishers/4,
          list_registries/2,
          list_registries/3,
          list_registry_records/3,
@@ -39,12 +56,16 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_publisher_association_approval_status/3,
+         update_publisher_association_approval_status/4,
          update_registry/3,
          update_registry/4,
          update_registry_record/4,
          update_registry_record/5,
          update_registry_record_status/4,
-         update_registry_record_status/5]).
+         update_registry_record_status/5,
+         validate_publisher/3,
+         validate_publisher/4]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -145,6 +166,28 @@
 
 
 %% Example:
+%% associate_publisher_request() :: #{
+%%   <<"categories">> => list(string()),
+%%   <<"clientToken">> => string(),
+%%   <<"publisherArn">> := string(),
+%%   <<"recordArn">> := string(),
+%%   <<"subdomain">> => string()
+%% }
+-type associate_publisher_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% associate_publisher_response() :: #{
+%%   <<"publicIdentifier">> => string(),
+%%   <<"publisher">> => string(),
+%%   <<"recordArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string()
+%% }
+-type associate_publisher_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% authorizing_claim_match_value_type() :: #{
 %%   <<"claimMatchOperator">> => list(any()),
 %%   <<"claimMatchValue">> => list()
@@ -174,6 +217,30 @@
 %%   <<"message">> => string()
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_publisher_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"value">> := list()
+%% }
+-type create_publisher_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_publisher_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainChallenge">> => domain_challenge(),
+%%   <<"identifierType">> => list(any()),
+%%   <<"publisherArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"value">> => list()
+%% }
+-type create_publisher_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -261,6 +328,10 @@
 -type custom_metadata_schema_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% delete_publisher_request() :: #{}
+-type delete_publisher_request() :: #{}.
+
+%% Example:
 %% delete_registry_record_request() :: #{}
 -type delete_registry_record_request() :: #{}.
 
@@ -278,6 +349,13 @@
 %%   <<"status">> => list(any())
 %% }
 -type delete_registry_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% dependency_exception() :: #{
+%%   <<"message">> => string()
+%% }
+-type dependency_exception() :: #{binary() => any()}.
 
 
 %% Example:
@@ -302,9 +380,14 @@
 %%   <<"agui">> => ag_ui_descriptor(),
 %%   <<"custom">> => custom_descriptor(),
 %%   <<"http">> => http_descriptor(),
-%%   <<"mcpServer">> => mcp_server_descriptor()
+%%   <<"mcpServer">> => mcp_server_descriptor(),
+%%   <<"signatureAgentCard">> => signature_agent_card_descriptor()
 %% }
 -type descriptors() :: #{binary() => any()}.
+
+%% Example:
+%% disassociate_publisher_request() :: #{}
+-type disassociate_publisher_request() :: #{}.
 
 
 %% Example:
@@ -316,10 +399,22 @@
 
 
 %% Example:
+%% domain_challenge() :: #{
+%%   <<"recordName">> => string(),
+%%   <<"recordValue">> => string()
+%% }
+-type domain_challenge() :: #{binary() => any()}.
+
+
+%% Example:
 %% encryption_configuration() :: #{
 %%   <<"kmsKeyArn">> => string()
 %% }
 -type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% get_publisher_request() :: #{}
+-type get_publisher_request() :: #{}.
 
 %% Example:
 %% get_registry_record_request() :: #{}
@@ -396,6 +491,39 @@
 %%   <<"message">> => string()
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_publisher_associations_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"publisherArn">> => string()
+%% }
+-type list_publisher_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_publisher_associations_response() :: #{
+%%   <<"items">> => list(publisher_association()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_publisher_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_publishers_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_publishers_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_publishers_response() :: #{
+%%   <<"items">> => list(publisher_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_publishers_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -515,6 +643,45 @@
 %%   <<"sourceType">> => list(any())
 %% }
 -type provenance_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% publisher() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainChallenge">> => domain_challenge(),
+%%   <<"identifierType">> => list(any()),
+%%   <<"publisherArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"value">> => list()
+%% }
+-type publisher() :: #{binary() => any()}.
+
+
+%% Example:
+%% publisher_association() :: #{
+%%   <<"publicIdentifier">> => string(),
+%%   <<"publisher">> => string(),
+%%   <<"recordArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string()
+%% }
+-type publisher_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% publisher_summary() :: #{
+%%   <<"associationCount">> => [integer()],
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"identifierType">> => list(any()),
+%%   <<"pendingAssociationApprovalCount">> => [integer()],
+%%   <<"publisherArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"value">> => list()
+%% }
+-type publisher_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -652,6 +819,23 @@
 %% }
 -type service_quota_exceeded_exception() :: #{binary() => any()}.
 
+
+%% Example:
+%% signature_agent_card_additional_data() :: #{
+%%   <<"category">> => list(any())
+%% }
+-type signature_agent_card_additional_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% signature_agent_card_descriptor() :: #{
+%%   <<"additionalData">> => signature_agent_card_additional_data(),
+%%   <<"data">> => string(),
+%%   <<"dataSchemaVersion">> => string(),
+%%   <<"source">> => descriptor_source()
+%% }
+-type signature_agent_card_descriptor() :: #{binary() => any()}.
+
 %% Example:
 %% submit_registry_record_for_approval_request() :: #{}
 -type submit_registry_record_for_approval_request() :: #{}.
@@ -695,6 +879,18 @@
 %% Example:
 %% untag_resource_response() :: #{}
 -type untag_resource_response() :: #{}.
+
+
+%% Example:
+%% update_publisher_association_approval_status_request() :: #{
+%%   <<"approvalStatus">> := list(any()),
+%%   <<"approvalStatusReason">> := string()
+%% }
+-type update_publisher_association_approval_status_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_publisher_association_approval_status_response() :: #{}
+-type update_publisher_association_approval_status_response() :: #{}.
 
 
 %% Example:
@@ -912,6 +1108,13 @@
 
 
 %% Example:
+%% updated_bot_category() :: #{
+%%   <<"optionalValue">> => list(any())
+%% }
+-type updated_bot_category() :: #{binary() => any()}.
+
+
+%% Example:
 %% updated_custom_descriptor() :: #{
 %%   <<"optionalValue">> => updated_custom_descriptor_fields()
 %% }
@@ -981,7 +1184,8 @@
 %%   <<"agui">> => updated_ag_ui_descriptor(),
 %%   <<"custom">> => updated_custom_descriptor(),
 %%   <<"http">> => updated_http_descriptor(),
-%%   <<"mcpServer">> => updated_mcp_server_descriptor()
+%%   <<"mcpServer">> => updated_mcp_server_descriptor(),
+%%   <<"signatureAgentCard">> => updated_signature_agent_card_descriptor()
 %% }
 -type updated_descriptors_fields() :: #{binary() => any()}.
 
@@ -1068,6 +1272,56 @@
 
 
 %% Example:
+%% updated_signature_agent_card_additional_data() :: #{
+%%   <<"optionalValue">> => updated_signature_agent_card_additional_data_fields()
+%% }
+-type updated_signature_agent_card_additional_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_signature_agent_card_additional_data_fields() :: #{
+%%   <<"category">> => updated_bot_category()
+%% }
+-type updated_signature_agent_card_additional_data_fields() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_signature_agent_card_descriptor() :: #{
+%%   <<"optionalValue">> => updated_signature_agent_card_descriptor_fields()
+%% }
+-type updated_signature_agent_card_descriptor() :: #{binary() => any()}.
+
+
+%% Example:
+%% updated_signature_agent_card_descriptor_fields() :: #{
+%%   <<"additionalData">> => updated_signature_agent_card_additional_data(),
+%%   <<"data">> => updated_descriptor_data(),
+%%   <<"dataSchemaVersion">> => updated_data_schema_version(),
+%%   <<"source">> => updated_descriptor_source()
+%% }
+-type updated_signature_agent_card_descriptor_fields() :: #{binary() => any()}.
+
+%% Example:
+%% validate_publisher_request() :: #{}
+-type validate_publisher_request() :: #{}.
+
+
+%% Example:
+%% validate_publisher_response() :: #{
+%%   <<"createdAt">> => [non_neg_integer()],
+%%   <<"domainChallenge">> => domain_challenge(),
+%%   <<"identifierType">> => list(any()),
+%%   <<"publisherArn">> => string(),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => string(),
+%%   <<"tags">> => map(),
+%%   <<"updatedAt">> => [non_neg_integer()],
+%%   <<"value">> => list()
+%% }
+-type validate_publisher_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_exception() :: #{
 %%   <<"fieldList">> => list(validation_exception_field()),
 %%   <<"message">> => [string()],
@@ -1090,6 +1344,23 @@
 %% }
 -type workload_identity_details() :: #{binary() => any()}.
 
+-type associate_publisher_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    dependency_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_publisher_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_registry_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1102,6 +1373,14 @@
     validation_exception() | 
     throttling_exception() | 
     service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_publisher_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -1123,6 +1402,19 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type disassociate_publisher_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_publisher_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_registry_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1136,6 +1428,18 @@
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type list_publisher_associations_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_publishers_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
     access_denied_exception().
 
 -type list_registries_errors() ::
@@ -1182,6 +1486,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type update_publisher_association_approval_status_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_registry_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1207,9 +1518,117 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type validate_publisher_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Associate a registry record with a publisher and assign the record a
+%% public identifier under the
+%% publisher's domain.
+%%
+%% The registry record must be APPROVED and the publisher must be ACTIVE. A
+%% registry record can have only one publisher association. The new
+%% association starts in
+%% PENDING_APPROVAL until a curator approves or rejects it.
+%% A ConflictException (HTTP 409) means the publisher is not ACTIVE yet, the
+%% registry record already
+%% has an association, or another registry record already holds the public
+%% identifier. To retry
+%% safely, repeat the request with the same clientToken; a retry returns the
+%% original association.
+%% If the publisher has reached its association quota, the request fails with
+%% ServiceQuotaExceededException (HTTP 402). Remove an unused association or
+%% request a quota increase.
+-spec associate_publisher(aws_client:aws_client(), associate_publisher_request()) ->
+    {ok, associate_publisher_response(), tuple()} |
+    {error, any()} |
+    {error, associate_publisher_errors(), tuple()}.
+associate_publisher(Client, Input) ->
+    associate_publisher(Client, Input, []).
+
+-spec associate_publisher(aws_client:aws_client(), associate_publisher_request(), proplists:proplist()) ->
+    {ok, associate_publisher_response(), tuple()} |
+    {error, any()} |
+    {error, associate_publisher_errors(), tuple()}.
+associate_publisher(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/associations"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Create a publisher for a domain you control.
+%%
+%% The publisher starts in ACTION_REQUIRED, and the
+%% response includes a domainChallenge. To verify the domain, create a DNS
+%% TXT record with the
+%% challenge's recordName and recordValue. When the registry finds the
+%% record, the publisher becomes
+%% ACTIVE and you can associate registry records with it.
+%% Your account can have one publisher per domain. Creating a second
+%% publisher for the same domain
+%% fails with ConflictException unless the request repeats the original
+%% clientToken, which returns the
+%% existing publisher. The request also fails with ConflictException when
+%% another account has already
+%% verified the domain.
+%% If your account has reached its Publisher quota, the request fails with
+%% ServiceQuotaExceededException (HTTP 402). Delete an unused Publisher or
+%% request a quota increase.
+-spec create_publisher(aws_client:aws_client(), create_publisher_request()) ->
+    {ok, create_publisher_response(), tuple()} |
+    {error, any()} |
+    {error, create_publisher_errors(), tuple()}.
+create_publisher(Client, Input) ->
+    create_publisher(Client, Input, []).
+
+-spec create_publisher(aws_client:aws_client(), create_publisher_request(), proplists:proplist()) ->
+    {ok, create_publisher_response(), tuple()} |
+    {error, any()} |
+    {error, create_publisher_errors(), tuple()}.
+create_publisher(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/publishers"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new registry, a catalog that organizes registry records and
 %% defines their discovery authorization and record approval behavior.
@@ -1274,6 +1693,54 @@ create_registry_record(Client, RegistryId, Input0, Options0) ->
     Method = post,
     Path = ["/registries/", aws_util:encode_uri(RegistryId), "/records"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Delete a publisher.
+%%
+%% A successful call returns an empty response. You can't delete a
+%% publisher
+%% that has registry record associations; disassociate every registry record
+%% from it first. The
+%% request fails with ConflictException while the publisher has associations
+%% or another delete is in
+%% progress. Association removals can take a few seconds to be reflected, so
+%% a delete that follows a
+%% disassociation can briefly fail with ConflictException; retry after a
+%% short wait. If the publisher
+%% ARN names your account and the publisher doesn't exist, the request
+%% fails with
+%% ResourceNotFoundException.
+-spec delete_publisher(aws_client:aws_client(), binary() | list(), delete_publisher_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_publisher_errors(), tuple()}.
+delete_publisher(Client, PublisherArn, Input) ->
+    delete_publisher(Client, PublisherArn, Input, []).
+
+-spec delete_publisher(aws_client:aws_client(), binary() | list(), delete_publisher_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, delete_publisher_errors(), tuple()}.
+delete_publisher(Client, PublisherArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/publishers/", aws_util:encode_uri(PublisherArn), ""],
+    SuccessStatusCode = 204,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -1363,6 +1830,90 @@ delete_registry_record(Client, RecordId, RegistryId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Remove a registry record's publisher association and release its
+%% public identifier.
+%%
+%% A successful
+%% call returns an empty response. Disassociating a registry record that has
+%% no association succeeds.
+%% If another account created the association, the request fails with
+%% AccessDeniedException.
+-spec disassociate_publisher(aws_client:aws_client(), binary() | list(), disassociate_publisher_request()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_publisher_errors(), tuple()}.
+disassociate_publisher(Client, RecordArn, Input) ->
+    disassociate_publisher(Client, RecordArn, Input, []).
+
+-spec disassociate_publisher(aws_client:aws_client(), binary() | list(), disassociate_publisher_request(), proplists:proplist()) ->
+    {ok, undefined, tuple()} |
+    {error, any()} |
+    {error, disassociate_publisher_errors(), tuple()}.
+disassociate_publisher(Client, RecordArn, Input0, Options0) ->
+    Method = delete,
+    Path = ["/associations/", aws_util:encode_multi_segment_uri(RecordArn), ""],
+    SuccessStatusCode = 204,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Get a publisher, including its verification status and the DNS
+%% challenge for its domain.
+%%
+%% If the
+%% publisher ARN names your account and the publisher doesn't exist, the
+%% request fails with
+%% ResourceNotFoundException.
+-spec get_publisher(aws_client:aws_client(), binary() | list()) ->
+    {ok, publisher(), tuple()} |
+    {error, any()} |
+    {error, get_publisher_errors(), tuple()}.
+get_publisher(Client, PublisherArn)
+  when is_map(Client) ->
+    get_publisher(Client, PublisherArn, #{}, #{}).
+
+-spec get_publisher(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, publisher(), tuple()} |
+    {error, any()} |
+    {error, get_publisher_errors(), tuple()}.
+get_publisher(Client, PublisherArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_publisher(Client, PublisherArn, QueryMap, HeadersMap, []).
+
+-spec get_publisher(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, publisher(), tuple()} |
+    {error, any()} |
+    {error, get_publisher_errors(), tuple()}.
+get_publisher(Client, PublisherArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/publishers/", aws_util:encode_uri(PublisherArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Gets a registry by identifier (ARN or ID)
 -spec get_registry(aws_client:aws_client(), binary() | list()) ->
     {ok, get_registry_response(), tuple()} |
@@ -1439,6 +1990,99 @@ get_registry_record(Client, RecordId, RegistryId, QueryMap, HeadersMap, Options0
     Headers = [],
 
     Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List the registry record associations your account created.
+%%
+%% Pass publisherArn to list only the
+%% associations for that publisher; omit it to list associations across all
+%% publishers. Results are
+%% eventually consistent, so an association you just created or removed can
+%% take a few seconds to
+%% appear in or disappear from the list.
+-spec list_publisher_associations(aws_client:aws_client()) ->
+    {ok, list_publisher_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_publisher_associations_errors(), tuple()}.
+list_publisher_associations(Client)
+  when is_map(Client) ->
+    list_publisher_associations(Client, #{}, #{}).
+
+-spec list_publisher_associations(aws_client:aws_client(), map(), map()) ->
+    {ok, list_publisher_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_publisher_associations_errors(), tuple()}.
+list_publisher_associations(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_publisher_associations(Client, QueryMap, HeadersMap, []).
+
+-spec list_publisher_associations(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_publisher_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_publisher_associations_errors(), tuple()}.
+list_publisher_associations(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"publisherArn">>, maps:get(<<"publisherArn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc List the publishers your account owns, followed by the ACTIVE
+%% publishers shared with your account.
+-spec list_publishers(aws_client:aws_client()) ->
+    {ok, list_publishers_response(), tuple()} |
+    {error, any()} |
+    {error, list_publishers_errors(), tuple()}.
+list_publishers(Client)
+  when is_map(Client) ->
+    list_publishers(Client, #{}, #{}).
+
+-spec list_publishers(aws_client:aws_client(), map(), map()) ->
+    {ok, list_publishers_response(), tuple()} |
+    {error, any()} |
+    {error, list_publishers_errors(), tuple()}.
+list_publishers(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_publishers(Client, QueryMap, HeadersMap, []).
+
+-spec list_publishers(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_publishers_response(), tuple()} |
+    {error, any()} |
+    {error, list_publishers_errors(), tuple()}.
+list_publishers(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/publishers"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -1669,6 +2313,54 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Record the curator's decision (APPROVED or REJECTED) on a
+%% registry record's publisher association.
+%%
+%% A successful call returns an empty response. Repeating the decision the
+%% association already holds
+%% changes nothing; the same approvalStatus with a different
+%% approvalStatusReason updates the reason.
+%% If the caller has no publisher association for the registry record, the
+%% request fails with
+%% AccessDeniedException. A ConflictException (HTTP 409) means the
+%% association is not in a state
+%% that accepts the decision (e.g. not PENDING_APPROVAL/APPROVED/REJECTED) or
+%% it changed while the
+%% request was being applied; read it again before deciding whether to
+%% resubmit.
+-spec update_publisher_association_approval_status(aws_client:aws_client(), binary() | list(), update_publisher_association_approval_status_request()) ->
+    {ok, update_publisher_association_approval_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_publisher_association_approval_status_errors(), tuple()}.
+update_publisher_association_approval_status(Client, RecordArn, Input) ->
+    update_publisher_association_approval_status(Client, RecordArn, Input, []).
+
+-spec update_publisher_association_approval_status(aws_client:aws_client(), binary() | list(), update_publisher_association_approval_status_request(), proplists:proplist()) ->
+    {ok, update_publisher_association_approval_status_response(), tuple()} |
+    {error, any()} |
+    {error, update_publisher_association_approval_status_errors(), tuple()}.
+update_publisher_association_approval_status(Client, RecordArn, Input0, Options0) ->
+    Method = patch,
+    Path = ["/associations/", aws_util:encode_multi_segment_uri(RecordArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates an existing registry.
 %%
 %% This operation uses PATCH semantics: specify only the fields you want to
@@ -1768,6 +2460,49 @@ update_registry_record_status(Client, RecordId, RegistryId, Input0, Options0) ->
     Method = patch,
     Path = ["/registries/", aws_util:encode_uri(RegistryId), "/records/", aws_util:encode_uri(RecordId), "/status"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Restart domain verification for a publisher in FAILED or SUSPENDED.
+%%
+%% The publisher returns to
+%% ACTION_REQUIRED with a new domainChallenge, which the response includes.
+%% Update the DNS TXT record
+%% with the new recordValue; the previous value no longer verifies the
+%% domain. The request fails with
+%% ConflictException when the publisher is ACTIVE, verification is already in
+%% progress
+%% (ACTION_REQUIRED), or the publisher is being deleted.
+-spec validate_publisher(aws_client:aws_client(), binary() | list(), validate_publisher_request()) ->
+    {ok, validate_publisher_response(), tuple()} |
+    {error, any()} |
+    {error, validate_publisher_errors(), tuple()}.
+validate_publisher(Client, PublisherArn, Input) ->
+    validate_publisher(Client, PublisherArn, Input, []).
+
+-spec validate_publisher(aws_client:aws_client(), binary() | list(), validate_publisher_request(), proplists:proplist()) ->
+    {ok, validate_publisher_response(), tuple()} |
+    {error, any()} |
+    {error, validate_publisher_errors(), tuple()}.
+validate_publisher(Client, PublisherArn, Input0, Options0) ->
+    Method = post,
+    Path = ["/publishers/", aws_util:encode_uri(PublisherArn), "/verification"],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

@@ -19,18 +19,32 @@
          create_adapter/3,
          create_adapter_version/2,
          create_adapter_version/3,
+         create_blueprint/2,
+         create_blueprint/3,
+         create_blueprint_version/2,
+         create_blueprint_version/3,
+         create_project/2,
+         create_project/3,
          delete_adapter/2,
          delete_adapter/3,
          delete_adapter_version/2,
          delete_adapter_version/3,
+         delete_blueprint/2,
+         delete_blueprint/3,
+         delete_project/2,
+         delete_project/3,
          detect_document_text/2,
          detect_document_text/3,
          get_adapter/2,
          get_adapter/3,
          get_adapter_version/2,
          get_adapter_version/3,
+         get_blueprint/2,
+         get_blueprint/3,
          get_document_analysis/2,
          get_document_analysis/3,
+         get_document_insights/2,
+         get_document_insights/3,
          get_document_text_detection/2,
          get_document_text_detection/3,
          get_expense_analysis/2,
@@ -39,14 +53,22 @@
          get_lending_analysis/3,
          get_lending_analysis_summary/2,
          get_lending_analysis_summary/3,
+         get_project/2,
+         get_project/3,
          list_adapter_versions/2,
          list_adapter_versions/3,
          list_adapters/2,
          list_adapters/3,
+         list_blueprints/2,
+         list_blueprints/3,
+         list_projects/2,
+         list_projects/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
          start_document_analysis/2,
          start_document_analysis/3,
+         start_document_insights/2,
+         start_document_insights/3,
          start_document_text_detection/2,
          start_document_text_detection/3,
          start_expense_analysis/2,
@@ -58,7 +80,11 @@
          untag_resource/2,
          untag_resource/3,
          update_adapter/2,
-         update_adapter/3]).
+         update_adapter/3,
+         update_blueprint/2,
+         update_blueprint/3,
+         update_project/2,
+         update_project/3]).
 
 -include_lib("hackney/include/hackney_lib.hrl").
 
@@ -203,6 +229,31 @@
 -type block() :: #{binary() => any()}.
 
 %% Example:
+%% blueprint_filter() :: #{
+%%   <<"BlueprintArn">> => string(),
+%%   <<"BlueprintVersion">> => string()
+%% }
+-type blueprint_filter() :: #{binary() => any()}.
+
+%% Example:
+%% blueprint_item() :: #{
+%%   <<"BlueprintArn">> => string(),
+%%   <<"BlueprintVersion">> => string()
+%% }
+-type blueprint_item() :: #{binary() => any()}.
+
+%% Example:
+%% blueprint_summary() :: #{
+%%   <<"BlueprintArn">> => string(),
+%%   <<"BlueprintName">> => string(),
+%%   <<"BlueprintVersion">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ResourceOwner">> => list(any())
+%% }
+-type blueprint_summary() :: #{binary() => any()}.
+
+%% Example:
 %% bounding_box() :: #{
 %%   <<"Height">> => float(),
 %%   <<"Left">> => float(),
@@ -210,6 +261,12 @@
 %%   <<"Width">> => float()
 %% }
 -type bounding_box() :: #{binary() => any()}.
+
+%% Example:
+%% bounding_box_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type bounding_box_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% conflict_exception() :: #{
@@ -254,6 +311,65 @@
 -type create_adapter_version_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_blueprint_request() :: #{
+%%   <<"BlueprintName">> := string(),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"Schema">> := string(),
+%%   <<"Tags">> => map()
+%% }
+-type create_blueprint_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_blueprint_response() :: #{
+%%   <<"BlueprintArn">> => string()
+%% }
+-type create_blueprint_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_blueprint_version_request() :: #{
+%%   <<"BlueprintArn">> := string(),
+%%   <<"ClientRequestToken">> => string()
+%% }
+-type create_blueprint_version_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_blueprint_version_response() :: #{
+%%   <<"BlueprintArn">> => string(),
+%%   <<"BlueprintVersion">> => string()
+%% }
+-type create_blueprint_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"CustomConfiguration">> => custom_configuration(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ExtractionConfiguration">> := extraction_configuration(),
+%%   <<"GenerativeConfiguration">> => generative_configuration(),
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectName">> := string(),
+%%   <<"SensitiveDataConfiguration">> => sensitive_data_configuration(),
+%%   <<"SplitterConfiguration">> => splitter_configuration(),
+%%   <<"Tags">> => map()
+%% }
+-type create_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_project_response() :: #{
+%%   <<"ProjectArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type create_project_response() :: #{binary() => any()}.
+
+%% Example:
+%% custom_configuration() :: #{
+%%   <<"Blueprints">> => list(blueprint_item()),
+%%   <<"FallbackBlueprints">> => list(blueprint_item())
+%% }
+-type custom_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% delete_adapter_request() :: #{
 %%   <<"AdapterId">> := string()
 %% }
@@ -277,6 +393,31 @@
 
 %% }
 -type delete_adapter_version_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_blueprint_request() :: #{
+%%   <<"BlueprintArn">> := string(),
+%%   <<"BlueprintVersion">> => string()
+%% }
+-type delete_blueprint_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_blueprint_response() :: #{
+
+%% }
+-type delete_blueprint_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_request() :: #{
+%%   <<"ProjectArn">> := string()
+%% }
+-type delete_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_project_response() :: #{
+
+%% }
+-type delete_project_response() :: #{binary() => any()}.
 
 %% Example:
 %% detect_document_text_request() :: #{
@@ -334,12 +475,25 @@
 -type document_too_large_exception() :: #{binary() => any()}.
 
 %% Example:
+%% encryption_configuration() :: #{
+%%   <<"KmsEncryptionContext">> => map(),
+%%   <<"KmsKeyId">> => string()
+%% }
+-type encryption_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% evaluation_metric() :: #{
 %%   <<"F1Score">> => float(),
 %%   <<"Precision">> => float(),
 %%   <<"Recall">> => float()
 %% }
 -type evaluation_metric() :: #{binary() => any()}.
+
+%% Example:
+%% event_bridge_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type event_bridge_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% expense_currency() :: #{
@@ -399,6 +553,33 @@
 -type extraction() :: #{binary() => any()}.
 
 %% Example:
+%% extraction_configuration() :: #{
+%%   <<"BoundingBox">> => bounding_box_configuration(),
+%%   <<"Granularity">> => extraction_granularity(),
+%%   <<"OutputFormat">> => output_format()
+%% }
+-type extraction_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% extraction_granularity() :: #{
+%%   <<"Types">> => list(list(any())())
+%% }
+-type extraction_granularity() :: #{binary() => any()}.
+
+%% Example:
+%% figure_caption_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type figure_caption_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% generative_configuration() :: #{
+%%   <<"FigureCaption">> => figure_caption_configuration(),
+%%   <<"Summarization">> => summarization_configuration()
+%% }
+-type generative_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% geometry() :: #{
 %%   <<"BoundingBox">> => bounding_box(),
 %%   <<"Polygon">> => list(point()),
@@ -448,6 +629,26 @@
 -type get_adapter_version_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_blueprint_request() :: #{
+%%   <<"BlueprintArn">> := string(),
+%%   <<"BlueprintVersion">> => string()
+%% }
+-type get_blueprint_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_blueprint_response() :: #{
+%%   <<"BlueprintArn">> => string(),
+%%   <<"BlueprintName">> => string(),
+%%   <<"BlueprintVersion">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"KmsEncryptionContext">> => map(),
+%%   <<"KmsKeyId">> => string(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"Schema">> => string()
+%% }
+-type get_blueprint_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_document_analysis_request() :: #{
 %%   <<"JobId">> := string(),
 %%   <<"MaxResults">> => integer(),
@@ -466,6 +667,21 @@
 %%   <<"Warnings">> => list(warning())
 %% }
 -type get_document_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_insights_request() :: #{
+%%   <<"JobArn">> := string()
+%% }
+-type get_document_insights_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_document_insights_response() :: #{
+%%   <<"ErrorMessage">> => string(),
+%%   <<"ErrorType">> => string(),
+%%   <<"OutputConfiguration">> => output_configuration(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_document_insights_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_document_text_detection_request() :: #{
@@ -545,6 +761,29 @@
 -type get_lending_analysis_summary_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_project_request() :: #{
+%%   <<"ProjectArn">> := string()
+%% }
+-type get_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_project_response() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"CustomConfiguration">> => custom_configuration(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ExtractionConfiguration">> => extraction_configuration(),
+%%   <<"GenerativeConfiguration">> => generative_configuration(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ProjectArn">> => string(),
+%%   <<"ProjectDescription">> => string(),
+%%   <<"ProjectName">> => string(),
+%%   <<"SensitiveDataConfiguration">> => sensitive_data_configuration(),
+%%   <<"SplitterConfiguration">> => splitter_configuration(),
+%%   <<"Status">> => list(any())
+%% }
+-type get_project_response() :: #{binary() => any()}.
+
+%% Example:
 %% human_loop_activation_output() :: #{
 %%   <<"HumanLoopActivationConditionsEvaluationResults">> => string(),
 %%   <<"HumanLoopActivationReasons">> => list(string()),
@@ -597,6 +836,12 @@
 %%   <<"ValueDetection">> => analyze_id_detections()
 %% }
 -type identity_document_field() :: #{binary() => any()}.
+
+%% Example:
+%% input_configuration() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type input_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_error() :: #{
@@ -726,6 +971,38 @@
 -type list_adapters_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_blueprints_request() :: #{
+%%   <<"BlueprintArn">> => string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"ProjectFilter">> => project_filter(),
+%%   <<"ResourceOwner">> => list(any())
+%% }
+-type list_blueprints_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_blueprints_response() :: #{
+%%   <<"Blueprints">> => list(blueprint_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_blueprints_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_request() :: #{
+%%   <<"BlueprintFilter">> => blueprint_filter(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_projects_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_projects_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Projects">> => list(project_summary())
+%% }
+-type list_projects_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_tags_for_resource_request() :: #{
 %%   <<"ResourceARN">> := string()
 %% }
@@ -752,11 +1029,49 @@
 -type notification_channel() :: #{binary() => any()}.
 
 %% Example:
+%% notification_configuration() :: #{
+%%   <<"EventBridgeConfiguration">> => event_bridge_configuration()
+%% }
+-type notification_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% output_additional_file_format() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type output_additional_file_format() :: #{binary() => any()}.
+
+%% Example:
 %% output_config() :: #{
 %%   <<"S3Bucket">> => string(),
 %%   <<"S3Prefix">> => string()
 %% }
 -type output_config() :: #{binary() => any()}.
+
+%% Example:
+%% output_configuration() :: #{
+%%   <<"S3Uri">> => string()
+%% }
+-type output_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% output_format() :: #{
+%%   <<"AdditionalFileFormat">> => output_additional_file_format(),
+%%   <<"TextFormat">> => output_text_format()
+%% }
+-type output_format() :: #{binary() => any()}.
+
+%% Example:
+%% output_text_format() :: #{
+%%   <<"Types">> => list(list(any())())
+%% }
+-type output_text_format() :: #{binary() => any()}.
+
+%% Example:
+%% p_i_i_entities_configuration() :: #{
+%%   <<"PiiEntityTypes">> => list(list(any())()),
+%%   <<"RedactionMaskMode">> => list(any())
+%% }
+-type p_i_i_entities_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% page_classification() :: #{
@@ -778,6 +1093,21 @@
 %%   <<"Value">> => string()
 %% }
 -type prediction() :: #{binary() => any()}.
+
+%% Example:
+%% project_filter() :: #{
+%%   <<"ProjectArn">> => string()
+%% }
+-type project_filter() :: #{binary() => any()}.
+
+%% Example:
+%% project_summary() :: #{
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"LastModifiedTime">> => non_neg_integer(),
+%%   <<"ProjectArn">> => string(),
+%%   <<"ProjectName">> => string()
+%% }
+-type project_summary() :: #{binary() => any()}.
 
 %% Example:
 %% provisioned_throughput_exceeded_exception() :: #{
@@ -823,6 +1153,13 @@
 -type s3_object() :: #{binary() => any()}.
 
 %% Example:
+%% sensitive_data_configuration() :: #{
+%%   <<"DetectionMode">> => list(any()),
+%%   <<"PiiEntitiesConfiguration">> => p_i_i_entities_configuration()
+%% }
+-type sensitive_data_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% service_quota_exceeded_exception() :: #{
 %%   <<"Code">> => string(),
 %%   <<"Message">> => string()
@@ -844,6 +1181,12 @@
 -type split_document() :: #{binary() => any()}.
 
 %% Example:
+%% splitter_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type splitter_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% start_document_analysis_request() :: #{
 %%   <<"AdaptersConfig">> => adapters_config(),
 %%   <<"ClientRequestToken">> => string(),
@@ -862,6 +1205,24 @@
 %%   <<"JobId">> => string()
 %% }
 -type start_document_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_document_insights_request() :: #{
+%%   <<"Blueprints">> => list(blueprint_item()),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"InputConfiguration">> := input_configuration(),
+%%   <<"NotificationConfiguration">> => notification_configuration(),
+%%   <<"OutputConfiguration">> := output_configuration(),
+%%   <<"ProjectArn">> => string(),
+%%   <<"Tags">> => map()
+%% }
+-type start_document_insights_request() :: #{binary() => any()}.
+
+%% Example:
+%% start_document_insights_response() :: #{
+%%   <<"JobArn">> => string()
+%% }
+-type start_document_insights_response() :: #{binary() => any()}.
 
 %% Example:
 %% start_document_text_detection_request() :: #{
@@ -913,6 +1274,12 @@
 %%   <<"JobId">> => string()
 %% }
 -type start_lending_analysis_response() :: #{binary() => any()}.
+
+%% Example:
+%% summarization_configuration() :: #{
+%%   <<"State">> => list(any())
+%% }
+-type summarization_configuration() :: #{binary() => any()}.
 
 %% Example:
 %% tag_resource_request() :: #{
@@ -979,6 +1346,40 @@
 %%   <<"FeatureTypes">> => list(list(any())())
 %% }
 -type update_adapter_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_blueprint_request() :: #{
+%%   <<"BlueprintArn">> := string(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"Schema">> => string()
+%% }
+-type update_blueprint_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_blueprint_response() :: #{
+%%   <<"BlueprintArn">> => string()
+%% }
+-type update_blueprint_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_request() :: #{
+%%   <<"CustomConfiguration">> => custom_configuration(),
+%%   <<"EncryptionConfiguration">> => encryption_configuration(),
+%%   <<"ExtractionConfiguration">> => extraction_configuration(),
+%%   <<"GenerativeConfiguration">> => generative_configuration(),
+%%   <<"ProjectArn">> := string(),
+%%   <<"ProjectDescription">> => string(),
+%%   <<"SensitiveDataConfiguration">> => sensitive_data_configuration(),
+%%   <<"SplitterConfiguration">> => splitter_configuration()
+%% }
+-type update_project_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_project_response() :: #{
+%%   <<"ProjectArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_project_response() :: #{binary() => any()}.
 
 %% Example:
 %% validation_exception() :: #{
@@ -1055,6 +1456,35 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_blueprint_errors() ::
+    validation_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_blueprint_version_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_project_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type delete_adapter_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1073,6 +1503,23 @@
     invalid_parameter_exception() | 
     internal_server_error() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type delete_blueprint_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_project_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
     access_denied_exception().
 
 -type detect_document_text_errors() ::
@@ -1104,12 +1551,28 @@
     internal_server_error() | 
     access_denied_exception().
 
+-type get_blueprint_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
 -type get_document_analysis_errors() ::
     throttling_exception() | 
     provisioned_throughput_exceeded_exception() | 
     invalid_s3_object_exception() | 
     invalid_parameter_exception() | 
     invalid_kms_key_exception() | 
+    invalid_job_id_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
+-type get_document_insights_errors() ::
+    validation_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
     invalid_job_id_exception() | 
     internal_server_error() | 
     access_denied_exception().
@@ -1154,6 +1617,14 @@
     internal_server_error() | 
     access_denied_exception().
 
+-type get_project_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
 -type list_adapter_versions_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1166,6 +1637,22 @@
 -type list_adapters_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
+-type list_blueprints_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    access_denied_exception().
+
+-type list_projects_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
     invalid_parameter_exception() | 
     internal_server_error() | 
@@ -1192,6 +1679,15 @@
     idempotent_parameter_mismatch_exception() | 
     document_too_large_exception() | 
     bad_document_exception() | 
+    access_denied_exception().
+
+-type start_document_insights_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
     access_denied_exception().
 
 -type start_document_text_detection_errors() ::
@@ -1260,6 +1756,25 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_blueprint_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    invalid_parameter_exception() | 
+    internal_server_error() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_project_errors() ::
+    validation_exception() | 
+    resource_not_found_exception() | 
+    provisioned_throughput_exceeded_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_exception() | 
     internal_server_error() | 
     conflict_exception() | 
@@ -1442,6 +1957,65 @@ create_adapter_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateAdapterVersion">>, Input, Options).
 
+%% @doc Creates a blueprint that defines the schema Amazon Textract uses to
+%% extract structured
+%% data from a document during a document insights job.
+%%
+%% A blueprint describes the fields
+%% to extract and how to normalize them.
+-spec create_blueprint(aws_client:aws_client(), create_blueprint_request()) ->
+    {ok, create_blueprint_response(), tuple()} |
+    {error, any()} |
+    {error, create_blueprint_errors(), tuple()}.
+create_blueprint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_blueprint(Client, Input, []).
+
+-spec create_blueprint(aws_client:aws_client(), create_blueprint_request(), proplists:proplist()) ->
+    {ok, create_blueprint_response(), tuple()} |
+    {error, any()} |
+    {error, create_blueprint_errors(), tuple()}.
+create_blueprint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateBlueprint">>, Input, Options).
+
+%% @doc Creates a new, immutable version of an existing blueprint so that
+%% projects can pin to a
+%% specific version.
+-spec create_blueprint_version(aws_client:aws_client(), create_blueprint_version_request()) ->
+    {ok, create_blueprint_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_blueprint_version_errors(), tuple()}.
+create_blueprint_version(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_blueprint_version(Client, Input, []).
+
+-spec create_blueprint_version(aws_client:aws_client(), create_blueprint_version_request(), proplists:proplist()) ->
+    {ok, create_blueprint_version_response(), tuple()} |
+    {error, any()} |
+    {error, create_blueprint_version_errors(), tuple()}.
+create_blueprint_version(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateBlueprintVersion">>, Input, Options).
+
+%% @doc Creates a project that groups the configuration used to run document
+%% insights jobs.
+-spec create_project(aws_client:aws_client(), create_project_request()) ->
+    {ok, create_project_response(), tuple()} |
+    {error, any()} |
+    {error, create_project_errors(), tuple()}.
+create_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_project(Client, Input, []).
+
+-spec create_project(aws_client:aws_client(), create_project_request(), proplists:proplist()) ->
+    {ok, create_project_response(), tuple()} |
+    {error, any()} |
+    {error, create_project_errors(), tuple()}.
+create_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateProject">>, Input, Options).
+
 %% @doc Deletes an Amazon Textract adapter.
 %%
 %% Takes an AdapterId and deletes the adapter specified by the ID.
@@ -1481,6 +2055,40 @@ delete_adapter_version(Client, Input)
 delete_adapter_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAdapterVersion">>, Input, Options).
+
+%% @doc Deletes a blueprint, or a specific version of a blueprint.
+-spec delete_blueprint(aws_client:aws_client(), delete_blueprint_request()) ->
+    {ok, delete_blueprint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_blueprint_errors(), tuple()}.
+delete_blueprint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_blueprint(Client, Input, []).
+
+-spec delete_blueprint(aws_client:aws_client(), delete_blueprint_request(), proplists:proplist()) ->
+    {ok, delete_blueprint_response(), tuple()} |
+    {error, any()} |
+    {error, delete_blueprint_errors(), tuple()}.
+delete_blueprint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteBlueprint">>, Input, Options).
+
+%% @doc Deletes a project.
+-spec delete_project(aws_client:aws_client(), delete_project_request()) ->
+    {ok, delete_project_response(), tuple()} |
+    {error, any()} |
+    {error, delete_project_errors(), tuple()}.
+delete_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_project(Client, Input, []).
+
+-spec delete_project(aws_client:aws_client(), delete_project_request(), proplists:proplist()) ->
+    {ok, delete_project_response(), tuple()} |
+    {error, any()} |
+    {error, delete_project_errors(), tuple()}.
+delete_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteProject">>, Input, Options).
 
 %% @doc Detects text in the input document.
 %%
@@ -1558,6 +2166,25 @@ get_adapter_version(Client, Input)
 get_adapter_version(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetAdapterVersion">>, Input, Options).
+
+%% @doc Gets the details of a blueprint, including its schema, encryption
+%% settings, and
+%% timestamps.
+-spec get_blueprint(aws_client:aws_client(), get_blueprint_request()) ->
+    {ok, get_blueprint_response(), tuple()} |
+    {error, any()} |
+    {error, get_blueprint_errors(), tuple()}.
+get_blueprint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_blueprint(Client, Input, []).
+
+-spec get_blueprint(aws_client:aws_client(), get_blueprint_request(), proplists:proplist()) ->
+    {ok, get_blueprint_response(), tuple()} |
+    {error, any()} |
+    {error, get_blueprint_errors(), tuple()}.
+get_blueprint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetBlueprint">>, Input, Options).
 
 %% @doc Gets the results for an Amazon Textract asynchronous operation that
 %% analyzes text in a
@@ -1651,6 +2278,25 @@ get_document_analysis(Client, Input)
 get_document_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDocumentAnalysis">>, Input, Options).
+
+%% @doc Gets the status and results of a document insights job that was
+%% started by
+%% `StartDocumentInsights'.
+-spec get_document_insights(aws_client:aws_client(), get_document_insights_request()) ->
+    {ok, get_document_insights_response(), tuple()} |
+    {error, any()} |
+    {error, get_document_insights_errors(), tuple()}.
+get_document_insights(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_document_insights(Client, Input, []).
+
+-spec get_document_insights(aws_client:aws_client(), get_document_insights_request(), proplists:proplist()) ->
+    {ok, get_document_insights_response(), tuple()} |
+    {error, any()} |
+    {error, get_document_insights_errors(), tuple()}.
+get_document_insights(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetDocumentInsights">>, Input, Options).
 
 %% @doc Gets the results for an Amazon Textract asynchronous operation that
 %% detects text in a document.
@@ -1838,6 +2484,24 @@ get_lending_analysis_summary(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetLendingAnalysisSummary">>, Input, Options).
 
+%% @doc Gets the details of a project, including its configuration, status,
+%% and timestamps.
+-spec get_project(aws_client:aws_client(), get_project_request()) ->
+    {ok, get_project_response(), tuple()} |
+    {error, any()} |
+    {error, get_project_errors(), tuple()}.
+get_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_project(Client, Input, []).
+
+-spec get_project(aws_client:aws_client(), get_project_request(), proplists:proplist()) ->
+    {ok, get_project_response(), tuple()} |
+    {error, any()} |
+    {error, get_project_errors(), tuple()}.
+get_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetProject">>, Input, Options).
+
 %% @doc List all version of an adapter that meet the specified filtration
 %% criteria.
 -spec list_adapter_versions(aws_client:aws_client(), list_adapter_versions_request()) ->
@@ -1872,6 +2536,52 @@ list_adapters(Client, Input)
 list_adapters(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAdapters">>, Input, Options).
+
+%% @doc Lists the blueprints that are available to the caller, with optional
+%% filtering by
+%% project and resource owner.
+%%
+%% The results are paginated. If the response includes a
+%% `NextToken' value, pass it in a subsequent call to retrieve the next
+%% page of
+%% results.
+-spec list_blueprints(aws_client:aws_client(), list_blueprints_request()) ->
+    {ok, list_blueprints_response(), tuple()} |
+    {error, any()} |
+    {error, list_blueprints_errors(), tuple()}.
+list_blueprints(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_blueprints(Client, Input, []).
+
+-spec list_blueprints(aws_client:aws_client(), list_blueprints_request(), proplists:proplist()) ->
+    {ok, list_blueprints_response(), tuple()} |
+    {error, any()} |
+    {error, list_blueprints_errors(), tuple()}.
+list_blueprints(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListBlueprints">>, Input, Options).
+
+%% @doc Lists the projects that are available to the caller, with optional
+%% filtering by
+%% blueprint.
+%%
+%% The results are paginated. If the response includes a `NextToken'
+%% value, pass it in a subsequent call to retrieve the next page of results.
+-spec list_projects(aws_client:aws_client(), list_projects_request()) ->
+    {ok, list_projects_response(), tuple()} |
+    {error, any()} |
+    {error, list_projects_errors(), tuple()}.
+list_projects(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_projects(Client, Input, []).
+
+-spec list_projects(aws_client:aws_client(), list_projects_request(), proplists:proplist()) ->
+    {ok, list_projects_response(), tuple()} |
+    {error, any()} |
+    {error, list_projects_errors(), tuple()}.
+list_projects(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListProjects">>, Input, Options).
 
 %% @doc Lists all tags for an Amazon Textract resource.
 -spec list_tags_for_resource(aws_client:aws_client(), list_tags_for_resource_request()) ->
@@ -1929,6 +2639,28 @@ start_document_analysis(Client, Input)
 start_document_analysis(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartDocumentAnalysis">>, Input, Options).
+
+%% @doc Starts an asynchronous job that analyzes a document using the
+%% configuration defined by a
+%% project or a set of blueprints.
+%%
+%% Use `GetDocumentInsights' to
+%% retrieve the results of the job.
+-spec start_document_insights(aws_client:aws_client(), start_document_insights_request()) ->
+    {ok, start_document_insights_response(), tuple()} |
+    {error, any()} |
+    {error, start_document_insights_errors(), tuple()}.
+start_document_insights(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_document_insights(Client, Input, []).
+
+-spec start_document_insights(aws_client:aws_client(), start_document_insights_request(), proplists:proplist()) ->
+    {ok, start_document_insights_response(), tuple()} |
+    {error, any()} |
+    {error, start_document_insights_errors(), tuple()}.
+start_document_insights(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartDocumentInsights">>, Input, Options).
 
 %% @doc Starts the asynchronous detection of text in a document.
 %%
@@ -2123,6 +2855,46 @@ update_adapter(Client, Input)
 update_adapter(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateAdapter">>, Input, Options).
+
+%% @doc Updates an existing blueprint, replacing its schema and, optionally,
+%% its encryption
+%% configuration.
+-spec update_blueprint(aws_client:aws_client(), update_blueprint_request()) ->
+    {ok, update_blueprint_response(), tuple()} |
+    {error, any()} |
+    {error, update_blueprint_errors(), tuple()}.
+update_blueprint(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_blueprint(Client, Input, []).
+
+-spec update_blueprint(aws_client:aws_client(), update_blueprint_request(), proplists:proplist()) ->
+    {ok, update_blueprint_response(), tuple()} |
+    {error, any()} |
+    {error, update_blueprint_errors(), tuple()}.
+update_blueprint(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateBlueprint">>, Input, Options).
+
+%% @doc Updates the configuration of an existing project.
+%%
+%% If you omit a configuration, UpdateProject leaves it unchanged.
+%% A configuration that you supply replaces the stored one, so include every
+%% setting that you want to keep.
+-spec update_project(aws_client:aws_client(), update_project_request()) ->
+    {ok, update_project_response(), tuple()} |
+    {error, any()} |
+    {error, update_project_errors(), tuple()}.
+update_project(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_project(Client, Input, []).
+
+-spec update_project(aws_client:aws_client(), update_project_request(), proplists:proplist()) ->
+    {ok, update_project_response(), tuple()} |
+    {error, any()} |
+    {error, update_project_errors(), tuple()}.
+update_project(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateProject">>, Input, Options).
 
 %%====================================================================
 %% Internal functions

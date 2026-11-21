@@ -5,7 +5,9 @@
 %% and evaluating Amazon Bedrock models.
 -module(aws_bedrock).
 
--export([batch_delete_advanced_prompt_optimization_job/2,
+-export([archive_project/3,
+         archive_project/4,
+         batch_delete_advanced_prompt_optimization_job/2,
          batch_delete_advanced_prompt_optimization_job/3,
          batch_delete_evaluation_job/2,
          batch_delete_evaluation_job/3,
@@ -43,10 +45,14 @@
          create_model_import_job/3,
          create_model_invocation_job/2,
          create_model_invocation_job/3,
+         create_project/2,
+         create_project/3,
          create_prompt_router/2,
          create_prompt_router/3,
          create_provisioned_model_throughput/2,
          create_provisioned_model_throughput/3,
+         delete_account_data_retention_storage/3,
+         delete_account_data_retention_storage/4,
          delete_automated_reasoning_policy/3,
          delete_automated_reasoning_policy/4,
          delete_automated_reasoning_policy_build_workflow/4,
@@ -71,6 +77,10 @@
          delete_marketplace_model_endpoint/4,
          delete_model_invocation_logging_configuration/2,
          delete_model_invocation_logging_configuration/3,
+         delete_organization_data_retention_storage/3,
+         delete_organization_data_retention_storage/4,
+         delete_project_data_retention_storage/4,
+         delete_project_data_retention_storage/5,
          delete_prompt_router/3,
          delete_prompt_router/4,
          delete_provisioned_model_throughput/3,
@@ -85,6 +95,9 @@
          get_account_data_retention/1,
          get_account_data_retention/3,
          get_account_data_retention/4,
+         get_account_data_retention_storage/2,
+         get_account_data_retention_storage/4,
+         get_account_data_retention_storage/5,
          get_advanced_prompt_optimization_job/2,
          get_advanced_prompt_optimization_job/4,
          get_advanced_prompt_optimization_job/5,
@@ -151,6 +164,15 @@
          get_model_invocation_logging_configuration/1,
          get_model_invocation_logging_configuration/3,
          get_model_invocation_logging_configuration/4,
+         get_organization_data_retention_storage/2,
+         get_organization_data_retention_storage/4,
+         get_organization_data_retention_storage/5,
+         get_project/2,
+         get_project/4,
+         get_project/5,
+         get_project_data_retention_storage/3,
+         get_project_data_retention_storage/5,
+         get_project_data_retention_storage/6,
          get_prompt_router/2,
          get_prompt_router/4,
          get_prompt_router/5,
@@ -160,6 +182,18 @@
          get_resource_policy/2,
          get_resource_policy/4,
          get_resource_policy/5,
+         get_trusted_access_program/2,
+         get_trusted_access_program/4,
+         get_trusted_access_program/5,
+         get_trusted_access_program_account_enrollment/2,
+         get_trusted_access_program_account_enrollment/4,
+         get_trusted_access_program_account_enrollment/5,
+         get_trusted_access_program_organization_enrollment/2,
+         get_trusted_access_program_organization_enrollment/4,
+         get_trusted_access_program_organization_enrollment/5,
+         get_trusted_access_program_project_enrollment/3,
+         get_trusted_access_program_project_enrollment/5,
+         get_trusted_access_program_project_enrollment/6,
          get_use_case_for_model_access/1,
          get_use_case_for_model_access/3,
          get_use_case_for_model_access/4,
@@ -220,6 +254,9 @@
          list_model_invocation_jobs/1,
          list_model_invocation_jobs/3,
          list_model_invocation_jobs/4,
+         list_projects/1,
+         list_projects/3,
+         list_projects/4,
          list_prompt_routers/1,
          list_prompt_routers/3,
          list_prompt_routers/4,
@@ -228,14 +265,29 @@
          list_provisioned_model_throughputs/4,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         list_trusted_access_programs/1,
+         list_trusted_access_programs/3,
+         list_trusted_access_programs/4,
          put_account_data_retention/2,
          put_account_data_retention/3,
+         put_account_data_retention_storage/3,
+         put_account_data_retention_storage/4,
          put_enforced_guardrail_configuration/2,
          put_enforced_guardrail_configuration/3,
          put_model_invocation_logging_configuration/2,
          put_model_invocation_logging_configuration/3,
+         put_organization_data_retention_storage/3,
+         put_organization_data_retention_storage/4,
+         put_project_data_retention_storage/4,
+         put_project_data_retention_storage/5,
          put_resource_policy/2,
          put_resource_policy/3,
+         put_trusted_access_program_account_enrollment/3,
+         put_trusted_access_program_account_enrollment/4,
+         put_trusted_access_program_organization_enrollment/3,
+         put_trusted_access_program_organization_enrollment/4,
+         put_trusted_access_program_project_enrollment/4,
+         put_trusted_access_program_project_enrollment/5,
          put_use_case_for_model_access/2,
          put_use_case_for_model_access/3,
          register_marketplace_model_endpoint/3,
@@ -244,6 +296,12 @@
          start_automated_reasoning_policy_build_workflow/5,
          start_automated_reasoning_policy_test_workflow/4,
          start_automated_reasoning_policy_test_workflow/5,
+         start_trusted_access_program_account_application/3,
+         start_trusted_access_program_account_application/4,
+         start_trusted_access_program_organization_application/3,
+         start_trusted_access_program_organization_application/4,
+         start_trusted_access_program_project_application/4,
+         start_trusted_access_program_project_application/5,
          stop_advanced_prompt_optimization_job/3,
          stop_advanced_prompt_optimization_job/4,
          stop_evaluation_job/3,
@@ -268,6 +326,8 @@
          update_guardrail/4,
          update_marketplace_model_endpoint/3,
          update_marketplace_model_endpoint/4,
+         update_project/3,
+         update_project/4,
          update_provisioned_model_throughput/3,
          update_provisioned_model_throughput/4]).
 
@@ -344,6 +404,23 @@
 %%   <<"status">> => list(any())
 %% }
 -type agreement_availability() :: #{binary() => any()}.
+
+%% Example:
+%% archive_project_request() :: #{}
+-type archive_project_request() :: #{}.
+
+
+%% Example:
+%% archive_project_response() :: #{
+%%   <<"archivedAt">> => non_neg_integer(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataRetention">> => project_data_retention(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type archive_project_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1447,6 +1524,28 @@
 
 
 %% Example:
+%% create_project_request() :: #{
+%%   <<"dataRetention">> => project_data_retention(),
+%%   <<"name">> := string(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_project_response() :: #{
+%%   <<"archivedAt">> => non_neg_integer(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataRetention">> => project_data_retention(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type create_project_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_prompt_router_request() :: #{
 %%   <<"clientRequestToken">> => string(),
 %%   <<"description">> => string(),
@@ -1561,6 +1660,23 @@
 
 
 %% Example:
+%% data_retention_storage_configuration() :: #{
+%%   <<"kmsKeyArn">> => string(),
+%%   <<"s3BucketArn">> => string(),
+%%   <<"s3BucketOwner">> => string()
+%% }
+-type data_retention_storage_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% delete_account_data_retention_storage_request() :: #{}
+-type delete_account_data_retention_storage_request() :: #{}.
+
+%% Example:
+%% delete_account_data_retention_storage_response() :: #{}
+-type delete_account_data_retention_storage_response() :: #{}.
+
+
+%% Example:
 %% delete_automated_reasoning_policy_build_workflow_request() :: #{
 %%   <<"lastUpdatedAt">> := non_neg_integer()
 %% }
@@ -1669,6 +1785,22 @@
 %% Example:
 %% delete_model_invocation_logging_configuration_response() :: #{}
 -type delete_model_invocation_logging_configuration_response() :: #{}.
+
+%% Example:
+%% delete_organization_data_retention_storage_request() :: #{}
+-type delete_organization_data_retention_storage_request() :: #{}.
+
+%% Example:
+%% delete_organization_data_retention_storage_response() :: #{}
+-type delete_organization_data_retention_storage_response() :: #{}.
+
+%% Example:
+%% delete_project_data_retention_storage_request() :: #{}
+-type delete_project_data_retention_storage_request() :: #{}.
+
+%% Example:
+%% delete_project_data_retention_storage_response() :: #{}
+-type delete_project_data_retention_storage_response() :: #{}.
 
 %% Example:
 %% delete_prompt_router_request() :: #{}
@@ -1935,6 +2067,23 @@
 -type get_account_data_retention_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_account_data_retention_storage_request() :: #{}
+-type get_account_data_retention_storage_request() :: #{}.
+
+
+%% Example:
+%% get_account_data_retention_storage_response() :: #{
+%%   <<"kmsKeyStatus">> => list(any()),
+%%   <<"modelProvider">> => list(any()),
+%%   <<"s3BucketStatus">> => list(any()),
+%%   <<"scope">> => list(any()),
+%%   <<"storageConfiguration">> => data_retention_storage_configuration(),
+%%   <<"storageDestination">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_account_data_retention_storage_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_advanced_prompt_optimization_job_request() :: #{}
 -type get_advanced_prompt_optimization_job_request() :: #{}.
 
@@ -2146,9 +2295,12 @@
 %% }
 -type get_foundation_model_availability_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_foundation_model_request() :: #{}
--type get_foundation_model_request() :: #{}.
+%% get_foundation_model_request() :: #{
+%%   <<"projectIdentifier">> => string()
+%% }
+-type get_foundation_model_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2210,9 +2362,12 @@
 %% }
 -type get_imported_model_response() :: #{binary() => any()}.
 
+
 %% Example:
-%% get_inference_profile_request() :: #{}
--type get_inference_profile_request() :: #{}.
+%% get_inference_profile_request() :: #{
+%%   <<"projectIdentifier">> => string()
+%% }
+-type get_inference_profile_request() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2359,6 +2514,58 @@
 -type get_model_invocation_logging_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_organization_data_retention_storage_request() :: #{}
+-type get_organization_data_retention_storage_request() :: #{}.
+
+
+%% Example:
+%% get_organization_data_retention_storage_response() :: #{
+%%   <<"kmsKeyStatus">> => list(any()),
+%%   <<"modelProvider">> => list(any()),
+%%   <<"s3BucketStatus">> => list(any()),
+%%   <<"scope">> => list(any()),
+%%   <<"storageConfiguration">> => data_retention_storage_configuration(),
+%%   <<"storageDestination">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_organization_data_retention_storage_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_project_data_retention_storage_request() :: #{}
+-type get_project_data_retention_storage_request() :: #{}.
+
+
+%% Example:
+%% get_project_data_retention_storage_response() :: #{
+%%   <<"kmsKeyStatus">> => list(any()),
+%%   <<"modelProvider">> => list(any()),
+%%   <<"projectArn">> => string(),
+%%   <<"s3BucketStatus">> => list(any()),
+%%   <<"scope">> => list(any()),
+%%   <<"storageConfiguration">> => data_retention_storage_configuration(),
+%%   <<"storageDestination">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_project_data_retention_storage_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_project_request() :: #{}
+-type get_project_request() :: #{}.
+
+
+%% Example:
+%% get_project_response() :: #{
+%%   <<"archivedAt">> => non_neg_integer(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataRetention">> => project_data_retention(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type get_project_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_prompt_router_request() :: #{}
 -type get_prompt_router_request() :: #{}.
 
@@ -2411,6 +2618,68 @@
 %%   <<"resourcePolicy">> => string()
 %% }
 -type get_resource_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_trusted_access_program_account_enrollment_request() :: #{}
+-type get_trusted_access_program_account_enrollment_request() :: #{}.
+
+
+%% Example:
+%% get_trusted_access_program_account_enrollment_response() :: #{
+%%   <<"optIn">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_trusted_access_program_account_enrollment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_trusted_access_program_organization_enrollment_request() :: #{}
+-type get_trusted_access_program_organization_enrollment_request() :: #{}.
+
+
+%% Example:
+%% get_trusted_access_program_organization_enrollment_response() :: #{
+%%   <<"optIn">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_trusted_access_program_organization_enrollment_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_trusted_access_program_project_enrollment_request() :: #{}
+-type get_trusted_access_program_project_enrollment_request() :: #{}.
+
+
+%% Example:
+%% get_trusted_access_program_project_enrollment_response() :: #{
+%%   <<"optIn">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_trusted_access_program_project_enrollment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_trusted_access_program_request() :: #{
+%%   <<"projectIdentifier">> => string()
+%% }
+-type get_trusted_access_program_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_trusted_access_program_response() :: #{
+%%   <<"description">> => [string()],
+%%   <<"detailsUrl">> => string(),
+%%   <<"eligibilityScope">> => list(any()),
+%%   <<"enrollmentUrl">> => string(),
+%%   <<"name">> => string(),
+%%   <<"optIn">> => list(any()),
+%%   <<"programId">> => string(),
+%%   <<"providerName">> => string(),
+%%   <<"resolvedFor">> => trusted_access_resolution_context(),
+%%   <<"source">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type get_trusted_access_program_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_use_case_for_model_access_request() :: #{}
@@ -3106,7 +3375,8 @@
 %%   <<"byCustomizationType">> => list(any()),
 %%   <<"byInferenceType">> => list(any()),
 %%   <<"byOutputModality">> => list(any()),
-%%   <<"byProvider">> => string()
+%%   <<"byProvider">> => string(),
+%%   <<"projectIdentifier">> => string()
 %% }
 -type list_foundation_models_request() :: #{binary() => any()}.
 
@@ -3160,6 +3430,7 @@
 %% list_inference_profiles_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
+%%   <<"projectIdentifier">> => string(),
 %%   <<"typeEquals">> => list(any())
 %% }
 -type list_inference_profiles_request() :: #{binary() => any()}.
@@ -3281,6 +3552,23 @@
 
 
 %% Example:
+%% list_projects_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"statusFilter">> => list(any())
+%% }
+-type list_projects_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_projects_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"projectSummaries">> => list(project_summary())
+%% }
+-type list_projects_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_prompt_routers_request() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -3332,6 +3620,23 @@
 %%   <<"tags">> => list(tag())
 %% }
 -type list_tags_for_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trusted_access_programs_request() :: #{
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"projectIdentifier">> => string()
+%% }
+-type list_trusted_access_programs_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_trusted_access_programs_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"programSummaries">> => list(trusted_access_program_summary())
+%% }
+-type list_trusted_access_programs_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3545,6 +3850,26 @@
 
 
 %% Example:
+%% project_data_retention() :: #{
+%%   <<"mode">> => list(any())
+%% }
+-type project_data_retention() :: #{binary() => any()}.
+
+
+%% Example:
+%% project_summary() :: #{
+%%   <<"archivedAt">> => non_neg_integer(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataRetention">> => project_data_retention(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type project_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% prompt_router_summary() :: #{
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"description">> => string(),
@@ -3608,6 +3933,27 @@
 
 
 %% Example:
+%% put_account_data_retention_storage_request() :: #{
+%%   <<"storageConfiguration">> => data_retention_storage_configuration(),
+%%   <<"storageDestination">> := list(any())
+%% }
+-type put_account_data_retention_storage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_account_data_retention_storage_response() :: #{
+%%   <<"kmsKeyStatus">> => list(any()),
+%%   <<"modelProvider">> => list(any()),
+%%   <<"s3BucketStatus">> => list(any()),
+%%   <<"scope">> => list(any()),
+%%   <<"storageConfiguration">> => data_retention_storage_configuration(),
+%%   <<"storageDestination">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type put_account_data_retention_storage_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_enforced_guardrail_configuration_request() :: #{
 %%   <<"configId">> => string(),
 %%   <<"guardrailInferenceConfig">> := account_enforced_guardrail_inference_input_configuration()
@@ -3636,6 +3982,49 @@
 
 
 %% Example:
+%% put_organization_data_retention_storage_request() :: #{
+%%   <<"storageConfiguration">> => data_retention_storage_configuration(),
+%%   <<"storageDestination">> := list(any())
+%% }
+-type put_organization_data_retention_storage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_organization_data_retention_storage_response() :: #{
+%%   <<"kmsKeyStatus">> => list(any()),
+%%   <<"modelProvider">> => list(any()),
+%%   <<"s3BucketStatus">> => list(any()),
+%%   <<"scope">> => list(any()),
+%%   <<"storageConfiguration">> => data_retention_storage_configuration(),
+%%   <<"storageDestination">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type put_organization_data_retention_storage_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_project_data_retention_storage_request() :: #{
+%%   <<"storageConfiguration">> => data_retention_storage_configuration(),
+%%   <<"storageDestination">> := list(any())
+%% }
+-type put_project_data_retention_storage_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_project_data_retention_storage_response() :: #{
+%%   <<"kmsKeyStatus">> => list(any()),
+%%   <<"modelProvider">> => list(any()),
+%%   <<"projectArn">> => string(),
+%%   <<"s3BucketStatus">> => list(any()),
+%%   <<"scope">> => list(any()),
+%%   <<"storageConfiguration">> => data_retention_storage_configuration(),
+%%   <<"storageDestination">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type put_project_data_retention_storage_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_resource_policy_request() :: #{
 %%   <<"resourceArn">> := string(),
 %%   <<"resourcePolicy">> := string()
@@ -3648,6 +4037,51 @@
 %%   <<"resourceArn">> => string()
 %% }
 -type put_resource_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_trusted_access_program_account_enrollment_request() :: #{
+%%   <<"optIn">> := list(any())
+%% }
+-type put_trusted_access_program_account_enrollment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_trusted_access_program_account_enrollment_response() :: #{
+%%   <<"optIn">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type put_trusted_access_program_account_enrollment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_trusted_access_program_organization_enrollment_request() :: #{
+%%   <<"optIn">> := list(any())
+%% }
+-type put_trusted_access_program_organization_enrollment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_trusted_access_program_organization_enrollment_response() :: #{
+%%   <<"optIn">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type put_trusted_access_program_organization_enrollment_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_trusted_access_program_project_enrollment_request() :: #{
+%%   <<"optIn">> := list(any())
+%% }
+-type put_trusted_access_program_project_enrollment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_trusted_access_program_project_enrollment_response() :: #{
+%%   <<"optIn">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type put_trusted_access_program_project_enrollment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3843,6 +4277,39 @@
 %% }
 -type start_automated_reasoning_policy_test_workflow_response() :: #{binary() => any()}.
 
+%% Example:
+%% start_trusted_access_program_account_application_request() :: #{}
+-type start_trusted_access_program_account_application_request() :: #{}.
+
+
+%% Example:
+%% start_trusted_access_program_account_application_response() :: #{
+%%   <<"result">> => list()
+%% }
+-type start_trusted_access_program_account_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_trusted_access_program_organization_application_request() :: #{}
+-type start_trusted_access_program_organization_application_request() :: #{}.
+
+
+%% Example:
+%% start_trusted_access_program_organization_application_response() :: #{
+%%   <<"result">> => list()
+%% }
+-type start_trusted_access_program_organization_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% start_trusted_access_program_project_application_request() :: #{}
+-type start_trusted_access_program_project_application_request() :: #{}.
+
+
+%% Example:
+%% start_trusted_access_program_project_application_response() :: #{
+%%   <<"result">> => list()
+%% }
+-type start_trusted_access_program_project_application_response() :: #{binary() => any()}.
+
 
 %% Example:
 %% status_details() :: #{
@@ -3980,6 +4447,42 @@
 
 
 %% Example:
+%% trusted_access_program_provider_handoff() :: #{
+%%   <<"applicationToken">> => string(),
+%%   <<"applicationTokenExpiresAt">> => non_neg_integer(),
+%%   <<"enrollmentUrl">> => string()
+%% }
+-type trusted_access_program_provider_handoff() :: #{binary() => any()}.
+
+
+%% Example:
+%% trusted_access_program_summary() :: #{
+%%   <<"description">> => [string()],
+%%   <<"detailsUrl">> => string(),
+%%   <<"eligibilityScope">> => list(any()),
+%%   <<"enrollmentUrl">> => string(),
+%%   <<"name">> => string(),
+%%   <<"optIn">> => list(any()),
+%%   <<"programId">> => string(),
+%%   <<"providerName">> => string(),
+%%   <<"resolvedFor">> => trusted_access_resolution_context(),
+%%   <<"source">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()],
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type trusted_access_program_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% trusted_access_resolution_context() :: #{
+%%   <<"accountId">> => string(),
+%%   <<"projectArn">> => string()
+%% }
+-type trusted_access_resolution_context() :: #{binary() => any()}.
+
+
+%% Example:
 %% untag_resource_request() :: #{
 %%   <<"resourceARN">> := string(),
 %%   <<"tagKeys">> := list(string())
@@ -4106,6 +4609,27 @@
 
 
 %% Example:
+%% update_project_request() :: #{
+%%   <<"dataRetention">> => project_data_retention(),
+%%   <<"name">> => string()
+%% }
+-type update_project_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_project_response() :: #{
+%%   <<"archivedAt">> => non_neg_integer(),
+%%   <<"arn">> => string(),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"dataRetention">> => project_data_retention(),
+%%   <<"id">> => string(),
+%%   <<"name">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type update_project_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_provisioned_model_throughput_request() :: #{
 %%   <<"desiredModelId">> => string(),
 %%   <<"desiredProvisionedModelName">> => string()
@@ -4192,6 +4716,14 @@
 %%   <<"subnetIds">> => list(string())
 %% }
 -type vpc_config() :: #{binary() => any()}.
+
+-type archive_project_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
 
 -type batch_delete_advanced_prompt_optimization_job_errors() ::
     validation_exception() | 
@@ -4362,6 +4894,15 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type create_project_errors() ::
+    validation_exception() | 
+    too_many_tags_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_prompt_router_errors() ::
     validation_exception() | 
     too_many_tags_exception() | 
@@ -4378,6 +4919,12 @@
     throttling_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type delete_account_data_retention_storage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -4476,6 +5023,19 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type delete_organization_data_retention_storage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type delete_project_data_retention_storage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type delete_prompt_router_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -4516,6 +5076,13 @@
 -type get_account_data_retention_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_account_data_retention_storage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -4671,6 +5238,27 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type get_organization_data_retention_storage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_project_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_project_data_retention_storage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_prompt_router_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -4686,6 +5274,34 @@
     access_denied_exception().
 
 -type get_resource_policy_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_trusted_access_program_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_trusted_access_program_account_enrollment_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_trusted_access_program_organization_enrollment_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type get_trusted_access_program_project_enrollment_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -4822,6 +5438,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_projects_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_prompt_routers_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -4841,10 +5463,24 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_trusted_access_programs_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type put_account_data_retention_errors() ::
     validation_exception() | 
     throttling_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type put_account_data_retention_storage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type put_enforced_guardrail_configuration_errors() ::
@@ -4861,9 +5497,48 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type put_organization_data_retention_storage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type put_project_data_retention_storage_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type put_resource_policy_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type put_trusted_access_program_account_enrollment_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type put_trusted_access_program_organization_enrollment_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type put_trusted_access_program_project_enrollment_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -4897,6 +5572,27 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     resource_in_use_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type start_trusted_access_program_account_application_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type start_trusted_access_program_organization_application_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type start_trusted_access_program_project_application_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -4998,6 +5694,14 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type update_project_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_provisioned_model_throughput_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -5008,6 +5712,43 @@
 %%====================================================================
 %% API
 %%====================================================================
+
+%% @doc Archives a project.
+%%
+%% Archiving is terminal; there is no delete. Archiving an already-archived
+%% project succeeds without effect. The default project cannot be archived.
+-spec archive_project(aws_client:aws_client(), binary() | list(), archive_project_request()) ->
+    {ok, archive_project_response(), tuple()} |
+    {error, any()} |
+    {error, archive_project_errors(), tuple()}.
+archive_project(Client, ProjectIdentifier, Input) ->
+    archive_project(Client, ProjectIdentifier, Input, []).
+
+-spec archive_project(aws_client:aws_client(), binary() | list(), archive_project_request(), proplists:proplist()) ->
+    {ok, archive_project_response(), tuple()} |
+    {error, any()} |
+    {error, archive_project_errors(), tuple()}.
+archive_project(Client, ProjectIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/projects/", aws_util:encode_uri(ProjectIdentifier), "/archive"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes one or more advanced prompt optimization jobs.
 -spec batch_delete_advanced_prompt_optimization_job(aws_client:aws_client(), batch_delete_advanced_prompt_optimization_job_request()) ->
@@ -5821,6 +6562,41 @@ create_model_invocation_job(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates a project: a workload boundary within the account that
+%% inference requests can be associated with.
+-spec create_project(aws_client:aws_client(), create_project_request()) ->
+    {ok, create_project_response(), tuple()} |
+    {error, any()} |
+    {error, create_project_errors(), tuple()}.
+create_project(Client, Input) ->
+    create_project(Client, Input, []).
+
+-spec create_project(aws_client:aws_client(), create_project_request(), proplists:proplist()) ->
+    {ok, create_project_response(), tuple()} |
+    {error, any()} |
+    {error, create_project_errors(), tuple()}.
+create_project(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/projects"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates a prompt router that manages the routing of requests between
 %% multiple foundation models based on the routing criteria.
 -spec create_prompt_router(aws_client:aws_client(), create_prompt_router_request()) ->
@@ -5880,6 +6656,45 @@ create_provisioned_model_throughput(Client, Input0, Options0) ->
     Method = post,
     Path = ["/provisioned-model-throughput"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes your account's retention storage configuration for a
+%% model provider.
+%%
+%% Deleting an absent configuration succeeds. You do not need to participate
+%% in the program to delete the configuration. You can delete it even if your
+%% account is ineligible or its eligibility is revoked.
+-spec delete_account_data_retention_storage(aws_client:aws_client(), binary() | list(), delete_account_data_retention_storage_request()) ->
+    {ok, delete_account_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, delete_account_data_retention_storage_errors(), tuple()}.
+delete_account_data_retention_storage(Client, ModelProvider, Input) ->
+    delete_account_data_retention_storage(Client, ModelProvider, Input, []).
+
+-spec delete_account_data_retention_storage(aws_client:aws_client(), binary() | list(), delete_account_data_retention_storage_request(), proplists:proplist()) ->
+    {ok, delete_account_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, delete_account_data_retention_storage_errors(), tuple()}.
+delete_account_data_retention_storage(Client, ModelProvider, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/data_retention/storage/", aws_util:encode_uri(ModelProvider), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -6359,6 +7174,88 @@ delete_model_invocation_logging_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes the organization's retention storage configuration for a
+%% model provider.
+%%
+%% The caller must be the organization's management account or a
+%% delegated administrator. Deleting an absent configuration succeeds; no
+%% program participation is required to delete.
+-spec delete_organization_data_retention_storage(aws_client:aws_client(), binary() | list(), delete_organization_data_retention_storage_request()) ->
+    {ok, delete_organization_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, delete_organization_data_retention_storage_errors(), tuple()}.
+delete_organization_data_retention_storage(Client, ModelProvider, Input) ->
+    delete_organization_data_retention_storage(Client, ModelProvider, Input, []).
+
+-spec delete_organization_data_retention_storage(aws_client:aws_client(), binary() | list(), delete_organization_data_retention_storage_request(), proplists:proplist()) ->
+    {ok, delete_organization_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, delete_organization_data_retention_storage_errors(), tuple()}.
+delete_organization_data_retention_storage(Client, ModelProvider, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/data_retention/organization-storage/", aws_util:encode_uri(ModelProvider), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a project's retention storage configuration for a model
+%% provider.
+%%
+%% Deleting an absent configuration on an active project succeeds. If the
+%% project does not exist or your account does not own it, the operation
+%% returns `ResourceNotFoundException'. For an archived project, the
+%% operation returns `ValidationException'. You can read the archived
+%% project's stored configuration until Amazon Bedrock purges the
+%% project. You do not need to participate in the program to delete the
+%% configuration.
+-spec delete_project_data_retention_storage(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_data_retention_storage_request()) ->
+    {ok, delete_project_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, delete_project_data_retention_storage_errors(), tuple()}.
+delete_project_data_retention_storage(Client, ModelProvider, ProjectIdentifier, Input) ->
+    delete_project_data_retention_storage(Client, ModelProvider, ProjectIdentifier, Input, []).
+
+-spec delete_project_data_retention_storage(aws_client:aws_client(), binary() | list(), binary() | list(), delete_project_data_retention_storage_request(), proplists:proplist()) ->
+    {ok, delete_project_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, delete_project_data_retention_storage_errors(), tuple()}.
+delete_project_data_retention_storage(Client, ModelProvider, ProjectIdentifier, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/projects/", aws_util:encode_uri(ProjectIdentifier), "/data_retention/storage/", aws_util:encode_uri(ModelProvider), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a specified prompt router.
 %%
 %% This action cannot be undone.
@@ -6571,6 +7468,48 @@ get_account_data_retention(Client, QueryMap, HeadersMap)
 get_account_data_retention(Client, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/data-retention"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns your account's stored retention storage configuration for
+%% a model provider.
+%%
+%% Amazon Bedrock determines whether the configuration applies when
+%% processing an inference request. Returns `ResourceNotFoundException'
+%% when no configuration exists.
+-spec get_account_data_retention_storage(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_account_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_data_retention_storage_errors(), tuple()}.
+get_account_data_retention_storage(Client, ModelProvider)
+  when is_map(Client) ->
+    get_account_data_retention_storage(Client, ModelProvider, #{}, #{}).
+
+-spec get_account_data_retention_storage(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_account_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_data_retention_storage_errors(), tuple()}.
+get_account_data_retention_storage(Client, ModelProvider, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_account_data_retention_storage(Client, ModelProvider, QueryMap, HeadersMap, []).
+
+-spec get_account_data_retention_storage(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_account_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, get_account_data_retention_storage_errors(), tuple()}.
+get_account_data_retention_storage(Client, ModelProvider, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/data_retention/storage/", aws_util:encode_uri(ModelProvider), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -7070,7 +8009,11 @@ get_foundation_model(Client, ModelIdentifier, QueryMap, HeadersMap, Options0)
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"projectIdentifier">>, maps:get(<<"projectIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -7230,7 +8173,11 @@ get_inference_profile(Client, InferenceProfileIdentifier, QueryMap, HeadersMap, 
 
     Headers = [],
 
-    Query_ = [],
+    Query0_ =
+      [
+        {<<"projectIdentifier">>, maps:get(<<"projectIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
@@ -7477,6 +8424,126 @@ get_model_invocation_logging_configuration(Client, QueryMap, HeadersMap, Options
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns the organization's retention storage configuration for a
+%% model provider.
+%%
+%% The caller must be the organization's management account or a
+%% delegated administrator. Returns ResourceNotFoundException when no
+%% configuration exists.
+-spec get_organization_data_retention_storage(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_organization_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, get_organization_data_retention_storage_errors(), tuple()}.
+get_organization_data_retention_storage(Client, ModelProvider)
+  when is_map(Client) ->
+    get_organization_data_retention_storage(Client, ModelProvider, #{}, #{}).
+
+-spec get_organization_data_retention_storage(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_organization_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, get_organization_data_retention_storage_errors(), tuple()}.
+get_organization_data_retention_storage(Client, ModelProvider, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_organization_data_retention_storage(Client, ModelProvider, QueryMap, HeadersMap, []).
+
+-spec get_organization_data_retention_storage(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_organization_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, get_organization_data_retention_storage_errors(), tuple()}.
+get_organization_data_retention_storage(Client, ModelProvider, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/data_retention/organization-storage/", aws_util:encode_uri(ModelProvider), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Retrieves a project.
+-spec get_project(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_project_response(), tuple()} |
+    {error, any()} |
+    {error, get_project_errors(), tuple()}.
+get_project(Client, ProjectIdentifier)
+  when is_map(Client) ->
+    get_project(Client, ProjectIdentifier, #{}, #{}).
+
+-spec get_project(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_project_response(), tuple()} |
+    {error, any()} |
+    {error, get_project_errors(), tuple()}.
+get_project(Client, ProjectIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_project(Client, ProjectIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_project(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_project_response(), tuple()} |
+    {error, any()} |
+    {error, get_project_errors(), tuple()}.
+get_project(Client, ProjectIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/projects/", aws_util:encode_uri(ProjectIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Returns a project's retention storage configuration for a model
+%% provider.
+%%
+%% Returns ResourceNotFoundException when the project does not exist, is not
+%% owned by the calling account, or has no configuration.
+-spec get_project_data_retention_storage(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_project_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, get_project_data_retention_storage_errors(), tuple()}.
+get_project_data_retention_storage(Client, ModelProvider, ProjectIdentifier)
+  when is_map(Client) ->
+    get_project_data_retention_storage(Client, ModelProvider, ProjectIdentifier, #{}, #{}).
+
+-spec get_project_data_retention_storage(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_project_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, get_project_data_retention_storage_errors(), tuple()}.
+get_project_data_retention_storage(Client, ModelProvider, ProjectIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_project_data_retention_storage(Client, ModelProvider, ProjectIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_project_data_retention_storage(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_project_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, get_project_data_retention_storage_errors(), tuple()}.
+get_project_data_retention_storage(Client, ModelProvider, ProjectIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/projects/", aws_util:encode_uri(ProjectIdentifier), "/data_retention/storage/", aws_util:encode_uri(ModelProvider), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves details about a prompt router.
 -spec get_prompt_router(aws_client:aws_client(), binary() | list()) ->
     {ok, get_prompt_router_response(), tuple()} |
@@ -7580,6 +8647,185 @@ get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap)
 get_resource_policy(Client, ResourceArn, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/resource-policy/", aws_util:encode_uri(ResourceArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets trusted access program details and resolves participation for
+%% your account and its current organization.
+%%
+%% If you specify a project, Amazon Bedrock resolves participation for the
+%% project, including inheritance from the account and organization. Archived
+%% projects remain readable until they expire. Returns the same flat summary
+%% as a ListTrustedAccessPrograms item. An absent or invisible program
+%% returns ResourceNotFoundException.
+-spec get_trusted_access_program(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_trusted_access_program_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_errors(), tuple()}.
+get_trusted_access_program(Client, ProgramIdentifier)
+  when is_map(Client) ->
+    get_trusted_access_program(Client, ProgramIdentifier, #{}, #{}).
+
+-spec get_trusted_access_program(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_trusted_access_program_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_errors(), tuple()}.
+get_trusted_access_program(Client, ProgramIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_trusted_access_program(Client, ProgramIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_trusted_access_program(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_trusted_access_program_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_errors(), tuple()}.
+get_trusted_access_program(Client, ProgramIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/trusted-access-programs/", aws_util:encode_uri(ProgramIdentifier), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"projectIdentifier">>, maps:get(<<"projectIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the calling account's stored enrollment setting for a
+%% trusted access program.
+%%
+%% The account is derived from the authenticated caller. Use
+%% GetTrustedAccessProgram to retrieve the resolved participation status,
+%% including organization inheritance. If no enrollment is stored, returns
+%% inherit without timestamps.
+-spec get_trusted_access_program_account_enrollment(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_trusted_access_program_account_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_account_enrollment_errors(), tuple()}.
+get_trusted_access_program_account_enrollment(Client, ProgramIdentifier)
+  when is_map(Client) ->
+    get_trusted_access_program_account_enrollment(Client, ProgramIdentifier, #{}, #{}).
+
+-spec get_trusted_access_program_account_enrollment(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_trusted_access_program_account_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_account_enrollment_errors(), tuple()}.
+get_trusted_access_program_account_enrollment(Client, ProgramIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_trusted_access_program_account_enrollment(Client, ProgramIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_trusted_access_program_account_enrollment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_trusted_access_program_account_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_account_enrollment_errors(), tuple()}.
+get_trusted_access_program_account_enrollment(Client, ProgramIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/trusted-access-programs/", aws_util:encode_uri(ProgramIdentifier), "/account-enrollment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets the current organization's stored enrollment setting for a
+%% trusted access program.
+%%
+%% The organization and payer account are derived from the authenticated
+%% context. Requires operation permission and management-account or
+%% Bedrock-specific delegated-administrator authority. The setting can differ
+%% from the caller's resolved status returned by GetTrustedAccessProgram.
+%% If no enrollment is stored, returns inherit without timestamps.
+-spec get_trusted_access_program_organization_enrollment(aws_client:aws_client(), binary() | list()) ->
+    {ok, get_trusted_access_program_organization_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_organization_enrollment_errors(), tuple()}.
+get_trusted_access_program_organization_enrollment(Client, ProgramIdentifier)
+  when is_map(Client) ->
+    get_trusted_access_program_organization_enrollment(Client, ProgramIdentifier, #{}, #{}).
+
+-spec get_trusted_access_program_organization_enrollment(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, get_trusted_access_program_organization_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_organization_enrollment_errors(), tuple()}.
+get_trusted_access_program_organization_enrollment(Client, ProgramIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_trusted_access_program_organization_enrollment(Client, ProgramIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_trusted_access_program_organization_enrollment(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_trusted_access_program_organization_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_organization_enrollment_errors(), tuple()}.
+get_trusted_access_program_organization_enrollment(Client, ProgramIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/trusted-access-programs/", aws_util:encode_uri(ProgramIdentifier), "/organization-enrollment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Gets a named project's stored enrollment setting for a trusted
+%% access program.
+%%
+%% The project must exist in this Region and be owned by the calling account.
+%% Archived projects remain readable until they expire. Use
+%% GetTrustedAccessProgram with projectIdentifier to retrieve resolved
+%% participation, including account and organization inheritance. If no
+%% enrollment is stored, returns inherit without timestamps.
+-spec get_trusted_access_program_project_enrollment(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_trusted_access_program_project_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_project_enrollment_errors(), tuple()}.
+get_trusted_access_program_project_enrollment(Client, ProgramIdentifier, ProjectIdentifier)
+  when is_map(Client) ->
+    get_trusted_access_program_project_enrollment(Client, ProgramIdentifier, ProjectIdentifier, #{}, #{}).
+
+-spec get_trusted_access_program_project_enrollment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_trusted_access_program_project_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_project_enrollment_errors(), tuple()}.
+get_trusted_access_program_project_enrollment(Client, ProgramIdentifier, ProjectIdentifier, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_trusted_access_program_project_enrollment(Client, ProgramIdentifier, ProjectIdentifier, QueryMap, HeadersMap, []).
+
+-spec get_trusted_access_program_project_enrollment(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_trusted_access_program_project_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, get_trusted_access_program_project_enrollment_errors(), tuple()}.
+get_trusted_access_program_project_enrollment(Client, ProgramIdentifier, ProjectIdentifier, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/trusted-access-programs/", aws_util:encode_uri(ProgramIdentifier), "/project-enrollment/", aws_util:encode_uri(ProjectIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8151,7 +9397,8 @@ list_foundation_models(Client, QueryMap, HeadersMap, Options0)
         {<<"byCustomizationType">>, maps:get(<<"byCustomizationType">>, QueryMap, undefined)},
         {<<"byInferenceType">>, maps:get(<<"byInferenceType">>, QueryMap, undefined)},
         {<<"byOutputModality">>, maps:get(<<"byOutputModality">>, QueryMap, undefined)},
-        {<<"byProvider">>, maps:get(<<"byProvider">>, QueryMap, undefined)}
+        {<<"byProvider">>, maps:get(<<"byProvider">>, QueryMap, undefined)},
+        {<<"projectIdentifier">>, maps:get(<<"projectIdentifier">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -8304,6 +9551,7 @@ list_inference_profiles(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"projectIdentifier">>, maps:get(<<"projectIdentifier">>, QueryMap, undefined)},
         {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
@@ -8570,6 +9818,54 @@ list_model_invocation_jobs(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the account's projects.
+%%
+%% Results are paginated: when the response includes `nextToken', pass it
+%% in the next request to fetch the following page. Page size is 1-100,
+%% default 20. By default every project is returned regardless of status; set
+%% `statusFilter' to list only active or only archived projects.
+-spec list_projects(aws_client:aws_client()) ->
+    {ok, list_projects_response(), tuple()} |
+    {error, any()} |
+    {error, list_projects_errors(), tuple()}.
+list_projects(Client)
+  when is_map(Client) ->
+    list_projects(Client, #{}, #{}).
+
+-spec list_projects(aws_client:aws_client(), map(), map()) ->
+    {ok, list_projects_response(), tuple()} |
+    {error, any()} |
+    {error, list_projects_errors(), tuple()}.
+list_projects(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_projects(Client, QueryMap, HeadersMap, []).
+
+-spec list_projects(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_projects_response(), tuple()} |
+    {error, any()} |
+    {error, list_projects_errors(), tuple()}.
+list_projects(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/projects"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"statusFilter">>, maps:get(<<"statusFilter">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of prompt routers.
 -spec list_prompt_routers(aws_client:aws_client()) ->
     {ok, list_prompt_routers_response(), tuple()} |
@@ -8706,6 +10002,56 @@ list_tags_for_resource(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Lists all trusted access programs visible to your account, ordered by
+%% program ID.
+%%
+%% Amazon Bedrock resolves participation for your account and its current
+%% organization. If you specify a project, Amazon Bedrock resolves
+%% participation for the project, including inheritance from the account and
+%% organization. Archived projects remain readable until they expire. Amazon
+%% Bedrock returns all visible programs in one response.
+-spec list_trusted_access_programs(aws_client:aws_client()) ->
+    {ok, list_trusted_access_programs_response(), tuple()} |
+    {error, any()} |
+    {error, list_trusted_access_programs_errors(), tuple()}.
+list_trusted_access_programs(Client)
+  when is_map(Client) ->
+    list_trusted_access_programs(Client, #{}, #{}).
+
+-spec list_trusted_access_programs(aws_client:aws_client(), map(), map()) ->
+    {ok, list_trusted_access_programs_response(), tuple()} |
+    {error, any()} |
+    {error, list_trusted_access_programs_errors(), tuple()}.
+list_trusted_access_programs(Client, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_trusted_access_programs(Client, QueryMap, HeadersMap, []).
+
+-spec list_trusted_access_programs(aws_client:aws_client(), map(), map(), proplists:proplist()) ->
+    {ok, list_trusted_access_programs_response(), tuple()} |
+    {error, any()} |
+    {error, list_trusted_access_programs_errors(), tuple()}.
+list_trusted_access_programs(Client, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/trusted-access-programs"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"projectIdentifier">>, maps:get(<<"projectIdentifier">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Sets the account-wide data retention mode for Amazon Bedrock.
 -spec put_account_data_retention(aws_client:aws_client(), put_account_data_retention_request()) ->
     {ok, put_account_data_retention_response(), tuple()} |
@@ -8721,6 +10067,51 @@ put_account_data_retention(Client, Input) ->
 put_account_data_retention(Client, Input0, Options0) ->
     Method = put,
     Path = ["/data-retention"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates or replaces the calling account's retention storage
+%% record for a model provider.
+%%
+%% Amazon Bedrock identifies the account from your authenticated request.
+%% Requires resolved trusted access eligibility for a storage-capable program
+%% of the provider at a covering scope; otherwise returns ConflictException.
+%% Writes replace the whole record; the last write wins.
+%%
+%% For `customer_managed' destinations, Amazon Bedrock validates the
+%% caller's and service's access to the bucket and key before saving
+%% the configuration. The bucket and key must be in the AWS Region where you
+%% register the configuration. Validation failures reject the write.
+-spec put_account_data_retention_storage(aws_client:aws_client(), binary() | list(), put_account_data_retention_storage_request()) ->
+    {ok, put_account_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_data_retention_storage_errors(), tuple()}.
+put_account_data_retention_storage(Client, ModelProvider, Input) ->
+    put_account_data_retention_storage(Client, ModelProvider, Input, []).
+
+-spec put_account_data_retention_storage(aws_client:aws_client(), binary() | list(), put_account_data_retention_storage_request(), proplists:proplist()) ->
+    {ok, put_account_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, put_account_data_retention_storage_errors(), tuple()}.
+put_account_data_retention_storage(Client, ModelProvider, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/data_retention/storage/", aws_util:encode_uri(ModelProvider), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -8808,6 +10199,106 @@ put_model_invocation_logging_configuration(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates or replaces the organization's retention storage record
+%% for a model provider.
+%%
+%% The organization is resolved from the authenticated caller's
+%% management context; the caller must be the organization's management
+%% account or a delegated administrator. Requires resolved organization-scope
+%% trusted access eligibility for a storage-capable program of the provider;
+%% otherwise returns ConflictException. Writes replace the whole record; the
+%% last write wins.
+%%
+%% For `customer_managed' destinations, Amazon Bedrock validates the
+%% caller's and service's access to the bucket and key before saving
+%% the configuration. The bucket and key must be in the AWS Region where you
+%% register the configuration. Validation failures reject the write.
+-spec put_organization_data_retention_storage(aws_client:aws_client(), binary() | list(), put_organization_data_retention_storage_request()) ->
+    {ok, put_organization_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, put_organization_data_retention_storage_errors(), tuple()}.
+put_organization_data_retention_storage(Client, ModelProvider, Input) ->
+    put_organization_data_retention_storage(Client, ModelProvider, Input, []).
+
+-spec put_organization_data_retention_storage(aws_client:aws_client(), binary() | list(), put_organization_data_retention_storage_request(), proplists:proplist()) ->
+    {ok, put_organization_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, put_organization_data_retention_storage_errors(), tuple()}.
+put_organization_data_retention_storage(Client, ModelProvider, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/data_retention/organization-storage/", aws_util:encode_uri(ModelProvider), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates or replaces a project's retention storage record for a
+%% model provider.
+%%
+%% The project must be active in this AWS Region and owned by the calling
+%% account. A missing or unowned project returns
+%% `ResourceNotFoundException'; an archived project returns
+%% `ValidationException'.
+%%
+%% Requires applicable project, account, or organization approval for a
+%% storage-capable trusted access program of the provider, with no applicable
+%% revocation. Otherwise, the operation returns `ConflictException'.
+%% Enrollment is not required to save the configuration.
+%%
+%% The request replaces the complete stored configuration. The last
+%% successful write wins.
+%%
+%% For `customer_managed' destinations, Amazon Bedrock validates the
+%% caller's and service's access to the bucket and key before saving
+%% the configuration. The bucket and key must be in the AWS Region where you
+%% register the configuration. Validation failures reject the write.
+-spec put_project_data_retention_storage(aws_client:aws_client(), binary() | list(), binary() | list(), put_project_data_retention_storage_request()) ->
+    {ok, put_project_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, put_project_data_retention_storage_errors(), tuple()}.
+put_project_data_retention_storage(Client, ModelProvider, ProjectIdentifier, Input) ->
+    put_project_data_retention_storage(Client, ModelProvider, ProjectIdentifier, Input, []).
+
+-spec put_project_data_retention_storage(aws_client:aws_client(), binary() | list(), binary() | list(), put_project_data_retention_storage_request(), proplists:proplist()) ->
+    {ok, put_project_data_retention_storage_response(), tuple()} |
+    {error, any()} |
+    {error, put_project_data_retention_storage_errors(), tuple()}.
+put_project_data_retention_storage(Client, ModelProvider, ProjectIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/projects/", aws_util:encode_uri(ProjectIdentifier), "/data_retention/storage/", aws_util:encode_uri(ModelProvider), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Adds a resource policy for a Bedrock resource.
 -spec put_resource_policy(aws_client:aws_client(), put_resource_policy_request()) ->
     {ok, put_resource_policy_response(), tuple()} |
@@ -8824,6 +10315,137 @@ put_resource_policy(Client, Input0, Options0) ->
     Method = post,
     Path = ["/resource-policy"],
     SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets your account's enrollment preference for a trusted access
+%% program.
+%%
+%% Amazon Bedrock identifies the account from your authenticated request. To
+%% enable enrollment, your account needs applicable approval and no
+%% applicable revocation, including when you repeat an enabled setting.
+%% Otherwise, Amazon Bedrock returns `ConflictException' and preserves
+%% the stored setting. With the required permissions, you can set
+%% `disabled' or `inherit' even if your account is ineligible or its
+%% eligibility is revoked.
+-spec put_trusted_access_program_account_enrollment(aws_client:aws_client(), binary() | list(), put_trusted_access_program_account_enrollment_request()) ->
+    {ok, put_trusted_access_program_account_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, put_trusted_access_program_account_enrollment_errors(), tuple()}.
+put_trusted_access_program_account_enrollment(Client, ProgramIdentifier, Input) ->
+    put_trusted_access_program_account_enrollment(Client, ProgramIdentifier, Input, []).
+
+-spec put_trusted_access_program_account_enrollment(aws_client:aws_client(), binary() | list(), put_trusted_access_program_account_enrollment_request(), proplists:proplist()) ->
+    {ok, put_trusted_access_program_account_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, put_trusted_access_program_account_enrollment_errors(), tuple()}.
+put_trusted_access_program_account_enrollment(Client, ProgramIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/trusted-access-programs/", aws_util:encode_uri(ProgramIdentifier), "/account-enrollment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets the current organization's enrollment preference for a
+%% trusted access program.
+%%
+%% The organization and payer account are derived from the authenticated
+%% context. Every write requires operation permission and management-account
+%% or Bedrock-specific delegated-administrator authority. Enabling requires
+%% approval and no revocation for the organization, including when repeating
+%% an enabled setting; otherwise returns ConflictException and preserves the
+%% stored setting. Account approval alone is insufficient. If you have the
+%% required permissions, you can set the enrollment preference to
+%% `disabled' or `inherit' even if your organization is ineligible or
+%% its eligibility is revoked.
+-spec put_trusted_access_program_organization_enrollment(aws_client:aws_client(), binary() | list(), put_trusted_access_program_organization_enrollment_request()) ->
+    {ok, put_trusted_access_program_organization_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, put_trusted_access_program_organization_enrollment_errors(), tuple()}.
+put_trusted_access_program_organization_enrollment(Client, ProgramIdentifier, Input) ->
+    put_trusted_access_program_organization_enrollment(Client, ProgramIdentifier, Input, []).
+
+-spec put_trusted_access_program_organization_enrollment(aws_client:aws_client(), binary() | list(), put_trusted_access_program_organization_enrollment_request(), proplists:proplist()) ->
+    {ok, put_trusted_access_program_organization_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, put_trusted_access_program_organization_enrollment_errors(), tuple()}.
+put_trusted_access_program_organization_enrollment(Client, ProgramIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/trusted-access-programs/", aws_util:encode_uri(ProgramIdentifier), "/organization-enrollment"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Sets a named project's enrollment preference for a trusted access
+%% program.
+%%
+%% The project must be active in this Region and owned by the calling
+%% account. Enabling requires applicable project, account, or organization
+%% approval and no applicable revocation, including when repeating an enabled
+%% setting; otherwise returns ConflictException and preserves the stored
+%% setting. Authorized disable and inherit writes are allowed while
+%% ineligible or revoked. Archived projects reject all writes with
+%% ValidationException.
+-spec put_trusted_access_program_project_enrollment(aws_client:aws_client(), binary() | list(), binary() | list(), put_trusted_access_program_project_enrollment_request()) ->
+    {ok, put_trusted_access_program_project_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, put_trusted_access_program_project_enrollment_errors(), tuple()}.
+put_trusted_access_program_project_enrollment(Client, ProgramIdentifier, ProjectIdentifier, Input) ->
+    put_trusted_access_program_project_enrollment(Client, ProgramIdentifier, ProjectIdentifier, Input, []).
+
+-spec put_trusted_access_program_project_enrollment(aws_client:aws_client(), binary() | list(), binary() | list(), put_trusted_access_program_project_enrollment_request(), proplists:proplist()) ->
+    {ok, put_trusted_access_program_project_enrollment_response(), tuple()} |
+    {error, any()} |
+    {error, put_trusted_access_program_project_enrollment_errors(), tuple()}.
+put_trusted_access_program_project_enrollment(Client, ProgramIdentifier, ProjectIdentifier, Input0, Options0) ->
+    Method = put,
+    Path = ["/trusted-access-programs/", aws_util:encode_uri(ProgramIdentifier), "/project-enrollment/", aws_util:encode_uri(ProjectIdentifier), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -8969,6 +10591,129 @@ start_automated_reasoning_policy_test_workflow(Client, BuildWorkflowId, PolicyAr
 start_automated_reasoning_policy_test_workflow(Client, BuildWorkflowId, PolicyArn, Input0, Options0) ->
     Method = post,
     Path = ["/automated-reasoning-policies/", aws_util:encode_uri(PolicyArn), "/build-workflows/", aws_util:encode_uri(BuildWorkflowId), "/test-workflows"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Prepare a provider application handoff for the calling account.
+%%
+%% This does not submit an application, grant eligibility, or change
+%% enrollment. Programs without self-service applications return
+%% ValidationException with guidance to contact the AWS account team.
+%% Repeated calls can issue fresh tokens. Successful responses use
+%% Cache-Control: no-store.
+-spec start_trusted_access_program_account_application(aws_client:aws_client(), binary() | list(), start_trusted_access_program_account_application_request()) ->
+    {ok, start_trusted_access_program_account_application_response(), tuple()} |
+    {error, any()} |
+    {error, start_trusted_access_program_account_application_errors(), tuple()}.
+start_trusted_access_program_account_application(Client, ProgramIdentifier, Input) ->
+    start_trusted_access_program_account_application(Client, ProgramIdentifier, Input, []).
+
+-spec start_trusted_access_program_account_application(aws_client:aws_client(), binary() | list(), start_trusted_access_program_account_application_request(), proplists:proplist()) ->
+    {ok, start_trusted_access_program_account_application_response(), tuple()} |
+    {error, any()} |
+    {error, start_trusted_access_program_account_application_errors(), tuple()}.
+start_trusted_access_program_account_application(Client, ProgramIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/trusted-access-programs/", aws_util:encode_uri(ProgramIdentifier), "/account-application"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Prepare a provider application handoff for the calling account's
+%% current organization.
+%%
+%% Requires operation permission and management-account or Bedrock-specific
+%% delegated-administrator authority. This does not submit an application,
+%% grant eligibility, or change enrollment. Programs without self-service
+%% applications return ValidationException with guidance to contact the AWS
+%% account team. Repeated calls can issue fresh tokens. Successful responses
+%% use Cache-Control: no-store.
+-spec start_trusted_access_program_organization_application(aws_client:aws_client(), binary() | list(), start_trusted_access_program_organization_application_request()) ->
+    {ok, start_trusted_access_program_organization_application_response(), tuple()} |
+    {error, any()} |
+    {error, start_trusted_access_program_organization_application_errors(), tuple()}.
+start_trusted_access_program_organization_application(Client, ProgramIdentifier, Input) ->
+    start_trusted_access_program_organization_application(Client, ProgramIdentifier, Input, []).
+
+-spec start_trusted_access_program_organization_application(aws_client:aws_client(), binary() | list(), start_trusted_access_program_organization_application_request(), proplists:proplist()) ->
+    {ok, start_trusted_access_program_organization_application_response(), tuple()} |
+    {error, any()} |
+    {error, start_trusted_access_program_organization_application_errors(), tuple()}.
+start_trusted_access_program_organization_application(Client, ProgramIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/trusted-access-programs/", aws_util:encode_uri(ProgramIdentifier), "/organization-application"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Prepare a provider application handoff for a named project.
+%%
+%% The project must be active in this Region and owned by the calling
+%% account. Archived projects return ValidationException. This does not
+%% submit an application, grant eligibility, or change enrollment. Programs
+%% without self-service applications return ValidationException with guidance
+%% to contact the AWS account team. Repeated calls can issue fresh tokens.
+%% Successful responses use Cache-Control: no-store.
+-spec start_trusted_access_program_project_application(aws_client:aws_client(), binary() | list(), binary() | list(), start_trusted_access_program_project_application_request()) ->
+    {ok, start_trusted_access_program_project_application_response(), tuple()} |
+    {error, any()} |
+    {error, start_trusted_access_program_project_application_errors(), tuple()}.
+start_trusted_access_program_project_application(Client, ProgramIdentifier, ProjectIdentifier, Input) ->
+    start_trusted_access_program_project_application(Client, ProgramIdentifier, ProjectIdentifier, Input, []).
+
+-spec start_trusted_access_program_project_application(aws_client:aws_client(), binary() | list(), binary() | list(), start_trusted_access_program_project_application_request(), proplists:proplist()) ->
+    {ok, start_trusted_access_program_project_application_response(), tuple()} |
+    {error, any()} |
+    {error, start_trusted_access_program_project_application_errors(), tuple()}.
+start_trusted_access_program_project_application(Client, ProgramIdentifier, ProjectIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/trusted-access-programs/", aws_util:encode_uri(ProgramIdentifier), "/project-application/", aws_util:encode_uri(ProjectIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -9451,6 +11196,43 @@ update_marketplace_model_endpoint(Client, EndpointArn, Input) ->
 update_marketplace_model_endpoint(Client, EndpointArn, Input0, Options0) ->
     Method = patch,
     Path = ["/marketplace-model/endpoints/", aws_util:encode_uri(EndpointArn), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates one mutable project field per call: exactly one of `name'
+%% or `dataRetention' must be set.
+%%
+%% The default project and archived projects cannot be updated.
+-spec update_project(aws_client:aws_client(), binary() | list(), update_project_request()) ->
+    {ok, update_project_response(), tuple()} |
+    {error, any()} |
+    {error, update_project_errors(), tuple()}.
+update_project(Client, ProjectIdentifier, Input) ->
+    update_project(Client, ProjectIdentifier, Input, []).
+
+-spec update_project(aws_client:aws_client(), binary() | list(), update_project_request(), proplists:proplist()) ->
+    {ok, update_project_response(), tuple()} |
+    {error, any()} |
+    {error, update_project_errors(), tuple()}.
+update_project(Client, ProjectIdentifier, Input0, Options0) ->
+    Method = post,
+    Path = ["/projects/", aws_util:encode_uri(ProjectIdentifier), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

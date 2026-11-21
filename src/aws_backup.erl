@@ -1169,6 +1169,7 @@
 %% Example:
 %% describe_region_settings_output() :: #{
 %%   <<"ResourceTypeManagementPreference">> => map(),
+%%   <<"ResourceTypeOptInIncremental">> => map(),
 %%   <<"ResourceTypeOptInPreference">> => map()
 %% }
 -type describe_region_settings_output() :: #{binary() => any()}.
@@ -3037,6 +3038,7 @@
 %% Example:
 %% update_region_settings_input() :: #{
 %%   <<"ResourceTypeManagementPreference">> => map(),
+%%   <<"ResourceTypeOptInIncremental">> => map(),
 %%   <<"ResourceTypeOptInPreference">> => map()
 %% }
 -type update_region_settings_input() :: #{binary() => any()}.

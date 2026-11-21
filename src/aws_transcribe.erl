@@ -98,6 +98,8 @@
          start_transcription_job/3,
          tag_resource/2,
          tag_resource/3,
+         transcribe_audio/2,
+         transcribe_audio/3,
          untag_resource/2,
          untag_resource/3,
          update_call_analytics_category/2,
@@ -128,7 +130,8 @@
 
 %% Example:
 %% bad_request_exception() :: #{
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"Reason">> => list(any())
 %% }
 -type bad_request_exception() :: #{binary() => any()}.
 
@@ -1046,6 +1049,39 @@
 -type summarization() :: #{binary() => any()}.
 
 %% Example:
+%% sync_item() :: #{
+%%   <<"ChannelLabel">> => string(),
+%%   <<"Content">> => string(),
+%%   <<"EndTime">> => float(),
+%%   <<"Id">> => integer(),
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"Redactions">> => list(sync_redaction()),
+%%   <<"SpeakerLabel">> => string(),
+%%   <<"StartTime">> => float(),
+%%   <<"VocabularyFilterMatch">> => boolean()
+%% }
+-type sync_item() :: #{binary() => any()}.
+
+%% Example:
+%% sync_language_code_item() :: #{
+%%   <<"DurationInSeconds">> => float(),
+%%   <<"LanguageCode">> => list(any())
+%% }
+-type sync_language_code_item() :: #{binary() => any()}.
+
+%% Example:
+%% sync_output_configuration() :: #{
+%%   <<"OutputMediaFileUri">> => string()
+%% }
+-type sync_output_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% sync_redaction() :: #{
+%%   <<"Type">> => list(any())
+%% }
+-type sync_redaction() :: #{binary() => any()}.
+
+%% Example:
 %% tag() :: #{
 %%   <<"Key">> => string(),
 %%   <<"Value">> => string()
@@ -1071,6 +1107,47 @@
 -type toxicity_detection_settings() :: #{binary() => any()}.
 
 %% Example:
+%% transcribe_audio_metadata() :: #{
+%%   <<"LanguageCode">> => list(any()),
+%%   <<"LanguageCodes">> => list(sync_language_code_item()),
+%%   <<"MediaFormat">> => list(any()),
+%%   <<"MediaSampleRateHertz">> => integer(),
+%%   <<"NumberOfChannels">> => integer(),
+%%   <<"SpeakersCount">> => integer()
+%% }
+-type transcribe_audio_metadata() :: #{binary() => any()}.
+
+%% Example:
+%% transcribe_audio_request() :: #{
+%%   <<"ChannelIdentification">> => boolean(),
+%%   <<"ContentRedaction">> => content_redaction(),
+%%   <<"Language">> => list(any()),
+%%   <<"LanguageDetectionMode">> => list(any()),
+%%   <<"LanguageOptions">> => list(list(any())()),
+%%   <<"MaxSpeakerLabels">> => integer(),
+%%   <<"Media">> := list(),
+%%   <<"OutputConfiguration">> => sync_output_configuration(),
+%%   <<"ShowSpeakerLabels">> => boolean(),
+%%   <<"VocabularyFilterSettings">> => vocabulary_filter_settings(),
+%%   <<"VocabularySettings">> => list(vocabulary_settings_entry())
+%% }
+-type transcribe_audio_request() :: #{binary() => any()}.
+
+%% Example:
+%% transcribe_audio_response() :: #{
+%%   <<"OutputConfiguration">> => sync_output_configuration(),
+%%   <<"TranscriptResponse">> => transcript_response()
+%% }
+-type transcribe_audio_response() :: #{binary() => any()}.
+
+%% Example:
+%% transcribe_audio_results() :: #{
+%%   <<"Items">> => list(sync_item()),
+%%   <<"Transcript">> => string()
+%% }
+-type transcribe_audio_results() :: #{binary() => any()}.
+
+%% Example:
 %% transcript() :: #{
 %%   <<"RedactedTranscriptFileUri">> => string(),
 %%   <<"TranscriptFileUri">> => string()
@@ -1087,6 +1164,14 @@
 %%   <<"TranscriptFilterType">> => list(any())
 %% }
 -type transcript_filter() :: #{binary() => any()}.
+
+%% Example:
+%% transcript_response() :: #{
+%%   <<"Metadata">> => transcribe_audio_metadata(),
+%%   <<"RedactedResults">> => transcribe_audio_results(),
+%%   <<"Results">> => transcribe_audio_results()
+%% }
+-type transcript_response() :: #{binary() => any()}.
 
 %% Example:
 %% transcription_job() :: #{
@@ -1230,12 +1315,27 @@
 -type update_vocabulary_response() :: #{binary() => any()}.
 
 %% Example:
+%% vocabulary_filter_entry() :: #{
+%%   <<"Language">> => list(any()),
+%%   <<"VocabularyFilterName">> => string(),
+%%   <<"Words">> => list(string())
+%% }
+-type vocabulary_filter_entry() :: #{binary() => any()}.
+
+%% Example:
 %% vocabulary_filter_info() :: #{
 %%   <<"LanguageCode">> => list(any()),
 %%   <<"LastModifiedTime">> => non_neg_integer(),
 %%   <<"VocabularyFilterName">> => string()
 %% }
 -type vocabulary_filter_info() :: #{binary() => any()}.
+
+%% Example:
+%% vocabulary_filter_settings() :: #{
+%%   <<"Filters">> => list(vocabulary_filter_entry()),
+%%   <<"VocabularyFilterMethod">> => list(any())
+%% }
+-type vocabulary_filter_settings() :: #{binary() => any()}.
 
 %% Example:
 %% vocabulary_info() :: #{
@@ -1245,6 +1345,21 @@
 %%   <<"VocabularyState">> => list(any())
 %% }
 -type vocabulary_info() :: #{binary() => any()}.
+
+%% Example:
+%% vocabulary_phrase() :: #{
+%%   <<"DisplayAs">> => string(),
+%%   <<"Text">> => string()
+%% }
+-type vocabulary_phrase() :: #{binary() => any()}.
+
+%% Example:
+%% vocabulary_settings_entry() :: #{
+%%   <<"Language">> => list(any()),
+%%   <<"Phrases">> => list(vocabulary_phrase()),
+%%   <<"VocabularyName">> => string()
+%% }
+-type vocabulary_settings_entry() :: #{binary() => any()}.
 
 -type create_call_analytics_category_errors() ::
     limit_exceeded_exception() | 
@@ -1459,6 +1574,11 @@
     limit_exceeded_exception() | 
     internal_failure_exception() | 
     conflict_exception() | 
+    bad_request_exception().
+
+-type transcribe_audio_errors() ::
+    limit_exceeded_exception() | 
+    internal_failure_exception() | 
     bad_request_exception().
 
 -type untag_resource_errors() ::
@@ -2633,6 +2753,64 @@ tag_resource(Client, Input)
 tag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"TagResource">>, Input, Options).
+
+%% @doc Transcribes a media file and returns the transcript in the same
+%% response.
+%%
+%% There is
+%% no job to start and no status to poll.
+%%
+%% Use `TranscribeAudio' when you already have a complete media file and
+%% want
+%% the transcript right away. For large files, long audio, or bulk
+%% processing, use .
+%%
+%% You must include the following parameters in your `TranscribeAudio'
+%% request:
+%%
+%% `Media': Your audio, either as inline bytes
+%% (`MediaBytes') or as the Amazon S3 location of a media
+%% file (`MediaFileUri').
+%%
+%% One of `Language' or `LanguageDetectionMode': Specify
+%% the language of your audio, or have Amazon Transcribe identify it.
+%%
+%% Your audio must be between 0.5 seconds and 1 hour long. Supported formats
+%% are WAV,
+%% MP3, FLAC, M4A, MP4, Ogg, WebM, and AMR.
+%%
+%% If you send your audio in the request (`MediaBytes'), the file can be
+%% up to
+%% 25 MB. If you provide an Amazon S3 location (`MediaFileUri'), the
+%% file can be up to 500 MB.
+%%
+%% Amazon Transcribe always turns on smart formatting, also known as inverse
+%% text
+%% normalization (ITN). It writes numbers, dates, currency, and similar items
+%% in their
+%% usual written form. For example, &quot;one hundred&quot; becomes
+%% &quot;100&quot;. You can't turn smart
+%% formatting off.
+%%
+%% By default, Amazon Transcribe returns the transcript in
+%% `TranscriptResponse'. If you include `OutputConfiguration',
+%% Amazon Transcribe writes the transcript to the Amazon S3 location you
+%% specify instead, and the response contains only that location.
+-spec transcribe_audio(aws_client:aws_client(), transcribe_audio_request()) ->
+    {ok, transcribe_audio_response(), tuple()} |
+    {error, any()} |
+    {error, transcribe_audio_errors(), tuple()}.
+transcribe_audio(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    transcribe_audio(Client, Input, []).
+
+-spec transcribe_audio(aws_client:aws_client(), transcribe_audio_request(), proplists:proplist()) ->
+    {ok, transcribe_audio_response(), tuple()} |
+    {error, any()} |
+    {error, transcribe_audio_errors(), tuple()}.
+transcribe_audio(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"TranscribeAudio">>, Input, Options).
 
 %% @doc Removes the specified tags from the specified Amazon Transcribe
 %% resource.

@@ -536,7 +536,8 @@
 %%   <<"radio">> => string(),
 %%   <<"remoteAccessEnabled">> => boolean(),
 %%   <<"remoteDebugEnabled">> => boolean(),
-%%   <<"resolution">> => resolution()
+%%   <<"resolution">> => resolution(),
+%%   <<"type">> => list(any())
 %% }
 -type device() :: #{binary() => any()}.
 

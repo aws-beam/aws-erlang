@@ -300,6 +300,13 @@
 -type address() :: #{binary() => any()}.
 
 %% Example:
+%% address_translations() :: #{
+%%   <<"PublicIPv4Addresses">> => list(string()),
+%%   <<"PublicIPv6Addresses">> => list(string())
+%% }
+-type address_translations() :: #{binary() => any()}.
+
+%% Example:
 %% analysis_report() :: #{
 %%   <<"AnalysisReportId">> => string(),
 %%   <<"AnalysisType">> => list(any()),
@@ -332,6 +339,7 @@
 %%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
+%%   <<"FirewallType">> => list(any()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type associate_availability_zones_request() :: #{binary() => any()}.
@@ -350,6 +358,7 @@
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
 %%   <<"FirewallPolicyArn">> := string(),
+%%   <<"FirewallType">> => list(any()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type associate_firewall_policy_request() :: #{binary() => any()}.
@@ -543,6 +552,7 @@
 %%   <<"FirewallName">> := string(),
 %%   <<"FirewallPolicyArn">> := string(),
 %%   <<"FirewallPolicyChangeProtection">> => boolean(),
+%%   <<"IgwFirewallConfiguration">> => igw_firewall_configuration(),
 %%   <<"NatGatewayCreateMappings">> => list(nat_gateway_create_mapping()),
 %%   <<"ProxySettings">> => proxy_settings(),
 %%   <<"SubnetChangeProtection">> => boolean(),
@@ -674,7 +684,8 @@
 %% delete_firewall_request() :: #{
 %%   <<"DeleteAssociatedNatGateways">> => boolean(),
 %%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string()
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallType">> => list(any())
 %% }
 -type delete_firewall_request() :: #{binary() => any()}.
 
@@ -839,7 +850,8 @@
 %% Example:
 %% describe_firewall_request() :: #{
 %%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string()
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallType">> => list(any())
 %% }
 -type describe_firewall_request() :: #{binary() => any()}.
 
@@ -881,7 +893,8 @@
 %% Example:
 %% describe_logging_configuration_request() :: #{
 %%   <<"FirewallArn">> => string(),
-%%   <<"FirewallName">> => string()
+%%   <<"FirewallName">> => string(),
+%%   <<"FirewallType">> => list(any())
 %% }
 -type describe_logging_configuration_request() :: #{binary() => any()}.
 
@@ -1039,6 +1052,7 @@
 %%   <<"AvailabilityZoneMappings">> := list(availability_zone_mapping()),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
+%%   <<"FirewallType">> => list(any()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type disassociate_availability_zones_request() :: #{binary() => any()}.
@@ -1098,6 +1112,7 @@
 %%   <<"FirewallName">> => string(),
 %%   <<"FirewallPolicyArn">> => string(),
 %%   <<"FirewallPolicyChangeProtection">> => boolean(),
+%%   <<"IgwFirewallConfiguration">> => igw_firewall_configuration(),
 %%   <<"NatGatewayCreateMappings">> => list(nat_gateway_create_mapping()),
 %%   <<"NumberOfAssociations">> => integer(),
 %%   <<"ProxySettings">> => proxy_settings(),
@@ -1347,6 +1362,12 @@
 -type hits() :: #{binary() => any()}.
 
 %% Example:
+%% igw_firewall_configuration() :: #{
+%%   <<"EnforcementMode">> => list(any())
+%% }
+-type igw_firewall_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% insufficient_capacity_exception() :: #{
 %%   <<"Message">> => string()
 %% }
@@ -1508,6 +1529,7 @@
 
 %% Example:
 %% list_firewalls_request() :: #{
+%%   <<"FirewallType">> => list(any()),
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string(),
 %%   <<"VpcIds">> => list(string())
@@ -2075,6 +2097,7 @@
 
 %% Example:
 %% sync_state() :: #{
+%%   <<"AddressTranslations">> => address_translations(),
 %%   <<"Attachment">> => attachment(),
 %%   <<"Config">> => map(),
 %%   <<"NatGatewayAttachments">> => list(nat_gateway_attachment())
@@ -2240,6 +2263,7 @@
 %%   <<"EnabledAnalysisTypes">> => list(list(any())()),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
+%%   <<"FirewallType">> => list(any()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type update_firewall_analysis_settings_request() :: #{binary() => any()}.
@@ -2258,6 +2282,7 @@
 %%   <<"DeleteProtection">> := boolean(),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
+%%   <<"FirewallType">> => list(any()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type update_firewall_delete_protection_request() :: #{binary() => any()}.
@@ -2276,6 +2301,7 @@
 %%   <<"Description">> => string(),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
+%%   <<"FirewallType">> => list(any()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type update_firewall_description_request() :: #{binary() => any()}.
@@ -2294,6 +2320,7 @@
 %%   <<"EncryptionConfiguration">> => encryption_configuration(),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
+%%   <<"FirewallType">> => list(any()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type update_firewall_encryption_configuration_request() :: #{binary() => any()}.
@@ -2312,6 +2339,7 @@
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
 %%   <<"FirewallPolicyChangeProtection">> := boolean(),
+%%   <<"FirewallType">> => list(any()),
 %%   <<"UpdateToken">> => string()
 %% }
 -type update_firewall_policy_change_protection_request() :: #{binary() => any()}.
@@ -2368,6 +2396,7 @@
 %%   <<"EnableMonitoringDashboard">> => boolean(),
 %%   <<"FirewallArn">> => string(),
 %%   <<"FirewallName">> => string(),
+%%   <<"FirewallType">> => list(any()),
 %%   <<"LoggingConfiguration">> => logging_configuration()
 %% }
 -type update_logging_configuration_request() :: #{binary() => any()}.

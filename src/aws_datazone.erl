@@ -435,6 +435,8 @@
          update_account_pool/5,
          update_asset_filter/5,
          update_asset_filter/6,
+         update_asset_owner/4,
+         update_asset_owner/5,
          update_connection/4,
          update_connection/5,
          update_data_source/4,
@@ -797,6 +799,17 @@
 %%   <<"matchRationale">> => list(list())
 %% }
 -type asset_listing_item_additional_attributes() :: #{binary() => any()}.
+
+
+%% Example:
+%% asset_ownership_transfer() :: #{
+%%   <<"sourceProjectId">> => string(),
+%%   <<"startedAt">> => [non_neg_integer()],
+%%   <<"status">> => list(any()),
+%%   <<"targetProjectId">> => string(),
+%%   <<"updatedAt">> => [non_neg_integer()]
+%% }
+-type asset_ownership_transfer() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2832,6 +2845,7 @@
 
 %% Example:
 %% environment_configuration_user_parameter() :: #{
+%%   <<"environmentBlueprintId">> => string(),
 %%   <<"environmentConfigurationName">> => string(),
 %%   <<"environmentId">> => string(),
 %%   <<"environmentParameters">> => list(environment_parameter()),
@@ -3073,6 +3087,7 @@
 %%   <<"latestTimeSeriesDataPointFormsOutput">> => list(time_series_data_point_summary_form_output()),
 %%   <<"listing">> => asset_listing_details(),
 %%   <<"name">> => string(),
+%%   <<"ownershipTransfer">> => asset_ownership_transfer(),
 %%   <<"owningProjectId">> => string(),
 %%   <<"readOnlyFormsOutput">> => list(form_output()),
 %%   <<"revision">> => string(),
@@ -6997,6 +7012,23 @@
 
 
 %% Example:
+%% update_asset_owner_input() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"targetProjectIdentifier">> := string()
+%% }
+-type update_asset_owner_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_asset_owner_output() :: #{
+%%   <<"id">> => string(),
+%%   <<"ownershipTransfer">> => asset_ownership_transfer(),
+%%   <<"revision">> => string()
+%% }
+-type update_asset_owner_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_connection_input() :: #{
 %%   <<"awsLocation">> => aws_location(),
 %%   <<"configurations">> => list(configuration()),
@@ -7380,6 +7412,7 @@
 %%   <<"environmentDeploymentDetails">> => environment_deployment_details(),
 %%   <<"glossaryTerms">> => list(string()),
 %%   <<"name">> => string(),
+%%   <<"projectProfileAction">> => list(any()),
 %%   <<"projectProfileVersion">> => [string()],
 %%   <<"resourceTags">> => map(),
 %%   <<"userParameters">> => list(environment_configuration_user_parameter())
@@ -8977,6 +9010,15 @@
 -type update_asset_filter_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_asset_owner_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
     conflict_exception() | 
@@ -16354,6 +16396,59 @@ update_asset_filter(Client, AssetIdentifier, DomainIdentifier, Identifier, Input
     Method = patch,
     Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(AssetIdentifier), "/filters/", aws_util:encode_uri(Identifier), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Transfers the ownership of an asset to another project in the same
+%% Amazon DataZone domain.
+%%
+%% The transfer changes the asset's owning project and moves its
+%% published listing, subscriptions, and subscription grants to the target
+%% project.
+%%
+%% The transfer runs asynchronously, and the operation returns HTTP status
+%% code 202. To follow the transfer, call `GetAsset' and check
+%% `ownershipTransfer.status' until it is `SUCCEEDED' or
+%% `FAILED'.
+%%
+%% You need to be an owner of the project that currently owns the asset. You
+%% can transfer an asset from the domain's administration project to any
+%% project. You can also transfer an asset from any project to the
+%% administration project.
+%%
+%% An asset can have only one ownership transfer in progress at a time. While
+%% a transfer is in progress, requests that change the asset or its listing
+%% fail with a `ConflictException'.
+-spec update_asset_owner(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_owner_input()) ->
+    {ok, update_asset_owner_output(), tuple()} |
+    {error, any()} |
+    {error, update_asset_owner_errors(), tuple()}.
+update_asset_owner(Client, DomainIdentifier, Identifier, Input) ->
+    update_asset_owner(Client, DomainIdentifier, Identifier, Input, []).
+
+-spec update_asset_owner(aws_client:aws_client(), binary() | list(), binary() | list(), update_asset_owner_input(), proplists:proplist()) ->
+    {ok, update_asset_owner_output(), tuple()} |
+    {error, any()} |
+    {error, update_asset_owner_errors(), tuple()}.
+update_asset_owner(Client, DomainIdentifier, Identifier, Input0, Options0) ->
+    Method = patch,
+    Path = ["/v2/domains/", aws_util:encode_uri(DomainIdentifier), "/assets/", aws_util:encode_uri(Identifier), ""],
+    SuccessStatusCode = 202,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},

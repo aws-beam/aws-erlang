@@ -108,6 +108,10 @@
          generate_mobile_sdk_release_url/3,
          get_decrypted_api_key/2,
          get_decrypted_api_key/3,
+         get_event/2,
+         get_event/3,
+         get_event_actor/2,
+         get_event_actor/3,
          get_ip_set/2,
          get_ip_set/3,
          get_logging_configuration/2,
@@ -144,6 +148,12 @@
          list_available_managed_rule_group_versions/3,
          list_available_managed_rule_groups/2,
          list_available_managed_rule_groups/3,
+         list_event_actors/2,
+         list_event_actors/3,
+         list_events/2,
+         list_events/3,
+         list_events_by_web_acl/2,
+         list_events_by_web_acl/3,
          list_ip_sets/2,
          list_ip_sets/3,
          list_logging_configurations/2,
@@ -243,6 +253,35 @@
 -type api_key_summary() :: #{binary() => any()}.
 
 %% Example:
+%% api_pattern() :: #{
+%%   <<"Domains">> => list(string()),
+%%   <<"Method">> => string(),
+%%   <<"PathPattern">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type api_pattern() :: #{binary() => any()}.
+
+%% Example:
+%% api_pattern_filter() :: #{
+%%   <<"Domains">> => list(string()),
+%%   <<"Method">> => string(),
+%%   <<"PathPattern">> => string(),
+%%   <<"Port">> => integer()
+%% }
+-type api_pattern_filter() :: #{binary() => any()}.
+
+%% Example:
+%% api_security_event_detail() :: #{
+%%   <<"ApiPatterns">> => list(api_pattern()),
+%%   <<"Category">> => string(),
+%%   <<"Confidence">> => list(any()),
+%%   <<"EventActors">> => list(event_actor_reference()),
+%%   <<"Label">> => string(),
+%%   <<"Timeline">> => list(event_timeline_entry())
+%% }
+-type api_security_event_detail() :: #{binary() => any()}.
+
+%% Example:
 %% application_attribute() :: #{
 %%   <<"Name">> => string(),
 %%   <<"Values">> => list(string())
@@ -293,6 +332,12 @@
 -type aws_managed_rules_a_c_f_p_rule_set() :: #{binary() => any()}.
 
 %% Example:
+%% aws_managed_rules_a_i_security_rule_set() :: #{
+%%   <<"BedrockGuardrails">> => bedrock_guardrails()
+%% }
+-type aws_managed_rules_a_i_security_rule_set() :: #{binary() => any()}.
+
+%% Example:
 %% aws_managed_rules_a_t_p_rule_set() :: #{
 %%   <<"EnableRegexInPath">> => boolean(),
 %%   <<"LoginPath">> => string(),
@@ -314,6 +359,26 @@
 %%   <<"InspectionLevel">> => list(any())
 %% }
 -type aws_managed_rules_bot_control_rule_set() :: #{binary() => any()}.
+
+%% Example:
+%% bedrock_guardrails() :: #{
+%%   <<"Disable">> => disable_bedrock_guardrails(),
+%%   <<"ProtectRequestAndResponse">> => bedrock_guardrails_request_and_response(),
+%%   <<"ProtectRequestOnly">> => bedrock_guardrails_request_only()
+%% }
+-type bedrock_guardrails() :: #{binary() => any()}.
+
+%% Example:
+%% bedrock_guardrails_request_and_response() :: #{
+%%   <<"RoleArn">> => string()
+%% }
+-type bedrock_guardrails_request_and_response() :: #{binary() => any()}.
+
+%% Example:
+%% bedrock_guardrails_request_only() :: #{
+%%   <<"RoleArn">> => string()
+%% }
+-type bedrock_guardrails_request_only() :: #{binary() => any()}.
 
 %% Example:
 %% block_action() :: #{
@@ -789,6 +854,12 @@
 -type describe_managed_rule_group_response() :: #{binary() => any()}.
 
 %% Example:
+%% disable_bedrock_guardrails() :: #{
+
+%% }
+-type disable_bedrock_guardrails() :: #{binary() => any()}.
+
+%% Example:
 %% disallowed_feature() :: #{
 %%   <<"Feature">> => string(),
 %%   <<"RequiredPricingPlan">> => string()
@@ -812,6 +883,89 @@
 %%   <<"Identifier">> => string()
 %% }
 -type email_field() :: #{binary() => any()}.
+
+%% Example:
+%% event_actor_change() :: #{
+%%   <<"Asn">> => string(),
+%%   <<"AsnOrganization">> => string(),
+%%   <<"ChangeTime">> => non_neg_integer(),
+%%   <<"ClientIp">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"TlsFingerprint">> => string()
+%% }
+-type event_actor_change() :: #{binary() => any()}.
+
+%% Example:
+%% event_actor_detail() :: #{
+%%   <<"Changes">> => list(event_actor_change()),
+%%   <<"Events">> => list(related_event()),
+%%   <<"Summary">> => event_actor_detail_summary()
+%% }
+-type event_actor_detail() :: #{binary() => any()}.
+
+%% Example:
+%% event_actor_detail_summary() :: #{
+%%   <<"Asn">> => string(),
+%%   <<"AsnOrganization">> => string(),
+%%   <<"AuthFingerprint">> => string(),
+%%   <<"ClientIp">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EventActorId">> => string(),
+%%   <<"TlsFingerprint">> => string()
+%% }
+-type event_actor_detail_summary() :: #{binary() => any()}.
+
+%% Example:
+%% event_actor_reference() :: #{
+%%   <<"EventActorId">> => string(),
+%%   <<"EventActorValue">> => string()
+%% }
+-type event_actor_reference() :: #{binary() => any()}.
+
+%% Example:
+%% event_actor_summary() :: #{
+%%   <<"Asn">> => string(),
+%%   <<"AsnOrganization">> => string(),
+%%   <<"AuthFingerprint">> => string(),
+%%   <<"ClientIp">> => string(),
+%%   <<"Country">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"EventActorId">> => string(),
+%%   <<"EventCount">> => integer(),
+%%   <<"TlsFingerprint">> => string()
+%% }
+-type event_actor_summary() :: #{binary() => any()}.
+
+%% Example:
+%% event_detail_summary() :: #{
+%%   <<"ApiSecurityEventDetail">> => api_security_event_detail(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"EventCategory">> => list(any()),
+%%   <<"EventId">> => string(),
+%%   <<"EventStatus">> => list(any()),
+%%   <<"LastUpdatedTime">> => non_neg_integer(),
+%%   <<"ResourceArn">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"WebAclArn">> => string()
+%% }
+-type event_detail_summary() :: #{binary() => any()}.
+
+%% Example:
+%% event_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type event_filter() :: #{binary() => any()}.
+
+%% Example:
+%% event_timeline_entry() :: #{
+%%   <<"ApiPatterns">> => list(api_pattern()),
+%%   <<"ChangeTime">> => non_neg_integer(),
+%%   <<"Confidence">> => list(any()),
+%%   <<"Label">> => string()
+%% }
+-type event_timeline_entry() :: #{binary() => any()}.
 
 %% Example:
 %% excluded_rule() :: #{
@@ -918,6 +1072,33 @@
 %%   <<"TokenDomains">> => list(string())
 %% }
 -type get_decrypted_api_key_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_actor_request() :: #{
+%%   <<"EventActorId">> := string(),
+%%   <<"Scope">> := list(any())
+%% }
+-type get_event_actor_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_actor_response() :: #{
+%%   <<"EventActor">> => event_actor_detail()
+%% }
+-type get_event_actor_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_request() :: #{
+%%   <<"EventId">> := string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"WebAclArn">> := string()
+%% }
+-type get_event_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_event_response() :: #{
+%%   <<"Event">> => event_detail_summary()
+%% }
+-type get_event_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_ip_set_request() :: #{
@@ -1351,6 +1532,66 @@
 -type list_available_managed_rule_groups_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_event_actors_request() :: #{
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"TimeWindow">> := time_window()
+%% }
+-type list_event_actors_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_event_actors_response() :: #{
+%%   <<"EventActors">> => list(event_actor_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_event_actors_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_events_by_web_acl_request() :: #{
+%%   <<"ApiPatternFilters">> => list(api_pattern_filter()),
+%%   <<"Filters">> => list(event_filter()),
+%%   <<"Include">> => list(list(any())()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TimeWindow">> => time_window(),
+%%   <<"WebAclArn">> := string()
+%% }
+-type list_events_by_web_acl_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_events_by_web_acl_response() :: #{
+%%   <<"Events">> => list(event_detail_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_events_by_web_acl_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_events_request() :: #{
+%%   <<"ApiPatternFilters">> => list(api_pattern_filter()),
+%%   <<"Filters">> => list(event_filter()),
+%%   <<"Include">> => list(list(any())()),
+%%   <<"Limit">> => integer(),
+%%   <<"NextMarker">> => string(),
+%%   <<"Scope">> := list(any()),
+%%   <<"SortBy">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"TimeWindow">> => time_window()
+%% }
+-type list_events_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_events_response() :: #{
+%%   <<"Events">> => list(event_detail_summary()),
+%%   <<"NextMarker">> => string()
+%% }
+-type list_events_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_ip_sets_request() :: #{
 %%   <<"Limit">> => integer(),
 %%   <<"NextMarker">> => string(),
@@ -1540,6 +1781,7 @@
 %% Example:
 %% managed_rule_group_config() :: #{
 %%   <<"AWSManagedRulesACFPRuleSet">> => aws_managed_rules_a_c_f_p_rule_set(),
+%%   <<"AWSManagedRulesAISecurityRuleSet">> => aws_managed_rules_a_i_security_rule_set(),
 %%   <<"AWSManagedRulesATPRuleSet">> => aws_managed_rules_a_t_p_rule_set(),
 %%   <<"AWSManagedRulesAntiDDoSRuleSet">> => aws_managed_rules_anti_d_do_s_rule_set(),
 %%   <<"AWSManagedRulesBotControlRuleSet">> => aws_managed_rules_bot_control_rule_set(),
@@ -1924,6 +2166,17 @@
 %%   <<"Name">> => string()
 %% }
 -type regex_pattern_set_summary() :: #{binary() => any()}.
+
+%% Example:
+%% related_event() :: #{
+%%   <<"ApiPatterns">> => list(api_pattern()),
+%%   <<"Category">> => string(),
+%%   <<"Confidence">> => list(any()),
+%%   <<"EventId">> => string(),
+%%   <<"Label">> => string(),
+%%   <<"StartTime">> => non_neg_integer()
+%% }
+-type related_event() :: #{binary() => any()}.
 
 %% Example:
 %% release_summary() :: #{
@@ -2732,6 +2985,18 @@
     w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
 
+-type get_event_errors() ::
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
+
+-type get_event_actor_errors() ::
+    w_a_f_nonexistent_item_exception() | 
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
+
 -type get_ip_set_errors() ::
     w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
@@ -2836,6 +3101,22 @@
     w_a_f_internal_error_exception().
 
 -type list_available_managed_rule_groups_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_event_actors_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_events_errors() ::
+    w_a_f_invalid_parameter_exception() | 
+    w_a_f_invalid_operation_exception() | 
+    w_a_f_internal_error_exception().
+
+-type list_events_by_web_acl_errors() ::
+    w_a_f_nonexistent_item_exception() | 
     w_a_f_invalid_parameter_exception() | 
     w_a_f_invalid_operation_exception() | 
     w_a_f_internal_error_exception().
@@ -3519,6 +3800,51 @@ get_decrypted_api_key(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetDecryptedAPIKey">>, Input, Options).
 
+%% @doc Retrieves the details of the specified event for the specified web
+%% ACL, including the event actors that are associated with the event and the
+%% event timeline.
+%%
+%% Currently, this operation supports API Security Amazon Web Services
+%% Managed Rules.
+-spec get_event(aws_client:aws_client(), get_event_request()) ->
+    {ok, get_event_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_errors(), tuple()}.
+get_event(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_event(Client, Input, []).
+
+-spec get_event(aws_client:aws_client(), get_event_request(), proplists:proplist()) ->
+    {ok, get_event_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_errors(), tuple()}.
+get_event(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetEvent">>, Input, Options).
+
+%% @doc Retrieves the details of the specified event actor.
+%%
+%% An event actor is a client that is associated with one or more events. The
+%% details include the latest observed attributes of the event actor, the
+%% events that it's associated with, and the history of changes to its
+%% attributes. Currently, this operation supports API Security Amazon Web
+%% Services Managed Rules.
+-spec get_event_actor(aws_client:aws_client(), get_event_actor_request()) ->
+    {ok, get_event_actor_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_actor_errors(), tuple()}.
+get_event_actor(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_event_actor(Client, Input, []).
+
+-spec get_event_actor(aws_client:aws_client(), get_event_actor_request(), proplists:proplist()) ->
+    {ok, get_event_actor_response(), tuple()} |
+    {error, any()} |
+    {error, get_event_actor_errors(), tuple()}.
+get_event_actor(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetEventActor">>, Input, Options).
+
 %% @doc Retrieves the specified `IPSet'.
 -spec get_ip_set(aws_client:aws_client(), get_ip_set_request()) ->
     {ok, get_ip_set_response(), tuple()} |
@@ -3961,6 +4287,90 @@ list_available_managed_rule_groups(Client, Input)
 list_available_managed_rule_groups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAvailableManagedRuleGroups">>, Input, Options).
+
+%% @doc Retrieves a paginated list of the event actors in your account that
+%% are associated with events in the specified time window.
+%%
+%% An event actor is a client that is associated with one or more events. The
+%% operation returns up to the top 100 event actors by event count. Results
+%% are paginated. Use the `NextMarker' value from the response to
+%% retrieve the next batch of results. Currently, this operation supports API
+%% Security Amazon Web Services Managed Rules.
+-spec list_event_actors(aws_client:aws_client(), list_event_actors_request()) ->
+    {ok, list_event_actors_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_actors_errors(), tuple()}.
+list_event_actors(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_event_actors(Client, Input, []).
+
+-spec list_event_actors(aws_client:aws_client(), list_event_actors_request(), proplists:proplist()) ->
+    {ok, list_event_actors_response(), tuple()} |
+    {error, any()} |
+    {error, list_event_actors_errors(), tuple()}.
+list_event_actors(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEventActors">>, Input, Options).
+
+%% @doc Retrieves a paginated list of event summaries for your account.
+%%
+%% Use this operation to monitor and investigate potential threats to the
+%% resources that your web ACLs protect. Results are paginated. Use the
+%% `NextMarker' value from the response to retrieve the next batch of
+%% results. Currently, this operation supports API Security Amazon Web
+%% Services Managed Rules.
+%%
+%% You can filter the results by time window, event category, resource, and
+%% API pattern, and sort them by start time, end time, or confidence.
+%%
+%% To retrieve the events for a single web ACL, use `ListEventsByWebACL'.
+%% To retrieve the full details of a single event, use `GetEvent'.
+-spec list_events(aws_client:aws_client(), list_events_request()) ->
+    {ok, list_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_events_errors(), tuple()}.
+list_events(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_events(Client, Input, []).
+
+-spec list_events(aws_client:aws_client(), list_events_request(), proplists:proplist()) ->
+    {ok, list_events_response(), tuple()} |
+    {error, any()} |
+    {error, list_events_errors(), tuple()}.
+list_events(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEvents">>, Input, Options).
+
+%% @doc Retrieves a paginated list of event summaries for the specified web
+%% ACL.
+%%
+%% Use this operation to monitor and investigate potential threats to the
+%% resources that the web ACL protects. Results are paginated. Use the
+%% `NextMarker' value from the response to retrieve the next batch of
+%% results. Currently, this operation supports API Security Amazon Web
+%% Services Managed Rules.
+%%
+%% You can filter the results by time window, event category, resource, and
+%% API pattern, and sort them by start time, end time, or confidence.
+%%
+%% To retrieve the events for all of the web ACLs in your account, use
+%% `ListEvents'. To retrieve the full details of a single event, use
+%% `GetEvent'.
+-spec list_events_by_web_acl(aws_client:aws_client(), list_events_by_web_acl_request()) ->
+    {ok, list_events_by_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, list_events_by_web_acl_errors(), tuple()}.
+list_events_by_web_acl(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_events_by_web_acl(Client, Input, []).
+
+-spec list_events_by_web_acl(aws_client:aws_client(), list_events_by_web_acl_request(), proplists:proplist()) ->
+    {ok, list_events_by_web_acl_response(), tuple()} |
+    {error, any()} |
+    {error, list_events_by_web_acl_errors(), tuple()}.
+list_events_by_web_acl(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListEventsByWebACL">>, Input, Options).
 
 %% @doc Retrieves an array of `IPSetSummary' objects for the IP sets that
 %% you

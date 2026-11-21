@@ -1134,6 +1134,7 @@
 %% Example:
 %% create_document_request() :: #{
 %%   <<"Attachments">> => list(attachments_source()),
+%%   <<"CloudProviders">> => list(list(any())()),
 %%   <<"Content">> := string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"DocumentFormat">> => list(any()),
@@ -2080,6 +2081,7 @@
 %%   <<"Author">> => string(),
 %%   <<"Category">> => list(string()),
 %%   <<"CategoryEnum">> => list(string()),
+%%   <<"CloudProviders">> => list(list(any())()),
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"DefaultVersion">> => string(),
 %%   <<"Description">> => string(),
@@ -2118,6 +2120,7 @@
 %% Example:
 %% document_identifier() :: #{
 %%   <<"Author">> => string(),
+%%   <<"CloudProviders">> => list(list(any())()),
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"DisplayName">> => string(),
 %%   <<"DocumentFormat">> => list(any()),
@@ -2204,6 +2207,7 @@
 
 %% Example:
 %% document_version_info() :: #{
+%%   <<"CloudProviders">> => list(list(any())()),
 %%   <<"CreatedDate">> => non_neg_integer(),
 %%   <<"DisplayName">> => string(),
 %%   <<"DocumentFormat">> => list(any()),
@@ -5498,6 +5502,7 @@
 %% Example:
 %% update_document_request() :: #{
 %%   <<"Attachments">> => list(attachments_source()),
+%%   <<"CloudProviders">> => list(list(any())()),
 %%   <<"Content">> := string(),
 %%   <<"DisplayName">> => string(),
 %%   <<"DocumentFormat">> => list(any()),

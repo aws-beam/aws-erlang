@@ -168,6 +168,7 @@
 %%   <<"iamInstanceProfileArn">> => string(),
 %%   <<"id">> => [string()],
 %%   <<"instanceConfigs">> => list(instance_config()),
+%%   <<"instanceHealthChecks">> => instance_health_checks(),
 %%   <<"launchTemplateMode">> => list(any()),
 %%   <<"modifiedAt">> => [non_neg_integer()],
 %%   <<"name">> => string(),
@@ -252,6 +253,7 @@
 %%   <<"customLaunchTemplate">> => custom_launch_template(),
 %%   <<"iamInstanceProfileArn">> := string(),
 %%   <<"instanceConfigs">> := list(instance_config()),
+%%   <<"instanceHealthChecks">> => instance_health_checks_request(),
 %%   <<"launchTemplateMode">> => list(any()),
 %%   <<"nodeLifecycleActions">> => node_lifecycle_actions_request(),
 %%   <<"purchaseOption">> => list(any()),
@@ -294,6 +296,19 @@
 %%   <<"version">> => [string()]
 %% }
 -type custom_launch_template() :: #{binary() => any()}.
+
+%% Example:
+%% deep_health_check_on_start() :: #{
+%%   <<"profile">> => list(any()),
+%%   <<"repairAction">> => list(any())
+%% }
+-type deep_health_check_on_start() :: #{binary() => any()}.
+
+%% Example:
+%% deep_health_checks() :: #{
+%%   <<"onStart">> => deep_health_check_on_start()
+%% }
+-type deep_health_checks() :: #{binary() => any()}.
 
 %% Example:
 %% delete_cluster_request() :: #{
@@ -392,10 +407,31 @@
 -type get_queue_response() :: #{binary() => any()}.
 
 %% Example:
+%% health_monitoring() :: #{
+%%   <<"mode">> => list(any()),
+%%   <<"repairAction">> => list(any())
+%% }
+-type health_monitoring() :: #{binary() => any()}.
+
+%% Example:
 %% instance_config() :: #{
 %%   <<"instanceType">> => [string()]
 %% }
 -type instance_config() :: #{binary() => any()}.
+
+%% Example:
+%% instance_health_checks() :: #{
+%%   <<"deepHealthChecks">> => deep_health_checks(),
+%%   <<"healthMonitoring">> => health_monitoring()
+%% }
+-type instance_health_checks() :: #{binary() => any()}.
+
+%% Example:
+%% instance_health_checks_request() :: #{
+%%   <<"deepHealthChecks">> => deep_health_checks(),
+%%   <<"healthMonitoring">> => health_monitoring()
+%% }
+-type instance_health_checks_request() :: #{binary() => any()}.
 
 %% Example:
 %% internal_server_exception() :: #{
@@ -587,6 +623,7 @@
 %%   <<"computeNodeGroupId">> => [string()],
 %%   <<"computeNodeGroupName">> => [string()],
 %%   <<"endpoints">> => list(endpoint()),
+%%   <<"instanceHealthChecks">> => instance_health_checks(),
 %%   <<"nodeID">> => [string()],
 %%   <<"nodeLifecycleActions">> => node_lifecycle_actions(),
 %%   <<"schedulerVersion">> => [string()],
@@ -761,6 +798,7 @@
 %%   <<"computeNodeGroupIdentifier">> := string(),
 %%   <<"customLaunchTemplate">> => custom_launch_template(),
 %%   <<"iamInstanceProfileArn">> => string(),
+%%   <<"instanceHealthChecks">> => update_instance_health_checks_request(),
 %%   <<"launchTemplateMode">> => list(any()),
 %%   <<"nodeLifecycleActions">> => update_node_lifecycle_actions_request(),
 %%   <<"purchaseOption">> => list(any()),
@@ -786,6 +824,13 @@
 %%   <<"slurmCustomSettings">> => list(slurm_custom_setting())
 %% }
 -type update_compute_node_group_slurm_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_instance_health_checks_request() :: #{
+%%   <<"deepHealthChecks">> => deep_health_checks(),
+%%   <<"healthMonitoring">> => health_monitoring()
+%% }
+-type update_instance_health_checks_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_node_lifecycle_actions_request() :: #{

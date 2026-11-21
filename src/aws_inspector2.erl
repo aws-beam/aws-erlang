@@ -3041,7 +3041,10 @@
 %%   <<"epoch">> => number_filter(),
 %%   <<"filePath">> => string_filter(),
 %%   <<"name">> => string_filter(),
+%%   <<"purlQualifier">> => purl_qualifier_filter(),
 %%   <<"release">> => string_filter(),
+%%   <<"runtimeReachability">> => runtime_reachability_filter(),
+%%   <<"runtimeReachabilityReason">> => runtime_reachability_reason_filter(),
 %%   <<"sourceLambdaLayerArn">> => string_filter(),
 %%   <<"sourceLayerHash">> => string_filter(),
 %%   <<"version">> => string_filter()
@@ -3127,6 +3130,15 @@
 %%   <<"value">> => list(any())
 %% }
 -type provider_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% purl_qualifier_filter() :: #{
+%%   <<"comparison">> => string(),
+%%   <<"key">> => string(),
+%%   <<"value">> => string()
+%% }
+-type purl_qualifier_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3297,6 +3309,22 @@
 %%   <<"value">> => string()
 %% }
 -type resource_string_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_reachability_filter() :: #{
+%%   <<"comparison">> => string(),
+%%   <<"value">> => string()
+%% }
+-type runtime_reachability_filter() :: #{binary() => any()}.
+
+
+%% Example:
+%% runtime_reachability_reason_filter() :: #{
+%%   <<"comparison">> => string(),
+%%   <<"value">> => string()
+%% }
+-type runtime_reachability_reason_filter() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4035,8 +4063,11 @@
 %%   <<"fixedInVersion">> => string(),
 %%   <<"name">> => string(),
 %%   <<"packageManager">> => string(),
+%%   <<"purl">> => string(),
 %%   <<"release">> => string(),
 %%   <<"remediation">> => string(),
+%%   <<"runtimeReachability">> => string(),
+%%   <<"runtimeReachabilityReason">> => string(),
 %%   <<"sourceLambdaLayerArn">> => string(),
 %%   <<"sourceLayerHash">> => string(),
 %%   <<"version">> => string()

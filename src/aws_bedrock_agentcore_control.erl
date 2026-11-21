@@ -2631,7 +2631,9 @@
 %% gateway_interceptor_configuration() :: #{
 %%   <<"inputConfiguration">> => interceptor_input_configuration(),
 %%   <<"interceptionPoints">> => list(list(any())()),
-%%   <<"interceptor">> => list()
+%%   <<"interceptor">> => list(),
+%%   <<"responseInterceptionMode">> => list(any()),
+%%   <<"responseStreamingConfiguration">> => response_streaming_configuration()
 %% }
 -type gateway_interceptor_configuration() :: #{binary() => any()}.
 
@@ -5616,6 +5618,13 @@
 %%   <<"message">> => string()
 %% }
 -type resource_not_found_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% response_streaming_configuration() :: #{
+%%   <<"maxEventsPerInvocation">> => integer()
+%% }
+-type response_streaming_configuration() :: #{binary() => any()}.
 
 
 %% Example:

@@ -933,7 +933,8 @@
 %%   <<"Scte20SourceSettings">> => scte20_source_settings(),
 %%   <<"Scte27SourceSettings">> => scte27_source_settings(),
 %%   <<"SmartSubtitleSourceSettings">> => smart_subtitle_source_settings(),
-%%   <<"TeletextSourceSettings">> => teletext_source_settings()
+%%   <<"TeletextSourceSettings">> => teletext_source_settings(),
+%%   <<"WebvttSourceSettings">> => webvtt_source_settings()
 %% }
 -type caption_selector_settings() :: #{binary() => any()}.
 
@@ -2438,6 +2439,8 @@
 
 %% Example:
 %% embedded_destination_settings() :: #{
+%%   <<"CaptionServiceChannel">> => integer(),
+%%   <<"EmbeddedMode">> => list(any()),
 %%   <<"Position">> => embedded_caption_position_settings(),
 %%   <<"StyleControl">> => list(any())
 %% }
@@ -6456,6 +6459,14 @@
 %%   <<"StyleControl">> => list(any())
 %% }
 -type webvtt_destination_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% webvtt_source_settings() :: #{
+%%   <<"GroupId">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type webvtt_source_settings() :: #{binary() => any()}.
 
 -type accept_input_device_transfer_errors() ::
     unprocessable_entity_exception() | 

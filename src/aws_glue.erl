@@ -126,8 +126,6 @@
          create_workflow/3,
          delete_asset/2,
          delete_asset/3,
-         delete_asset_type/2,
-         delete_asset_type/3,
          delete_attachment/2,
          delete_attachment/3,
          delete_blueprint/2,
@@ -478,8 +476,6 @@
          publish_data_quality_result_v2/3,
          put_asset/2,
          put_asset/3,
-         put_asset_type/2,
-         put_asset_type/3,
          put_attachment/2,
          put_attachment/3,
          put_data_catalog_encryption_settings/2,
@@ -764,10 +760,17 @@
 -type asset_form_entry() :: #{binary() => any()}.
 
 %% Example:
-%% asset_type_form_reference() :: #{
+%% asset_form_input() :: #{
+%%   <<"Content">> => string(),
 %%   <<"FormTypeIdentifier">> => string()
 %% }
--type asset_type_form_reference() :: #{binary() => any()}.
+-type asset_form_input() :: #{binary() => any()}.
+
+%% Example:
+%% asset_type_form_output() :: #{
+%%   <<"FormTypeId">> => string()
+%% }
+-type asset_type_form_output() :: #{binary() => any()}.
 
 %% Example:
 %% asset_type_item() :: #{
@@ -775,6 +778,19 @@
 %%   <<"Name">> => string()
 %% }
 -type asset_type_item() :: #{binary() => any()}.
+
+%% Example:
+%% assets_export() :: #{
+%%   <<"S3TablesExport">> => list(any())
+%% }
+-type assets_export() :: #{binary() => any()}.
+
+%% Example:
+%% assets_export_result() :: #{
+%%   <<"S3TablesExport">> => list(any()),
+%%   <<"S3TablesExportState">> => s3_tables_export_state()
+%% }
+-type assets_export_result() :: #{binary() => any()}.
 
 %% Example:
 %% associate_glossary_terms_request() :: #{
@@ -787,9 +803,9 @@
 
 %% Example:
 %% associate_glossary_terms_response() :: #{
-%%   <<"AssetIdentifier">> => string(),
+%%   <<"AssetId">> => string(),
 %%   <<"GlossaryTerms">> => list(string()),
-%%   <<"ItemIdentifier">> => string(),
+%%   <<"ItemId">> => string(),
 %%   <<"IterableFormName">> => string()
 %% }
 -type associate_glossary_terms_response() :: #{binary() => any()}.
@@ -3384,18 +3400,6 @@
 -type delete_asset_response() :: #{binary() => any()}.
 
 %% Example:
-%% delete_asset_type_request() :: #{
-
-%% }
--type delete_asset_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% delete_asset_type_response() :: #{
-
-%% }
--type delete_asset_type_response() :: #{binary() => any()}.
-
-%% Example:
 %% delete_attachment_request() :: #{
 %%   <<"ItemIdentifier">> => string(),
 %%   <<"IterableFormName">> => string()
@@ -3404,8 +3408,8 @@
 
 %% Example:
 %% delete_attachment_response() :: #{
-%%   <<"AssetIdentifier">> => string(),
-%%   <<"ItemIdentifier">> => string(),
+%%   <<"AssetId">> => string(),
+%%   <<"ItemId">> => string(),
 %%   <<"IterableFormName">> => string()
 %% }
 -type delete_attachment_response() :: #{binary() => any()}.
@@ -4083,9 +4087,9 @@
 
 %% Example:
 %% disassociate_glossary_terms_response() :: #{
-%%   <<"AssetIdentifier">> => string(),
+%%   <<"AssetId">> => string(),
 %%   <<"GlossaryTerms">> => list(string()),
-%%   <<"ItemIdentifier">> => string(),
+%%   <<"ItemId">> => string(),
 %%   <<"IterableFormName">> => string()
 %% }
 -type disassociate_glossary_terms_response() :: #{binary() => any()}.
@@ -4842,11 +4846,9 @@
 
 %% Example:
 %% get_data_catalog_export_configuration_output() :: #{
+%%   <<"Assets">> => assets_export_result(),
 %%   <<"CreatedAt">> => non_neg_integer(),
-%%   <<"EncryptionConfiguration">> => export_encryption_configuration(),
-%%   <<"ExportSetting">> => list(any()),
-%%   <<"S3TableBucketArn">> => string(),
-%%   <<"Status">> => list(any()),
+%%   <<"S3TablesConfiguration">> => s3_tables_configuration_result(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type get_data_catalog_export_configuration_output() :: #{binary() => any()}.
@@ -7954,7 +7956,7 @@
 
 %% Example:
 %% put_asset_request() :: #{
-%%   <<"AssetTypeId">> := string(),
+%%   <<"AssetTypeIdentifier">> => string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Description">> => string(),
 %%   <<"Forms">> := map(),
@@ -7965,6 +7967,7 @@
 
 %% Example:
 %% put_asset_response() :: #{
+%%   <<"AssetTypeId">> => string(),
 %%   <<"CreatedAt">> => non_neg_integer(),
 %%   <<"Description">> => string(),
 %%   <<"Forms">> => map(),
@@ -7974,27 +7977,11 @@
 -type put_asset_response() :: #{binary() => any()}.
 
 %% Example:
-%% put_asset_type_request() :: #{
-%%   <<"ClientToken">> => string(),
-%%   <<"Forms">> := map(),
-%%   <<"Name">> := string()
-%% }
--type put_asset_type_request() :: #{binary() => any()}.
-
-%% Example:
-%% put_asset_type_response() :: #{
-%%   <<"Forms">> => map(),
-%%   <<"Id">> => string(),
-%%   <<"Name">> => string()
-%% }
--type put_asset_type_response() :: #{binary() => any()}.
-
-%% Example:
 %% put_attachment_request() :: #{
 %%   <<"AttachmentName">> := string(),
 %%   <<"ClientToken">> => string(),
 %%   <<"Content">> := string(),
-%%   <<"FormTypeId">> := string(),
+%%   <<"FormTypeIdentifier">> => string(),
 %%   <<"ItemIdentifier">> => string(),
 %%   <<"IterableFormName">> => string()
 %% }
@@ -8002,10 +7989,10 @@
 
 %% Example:
 %% put_attachment_response() :: #{
-%%   <<"AssetIdentifier">> => string(),
+%%   <<"AssetId">> => string(),
 %%   <<"AttachmentName">> => string(),
 %%   <<"FormTypeId">> => string(),
-%%   <<"ItemIdentifier">> => string(),
+%%   <<"ItemId">> => string(),
 %%   <<"IterableFormName">> => string()
 %% }
 -type put_attachment_response() :: #{binary() => any()}.
@@ -8025,16 +8012,16 @@
 
 %% Example:
 %% put_data_catalog_export_configuration_input() :: #{
+%%   <<"Assets">> => assets_export(),
 %%   <<"ClientToken">> => string(),
-%%   <<"EncryptionConfiguration">> => export_encryption_configuration(),
-%%   <<"ExportSetting">> := list(any())
+%%   <<"S3TablesConfiguration">> => s3_tables_configuration()
 %% }
 -type put_data_catalog_export_configuration_input() :: #{binary() => any()}.
 
 %% Example:
 %% put_data_catalog_export_configuration_output() :: #{
-%%   <<"EncryptionConfiguration">> => export_encryption_configuration(),
-%%   <<"ExportSetting">> => list(any())
+%%   <<"Assets">> => assets_export(),
+%%   <<"S3TablesConfiguration">> => s3_tables_configuration()
 %% }
 -type put_data_catalog_export_configuration_output() :: #{binary() => any()}.
 
@@ -8737,6 +8724,25 @@
 -type s3_source_additional_options() :: #{binary() => any()}.
 
 %% Example:
+%% s3_tables_configuration() :: #{
+%%   <<"EncryptionConfiguration">> => export_encryption_configuration()
+%% }
+-type s3_tables_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% s3_tables_configuration_result() :: #{
+%%   <<"EncryptionConfiguration">> => export_encryption_configuration(),
+%%   <<"TableBucketArn">> => string()
+%% }
+-type s3_tables_configuration_result() :: #{binary() => any()}.
+
+%% Example:
+%% s3_tables_export_state() :: #{
+%%   <<"Status">> => list(any())
+%% }
+-type s3_tables_export_state() :: #{binary() => any()}.
+
+%% Example:
 %% s3_target() :: #{
 %%   <<"ConnectionName">> => string(),
 %%   <<"DlqEventQueueArn">> => string(),
@@ -8858,7 +8864,7 @@
 %% Example:
 %% search_attribute_filter() :: #{
 %%   <<"Attribute">> => string(),
-%%   <<"Operator">> => list(any()),
+%%   <<"Comparator">> => list(any()),
 %%   <<"Value">> => list()
 %% }
 -type search_attribute_filter() :: #{binary() => any()}.
@@ -8873,10 +8879,11 @@
 
 %% Example:
 %% search_result_item() :: #{
-%%   <<"AssetDescription">> => string(),
-%%   <<"AssetName">> => string(),
 %%   <<"AssetTypeId">> => string(),
+%%   <<"CreatedAt">> => non_neg_integer(),
+%%   <<"Description">> => string(),
 %%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
 %%   <<"UpdatedAt">> => non_neg_integer()
 %% }
 -type search_result_item() :: #{binary() => any()}.
@@ -11260,13 +11267,6 @@
     concurrent_modification_exception() | 
     access_denied_exception().
 
--type delete_asset_type_errors() ::
-    throttling_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception().
-
 -type delete_attachment_errors() ::
     throttling_exception() | 
     invalid_input_exception() | 
@@ -11716,7 +11716,8 @@
     throttling_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
-    entity_not_found_exception().
+    entity_not_found_exception() | 
+    access_denied_exception().
 
 -type get_data_quality_evaluation_config_errors() ::
     operation_timeout_exception() | 
@@ -11820,12 +11821,14 @@
 
 -type get_glossary_errors() ::
     throttling_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
     entity_not_found_exception() | 
     access_denied_exception().
 
 -type get_glossary_term_errors() ::
     throttling_exception() | 
+    invalid_input_exception() | 
     internal_service_exception() | 
     entity_not_found_exception() | 
     access_denied_exception().
@@ -12414,14 +12417,6 @@
     idempotent_parameter_mismatch_exception().
 
 -type put_asset_errors() ::
-    throttling_exception() | 
-    invalid_input_exception() | 
-    internal_service_exception() | 
-    entity_not_found_exception() | 
-    concurrent_modification_exception() | 
-    access_denied_exception().
-
--type put_asset_type_errors() ::
     throttling_exception() | 
     invalid_input_exception() | 
     internal_service_exception() | 
@@ -14192,23 +14187,6 @@ delete_asset(Client, Input)
 delete_asset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAsset">>, Input, Options).
-
-%% @doc Deletes an asset type from Glue Data Catalog.
--spec delete_asset_type(aws_client:aws_client(), delete_asset_type_request()) ->
-    {ok, delete_asset_type_response(), tuple()} |
-    {error, any()} |
-    {error, delete_asset_type_errors(), tuple()}.
-delete_asset_type(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    delete_asset_type(Client, Input, []).
-
--spec delete_asset_type(aws_client:aws_client(), delete_asset_type_request(), proplists:proplist()) ->
-    {ok, delete_asset_type_response(), tuple()} |
-    {error, any()} |
-    {error, delete_asset_type_errors(), tuple()}.
-delete_asset_type(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"DeleteAssetType">>, Input, Options).
 
 %% @doc Deletes a form attachment from an asset in Glue Data Catalog.
 -spec delete_attachment(aws_client:aws_client(), delete_attachment_request()) ->
@@ -17571,27 +17549,6 @@ put_asset(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"PutAsset">>, Input, Options).
 
-%% @doc Creates or updates an asset type in Glue Data Catalog.
-%%
-%% An asset type defines the structure of assets by specifying which forms
-%% they include. If an asset type with the given name already exists, it is
-%% updated.
--spec put_asset_type(aws_client:aws_client(), put_asset_type_request()) ->
-    {ok, put_asset_type_response(), tuple()} |
-    {error, any()} |
-    {error, put_asset_type_errors(), tuple()}.
-put_asset_type(Client, Input)
-  when is_map(Client), is_map(Input) ->
-    put_asset_type(Client, Input, []).
-
--spec put_asset_type(aws_client:aws_client(), put_asset_type_request(), proplists:proplist()) ->
-    {ok, put_asset_type_response(), tuple()} |
-    {error, any()} |
-    {error, put_asset_type_errors(), tuple()}.
-put_asset_type(Client, Input, Options)
-  when is_map(Client), is_map(Input), is_list(Options) ->
-    request(Client, <<"PutAssetType">>, Input, Options).
-
 %% @doc Attaches a form to an asset or an iterable form item in Glue Data
 %% Catalog.
 %%
@@ -17915,7 +17872,7 @@ run_statement(Client, Input, Options)
     request(Client, <<"RunStatement">>, Input, Options).
 
 %% @doc Searches for assets in Glue Data Catalog using full-text search,
-%% filters, sorting, and aggregations.
+%% filters, and sorting.
 %%
 %% Returns matching assets with relevance-ranked results.
 -spec search_assets(aws_client:aws_client(), search_assets_input()) ->

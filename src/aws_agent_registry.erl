@@ -120,7 +120,8 @@
 %%   <<"agui">> => ag_ui_descriptor(),
 %%   <<"custom">> => custom_descriptor(),
 %%   <<"http">> => http_descriptor(),
-%%   <<"mcpServer">> => mcp_server_descriptor()
+%%   <<"mcpServer">> => mcp_server_descriptor(),
+%%   <<"signatureAgentCard">> => signature_agent_card_descriptor()
 %% }
 -type descriptors() :: #{binary() => any()}.
 
@@ -269,6 +270,23 @@
 %%   <<"searchType">> => list(any())
 %% }
 -type search_discoverable_registry_records_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% signature_agent_card_additional_data() :: #{
+%%   <<"category">> => list(any())
+%% }
+-type signature_agent_card_additional_data() :: #{binary() => any()}.
+
+
+%% Example:
+%% signature_agent_card_descriptor() :: #{
+%%   <<"additionalData">> => signature_agent_card_additional_data(),
+%%   <<"data">> => string(),
+%%   <<"dataSchemaVersion">> => string(),
+%%   <<"source">> => descriptor_source()
+%% }
+-type signature_agent_card_descriptor() :: #{binary() => any()}.
 
 
 %% Example:

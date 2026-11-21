@@ -223,6 +223,8 @@
 %%   <<"Ac4Settings">> => ac4_settings(),
 %%   <<"AiffSettings">> => aiff_settings(),
 %%   <<"Codec">> => list(any()),
+%%   <<"DtscSettings">> => dtsc_settings(),
+%%   <<"DtsxSettings">> => dtsx_settings(),
 %%   <<"Eac3AtmosSettings">> => eac3_atmos_settings(),
 %%   <<"Eac3Settings">> => eac3_settings(),
 %%   <<"FlacSettings">> => flac_settings(),
@@ -356,12 +358,14 @@
 %%   <<"AdaptiveQuantization">> => list(any()),
 %%   <<"BitDepth">> => list(any()),
 %%   <<"Bitrate">> => integer(),
+%%   <<"FastDecode">> => list(any()),
 %%   <<"FilmGrainSynthesis">> => list(any()),
 %%   <<"FramerateControl">> => list(any()),
 %%   <<"FramerateConversionAlgorithm">> => list(any()),
 %%   <<"FramerateDenominator">> => integer(),
 %%   <<"FramerateNumerator">> => integer(),
 %%   <<"GopSize">> => float(),
+%%   <<"GopSizeUnits">> => list(any()),
 %%   <<"MaxBitrate">> => integer(),
 %%   <<"NumberBFramesBetweenReferenceFrames">> => integer(),
 %%   <<"PerFrameMetrics">> => list(list(any())()),
@@ -371,7 +375,8 @@
 %%   <<"Slices">> => integer(),
 %%   <<"SlidingWindowMs">> => integer(),
 %%   <<"SlidingWindowPeakBitrate">> => integer(),
-%%   <<"SpatialAdaptiveQuantization">> => list(any())
+%%   <<"SpatialAdaptiveQuantization">> => list(any()),
+%%   <<"TemporalAdaptiveQuantization">> => list(any())
 %% }
 -type av1_settings() :: #{binary() => any()}.
 
@@ -1030,6 +1035,23 @@
 
 
 %% Example:
+%% dtsc_settings() :: #{
+%%   <<"Bitrate">> => integer(),
+%%   <<"SampleRate">> => integer()
+%% }
+-type dtsc_settings() :: #{binary() => any()}.
+
+
+%% Example:
+%% dtsx_settings() :: #{
+%%   <<"Bitrate">> => integer(),
+%%   <<"CodingMode">> => list(any()),
+%%   <<"SampleRate">> => integer()
+%% }
+-type dtsx_settings() :: #{binary() => any()}.
+
+
+%% Example:
 %% duration_control() :: #{
 %%   <<"IntegerDurationMaximumCompressionDenominator">> => integer(),
 %%   <<"IntegerDurationMaximumCompressionNumerator">> => integer(),
@@ -1117,6 +1139,14 @@
 %%   <<"SelectorType">> => list(any())
 %% }
 -type dynamic_audio_selector() :: #{binary() => any()}.
+
+
+%% Example:
+%% dynamic_multiview_settings() :: #{
+%%   <<"Enabled">> => list(any()),
+%%   <<"Regions">> => list(rectangle())
+%% }
+-type dynamic_multiview_settings() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3152,6 +3182,7 @@
 %%   <<"ColorMetadata">> => list(any()),
 %%   <<"Crop">> => rectangle(),
 %%   <<"DropFrameTimecode">> => list(any()),
+%%   <<"DynamicMultiviewSettings">> => dynamic_multiview_settings(),
 %%   <<"FixedAfd">> => integer(),
 %%   <<"Height">> => integer(),
 %%   <<"Position">> => rectangle(),

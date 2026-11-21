@@ -1344,6 +1344,7 @@
 
 %% Example:
 %% source_logs_configuration() :: #{
+%%   <<"CentralizeWithDataProtection">> => list(any()),
 %%   <<"DataSourceSelectionCriteria">> => string(),
 %%   <<"EncryptedLogGroupStrategy">> => list(any()),
 %%   <<"LogGroupSelectionCriteria">> => string()

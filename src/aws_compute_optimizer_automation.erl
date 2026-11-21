@@ -22,6 +22,8 @@
          create_automation_rule/3,
          delete_automation_rule/2,
          delete_automation_rule/3,
+         delete_organization_enrollment_configuration/2,
+         delete_organization_enrollment_configuration/3,
          disassociate_accounts/2,
          disassociate_accounts/3,
          get_automation_event/2,
@@ -44,12 +46,18 @@
          list_automation_rule_preview_summaries/3,
          list_automation_rules/2,
          list_automation_rules/3,
+         list_organization_enrollment_configurations/2,
+         list_organization_enrollment_configurations/3,
+         list_organizational_units/2,
+         list_organizational_units/3,
          list_recommended_action_summaries/2,
          list_recommended_action_summaries/3,
          list_recommended_actions/2,
          list_recommended_actions/3,
          list_tags_for_resource/2,
          list_tags_for_resource/3,
+         put_organization_enrollment_configuration/2,
+         put_organization_enrollment_configuration/3,
          rollback_automation_event/2,
          rollback_automation_event/3,
          start_automation_event/2,
@@ -80,6 +88,7 @@
 %%   <<"accountId">> => string(),
 %%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
 %%   <<"organizationRuleMode">> => list(any()),
+%%   <<"organizationRuleModeSource">> => organization_rule_mode_source(),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()]
 %% }
@@ -168,6 +177,12 @@
 -type automation_rule() :: #{binary() => any()}.
 
 %% Example:
+%% conflict_exception() :: #{
+%%   <<"message">> => [string()]
+%% }
+-type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
 %% create_automation_rule_request() :: #{
 %%   <<"clientToken">> => string(),
 %%   <<"criteria">> => criteria(),
@@ -228,6 +243,20 @@
 
 %% }
 -type delete_automation_rule_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_organization_enrollment_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"configurationTypes">> := list(list(any())()),
+%%   <<"target">> := list()
+%% }
+-type delete_organization_enrollment_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_organization_enrollment_configuration_response() :: #{
+
+%% }
+-type delete_organization_enrollment_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% disassociate_accounts_request() :: #{
@@ -349,6 +378,7 @@
 %% Example:
 %% get_enrollment_configuration_response() :: #{
 %%   <<"lastUpdatedTimestamp">> => [non_neg_integer()],
+%%   <<"organizationEnrollmentConfigurationStatus">> => list(any()),
 %%   <<"organizationRuleMode">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"statusReason">> => [string()]
@@ -421,6 +451,7 @@
 %%   <<"filters">> => list(automation_event_filter()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
+%%   <<"organizationalUnitIds">> => list(string()),
 %%   <<"startDateInclusive">> => [string()]
 %% }
 -type list_automation_event_summaries_request() :: #{binary() => any()}.
@@ -438,6 +469,7 @@
 %%   <<"filters">> => list(automation_event_filter()),
 %%   <<"maxResults">> => [integer()],
 %%   <<"nextToken">> => string(),
+%%   <<"organizationalUnitIds">> => list(string()),
 %%   <<"startTimeInclusive">> => [non_neg_integer()]
 %% }
 -type list_automation_events_request() :: #{binary() => any()}.
@@ -501,10 +533,41 @@
 -type list_automation_rules_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_organization_enrollment_configurations_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"targetType">> => list(any())
+%% }
+-type list_organization_enrollment_configurations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_organization_enrollment_configurations_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"organizationEnrollmentConfigurations">> => list(organization_enrollment_configuration())
+%% }
+-type list_organization_enrollment_configurations_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_organizational_units_request() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"organizationalUnitIds">> => list(string())
+%% }
+-type list_organizational_units_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_organizational_units_response() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"organizationalUnits">> => list(organizational_unit_info())
+%% }
+-type list_organizational_units_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_recommended_action_summaries_request() :: #{
 %%   <<"filters">> => list(recommended_action_filter()),
 %%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%%   <<"nextToken">> => string(),
+%%   <<"organizationalUnitIds">> => list(string())
 %% }
 -type list_recommended_action_summaries_request() :: #{binary() => any()}.
 
@@ -519,7 +582,8 @@
 %% list_recommended_actions_request() :: #{
 %%   <<"filters">> => list(recommended_action_filter()),
 %%   <<"maxResults">> => [integer()],
-%%   <<"nextToken">> => string()
+%%   <<"nextToken">> => string(),
+%%   <<"organizationalUnitIds">> => list(string())
 %% }
 -type list_recommended_actions_request() :: #{binary() => any()}.
 
@@ -557,15 +621,45 @@
 %% Example:
 %% organization_configuration() :: #{
 %%   <<"accountIds">> => list(string()),
+%%   <<"excludedAccountIds">> => list(string()),
+%%   <<"excludedOrganizationalUnitIds">> => list(string()),
+%%   <<"organizationalUnitIds">> => list(string()),
 %%   <<"ruleApplyOrder">> => list(any())
 %% }
 -type organization_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% organization_enrollment_configuration() :: #{
+%%   <<"organizationRuleMode">> => list(any()),
+%%   <<"targetId">> => [string()],
+%%   <<"targetType">> => list(any())
+%% }
+-type organization_enrollment_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% organization_rule_mode_source() :: #{
+%%   <<"sourceTargetId">> => [string()],
+%%   <<"sourceType">> => list(any())
+%% }
+-type organization_rule_mode_source() :: #{binary() => any()}.
+
+%% Example:
 %% organization_scope() :: #{
-%%   <<"accountIds">> => list(string())
+%%   <<"accountIds">> => list(string()),
+%%   <<"excludedAccountIds">> => list(string()),
+%%   <<"excludedOrganizationalUnitIds">> => list(string()),
+%%   <<"organizationalUnitIds">> => list(string())
 %% }
 -type organization_scope() :: #{binary() => any()}.
+
+%% Example:
+%% organizational_unit_info() :: #{
+%%   <<"autoEnrollMemberAccounts">> => list(any()),
+%%   <<"organizationRuleMode">> => list(any()),
+%%   <<"organizationRuleModeSource">> => organization_rule_mode_source(),
+%%   <<"organizationalUnitId">> => string()
+%% }
+-type organizational_unit_info() :: #{binary() => any()}.
 
 %% Example:
 %% preview_result() :: #{
@@ -593,6 +687,20 @@
 %%   <<"total">> => rule_preview_total()
 %% }
 -type preview_result_summary() :: #{binary() => any()}.
+
+%% Example:
+%% put_organization_enrollment_configuration_request() :: #{
+%%   <<"clientToken">> => string(),
+%%   <<"organizationRuleMode">> => list(any()),
+%%   <<"target">> := list()
+%% }
+-type put_organization_enrollment_configuration_request() :: #{binary() => any()}.
+
+%% Example:
+%% put_organization_enrollment_configuration_response() :: #{
+
+%% }
+-type put_organization_enrollment_configuration_response() :: #{binary() => any()}.
 
 %% Example:
 %% recommended_action() :: #{
@@ -863,6 +971,18 @@
     forbidden_exception() | 
     access_denied_exception().
 
+-type delete_organization_enrollment_configuration_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type disassociate_accounts_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
@@ -970,6 +1090,24 @@
     forbidden_exception() | 
     access_denied_exception().
 
+-type list_organization_enrollment_configurations_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
+
+-type list_organizational_units_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    forbidden_exception() | 
+    access_denied_exception().
+
 -type list_recommended_action_summaries_errors() ::
     throttling_exception() | 
     service_unavailable_exception() | 
@@ -996,6 +1134,18 @@
     invalid_parameter_value_exception() | 
     internal_server_exception() | 
     forbidden_exception() | 
+    access_denied_exception().
+
+-type put_organization_enrollment_configuration_errors() ::
+    throttling_exception() | 
+    service_unavailable_exception() | 
+    opt_in_required_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_server_exception() | 
+    idempotent_parameter_mismatch_exception() | 
+    idempotency_token_in_use_exception() | 
+    forbidden_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type rollback_automation_event_errors() ::
@@ -1088,6 +1238,9 @@
 %% member account has not previously enabled the Automation feature, the
 %% association process automatically enables it.
 %%
+%% Requests that include an account to which an organization enrollment
+%% configuration applies are rejected.
+%%
 %% Only the management account or a delegated administrator can perform this
 %% action.
 -spec associate_accounts(aws_client:aws_client(), associate_accounts_request()) ->
@@ -1141,12 +1294,41 @@ delete_automation_rule(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteAutomationRule">>, Input, Options).
 
+%% @doc Deletes the specified configuration types from an organization
+%% enrollment configuration.
+%%
+%% After deletion, Automation stays enabled for affected accounts and earlier
+%% account associations aren't restored. Affected accounts inherit the
+%% organization rule mode from the closest parent that has an organization
+%% enrollment configuration, or get None allowed if no parent has one.
+%%
+%% Only the management account or a delegated administrator can perform this
+%% action.
+-spec delete_organization_enrollment_configuration(aws_client:aws_client(), delete_organization_enrollment_configuration_request()) ->
+    {ok, delete_organization_enrollment_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_organization_enrollment_configuration_errors(), tuple()}.
+delete_organization_enrollment_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_organization_enrollment_configuration(Client, Input, []).
+
+-spec delete_organization_enrollment_configuration(aws_client:aws_client(), delete_organization_enrollment_configuration_request(), proplists:proplist()) ->
+    {ok, delete_organization_enrollment_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, delete_organization_enrollment_configuration_errors(), tuple()}.
+delete_organization_enrollment_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteOrganizationEnrollmentConfiguration">>, Input, Options).
+
 %% @doc Disassociates member accounts from your organization's management
 %% account, removing centralized automation capabilities.
 %%
 %% Once disassociated, organization rules no longer apply to the member
-%% account, and the management account (or delegated administrator) cannot
-%% create Automation rules for that account.
+%% account, and the management account (or delegated administrator) can't
+%% create automation rules for that account.
+%%
+%% Requests that include an account to which an organization enrollment
+%% configuration applies are rejected.
 %%
 %% Only the management account or a delegated administrator can perform this
 %% action.
@@ -1349,11 +1531,57 @@ list_automation_rules(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAutomationRules">>, Input, Options).
 
+%% @doc Lists the organization enrollment configurations that are stored
+%% directly on accounts, organizational units (OUs), and the organization
+%% root.
+%%
+%% Only the management account or a delegated administrator can perform this
+%% action.
+-spec list_organization_enrollment_configurations(aws_client:aws_client(), list_organization_enrollment_configurations_request()) ->
+    {ok, list_organization_enrollment_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_enrollment_configurations_errors(), tuple()}.
+list_organization_enrollment_configurations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_organization_enrollment_configurations(Client, Input, []).
+
+-spec list_organization_enrollment_configurations(aws_client:aws_client(), list_organization_enrollment_configurations_request(), proplists:proplist()) ->
+    {ok, list_organization_enrollment_configurations_response(), tuple()} |
+    {error, any()} |
+    {error, list_organization_enrollment_configurations_errors(), tuple()}.
+list_organization_enrollment_configurations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOrganizationEnrollmentConfigurations">>, Input, Options).
+
+%% @doc Lists the organization root and organizational units (OUs), including
+%% whether an applicable organization enrollment configuration enables
+%% Automation for member accounts and the effective organization rule mode
+%% for each root or OU.
+%%
+%% Only the management account or a delegated administrator can perform this
+%% action.
+-spec list_organizational_units(aws_client:aws_client(), list_organizational_units_request()) ->
+    {ok, list_organizational_units_response(), tuple()} |
+    {error, any()} |
+    {error, list_organizational_units_errors(), tuple()}.
+list_organizational_units(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_organizational_units(Client, Input, []).
+
+-spec list_organizational_units(aws_client:aws_client(), list_organizational_units_request(), proplists:proplist()) ->
+    {ok, list_organizational_units_response(), tuple()} |
+    {error, any()} |
+    {error, list_organizational_units_errors(), tuple()}.
+list_organizational_units(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListOrganizationalUnits">>, Input, Options).
+
 %% @doc Provides a summary of recommended actions based on specified filters.
 %%
 %% Management accounts and delegated administrators can retrieve recommended
-%% actions that include associated member accounts. You can associate a
-%% member account using `AssociateAccounts'.
+%% action summaries for member accounts that are associated using
+%% `AssociateAccounts' or have an applicable organization enrollment
+%% configuration with `organizationRuleMode' set to `AnyAllowed'.
 -spec list_recommended_action_summaries(aws_client:aws_client(), list_recommended_action_summaries_request()) ->
     {ok, list_recommended_action_summaries_response(), tuple()} |
     {error, any()} |
@@ -1370,11 +1598,12 @@ list_recommended_action_summaries(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListRecommendedActionSummaries">>, Input, Options).
 
-%% @doc Lists the recommended actions based that match specified filters.
+%% @doc Lists the recommended actions that match the specified filters.
 %%
 %% Management accounts and delegated administrators can retrieve recommended
-%% actions that include associated member accounts. You can associate a
-%% member account using `AssociateAccounts'.
+%% actions for member accounts that are associated using
+%% `AssociateAccounts' or have an applicable organization enrollment
+%% configuration with `organizationRuleMode' set to `AnyAllowed'.
 -spec list_recommended_actions(aws_client:aws_client(), list_recommended_actions_request()) ->
     {ok, list_recommended_actions_response(), tuple()} |
     {error, any()} |
@@ -1408,11 +1637,44 @@ list_tags_for_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListTagsForResource">>, Input, Options).
 
+%% @doc Creates or updates an organization enrollment configuration.
+%%
+%% The organization enrollment configuration sets the organization rule mode
+%% on the specified account, organizational unit (OU), or organization root
+%% and enables Automation for affected member accounts that have opted in to
+%% Compute Optimizer, including accounts that join later. Changes on an OU or
+%% the organization root can take up to 5 minutes. Organization enrollment
+%% configurations take precedence over settings made by
+%% `AssociateAccounts' and `DisassociateAccounts'. You must specify
+%% at least one configuration in the request.
+%%
+%% Only the management account or a delegated administrator can perform this
+%% action.
+%%
+%% Organization enrollment configurations can't be created for the
+%% management account.
+-spec put_organization_enrollment_configuration(aws_client:aws_client(), put_organization_enrollment_configuration_request()) ->
+    {ok, put_organization_enrollment_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_organization_enrollment_configuration_errors(), tuple()}.
+put_organization_enrollment_configuration(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    put_organization_enrollment_configuration(Client, Input, []).
+
+-spec put_organization_enrollment_configuration(aws_client:aws_client(), put_organization_enrollment_configuration_request(), proplists:proplist()) ->
+    {ok, put_organization_enrollment_configuration_response(), tuple()} |
+    {error, any()} |
+    {error, put_organization_enrollment_configuration_errors(), tuple()}.
+put_organization_enrollment_configuration(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"PutOrganizationEnrollmentConfiguration">>, Input, Options).
+
 %% @doc Initiates a rollback for a completed automation event.
 %%
-%% Management accounts and delegated administrators can only initiate a
-%% rollback for events belonging to associated member accounts. You can
-%% associate a member account using `AssociateAccounts'.
+%% Management accounts and delegated administrators can initiate a rollback
+%% for events belonging to member accounts that are associated using
+%% `AssociateAccounts' or have an applicable organization enrollment
+%% configuration with `organizationRuleMode' set to `AnyAllowed'.
 -spec rollback_automation_event(aws_client:aws_client(), rollback_automation_event_request()) ->
     {ok, rollback_automation_event_response(), tuple()} |
     {error, any()} |
@@ -1432,9 +1694,10 @@ rollback_automation_event(Client, Input, Options)
 %% @doc Initiates a one-time, on-demand automation for the specified
 %% recommended action.
 %%
-%% Management accounts and delegated administrators can only initiate
-%% recommended actions for associated member accounts. You can associate a
-%% member account using `AssociateAccounts'.
+%% Management accounts and delegated administrators can initiate recommended
+%% actions for member accounts that are associated using
+%% `AssociateAccounts' or have an applicable organization enrollment
+%% configuration with `organizationRuleMode' set to `AnyAllowed'.
 -spec start_automation_event(aws_client:aws_client(), start_automation_event_request()) ->
     {ok, start_automation_event_response(), tuple()} |
     {error, any()} |

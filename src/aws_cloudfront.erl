@@ -1479,6 +1479,7 @@
 %%   <<"HTTPPort">> => integer(),
 %%   <<"HTTPSPort">> => integer(),
 %%   <<"IpAddressType">> => list(any()),
+%%   <<"OriginHttpVersion">> => list(any()),
 %%   <<"OriginKeepaliveTimeout">> => integer(),
 %%   <<"OriginMtlsConfig">> => origin_mtls_config(),
 %%   <<"OriginProtocolPolicy">> => list(any()),
@@ -5807,6 +5808,7 @@
 
 %% Example:
 %% vpc_origin_config() :: #{
+%%   <<"OriginHttpVersion">> => list(any()),
 %%   <<"OriginKeepaliveTimeout">> => integer(),
 %%   <<"OriginReadTimeout">> => integer(),
 %%   <<"OwnerAccountId">> => string(),

@@ -92,12 +92,18 @@
          list_deployments/1,
          list_deployments/3,
          list_deployments/4,
+         list_entity_coverages/2,
+         list_entity_coverages/4,
+         list_entity_coverages/5,
          list_policies/1,
          list_policies/3,
          list_policies/4,
          list_policy_snapshots/2,
          list_policy_snapshots/4,
          list_policy_snapshots/5,
+         list_protected_resource_coverages/2,
+         list_protected_resource_coverages/4,
+         list_protected_resource_coverages/5,
          list_resource_associations/2,
          list_resource_associations/4,
          list_resource_associations/5,
@@ -472,6 +478,7 @@
 %%   <<"scopeConfiguration">> := scope_configuration(),
 %%   <<"scopeDescription">> => string(),
 %%   <<"scopeName">> := string(),
+%%   <<"specializedScopeType">> => list(any()),
 %%   <<"tags">> => map()
 %% }
 -type create_scope_input() :: #{binary() => any()}.
@@ -486,6 +493,7 @@
 %%   <<"scopeDescription">> => string(),
 %%   <<"scopeId">> => string(),
 %%   <<"scopeName">> => string(),
+%%   <<"specializedScopeType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"updateToken">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
@@ -511,6 +519,7 @@
 %%   <<"scopeDescription">> => string(),
 %%   <<"scopeId">> => string(),
 %%   <<"scopeName">> => string(),
+%%   <<"specializedScopeType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"updateToken">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
@@ -754,6 +763,7 @@
 %%   <<"scopeDescription">> => string(),
 %%   <<"scopeId">> => string(),
 %%   <<"scopeName">> => string(),
+%%   <<"specializedScopeType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"updateToken">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
@@ -785,6 +795,14 @@
 
 
 %% Example:
+%% igw_firewall_config() :: #{
+%%   <<"defaultSubnetConnectivity">> => list(any()),
+%%   <<"subnetConnectivityOverrides">> => list(subnet_connectivity_override())
+%% }
+-type igw_firewall_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% internal_server_exception() :: #{
 %%   <<"message">> => [string()]
 %% }
@@ -801,6 +819,15 @@
 %%   <<"unexpectedMergeableConfigurationValues">> => list(configuration_issue())
 %% }
 -type invalid_firewall_reasons() :: #{binary() => any()}.
+
+
+%% Example:
+%% invalid_resource_issue() :: #{
+%%   <<"actualValue">> => [string()],
+%%   <<"expectedValue">> => [string()],
+%%   <<"resourceId">> => [string()]
+%% }
+-type invalid_resource_issue() :: #{binary() => any()}.
 
 
 %% Example:
@@ -870,6 +897,24 @@
 
 
 %% Example:
+%% list_entity_coverages_input() :: #{
+%%   <<"entityArn">> := string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceOwnerAccountId">> => string()
+%% }
+-type list_entity_coverages_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_entity_coverages_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceCoverages">> => list(resource_coverage_summary())
+%% }
+-type list_entity_coverages_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_policies_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
@@ -900,6 +945,24 @@
 %%   <<"snapshots">> => list(policy_summary())
 %% }
 -type list_policy_snapshots_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_resource_coverages_input() :: #{
+%%   <<"entityType">> => list(any()),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string(),
+%%   <<"resourceArn">> := string()
+%% }
+-type list_protected_resource_coverages_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_protected_resource_coverages_output() :: #{
+%%   <<"nextToken">> => string(),
+%%   <<"resourceCoverages">> => list(resource_coverage_summary())
+%% }
+-type list_protected_resource_coverages_output() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1034,7 +1097,8 @@
 %% list_templates_input() :: #{
 %%   <<"maxResults">> => integer(),
 %%   <<"nextToken">> => string(),
-%%   <<"status">> => list(any())
+%%   <<"status">> => list(any()),
+%%   <<"templateOwner">> => list(any())
 %% }
 -type list_templates_input() :: #{binary() => any()}.
 
@@ -1064,6 +1128,7 @@
 
 %% Example:
 %% policy_configuration() :: #{
+%%   <<"igwFirewallConfig">> => igw_firewall_config(),
 %%   <<"remediationEnabled">> => boolean(),
 %%   <<"resourcesCleanUp">> => boolean(),
 %%   <<"wafConfig">> => waf_config()
@@ -1124,6 +1189,21 @@
 %%   <<"resourceType">> => list(any())
 %% }
 -type resource_association() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_coverage_summary() :: #{
+%%   <<"coverageStatus">> => list(any()),
+%%   <<"deploymentArns">> => list(string()),
+%%   <<"entityArn">> => string(),
+%%   <<"entityType">> => list(any()),
+%%   <<"firewallType">> => list(any()),
+%%   <<"resourceArn">> => string(),
+%%   <<"resourceOwnerAccountId">> => string(),
+%%   <<"resourceType">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type resource_coverage_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1210,6 +1290,7 @@
 %%   <<"scopeArn">> => string(),
 %%   <<"scopeId">> => string(),
 %%   <<"scopeName">> => string(),
+%%   <<"specializedScopeType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"version">> => string()
@@ -1234,6 +1315,14 @@
 %%   <<"retryAfterSeconds">> => [integer()]
 %% }
 -type service_unavailable_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% subnet_connectivity_override() :: #{
+%%   <<"connectivityType">> => list(any()),
+%%   <<"scopes">> => list(string())
+%% }
+-type subnet_connectivity_override() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1262,6 +1351,7 @@
 %%   <<"templateArn">> => string(),
 %%   <<"templateId">> => string(),
 %%   <<"templateName">> => string(),
+%%   <<"templateOwner">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer(),
 %%   <<"version">> => string()
 %% }
@@ -1405,6 +1495,7 @@
 %%   <<"scopeDescription">> => string(),
 %%   <<"scopeId">> => string(),
 %%   <<"scopeName">> => string(),
+%%   <<"specializedScopeType">> => list(any()),
 %%   <<"status">> => list(any()),
 %%   <<"updateToken">> => string(),
 %%   <<"updatedAt">> => non_neg_integer(),
@@ -1479,6 +1570,7 @@
 -type create_deployment_snapshot_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    tag_policy_violation_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -1498,6 +1590,7 @@
 -type create_policy_snapshot_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    tag_policy_violation_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -1517,6 +1610,7 @@
 -type create_rule_snapshot_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    tag_policy_violation_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -1536,6 +1630,7 @@
 -type create_scope_snapshot_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    tag_policy_violation_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -1555,6 +1650,7 @@
 -type create_template_snapshot_errors() ::
     validation_exception() | 
     throttling_exception() | 
+    tag_policy_violation_exception() | 
     service_quota_exceeded_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
@@ -1675,6 +1771,12 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_entity_coverages_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_policies_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -1685,6 +1787,12 @@
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_protected_resource_coverages_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
     internal_server_exception() | 
     access_denied_exception().
 
@@ -2838,6 +2946,55 @@ list_deployments(Client, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the protected resources that the specified Network Security
+%% Manager entity covers.
+%%
+%% You can filter the results to the resources owned by a single account and
+%% page through them. You must call this operation from the administrator
+%% account that owns the Network Security Manager entity.
+-spec list_entity_coverages(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_entity_coverages_output(), tuple()} |
+    {error, any()} |
+    {error, list_entity_coverages_errors(), tuple()}.
+list_entity_coverages(Client, EntityArn)
+  when is_map(Client) ->
+    list_entity_coverages(Client, EntityArn, #{}, #{}).
+
+-spec list_entity_coverages(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_entity_coverages_output(), tuple()} |
+    {error, any()} |
+    {error, list_entity_coverages_errors(), tuple()}.
+list_entity_coverages(Client, EntityArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_entity_coverages(Client, EntityArn, QueryMap, HeadersMap, []).
+
+-spec list_entity_coverages(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_entity_coverages_output(), tuple()} |
+    {error, any()} |
+    {error, list_entity_coverages_errors(), tuple()}.
+list_entity_coverages(Client, EntityArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resource-coverage/entities"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"entityArn">>, EntityArn},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceOwnerAccountId">>, maps:get(<<"resourceOwnerAccountId">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the policies in the account.
 %%
 %% You can filter the results by status and page through them using
@@ -2921,6 +3078,54 @@ list_policy_snapshots(Client, PolicyIdentifier, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the AWS Network Security Manager entities that cover the
+%% specified protected resource.
+%%
+%% You can filter the results by entity type and page through them. You must
+%% own the resource.
+-spec list_protected_resource_coverages(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_protected_resource_coverages_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_resource_coverages_errors(), tuple()}.
+list_protected_resource_coverages(Client, ResourceArn)
+  when is_map(Client) ->
+    list_protected_resource_coverages(Client, ResourceArn, #{}, #{}).
+
+-spec list_protected_resource_coverages(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_protected_resource_coverages_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_resource_coverages_errors(), tuple()}.
+list_protected_resource_coverages(Client, ResourceArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_protected_resource_coverages(Client, ResourceArn, QueryMap, HeadersMap, []).
+
+-spec list_protected_resource_coverages(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_protected_resource_coverages_output(), tuple()} |
+    {error, any()} |
+    {error, list_protected_resource_coverages_errors(), tuple()}.
+list_protected_resource_coverages(Client, ResourceArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/resource-coverage/protected-resources"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"entityType">>, maps:get(<<"entityType">>, QueryMap, undefined)},
+        {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
+        {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
+        {<<"resourceArn">>, ResourceArn}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -3312,7 +3517,8 @@ list_templates(Client, QueryMap, HeadersMap, Options0)
       [
         {<<"maxResults">>, maps:get(<<"maxResults">>, QueryMap, undefined)},
         {<<"nextToken">>, maps:get(<<"nextToken">>, QueryMap, undefined)},
-        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)}
+        {<<"status">>, maps:get(<<"status">>, QueryMap, undefined)},
+        {<<"templateOwner">>, maps:get(<<"templateOwner">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 

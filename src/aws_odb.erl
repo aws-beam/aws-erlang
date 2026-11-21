@@ -127,6 +127,8 @@
          list_autonomous_database_clones/3,
          list_autonomous_database_peers/2,
          list_autonomous_database_peers/3,
+         list_autonomous_database_refreshable_clones/2,
+         list_autonomous_database_refreshable_clones/3,
          list_autonomous_database_versions/2,
          list_autonomous_database_versions/3,
          list_autonomous_databases/2,
@@ -173,6 +175,8 @@
          shrink_autonomous_database/3,
          start_autonomous_database/2,
          start_autonomous_database/3,
+         start_autonomous_database_refresh/2,
+         start_autonomous_database_refresh/3,
          start_db_node/2,
          start_db_node/3,
          stop_autonomous_database/2,
@@ -479,6 +483,15 @@
 %%   <<"region">> => [string()]
 %% }
 -type autonomous_database_peer_summary() :: #{binary() => any()}.
+
+%% Example:
+%% autonomous_database_refreshable_clone_summary() :: #{
+%%   <<"autonomousDatabaseArn">> => string(),
+%%   <<"autonomousDatabaseId">> => string(),
+%%   <<"ocid">> => [string()],
+%%   <<"region">> => [string()]
+%% }
+-type autonomous_database_refreshable_clone_summary() :: #{binary() => any()}.
 
 %% Example:
 %% autonomous_database_summary() :: #{
@@ -2237,6 +2250,20 @@
 -type list_autonomous_database_peers_output() :: #{binary() => any()}.
 
 %% Example:
+%% list_autonomous_database_refreshable_clones_input() :: #{
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_database_refreshable_clones_input() :: #{binary() => any()}.
+
+%% Example:
+%% list_autonomous_database_refreshable_clones_output() :: #{
+%%   <<"autonomousDatabaseRefreshableClones">> => list(autonomous_database_refreshable_clone_summary()),
+%%   <<"nextToken">> => [string()]
+%% }
+-type list_autonomous_database_refreshable_clones_output() :: #{binary() => any()}.
+
+%% Example:
 %% list_autonomous_database_versions_input() :: #{
 %%   <<"dbWorkload">> => list(any()),
 %%   <<"maxResults">> => [integer()],
@@ -2834,6 +2861,23 @@
 %%   <<"statusReason">> => [string()]
 %% }
 -type start_autonomous_database_output() :: #{binary() => any()}.
+
+%% Example:
+%% start_autonomous_database_refresh_input() :: #{
+%%   <<"autonomousDatabaseId">> := string(),
+%%   <<"timeOfRefreshCutoff">> => [non_neg_integer()]
+%% }
+-type start_autonomous_database_refresh_input() :: #{binary() => any()}.
+
+%% Example:
+%% start_autonomous_database_refresh_output() :: #{
+%%   <<"autonomousDatabaseId">> => [string()],
+%%   <<"displayName">> => [string()],
+%%   <<"refreshableStatus">> => list(any()),
+%%   <<"status">> => list(any()),
+%%   <<"statusReason">> => [string()]
+%% }
+-type start_autonomous_database_refresh_output() :: #{binary() => any()}.
 
 %% Example:
 %% start_db_node_input() :: #{
@@ -3589,6 +3633,13 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type list_autonomous_database_refreshable_clones_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type list_autonomous_database_versions_errors() ::
     validation_exception() | 
     throttling_exception() | 
@@ -3735,6 +3786,14 @@
     access_denied_exception().
 
 -type start_autonomous_database_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type start_autonomous_database_refresh_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -4675,6 +4734,23 @@ list_autonomous_database_peers(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListAutonomousDatabasePeers">>, Input, Options).
 
+%% @doc Lists the refreshable clones of the specified Autonomous Database.
+-spec list_autonomous_database_refreshable_clones(aws_client:aws_client(), list_autonomous_database_refreshable_clones_input()) ->
+    {ok, list_autonomous_database_refreshable_clones_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_refreshable_clones_errors(), tuple()}.
+list_autonomous_database_refreshable_clones(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_autonomous_database_refreshable_clones(Client, Input, []).
+
+-spec list_autonomous_database_refreshable_clones(aws_client:aws_client(), list_autonomous_database_refreshable_clones_input(), proplists:proplist()) ->
+    {ok, list_autonomous_database_refreshable_clones_output(), tuple()} |
+    {error, any()} |
+    {error, list_autonomous_database_refreshable_clones_errors(), tuple()}.
+list_autonomous_database_refreshable_clones(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListAutonomousDatabaseRefreshableClones">>, Input, Options).
+
 %% @doc Lists the available Oracle Database software versions for Autonomous
 %% Databases.
 -spec list_autonomous_database_versions(aws_client:aws_client(), list_autonomous_database_versions_input()) ->
@@ -5081,6 +5157,27 @@ start_autonomous_database(Client, Input)
 start_autonomous_database(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"StartAutonomousDatabase">>, Input, Options).
+
+%% @doc Starts a refresh of the specified refreshable clone Autonomous
+%% Database with data from its source database.
+%%
+%% The refresh runs asynchronously. To track its progress, check the
+%% `refreshableStatus' of the Autonomous Database.
+-spec start_autonomous_database_refresh(aws_client:aws_client(), start_autonomous_database_refresh_input()) ->
+    {ok, start_autonomous_database_refresh_output(), tuple()} |
+    {error, any()} |
+    {error, start_autonomous_database_refresh_errors(), tuple()}.
+start_autonomous_database_refresh(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    start_autonomous_database_refresh(Client, Input, []).
+
+-spec start_autonomous_database_refresh(aws_client:aws_client(), start_autonomous_database_refresh_input(), proplists:proplist()) ->
+    {ok, start_autonomous_database_refresh_output(), tuple()} |
+    {error, any()} |
+    {error, start_autonomous_database_refresh_errors(), tuple()}.
+start_autonomous_database_refresh(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"StartAutonomousDatabaseRefresh">>, Input, Options).
 
 %% @doc Starts the specified DB node in a VM cluster.
 -spec start_db_node(aws_client:aws_client(), start_db_node_input()) ->

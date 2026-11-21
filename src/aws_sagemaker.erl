@@ -14,6 +14,8 @@
 
 -export([add_association/2,
          add_association/3,
+         add_inference_gateway/2,
+         add_inference_gateway/3,
          add_tags/2,
          add_tags/3,
          associate_trial_component/2,
@@ -88,6 +90,8 @@
          create_feature_group/3,
          create_flow_definition/2,
          create_flow_definition/3,
+         create_global_inference_gateway/2,
+         create_global_inference_gateway/3,
          create_hub/2,
          create_hub/3,
          create_hub_content_presigned_urls/2,
@@ -236,6 +240,8 @@
          delete_feature_group/3,
          delete_flow_definition/2,
          delete_flow_definition/3,
+         delete_global_inference_gateway/2,
+         delete_global_inference_gateway/3,
          delete_hub/2,
          delete_hub/3,
          delete_hub_content/2,
@@ -336,6 +342,8 @@
          describe_auto_ml_job/3,
          describe_auto_ml_job_v2/2,
          describe_auto_ml_job_v2/3,
+         describe_capacity_reservation/2,
+         describe_capacity_reservation/3,
          describe_cluster/2,
          describe_cluster/3,
          describe_cluster_event/2,
@@ -380,6 +388,8 @@
          describe_feature_metadata/3,
          describe_flow_definition/2,
          describe_flow_definition/3,
+         describe_global_inference_gateway/2,
+         describe_global_inference_gateway/3,
          describe_hub/2,
          describe_hub/3,
          describe_hub_content/2,
@@ -450,6 +460,8 @@
          describe_project/3,
          describe_reserved_capacity/2,
          describe_reserved_capacity/3,
+         describe_resource_associations/2,
+         describe_resource_associations/3,
          describe_space/2,
          describe_space/3,
          describe_studio_lifecycle_config/2,
@@ -486,6 +498,8 @@
          enable_sagemaker_servicecatalog_portfolio/3,
          extend_training_plan/2,
          extend_training_plan/3,
+         get_capacity_reservation_usage/2,
+         get_capacity_reservation_usage/3,
          get_device_fleet_report/2,
          get_device_fleet_report/3,
          get_endpoint_policy/2,
@@ -526,6 +540,8 @@
          list_auto_ml_jobs/3,
          list_candidates_for_auto_ml_job/2,
          list_candidates_for_auto_ml_job/3,
+         list_capacity_reservations/2,
+         list_capacity_reservations/3,
          list_cluster_events/2,
          list_cluster_events/3,
          list_cluster_extension_versions/2,
@@ -570,6 +586,8 @@
          list_feature_groups/3,
          list_flow_definitions/2,
          list_flow_definitions/3,
+         list_global_inference_gateways/2,
+         list_global_inference_gateways/3,
          list_hub_content_versions/2,
          list_hub_content_versions/3,
          list_hub_contents/2,
@@ -588,6 +606,8 @@
          list_inference_components/3,
          list_inference_experiments/2,
          list_inference_experiments/3,
+         list_inference_gateways/2,
+         list_inference_gateways/3,
          list_inference_recommendations_job_steps/2,
          list_inference_recommendations_job_steps/3,
          list_inference_recommendations_jobs/2,
@@ -692,6 +712,8 @@
          list_workforces/3,
          list_workteams/2,
          list_workteams/3,
+         move_cluster_nodes/2,
+         move_cluster_nodes/3,
          put_endpoint_policy/2,
          put_endpoint_policy/3,
          put_model_package_group_policy/2,
@@ -700,6 +722,8 @@
          query_lineage/3,
          register_devices/2,
          register_devices/3,
+         remove_inference_gateway/2,
+         remove_inference_gateway/3,
          render_ui_template/2,
          render_ui_template/3,
          retry_pipeline_execution/2,
@@ -804,6 +828,8 @@
          update_feature_group/3,
          update_feature_metadata/2,
          update_feature_metadata/3,
+         update_global_inference_gateway/2,
+         update_global_inference_gateway/3,
          update_hub/2,
          update_hub/3,
          update_hub_content/2,
@@ -1167,6 +1193,25 @@
 %%   <<"InstanceTypes">> => list(list(any())())
 %% }
 -type add_cluster_node_specification() :: #{binary() => any()}.
+
+%% Example:
+%% add_inference_gateway_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Namespace">> := string()
+%% }
+-type add_inference_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% add_inference_gateway_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Gateway">> => global_inference_gateway_member(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type add_inference_gateway_response() :: #{binary() => any()}.
 
 %% Example:
 %% add_tags_input() :: #{
@@ -1996,6 +2041,80 @@
 %%   <<"Type">> => list(any())
 %% }
 -type capacity_reservation() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_detail() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InstanceType">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"SMCapacityReservationArn">> => string(),
+%%   <<"SMCapacityReservationId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalInstanceCount">> => integer()
+%% }
+-type capacity_reservation_detail() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_endpoints_association() :: #{
+%%   <<"AssociatedTime">> => non_neg_integer(),
+%%   <<"EndpointSharing">> => list(any()),
+%%   <<"FailureReason">> => string(),
+%%   <<"MatchCriteria">> => list(any()),
+%%   <<"MlReservationArn">> => string(),
+%%   <<"MlReservationId">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type capacity_reservation_endpoints_association() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type capacity_reservation_filter() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_hyper_pod_clusters_association() :: #{
+%%   <<"AssociatedTime">> => non_neg_integer(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type capacity_reservation_hyper_pod_clusters_association() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_instance_usage() :: #{
+%%   <<"AccountId">> => string(),
+%%   <<"InUseInstanceCount">> => integer(),
+%%   <<"ResourcesUsage">> => list(capacity_reservation_resource_usage())
+%% }
+-type capacity_reservation_instance_usage() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_resource_usage() :: #{
+%%   <<"InUseInstanceCount">> => integer(),
+%%   <<"ResourceType">> => list(any())
+%% }
+-type capacity_reservation_resource_usage() :: #{binary() => any()}.
+
+%% Example:
+%% capacity_reservation_summary() :: #{
+%%   <<"AvailabilityZone">> => string(),
+%%   <<"AvailabilityZoneId">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"InstanceType">> => string(),
+%%   <<"Owner">> => string(),
+%%   <<"SMCapacityReservationArn">> => string(),
+%%   <<"SMCapacityReservationId">> => string(),
+%%   <<"StartTime">> => non_neg_integer(),
+%%   <<"Status">> => list(any()),
+%%   <<"TotalInstanceCount">> => integer()
+%% }
+-type capacity_reservation_summary() :: #{binary() => any()}.
 
 %% Example:
 %% capacity_size() :: #{
@@ -3402,6 +3521,29 @@
 -type create_flow_definition_response() :: #{binary() => any()}.
 
 %% Example:
+%% create_global_inference_gateway_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"ExecutionRoleArn">> := string(),
+%%   <<"Gateways">> := list(global_inference_gateway_member()),
+%%   <<"Name">> := string(),
+%%   <<"Routing">> => global_inference_gateway_routing(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_global_inference_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_global_inference_gateway_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"Gateways">> => list(global_inference_gateway_member()),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Routing">> => global_inference_gateway_routing(),
+%%   <<"Status">> => list(any())
+%% }
+-type create_global_inference_gateway_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_hub_content_presigned_urls_request() :: #{
 %%   <<"AccessConfig">> => presigned_url_access_config(),
 %%   <<"HubContentName">> := string(),
@@ -4731,6 +4873,20 @@
 -type delete_flow_definition_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_global_inference_gateway_request() :: #{
+%%   <<"Identifier">> := string()
+%% }
+-type delete_global_inference_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_global_inference_gateway_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type delete_global_inference_gateway_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_hub_content_reference_request() :: #{
 %%   <<"HubContentName">> := string(),
 %%   <<"HubContentType">> := list(any()),
@@ -5381,6 +5537,18 @@
 -type describe_auto_ml_job_v2_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_capacity_reservation_request() :: #{
+%%   <<"SMCapacityReservationArn">> := string()
+%% }
+-type describe_capacity_reservation_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_capacity_reservation_response() :: #{
+%%   <<"CapacityReservation">> => capacity_reservation_detail()
+%% }
+-type describe_capacity_reservation_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_cluster_event_request() :: #{
 %%   <<"ClusterName">> := string(),
 %%   <<"EventId">> := string()
@@ -5879,6 +6047,27 @@
 %%   <<"RoleArn">> => string()
 %% }
 -type describe_flow_definition_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_global_inference_gateway_request() :: #{
+%%   <<"Identifier">> := string()
+%% }
+-type describe_global_inference_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_global_inference_gateway_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"EndpointUrl">> => string(),
+%%   <<"ExecutionRoleArn">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Routing">> => global_inference_gateway_routing(),
+%%   <<"Status">> => list(any()),
+%%   <<"VpcEndpointServiceName">> => string()
+%% }
+-type describe_global_inference_gateway_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_hub_content_request() :: #{
@@ -6748,6 +6937,23 @@
 %%   <<"UltraServerSummary">> => ultra_server_summary()
 %% }
 -type describe_reserved_capacity_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SMCapacityReservationArn">> := string()
+%% }
+-type describe_resource_associations_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_resource_associations_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceAssociations">> => list(list()),
+%%   <<"SMCapacityReservationArn">> => string(),
+%%   <<"SMCapacityReservationId">> => string()
+%% }
+-type describe_resource_associations_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_space_request() :: #{
@@ -7893,6 +8099,25 @@
 -type generative_ai_settings() :: #{binary() => any()}.
 
 %% Example:
+%% get_capacity_reservation_usage_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SMCapacityReservationArn">> := string()
+%% }
+-type get_capacity_reservation_usage_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_capacity_reservation_usage_response() :: #{
+%%   <<"AvailableInstanceCount">> => integer(),
+%%   <<"InstanceUsageSet">> => list(capacity_reservation_instance_usage()),
+%%   <<"LastRefreshTime">> => non_neg_integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SMCapacityReservationId">> => string(),
+%%   <<"TotalInstanceCount">> => integer()
+%% }
+-type get_capacity_reservation_usage_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_device_fleet_report_request() :: #{
 %%   <<"DeviceFleetName">> := string()
 %% }
@@ -8010,6 +8235,63 @@
 %%   <<"SecretArn">> => string()
 %% }
 -type git_config_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% global_inference_gateway_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type global_inference_gateway_filter() :: #{binary() => any()}.
+
+%% Example:
+%% global_inference_gateway_member() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Namespace">> => string()
+%% }
+-type global_inference_gateway_member() :: #{binary() => any()}.
+
+%% Example:
+%% global_inference_gateway_member_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Value">> => string()
+%% }
+-type global_inference_gateway_member_filter() :: #{binary() => any()}.
+
+%% Example:
+%% global_inference_gateway_member_summary() :: #{
+%%   <<"ClusterArn">> => string(),
+%%   <<"FailureReason">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Namespace">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type global_inference_gateway_member_summary() :: #{binary() => any()}.
+
+%% Example:
+%% global_inference_gateway_routing() :: #{
+%%   <<"Weights">> => global_inference_gateway_routing_weights()
+%% }
+-type global_inference_gateway_routing() :: #{binary() => any()}.
+
+%% Example:
+%% global_inference_gateway_routing_weights() :: #{
+%%   <<"ErrorRate">> => float(),
+%%   <<"KVHeadroom">> => float(),
+%%   <<"QueueDepth">> => float(),
+%%   <<"RegionProximity">> => float()
+%% }
+-type global_inference_gateway_routing_weights() :: #{binary() => any()}.
+
+%% Example:
+%% global_inference_gateway_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreationTime">> => non_neg_integer(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type global_inference_gateway_summary() :: #{binary() => any()}.
 
 %% Example:
 %% hidden_sage_maker_image() :: #{
@@ -9326,6 +9608,21 @@
 -type list_candidates_for_auto_ml_job_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_capacity_reservations_request() :: #{
+%%   <<"Filters">> => list(capacity_reservation_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_capacity_reservations_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_capacity_reservations_response() :: #{
+%%   <<"CapacityReservationSummaries">> => list(capacity_reservation_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_capacity_reservations_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_cluster_events_request() :: #{
 %%   <<"ClusterName">> := string(),
 %%   <<"EventTimeAfter">> => non_neg_integer(),
@@ -9762,6 +10059,21 @@
 -type list_flow_definitions_response() :: #{binary() => any()}.
 
 %% Example:
+%% list_global_inference_gateways_request() :: #{
+%%   <<"Filters">> => list(global_inference_gateway_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_global_inference_gateways_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_global_inference_gateways_response() :: #{
+%%   <<"GlobalInferenceGatewaySummaries">> => list(global_inference_gateway_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_global_inference_gateways_response() :: #{binary() => any()}.
+
+%% Example:
 %% list_hub_content_versions_request() :: #{
 %%   <<"CreationTimeAfter">> => non_neg_integer(),
 %%   <<"CreationTimeBefore">> => non_neg_integer(),
@@ -9954,6 +10266,22 @@
 %%   <<"NextToken">> => string()
 %% }
 -type list_inference_experiments_response() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_gateways_request() :: #{
+%%   <<"Filters">> => list(global_inference_gateway_member_filter()),
+%%   <<"Identifier">> := string(),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_gateways_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_inference_gateways_response() :: #{
+%%   <<"InferenceGatewaySummaries">> => list(global_inference_gateway_member_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_inference_gateways_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_inference_recommendations_job_steps_request() :: #{
@@ -11858,6 +12186,44 @@
 -type monitoring_stopping_condition() :: #{binary() => any()}.
 
 %% Example:
+%% move_cluster_node_logical_ids_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeLogicalId">> => string()
+%% }
+-type move_cluster_node_logical_ids_error() :: #{binary() => any()}.
+
+%% Example:
+%% move_cluster_nodes_error() :: #{
+%%   <<"Code">> => list(any()),
+%%   <<"Message">> => string(),
+%%   <<"NodeId">> => string()
+%% }
+-type move_cluster_nodes_error() :: #{binary() => any()}.
+
+%% Example:
+%% move_cluster_nodes_request() :: #{
+%%   <<"ClientToken">> => string(),
+%%   <<"InstanceCount">> => integer(),
+%%   <<"NodeIds">> => list(string()),
+%%   <<"NodeLogicalIds">> => list(string()),
+%%   <<"SourceClusterArn">> := string(),
+%%   <<"SourceInstanceGroupName">> := string(),
+%%   <<"TargetClusterArn">> := string(),
+%%   <<"TargetInstanceGroupName">> := string()
+%% }
+-type move_cluster_nodes_request() :: #{binary() => any()}.
+
+%% Example:
+%% move_cluster_nodes_response() :: #{
+%%   <<"Failed">> => list(move_cluster_nodes_error()),
+%%   <<"FailedNodeLogicalIds">> => list(move_cluster_node_logical_ids_error()),
+%%   <<"Successful">> => list(string()),
+%%   <<"SuccessfulNodeLogicalIds">> => list(string())
+%% }
+-type move_cluster_nodes_response() :: #{binary() => any()}.
+
+%% Example:
 %% multi_model_config() :: #{
 %%   <<"ModelCacheSetting">> => list(any())
 %% }
@@ -12999,6 +13365,25 @@
 %%   <<"EnableRemoteDebug">> => boolean()
 %% }
 -type remote_debug_config_for_update() :: #{binary() => any()}.
+
+%% Example:
+%% remove_inference_gateway_request() :: #{
+%%   <<"ClusterArn">> := string(),
+%%   <<"Identifier">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Namespace">> := string()
+%% }
+-type remove_inference_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% remove_inference_gateway_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Gateway">> => global_inference_gateway_member(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type remove_inference_gateway_response() :: #{binary() => any()}.
 
 %% Example:
 %% render_ui_template_request() :: #{
@@ -14987,6 +15372,23 @@
 -type update_feature_metadata_request() :: #{binary() => any()}.
 
 %% Example:
+%% update_global_inference_gateway_request() :: #{
+%%   <<"Identifier">> := string(),
+%%   <<"Routing">> := global_inference_gateway_routing()
+%% }
+-type update_global_inference_gateway_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_global_inference_gateway_response() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"Id">> => string(),
+%%   <<"Name">> => string(),
+%%   <<"Routing">> => global_inference_gateway_routing(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_global_inference_gateway_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_hub_content_reference_request() :: #{
 %%   <<"HubContentName">> := string(),
 %%   <<"HubContentType">> := list(any()),
@@ -15638,6 +16040,12 @@
     resource_not_found() | 
     resource_limit_exceeded().
 
+-type add_inference_gateway_errors() ::
+    resource_not_found() | 
+    resource_limit_exceeded() | 
+    resource_in_use() | 
+    conflict_exception().
+
 -type associate_trial_component_errors() ::
     resource_not_found() | 
     resource_limit_exceeded().
@@ -15756,6 +16164,10 @@
     resource_in_use().
 
 -type create_flow_definition_errors() ::
+    resource_limit_exceeded() | 
+    resource_in_use().
+
+-type create_global_inference_gateway_errors() ::
     resource_limit_exceeded() | 
     resource_in_use().
 
@@ -16011,6 +16423,9 @@
     resource_not_found() | 
     resource_in_use().
 
+-type delete_global_inference_gateway_errors() ::
+    conflict_exception().
+
 -type delete_hub_errors() ::
     resource_not_found() | 
     resource_in_use().
@@ -16146,6 +16561,9 @@
 -type describe_auto_ml_job_v2_errors() ::
     resource_not_found().
 
+-type describe_capacity_reservation_errors() ::
+    resource_not_found().
+
 -type describe_cluster_errors() ::
     resource_not_found().
 
@@ -16201,6 +16619,9 @@
     resource_not_found().
 
 -type describe_flow_definition_errors() ::
+    resource_not_found().
+
+-type describe_global_inference_gateway_errors() ::
     resource_not_found().
 
 -type describe_hub_errors() ::
@@ -16287,6 +16708,9 @@
 -type describe_reserved_capacity_errors() ::
     resource_not_found().
 
+-type describe_resource_associations_errors() ::
+    resource_not_found().
+
 -type describe_space_errors() ::
     resource_not_found().
 
@@ -16325,6 +16749,9 @@
     resource_not_found().
 
 -type extend_training_plan_errors() ::
+    resource_not_found().
+
+-type get_capacity_reservation_usage_errors() ::
     resource_not_found().
 
 -type get_endpoint_policy_errors() ::
@@ -16380,6 +16807,9 @@
 -type list_image_versions_errors() ::
     resource_not_found().
 
+-type list_inference_gateways_errors() ::
+    resource_not_found().
+
 -type list_inference_recommendations_job_steps_errors() ::
     resource_not_found().
 
@@ -16425,6 +16855,9 @@
 -type list_ultra_servers_by_reserved_capacity_errors() ::
     resource_not_found().
 
+-type move_cluster_nodes_errors() ::
+    resource_not_found().
+
 -type put_endpoint_policy_errors() ::
     resource_not_found().
 
@@ -16436,6 +16869,10 @@
 
 -type register_devices_errors() ::
     resource_limit_exceeded().
+
+-type remove_inference_gateway_errors() ::
+    resource_not_found() | 
+    conflict_exception().
 
 -type render_ui_template_errors() ::
     resource_not_found().
@@ -16604,6 +17041,10 @@
 -type update_feature_metadata_errors() ::
     resource_not_found().
 
+-type update_global_inference_gateway_errors() ::
+    resource_not_found() | 
+    conflict_exception().
+
 -type update_hub_errors() ::
     resource_not_found().
 
@@ -16742,6 +17183,38 @@ add_association(Client, Input)
 add_association(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AddAssociation">>, Input, Options).
+
+%% @doc Adds an in-cluster inference gateway to a global inference gateway.
+%%
+%% This operation is
+%% asynchronous: the in-cluster inference gateway starts in the `ADDING`
+%% status. To check its status,
+%% call `ListInferenceGateways`. If the in-cluster inference gateway is
+%% already in the global
+%% inference gateway, the operation succeeds and returns its current status.
+%%
+%% An in-cluster inference gateway can belong to only one global inference
+%% gateway. If it already
+%% belongs to another global inference gateway, the operation fails with
+%% `ResourceInUse`. The
+%% operation fails with `ConflictException` while another operation is in
+%% progress on the global
+%% inference gateway, or if the global inference gateway failed to create.
+-spec add_inference_gateway(aws_client:aws_client(), add_inference_gateway_request()) ->
+    {ok, add_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, add_inference_gateway_errors(), tuple()}.
+add_inference_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    add_inference_gateway(Client, Input, []).
+
+-spec add_inference_gateway(aws_client:aws_client(), add_inference_gateway_request(), proplists:proplist()) ->
+    {ok, add_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, add_inference_gateway_errors(), tuple()}.
+add_inference_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"AddInferenceGateway">>, Input, Options).
 
 %% @doc Adds or overwrites one or more tags for the specified SageMaker
 %% resource.
@@ -17912,6 +18385,32 @@ create_flow_definition(Client, Input)
 create_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFlowDefinition">>, Input, Options).
+
+%% @doc Creates a global inference gateway.
+%%
+%% This operation is asynchronous: the global inference gateway
+%% starts in the `CREATING` status. To check its status, call
+%% `DescribeGlobalInferenceGateway` until
+%% the status is `ACTIVE` or `FAILED`. The operation fails with
+%% `ResourceInUse` if the name is already
+%% in use, or if one of the in-cluster inference gateways in `Gateways`
+%% already belongs to another
+%% global inference gateway.
+-spec create_global_inference_gateway(aws_client:aws_client(), create_global_inference_gateway_request()) ->
+    {ok, create_global_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, create_global_inference_gateway_errors(), tuple()}.
+create_global_inference_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_global_inference_gateway(Client, Input, []).
+
+-spec create_global_inference_gateway(aws_client:aws_client(), create_global_inference_gateway_request(), proplists:proplist()) ->
+    {ok, create_global_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, create_global_inference_gateway_errors(), tuple()}.
+create_global_inference_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateGlobalInferenceGateway">>, Input, Options).
 
 %% @doc Create a hub.
 -spec create_hub(aws_client:aws_client(), create_hub_request()) ->
@@ -19855,6 +20354,34 @@ delete_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFlowDefinition">>, Input, Options).
 
+%% @doc Delete a global inference gateway and its member inference gateways,
+%% which are then free to join
+%% another global inference gateway.
+%%
+%% Asynchronous: the global inference gateway is DELETING while its
+%% managed endpoint resources are torn down; poll
+%% DescribeGlobalInferenceGateway until it returns
+%% ResourceNotFound. Does not touch the customer's clusters. Idempotent:
+%% a Delete whose Identifier
+%% matches no global inference gateway succeeds and echoes what the
+%% Identifier says (Arn and Id for an
+%% ARN or Id, Name for a name).
+-spec delete_global_inference_gateway(aws_client:aws_client(), delete_global_inference_gateway_request()) ->
+    {ok, delete_global_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, delete_global_inference_gateway_errors(), tuple()}.
+delete_global_inference_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_global_inference_gateway(Client, Input, []).
+
+-spec delete_global_inference_gateway(aws_client:aws_client(), delete_global_inference_gateway_request(), proplists:proplist()) ->
+    {ok, delete_global_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, delete_global_inference_gateway_errors(), tuple()}.
+delete_global_inference_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteGlobalInferenceGateway">>, Input, Options).
+
 %% @doc Delete a hub.
 -spec delete_hub(aws_client:aws_client(), delete_hub_request()) ->
     {ok, undefined, tuple()} |
@@ -20835,6 +21362,24 @@ describe_auto_ml_job_v2(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeAutoMLJobV2">>, Input, Options).
 
+%% @doc Returns details about a SageMaker Capacity Reservation, such as its
+%% instance type, instance count, Availability Zone, and start and end times.
+-spec describe_capacity_reservation(aws_client:aws_client(), describe_capacity_reservation_request()) ->
+    {ok, describe_capacity_reservation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_capacity_reservation_errors(), tuple()}.
+describe_capacity_reservation(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_capacity_reservation(Client, Input, []).
+
+-spec describe_capacity_reservation(aws_client:aws_client(), describe_capacity_reservation_request(), proplists:proplist()) ->
+    {ok, describe_capacity_reservation_response(), tuple()} |
+    {error, any()} |
+    {error, describe_capacity_reservation_errors(), tuple()}.
+describe_capacity_reservation(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeCapacityReservation">>, Input, Options).
+
 %% @doc Retrieves information of a SageMaker HyperPod cluster.
 -spec describe_cluster(aws_client:aws_client(), describe_cluster_request()) ->
     {ok, describe_cluster_response(), tuple()} |
@@ -21232,6 +21777,28 @@ describe_flow_definition(Client, Input)
 describe_flow_definition(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeFlowDefinition">>, Input, Options).
+
+%% @doc Retrieves information about a global inference gateway, including its
+%% status, endpoints, and routing configuration.
+%%
+%% To list the in-cluster inference gateways of the global inference gateway,
+%% use `ListInferenceGateways'. To read the tags of the global inference
+%% gateway, use `ListTags'.
+-spec describe_global_inference_gateway(aws_client:aws_client(), describe_global_inference_gateway_request()) ->
+    {ok, describe_global_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, describe_global_inference_gateway_errors(), tuple()}.
+describe_global_inference_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_global_inference_gateway(Client, Input, []).
+
+-spec describe_global_inference_gateway(aws_client:aws_client(), describe_global_inference_gateway_request(), proplists:proplist()) ->
+    {ok, describe_global_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, describe_global_inference_gateway_errors(), tuple()}.
+describe_global_inference_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeGlobalInferenceGateway">>, Input, Options).
 
 %% @doc Describes a hub.
 -spec describe_hub(aws_client:aws_client(), describe_hub_request()) ->
@@ -21884,6 +22451,27 @@ describe_reserved_capacity(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeReservedCapacity">>, Input, Options).
 
+%% @doc Returns the resources in your account that are associated with a
+%% SageMaker Capacity Reservation and the status of each association.
+%%
+%% Resources include SageMaker AI HyperPod clusters and SageMaker AI
+%% endpoints.
+-spec describe_resource_associations(aws_client:aws_client(), describe_resource_associations_request()) ->
+    {ok, describe_resource_associations_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resource_associations_errors(), tuple()}.
+describe_resource_associations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_resource_associations(Client, Input, []).
+
+-spec describe_resource_associations(aws_client:aws_client(), describe_resource_associations_request(), proplists:proplist()) ->
+    {ok, describe_resource_associations_response(), tuple()} |
+    {error, any()} |
+    {error, describe_resource_associations_errors(), tuple()}.
+describe_resource_associations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeResourceAssociations">>, Input, Options).
+
 %% @doc Describes the space.
 -spec describe_space(aws_client:aws_client(), describe_space_request()) ->
     {ok, describe_space_response(), tuple()} |
@@ -22255,6 +22843,27 @@ extend_training_plan(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ExtendTrainingPlan">>, Input, Options).
 
+%% @doc Returns the number of instances in use from a SageMaker Capacity
+%% Reservation, for each account that uses them.
+%%
+%% SageMaker AI refreshes the usage counts periodically. The
+%% `LastRefreshTime' value shows when the counts were last refreshed.
+-spec get_capacity_reservation_usage(aws_client:aws_client(), get_capacity_reservation_usage_request()) ->
+    {ok, get_capacity_reservation_usage_response(), tuple()} |
+    {error, any()} |
+    {error, get_capacity_reservation_usage_errors(), tuple()}.
+get_capacity_reservation_usage(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_capacity_reservation_usage(Client, Input, []).
+
+-spec get_capacity_reservation_usage(aws_client:aws_client(), get_capacity_reservation_usage_request(), proplists:proplist()) ->
+    {ok, get_capacity_reservation_usage_response(), tuple()} |
+    {error, any()} |
+    {error, get_capacity_reservation_usage_errors(), tuple()}.
+get_capacity_reservation_usage(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetCapacityReservationUsage">>, Input, Options).
+
 %% @doc Describes a fleet.
 -spec get_device_fleet_report(aws_client:aws_client(), get_device_fleet_report_request()) ->
     {ok, get_device_fleet_report_response(), tuple()} |
@@ -22603,6 +23212,23 @@ list_candidates_for_auto_ml_job(Client, Input)
 list_candidates_for_auto_ml_job(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListCandidatesForAutoMLJob">>, Input, Options).
+
+%% @doc Lists the SageMaker Capacity Reservations in your account.
+%%
+%% An empty list is a valid response.
+-spec list_capacity_reservations(aws_client:aws_client(), list_capacity_reservations_request()) ->
+    {ok, list_capacity_reservations_response(), tuple()} |
+    {error, any()}.
+list_capacity_reservations(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_capacity_reservations(Client, Input, []).
+
+-spec list_capacity_reservations(aws_client:aws_client(), list_capacity_reservations_request(), proplists:proplist()) ->
+    {ok, list_capacity_reservations_response(), tuple()} |
+    {error, any()}.
+list_capacity_reservations(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListCapacityReservations">>, Input, Options).
 
 %% @doc Retrieves a list of event summaries for a specified HyperPod cluster.
 %%
@@ -22971,6 +23597,23 @@ list_flow_definitions(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListFlowDefinitions">>, Input, Options).
 
+%% @doc Lists summaries of the global inference gateways in your account.
+%%
+%% You can filter the results by status.
+-spec list_global_inference_gateways(aws_client:aws_client(), list_global_inference_gateways_request()) ->
+    {ok, list_global_inference_gateways_response(), tuple()} |
+    {error, any()}.
+list_global_inference_gateways(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_global_inference_gateways(Client, Input, []).
+
+-spec list_global_inference_gateways(aws_client:aws_client(), list_global_inference_gateways_request(), proplists:proplist()) ->
+    {ok, list_global_inference_gateways_response(), tuple()} |
+    {error, any()}.
+list_global_inference_gateways(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListGlobalInferenceGateways">>, Input, Options).
+
 %% @doc List hub content versions.
 -spec list_hub_content_versions(aws_client:aws_client(), list_hub_content_versions_request()) ->
     {ok, list_hub_content_versions_response(), tuple()} |
@@ -23120,6 +23763,31 @@ list_inference_experiments(Client, Input)
 list_inference_experiments(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListInferenceExperiments">>, Input, Options).
+
+%% @doc Lists the in-cluster inference gateways in a global inference
+%% gateway, in the order that they were
+%% added.
+%%
+%% Each summary includes the status of the in-cluster inference gateway and,
+%% if the status is
+%% `FAILED`, the reason for the failure. `DescribeGlobalInferenceGateway`
+%% doesn't return the in-cluster
+%% inference gateways; use this operation to list them.
+-spec list_inference_gateways(aws_client:aws_client(), list_inference_gateways_request()) ->
+    {ok, list_inference_gateways_response(), tuple()} |
+    {error, any()} |
+    {error, list_inference_gateways_errors(), tuple()}.
+list_inference_gateways(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_inference_gateways(Client, Input, []).
+
+-spec list_inference_gateways(aws_client:aws_client(), list_inference_gateways_request(), proplists:proplist()) ->
+    {ok, list_inference_gateways_response(), tuple()} |
+    {error, any()} |
+    {error, list_inference_gateways_errors(), tuple()}.
+list_inference_gateways(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListInferenceGateways">>, Input, Options).
 
 %% @doc Returns a list of the subtasks for an Inference Recommender job.
 %%
@@ -24035,6 +24703,53 @@ list_workteams(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"ListWorkteams">>, Input, Options).
 
+%% @doc Moves running nodes from one instance group to another instance
+%% group.
+%%
+%% The target instance group can be in the same HyperPod cluster or in a
+%% different HyperPod cluster in the same account and Region. The underlying
+%% instances aren't terminated.
+%%
+%% Each node keeps its instance ID, its `NodeLogicalId', its network
+%% interfaces and IP addresses, and its capacity. The node then joins the
+%% target instance group with the target's configuration and lifecycle
+%% scripts.
+%%
+%% The move replaces the node's root Amazon Elastic Block Store (Amazon
+%% EBS) volume and secondary EBS volume, which deletes any data stored on
+%% them. Back up any data that you need before you move the node.
+%%
+%% Specify the nodes to move with exactly one of `NodeIds',
+%% `NodeLogicalIds', or `InstanceCount'. The operation is
+%% asynchronous and returns after it accepts the nodes for the move. While a
+%% node moves, its status is `DetachInProgress' and then
+%% `AttachInProgress'. The node appears in the source cluster while it
+%% detaches. After HyperPod hands the node off to the target instance group,
+%% the node appears in the target cluster. To track the node, call
+%% `DescribeClusterNode' or `ListClusterNodes' on the source or
+%% target cluster.
+%%
+%% Both clusters must be `InService', use Amazon EKS orchestration, and
+%% use `Continuous' as the `NodeProvisioningMode'.
+%%
+%% The source and target instance groups must also use compatible
+%% configurations.
+-spec move_cluster_nodes(aws_client:aws_client(), move_cluster_nodes_request()) ->
+    {ok, move_cluster_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, move_cluster_nodes_errors(), tuple()}.
+move_cluster_nodes(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    move_cluster_nodes(Client, Input, []).
+
+-spec move_cluster_nodes(aws_client:aws_client(), move_cluster_nodes_request(), proplists:proplist()) ->
+    {ok, move_cluster_nodes_response(), tuple()} |
+    {error, any()} |
+    {error, move_cluster_nodes_errors(), tuple()}.
+move_cluster_nodes(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"MoveClusterNodes">>, Input, Options).
+
 %% @doc Attaches a resource-based policy to an endpoint.
 %%
 %% With an endpoint policy, you can allow other Amazon Web Services accounts
@@ -24127,6 +24842,39 @@ register_devices(Client, Input)
 register_devices(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"RegisterDevices">>, Input, Options).
+
+%% @doc Removes an in-cluster inference gateway from a global inference
+%% gateway.
+%%
+%% This operation is
+%% asynchronous: the in-cluster inference gateway moves to the `REMOVING`
+%% status, and then no longer
+%% appears in `ListInferenceGateways`. If the in-cluster inference gateway
+%% isn't in the global
+%% inference gateway, the operation succeeds and returns no status. The
+%% operation returns
+%% `ResourceNotFound` only if the global inference gateway doesn't exist.
+%%
+%% The operation fails with `ConflictException` while another operation is in
+%% progress on the global
+%% inference gateway. It fails with `ValidationException` if the in-cluster
+%% inference gateway is the
+%% last one, because a global inference gateway must have at least one.
+-spec remove_inference_gateway(aws_client:aws_client(), remove_inference_gateway_request()) ->
+    {ok, remove_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, remove_inference_gateway_errors(), tuple()}.
+remove_inference_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    remove_inference_gateway(Client, Input, []).
+
+-spec remove_inference_gateway(aws_client:aws_client(), remove_inference_gateway_request(), proplists:proplist()) ->
+    {ok, remove_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, remove_inference_gateway_errors(), tuple()}.
+remove_inference_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"RemoveInferenceGateway">>, Input, Options).
 
 %% @doc Renders the UI template so that you can preview the worker's
 %% experience.
@@ -25231,6 +25979,31 @@ update_feature_metadata(Client, Input)
 update_feature_metadata(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateFeatureMetadata">>, Input, Options).
+
+%% @doc Updates the routing configuration of a global inference gateway.
+%%
+%% To add or remove in-cluster
+%% inference gateways, use `AddInferenceGateway` and
+%% `RemoveInferenceGateway`. This operation is
+%% asynchronous: the global inference gateway moves to the `UPDATING` status.
+%% The operation fails with
+%% `ConflictException` while another operation is in progress on the global
+%% inference gateway.
+-spec update_global_inference_gateway(aws_client:aws_client(), update_global_inference_gateway_request()) ->
+    {ok, update_global_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, update_global_inference_gateway_errors(), tuple()}.
+update_global_inference_gateway(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_global_inference_gateway(Client, Input, []).
+
+-spec update_global_inference_gateway(aws_client:aws_client(), update_global_inference_gateway_request(), proplists:proplist()) ->
+    {ok, update_global_inference_gateway_response(), tuple()} |
+    {error, any()} |
+    {error, update_global_inference_gateway_errors(), tuple()}.
+update_global_inference_gateway(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateGlobalInferenceGateway">>, Input, Options).
 
 %% @doc Update a hub.
 -spec update_hub(aws_client:aws_client(), update_hub_request()) ->

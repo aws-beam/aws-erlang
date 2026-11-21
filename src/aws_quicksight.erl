@@ -1,7 +1,7 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon Quick API Reference
+%% @doc Quick API Reference
 %%
 %% Amazon Quick Sight is a fully managed, serverless business intelligence
 %% service for the
@@ -17,12 +17,20 @@
          batch_create_topic_reviewed_answer/5,
          batch_delete_knowledge_base/3,
          batch_delete_knowledge_base/4,
+         batch_delete_policy_assignment_by_policy/3,
+         batch_delete_policy_assignment_by_policy/4,
          batch_delete_topic_reviewed_answer/4,
          batch_delete_topic_reviewed_answer/5,
          batch_describe_user_limits/3,
          batch_describe_user_limits/4,
+         batch_put_policy_assignment_by_policy/3,
+         batch_put_policy_assignment_by_policy/4,
          cancel_ingestion/5,
          cancel_ingestion/6,
+         create_access_control_application/3,
+         create_access_control_application/4,
+         create_access_control_application_secret/4,
+         create_access_control_application_secret/5,
          create_account_customization/3,
          create_account_customization/4,
          create_account_subscription/3,
@@ -59,10 +67,14 @@
          create_group_membership/7,
          create_iam_policy_assignment/4,
          create_iam_policy_assignment/5,
+         create_inbound_connector/3,
+         create_inbound_connector/4,
          create_ingestion/5,
          create_ingestion/6,
          create_knowledge_base/3,
          create_knowledge_base/4,
+         create_knowledge_base_refresh_schedule/4,
+         create_knowledge_base_refresh_schedule/5,
          create_limits_profile/3,
          create_limits_profile/4,
          create_namespace/3,
@@ -91,6 +103,10 @@
          create_topic_v2/4,
          create_vpc_connection/3,
          create_vpc_connection/4,
+         delete_access_control_application/3,
+         delete_access_control_application/4,
+         delete_access_control_application_secret/5,
+         delete_access_control_application_secret/6,
          delete_account_custom_permission/3,
          delete_account_custom_permission/4,
          delete_account_customization/3,
@@ -139,14 +155,20 @@
          delete_iam_policy_assignment/6,
          delete_identity_propagation_config/4,
          delete_identity_propagation_config/5,
+         delete_inbound_connector/4,
+         delete_inbound_connector/5,
          delete_knowledge_base/4,
          delete_knowledge_base/5,
+         delete_knowledge_base_refresh_schedule/5,
+         delete_knowledge_base_refresh_schedule/6,
          delete_limits_profile/4,
          delete_limits_profile/5,
          delete_namespace/4,
          delete_namespace/5,
          delete_o_auth_client_application/4,
          delete_o_auth_client_application/5,
+         delete_policy_assignment/3,
+         delete_policy_assignment/4,
          delete_refresh_schedule/5,
          delete_refresh_schedule/6,
          delete_role_custom_permission/5,
@@ -177,6 +199,9 @@
          delete_user_custom_permission/6,
          delete_vpc_connection/4,
          delete_vpc_connection/5,
+         describe_access_control_application/3,
+         describe_access_control_application/5,
+         describe_access_control_application/6,
          describe_account_custom_permission/2,
          describe_account_custom_permission/4,
          describe_account_custom_permission/5,
@@ -300,6 +325,9 @@
          describe_iam_policy_assignment/4,
          describe_iam_policy_assignment/6,
          describe_iam_policy_assignment/7,
+         describe_inbound_connector/3,
+         describe_inbound_connector/5,
+         describe_inbound_connector/6,
          describe_ingestion/4,
          describe_ingestion/6,
          describe_ingestion/7,
@@ -315,6 +343,9 @@
          describe_knowledge_base_permissions/3,
          describe_knowledge_base_permissions/5,
          describe_knowledge_base_permissions/6,
+         describe_knowledge_base_refresh_schedule/4,
+         describe_knowledge_base_refresh_schedule/6,
+         describe_knowledge_base_refresh_schedule/7,
          describe_limits_profile/3,
          describe_limits_profile/5,
          describe_limits_profile/6,
@@ -410,9 +441,15 @@
          get_flow_permissions/6,
          get_identity_context/3,
          get_identity_context/4,
+         get_policy_assignment/4,
+         get_policy_assignment/6,
+         get_policy_assignment/7,
          get_session_embed_url/2,
          get_session_embed_url/4,
          get_session_embed_url/5,
+         list_access_control_applications/2,
+         list_access_control_applications/4,
+         list_access_control_applications/5,
          list_action_connectors/2,
          list_action_connectors/4,
          list_action_connectors/5,
@@ -482,9 +519,18 @@
          list_identity_propagation_configs/2,
          list_identity_propagation_configs/4,
          list_identity_propagation_configs/5,
+         list_inbound_connector_application_associations/3,
+         list_inbound_connector_application_associations/5,
+         list_inbound_connector_application_associations/6,
+         list_inbound_connectors/2,
+         list_inbound_connectors/4,
+         list_inbound_connectors/5,
          list_ingestions/3,
          list_ingestions/5,
          list_ingestions/6,
+         list_knowledge_base_refresh_schedules/3,
+         list_knowledge_base_refresh_schedules/5,
+         list_knowledge_base_refresh_schedules/6,
          list_knowledge_bases/2,
          list_knowledge_bases/4,
          list_knowledge_bases/5,
@@ -497,6 +543,9 @@
          list_o_auth_client_applications/2,
          list_o_auth_client_applications/4,
          list_o_auth_client_applications/5,
+         list_principals_for_policy/3,
+         list_principals_for_policy/5,
+         list_principals_for_policy/6,
          list_refresh_schedules/3,
          list_refresh_schedules/5,
          list_refresh_schedules/6,
@@ -560,6 +609,8 @@
          predict_q_a_results/4,
          put_data_set_refresh_properties/4,
          put_data_set_refresh_properties/5,
+         put_policy_assignment/3,
+         put_policy_assignment/4,
          register_user/4,
          register_user/5,
          restore_analysis/4,
@@ -606,6 +657,10 @@
          tag_resource/4,
          untag_resource/3,
          untag_resource/4,
+         update_access_control_application/4,
+         update_access_control_application/5,
+         update_access_control_application_secret/5,
+         update_access_control_application_secret/6,
          update_account_custom_permission/3,
          update_account_custom_permission/4,
          update_account_customization/3,
@@ -674,6 +729,10 @@
          update_iam_policy_assignment/6,
          update_identity_propagation_config/4,
          update_identity_propagation_config/5,
+         update_inbound_connector/4,
+         update_inbound_connector/5,
+         update_inbound_connector_application_associations/4,
+         update_inbound_connector_application_associations/5,
          update_ip_restriction/3,
          update_ip_restriction/4,
          update_key_registration/3,
@@ -682,6 +741,8 @@
          update_knowledge_base/5,
          update_knowledge_base_permissions/4,
          update_knowledge_base_permissions/5,
+         update_knowledge_base_refresh_schedule/5,
+         update_knowledge_base_refresh_schedule/6,
          update_limits_profile/4,
          update_limits_profile/5,
          update_o_auth_client_application/4,
@@ -744,6 +805,43 @@
 %% hackney:body/1 is only called with hackney versions that still export it.
 -ignore_xref([{hackney, body, 1}]).
 
+
+
+%% Example:
+%% access_control_application() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"IdcApplicationArn">> => [string()],
+%%   <<"IdpAuthorizingConfiguration">> => idp_authorizing_config(),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"Name">> => string(),
+%%   <<"Namespace">> => [string()],
+%%   <<"QuickAuthenticationConfiguration">> => quick_authentication_config(),
+%%   <<"Status">> => list(any()),
+%%   <<"TenantUrl">> => [string()]
+%% }
+-type access_control_application() :: #{binary() => any()}.
+
+
+%% Example:
+%% access_control_application_summary() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"Arn">> => string(),
+%%   <<"AuthenticationType">> => list(any()),
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"IdpAuthorizingConfiguration">> => idp_authorizing_config_summary(),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"Name">> => string(),
+%%   <<"Namespace">> => [string()],
+%%   <<"QuickAuthenticationConfiguration">> => quick_authentication_config(),
+%%   <<"Status">> => list(any()),
+%%   <<"TenantUrl">> => [string()]
+%% }
+-type access_control_application_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2072,6 +2170,39 @@
 
 
 %% Example:
+%% batch_delete_policy_assignment_by_policy_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"PrincipalArns">> := list(string())
+%% }
+-type batch_delete_policy_assignment_by_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_policy_assignment_by_policy_response() :: #{
+%%   <<"Errors">> => list(batch_delete_policy_assignment_error()),
+%%   <<"PolicyArn">> => string(),
+%%   <<"Success">> => list(batch_delete_policy_assignment_success())
+%% }
+-type batch_delete_policy_assignment_by_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_policy_assignment_error() :: #{
+%%   <<"ErrorCode">> => [string()],
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"PrincipalArn">> => string()
+%% }
+-type batch_delete_policy_assignment_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_delete_policy_assignment_success() :: #{
+%%   <<"PrincipalArn">> => string()
+%% }
+-type batch_delete_policy_assignment_success() :: #{binary() => any()}.
+
+
+%% Example:
 %% batch_delete_topic_reviewed_answer_request() :: #{
 %%   <<"AnswerIds">> => list(string())
 %% }
@@ -2115,6 +2246,41 @@
 %%   <<"userLimits">> => list(user_limits())
 %% }
 -type batch_describe_user_limits_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_policy_assignment_by_policy_request() :: #{
+%%   <<"Assignments">> := list(put_assignment_entry()),
+%%   <<"PolicyArn">> := string()
+%% }
+-type batch_put_policy_assignment_by_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_policy_assignment_by_policy_response() :: #{
+%%   <<"Errors">> => list(batch_put_policy_assignment_error()),
+%%   <<"PolicyArn">> => string(),
+%%   <<"Success">> => list(batch_put_policy_assignment_success())
+%% }
+-type batch_put_policy_assignment_by_policy_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_policy_assignment_error() :: #{
+%%   <<"ErrorCode">> => [string()],
+%%   <<"ErrorMessage">> => [string()],
+%%   <<"PrincipalArn">> => string()
+%% }
+-type batch_put_policy_assignment_error() :: #{binary() => any()}.
+
+
+%% Example:
+%% batch_put_policy_assignment_success() :: #{
+%%   <<"PrincipalArn">> => string(),
+%%   <<"ReplacedPolicyArn">> => string(),
+%%   <<"Revision">> => float()
+%% }
+-type batch_put_policy_assignment_success() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2478,6 +2644,7 @@
 %%   <<"CreateAndUpdateJiraAction">> => list(any()),
 %%   <<"CreateAndUpdateKnowledgeBases">> => list(any()),
 %%   <<"CreateAndUpdateLinearAction">> => list(any()),
+%%   <<"CreateAndUpdateLocalMCPAction">> => list(any()),
 %%   <<"CreateAndUpdateMCPAction">> => list(any()),
 %%   <<"CreateAndUpdateMSExchangeAction">> => list(any()),
 %%   <<"CreateAndUpdateMSTeamsAction">> => list(any()),
@@ -2621,6 +2788,7 @@
 %%   <<"JiraDataSource">> => list(any()),
 %%   <<"KnowledgeBase">> => list(any()),
 %%   <<"LinearAction">> => list(any()),
+%%   <<"LocalMCPAction">> => list(any()),
 %%   <<"MCPAction">> => list(any()),
 %%   <<"MSExchangeAction">> => list(any()),
 %%   <<"MSTeamsAction">> => list(any()),
@@ -2923,6 +3091,7 @@
 %%   <<"UseIntercomAction">> => list(any()),
 %%   <<"UseJiraAction">> => list(any()),
 %%   <<"UseLinearAction">> => list(any()),
+%%   <<"UseLocalMCPAction">> => list(any()),
 %%   <<"UseMCPAction">> => list(any()),
 %%   <<"UseMSExchangeAction">> => list(any()),
 %%   <<"UseMSTeamsAction">> => list(any()),
@@ -3108,6 +3277,14 @@
 %%   <<"ClientCredentialsSource">> => list(any())
 %% }
 -type client_credentials_grant_metadata() :: #{binary() => any()}.
+
+
+%% Example:
+%% client_secret_configuration() :: #{
+%%   <<"ClientSecretConfigurationDetail">> => list(),
+%%   <<"ClientSecretSourceType">> => list(any())
+%% }
+-type client_secret_configuration() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3578,6 +3755,53 @@
 
 
 %% Example:
+%% create_access_control_application_request() :: #{
+%%   <<"ApplicationId">> := string(),
+%%   <<"AuthenticationType">> := list(any()),
+%%   <<"Description">> => string(),
+%%   <<"IdpAuthorizingConfiguration">> := idp_authorizing_config_input(),
+%%   <<"Name">> := string(),
+%%   <<"Namespace">> := string(),
+%%   <<"QuickAuthenticationConfiguration">> := quick_authentication_config_input(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_access_control_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_control_application_response() :: #{
+%%   <<"AccessControlApplicationStatus">> => list(any()),
+%%   <<"ApplicationId">> => [string()],
+%%   <<"Arn">> => [string()],
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"IdcApplicationArn">> => [string()],
+%%   <<"QuickAuthenticationConfiguration">> => quick_authentication_config_create_output(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer(),
+%%   <<"TenantUrl">> => [string()]
+%% }
+-type create_access_control_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_control_application_secret_request() :: #{
+%%   <<"ClientSecretConfiguration">> := client_secret_configuration(),
+%%   <<"Description">> => string()
+%% }
+-type create_access_control_application_secret_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_access_control_application_secret_response() :: #{
+%%   <<"ClientSecretId">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type create_access_control_application_secret_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_account_customization_request() :: #{
 %%   <<"AccountCustomization">> := account_customization(),
 %%   <<"Namespace">> => string(),
@@ -3825,6 +4049,7 @@
 %%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration(),
 %%   <<"SemanticModelConfiguration">> => semantic_model_configuration(),
 %%   <<"Tags">> => list(tag()),
+%%   <<"UnmaterializedCalculatedColumns">> => list(unmaterialized_calculated_column()),
 %%   <<"UseAs">> => list(any())
 %% }
 -type create_data_set_request() :: #{binary() => any()}.
@@ -4000,6 +4225,30 @@
 
 
 %% Example:
+%% create_inbound_connector_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"InboundConnectorConfiguration">> := inbound_connector_config(),
+%%   <<"InboundConnectorId">> := string(),
+%%   <<"Name">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_inbound_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_inbound_connector_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"InboundConnectorId">> => [string()],
+%%   <<"InboundConnectorStatus">> => list(any()),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer(),
+%%   <<"TenantUrl">> => [string()]
+%% }
+-type create_inbound_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% create_ingestion_request() :: #{
 %%   <<"IngestionType">> => list(any())
 %% }
@@ -4015,6 +4264,26 @@
 %%   <<"Status">> => integer()
 %% }
 -type create_ingestion_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_knowledge_base_refresh_schedule_request() :: #{
+%%   <<"ScheduleFrequency">> := knowledge_base_refresh_frequency(),
+%%   <<"ScheduleId">> := string(),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"State">> => list(any())
+%% }
+-type create_knowledge_base_refresh_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% create_knowledge_base_refresh_schedule_response() :: #{
+%%   <<"KnowledgeBaseArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ScheduleId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type create_knowledge_base_refresh_schedule_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -4950,6 +5219,7 @@
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
 %%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration(),
 %%   <<"SemanticModelConfiguration">> => semantic_model_configuration(),
+%%   <<"UnmaterializedCalculatedColumns">> => list(unmaterialized_calculated_column()),
 %%   <<"UseAs">> => list(any())
 %% }
 -type data_set() :: #{binary() => any()}.
@@ -5622,6 +5892,35 @@
 %% }
 -type default_text_field_control_options() :: #{binary() => any()}.
 
+
+%% Example:
+%% delete_access_control_application_request() :: #{
+%%   <<"ApplicationId">> => string(),
+%%   <<"IdcApplicationArn">> => string()
+%% }
+-type delete_access_control_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_access_control_application_response() :: #{
+%%   <<"ApplicationId">> => [string()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type delete_access_control_application_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_access_control_application_secret_request() :: #{}
+-type delete_access_control_application_secret_request() :: #{}.
+
+
+%% Example:
+%% delete_access_control_application_secret_response() :: #{
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type delete_access_control_application_secret_response() :: #{binary() => any()}.
+
 %% Example:
 %% delete_account_custom_permission_request() :: #{}
 -type delete_account_custom_permission_request() :: #{}.
@@ -5932,6 +6231,33 @@
 -type delete_identity_propagation_config_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_inbound_connector_request() :: #{}
+-type delete_inbound_connector_request() :: #{}.
+
+
+%% Example:
+%% delete_inbound_connector_response() :: #{
+%%   <<"InboundConnectorId">> => [string()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type delete_inbound_connector_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_knowledge_base_refresh_schedule_request() :: #{}
+-type delete_knowledge_base_refresh_schedule_request() :: #{}.
+
+
+%% Example:
+%% delete_knowledge_base_refresh_schedule_response() :: #{
+%%   <<"KnowledgeBaseArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ScheduleId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type delete_knowledge_base_refresh_schedule_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_knowledge_base_request() :: #{}
 -type delete_knowledge_base_request() :: #{}.
 
@@ -5981,6 +6307,19 @@
 %%   <<"Status">> => integer()
 %% }
 -type delete_o_auth_client_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% delete_policy_assignment_request() :: #{
+%%   <<"PolicyArn">> := string(),
+%%   <<"PrincipalArn">> := string(),
+%%   <<"Revision">> => float()
+%% }
+-type delete_policy_assignment_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_policy_assignment_response() :: #{}
+-type delete_policy_assignment_response() :: #{}.
 
 %% Example:
 %% delete_refresh_schedule_request() :: #{}
@@ -6191,6 +6530,19 @@
 %%   <<"VPCConnectionId">> => string()
 %% }
 -type delete_vpc_connection_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_access_control_application_request() :: #{}
+-type describe_access_control_application_request() :: #{}.
+
+
+%% Example:
+%% describe_access_control_application_response() :: #{
+%%   <<"AccessControlApplication">> => access_control_application(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type describe_access_control_application_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_account_custom_permission_request() :: #{}
@@ -6835,6 +7187,19 @@
 -type describe_iam_policy_assignment_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_inbound_connector_request() :: #{}
+-type describe_inbound_connector_request() :: #{}.
+
+
+%% Example:
+%% describe_inbound_connector_response() :: #{
+%%   <<"InboundConnector">> => inbound_connector(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type describe_inbound_connector_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_ingestion_request() :: #{}
 -type describe_ingestion_request() :: #{}.
 
@@ -6896,6 +7261,20 @@
 %%   <<"Status">> => integer()
 %% }
 -type describe_knowledge_base_permissions_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_knowledge_base_refresh_schedule_request() :: #{}
+-type describe_knowledge_base_refresh_schedule_request() :: #{}.
+
+
+%% Example:
+%% describe_knowledge_base_refresh_schedule_response() :: #{
+%%   <<"KnowledgeBaseArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"Schedule">> => knowledge_base_refresh_schedule_summary(),
+%%   <<"Status">> => integer()
+%% }
+-type describe_knowledge_base_refresh_schedule_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_knowledge_base_request() :: #{}
@@ -7515,6 +7894,59 @@
 %%   <<"AvailabilityStatus">> => list(any())
 %% }
 -type export_with_hidden_fields_option() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_idp_confidential_auth_code_authorizing_config() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecrets">> => list(external_idp_confidential_client_secret()),
+%%   <<"IssuerUrl">> => string()
+%% }
+-type external_idp_confidential_auth_code_authorizing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_idp_confidential_auth_code_authorizing_config_input() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"ClientSecret">> => idp_client_secret_input(),
+%%   <<"IssuerUrl">> => string()
+%% }
+-type external_idp_confidential_auth_code_authorizing_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_idp_confidential_auth_code_authorizing_config_summary() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"IssuerUrl">> => string()
+%% }
+-type external_idp_confidential_auth_code_authorizing_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_idp_confidential_auth_code_authorizing_config_update_input() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"IssuerUrl">> => string()
+%% }
+-type external_idp_confidential_auth_code_authorizing_config_update_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_idp_confidential_client_secret() :: #{
+%%   <<"ClientSecretId">> => string(),
+%%   <<"CreatedAt">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"RegionalSecretManagerArns">> => map(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type external_idp_confidential_client_secret() :: #{binary() => any()}.
+
+
+%% Example:
+%% external_idp_public_auth_code_authorizing_config() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"IssuerUrl">> => string()
+%% }
+-type external_idp_public_auth_code_authorizing_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -8815,6 +9247,24 @@
 
 
 %% Example:
+%% get_policy_assignment_request() :: #{
+%%   <<"PolicyType">> := list(any()),
+%%   <<"PrincipalArn">> := string()
+%% }
+-type get_policy_assignment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% get_policy_assignment_response() :: #{
+%%   <<"PolicyArn">> => string(),
+%%   <<"PolicyName">> => string(),
+%%   <<"Revision">> => float(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type get_policy_assignment_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% get_session_embed_url_request() :: #{
 %%   <<"EntryPoint">> => string(),
 %%   <<"SessionLifetimeInMinutes">> => float(),
@@ -9199,6 +9649,13 @@
 
 
 %% Example:
+%% idc_trusted_token_issuer_config() :: #{
+%%   <<"IdcTrustedTokenIssuerArn">> => string()
+%% }
+-type idc_trusted_token_issuer_config() :: #{binary() => any()}.
+
+
+%% Example:
 %% identity_center_configuration() :: #{
 %%   <<"EnableIdentityPropagation">> => boolean()
 %% }
@@ -9211,6 +9668,49 @@
 %%   <<"RequestId">> => string()
 %% }
 -type identity_type_not_supported_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% idp_authorizing_config() :: #{
+%%   <<"IdcTrustedTokenIssuerConfiguration">> => idc_trusted_token_issuer_config(),
+%%   <<"IdpAuthorizingConfigurationDetail">> => list(),
+%%   <<"IdpAuthorizingType">> => list(any())
+%% }
+-type idp_authorizing_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% idp_authorizing_config_input() :: #{
+%%   <<"IdcTrustedTokenIssuerConfiguration">> => idc_trusted_token_issuer_config(),
+%%   <<"IdpAuthorizingConfigurationDetailInput">> => list(),
+%%   <<"IdpAuthorizingType">> => list(any())
+%% }
+-type idp_authorizing_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% idp_authorizing_config_summary() :: #{
+%%   <<"IdcTrustedTokenIssuerConfiguration">> => idc_trusted_token_issuer_config(),
+%%   <<"IdpAuthorizingConfigurationSummaryDetail">> => list(),
+%%   <<"IdpAuthorizingType">> => list(any())
+%% }
+-type idp_authorizing_config_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% idp_authorizing_config_update_input() :: #{
+%%   <<"IdcTrustedTokenIssuerConfiguration">> => idc_trusted_token_issuer_config(),
+%%   <<"IdpAuthorizingConfigurationDetailInput">> => list(),
+%%   <<"IdpAuthorizingType">> => list(any())
+%% }
+-type idp_authorizing_config_update_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% idp_client_secret_input() :: #{
+%%   <<"RegionalSecretManagerArns">> => map()
+%% }
+-type idp_client_secret_input() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9317,6 +9817,51 @@
 %%   <<"SourceTableId">> => string()
 %% }
 -type import_table_operation_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% inbound_connector() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"InboundConnectorConfiguration">> => inbound_connector_config(),
+%%   <<"InboundConnectorId">> => string(),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TenantUrl">> => [string()]
+%% }
+-type inbound_connector() :: #{binary() => any()}.
+
+
+%% Example:
+%% inbound_connector_application_association_summary() :: #{
+%%   <<"AccessControlApplicationArn">> => string(),
+%%   <<"CreatedTime">> => [non_neg_integer()]
+%% }
+-type inbound_connector_application_association_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% inbound_connector_config() :: #{
+%%   <<"InboundConnectorType">> => list(any())
+%% }
+-type inbound_connector_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% inbound_connector_summary() :: #{
+%%   <<"Arn">> => string(),
+%%   <<"CreatedTime">> => [non_neg_integer()],
+%%   <<"Description">> => string(),
+%%   <<"InboundConnectorConfiguration">> => inbound_connector_config(),
+%%   <<"InboundConnectorId">> => string(),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"Name">> => string(),
+%%   <<"Status">> => list(any()),
+%%   <<"TenantUrl">> => [string()]
+%% }
+-type inbound_connector_summary() :: #{binary() => any()}.
 
 
 %% Example:
@@ -9747,6 +10292,32 @@
 
 
 %% Example:
+%% knowledge_base_refresh_frequency() :: #{
+%%   <<"Interval">> => list(any()),
+%%   <<"RefreshOnDay">> => knowledge_base_schedule_refresh_on_entity()
+%% }
+-type knowledge_base_refresh_frequency() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_refresh_schedule_summary() :: #{
+%%   <<"ScheduleFrequency">> => knowledge_base_refresh_frequency(),
+%%   <<"ScheduleId">> => string(),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"State">> => list(any())
+%% }
+-type knowledge_base_refresh_schedule_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% knowledge_base_schedule_refresh_on_entity() :: #{
+%%   <<"DayOfMonth">> => string(),
+%%   <<"DayOfWeek">> => list(any())
+%% }
+-type knowledge_base_schedule_refresh_on_entity() :: #{binary() => any()}.
+
+
+%% Example:
 %% knowledge_base_search_filter() :: #{
 %%   <<"name">> => list(any()),
 %%   <<"operator">> => list(any()),
@@ -10004,6 +10575,25 @@
 %%   <<"Permissions">> => list(resource_permission())
 %% }
 -type link_sharing_configuration() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_control_applications_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"Namespace">> => string(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_access_control_applications_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_access_control_applications_response() :: #{
+%%   <<"AccessControlApplications">> => list(access_control_application_summary()),
+%%   <<"NextToken">> => [string()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type list_access_control_applications_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10439,6 +11029,43 @@
 
 
 %% Example:
+%% list_inbound_connector_application_associations_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()]
+%% }
+-type list_inbound_connector_application_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_inbound_connector_application_associations_response() :: #{
+%%   <<"ApplicationAssociations">> => list(inbound_connector_application_association_summary()),
+%%   <<"NextToken">> => [string()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type list_inbound_connector_application_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_inbound_connectors_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => [string()],
+%%   <<"Type">> => list(list(any())())
+%% }
+-type list_inbound_connectors_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_inbound_connectors_response() :: #{
+%%   <<"InboundConnectorSummaries">> => list(inbound_connector_summary()),
+%%   <<"NextToken">> => [string()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type list_inbound_connectors_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_ingestions_request() :: #{
 %%   <<"MaxResults">> => integer(),
 %%   <<"NextToken">> => string()
@@ -10454,6 +11081,25 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_ingestions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_base_refresh_schedules_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type list_knowledge_base_refresh_schedules_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_knowledge_base_refresh_schedules_response() :: #{
+%%   <<"KnowledgeBaseArn">> => string(),
+%%   <<"NextToken">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ScheduleSummaries">> => list(knowledge_base_refresh_schedule_summary()),
+%%   <<"Status">> => integer()
+%% }
+-type list_knowledge_base_refresh_schedules_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -10525,6 +11171,24 @@
 %%   <<"Status">> => integer()
 %% }
 -type list_o_auth_client_applications_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_principals_for_policy_request() :: #{
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"PolicyArn">> := string(),
+%%   <<"PrincipalType">> => list(any())
+%% }
+-type list_principals_for_policy_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_principals_for_policy_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"Principals">> => list(policy_principal())
+%% }
+-type list_principals_for_policy_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_refresh_schedules_request() :: #{}
@@ -12025,6 +12689,16 @@
 
 
 %% Example:
+%% policy_principal() :: #{
+%%   <<"PrincipalArn">> => string(),
+%%   <<"PrincipalType">> => list(any()),
+%%   <<"Revision">> => float(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type policy_principal() :: #{binary() => any()}.
+
+
+%% Example:
 %% postgre_sql_parameters() :: #{
 %%   <<"Database">> => string(),
 %%   <<"Host">> => string(),
@@ -12104,6 +12778,15 @@
 
 
 %% Example:
+%% put_assignment_entry() :: #{
+%%   <<"ExistingPolicyArn">> => string(),
+%%   <<"PrincipalArn">> => string(),
+%%   <<"Revision">> => float()
+%% }
+-type put_assignment_entry() :: #{binary() => any()}.
+
+
+%% Example:
 %% put_data_set_refresh_properties_request() :: #{
 %%   <<"DataSetRefreshProperties">> := data_set_refresh_properties()
 %% }
@@ -12116,6 +12799,25 @@
 %%   <<"Status">> => integer()
 %% }
 -type put_data_set_refresh_properties_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_policy_assignment_request() :: #{
+%%   <<"ExistingPolicyArn">> => string(),
+%%   <<"PolicyArn">> := string(),
+%%   <<"PrincipalArn">> := string(),
+%%   <<"Revision">> => float()
+%% }
+-type put_policy_assignment_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% put_policy_assignment_response() :: #{
+%%   <<"PolicyArn">> => string(),
+%%   <<"ReplacedPolicyArn">> => string(),
+%%   <<"Revision">> => float()
+%% }
+-type put_policy_assignment_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12155,6 +12857,45 @@
 %%   <<"WaitingOnIngestion">> => string()
 %% }
 -type queue_info() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_authentication_config() :: #{
+%%   <<"QuickAuthenticationConfigurationDetail">> => list(),
+%%   <<"QuickAuthenticationType">> => list(any())
+%% }
+-type quick_authentication_config() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_authentication_config_create_output() :: #{
+%%   <<"QuickAuthenticationConfigurationDetailCreateOutput">> => list(),
+%%   <<"QuickAuthenticationType">> => list(any())
+%% }
+-type quick_authentication_config_create_output() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_authentication_config_input() :: #{
+%%   <<"QuickAuthenticationConfigurationDetailInput">> => list(),
+%%   <<"QuickAuthenticationType">> => list(any())
+%% }
+-type quick_authentication_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_managed_auth_code_quick_authentication_config_input() :: #{
+%%   <<"RedirectUris">> => list(string())
+%% }
+-type quick_managed_auth_code_quick_authentication_config_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% quick_managed_public_auth_code_quick_authentication_config() :: #{
+%%   <<"ClientId">> => string(),
+%%   <<"RedirectUris">> => list(string())
+%% }
+-type quick_managed_public_auth_code_quick_authentication_config() :: #{binary() => any()}.
 
 
 %% Example:
@@ -12373,6 +13114,7 @@
 %% redshift_parameters() :: #{
 %%   <<"ClusterId">> => string(),
 %%   <<"Database">> => string(),
+%%   <<"FederatedCatalog">> => string(),
 %%   <<"Host">> => string(),
 %%   <<"IAMParameters">> => redshift_iam_parameters(),
 %%   <<"IdentityCenterConfiguration">> => identity_center_configuration(),
@@ -15604,6 +16346,17 @@
 
 
 %% Example:
+%% unmaterialized_calculated_column() :: #{
+%%   <<"ColumnId">> => string(),
+%%   <<"ColumnName">> => string(),
+%%   <<"Expression">> => string(),
+%%   <<"SubType">> => list(any()),
+%%   <<"Type">> => list(any())
+%% }
+-type unmaterialized_calculated_column() :: #{binary() => any()}.
+
+
+%% Example:
 %% unpivot_operation() :: #{
 %%   <<"Alias">> => string(),
 %%   <<"ColumnsToUnpivot">> => list(column_to_unpivot()),
@@ -15653,6 +16406,48 @@
 %%   <<"Status">> => integer()
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_control_application_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"IdpAuthorizingConfiguration">> => idp_authorizing_config_update_input(),
+%%   <<"Name">> => string(),
+%%   <<"QuickAuthenticationConfiguration">> => quick_authentication_config_input(),
+%%   <<"Status">> => list(any())
+%% }
+-type update_access_control_application_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_control_application_response() :: #{
+%%   <<"AccessControlApplicationStatus">> => list(any()),
+%%   <<"ApplicationId">> => [string()],
+%%   <<"Arn">> => [string()],
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type update_access_control_application_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_control_application_secret_request() :: #{
+%%   <<"RemoveRegionalSecretManagerArns">> => list(string()),
+%%   <<"UpdateRegionalSecretManagerArns">> => map()
+%% }
+-type update_access_control_application_secret_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_access_control_application_secret_response() :: #{
+%%   <<"ClientSecretId">> => string(),
+%%   <<"RegionalSecretManagerArns">> => map(),
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer(),
+%%   <<"UpdatedAt">> => [non_neg_integer()]
+%% }
+-type update_access_control_application_secret_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -16082,7 +16877,8 @@
 %%   <<"PhysicalTableMap">> := map(),
 %%   <<"RowLevelPermissionDataSet">> => row_level_permission_data_set(),
 %%   <<"RowLevelPermissionTagConfiguration">> => row_level_permission_tag_configuration(),
-%%   <<"SemanticModelConfiguration">> => semantic_model_configuration()
+%%   <<"SemanticModelConfiguration">> => semantic_model_configuration(),
+%%   <<"UnmaterializedCalculatedColumns">> => list(unmaterialized_calculated_column())
 %% }
 -type update_data_set_request() :: #{binary() => any()}.
 
@@ -16304,6 +17100,44 @@
 
 
 %% Example:
+%% update_inbound_connector_application_associations_request() :: #{
+%%   <<"AssociateAccessControlApplications">> => list(string()),
+%%   <<"DisassociateAccessControlApplications">> => list(string())
+%% }
+-type update_inbound_connector_application_associations_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_inbound_connector_application_associations_response() :: #{
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type update_inbound_connector_application_associations_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_inbound_connector_request() :: #{
+%%   <<"Description">> => string(),
+%%   <<"InboundConnectorConfiguration">> => inbound_connector_config(),
+%%   <<"InboundConnectorStatus">> => list(any()),
+%%   <<"Name">> => string()
+%% }
+-type update_inbound_connector_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_inbound_connector_response() :: #{
+%%   <<"Arn">> => [string()],
+%%   <<"InboundConnectorId">> => [string()],
+%%   <<"InboundConnectorStatus">> => list(any()),
+%%   <<"LastUpdatedTime">> => [non_neg_integer()],
+%%   <<"RequestId">> => [string()],
+%%   <<"Status">> => integer()
+%% }
+-type update_inbound_connector_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% update_ip_restriction_request() :: #{
 %%   <<"Enabled">> => boolean(),
 %%   <<"IpRestrictionRuleMap">> => map(),
@@ -16355,6 +17189,25 @@
 %%   <<"Status">> => integer()
 %% }
 -type update_knowledge_base_permissions_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_knowledge_base_refresh_schedule_request() :: #{
+%%   <<"ScheduleFrequency">> => knowledge_base_refresh_frequency(),
+%%   <<"StartTime">> => [non_neg_integer()],
+%%   <<"State">> => list(any())
+%% }
+-type update_knowledge_base_refresh_schedule_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% update_knowledge_base_refresh_schedule_response() :: #{
+%%   <<"KnowledgeBaseArn">> => string(),
+%%   <<"RequestId">> => string(),
+%%   <<"ScheduleId">> => string(),
+%%   <<"Status">> => integer()
+%% }
+-type update_knowledge_base_refresh_schedule_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -16962,6 +17815,23 @@
 
 
 %% Example:
+%% validation_exception() :: #{
+%%   <<"FieldList">> => list(validation_exception_field()),
+%%   <<"Message">> => string(),
+%%   <<"RequestId">> => string()
+%% }
+-type validation_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% validation_exception_field() :: #{
+%%   <<"Message">> => string(),
+%%   <<"Name">> => string()
+%% }
+-type validation_exception_field() :: #{binary() => any()}.
+
+
+%% Example:
 %% validation_strategy() :: #{
 %%   <<"Mode">> => list(any())
 %% }
@@ -17397,6 +18267,13 @@
     internal_failure_exception() | 
     access_denied_exception().
 
+-type batch_delete_policy_assignment_by_policy_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type batch_delete_topic_reviewed_answer_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -17411,12 +18288,37 @@
     internal_failure_exception() | 
     access_denied_exception().
 
+-type batch_put_policy_assignment_by_policy_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type cancel_ingestion_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     resource_exists_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
+    access_denied_exception().
+
+-type create_access_control_application_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type create_access_control_application_secret_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type create_account_customization_errors() ::
@@ -17599,6 +18501,15 @@
     concurrent_updating_exception() | 
     access_denied_exception().
 
+-type create_inbound_connector_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type create_ingestion_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -17609,6 +18520,17 @@
     access_denied_exception().
 
 -type create_knowledge_base_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    resource_exists_exception() | 
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type create_knowledge_base_refresh_schedule_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     resource_exists_exception() | 
@@ -17752,6 +18674,22 @@
     throttling_exception() | 
     resource_exists_exception() | 
     limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_access_control_application_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_access_control_application_secret_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     conflict_exception() | 
@@ -17953,6 +18891,14 @@
     internal_failure_exception() | 
     access_denied_exception().
 
+-type delete_inbound_connector_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type delete_knowledge_base_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -17962,6 +18908,15 @@
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type delete_knowledge_base_refresh_schedule_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type delete_limits_profile_errors() ::
@@ -17985,6 +18940,14 @@
     throttling_exception() | 
     resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type delete_policy_assignment_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -18116,6 +19079,13 @@
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     conflict_exception() | 
+    access_denied_exception().
+
+-type describe_access_control_application_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
     access_denied_exception().
 
 -type describe_account_custom_permission_errors() ::
@@ -18434,6 +19404,13 @@
     internal_failure_exception() | 
     access_denied_exception().
 
+-type describe_inbound_connector_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type describe_ingestion_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -18466,6 +19443,16 @@
     access_denied_exception().
 
 -type describe_knowledge_base_permissions_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
+    invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type describe_knowledge_base_refresh_schedule_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     precondition_not_met_exception() | 
@@ -18748,6 +19735,13 @@
     internal_failure_exception() | 
     access_denied_exception().
 
+-type get_policy_assignment_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type get_session_embed_url_errors() ::
     unsupported_user_edition_exception() | 
     throttling_exception() | 
@@ -18755,6 +19749,13 @@
     resource_not_found_exception() | 
     resource_exists_exception() | 
     quick_sight_user_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type list_access_control_applications_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     access_denied_exception().
@@ -18934,10 +19935,34 @@
     internal_failure_exception() | 
     access_denied_exception().
 
+-type list_inbound_connector_application_associations_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type list_inbound_connectors_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
 -type list_ingestions_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
     resource_exists_exception() | 
+    invalid_parameter_value_exception() | 
+    invalid_next_token_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type list_knowledge_base_refresh_schedules_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
     invalid_next_token_exception() | 
     internal_failure_exception() | 
@@ -18972,6 +19997,13 @@
     resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
     invalid_next_token_exception() | 
+    internal_failure_exception() | 
+    access_denied_exception().
+
+-type list_principals_for_policy_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception() | 
     access_denied_exception().
 
@@ -19154,6 +20186,14 @@
     precondition_not_met_exception() | 
     limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type put_policy_assignment_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
     internal_failure_exception() | 
     conflict_exception() | 
     access_denied_exception().
@@ -19349,6 +20389,22 @@
     resource_not_found_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
+    access_denied_exception().
+
+-type update_access_control_application_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_access_control_application_secret_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type update_account_custom_permission_errors() ::
@@ -19645,6 +20701,23 @@
     internal_failure_exception() | 
     access_denied_exception().
 
+-type update_inbound_connector_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_inbound_connector_application_associations_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    limit_exceeded_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type update_ip_restriction_errors() ::
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -19676,6 +20749,16 @@
     precondition_not_met_exception() | 
     limit_exceeded_exception() | 
     invalid_request_exception() | 
+    invalid_parameter_value_exception() | 
+    internal_failure_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
+-type update_knowledge_base_refresh_schedule_errors() ::
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    precondition_not_met_exception() | 
+    limit_exceeded_exception() | 
     invalid_parameter_value_exception() | 
     internal_failure_exception() | 
     conflict_exception() | 
@@ -20009,6 +21092,48 @@ batch_delete_knowledge_base(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Removes a governance policy from multiple Amazon Quick Sight
+%% principals in a single request.
+%%
+%% A principal that
+%% doesn't have the policy is reported as a success.
+%%
+%% Each entry succeeds or fails independently. Check the `Errors' list in
+%% the response for
+%% entries that failed.
+-spec batch_delete_policy_assignment_by_policy(aws_client:aws_client(), binary() | list(), batch_delete_policy_assignment_by_policy_request()) ->
+    {ok, batch_delete_policy_assignment_by_policy_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_policy_assignment_by_policy_errors(), tuple()}.
+batch_delete_policy_assignment_by_policy(Client, AccountId, Input) ->
+    batch_delete_policy_assignment_by_policy(Client, AccountId, Input, []).
+
+-spec batch_delete_policy_assignment_by_policy(aws_client:aws_client(), binary() | list(), batch_delete_policy_assignment_by_policy_request(), proplists:proplist()) ->
+    {ok, batch_delete_policy_assignment_by_policy_response(), tuple()} |
+    {error, any()} |
+    {error, batch_delete_policy_assignment_by_policy_errors(), tuple()}.
+batch_delete_policy_assignment_by_policy(Client, AccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/governance-policy-mgmt/accounts/", aws_util:encode_uri(AccountId), "/policy-assignments/batch-delete"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes reviewed answers for Q Topic.
 -spec batch_delete_topic_reviewed_answer(aws_client:aws_client(), binary() | list(), binary() | list(), batch_delete_topic_reviewed_answer_request()) ->
     {ok, batch_delete_topic_reviewed_answer_response(), tuple()} |
@@ -20079,6 +21204,48 @@ batch_describe_user_limits(Client, AccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Assigns a governance policy to multiple Amazon Quick Sight principals
+%% in a single request.
+%%
+%% If a principal
+%% already has a policy of the same type, this operation replaces it.
+%%
+%% Each entry succeeds or fails independently. Check the `Errors' list in
+%% the response for
+%% entries that failed.
+-spec batch_put_policy_assignment_by_policy(aws_client:aws_client(), binary() | list(), batch_put_policy_assignment_by_policy_request()) ->
+    {ok, batch_put_policy_assignment_by_policy_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_policy_assignment_by_policy_errors(), tuple()}.
+batch_put_policy_assignment_by_policy(Client, AccountId, Input) ->
+    batch_put_policy_assignment_by_policy(Client, AccountId, Input, []).
+
+-spec batch_put_policy_assignment_by_policy(aws_client:aws_client(), binary() | list(), batch_put_policy_assignment_by_policy_request(), proplists:proplist()) ->
+    {ok, batch_put_policy_assignment_by_policy_response(), tuple()} |
+    {error, any()} |
+    {error, batch_put_policy_assignment_by_policy_errors(), tuple()}.
+batch_put_policy_assignment_by_policy(Client, AccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/governance-policy-mgmt/accounts/", aws_util:encode_uri(AccountId), "/policy-assignments/batch-put"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Cancels an ongoing ingestion of data into SPICE.
 -spec cancel_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), cancel_ingestion_request()) ->
     {ok, cancel_ingestion_response(), tuple()} |
@@ -20095,6 +21262,89 @@ cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options0)
     Method = delete,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions/", aws_util:encode_uri(IngestionId), ""],
     SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates an access control application in an Amazon Quick Sight
+%% account.
+%%
+%% You use an access control application to define how an external client
+%% signs in to Quick Sight with OAuth 2.0.
+%%
+%% To connect a client to Quick Sight through an inbound connector, associate
+%% the access control application with the connector by using the
+%% `UpdateInboundConnectorApplicationAssociations' operation.
+-spec create_access_control_application(aws_client:aws_client(), binary() | list(), create_access_control_application_request()) ->
+    {ok, create_access_control_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_access_control_application_errors(), tuple()}.
+create_access_control_application(Client, AwsAccountId, Input) ->
+    create_access_control_application(Client, AwsAccountId, Input, []).
+
+-spec create_access_control_application(aws_client:aws_client(), binary() | list(), create_access_control_application_request(), proplists:proplist()) ->
+    {ok, create_access_control_application_response(), tuple()} |
+    {error, any()} |
+    {error, create_access_control_application_errors(), tuple()}.
+create_access_control_application(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/access-control-applications"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a client secret for an access control application.
+%%
+%% An access control application can have up to two client secrets, so that
+%% you can rotate a secret without downtime.
+%%
+%% Provide the Amazon Web Services Secrets Manager (Secrets Manager) secret
+%% ARN for each Region where the client secret, issued by your identity
+%% provider (IdP), is stored.
+-spec create_access_control_application_secret(aws_client:aws_client(), binary() | list(), binary() | list(), create_access_control_application_secret_request()) ->
+    {ok, create_access_control_application_secret_response(), tuple()} |
+    {error, any()} |
+    {error, create_access_control_application_secret_errors(), tuple()}.
+create_access_control_application_secret(Client, ApplicationId, AwsAccountId, Input) ->
+    create_access_control_application_secret(Client, ApplicationId, AwsAccountId, Input, []).
+
+-spec create_access_control_application_secret(aws_client:aws_client(), binary() | list(), binary() | list(), create_access_control_application_secret_request(), proplists:proplist()) ->
+    {ok, create_access_control_application_secret_response(), tuple()} |
+    {error, any()} |
+    {error, create_access_control_application_secret_errors(), tuple()}.
+create_access_control_application_secret(Client, ApplicationId, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/access-control-applications/", aws_util:encode_uri(ApplicationId), "/client-secrets"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -20864,6 +22114,51 @@ create_iam_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options0) 
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Creates an inbound connector in a Quick Sight account.
+%%
+%% An inbound connector is the endpoint that an external client, such as the
+%% Quick Sight desktop application, uses to reach Quick Sight in your
+%% account.
+%%
+%% Your users authenticate through the access control applications that are
+%% associated with the connector. To manage these associations, use
+%% `UpdateInboundConnectorApplicationAssociations'.
+%%
+%% An account can have one `QUICK_DESKTOP' inbound connector in each
+%% Region.
+-spec create_inbound_connector(aws_client:aws_client(), binary() | list(), create_inbound_connector_request()) ->
+    {ok, create_inbound_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_inbound_connector_errors(), tuple()}.
+create_inbound_connector(Client, AwsAccountId, Input) ->
+    create_inbound_connector(Client, AwsAccountId, Input, []).
+
+-spec create_inbound_connector(aws_client:aws_client(), binary() | list(), create_inbound_connector_request(), proplists:proplist()) ->
+    {ok, create_inbound_connector_response(), tuple()} |
+    {error, any()} |
+    {error, create_inbound_connector_errors(), tuple()}.
+create_inbound_connector(Client, AwsAccountId, Input0, Options0) ->
+    Method = post,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/inbound-connectors"],
+    SuccessStatusCode = 201,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Creates and starts a new SPICE ingestion for a dataset.
 %%
 %% You can manually refresh datasets in
@@ -20946,6 +22241,45 @@ create_knowledge_base(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases"],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Creates a schedule that periodically refreshes an Amazon Quick Sight
+%% knowledge base at the frequency that you specify.
+%%
+%% A knowledge base can have only one refresh schedule. If the knowledge base
+%% already has a refresh schedule, the request fails with a
+%% `LimitExceededException'.
+-spec create_knowledge_base_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_knowledge_base_refresh_schedule_request()) ->
+    {ok, create_knowledge_base_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, create_knowledge_base_refresh_schedule_errors(), tuple()}.
+create_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, Input) ->
+    create_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, Input, []).
+
+-spec create_knowledge_base_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), create_knowledge_base_refresh_schedule_request(), proplists:proplist()) ->
+    {ok, create_knowledge_base_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, create_knowledge_base_refresh_schedule_errors(), tuple()}.
+create_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, Input0, Options0) ->
+    Method = post,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), "/kb-refresh-schedules"],
+    SuccessStatusCode = 201,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -21464,6 +22798,82 @@ create_vpc_connection(Client, AwsAccountId, Input) ->
 create_vpc_connection(Client, AwsAccountId, Input0, Options0) ->
     Method = post,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/vpc-connections"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes an access control application.
+%%
+%% You can't delete an access control application that is associated with
+%% an inbound connector whose status is `ENABLED'.
+%%
+%% If another update to the same application is in progress, Quick Sight
+%% returns a `ConflictException'. Retry the request.
+-spec delete_access_control_application(aws_client:aws_client(), binary() | list(), delete_access_control_application_request()) ->
+    {ok, delete_access_control_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_access_control_application_errors(), tuple()}.
+delete_access_control_application(Client, AwsAccountId, Input) ->
+    delete_access_control_application(Client, AwsAccountId, Input, []).
+
+-spec delete_access_control_application(aws_client:aws_client(), binary() | list(), delete_access_control_application_request(), proplists:proplist()) ->
+    {ok, delete_access_control_application_response(), tuple()} |
+    {error, any()} |
+    {error, delete_access_control_application_errors(), tuple()}.
+delete_access_control_application(Client, AwsAccountId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/access-control-applications"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"ApplicationId">>, <<"ApplicationId">>},
+                     {<<"IdcApplicationArn">>, <<"IdcApplicationArn">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes a client secret from an access control application.
+-spec delete_access_control_application_secret(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_access_control_application_secret_request()) ->
+    {ok, delete_access_control_application_secret_response(), tuple()} |
+    {error, any()} |
+    {error, delete_access_control_application_secret_errors(), tuple()}.
+delete_access_control_application_secret(Client, ApplicationId, AwsAccountId, ClientSecretId, Input) ->
+    delete_access_control_application_secret(Client, ApplicationId, AwsAccountId, ClientSecretId, Input, []).
+
+-spec delete_access_control_application_secret(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_access_control_application_secret_request(), proplists:proplist()) ->
+    {ok, delete_access_control_application_secret_response(), tuple()} |
+    {error, any()} |
+    {error, delete_access_control_application_secret_errors(), tuple()}.
+delete_access_control_application_secret(Client, ApplicationId, AwsAccountId, ClientSecretId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/access-control-applications/", aws_util:encode_uri(ApplicationId), "/client-secrets/", aws_util:encode_uri(ClientSecretId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -22411,6 +23821,44 @@ delete_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Deletes an inbound connector.
+%%
+%% You must disable the connector before you can delete it. When you delete a
+%% connector, Quick Sight doesn't delete the access control applications
+%% that are associated with it.
+-spec delete_inbound_connector(aws_client:aws_client(), binary() | list(), binary() | list(), delete_inbound_connector_request()) ->
+    {ok, delete_inbound_connector_response(), tuple()} |
+    {error, any()} |
+    {error, delete_inbound_connector_errors(), tuple()}.
+delete_inbound_connector(Client, AwsAccountId, InboundConnectorId, Input) ->
+    delete_inbound_connector(Client, AwsAccountId, InboundConnectorId, Input, []).
+
+-spec delete_inbound_connector(aws_client:aws_client(), binary() | list(), binary() | list(), delete_inbound_connector_request(), proplists:proplist()) ->
+    {ok, delete_inbound_connector_response(), tuple()} |
+    {error, any()} |
+    {error, delete_inbound_connector_errors(), tuple()}.
+delete_inbound_connector(Client, AwsAccountId, InboundConnectorId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/inbound-connectors/", aws_util:encode_uri(InboundConnectorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Deletes a knowledge base.
 -spec delete_knowledge_base(aws_client:aws_client(), binary() | list(), binary() | list(), delete_knowledge_base_request()) ->
     {ok, delete_knowledge_base_response(), tuple()} |
@@ -22427,6 +23875,44 @@ delete_knowledge_base(Client, AwsAccountId, KnowledgeBaseId, Input0, Options0) -
     Method = delete,
     Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), ""],
     SuccessStatusCode = 202,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Deletes the refresh schedule for an Amazon Quick Sight knowledge
+%% base.
+%%
+%% Delete the schedule when you no longer want the knowledge base to refresh
+%% automatically.
+-spec delete_knowledge_base_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_knowledge_base_refresh_schedule_request()) ->
+    {ok, delete_knowledge_base_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_knowledge_base_refresh_schedule_errors(), tuple()}.
+delete_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, ScheduleId, Input) ->
+    delete_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, ScheduleId, Input, []).
+
+-spec delete_knowledge_base_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), delete_knowledge_base_refresh_schedule_request(), proplists:proplist()) ->
+    {ok, delete_knowledge_base_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, delete_knowledge_base_refresh_schedule_errors(), tuple()}.
+delete_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, ScheduleId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), "/kb-refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
+    SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
     Options = [{send_body_as_binary, SendBodyAsBinary},
@@ -22551,6 +24037,48 @@ delete_o_auth_client_application(Client, AwsAccountId, OAuthClientApplicationId,
     Query_ = [],
     Input = Input2,
 
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Removes a governance policy from an Amazon Quick Sight principal.
+%%
+%% If the principal doesn't have the specified
+%% policy, the request succeeds and makes no change. If the principal has a
+%% different policy of the same
+%% type, the request fails with a `ConflictException'.
+-spec delete_policy_assignment(aws_client:aws_client(), binary() | list(), delete_policy_assignment_request()) ->
+    {ok, delete_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_assignment_errors(), tuple()}.
+delete_policy_assignment(Client, AccountId, Input) ->
+    delete_policy_assignment(Client, AccountId, Input, []).
+
+-spec delete_policy_assignment(aws_client:aws_client(), binary() | list(), delete_policy_assignment_request(), proplists:proplist()) ->
+    {ok, delete_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, delete_policy_assignment_errors(), tuple()}.
+delete_policy_assignment(Client, AccountId, Input0, Options0) ->
+    Method = delete,
+    Path = ["/governance-policy-mgmt/accounts/", aws_util:encode_uri(AccountId), "/policy-assignments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    QueryMapping = [
+                     {<<"PolicyArn">>, <<"PolicyArn">>},
+                     {<<"PrincipalArn">>, <<"PrincipalArn">>},
+                     {<<"Revision">>, <<"Revision">>}
+                   ],
+    {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Deletes a refresh schedule from a dataset.
@@ -23076,6 +24604,46 @@ delete_vpc_connection(Client, AwsAccountId, VPCConnectionId, Input0, Options0) -
     Input = Input2,
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Describes an access control application.
+%%
+%% The response includes client secret metadata, but never client secret
+%% values.
+-spec describe_access_control_application(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_access_control_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_access_control_application_errors(), tuple()}.
+describe_access_control_application(Client, ApplicationId, AwsAccountId)
+  when is_map(Client) ->
+    describe_access_control_application(Client, ApplicationId, AwsAccountId, #{}, #{}).
+
+-spec describe_access_control_application(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_access_control_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_access_control_application_errors(), tuple()}.
+describe_access_control_application(Client, ApplicationId, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_access_control_application(Client, ApplicationId, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec describe_access_control_application(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_access_control_application_response(), tuple()} |
+    {error, any()} |
+    {error, describe_access_control_application_errors(), tuple()}.
+describe_access_control_application(Client, ApplicationId, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/access-control-applications/", aws_util:encode_uri(ApplicationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
 %% @doc Describes the custom permissions profile that is applied to an
 %% account.
@@ -24829,6 +26397,43 @@ describe_iam_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Describes an inbound connector.
+-spec describe_inbound_connector(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, describe_inbound_connector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_inbound_connector_errors(), tuple()}.
+describe_inbound_connector(Client, AwsAccountId, InboundConnectorId)
+  when is_map(Client) ->
+    describe_inbound_connector(Client, AwsAccountId, InboundConnectorId, #{}, #{}).
+
+-spec describe_inbound_connector(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_inbound_connector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_inbound_connector_errors(), tuple()}.
+describe_inbound_connector(Client, AwsAccountId, InboundConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_inbound_connector(Client, AwsAccountId, InboundConnectorId, QueryMap, HeadersMap, []).
+
+-spec describe_inbound_connector(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_inbound_connector_response(), tuple()} |
+    {error, any()} |
+    {error, describe_inbound_connector_errors(), tuple()}.
+describe_inbound_connector(Client, AwsAccountId, InboundConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/inbound-connectors/", aws_util:encode_uri(InboundConnectorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Describes a SPICE ingestion.
 -spec describe_ingestion(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
     {ok, describe_ingestion_response(), tuple()} |
@@ -25006,6 +26611,44 @@ describe_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, Query
 describe_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Describes the refresh schedule for an Amazon Quick Sight knowledge
+%% base, including the schedule's frequency, start time, and state.
+-spec describe_knowledge_base_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, describe_knowledge_base_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_knowledge_base_refresh_schedule_errors(), tuple()}.
+describe_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, ScheduleId)
+  when is_map(Client) ->
+    describe_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, ScheduleId, #{}, #{}).
+
+-spec describe_knowledge_base_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, describe_knowledge_base_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_knowledge_base_refresh_schedule_errors(), tuple()}.
+describe_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, ScheduleId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    describe_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, ScheduleId, QueryMap, HeadersMap, []).
+
+-spec describe_knowledge_base_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, describe_knowledge_base_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, describe_knowledge_base_refresh_schedule_errors(), tuple()}.
+describe_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, ScheduleId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), "/kb-refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -26015,8 +27658,8 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Generates an embed URL that you can use to embed an Amazon Quick
-%% dashboard or
+%% @doc Generates an embed URL that you can use to embed an Quick dashboard
+%% or
 %% visual in your website, without having to register any reader users.
 %%
 %% Before you use this
@@ -26039,16 +27682,16 @@ describe_vpc_connection(Client, AwsAccountId, VPCConnectionId, QueryMap, Headers
 %% session duration is 10 hours.
 %%
 %% You are charged only when the URL is used or there is interaction with
-%% Amazon Quick.
+%% Quick.
 %%
 %% For more information, see Embedded Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %% in
-%% the Amazon Quick User Guide.
+%% the Quick User Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive
-%% demo of the ways you can customize embedding, visit the Amazon Quick
+%% demo of the ways you can customize embedding, visit the Quick
 %% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec generate_embed_url_for_anonymous_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_anonymous_user_request()) ->
@@ -26084,13 +27727,12 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Generates an embed URL that you can use to embed an Amazon Quick
-%% experience
+%% @doc Generates an embed URL that you can use to embed an Quick experience
 %% in your website.
 %%
-%% This action can be used for any type of user registered in an Amazon Quick
+%% This action can be used for any type of user registered in an Quick
 %% account. Before you use this action, make sure that you have
-%% configured the relevant Amazon Quick resource and permissions.
+%% configured the relevant Quick resource and permissions.
 %%
 %% The following rules apply to the generated URL:
 %%
@@ -26109,16 +27751,16 @@ generate_embed_url_for_anonymous_user(Client, AwsAccountId, Input0, Options0) ->
 %% (maximum). The default session duration is 10 hours.
 %%
 %% You are charged only when the URL is used or there is interaction with
-%% Amazon Quick.
+%% Quick.
 %%
 %% For more information, see Embedded Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %% in
-%% the Amazon Quick User Guide.
+%% the Quick User Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive
-%% demo of the ways you can customize embedding, visit the Amazon Quick
+%% demo of the ways you can customize embedding, visit the Quick
 %% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec generate_embed_url_for_registered_user(aws_client:aws_client(), binary() | list(), generate_embed_url_for_registered_user_request()) ->
@@ -26244,12 +27886,12 @@ generate_embed_url_for_registered_user_with_identity(Client, AwsAccountId, Input
 %% For more information, see Embedding Analytics
 %% Using GetDashboardEmbedUrl:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics-deprecated.html
-%% in the Amazon Quick User
+%% in the Quick User
 %% Guide.
 %%
 %% For more information about the high-level steps for embedding and for an
 %% interactive
-%% demo of the ways you can customize embedding, visit the Amazon Quick
+%% demo of the ways you can customize embedding, visit the Quick
 %% Developer Portal:
 %% https://docs.aws.amazon.com/quicksight/latest/user/quicksight-dev-portal.html.
 -spec get_dashboard_embed_url(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
@@ -26474,6 +28116,52 @@ get_identity_context(Client, AwsAccountId, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Describes the policy of the specified type that an Amazon Quick Sight
+%% principal has.
+%%
+%% If the principal has no
+%% policy of that type, the response contains no policy details.
+-spec get_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list()) ->
+    {ok, get_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_assignment_errors(), tuple()}.
+get_policy_assignment(Client, AccountId, PolicyType, PrincipalArn)
+  when is_map(Client) ->
+    get_policy_assignment(Client, AccountId, PolicyType, PrincipalArn, #{}, #{}).
+
+-spec get_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_assignment_errors(), tuple()}.
+get_policy_assignment(Client, AccountId, PolicyType, PrincipalArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_policy_assignment(Client, AccountId, PolicyType, PrincipalArn, QueryMap, HeadersMap, []).
+
+-spec get_policy_assignment(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, get_policy_assignment_errors(), tuple()}.
+get_policy_assignment(Client, AccountId, PolicyType, PrincipalArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/governance-policy-mgmt/accounts/", aws_util:encode_uri(AccountId), "/policy-assignments"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"PolicyType">>, PolicyType},
+        {<<"PrincipalArn">>, PrincipalArn}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Generates a session URL and authorization code that you can use to
 %% embed the Amazon
 %% Amazon Quick Sight console in your web server code.
@@ -26498,13 +28186,13 @@ get_identity_context(Client, AwsAccountId, Input0, Options0) ->
 %% ''' API operation to add a new user with a custom
 %% permission profile attached. For more information, see the following
 %% sections in the
-%% Amazon Quick User Guide:
+%% Quick User Guide:
 %%
 %% Embedding
 %% Analytics:
 %% https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html
 %%
-%% Customizing Access to the Amazon Quick Console:
+%% Customizing Access to the Quick Console:
 %% https://docs.aws.amazon.com/quicksight/latest/user/customizing-permissions-to-the-quicksight-console.html
 -spec get_session_embed_url(aws_client:aws_client(), binary() | list()) ->
     {ok, get_session_embed_url_response(), tuple()} |
@@ -26543,6 +28231,54 @@ get_session_embed_url(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
         {<<"entry-point">>, maps:get(<<"entry-point">>, QueryMap, undefined)},
         {<<"session-lifetime">>, maps:get(<<"session-lifetime">>, QueryMap, undefined)},
         {<<"user-arn">>, maps:get(<<"user-arn">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the access control applications in a Quick Sight account in the
+%% current Amazon Web Services Region.
+%%
+%% You can filter the results by namespace. Quick Sight paginates the
+%% results. To retrieve additional results, use the `NextToken'
+%% parameter.
+-spec list_access_control_applications(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_access_control_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_access_control_applications_errors(), tuple()}.
+list_access_control_applications(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_access_control_applications(Client, AwsAccountId, #{}, #{}).
+
+-spec list_access_control_applications(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_access_control_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_access_control_applications_errors(), tuple()}.
+list_access_control_applications(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_access_control_applications(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_access_control_applications(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_access_control_applications_response(), tuple()} |
+    {error, any()} |
+    {error, list_access_control_applications_errors(), tuple()}.
+list_access_control_applications(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/access-control-applications"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"namespace">>, maps:get(<<"namespace">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -27564,6 +29300,99 @@ list_identity_propagation_configs(Client, AwsAccountId, QueryMap, HeadersMap, Op
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the access control applications that are associated with an
+%% inbound connector.
+%%
+%% Quick Sight paginates the results. To retrieve additional results, use the
+%% `NextToken' parameter.
+-spec list_inbound_connector_application_associations(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_inbound_connector_application_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_inbound_connector_application_associations_errors(), tuple()}.
+list_inbound_connector_application_associations(Client, AwsAccountId, InboundConnectorId)
+  when is_map(Client) ->
+    list_inbound_connector_application_associations(Client, AwsAccountId, InboundConnectorId, #{}, #{}).
+
+-spec list_inbound_connector_application_associations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_inbound_connector_application_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_inbound_connector_application_associations_errors(), tuple()}.
+list_inbound_connector_application_associations(Client, AwsAccountId, InboundConnectorId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_inbound_connector_application_associations(Client, AwsAccountId, InboundConnectorId, QueryMap, HeadersMap, []).
+
+-spec list_inbound_connector_application_associations(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_inbound_connector_application_associations_response(), tuple()} |
+    {error, any()} |
+    {error, list_inbound_connector_application_associations_errors(), tuple()}.
+list_inbound_connector_application_associations(Client, AwsAccountId, InboundConnectorId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/inbound-connectors/", aws_util:encode_uri(InboundConnectorId), "/associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the inbound connectors in a Quick Sight account.
+%%
+%% You can filter the results by connector type. Quick Sight paginates the
+%% results. To retrieve additional results, use the `NextToken'
+%% parameter.
+-spec list_inbound_connectors(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_inbound_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_inbound_connectors_errors(), tuple()}.
+list_inbound_connectors(Client, AwsAccountId)
+  when is_map(Client) ->
+    list_inbound_connectors(Client, AwsAccountId, #{}, #{}).
+
+-spec list_inbound_connectors(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_inbound_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_inbound_connectors_errors(), tuple()}.
+list_inbound_connectors(Client, AwsAccountId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_inbound_connectors(Client, AwsAccountId, QueryMap, HeadersMap, []).
+
+-spec list_inbound_connectors(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_inbound_connectors_response(), tuple()} |
+    {error, any()} |
+    {error, list_inbound_connectors_errors(), tuple()}.
+list_inbound_connectors(Client, AwsAccountId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/inbound-connectors"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)},
+        {<<"type">>, maps:get(<<"type">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Lists the history of SPICE ingestions for a dataset.
 %%
 %% Limited to 5 TPS per user and 25 TPS per account.
@@ -27590,6 +29419,53 @@ list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap)
 list_ingestions(Client, AwsAccountId, DataSetId, QueryMap, HeadersMap, Options0)
   when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/ingestions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
+        {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the refresh schedules for an Amazon Quick Sight knowledge base.
+%%
+%% Currently, a knowledge base can have only one refresh schedule, so the
+%% list contains at most one schedule. Results are paginated. To retrieve the
+%% next page of results, use the `NextToken' value from the previous
+%% response.
+-spec list_knowledge_base_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_knowledge_base_refresh_schedules_response(), tuple()} |
+    {error, any()} |
+    {error, list_knowledge_base_refresh_schedules_errors(), tuple()}.
+list_knowledge_base_refresh_schedules(Client, AwsAccountId, KnowledgeBaseId)
+  when is_map(Client) ->
+    list_knowledge_base_refresh_schedules(Client, AwsAccountId, KnowledgeBaseId, #{}, #{}).
+
+-spec list_knowledge_base_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_knowledge_base_refresh_schedules_response(), tuple()} |
+    {error, any()} |
+    {error, list_knowledge_base_refresh_schedules_errors(), tuple()}.
+list_knowledge_base_refresh_schedules(Client, AwsAccountId, KnowledgeBaseId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_knowledge_base_refresh_schedules(Client, AwsAccountId, KnowledgeBaseId, QueryMap, HeadersMap, []).
+
+-spec list_knowledge_base_refresh_schedules(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_knowledge_base_refresh_schedules_response(), tuple()} |
+    {error, any()} |
+    {error, list_knowledge_base_refresh_schedules_errors(), tuple()}.
+list_knowledge_base_refresh_schedules(Client, AwsAccountId, KnowledgeBaseId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), "/kb-refresh-schedules"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -27779,6 +29655,66 @@ list_o_auth_client_applications(Client, AwsAccountId, QueryMap, HeadersMap, Opti
       [
         {<<"max-results">>, maps:get(<<"max-results">>, QueryMap, undefined)},
         {<<"next-token">>, maps:get(<<"next-token">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the Amazon Quick Sight principals that have a governance
+%% policy.
+%%
+%% This operation returns paginated
+%% results. A page can contain fewer results than `MaxResults', or none,
+%% and still include a
+%% `NextToken'. Continue to call the operation until the response
+%% doesn't include a
+%% `NextToken'. We recommend that you use pagination to make sure that
+%% the operation returns
+%% quickly and successfully.
+%%
+%% Results are eventually consistent and might not reflect recent changes. If
+%% the policy has no
+%% assignments, the response contains an empty `Principals' list. If the
+%% policy doesn't exist,
+%% the request fails with a `ResourceNotFoundException'.
+-spec list_principals_for_policy(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, list_principals_for_policy_response(), tuple()} |
+    {error, any()} |
+    {error, list_principals_for_policy_errors(), tuple()}.
+list_principals_for_policy(Client, AccountId, PolicyArn)
+  when is_map(Client) ->
+    list_principals_for_policy(Client, AccountId, PolicyArn, #{}, #{}).
+
+-spec list_principals_for_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, list_principals_for_policy_response(), tuple()} |
+    {error, any()} |
+    {error, list_principals_for_policy_errors(), tuple()}.
+list_principals_for_policy(Client, AccountId, PolicyArn, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_principals_for_policy(Client, AccountId, PolicyArn, QueryMap, HeadersMap, []).
+
+-spec list_principals_for_policy(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_principals_for_policy_response(), tuple()} |
+    {error, any()} |
+    {error, list_principals_for_policy_errors(), tuple()}.
+list_principals_for_policy(Client, AccountId, PolicyArn, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/governance-policy-mgmt/accounts/", aws_util:encode_uri(AccountId), "/policy-assignments/by-policy"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"MaxResults">>, maps:get(<<"MaxResults">>, QueryMap, undefined)},
+        {<<"NextToken">>, maps:get(<<"NextToken">>, QueryMap, undefined)},
+        {<<"PolicyArn">>, PolicyArn},
+        {<<"PrincipalType">>, maps:get(<<"PrincipalType">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -28670,6 +30606,52 @@ put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input) ->
 put_data_set_refresh_properties(Client, AwsAccountId, DataSetId, Input0, Options0) ->
     Method = put,
     Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/data-sets/", aws_util:encode_uri(DataSetId), "/refresh-properties"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Assigns a governance policy to an Amazon Quick Sight principal.
+%%
+%% A principal can have one policy of each
+%% policy type. If the principal already has a policy of the same type, this
+%% operation replaces it.
+%%
+%% To make the change conditional, specify `ExistingPolicyArn',
+%% `Revision', or
+%% both. If the current assignment doesn't match, the request fails with
+%% a `ConflictException'
+%% and makes no change. If the principal already has the specified policy,
+%% the request succeeds and makes
+%% no change.
+-spec put_policy_assignment(aws_client:aws_client(), binary() | list(), put_policy_assignment_request()) ->
+    {ok, put_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, put_policy_assignment_errors(), tuple()}.
+put_policy_assignment(Client, AccountId, Input) ->
+    put_policy_assignment(Client, AccountId, Input, []).
+
+-spec put_policy_assignment(aws_client:aws_client(), binary() | list(), put_policy_assignment_request(), proplists:proplist()) ->
+    {ok, put_policy_assignment_response(), tuple()} |
+    {error, any()} |
+    {error, put_policy_assignment_errors(), tuple()}.
+put_policy_assignment(Client, AccountId, Input0, Options0) ->
+    Method = put,
+    Path = ["/governance-policy-mgmt/accounts/", aws_util:encode_uri(AccountId), "/policy-assignments"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
@@ -29758,6 +31740,89 @@ untag_resource(Client, ResourceArn, Input0, Options0) ->
                      {<<"keys">>, <<"TagKeys">>}
                    ],
     {Query_, Input} = aws_request:build_headers(QueryMapping, Input2),
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates an access control application.
+%%
+%% You can change its name, description, status, IdP settings such as the
+%% client ID and issuer URL, and its Quick Sight authentication settings such
+%% as redirect URIs.
+%%
+%% You can't change the `IdpAuthorizingType', the
+%% `QuickAuthenticationType', or the trusted token issuer after the
+%% application is created. To manage client secrets, use
+%% `CreateAccessControlApplicationSecret',
+%% `UpdateAccessControlApplicationSecret', and
+%% `DeleteAccessControlApplicationSecret'.
+-spec update_access_control_application(aws_client:aws_client(), binary() | list(), binary() | list(), update_access_control_application_request()) ->
+    {ok, update_access_control_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_access_control_application_errors(), tuple()}.
+update_access_control_application(Client, ApplicationId, AwsAccountId, Input) ->
+    update_access_control_application(Client, ApplicationId, AwsAccountId, Input, []).
+
+-spec update_access_control_application(aws_client:aws_client(), binary() | list(), binary() | list(), update_access_control_application_request(), proplists:proplist()) ->
+    {ok, update_access_control_application_response(), tuple()} |
+    {error, any()} |
+    {error, update_access_control_application_errors(), tuple()}.
+update_access_control_application(Client, ApplicationId, AwsAccountId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/access-control-applications/", aws_util:encode_uri(ApplicationId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the Amazon Web Services Secrets Manager secret ARNs of an
+%% IdP-provided client secret.
+%%
+%% You can add, replace, or remove the ARN for a Region, but you can't
+%% remove the last remaining Region. To remove it, delete the client secret.
+-spec update_access_control_application_secret(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_access_control_application_secret_request()) ->
+    {ok, update_access_control_application_secret_response(), tuple()} |
+    {error, any()} |
+    {error, update_access_control_application_secret_errors(), tuple()}.
+update_access_control_application_secret(Client, ApplicationId, AwsAccountId, ClientSecretId, Input) ->
+    update_access_control_application_secret(Client, ApplicationId, AwsAccountId, ClientSecretId, Input, []).
+
+-spec update_access_control_application_secret(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_access_control_application_secret_request(), proplists:proplist()) ->
+    {ok, update_access_control_application_secret_response(), tuple()} |
+    {error, any()} |
+    {error, update_access_control_application_secret_errors(), tuple()}.
+update_access_control_application_secret(Client, ApplicationId, AwsAccountId, ClientSecretId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/access-control-applications/", aws_util:encode_uri(ApplicationId), "/client-secrets/", aws_util:encode_uri(ClientSecretId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Applies a custom permissions profile to an account.
@@ -30976,6 +33041,81 @@ update_identity_propagation_config(Client, AwsAccountId, Service, Input0, Option
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
+%% @doc Updates an inbound connector.
+%%
+%% You can change its name, description, status, and configuration. You
+%% can't change the connector type after the connector is created.
+-spec update_inbound_connector(aws_client:aws_client(), binary() | list(), binary() | list(), update_inbound_connector_request()) ->
+    {ok, update_inbound_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_inbound_connector_errors(), tuple()}.
+update_inbound_connector(Client, AwsAccountId, InboundConnectorId, Input) ->
+    update_inbound_connector(Client, AwsAccountId, InboundConnectorId, Input, []).
+
+-spec update_inbound_connector(aws_client:aws_client(), binary() | list(), binary() | list(), update_inbound_connector_request(), proplists:proplist()) ->
+    {ok, update_inbound_connector_response(), tuple()} |
+    {error, any()} |
+    {error, update_inbound_connector_errors(), tuple()}.
+update_inbound_connector(Client, AwsAccountId, InboundConnectorId, Input0, Options0) ->
+    Method = patch,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/inbound-connectors/", aws_util:encode_uri(InboundConnectorId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Associates access control applications with an inbound connector,
+%% disassociates them from it, or both.
+%%
+%% You can add up to 20 associations and remove up to 20 associations in each
+%% request. An inbound connector supports up to 6,000 associations.
+-spec update_inbound_connector_application_associations(aws_client:aws_client(), binary() | list(), binary() | list(), update_inbound_connector_application_associations_request()) ->
+    {ok, update_inbound_connector_application_associations_response(), tuple()} |
+    {error, any()} |
+    {error, update_inbound_connector_application_associations_errors(), tuple()}.
+update_inbound_connector_application_associations(Client, AwsAccountId, InboundConnectorId, Input) ->
+    update_inbound_connector_application_associations(Client, AwsAccountId, InboundConnectorId, Input, []).
+
+-spec update_inbound_connector_application_associations(aws_client:aws_client(), binary() | list(), binary() | list(), update_inbound_connector_application_associations_request(), proplists:proplist()) ->
+    {ok, update_inbound_connector_application_associations_response(), tuple()} |
+    {error, any()} |
+    {error, update_inbound_connector_application_associations_errors(), tuple()}.
+update_inbound_connector_application_associations(Client, AwsAccountId, InboundConnectorId, Input0, Options0) ->
+    Method = put,
+    Path = ["/accounts/", aws_util:encode_uri(AwsAccountId), "/inbound-connectors/", aws_util:encode_uri(InboundConnectorId), "/associations"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
 %% @doc Updates the content and status of IP rules.
 %%
 %% Traffic from a source is allowed when the source satisfies either the
@@ -31099,6 +33239,46 @@ update_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, Input) 
 update_knowledge_base_permissions(Client, AwsAccountId, KnowledgeBaseId, Input0, Options0) ->
     Method = post,
     Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), "/permissions"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Updates the refresh schedule for an Amazon Quick Sight knowledge
+%% base.
+%%
+%% Use this operation to change how often the knowledge base refreshes, or to
+%% enable or disable the schedule. Specify the schedule by its
+%% `ScheduleId'. The operation changes only the fields that you provide.
+%% Any field that you omit keeps its existing value.
+-spec update_knowledge_base_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_knowledge_base_refresh_schedule_request()) ->
+    {ok, update_knowledge_base_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, update_knowledge_base_refresh_schedule_errors(), tuple()}.
+update_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, ScheduleId, Input) ->
+    update_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, ScheduleId, Input, []).
+
+-spec update_knowledge_base_refresh_schedule(aws_client:aws_client(), binary() | list(), binary() | list(), binary() | list(), update_knowledge_base_refresh_schedule_request(), proplists:proplist()) ->
+    {ok, update_knowledge_base_refresh_schedule_response(), tuple()} |
+    {error, any()} |
+    {error, update_knowledge_base_refresh_schedule_errors(), tuple()}.
+update_knowledge_base_refresh_schedule(Client, AwsAccountId, KnowledgeBaseId, ScheduleId, Input0, Options0) ->
+    Method = put,
+    Path = ["/v1/accounts/", aws_util:encode_uri(AwsAccountId), "/knowledge-bases/", aws_util:encode_uri(KnowledgeBaseId), "/kb-refresh-schedules/", aws_util:encode_uri(ScheduleId), ""],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

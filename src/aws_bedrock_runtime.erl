@@ -235,6 +235,7 @@
 %%   <<"messages">> => list(message()),
 %%   <<"outputConfig">> => output_config(),
 %%   <<"performanceConfig">> => performance_configuration(),
+%%   <<"projectIdentifier">> => string(),
 %%   <<"promptVariables">> => map(),
 %%   <<"requestMetadata">> => map(),
 %%   <<"serviceTier">> => service_tier(),
@@ -285,6 +286,7 @@
 %%   <<"messages">> => list(message()),
 %%   <<"outputConfig">> => output_config(),
 %%   <<"performanceConfig">> => performance_configuration(),
+%%   <<"projectIdentifier">> => string(),
 %%   <<"promptVariables">> => map(),
 %%   <<"requestMetadata">> => map(),
 %%   <<"serviceTier">> => service_tier(),
@@ -975,6 +977,7 @@
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
 %%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"projectIdentifier">> => string(),
 %%   <<"requestMetadata">> => string(),
 %%   <<"serviceTier">> => list(any()),
 %%   <<"trace">> => list(any())
@@ -1021,6 +1024,7 @@
 %%   <<"guardrailIdentifier">> => string(),
 %%   <<"guardrailVersion">> => string(),
 %%   <<"performanceConfigLatency">> => list(any()),
+%%   <<"projectIdentifier">> => string(),
 %%   <<"requestMetadata">> => string(),
 %%   <<"serviceTier">> => list(any()),
 %%   <<"trace">> => list(any())
@@ -1554,8 +1558,8 @@ apply_guardrail(Client, GuardrailIdentifier, GuardrailVersion, Input0, Options0)
 %% different models. If a model has unique inference parameters, you can also
 %% pass those unique parameters to the model.
 %%
-%% Amazon Bedrock doesn't store any text, images, or documents that you
-%% provide as content. The data is only used to generate the response.
+%% Data retention for this request depends on the applicable account or
+%% project configuration and the model's data retention policy.
 %%
 %% You can submit a prompt by including it in the `messages' field,
 %% specifying the `modelId' of a foundation model or inference profile to
@@ -1581,7 +1585,9 @@ apply_guardrail(Client, GuardrailIdentifier, GuardrailVersion, Input0, Options0)
 %% Guide.
 %%
 %% This operation requires permission for the `bedrock:InvokeModel'
-%% action.
+%% action on both the inference target and the project. If you omit
+%% `projectIdentifier' or specify `default', this includes permission
+%% on the default project for your account.
 %%
 %% To deny all inference access to resources that you specify in the modelId
 %% field, you need to deny access to the `bedrock:InvokeModel' and
@@ -1647,8 +1653,8 @@ converse(Client, ModelId, Input0, Options0) ->
 %% The CLI doesn't support streaming operations in Amazon Bedrock,
 %% including `ConverseStream'.
 %%
-%% Amazon Bedrock doesn't store any text, images, or documents that you
-%% provide as content. The data is only used to generate the response.
+%% Data retention for this request depends on the applicable account or
+%% project configuration and the model's data retention policy.
 %%
 %% You can submit a prompt by including it in the `messages' field,
 %% specifying the `modelId' of a foundation model or inference profile to
@@ -1674,7 +1680,10 @@ converse(Client, ModelId, Input0, Options0) ->
 %% User Guide.
 %%
 %% This operation requires permission for the
-%% `bedrock:InvokeModelWithResponseStream' action.
+%% `bedrock:InvokeModelWithResponseStream' action on both the inference
+%% target and the project. If you omit `projectIdentifier' or specify
+%% `default', this includes permission on the default project for your
+%% account.
 %%
 %% To deny all inference access to resources that you specify in the modelId
 %% field, you need to deny access to the `bedrock:InvokeModel' and
@@ -1873,7 +1882,9 @@ invoke_guardrail_checks(Client, Input0, Options0) ->
 %% User Guide.
 %%
 %% This operation requires permission for the `bedrock:InvokeModel'
-%% action.
+%% action on both the inference target and the project. If you omit
+%% `projectIdentifier' or specify `default', this includes permission
+%% on the default project for your account.
 %%
 %% To deny all inference access to resources that you specify in the modelId
 %% field, you need to deny access to the `bedrock:InvokeModel' and
@@ -1918,6 +1929,7 @@ invoke_model(Client, ModelId, Input0, Options0) ->
                        {<<"X-Amzn-Bedrock-GuardrailIdentifier">>, <<"guardrailIdentifier">>},
                        {<<"X-Amzn-Bedrock-GuardrailVersion">>, <<"guardrailVersion">>},
                        {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>},
+                       {<<"X-Amzn-Bedrock-ProjectIdentifier">>, <<"projectIdentifier">>},
                        {<<"X-Amzn-Bedrock-Request-Metadata">>, <<"requestMetadata">>},
                        {<<"X-Amzn-Bedrock-Service-Tier">>, <<"serviceTier">>},
                        {<<"X-Amzn-Bedrock-Trace">>, <<"trace">>}
@@ -2010,8 +2022,11 @@ invoke_model_with_bidirectional_stream(Client, ModelId, Input0, Options0) ->
 %% For example code, see Invoke model with streaming code example in the
 %% Amazon Bedrock User Guide.
 %%
-%% This operation requires permissions to perform the
-%% `bedrock:InvokeModelWithResponseStream' action.
+%% This operation requires permission for the
+%% `bedrock:InvokeModelWithResponseStream' action on both the inference
+%% target and the project. If you omit `projectIdentifier' or specify
+%% `default', this includes permission on the default project for your
+%% account.
 %%
 %% To deny all inference access to resources that you specify in the modelId
 %% field, you need to deny access to the `bedrock:InvokeModel' and
@@ -2056,6 +2071,7 @@ invoke_model_with_response_stream(Client, ModelId, Input0, Options0) ->
                        {<<"X-Amzn-Bedrock-GuardrailIdentifier">>, <<"guardrailIdentifier">>},
                        {<<"X-Amzn-Bedrock-GuardrailVersion">>, <<"guardrailVersion">>},
                        {<<"X-Amzn-Bedrock-PerformanceConfig-Latency">>, <<"performanceConfigLatency">>},
+                       {<<"X-Amzn-Bedrock-ProjectIdentifier">>, <<"projectIdentifier">>},
                        {<<"X-Amzn-Bedrock-Request-Metadata">>, <<"requestMetadata">>},
                        {<<"X-Amzn-Bedrock-Service-Tier">>, <<"serviceTier">>},
                        {<<"X-Amzn-Bedrock-Trace">>, <<"trace">>}

@@ -15109,6 +15109,13 @@
 -type id_format() :: #{binary() => any()}.
 
 %% Example:
+%% igw_firewall() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"Status">> => list(any())
+%% }
+-type igw_firewall() :: #{binary() => any()}.
+
+%% Example:
 %% image() :: #{
 %%   <<"Architecture">> => list(any()),
 %%   <<"BlockDeviceMappings">> => list(block_device_mapping()),
@@ -19799,6 +19806,14 @@
 -type network_card_info() :: #{binary() => any()}.
 
 %% Example:
+%% network_firewall_association() :: #{
+%%   <<"FirewallArn">> => string(),
+%%   <<"FirewallMode">> => list(any()),
+%%   <<"FirewallOnboardingStatus">> => list(any())
+%% }
+-type network_firewall_association() :: #{binary() => any()}.
+
+%% Example:
 %% network_info() :: #{
 %%   <<"BandwidthWeightings">> => list(list(any())()),
 %%   <<"ConnectionTrackingConfiguration">> => default_connection_tracking_configuration(),
@@ -21823,6 +21838,7 @@
 %%   <<"DestinationPrefixListId">> => string(),
 %%   <<"EgressOnlyInternetGatewayId">> => string(),
 %%   <<"GatewayId">> => string(),
+%%   <<"IgwFirewall">> => igw_firewall(),
 %%   <<"InstanceId">> => string(),
 %%   <<"InstanceOwnerId">> => string(),
 %%   <<"IpAddress">> => string(),
@@ -23095,6 +23111,7 @@
 %%   <<"Ipv6Native">> => boolean(),
 %%   <<"MapCustomerOwnedIpOnLaunch">> => boolean(),
 %%   <<"MapPublicIpOnLaunch">> => boolean(),
+%%   <<"NetworkFirewallConnectivityType">> => list(any()),
 %%   <<"OutpostArn">> => string(),
 %%   <<"OwnerId">> => string(),
 %%   <<"PrivateDnsNameOptionsOnLaunch">> => private_dns_name_options_on_launch(),
@@ -24749,6 +24766,7 @@
 %%   <<"InstanceTenancy">> => list(any()),
 %%   <<"Ipv6CidrBlockAssociationSet">> => list(vpc_ipv6_cidr_block_association()),
 %%   <<"IsDefault">> => boolean(),
+%%   <<"NetworkFirewallAssociations">> => list(network_firewall_association()),
 %%   <<"OwnerId">> => string(),
 %%   <<"State">> => list(any()),
 %%   <<"Tags">> => list(tag()),

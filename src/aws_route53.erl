@@ -2,27 +2,131 @@
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
 %% @doc Amazon Route 53 is a highly available and scalable Domain Name System
-%% (DNS) web
-%% service.
+%% (DNS) web service.
 %%
-%% You can use Route 53 to:
+%% Route 53 performs four main functions:
 %%
-%% Register domain names.
+%% Domain registration – Route 53 lets you register domain names such as
+%% example.com.
 %%
-%% For more information, see How domain registration works:
-%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-domain-registration.html.
+%% Domain Name System (DNS) service – Route 53 translates friendly domain
+%% names into IP addresses using a global network of authoritative DNS
+%% servers, and provides DNS resolution within your VPCs for private hosted
+%% zones.
 %%
-%% Route internet traffic to the resources for your domain
+%% Health checking – Route 53 sends automated requests to your application,
+%% over the internet or from within your VPC for private endpoints, to verify
+%% that it's reachable, available, and functional.
 %%
-%% For more information, see How internet traffic is routed to your website
-%% or web application:
-%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html.
+%% Resolver – Route 53 Resolver lets you forward DNS queries from a VPC that
+%% you created using Amazon VPC to DNS resolvers in your network, and from
+%% your network to resolvers in your VPC.
 %%
-%% Check the health of your resources.
+%% You can use the API to create and manage the following resources:
 %%
-%% For more information, see How Route 53 checks the health of your
-%% resources:
-%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-health-checks.html.
+%% Public and Private Hosted Zones
+%%
+%% A public hosted zone is a container that holds information about how you
+%% want to route traffic on the internet for a domain, such as example.com,
+%% and its subdomains.
+%%
+%% A private hosted zone is a container that holds information about how you
+%% want to route traffic for a domain and its subdomains within one or more
+%% VPCs that you created with the Amazon VPC service.
+%%
+%% Reusable Delegation Sets
+%%
+%% By default, each hosted zone that you create gets a different set of four
+%% name servers—a different delegation set. If you create a lot of hosted
+%% zones, maintaining different delegation sets can be difficult and time
+%% consuming. Route 53 lets you create a delegation set that you can reuse
+%% with multiple hosted zones.
+%%
+%% Resource Record Sets
+%%
+%% After you create a hosted zone for your domain, such as example.com, you
+%% create resource record sets to tell the Domain Name System (DNS) how to
+%% route traffic for that domain.
+%%
+%% Traffic Policies and Traffic Policy Instances
+%%
+%% You can create complex routing configurations, known as traffic policies,
+%% that use weighted, latency, failover, and geolocation resource record
+%% sets. You can then associate a traffic policy with a domain name or
+%% subdomain name, such as www.example.com, by creating a traffic policy
+%% instance. When users submit DNS queries for the domain or subdomain,
+%% Route 53 responds based on the traffic policy that you used to create the
+%% traffic policy instance.
+%%
+%% Health Checks
+%%
+%% Route 53 health checks monitor the health and performance of your web
+%% applications, web servers, and other resources. At regular intervals that
+%% you specify, Route 53 submits automated requests to your application,
+%% server, or other resource, over the internet or from within your VPC for
+%% private endpoints, to verify that it's reachable, available, and
+%% functional.
+%%
+%% Domain Registrations
+%%
+%% When you want to get a new domain name, such as example.com, you can
+%% register it with Route 53. You can also transfer the registration for
+%% existing domains from other registrars to Route 53.
+%%
+%% DNS–DNSSEC
+%%
+%% You can protect your domain from DNS spoofing or a man-in-the-middle
+%% attack, by configuring Domain Name System Security Extensions (DNSSEC).
+%%
+%% Query Logs
+%%
+%% You can configure Route 53 to log information about the DNS queries that
+%% Route 53 receives, such as the domain or subdomain that was requested, the
+%% date and time of the request, and the DNS record type (such as A or AAAA).
+%%
+%% You can also configure Route 53 Resolver to log information about the DNS
+%% queries that originate in Amazon VPCs.
+%%
+%% Outbound and Inbound Endpoints, and Rules
+%%
+%% You can configure Route 53 Resolver to forward DNS queries from your VPC
+%% to your network or vice versa. DNS queries pass through an outbound
+%% endpoint on their way from a VPC to your network, and they pass through an
+%% inbound endpoint on their way from your network to a VPC. For outbound
+%% queries, rules let you specify the domain names that you want to forward
+%% to your network and the IP addresses of the DNS resolvers in your network.
+%%
+%% Tags
+%%
+%% A tag is a label that you assign to an Amazon Web Services resource. Each
+%% tag consists of a key and a value, both of which you define. You can use
+%% tags for a variety of purposes; one common use is to categorize and track
+%% your Route 53 costs.
+%%
+%% Profiles
+%%
+%% A profile is a named container that groups DNS configurations—such as
+%% private hosted zone associations, Resolver rules, and DNS Firewall rule
+%% groups—into a single reusable unit. You can associate a profile with
+%% multiple VPCs and share it across Amazon Web Services accounts so that
+%% each VPC inherits the same DNS settings without requiring individual
+%% configuration.
+%%
+%% DNS Firewall
+%%
+%% A DNS Firewall rule group is an ordered collection of rules that each pair
+%% a domain list with an action—allow, block, or alert. You associate rule
+%% groups with your VPCs to filter outbound DNS queries made by VPC
+%% resources, preventing connections to known-malicious domains or
+%% restricting access to only approved domains.
+%%
+%% You can also use the Route 53 API to get the current limit on Route 53
+%% objects that you can create, such as hosted zones and health checks.
+%%
+%% For information about Route 53 concepts and about how to use the Route 53
+%% console, see the
+%% Amazon Route 53 Developer Guide:
+%% https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/.
 -module(aws_route53).
 
 -export([activate_key_signing_key/4,
@@ -122,6 +226,9 @@
          get_hosted_zone/2,
          get_hosted_zone/4,
          get_hosted_zone/5,
+         get_hosted_zone_change_batch/3,
+         get_hosted_zone_change_batch/5,
+         get_hosted_zone_change_batch/6,
          get_hosted_zone_count/1,
          get_hosted_zone_count/3,
          get_hosted_zone_count/4,
@@ -167,6 +274,9 @@
          list_health_checks_by_source/2,
          list_health_checks_by_source/4,
          list_health_checks_by_source/5,
+         list_hosted_zone_change_batches/2,
+         list_hosted_zone_change_batches/4,
+         list_hosted_zone_change_batches/5,
          list_hosted_zones/1,
          list_hosted_zones/3,
          list_hosted_zones/4,
@@ -179,6 +289,9 @@
          list_query_logging_configs/1,
          list_query_logging_configs/3,
          list_query_logging_configs/4,
+         list_resource_record_set_changes/2,
+         list_resource_record_set_changes/4,
+         list_resource_record_set_changes/5,
          list_resource_record_set_protections/2,
          list_resource_record_set_protections/4,
          list_resource_record_set_protections/5,
@@ -220,6 +333,8 @@
          update_hosted_zone_comment/4,
          update_hosted_zone_features/3,
          update_hosted_zone_features/4,
+         update_hosted_zone_tier/3,
+         update_hosted_zone_tier/4,
          update_traffic_policy_comment/4,
          update_traffic_policy_comment/5,
          update_traffic_policy_instance/3,
@@ -230,6 +345,14 @@
 %% hackney:body/1 is only called with hackney versions that still export it.
 -ignore_xref([{hackney, body, 1}]).
 
+
+
+%% Example:
+%% a_z_affinity() :: #{
+%%   <<"LocationId">> => string(),
+%%   <<"LocationType">> => list(any())
+%% }
+-type a_z_affinity() :: #{binary() => any()}.
 
 
 %% Example:
@@ -300,6 +423,19 @@
 
 
 %% Example:
+%% change_batch_summary() :: #{
+%%   <<"ChangeCount">> => float(),
+%%   <<"ChangeId">> => string(),
+%%   <<"Comment">> => string(),
+%%   <<"Operation">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"SubmittedAt">> => non_neg_integer(),
+%%   <<"SubmittedBy">> => string()
+%% }
+-type change_batch_summary() :: #{binary() => any()}.
+
+
+%% Example:
 %% change_cidr_collection_request() :: #{
 %%   <<"Changes">> := list(cidr_collection_change()),
 %%   <<"CollectionVersion">> => float()
@@ -312,6 +448,22 @@
 %%   <<"Id">> => string()
 %% }
 -type change_cidr_collection_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_guardrail() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Status">> => list(any())
+%% }
+-type change_guardrail() :: #{binary() => any()}.
+
+
+%% Example:
+%% change_history_feature() :: #{
+%%   <<"RetentionStartsAt">> => non_neg_integer(),
+%%   <<"Status">> => list(any())
+%% }
+-type change_history_feature() :: #{binary() => any()}.
 
 
 %% Example:
@@ -519,7 +671,9 @@
 %% Example:
 %% create_hosted_zone_request() :: #{
 %%   <<"CallerReference">> := string(),
+%%   <<"ChangeGuardrails">> => list(change_guardrail()),
 %%   <<"DelegationSetId">> => string(),
+%%   <<"EnablePublicDNSFallback">> => boolean(),
 %%   <<"HostedZoneConfig">> => hosted_zone_config(),
 %%   <<"Name">> := string(),
 %%   <<"VPC">> => vpc()
@@ -888,6 +1042,13 @@
 
 
 %% Example:
+%% feature_not_enabled() :: #{
+%%   <<"message">> => string()
+%% }
+-type feature_not_enabled() :: #{binary() => any()}.
+
+
+%% Example:
 %% geo_location() :: #{
 %%   <<"ContinentCode">> => string(),
 %%   <<"CountryCode">> => string(),
@@ -1033,6 +1194,18 @@
 %%   <<"HealthCheckObservations">> => list(health_check_observation())
 %% }
 -type get_health_check_status_response() :: #{binary() => any()}.
+
+%% Example:
+%% get_hosted_zone_change_batch_request() :: #{}
+-type get_hosted_zone_change_batch_request() :: #{}.
+
+
+%% Example:
+%% get_hosted_zone_change_batch_response() :: #{
+%%   <<"ChangeBatch">> => change_batch(),
+%%   <<"ChangeBatchSummary">> => change_batch_summary()
+%% }
+-type get_hosted_zone_change_batch_response() :: #{binary() => any()}.
 
 %% Example:
 %% get_hosted_zone_count_request() :: #{}
@@ -1255,6 +1428,7 @@
 %% Example:
 %% hosted_zone_config() :: #{
 %%   <<"Comment">> => string(),
+%%   <<"HostedZoneTier">> => list(any()),
 %%   <<"PrivateZone">> => boolean()
 %% }
 -type hosted_zone_config() :: #{binary() => any()}.
@@ -1270,7 +1444,10 @@
 %% Example:
 %% hosted_zone_features() :: #{
 %%   <<"AcceleratedRecoveryStatus">> => list(any()),
-%%   <<"FailureReasons">> => hosted_zone_failure_reasons()
+%%   <<"ChangeGuardrails">> => list(change_guardrail()),
+%%   <<"ChangeHistory">> => change_history_feature(),
+%%   <<"FailureReasons">> => hosted_zone_failure_reasons(),
+%%   <<"PublicDNSFallbackStatus">> => list(any())
 %% }
 -type hosted_zone_features() :: #{binary() => any()}.
 
@@ -1626,6 +1803,26 @@
 
 
 %% Example:
+%% list_hosted_zone_change_batches_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"StartAfterChangeId">> => string(),
+%%   <<"SubmittedAfter">> => string(),
+%%   <<"SubmittedBefore">> => string()
+%% }
+-type list_hosted_zone_change_batches_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_hosted_zone_change_batches_response() :: #{
+%%   <<"ChangeBatchSummaries">> => list(change_batch_summary()),
+%%   <<"NextToken">> => string()
+%% }
+-type list_hosted_zone_change_batches_response() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_hosted_zones_by_name_request() :: #{
 %%   <<"DNSName">> => string(),
 %%   <<"HostedZoneId">> => string(),
@@ -1702,6 +1899,27 @@
 %%   <<"QueryLoggingConfigs">> => list(query_logging_config())
 %% }
 -type list_query_logging_configs_response() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_record_set_changes_request() :: #{
+%%   <<"MaxResults">> => [integer()],
+%%   <<"NextToken">> => string(),
+%%   <<"RecordName">> => string(),
+%%   <<"RecordType">> => list(any()),
+%%   <<"SortOrder">> => list(any()),
+%%   <<"SubmittedAfter">> => string(),
+%%   <<"SubmittedBefore">> => string()
+%% }
+-type list_resource_record_set_changes_request() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_resource_record_set_changes_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"ResourceRecordSetChanges">> => list(resource_record_set_change())
+%% }
+-type list_resource_record_set_changes_response() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2070,6 +2288,7 @@
 
 %% Example:
 %% resource_record_set() :: #{
+%%   <<"AZAffinity">> => a_z_affinity(),
 %%   <<"AliasTarget">> => alias_target(),
 %%   <<"CidrRoutingConfig">> => cidr_routing_config(),
 %%   <<"Failover">> => list(any()),
@@ -2087,6 +2306,19 @@
 %%   <<"Weight">> => float()
 %% }
 -type resource_record_set() :: #{binary() => any()}.
+
+
+%% Example:
+%% resource_record_set_change() :: #{
+%%   <<"Action">> => list(any()),
+%%   <<"ChangeId">> => string(),
+%%   <<"Operation">> => list(any()),
+%%   <<"RequestId">> => string(),
+%%   <<"ResourceRecordSet">> => resource_record_set(),
+%%   <<"SubmittedAt">> => non_neg_integer(),
+%%   <<"SubmittedBy">> => string()
+%% }
+-type resource_record_set_change() :: #{binary() => any()}.
 
 
 %% Example:
@@ -2349,13 +2581,28 @@
 
 %% Example:
 %% update_hosted_zone_features_request() :: #{
-%%   <<"EnableAcceleratedRecovery">> => boolean()
+%%   <<"ChangeGuardrails">> => list(change_guardrail()),
+%%   <<"DryRun">> => boolean(),
+%%   <<"EnableAcceleratedRecovery">> => boolean(),
+%%   <<"EnablePublicDNSFallback">> => boolean()
 %% }
 -type update_hosted_zone_features_request() :: #{binary() => any()}.
 
 %% Example:
 %% update_hosted_zone_features_response() :: #{}
 -type update_hosted_zone_features_response() :: #{}.
+
+
+%% Example:
+%% update_hosted_zone_tier_request() :: #{
+%%   <<"DryRun">> => boolean(),
+%%   <<"HostedZoneTier">> := list(any())
+%% }
+-type update_hosted_zone_tier_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_hosted_zone_tier_response() :: #{}
+-type update_hosted_zone_tier_response() :: #{}.
 
 
 %% Example:
@@ -2682,6 +2929,12 @@
     no_such_hosted_zone() | 
     invalid_input().
 
+-type get_hosted_zone_change_batch_errors() ::
+    no_such_hosted_zone() | 
+    no_such_change() | 
+    invalid_input() | 
+    feature_not_enabled().
+
 -type get_hosted_zone_count_errors() ::
     invalid_input().
 
@@ -2737,6 +2990,12 @@
     no_such_health_check_source() | 
     invalid_input().
 
+-type list_hosted_zone_change_batches_errors() ::
+    no_such_hosted_zone() | 
+    invalid_pagination_token() | 
+    invalid_input() | 
+    feature_not_enabled().
+
 -type list_hosted_zones_errors() ::
     no_such_delegation_set() | 
     invalid_input() | 
@@ -2754,6 +3013,12 @@
     no_such_hosted_zone() | 
     invalid_pagination_token() | 
     invalid_input().
+
+-type list_resource_record_set_changes_errors() ::
+    no_such_hosted_zone() | 
+    invalid_pagination_token() | 
+    invalid_input() | 
+    feature_not_enabled().
 
 -type list_resource_record_set_protections_errors() ::
     no_such_hosted_zone() | 
@@ -2827,6 +3092,11 @@
     prior_request_not_complete() | 
     no_such_hosted_zone() | 
     limits_exceeded() | 
+    invalid_input().
+
+-type update_hosted_zone_tier_errors() ::
+    prior_request_not_complete() | 
+    no_such_hosted_zone() | 
     invalid_input().
 
 -type update_traffic_policy_comment_errors() ::
@@ -5499,6 +5769,56 @@ get_hosted_zone(Client, Id, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Returns one change batch from the change history of a hosted zone,
+%% including every change in the batch.
+%%
+%% Each resource record set is in the same form that
+%% `ListResourceRecordSets' returns. For example, the name is in
+%% lowercase and ends with a dot. For an `UPSERT' or a `DELETE', the
+%% response doesn't contain the values that the resource record set had
+%% before the change.
+%%
+%% If the change batch isn't in the hosted zone's retained change
+%% history, for example because it's in another hosted zone, it expired,
+%% or it's from before `RetentionStartsAt', Route 53 returns a
+%% `NoSuchChange' error. If Change History isn't turned on for the
+%% hosted zone, Route 53 returns a `FeatureNotEnabled' error.
+-spec get_hosted_zone_change_batch(aws_client:aws_client(), binary() | list(), binary() | list()) ->
+    {ok, get_hosted_zone_change_batch_response(), tuple()} |
+    {error, any()} |
+    {error, get_hosted_zone_change_batch_errors(), tuple()}.
+get_hosted_zone_change_batch(Client, ChangeId, HostedZoneId)
+  when is_map(Client) ->
+    get_hosted_zone_change_batch(Client, ChangeId, HostedZoneId, #{}, #{}).
+
+-spec get_hosted_zone_change_batch(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map()) ->
+    {ok, get_hosted_zone_change_batch_response(), tuple()} |
+    {error, any()} |
+    {error, get_hosted_zone_change_batch_errors(), tuple()}.
+get_hosted_zone_change_batch(Client, ChangeId, HostedZoneId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    get_hosted_zone_change_batch(Client, ChangeId, HostedZoneId, QueryMap, HeadersMap, []).
+
+-spec get_hosted_zone_change_batch(aws_client:aws_client(), binary() | list(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, get_hosted_zone_change_batch_response(), tuple()} |
+    {error, any()} |
+    {error, get_hosted_zone_change_batch_errors(), tuple()}.
+get_hosted_zone_change_batch(Client, ChangeId, HostedZoneId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/changebatches/", aws_util:encode_uri(ChangeId), ""],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query_ = [],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves the number of hosted zones that are associated with the
 %% current Amazon Web Services account.
 -spec get_hosted_zone_count(aws_client:aws_client()) ->
@@ -6164,6 +6484,71 @@ list_health_checks_by_source(Client, HealthCheckSourceId, QueryMap, HeadersMap, 
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
+%% @doc Lists the change batches in an Amazon Route 53 hosted zone.
+%%
+%% For each change batch, the response contains its change ID, the operation
+%% that submitted it, and when and by whom it was submitted. It also contains
+%% the request ID, the comment if there is one, and the number of changes.
+%% Use this list to review who changed the hosted zone and when.
+%%
+%% Each change batch records one `ChangeResourceRecordSets' or
+%% `CreateHostedZone' request. A `CreateHostedZone' change batch has
+%% a `ChangeCount' of 0.
+%%
+%% You can read a change batch for 365 days after it was submitted, but not
+%% from before the `RetentionStartsAt' time that `GetHostedZone'
+%% returns in `Features/ChangeHistory'. If Change History isn't
+%% turned on for the hosted zone, Route 53 returns a `FeatureNotEnabled'
+%% error.
+%%
+%% Results are paginated. To get the next page, use the `NextToken' value
+%% from the response. To get the changes in a change batch, use
+%% `GetHostedZoneChangeBatch'.
+-spec list_hosted_zone_change_batches(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_hosted_zone_change_batches_response(), tuple()} |
+    {error, any()} |
+    {error, list_hosted_zone_change_batches_errors(), tuple()}.
+list_hosted_zone_change_batches(Client, HostedZoneId)
+  when is_map(Client) ->
+    list_hosted_zone_change_batches(Client, HostedZoneId, #{}, #{}).
+
+-spec list_hosted_zone_change_batches(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_hosted_zone_change_batches_response(), tuple()} |
+    {error, any()} |
+    {error, list_hosted_zone_change_batches_errors(), tuple()}.
+list_hosted_zone_change_batches(Client, HostedZoneId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_hosted_zone_change_batches(Client, HostedZoneId, QueryMap, HeadersMap, []).
+
+-spec list_hosted_zone_change_batches(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_hosted_zone_change_batches_response(), tuple()} |
+    {error, any()} |
+    {error, list_hosted_zone_change_batches_errors(), tuple()}.
+list_hosted_zone_change_batches(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/changebatches"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxresults">>, maps:get(<<"maxresults">>, QueryMap, undefined)},
+        {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)},
+        {<<"sortorder">>, maps:get(<<"sortorder">>, QueryMap, undefined)},
+        {<<"startafterchangeid">>, maps:get(<<"startafterchangeid">>, QueryMap, undefined)},
+        {<<"submittedafter">>, maps:get(<<"submittedafter">>, QueryMap, undefined)},
+        {<<"submittedbefore">>, maps:get(<<"submittedbefore">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
 %% @doc Retrieves a list of the public and private hosted zones that are
 %% associated with the
 %% current Amazon Web Services account.
@@ -6467,6 +6852,71 @@ list_query_logging_configs(Client, QueryMap, HeadersMap, Options0)
         {<<"hostedzoneid">>, maps:get(<<"hostedzoneid">>, QueryMap, undefined)},
         {<<"maxresults">>, maps:get(<<"maxresults">>, QueryMap, undefined)},
         {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)}
+      ],
+    Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
+
+    request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
+
+%% @doc Lists the individual changes in the change history of a hosted zone.
+%%
+%% Each entry is one change, with the full resource record set that the
+%% change wrote or deleted. To list only the changes to the resource record
+%% sets that have a specific name and type, specify `RecordName' and
+%% `RecordType'. Weighted, latency, and other resource record sets that
+%% have the same name and type appear as separate entries, each with its
+%% `SetIdentifier'.
+%%
+%% A change can take a few seconds to appear in
+%% `ListResourceRecordSetChanges' after it appears in
+%% `ListHostedZoneChangeBatches'. For a complete, ordered list of
+%% changes, use `ListHostedZoneChangeBatches'.
+%%
+%% Results are paginated. To get the next page, use the `NextToken' value
+%% from the response.
+%%
+%% If Change History isn't turned on for the hosted zone, Route 53
+%% returns a `FeatureNotEnabled' error.
+-spec list_resource_record_set_changes(aws_client:aws_client(), binary() | list()) ->
+    {ok, list_resource_record_set_changes_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_record_set_changes_errors(), tuple()}.
+list_resource_record_set_changes(Client, HostedZoneId)
+  when is_map(Client) ->
+    list_resource_record_set_changes(Client, HostedZoneId, #{}, #{}).
+
+-spec list_resource_record_set_changes(aws_client:aws_client(), binary() | list(), map(), map()) ->
+    {ok, list_resource_record_set_changes_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_record_set_changes_errors(), tuple()}.
+list_resource_record_set_changes(Client, HostedZoneId, QueryMap, HeadersMap)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap) ->
+    list_resource_record_set_changes(Client, HostedZoneId, QueryMap, HeadersMap, []).
+
+-spec list_resource_record_set_changes(aws_client:aws_client(), binary() | list(), map(), map(), proplists:proplist()) ->
+    {ok, list_resource_record_set_changes_response(), tuple()} |
+    {error, any()} |
+    {error, list_resource_record_set_changes_errors(), tuple()}.
+list_resource_record_set_changes(Client, HostedZoneId, QueryMap, HeadersMap, Options0)
+  when is_map(Client), is_map(QueryMap), is_map(HeadersMap), is_list(Options0) ->
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/rrsetchanges"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary}
+               | Options2],
+
+    Headers = [],
+
+    Query0_ =
+      [
+        {<<"maxresults">>, maps:get(<<"maxresults">>, QueryMap, undefined)},
+        {<<"nexttoken">>, maps:get(<<"nexttoken">>, QueryMap, undefined)},
+        {<<"recordname">>, maps:get(<<"recordname">>, QueryMap, undefined)},
+        {<<"recordtype">>, maps:get(<<"recordtype">>, QueryMap, undefined)},
+        {<<"sortorder">>, maps:get(<<"sortorder">>, QueryMap, undefined)},
+        {<<"submittedafter">>, maps:get(<<"submittedafter">>, QueryMap, undefined)},
+        {<<"submittedbefore">>, maps:get(<<"submittedbefore">>, QueryMap, undefined)}
       ],
     Query_ = [H || {_, V} = H <- Query0_, V =/= undefined],
 
@@ -7240,10 +7690,16 @@ update_hosted_zone_comment(Client, Id, Input0, Options0) ->
 %% @doc Updates the features configuration for a hosted zone.
 %%
 %% This operation allows you to enable or disable specific features for your
-%% hosted zone, such as accelerated recovery.
+%% hosted zone, such as accelerated recovery and public DNS fallback.
 %%
 %% Accelerated recovery enables you to update DNS records in your public
 %% hosted zone even when the us-east-1 region is unavailable.
+%%
+%% Public DNS fallback enables Route 53 to retry a query against public DNS
+%% when a query for a domain name in a private hosted zone matches no
+%% existing name (`NXDOMAIN'). Fallback does not occur when the name
+%% exists but has no record of the requested type. Public DNS fallback is
+%% supported only for private hosted zones.
 -spec update_hosted_zone_features(aws_client:aws_client(), binary() | list(), update_hosted_zone_features_request()) ->
     {ok, update_hosted_zone_features_response(), tuple()} |
     {error, any()} |
@@ -7258,6 +7714,53 @@ update_hosted_zone_features(Client, HostedZoneId, Input) ->
 update_hosted_zone_features(Client, HostedZoneId, Input0, Options0) ->
     Method = post,
     Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/features"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Changes the tier of a hosted zone.
+%%
+%% The tier determines which features the hosted zone includes and which
+%% optional features you can turn on. For pricing information, see Amazon
+%% Route 53 pricing: https://aws.amazon.com/route53/pricing/ on the AWS
+%% website.
+%%
+%% When the hosted zone moves to a new tier, Route 53 turns on the features
+%% that the new tier includes. Route 53 also disables any enabled features
+%% that the new tier doesn't include.
+%%
+%% Before you move a hosted zone to a tier that doesn't offer an optional
+%% feature that you turned on, turn off that feature. You can't change
+%% the tier of a hosted zone that uses a CloudFront flat-rate pricing plan.
+-spec update_hosted_zone_tier(aws_client:aws_client(), binary() | list(), update_hosted_zone_tier_request()) ->
+    {ok, update_hosted_zone_tier_response(), tuple()} |
+    {error, any()} |
+    {error, update_hosted_zone_tier_errors(), tuple()}.
+update_hosted_zone_tier(Client, HostedZoneId, Input) ->
+    update_hosted_zone_tier(Client, HostedZoneId, Input, []).
+
+-spec update_hosted_zone_tier(aws_client:aws_client(), binary() | list(), update_hosted_zone_tier_request(), proplists:proplist()) ->
+    {ok, update_hosted_zone_tier_response(), tuple()} |
+    {error, any()} |
+    {error, update_hosted_zone_tier_errors(), tuple()}.
+update_hosted_zone_tier(Client, HostedZoneId, Input0, Options0) ->
+    Method = post,
+    Path = ["/2013-04-01/hostedzone/", aws_util:encode_uri(HostedZoneId), "/tier"],
     SuccessStatusCode = 200,
     {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
     {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),

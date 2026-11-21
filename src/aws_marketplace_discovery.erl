@@ -1,10 +1,14 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc The AWS Marketplace Discovery API provides programmatic access to the
-%% AWS Marketplace catalog, including searching and browsing listings,
-%% retrieving product details and fulfillment options, and accessing public
-%% and private offer pricing and terms.
+%% @doc With the AWS Marketplace Discovery API (Discovery API), you have
+%% programmatic access to the AWS Marketplace catalog.
+%%
+%% You can search and browse listings, retrieve product details and
+%% fulfillment options, and access public and private offer pricing and
+%% terms. For more information, see Using the AWS Marketplace Discovery API:
+%% https://docs.aws.amazon.com/marketplace/latest/developerguide/discovery-apis.html
+%% in the AWS Marketplace Developer Guide.
 -module(aws_marketplace_discovery).
 
 -export([get_listing/2,
@@ -19,6 +23,8 @@
          get_product/3,
          list_fulfillment_options/2,
          list_fulfillment_options/3,
+         list_listing_attributes/2,
+         list_listing_attributes/3,
          list_purchase_options/2,
          list_purchase_options/3,
          search_facets/2,
@@ -125,6 +131,38 @@
 
 
 %% Example:
+%% case_studies_summary() :: #{
+%%   <<"caseStudyCount">> => float()
+%% }
+-type case_studies_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_study() :: #{
+%%   <<"caseStudyId">> => string(),
+%%   <<"caseStudyName">> => string(),
+%%   <<"challenge">> => string(),
+%%   <<"engagementDates">> => engagement_dates(),
+%%   <<"implementationApproach">> => string(),
+%%   <<"outcome">> => string(),
+%%   <<"resolution">> => string(),
+%%   <<"resources">> => list(case_study_resource()),
+%%   <<"shortDescription">> => string()
+%% }
+-type case_study() :: #{binary() => any()}.
+
+
+%% Example:
+%% case_study_resource() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"displayName">> => [string()],
+%%   <<"resourceType">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type case_study_resource() :: #{binary() => any()}.
+
+
+%% Example:
 %% category() :: #{
 %%   <<"categoryId">> => string(),
 %%   <<"displayName">> => string()
@@ -134,7 +172,9 @@
 
 %% Example:
 %% cloud_formation_fulfillment_option() :: #{
+%%   <<"architectureDiagramUrl">> => [string()],
 %%   <<"availableFromTime">> => [non_neg_integer()],
+%%   <<"deploymentTemplateUrl">> => [string()],
 %%   <<"fulfillmentOptionDisplayName">> => [string()],
 %%   <<"fulfillmentOptionId">> => [string()],
 %%   <<"fulfillmentOptionName">> => [string()],
@@ -275,6 +315,14 @@
 
 
 %% Example:
+%% engagement_dates() :: #{
+%%   <<"completionDate">> => [non_neg_integer()],
+%%   <<"startDate">> => [non_neg_integer()]
+%% }
+-type engagement_dates() :: #{binary() => any()}.
+
+
+%% Example:
 %% fixed_percentage() :: #{
 %%   <<"percentageValue">> => string()
 %% }
@@ -337,6 +385,7 @@
 %%   <<"pricingUnits">> => list(pricing_unit()),
 %%   <<"promotionalMedia">> => list(list()),
 %%   <<"publisher">> => seller_information(),
+%%   <<"purchaseIndicators">> => list(purchase_indicator()),
 %%   <<"resources">> => list(resource()),
 %%   <<"reviewSummary">> => review_summary(),
 %%   <<"sellerEngagements">> => list(seller_engagement()),
@@ -438,6 +487,7 @@
 %%   <<"productId">> => string(),
 %%   <<"productName">> => string(),
 %%   <<"promotionalMedia">> => list(list()),
+%%   <<"purchaseIndicators">> => list(purchase_indicator()),
 %%   <<"resources">> => list(resource()),
 %%   <<"sellerEngagements">> => list(seller_engagement()),
 %%   <<"shortDescription">> => string()
@@ -516,6 +566,26 @@
 
 
 %% Example:
+%% list_listing_attributes_input() :: #{
+%%   <<"attributeTypes">> := list(list(any())()),
+%%   <<"listingId">> := string(),
+%%   <<"locale">> => string(),
+%%   <<"maxResults">> => integer(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_listing_attributes_input() :: #{binary() => any()}.
+
+
+%% Example:
+%% list_listing_attributes_output() :: #{
+%%   <<"listingAttributes">> => list(list()),
+%%   <<"locale">> => string(),
+%%   <<"nextToken">> => string()
+%% }
+-type list_listing_attributes_output() :: #{binary() => any()}.
+
+
+%% Example:
 %% list_purchase_options_input() :: #{
 %%   <<"filters">> => list(purchase_option_filter()),
 %%   <<"locale">> => string(),
@@ -563,6 +633,7 @@
 %% listing_summary() :: #{
 %%   <<"associatedEntities">> => list(listing_summary_associated_entity()),
 %%   <<"badges">> => list(listing_badge()),
+%%   <<"caseStudiesSummary">> => case_studies_summary(),
 %%   <<"catalog">> => string(),
 %%   <<"categories">> => list(category()),
 %%   <<"fulfillmentOptionSummaries">> => list(fulfillment_option_summary()),
@@ -573,7 +644,10 @@
 %%   <<"pricingUnits">> => list(pricing_unit()),
 %%   <<"publisher">> => seller_information(),
 %%   <<"reviewSummary">> => review_summary(),
-%%   <<"shortDescription">> => string()
+%%   <<"sellerEngagements">> => list(seller_engagement()),
+%%   <<"shortDescription">> => string(),
+%%   <<"trustCenterSummary">> => trust_center_summary(),
+%%   <<"useCaseSummary">> => use_case_summary()
 %% }
 -type listing_summary() :: #{binary() => any()}.
 
@@ -717,6 +791,13 @@
 
 
 %% Example:
+%% purchase_indicator() :: #{
+%%   <<"indicatorType">> => list(any())
+%% }
+-type purchase_indicator() :: #{binary() => any()}.
+
+
+%% Example:
 %% purchase_option_associated_entity() :: #{
 %%   <<"offer">> => offer_information(),
 %%   <<"offerSet">> => offer_set_information(),
@@ -763,6 +844,7 @@
 %%   <<"dimensionLabels">> => list(dimension_label()),
 %%   <<"displayName">> => string(),
 %%   <<"price">> => string(),
+%%   <<"regionalPrices">> => list(regional_price()),
 %%   <<"unit">> => string()
 %% }
 -type rate_card_item() :: #{binary() => any()}.
@@ -777,6 +859,15 @@
 %%   <<"type">> => list(any())
 %% }
 -type recurring_payment_term() :: #{binary() => any()}.
+
+
+%% Example:
+%% regional_price() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"price">> => string(),
+%%   <<"region">> => [string()]
+%% }
+-type regional_price() :: #{binary() => any()}.
 
 
 %% Example:
@@ -828,8 +919,20 @@
 
 
 %% Example:
+%% saas_cloud_formation_deployment_template() :: #{
+%%   <<"defaultStackName">> => [string()],
+%%   <<"description">> => [string()],
+%%   <<"iamPolicy">> => [string()],
+%%   <<"templateName">> => [string()],
+%%   <<"templateUrl">> => string()
+%% }
+-type saas_cloud_formation_deployment_template() :: #{binary() => any()}.
+
+
+%% Example:
 %% saas_fulfillment_option() :: #{
 %%   <<"availableFromTime">> => [non_neg_integer()],
+%%   <<"deploymentTemplates">> => list(list()),
 %%   <<"fulfillmentOptionDisplayName">> => [string()],
 %%   <<"fulfillmentOptionId">> => [string()],
 %%   <<"fulfillmentOptionType">> => list(any()),
@@ -970,6 +1073,34 @@
 
 
 %% Example:
+%% specialization() :: #{
+%%   <<"caseStudyIds">> => list(string()),
+%%   <<"description">> => string(),
+%%   <<"specializationId">> => string(),
+%%   <<"specializationName">> => string(),
+%%   <<"specializationTypes">> => list(specialization_type_detail())
+%% }
+-type specialization() :: #{binary() => any()}.
+
+
+%% Example:
+%% specialization_category() :: #{
+%%   <<"parentSpecializationId">> => string(),
+%%   <<"specializationCategoryId">> => string(),
+%%   <<"specializationCategoryName">> => string()
+%% }
+-type specialization_category() :: #{binary() => any()}.
+
+
+%% Example:
+%% specialization_type_detail() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"specializationType">> => list(any())
+%% }
+-type specialization_type_detail() :: #{binary() => any()}.
+
+
+%% Example:
 %% support_term() :: #{
 %%   <<"id">> => string(),
 %%   <<"refundPolicy">> => string(),
@@ -983,6 +1114,91 @@
 %%   <<"message">> => string()
 %% }
 -type throttling_exception() :: #{binary() => any()}.
+
+
+%% Example:
+%% trust_center_certification_attribute() :: #{
+%%   <<"certificationType">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"logoUrl">> => string()
+%% }
+-type trust_center_certification_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% trust_center_certification_summary() :: #{
+%%   <<"certificationType">> => string(),
+%%   <<"displayName">> => string(),
+%%   <<"logoUrl">> => string()
+%% }
+-type trust_center_certification_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% trust_center_control() :: #{
+%%   <<"description">> => [string()],
+%%   <<"domains">> => list(list(any())()),
+%%   <<"name">> => string()
+%% }
+-type trust_center_control() :: #{binary() => any()}.
+
+
+%% Example:
+%% trust_center_document_attribute() :: #{
+%%   <<"accessType">> => list(any()),
+%%   <<"contentType">> => list(any()),
+%%   <<"displayName">> => [string()],
+%%   <<"subjectArea">> => string(),
+%%   <<"value">> => [string()]
+%% }
+-type trust_center_document_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% trust_center_faq_attribute() :: #{
+%%   <<"answer">> => [string()],
+%%   <<"question">> => string(),
+%%   <<"subjectArea">> => string()
+%% }
+-type trust_center_faq_attribute() :: #{binary() => any()}.
+
+
+%% Example:
+%% trust_center_source() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"displayName">> => [string()],
+%%   <<"provider">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type trust_center_source() :: #{binary() => any()}.
+
+
+%% Example:
+%% trust_center_source_summary() :: #{
+%%   <<"contentType">> => list(any()),
+%%   <<"displayName">> => [string()],
+%%   <<"provider">> => list(any()),
+%%   <<"value">> => [string()]
+%% }
+-type trust_center_source_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% trust_center_summary() :: #{
+%%   <<"certificationSummaries">> => list(trust_center_certification_summary()),
+%%   <<"sourceSummaries">> => list(trust_center_source_summary()),
+%%   <<"totalCertificationCount">> => float()
+%% }
+-type trust_center_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% trust_center_update_attribute() :: #{
+%%   <<"description">> => [string()],
+%%   <<"publishedTime">> => [non_neg_integer()],
+%%   <<"title">> => string()
+%% }
+-type trust_center_update_attribute() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1016,6 +1232,28 @@
 %%   <<"useCase">> => use_case()
 %% }
 -type use_case_entry() :: #{binary() => any()}.
+
+
+%% Example:
+%% use_case_information() :: #{
+%%   <<"displayName">> => string(),
+%%   <<"value">> => string()
+%% }
+-type use_case_information() :: #{binary() => any()}.
+
+
+%% Example:
+%% use_case_summary() :: #{
+%%   <<"useCases">> => list(use_case_summary_entry())
+%% }
+-type use_case_summary() :: #{binary() => any()}.
+
+
+%% Example:
+%% use_case_summary_entry() :: #{
+%%   <<"useCase">> => use_case_information()
+%% }
+-type use_case_summary_entry() :: #{binary() => any()}.
 
 
 %% Example:
@@ -1062,6 +1300,9 @@
     resource_not_found_exception().
 
 -type list_fulfillment_options_errors() ::
+    resource_not_found_exception().
+
+-type list_listing_attributes_errors() ::
     resource_not_found_exception().
 
 %%====================================================================
@@ -1177,9 +1418,13 @@ get_offer_set(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the terms attached to an offer, such as pricing terms
-%% (usage-based, contract, BYOL, free trial), legal terms, payment schedules,
-%% validity terms, support terms, and renewal terms.
+%% @doc Retrieves the terms attached to an offer, such as pricing terms
+%% (usage-based, contract, Bring Your Own License (BYOL), free trial), legal
+%% terms, payment schedules, validity terms, support terms, and renewal
+%% terms.
+%%
+%% The operation returns results in pages. Use `nextToken' to retrieve
+%% the next page.
 -spec get_offer_terms(aws_client:aws_client(), get_offer_terms_input()) ->
     {ok, get_offer_terms_output(), tuple()} |
     {error, any()} |
@@ -1249,9 +1494,12 @@ get_product(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the fulfillment options available for a product, including
+%% @doc Retrieves the fulfillment options available for a product, including
 %% deployment details such as version information, operating systems, usage
 %% instructions, and release notes.
+%%
+%% The operation returns results in pages. Use `nextToken' to retrieve
+%% the next page.
 -spec list_fulfillment_options(aws_client:aws_client(), list_fulfillment_options_input()) ->
     {ok, list_fulfillment_options_output(), tuple()} |
     {error, any()} |
@@ -1285,11 +1533,50 @@ list_fulfillment_options(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns the purchase options (offers and offer sets) available to the
-%% buyer.
+%% @doc Retrieves the requested attributes for a listing, including case
+%% studies and trust center information.
+%%
+%% The operation returns results in pages. Use `nextToken' to retrieve
+%% the next page.
+-spec list_listing_attributes(aws_client:aws_client(), list_listing_attributes_input()) ->
+    {ok, list_listing_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, list_listing_attributes_errors(), tuple()}.
+list_listing_attributes(Client, Input) ->
+    list_listing_attributes(Client, Input, []).
+
+-spec list_listing_attributes(aws_client:aws_client(), list_listing_attributes_input(), proplists:proplist()) ->
+    {ok, list_listing_attributes_output(), tuple()} |
+    {error, any()} |
+    {error, list_listing_attributes_errors(), tuple()}.
+list_listing_attributes(Client, Input0, Options0) ->
+    Method = post,
+    Path = ["/2026-02-05/listListingAttributes"],
+    SuccessStatusCode = 200,
+    {SendBodyAsBinary, Options1} = proplists_take(send_body_as_binary, Options0, false),
+    {ReceiveBodyAsBinary, Options2} = proplists_take(receive_body_as_binary, Options1, false),
+    Options = [{send_body_as_binary, SendBodyAsBinary},
+               {receive_body_as_binary, ReceiveBodyAsBinary},
+               {append_sha256_content_hash, false}
+               | Options2],
+
+    Headers = [],
+    Input1 = Input0,
+
+    CustomHeaders = [],
+    Input2 = Input1,
+
+    Query_ = [],
+    Input = Input2,
+
+    request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
+
+%% @doc Retrieves the purchase options (offers and offer sets) available to
+%% you.
 %%
 %% You can filter results by product, seller, purchase option type,
-%% visibility scope, and availability status.
+%% visibility scope, and availability status. The operation returns results
+%% in pages. Use `nextToken' to retrieve the next page.
 %%
 %% You must include at least one of the following filters in the request: a
 %% `PRODUCT_ID' filter to specify the product for which to retrieve
@@ -1326,7 +1613,7 @@ list_purchase_options(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns available facet values for filtering listings, such as
+%% @doc Retrieves the available facet values for filtering listings, such as
 %% categories, pricing models, fulfillment option types, publishers, and
 %% customer ratings.
 %%
@@ -1362,12 +1649,12 @@ search_facets(Client, Input0, Options0) ->
 
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
-%% @doc Returns a list of product listings based on search criteria and
-%% filters.
+%% @doc Searches for listings that match your search criteria and filters.
 %%
 %% You can search by keyword, filter by category, pricing model, fulfillment
 %% type, and other attributes, and sort results by relevance or customer
-%% rating.
+%% rating. The operation returns results in pages. Use `nextToken' to
+%% retrieve the next page.
 -spec search_listings(aws_client:aws_client(), search_listings_input()) ->
     {ok, search_listings_output(), tuple()} |
     {error, any()}.

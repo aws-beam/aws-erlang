@@ -7,8 +7,12 @@
 
 -export([accept_channel_handshake/2,
          accept_channel_handshake/3,
+         cancel_channel_contract/2,
+         cancel_channel_contract/3,
          cancel_channel_handshake/2,
          cancel_channel_handshake/3,
+         create_channel_contract/2,
+         create_channel_contract/3,
          create_channel_handshake/2,
          create_channel_handshake/3,
          create_program_management_account/2,
@@ -19,8 +23,12 @@
          delete_program_management_account/3,
          delete_relationship/2,
          delete_relationship/3,
+         get_channel_contract/2,
+         get_channel_contract/3,
          get_relationship/2,
          get_relationship/3,
+         list_channel_contracts/2,
+         list_channel_contracts/3,
          list_channel_handshakes/2,
          list_channel_handshakes/3,
          list_program_management_accounts/2,
@@ -75,6 +83,41 @@
 -type access_denied_exception() :: #{binary() => any()}.
 
 %% Example:
+%% address() :: #{
+%%   <<"addressLine">> => string(),
+%%   <<"addressLine2">> => string(),
+%%   <<"city">> => string(),
+%%   <<"countryCode">> => string(),
+%%   <<"postalCode">> => string(),
+%%   <<"stateOrRegion">> => string()
+%% }
+-type address() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_channel_contract_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"cancellationReason">> => string(),
+%%   <<"id">> => string(),
+%%   <<"status">> => list(any())
+%% }
+-type cancel_channel_contract_detail() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_channel_contract_request() :: #{
+%%   <<"catalog">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"identifier">> := string(),
+%%   <<"reason">> => string()
+%% }
+-type cancel_channel_contract_request() :: #{binary() => any()}.
+
+%% Example:
+%% cancel_channel_contract_response() :: #{
+%%   <<"channelContractDetail">> => cancel_channel_contract_detail()
+%% }
+-type cancel_channel_contract_response() :: #{binary() => any()}.
+
+%% Example:
 %% cancel_channel_handshake_detail() :: #{
 %%   <<"arn">> => string(),
 %%   <<"id">> => string(),
@@ -94,6 +137,35 @@
 %%   <<"channelHandshakeDetail">> => cancel_channel_handshake_detail()
 %% }
 -type cancel_channel_handshake_response() :: #{binary() => any()}.
+
+%% Example:
+%% channel_contract_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"cancellationReason">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"contractType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"details">> => list(),
+%%   <<"id">> => string(),
+%%   <<"respondedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type channel_contract_detail() :: #{binary() => any()}.
+
+%% Example:
+%% channel_contract_summary() :: #{
+%%   <<"arn">> => string(),
+%%   <<"catalog">> => string(),
+%%   <<"contractType">> => list(any()),
+%%   <<"createdAt">> => non_neg_integer(),
+%%   <<"details">> => list(),
+%%   <<"id">> => string(),
+%%   <<"respondedAt">> => non_neg_integer(),
+%%   <<"status">> => list(any()),
+%%   <<"updatedAt">> => non_neg_integer()
+%% }
+-type channel_contract_summary() :: #{binary() => any()}.
 
 %% Example:
 %% channel_handshake_summary() :: #{
@@ -120,6 +192,29 @@
 %%   <<"resourceType">> => [string()]
 %% }
 -type conflict_exception() :: #{binary() => any()}.
+
+%% Example:
+%% create_channel_contract_detail() :: #{
+%%   <<"arn">> => string(),
+%%   <<"id">> => string()
+%% }
+-type create_channel_contract_detail() :: #{binary() => any()}.
+
+%% Example:
+%% create_channel_contract_request() :: #{
+%%   <<"catalog">> := string(),
+%%   <<"clientToken">> => string(),
+%%   <<"contractType">> := list(any()),
+%%   <<"payload">> := list(),
+%%   <<"tags">> => list(tag())
+%% }
+-type create_channel_contract_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_channel_contract_response() :: #{
+%%   <<"channelContractDetail">> => create_channel_contract_detail()
+%% }
+-type create_channel_contract_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_channel_handshake_detail() :: #{
@@ -159,7 +254,8 @@
 %%   <<"clientToken">> => string(),
 %%   <<"displayName">> := string(),
 %%   <<"program">> := list(any()),
-%%   <<"tags">> => list(tag())
+%%   <<"tags">> => list(tag()),
+%%   <<"type">> => list(any())
 %% }
 -type create_program_management_account_request() :: #{binary() => any()}.
 
@@ -178,7 +274,8 @@
 
 %% Example:
 %% create_relationship_request() :: #{
-%%   <<"associatedAccountId">> := string(),
+%%   <<"accountScope">> => list(any()),
+%%   <<"associatedAccountId">> => string(),
 %%   <<"associationType">> := list(any()),
 %%   <<"catalog">> := string(),
 %%   <<"clientToken">> => string(),
@@ -187,6 +284,7 @@
 %%   <<"requestedSupportPlan">> => list(),
 %%   <<"resaleAccountModel">> => list(any()),
 %%   <<"sector">> := list(any()),
+%%   <<"startDate">> => non_neg_integer(),
 %%   <<"tags">> => list(tag())
 %% }
 -type create_relationship_request() :: #{binary() => any()}.
@@ -227,6 +325,19 @@
 -type delete_relationship_response() :: #{binary() => any()}.
 
 %% Example:
+%% get_channel_contract_request() :: #{
+%%   <<"catalog">> := string(),
+%%   <<"identifier">> := string()
+%% }
+-type get_channel_contract_request() :: #{binary() => any()}.
+
+%% Example:
+%% get_channel_contract_response() :: #{
+%%   <<"channelContractDetail">> => channel_contract_detail()
+%% }
+-type get_channel_contract_response() :: #{binary() => any()}.
+
+%% Example:
 %% get_relationship_request() :: #{
 %%   <<"catalog">> := string(),
 %%   <<"identifier">> := string(),
@@ -245,6 +356,25 @@
 %%   <<"message">> => [string()]
 %% }
 -type internal_server_exception() :: #{binary() => any()}.
+
+%% Example:
+%% list_channel_contracts_request() :: #{
+%%   <<"catalog">> := string(),
+%%   <<"contractType">> := list(any()),
+%%   <<"contractTypeFilters">> => list(),
+%%   <<"contractTypeSort">> => list(),
+%%   <<"maxResults">> => [integer()],
+%%   <<"nextToken">> => string(),
+%%   <<"statuses">> => list(list(any())())
+%% }
+-type list_channel_contracts_request() :: #{binary() => any()}.
+
+%% Example:
+%% list_channel_contracts_response() :: #{
+%%   <<"items">> => list(channel_contract_summary()),
+%%   <<"nextToken">> => string()
+%% }
+-type list_channel_contracts_response() :: #{binary() => any()}.
 
 %% Example:
 %% list_channel_handshakes_request() :: #{
@@ -276,7 +406,8 @@
 %%   <<"nextToken">> => string(),
 %%   <<"programs">> => list(list(any())()),
 %%   <<"sort">> => list_program_management_accounts_sort_base(),
-%%   <<"statuses">> => list(list(any())())
+%%   <<"statuses">> => list(list(any())()),
+%%   <<"type">> => list(any())
 %% }
 -type list_program_management_accounts_request() :: #{binary() => any()}.
 
@@ -334,6 +465,59 @@
 -type list_tags_for_resource_response() :: #{binary() => any()}.
 
 %% Example:
+%% managed_services_attestation_details() :: #{
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"legalEntityAddress">> => address(),
+%%   <<"legalEntityName">> => string(),
+%%   <<"memberAccountIds">> => list(string()),
+%%   <<"programManagementAccountIdentifier">> => string(),
+%%   <<"relationshipIdentifier">> => string(),
+%%   <<"signatoryEmail">> => string(),
+%%   <<"signatoryName">> => string(),
+%%   <<"supportedServices">> => list(list(any())())
+%% }
+-type managed_services_attestation_details() :: #{binary() => any()}.
+
+%% Example:
+%% managed_services_attestation_payload() :: #{
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"legalEntityAddress">> => address(),
+%%   <<"legalEntityName">> => string(),
+%%   <<"memberAccountIds">> => list(string()),
+%%   <<"programManagementAccountIdentifier">> => string(),
+%%   <<"relationshipIdentifier">> => string(),
+%%   <<"signatoryEmail">> => string(),
+%%   <<"signatoryName">> => string(),
+%%   <<"supportedServices">> => list(list(any())())
+%% }
+-type managed_services_attestation_payload() :: #{binary() => any()}.
+
+%% Example:
+%% managed_services_attestation_summary_details() :: #{
+%%   <<"endDate">> => non_neg_integer(),
+%%   <<"legalEntityName">> => string(),
+%%   <<"memberAccountIds">> => list(string()),
+%%   <<"programManagementAccountIdentifier">> => string(),
+%%   <<"relationshipIdentifier">> => string(),
+%%   <<"supportedServices">> => list(list(any())())
+%% }
+-type managed_services_attestation_summary_details() :: #{binary() => any()}.
+
+%% Example:
+%% managed_services_attestation_type_filters() :: #{
+%%   <<"legalEntityNames">> => list(string()),
+%%   <<"relationshipIdentifiers">> => list(string())
+%% }
+-type managed_services_attestation_type_filters() :: #{binary() => any()}.
+
+%% Example:
+%% managed_services_attestation_type_sort() :: #{
+%%   <<"sortBy">> => list(any()),
+%%   <<"sortOrder">> => list(any())
+%% }
+-type managed_services_attestation_type_sort() :: #{binary() => any()}.
+
+%% Example:
 %% partner_led_support() :: #{
 %%   <<"coverage">> => list(any()),
 %%   <<"provider">> => list(any()),
@@ -359,6 +543,7 @@
 %%   <<"revision">> => string(),
 %%   <<"startDate">> => non_neg_integer(),
 %%   <<"status">> => list(any()),
+%%   <<"type">> => list(any()),
 %%   <<"updatedAt">> => non_neg_integer()
 %% }
 -type program_management_account_summary() :: #{binary() => any()}.
@@ -399,12 +584,15 @@
 
 %% Example:
 %% relationship_detail() :: #{
+%%   <<"accountScope">> => list(any()),
 %%   <<"arn">> => string(),
 %%   <<"associatedAccountId">> => string(),
 %%   <<"associationType">> => list(any()),
 %%   <<"catalog">> => string(),
+%%   <<"channelContractId">> => string(),
 %%   <<"createdAt">> => non_neg_integer(),
 %%   <<"displayName">> => string(),
+%%   <<"endDate">> => non_neg_integer(),
 %%   <<"id">> => string(),
 %%   <<"programManagementAccountId">> => string(),
 %%   <<"resaleAccountModel">> => list(any()),
@@ -642,11 +830,28 @@
     internal_server_exception() | 
     access_denied_exception().
 
+-type cancel_channel_contract_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
+    access_denied_exception().
+
 -type cancel_channel_handshake_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
     internal_server_exception() | 
+    access_denied_exception().
+
+-type create_channel_contract_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    service_quota_exceeded_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    conflict_exception() | 
     access_denied_exception().
 
 -type create_channel_handshake_errors() ::
@@ -692,7 +897,21 @@
     conflict_exception() | 
     access_denied_exception().
 
+-type get_channel_contract_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
 -type get_relationship_errors() ::
+    validation_exception() | 
+    throttling_exception() | 
+    resource_not_found_exception() | 
+    internal_server_exception() | 
+    access_denied_exception().
+
+-type list_channel_contracts_errors() ::
     validation_exception() | 
     throttling_exception() | 
     resource_not_found_exception() | 
@@ -787,6 +1006,26 @@ accept_channel_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"AcceptChannelHandshake">>, Input, Options).
 
+%% @doc Cancels a pending channel contract created within the last 30 days.
+%%
+%% A request for a channel contract that isn't PENDING, including one
+%% that is already CANCELED, fails with a ValidationException.
+-spec cancel_channel_contract(aws_client:aws_client(), cancel_channel_contract_request()) ->
+    {ok, cancel_channel_contract_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_channel_contract_errors(), tuple()}.
+cancel_channel_contract(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    cancel_channel_contract(Client, Input, []).
+
+-spec cancel_channel_contract(aws_client:aws_client(), cancel_channel_contract_request(), proplists:proplist()) ->
+    {ok, cancel_channel_contract_response(), tuple()} |
+    {error, any()} |
+    {error, cancel_channel_contract_errors(), tuple()}.
+cancel_channel_contract(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CancelChannelContract">>, Input, Options).
+
 %% @doc Cancels a pending channel handshake request.
 -spec cancel_channel_handshake(aws_client:aws_client(), cancel_channel_handshake_request()) ->
     {ok, cancel_channel_handshake_response(), tuple()} |
@@ -803,6 +1042,26 @@ cancel_channel_handshake(Client, Input)
 cancel_channel_handshake(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CancelChannelHandshake">>, Input, Options).
+
+%% @doc Creates a new channel contract and sends it to the signatory for
+%% signature.
+%%
+%% In the Sandbox catalog, the channel contract is accepted automatically.
+-spec create_channel_contract(aws_client:aws_client(), create_channel_contract_request()) ->
+    {ok, create_channel_contract_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_contract_errors(), tuple()}.
+create_channel_contract(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_channel_contract(Client, Input, []).
+
+-spec create_channel_contract(aws_client:aws_client(), create_channel_contract_request(), proplists:proplist()) ->
+    {ok, create_channel_contract_response(), tuple()} |
+    {error, any()} |
+    {error, create_channel_contract_errors(), tuple()}.
+create_channel_contract(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateChannelContract">>, Input, Options).
 
 %% @doc Creates a new channel handshake request to establish a partnership
 %% with another AWS account.
@@ -891,6 +1150,23 @@ delete_relationship(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteRelationship">>, Input, Options).
 
+%% @doc Retrieves details of a specific channel contract.
+-spec get_channel_contract(aws_client:aws_client(), get_channel_contract_request()) ->
+    {ok, get_channel_contract_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_contract_errors(), tuple()}.
+get_channel_contract(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    get_channel_contract(Client, Input, []).
+
+-spec get_channel_contract(aws_client:aws_client(), get_channel_contract_request(), proplists:proplist()) ->
+    {ok, get_channel_contract_response(), tuple()} |
+    {error, any()} |
+    {error, get_channel_contract_errors(), tuple()}.
+get_channel_contract(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"GetChannelContract">>, Input, Options).
+
 %% @doc Retrieves details of a specific partner relationship.
 -spec get_relationship(aws_client:aws_client(), get_relationship_request()) ->
     {ok, get_relationship_response(), tuple()} |
@@ -907,6 +1183,23 @@ get_relationship(Client, Input)
 get_relationship(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"GetRelationship">>, Input, Options).
+
+%% @doc Lists channel contracts based on specified criteria.
+-spec list_channel_contracts(aws_client:aws_client(), list_channel_contracts_request()) ->
+    {ok, list_channel_contracts_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_contracts_errors(), tuple()}.
+list_channel_contracts(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    list_channel_contracts(Client, Input, []).
+
+-spec list_channel_contracts(aws_client:aws_client(), list_channel_contracts_request(), proplists:proplist()) ->
+    {ok, list_channel_contracts_response(), tuple()} |
+    {error, any()} |
+    {error, list_channel_contracts_errors(), tuple()}.
+list_channel_contracts(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"ListChannelContracts">>, Input, Options).
 
 %% @doc Lists channel handshakes based on specified criteria.
 -spec list_channel_handshakes(aws_client:aws_client(), list_channel_handshakes_request()) ->
