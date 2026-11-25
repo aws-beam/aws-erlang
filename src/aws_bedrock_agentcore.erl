@@ -2283,7 +2283,8 @@
 %% invoke_web_search_input() :: #{
 %%   <<"filters">> => web_search_filters(),
 %%   <<"maxResults">> => [integer()],
-%%   <<"searchQuery">> := [string()]
+%%   <<"searchQuery">> := [string()],
+%%   <<"userLocation">> => web_search_user_location()
 %% }
 -type invoke_web_search_input() :: #{binary() => any()}.
 
@@ -3923,6 +3924,13 @@
 %%   <<"url">> => [string()]
 %% }
 -type web_search_result() :: #{binary() => any()}.
+
+
+%% Example:
+%% web_search_user_location() :: #{
+%%   <<"country">> => string()
+%% }
+-type web_search_user_location() :: #{binary() => any()}.
 
 -type batch_create_memory_records_errors() ::
     validation_exception() | 

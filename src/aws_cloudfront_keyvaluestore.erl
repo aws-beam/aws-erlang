@@ -1,8 +1,12 @@
 %% WARNING: DO NOT EDIT, AUTO-GENERATED CODE!
 %% See https://github.com/aws-beam/aws-codegen for more details.
 
-%% @doc Amazon CloudFront KeyValueStore Service to View and Update Data in a
-%% KVS Resource
+%% @doc You can use Amazon CloudFront KeyValueStore to view and update data
+%% in a key value store resource.
+%%
+%% For more information, see Using CloudFront KeyValueStore:
+%% https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/kvs-with-functions.html
+%% in the Amazon CloudFront Developer Guide.
 -module(aws_cloudfront_keyvaluestore).
 
 -export([delete_key/4,
@@ -238,7 +242,7 @@
 %% API
 %%====================================================================
 
-%% @doc Deletes the key value pair specified by the key.
+%% @doc Deletes the key-value pair specified by the key.
 -spec delete_key(aws_client:aws_client(), binary() | list(), binary() | list(), delete_key_request()) ->
     {ok, delete_key_response(), tuple()} |
     {error, any()} |
@@ -292,7 +296,7 @@ delete_key(Client, Key, KvsARN, Input0, Options0) ->
         Result
     end.
 
-%% @doc Returns metadata information about Key Value Store.
+%% @doc Returns metadata information about the key value store.
 -spec describe_key_value_store(aws_client:aws_client(), binary() | list()) ->
     {ok, describe_key_value_store_response(), tuple()} |
     {error, any()} |
@@ -347,7 +351,7 @@ describe_key_value_store(Client, KvsARN, QueryMap, HeadersMap, Options0)
         Result
     end.
 
-%% @doc Returns a key value pair.
+%% @doc Returns a key-value pair.
 -spec get_key(aws_client:aws_client(), binary() | list(), binary() | list()) ->
     {ok, get_key_response(), tuple()} |
     {error, any()} |
@@ -386,7 +390,7 @@ get_key(Client, Key, KvsARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Returns a list of key value pairs.
+%% @doc Returns a list of key-value pairs.
 -spec list_keys(aws_client:aws_client(), binary() | list()) ->
     {ok, list_keys_response(), tuple()} |
     {error, any()} |
@@ -430,7 +434,7 @@ list_keys(Client, KvsARN, QueryMap, HeadersMap, Options0)
 
     request(Client, get, Path, Query_, Headers, undefined, Options, SuccessStatusCode).
 
-%% @doc Creates a new key value pair or replaces the value of an existing
+%% @doc Creates a new key-value pair or replaces the value of an existing
 %% key.
 -spec put_key(aws_client:aws_client(), binary() | list(), binary() | list(), put_key_request()) ->
     {ok, put_key_response(), tuple()} |
@@ -485,7 +489,7 @@ put_key(Client, Key, KvsARN, Input0, Options0) ->
         Result
     end.
 
-%% @doc Puts or Deletes multiple key value pairs in a single, all-or-nothing
+%% @doc Puts or deletes multiple key-value pairs in a single, all-or-nothing
 %% operation.
 -spec update_keys(aws_client:aws_client(), binary() | list(), update_keys_request()) ->
     {ok, update_keys_response(), tuple()} |

@@ -18,6 +18,8 @@
          create_and_attach_s3_access_point/3,
          create_backup/2,
          create_backup/3,
+         create_cluster_peer/2,
+         create_cluster_peer/3,
          create_data_repository_association/2,
          create_data_repository_association/3,
          create_data_repository_task/2,
@@ -28,30 +30,50 @@
          create_file_system/3,
          create_file_system_from_backup/2,
          create_file_system_from_backup/3,
+         create_snapmirror_policy/2,
+         create_snapmirror_policy/3,
+         create_snapmirror_relationship/2,
+         create_snapmirror_relationship/3,
          create_snapshot/2,
          create_snapshot/3,
+         create_snapshot_policy/2,
+         create_snapshot_policy/3,
          create_storage_virtual_machine/2,
          create_storage_virtual_machine/3,
+         create_storage_virtual_machine_peer/2,
+         create_storage_virtual_machine_peer/3,
          create_volume/2,
          create_volume/3,
          create_volume_from_backup/2,
          create_volume_from_backup/3,
          delete_backup/2,
          delete_backup/3,
+         delete_cluster_peer/2,
+         delete_cluster_peer/3,
          delete_data_repository_association/2,
          delete_data_repository_association/3,
          delete_file_cache/2,
          delete_file_cache/3,
          delete_file_system/2,
          delete_file_system/3,
+         delete_snapmirror_policy/2,
+         delete_snapmirror_policy/3,
+         delete_snapmirror_relationship/2,
+         delete_snapmirror_relationship/3,
          delete_snapshot/2,
          delete_snapshot/3,
+         delete_snapshot_policy/2,
+         delete_snapshot_policy/3,
          delete_storage_virtual_machine/2,
          delete_storage_virtual_machine/3,
+         delete_storage_virtual_machine_peer/2,
+         delete_storage_virtual_machine_peer/3,
          delete_volume/2,
          delete_volume/3,
          describe_backups/2,
          describe_backups/3,
+         describe_cluster_peers/2,
+         describe_cluster_peers/3,
          describe_data_repository_associations/2,
          describe_data_repository_associations/3,
          describe_data_repository_tasks/2,
@@ -66,8 +88,16 @@
          describe_s3_access_point_attachments/3,
          describe_shared_vpc_configuration/2,
          describe_shared_vpc_configuration/3,
+         describe_snapmirror_policies/2,
+         describe_snapmirror_policies/3,
+         describe_snapmirror_relationships/2,
+         describe_snapmirror_relationships/3,
+         describe_snapshot_policies/2,
+         describe_snapshot_policies/3,
          describe_snapshots/2,
          describe_snapshots/3,
+         describe_storage_virtual_machine_peers/2,
+         describe_storage_virtual_machine_peers/3,
          describe_storage_virtual_machines/2,
          describe_storage_virtual_machines/3,
          describe_volumes/2,
@@ -88,6 +118,8 @@
          tag_resource/3,
          untag_resource/2,
          untag_resource/3,
+         update_cluster_peer/2,
+         update_cluster_peer/3,
          update_data_repository_association/2,
          update_data_repository_association/3,
          update_file_cache/2,
@@ -96,10 +128,18 @@
          update_file_system/3,
          update_shared_vpc_configuration/2,
          update_shared_vpc_configuration/3,
+         update_snapmirror_policy/2,
+         update_snapmirror_policy/3,
+         update_snapmirror_relationship/2,
+         update_snapmirror_relationship/3,
          update_snapshot/2,
          update_snapshot/3,
+         update_snapshot_policy/2,
+         update_snapshot_policy/3,
          update_storage_virtual_machine/2,
          update_storage_virtual_machine/3,
+         update_storage_virtual_machine_peer/2,
+         update_storage_virtual_machine_peer/3,
          update_volume/2,
          update_volume/3]).
 
@@ -275,6 +315,52 @@
 -type cancel_data_repository_task_response() :: #{binary() => any()}.
 
 %% Example:
+%% clone_configuration() :: #{
+%%   <<"ParentVolumeId">> => string(),
+%%   <<"SnapshotId">> => string()
+%% }
+-type clone_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_peer() :: #{
+%%   <<"AllowedSvmIds">> => list(string()),
+%%   <<"AllowedSvmMode">> => list(any()),
+%%   <<"AuthenticationStatus">> => cluster_peer_authentication_status(),
+%%   <<"ClusterPeerId">> => string(),
+%%   <<"FileSystemId">> => string(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
+%%   <<"PassphraseSecretArn">> => string(),
+%%   <<"PeerAddresses">> => list(string()),
+%%   <<"PeerClusterName">> => string(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"Status">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UUID">> => string()
+%% }
+-type cluster_peer() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_peer_authentication_status() :: #{
+%%   <<"InUse">> => string(),
+%%   <<"State">> => string()
+%% }
+-type cluster_peer_authentication_status() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_peer_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type cluster_peer_filter() :: #{binary() => any()}.
+
+%% Example:
+%% cluster_peer_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type cluster_peer_not_found() :: #{binary() => any()}.
+
+%% Example:
 %% completion_report() :: #{
 %%   <<"Enabled">> => boolean(),
 %%   <<"Format">> => list(any()),
@@ -377,6 +463,32 @@
 %%   <<"Backup">> => backup()
 %% }
 -type create_backup_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_clone_configuration() :: #{
+%%   <<"ParentVolumeId">> => string(),
+%%   <<"SnapshotId">> => string()
+%% }
+-type create_clone_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_peer_request() :: #{
+%%   <<"AllowedSvmIds">> => list(string()),
+%%   <<"AllowedSvmMode">> := list(any()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> := string(),
+%%   <<"PassphraseSecretArn">> := string(),
+%%   <<"PeerAddresses">> := list(string()),
+%%   <<"PeerClusterName">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_cluster_peer_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_cluster_peer_response() :: #{
+%%   <<"ClusterPeer">> => cluster_peer()
+%% }
+-type create_cluster_peer_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_data_repository_association_request() :: #{
@@ -582,8 +694,17 @@
 -type create_file_system_windows_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% create_ontap_snapshot_configuration() :: #{
+%%   <<"ExpiryTime">> => non_neg_integer(),
+%%   <<"SnaplockExpiryTime">> => non_neg_integer(),
+%%   <<"SnapmirrorLabel">> => string()
+%% }
+-type create_ontap_snapshot_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% create_ontap_volume_configuration() :: #{
 %%   <<"AggregateConfiguration">> => create_aggregate_configuration(),
+%%   <<"CloneConfiguration">> => create_clone_configuration(),
 %%   <<"CopyTagsToBackups">> => boolean(),
 %%   <<"JunctionPath">> => string(),
 %%   <<"OntapVolumeType">> => list(any()),
@@ -633,9 +754,79 @@
 -type create_snaplock_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% create_snapmirror_destination() :: #{
+%%   <<"VolumeId">> => string()
+%% }
+-type create_snapmirror_destination() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapmirror_policy_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"FileSystemId">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"NetworkCompressionEnabled">> => boolean(),
+%%   <<"RetentionRules">> => list(snapmirror_policy_retention_rule()),
+%%   <<"SnapshotCopyMode">> => list(any()),
+%%   <<"StorageVirtualMachineId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ThrottleInKbps">> => float(),
+%%   <<"TransferSchedule">> => string()
+%% }
+-type create_snapmirror_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapmirror_policy_response() :: #{
+%%   <<"SnapmirrorPolicy">> => snapmirror_policy()
+%% }
+-type create_snapmirror_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapmirror_relationship_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Destination">> := create_snapmirror_destination(),
+%%   <<"PolicyId">> => string(),
+%%   <<"Source">> := create_snapmirror_source(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ThrottleInKbps">> => float(),
+%%   <<"TransferSchedule">> => string()
+%% }
+-type create_snapmirror_relationship_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapmirror_relationship_response() :: #{
+%%   <<"SnapmirrorRelationship">> => snapmirror_relationship()
+%% }
+-type create_snapmirror_relationship_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapmirror_source() :: #{
+%%   <<"Path">> => string()
+%% }
+-type create_snapmirror_source() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_policy_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"FileSystemId">> => string(),
+%%   <<"Name">> := string(),
+%%   <<"Schedules">> := list(snapshot_policy_schedule()),
+%%   <<"StorageVirtualMachineId">> => string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_snapshot_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_snapshot_policy_response() :: #{
+%%   <<"SnapshotPolicy">> => snapshot_policy()
+%% }
+-type create_snapshot_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% create_snapshot_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"Name">> := string(),
+%%   <<"OntapConfiguration">> => create_ontap_snapshot_configuration(),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VolumeId">> := string()
 %% }
@@ -646,6 +837,24 @@
 %%   <<"Snapshot">> => snapshot()
 %% }
 -type create_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% create_storage_virtual_machine_peer_request() :: #{
+%%   <<"Applications">> := list(list(any())()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"PeerClusterName">> => string(),
+%%   <<"PeerSvmAlias">> => string(),
+%%   <<"PeerSvmName">> := string(),
+%%   <<"StorageVirtualMachineId">> := string(),
+%%   <<"Tags">> => list(tag())
+%% }
+-type create_storage_virtual_machine_peer_request() :: #{binary() => any()}.
+
+%% Example:
+%% create_storage_virtual_machine_peer_response() :: #{
+%%   <<"StorageVirtualMachinePeer">> => storage_virtual_machine_peer()
+%% }
+-type create_storage_virtual_machine_peer_response() :: #{binary() => any()}.
 
 %% Example:
 %% create_storage_virtual_machine_request() :: #{
@@ -826,6 +1035,20 @@
 -type delete_backup_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_cluster_peer_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ClusterPeerId">> := string()
+%% }
+-type delete_cluster_peer_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_cluster_peer_response() :: #{
+%%   <<"ClusterPeerId">> => string(),
+%%   <<"Lifecycle">> => list(any())
+%% }
+-type delete_cluster_peer_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_data_repository_association_request() :: #{
 %%   <<"AssociationId">> := string(),
 %%   <<"ClientRequestToken">> => string(),
@@ -919,6 +1142,48 @@
 -type delete_file_system_windows_response() :: #{binary() => any()}.
 
 %% Example:
+%% delete_snapmirror_policy_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"SnapmirrorPolicyId">> := string()
+%% }
+-type delete_snapmirror_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapmirror_policy_response() :: #{
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"SnapmirrorPolicyId">> => string()
+%% }
+-type delete_snapmirror_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapmirror_relationship_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"SnapmirrorRelationshipId">> := string()
+%% }
+-type delete_snapmirror_relationship_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapmirror_relationship_response() :: #{
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"SnapmirrorRelationshipId">> => string()
+%% }
+-type delete_snapmirror_relationship_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_policy_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"SnapshotPolicyId">> := string()
+%% }
+-type delete_snapshot_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_snapshot_policy_response() :: #{
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"SnapshotPolicyId">> => string()
+%% }
+-type delete_snapshot_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% delete_snapshot_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
 %%   <<"SnapshotId">> := string()
@@ -931,6 +1196,20 @@
 %%   <<"SnapshotId">> => string()
 %% }
 -type delete_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% delete_storage_virtual_machine_peer_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"StorageVirtualMachinePeerId">> := string()
+%% }
+-type delete_storage_virtual_machine_peer_request() :: #{binary() => any()}.
+
+%% Example:
+%% delete_storage_virtual_machine_peer_response() :: #{
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"StorageVirtualMachinePeerId">> => string()
+%% }
+-type delete_storage_virtual_machine_peer_response() :: #{binary() => any()}.
 
 %% Example:
 %% delete_storage_virtual_machine_request() :: #{
@@ -999,6 +1278,22 @@
 %%   <<"NextToken">> => string()
 %% }
 -type describe_backups_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_peers_request() :: #{
+%%   <<"ClusterPeerIds">> => list(string()),
+%%   <<"Filters">> => list(cluster_peer_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_cluster_peers_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_cluster_peers_response() :: #{
+%%   <<"ClusterPeers">> => list(cluster_peer()),
+%%   <<"NextToken">> => string()
+%% }
+-type describe_cluster_peers_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_data_repository_associations_request() :: #{
@@ -1107,6 +1402,54 @@
 -type describe_shared_vpc_configuration_response() :: #{binary() => any()}.
 
 %% Example:
+%% describe_snapmirror_policies_request() :: #{
+%%   <<"Filters">> => list(snapmirror_policy_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SnapmirrorPolicyIds">> => list(string())
+%% }
+-type describe_snapmirror_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapmirror_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SnapmirrorPolicies">> => list(snapmirror_policy())
+%% }
+-type describe_snapmirror_policies_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapmirror_relationships_request() :: #{
+%%   <<"Filters">> => list(snapmirror_relationship_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SnapmirrorRelationshipIds">> => list(string())
+%% }
+-type describe_snapmirror_relationships_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapmirror_relationships_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SnapmirrorRelationships">> => list(snapmirror_relationship())
+%% }
+-type describe_snapmirror_relationships_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_policies_request() :: #{
+%%   <<"Filters">> => list(snapshot_policy_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"SnapshotPolicyIds">> => list(string())
+%% }
+-type describe_snapshot_policies_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_snapshot_policies_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"SnapshotPolicies">> => list(snapshot_policy())
+%% }
+-type describe_snapshot_policies_response() :: #{binary() => any()}.
+
+%% Example:
 %% describe_snapshots_request() :: #{
 %%   <<"Filters">> => list(snapshot_filter()),
 %%   <<"IncludeShared">> => boolean(),
@@ -1122,6 +1465,22 @@
 %%   <<"Snapshots">> => list(snapshot())
 %% }
 -type describe_snapshots_response() :: #{binary() => any()}.
+
+%% Example:
+%% describe_storage_virtual_machine_peers_request() :: #{
+%%   <<"Filters">> => list(storage_virtual_machine_peer_filter()),
+%%   <<"MaxResults">> => integer(),
+%%   <<"NextToken">> => string(),
+%%   <<"StorageVirtualMachinePeerIds">> => list(string())
+%% }
+-type describe_storage_virtual_machine_peers_request() :: #{binary() => any()}.
+
+%% Example:
+%% describe_storage_virtual_machine_peers_response() :: #{
+%%   <<"NextToken">> => string(),
+%%   <<"StorageVirtualMachinePeers">> => list(storage_virtual_machine_peer())
+%% }
+-type describe_storage_virtual_machine_peers_response() :: #{binary() => any()}.
 
 %% Example:
 %% describe_storage_virtual_machines_request() :: #{
@@ -1440,7 +1799,8 @@
 
 %% Example:
 %% lifecycle_transition_reason() :: #{
-%%   <<"Message">> => string()
+%%   <<"Message">> => string(),
+%%   <<"OntapError">> => ontap_error()
 %% }
 -type lifecycle_transition_reason() :: #{binary() => any()}.
 
@@ -1542,6 +1902,13 @@
 -type not_service_resource_error() :: #{binary() => any()}.
 
 %% Example:
+%% ontap_error() :: #{
+%%   <<"Code">> => string(),
+%%   <<"Message">> => string()
+%% }
+-type ontap_error() :: #{binary() => any()}.
+
+%% Example:
 %% ontap_file_system_configuration() :: #{
 %%   <<"AutomaticBackupRetentionDays">> => integer(),
 %%   <<"DailyAutomaticBackupStartTime">> => string(),
@@ -1569,6 +1936,16 @@
 -type ontap_file_system_identity() :: #{binary() => any()}.
 
 %% Example:
+%% ontap_snapshot_configuration() :: #{
+%%   <<"ExpiryTime">> => non_neg_integer(),
+%%   <<"SizeInMegabytes">> => float(),
+%%   <<"SnaplockExpiryTime">> => non_neg_integer(),
+%%   <<"SnapmirrorLabel">> => string(),
+%%   <<"UUID">> => string()
+%% }
+-type ontap_snapshot_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% ontap_unix_file_system_user() :: #{
 %%   <<"Name">> => string()
 %% }
@@ -1577,6 +1954,7 @@
 %% Example:
 %% ontap_volume_configuration() :: #{
 %%   <<"AggregateConfiguration">> => aggregate_configuration(),
+%%   <<"CloneConfiguration">> => clone_configuration(),
 %%   <<"CopyTagsToBackups">> => boolean(),
 %%   <<"FlexCacheEndpointType">> => list(any()),
 %%   <<"JunctionPath">> => string(),
@@ -1886,14 +2264,130 @@
 -type snaplock_retention_period() :: #{binary() => any()}.
 
 %% Example:
+%% snapmirror_destination() :: #{
+%%   <<"Path">> => string(),
+%%   <<"VolumeId">> => string()
+%% }
+-type snapmirror_destination() :: #{binary() => any()}.
+
+%% Example:
+%% snapmirror_exported_snapshot() :: #{
+%%   <<"SnapshotId">> => string(),
+%%   <<"SnapshotName">> => string()
+%% }
+-type snapmirror_exported_snapshot() :: #{binary() => any()}.
+
+%% Example:
+%% snapmirror_policy() :: #{
+%%   <<"FileSystemId">> => string(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
+%%   <<"Name">> => string(),
+%%   <<"NetworkCompressionEnabled">> => boolean(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"RetentionRules">> => list(snapmirror_policy_retention_rule()),
+%%   <<"Scope">> => list(any()),
+%%   <<"SnapmirrorPolicyId">> => string(),
+%%   <<"SnapshotCopyMode">> => list(any()),
+%%   <<"StorageVirtualMachineId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ThrottleInKbps">> => float(),
+%%   <<"TransferSchedule">> => string(),
+%%   <<"UUID">> => string()
+%% }
+-type snapmirror_policy() :: #{binary() => any()}.
+
+%% Example:
+%% snapmirror_policy_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type snapmirror_policy_filter() :: #{binary() => any()}.
+
+%% Example:
+%% snapmirror_policy_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type snapmirror_policy_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% snapmirror_policy_retention_rule() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"CreationSchedule">> => string(),
+%%   <<"Label">> => string()
+%% }
+-type snapmirror_policy_retention_rule() :: #{binary() => any()}.
+
+%% Example:
+%% snapmirror_relationship() :: #{
+%%   <<"Destination">> => snapmirror_destination(),
+%%   <<"ExportedSnapshot">> => snapmirror_exported_snapshot(),
+%%   <<"FileSystemId">> => string(),
+%%   <<"Healthy">> => boolean(),
+%%   <<"LagTimeInMinutes">> => float(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"SnapmirrorPolicy">> => snapmirror_relationship_policy(),
+%%   <<"SnapmirrorRelationshipId">> => string(),
+%%   <<"Source">> => snapmirror_source(),
+%%   <<"State">> => list(any()),
+%%   <<"Tags">> => list(tag()),
+%%   <<"ThrottleInKbps">> => float(),
+%%   <<"TransferSchedule">> => string(),
+%%   <<"TransferState">> => snapmirror_transfer_state(),
+%%   <<"UUID">> => string(),
+%%   <<"UnhealthyReason">> => string()
+%% }
+-type snapmirror_relationship() :: #{binary() => any()}.
+
+%% Example:
+%% snapmirror_relationship_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type snapmirror_relationship_filter() :: #{binary() => any()}.
+
+%% Example:
+%% snapmirror_relationship_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type snapmirror_relationship_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% snapmirror_relationship_policy() :: #{
+%%   <<"PolicyId">> => string(),
+%%   <<"PolicyName">> => string()
+%% }
+-type snapmirror_relationship_policy() :: #{binary() => any()}.
+
+%% Example:
+%% snapmirror_source() :: #{
+%%   <<"Path">> => string()
+%% }
+-type snapmirror_source() :: #{binary() => any()}.
+
+%% Example:
+%% snapmirror_transfer_state() :: #{
+%%   <<"BytesTransferred">> => float(),
+%%   <<"Duration">> => string(),
+%%   <<"EndTime">> => non_neg_integer(),
+%%   <<"State">> => string(),
+%%   <<"Type">> => string()
+%% }
+-type snapmirror_transfer_state() :: #{binary() => any()}.
+
+%% Example:
 %% snapshot() :: #{
 %%   <<"AdministrativeActions">> => list(administrative_action()),
 %%   <<"CreationTime">> => non_neg_integer(),
 %%   <<"Lifecycle">> => list(any()),
 %%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
 %%   <<"Name">> => string(),
+%%   <<"OntapConfiguration">> => ontap_snapshot_configuration(),
 %%   <<"ResourceARN">> => string(),
 %%   <<"SnapshotId">> => string(),
+%%   <<"SnapshotType">> => list(any()),
 %%   <<"Tags">> => list(tag()),
 %%   <<"VolumeId">> => string()
 %% }
@@ -1911,6 +2405,53 @@
 %%   <<"Message">> => string()
 %% }
 -type snapshot_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_policy() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"FileSystemId">> => string(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
+%%   <<"Name">> => string(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"Schedules">> => list(snapshot_policy_schedule()),
+%%   <<"Scope">> => list(any()),
+%%   <<"SnapshotPolicyId">> => string(),
+%%   <<"StorageVirtualMachineId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UUID">> => string()
+%% }
+-type snapshot_policy() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_policy_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type snapshot_policy_filter() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_policy_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type snapshot_policy_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_policy_retention_period() :: #{
+%%   <<"Type">> => list(any()),
+%%   <<"Value">> => integer()
+%% }
+-type snapshot_policy_retention_period() :: #{binary() => any()}.
+
+%% Example:
+%% snapshot_policy_schedule() :: #{
+%%   <<"Count">> => integer(),
+%%   <<"Name">> => string(),
+%%   <<"Prefix">> => string(),
+%%   <<"RetentionPeriod">> => snapshot_policy_retention_period(),
+%%   <<"SnapmirrorLabel">> => string()
+%% }
+-type snapshot_policy_schedule() :: #{binary() => any()}.
 
 %% Example:
 %% source_backup_unavailable() :: #{
@@ -1962,6 +2503,37 @@
 %%   <<"Message">> => string()
 %% }
 -type storage_virtual_machine_not_found() :: #{binary() => any()}.
+
+%% Example:
+%% storage_virtual_machine_peer() :: #{
+%%   <<"Applications">> => list(list(any())()),
+%%   <<"FileSystemId">> => string(),
+%%   <<"Lifecycle">> => list(any()),
+%%   <<"LifecycleTransitionReason">> => lifecycle_transition_reason(),
+%%   <<"PeerClusterName">> => string(),
+%%   <<"PeerSvmAlias">> => string(),
+%%   <<"PeerSvmName">> => string(),
+%%   <<"ResourceARN">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StorageVirtualMachineId">> => string(),
+%%   <<"StorageVirtualMachinePeerId">> => string(),
+%%   <<"Tags">> => list(tag()),
+%%   <<"UUID">> => string()
+%% }
+-type storage_virtual_machine_peer() :: #{binary() => any()}.
+
+%% Example:
+%% storage_virtual_machine_peer_filter() :: #{
+%%   <<"Name">> => list(any()),
+%%   <<"Values">> => list(string())
+%% }
+-type storage_virtual_machine_peer_filter() :: #{binary() => any()}.
+
+%% Example:
+%% storage_virtual_machine_peer_not_found() :: #{
+%%   <<"Message">> => string()
+%% }
+-type storage_virtual_machine_peer_not_found() :: #{binary() => any()}.
 
 %% Example:
 %% svm_active_directory_configuration() :: #{
@@ -2039,6 +2611,27 @@
 
 %% }
 -type untag_resource_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_clone_configuration() :: #{
+%%   <<"SplitAction">> => list(any())
+%% }
+-type update_clone_configuration() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_peer_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"ClusterPeerId">> := string(),
+%%   <<"PeerAddresses">> => list(string()),
+%%   <<"PeerClusterName">> => string()
+%% }
+-type update_cluster_peer_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_cluster_peer_response() :: #{
+%%   <<"ClusterPeer">> => cluster_peer()
+%% }
+-type update_cluster_peer_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_data_repository_association_request() :: #{
@@ -2165,7 +2758,16 @@
 -type update_file_system_windows_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% update_ontap_snapshot_configuration() :: #{
+%%   <<"ExpiryTime">> => non_neg_integer(),
+%%   <<"SnaplockExpiryTime">> => non_neg_integer(),
+%%   <<"SnapmirrorLabel">> => string()
+%% }
+-type update_ontap_snapshot_configuration() :: #{binary() => any()}.
+
+%% Example:
 %% update_ontap_volume_configuration() :: #{
+%%   <<"CloneConfiguration">> => update_clone_configuration(),
 %%   <<"CopyTagsToBackups">> => boolean(),
 %%   <<"JunctionPath">> => string(),
 %%   <<"SecurityStyle">> => list(any()),
@@ -2214,9 +2816,58 @@
 -type update_snaplock_configuration() :: #{binary() => any()}.
 
 %% Example:
+%% update_snapmirror_policy_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"NetworkCompressionEnabled">> => boolean(),
+%%   <<"RetentionRules">> => list(snapmirror_policy_retention_rule()),
+%%   <<"SnapmirrorPolicyId">> := string(),
+%%   <<"ThrottleInKbps">> => float(),
+%%   <<"TransferSchedule">> => string()
+%% }
+-type update_snapmirror_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapmirror_policy_response() :: #{
+%%   <<"SnapmirrorPolicy">> => snapmirror_policy()
+%% }
+-type update_snapmirror_policy_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapmirror_relationship_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"PolicyId">> => string(),
+%%   <<"SnapmirrorRelationshipId">> := string(),
+%%   <<"State">> => list(any()),
+%%   <<"ThrottleInKbps">> => float(),
+%%   <<"TransferSchedule">> => string()
+%% }
+-type update_snapmirror_relationship_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapmirror_relationship_response() :: #{
+%%   <<"SnapmirrorRelationship">> => snapmirror_relationship()
+%% }
+-type update_snapmirror_relationship_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_policy_request() :: #{
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"Enabled">> => boolean(),
+%%   <<"SnapshotPolicyId">> := string()
+%% }
+-type update_snapshot_policy_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_snapshot_policy_response() :: #{
+%%   <<"SnapshotPolicy">> => snapshot_policy()
+%% }
+-type update_snapshot_policy_response() :: #{binary() => any()}.
+
+%% Example:
 %% update_snapshot_request() :: #{
 %%   <<"ClientRequestToken">> => string(),
-%%   <<"Name">> := string(),
+%%   <<"Name">> => string(),
+%%   <<"OntapConfiguration">> => update_ontap_snapshot_configuration(),
 %%   <<"SnapshotId">> := string()
 %% }
 -type update_snapshot_request() :: #{binary() => any()}.
@@ -2226,6 +2877,22 @@
 %%   <<"Snapshot">> => snapshot()
 %% }
 -type update_snapshot_response() :: #{binary() => any()}.
+
+%% Example:
+%% update_storage_virtual_machine_peer_request() :: #{
+%%   <<"Applications">> => list(list(any())()),
+%%   <<"ClientRequestToken">> => string(),
+%%   <<"PeerSvmAlias">> => string(),
+%%   <<"State">> => list(any()),
+%%   <<"StorageVirtualMachinePeerId">> := string()
+%% }
+-type update_storage_virtual_machine_peer_request() :: #{binary() => any()}.
+
+%% Example:
+%% update_storage_virtual_machine_peer_response() :: #{
+%%   <<"StorageVirtualMachinePeer">> => storage_virtual_machine_peer()
+%% }
+-type update_storage_virtual_machine_peer_response() :: #{binary() => any()}.
 
 %% Example:
 %% update_storage_virtual_machine_request() :: #{
@@ -2392,6 +3059,14 @@
     bad_request() | 
     backup_in_progress().
 
+-type create_cluster_peer_errors() ::
+    unsupported_operation() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    file_system_not_found() | 
+    bad_request().
+
 -type create_data_repository_association_errors() ::
     unsupported_operation() | 
     service_limit_exceeded() | 
@@ -2441,10 +3116,35 @@
     backup_not_found() | 
     active_directory_error().
 
+-type create_snapmirror_policy_errors() ::
+    storage_virtual_machine_not_found() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    file_system_not_found() | 
+    bad_request().
+
+-type create_snapmirror_relationship_errors() ::
+    volume_not_found() | 
+    unsupported_operation() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
 -type create_snapshot_errors() ::
     volume_not_found() | 
     service_limit_exceeded() | 
     internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
+-type create_snapshot_policy_errors() ::
+    storage_virtual_machine_not_found() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    file_system_not_found() | 
     bad_request().
 
 -type create_storage_virtual_machine_errors() ::
@@ -2456,7 +3156,16 @@
     bad_request() | 
     active_directory_error().
 
+-type create_storage_virtual_machine_peer_errors() ::
+    unsupported_operation() | 
+    storage_virtual_machine_not_found() | 
+    service_limit_exceeded() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
 -type create_volume_errors() ::
+    volume_not_found() | 
     unsupported_operation() | 
     storage_virtual_machine_not_found() | 
     service_limit_exceeded() | 
@@ -2485,6 +3194,12 @@
     backup_in_progress() | 
     backup_being_copied().
 
+-type delete_cluster_peer_errors() ::
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    cluster_peer_not_found() | 
+    bad_request().
+
 -type delete_data_repository_association_errors() ::
     service_limit_exceeded() | 
     internal_server_error() | 
@@ -2506,13 +3221,38 @@
     file_system_not_found() | 
     bad_request().
 
+-type delete_snapmirror_policy_errors() ::
+    snapmirror_policy_not_found() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
+-type delete_snapmirror_relationship_errors() ::
+    snapmirror_relationship_not_found() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
 -type delete_snapshot_errors() ::
     snapshot_not_found() | 
     internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
+-type delete_snapshot_policy_errors() ::
+    snapshot_policy_not_found() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
     bad_request().
 
 -type delete_storage_virtual_machine_errors() ::
     storage_virtual_machine_not_found() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
+-type delete_storage_virtual_machine_peer_errors() ::
+    storage_virtual_machine_peer_not_found() | 
     internal_server_error() | 
     incompatible_parameter_error() | 
     bad_request().
@@ -2530,6 +3270,12 @@
     file_system_not_found() | 
     bad_request() | 
     backup_not_found().
+
+-type describe_cluster_peers_errors() ::
+    internal_server_error() | 
+    file_system_not_found() | 
+    cluster_peer_not_found() | 
+    bad_request().
 
 -type describe_data_repository_associations_errors() ::
     invalid_data_repository_type() | 
@@ -2569,9 +3315,32 @@
     internal_server_error() | 
     bad_request().
 
+-type describe_snapmirror_policies_errors() ::
+    snapmirror_policy_not_found() | 
+    internal_server_error() | 
+    bad_request().
+
+-type describe_snapmirror_relationships_errors() ::
+    volume_not_found() | 
+    snapmirror_relationship_not_found() | 
+    internal_server_error() | 
+    bad_request().
+
+-type describe_snapshot_policies_errors() ::
+    snapshot_policy_not_found() | 
+    internal_server_error() | 
+    bad_request().
+
 -type describe_snapshots_errors() ::
     snapshot_not_found() | 
     internal_server_error() | 
+    bad_request().
+
+-type describe_storage_virtual_machine_peers_errors() ::
+    storage_virtual_machine_peer_not_found() | 
+    storage_virtual_machine_not_found() | 
+    internal_server_error() | 
+    file_system_not_found() | 
     bad_request().
 
 -type describe_storage_virtual_machines_errors() ::
@@ -2634,6 +3403,12 @@
     internal_server_error() | 
     bad_request().
 
+-type update_cluster_peer_errors() ::
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    cluster_peer_not_found() | 
+    bad_request().
+
 -type update_data_repository_association_errors() ::
     service_limit_exceeded() | 
     internal_server_error() | 
@@ -2665,14 +3440,39 @@
     incompatible_parameter_error() | 
     bad_request().
 
+-type update_snapmirror_policy_errors() ::
+    snapmirror_policy_not_found() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
+-type update_snapmirror_relationship_errors() ::
+    snapmirror_relationship_not_found() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
 -type update_snapshot_errors() ::
     snapshot_not_found() | 
     internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
+-type update_snapshot_policy_errors() ::
+    snapshot_policy_not_found() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
     bad_request().
 
 -type update_storage_virtual_machine_errors() ::
     unsupported_operation() | 
     storage_virtual_machine_not_found() | 
+    internal_server_error() | 
+    incompatible_parameter_error() | 
+    bad_request().
+
+-type update_storage_virtual_machine_peer_errors() ::
+    storage_virtual_machine_peer_not_found() | 
     internal_server_error() | 
     incompatible_parameter_error() | 
     bad_request().
@@ -2973,6 +3773,30 @@ create_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateBackup">>, Input, Options).
 
+%% @doc Creates a cluster peer relationship between an Amazon FSx for NetApp
+%% ONTAP file system
+%% and another ONTAP cluster.
+%%
+%% The `CreateClusterPeer' operation returns while the cluster peer's
+%% lifecycle state is still `CREATING'. You can check the cluster peer
+%% creation
+%% status by calling the DescribeClusterPeers operation.
+-spec create_cluster_peer(aws_client:aws_client(), create_cluster_peer_request()) ->
+    {ok, create_cluster_peer_response(), tuple()} |
+    {error, any()} |
+    {error, create_cluster_peer_errors(), tuple()}.
+create_cluster_peer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_cluster_peer(Client, Input, []).
+
+-spec create_cluster_peer(aws_client:aws_client(), create_cluster_peer_request(), proplists:proplist()) ->
+    {ok, create_cluster_peer_response(), tuple()} |
+    {error, any()} |
+    {error, create_cluster_peer_errors(), tuple()}.
+create_cluster_peer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateClusterPeer">>, Input, Options).
+
 %% @doc Creates an Amazon FSx for Lustre data repository association (DRA).
 %%
 %% A data
@@ -3226,12 +4050,70 @@ create_file_system_from_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateFileSystemFromBackup">>, Input, Options).
 
-%% @doc Creates a snapshot of an existing Amazon FSx for OpenZFS volume.
+%% @doc Creates a SnapMirror policy for an Amazon FSx for NetApp ONTAP file
+%% system or storage
+%% virtual machine (SVM).
 %%
-%% With
-%% snapshots, you can easily undo file changes and compare file versions by
-%% restoring the
-%% volume to a previous version.
+%% A SnapMirror policy defines how the SnapMirror relationships that
+%% use the policy replicate data, including which snapshots to transfer, the
+%% maximum
+%% number of snapshots to retain on the destination volume, and when to
+%% transfer
+%% data.
+%%
+%% The `CreateSnapmirrorPolicy' operation returns while the SnapMirror
+%% policy's
+%% lifecycle state is still `CREATING'. You can check the SnapMirror
+%% policy
+%% creation status by calling the DescribeSnapmirrorPolicies operation.
+-spec create_snapmirror_policy(aws_client:aws_client(), create_snapmirror_policy_request()) ->
+    {ok, create_snapmirror_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_snapmirror_policy_errors(), tuple()}.
+create_snapmirror_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_snapmirror_policy(Client, Input, []).
+
+-spec create_snapmirror_policy(aws_client:aws_client(), create_snapmirror_policy_request(), proplists:proplist()) ->
+    {ok, create_snapmirror_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_snapmirror_policy_errors(), tuple()}.
+create_snapmirror_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSnapmirrorPolicy">>, Input, Options).
+
+%% @doc Creates a SnapMirror relationship that replicates data from a source
+%% volume to a
+%% destination volume on an Amazon FSx for NetApp ONTAP file system.
+%%
+%% The `CreateSnapmirrorRelationship' operation returns while the
+%% SnapMirror
+%% relationship's lifecycle state is still `CREATING'. You can check
+%% the SnapMirror
+%% relationship creation status by calling the
+%% DescribeSnapmirrorRelationships
+%% operation.
+-spec create_snapmirror_relationship(aws_client:aws_client(), create_snapmirror_relationship_request()) ->
+    {ok, create_snapmirror_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, create_snapmirror_relationship_errors(), tuple()}.
+create_snapmirror_relationship(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_snapmirror_relationship(Client, Input, []).
+
+-spec create_snapmirror_relationship(aws_client:aws_client(), create_snapmirror_relationship_request(), proplists:proplist()) ->
+    {ok, create_snapmirror_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, create_snapmirror_relationship_errors(), tuple()}.
+create_snapmirror_relationship(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSnapmirrorRelationship">>, Input, Options).
+
+%% @doc Creates a snapshot of an existing Amazon FSx for OpenZFS or
+%% Amazon FSx for NetApp ONTAP volume.
+%%
+%% With snapshots, you can easily undo file changes
+%% and compare file versions by restoring the volume to a previous version.
 %%
 %% If a snapshot with the specified client request token exists, and the
 %% parameters
@@ -3244,8 +4126,7 @@ create_file_system_from_backup(Client, Input, Options)
 %% does the
 %% following:
 %%
-%% Creates a new OpenZFS snapshot with an assigned ID, and an initial
-%% lifecycle
+%% Creates a new snapshot with an assigned ID, and an initial lifecycle
 %% state of `CREATING'.
 %%
 %% Returns the description of the snapshot.
@@ -3285,6 +4166,35 @@ create_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateSnapshot">>, Input, Options).
 
+%% @doc Creates a snapshot policy for an Amazon FSx for NetApp ONTAP file
+%% system or storage
+%% virtual machine (SVM).
+%%
+%% A snapshot policy defines the schedules on which ONTAP
+%% automatically creates snapshots of the volumes that use the policy, and
+%% the maximum
+%% number of snapshots to retain for each schedule.
+%%
+%% The `CreateSnapshotPolicy' operation returns while the snapshot
+%% policy's
+%% lifecycle state is still `CREATING'. You can check the snapshot policy
+%% creation status by calling the DescribeSnapshotPolicies operation.
+-spec create_snapshot_policy(aws_client:aws_client(), create_snapshot_policy_request()) ->
+    {ok, create_snapshot_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_snapshot_policy_errors(), tuple()}.
+create_snapshot_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_snapshot_policy(Client, Input, []).
+
+-spec create_snapshot_policy(aws_client:aws_client(), create_snapshot_policy_request(), proplists:proplist()) ->
+    {ok, create_snapshot_policy_response(), tuple()} |
+    {error, any()} |
+    {error, create_snapshot_policy_errors(), tuple()}.
+create_snapshot_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateSnapshotPolicy">>, Input, Options).
+
 %% @doc Creates a storage virtual machine (SVM) for an Amazon FSx for ONTAP
 %% file system.
 -spec create_storage_virtual_machine(aws_client:aws_client(), create_storage_virtual_machine_request()) ->
@@ -3302,6 +4212,31 @@ create_storage_virtual_machine(Client, Input)
 create_storage_virtual_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"CreateStorageVirtualMachine">>, Input, Options).
+
+%% @doc Creates a storage virtual machine (SVM) peer relationship between an
+%% SVM on an
+%% Amazon FSx for NetApp ONTAP file system and another SVM.
+%%
+%% The `CreateStorageVirtualMachinePeer' operation returns while the SVM
+%% peer's
+%% lifecycle state is still `CREATING'. You can check the SVM peer
+%% creation
+%% status by calling the DescribeStorageVirtualMachinePeers operation.
+-spec create_storage_virtual_machine_peer(aws_client:aws_client(), create_storage_virtual_machine_peer_request()) ->
+    {ok, create_storage_virtual_machine_peer_response(), tuple()} |
+    {error, any()} |
+    {error, create_storage_virtual_machine_peer_errors(), tuple()}.
+create_storage_virtual_machine_peer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    create_storage_virtual_machine_peer(Client, Input, []).
+
+-spec create_storage_virtual_machine_peer(aws_client:aws_client(), create_storage_virtual_machine_peer_request(), proplists:proplist()) ->
+    {ok, create_storage_virtual_machine_peer_response(), tuple()} |
+    {error, any()} |
+    {error, create_storage_virtual_machine_peer_errors(), tuple()}.
+create_storage_virtual_machine_peer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"CreateStorageVirtualMachinePeer">>, Input, Options).
 
 %% @doc Creates an FSx for ONTAP or Amazon FSx for OpenZFS storage volume.
 -spec create_volume(aws_client:aws_client(), create_volume_request()) ->
@@ -3365,6 +4300,23 @@ delete_backup(Client, Input)
 delete_backup(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteBackup">>, Input, Options).
+
+%% @doc Deletes an Amazon FSx for NetApp ONTAP cluster peer relationship.
+-spec delete_cluster_peer(aws_client:aws_client(), delete_cluster_peer_request()) ->
+    {ok, delete_cluster_peer_response(), tuple()} |
+    {error, any()} |
+    {error, delete_cluster_peer_errors(), tuple()}.
+delete_cluster_peer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_cluster_peer(Client, Input, []).
+
+-spec delete_cluster_peer(aws_client:aws_client(), delete_cluster_peer_request(), proplists:proplist()) ->
+    {ok, delete_cluster_peer_response(), tuple()} |
+    {error, any()} |
+    {error, delete_cluster_peer_errors(), tuple()}.
+delete_cluster_peer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteClusterPeer">>, Input, Options).
 
 %% @doc Deletes a data repository association on an Amazon FSx for Lustre
 %% file system.
@@ -3509,12 +4461,47 @@ delete_file_system(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteFileSystem">>, Input, Options).
 
-%% @doc Deletes an Amazon FSx for OpenZFS snapshot.
+%% @doc Deletes an Amazon FSx for NetApp ONTAP SnapMirror policy.
+-spec delete_snapmirror_policy(aws_client:aws_client(), delete_snapmirror_policy_request()) ->
+    {ok, delete_snapmirror_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_snapmirror_policy_errors(), tuple()}.
+delete_snapmirror_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_snapmirror_policy(Client, Input, []).
+
+-spec delete_snapmirror_policy(aws_client:aws_client(), delete_snapmirror_policy_request(), proplists:proplist()) ->
+    {ok, delete_snapmirror_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_snapmirror_policy_errors(), tuple()}.
+delete_snapmirror_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSnapmirrorPolicy">>, Input, Options).
+
+%% @doc Deletes an Amazon FSx for NetApp ONTAP SnapMirror relationship.
+-spec delete_snapmirror_relationship(aws_client:aws_client(), delete_snapmirror_relationship_request()) ->
+    {ok, delete_snapmirror_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, delete_snapmirror_relationship_errors(), tuple()}.
+delete_snapmirror_relationship(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_snapmirror_relationship(Client, Input, []).
+
+-spec delete_snapmirror_relationship(aws_client:aws_client(), delete_snapmirror_relationship_request(), proplists:proplist()) ->
+    {ok, delete_snapmirror_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, delete_snapmirror_relationship_errors(), tuple()}.
+delete_snapmirror_relationship(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSnapmirrorRelationship">>, Input, Options).
+
+%% @doc Deletes an Amazon FSx for OpenZFS or Amazon FSx for NetApp ONTAP
+%% snapshot.
 %%
-%% After deletion, the snapshot no longer
-%% exists, and its data is gone. Deleting a snapshot doesn't affect
-%% snapshots stored in a
-%% file system backup.
+%% After
+%% deletion, the snapshot no longer exists, and its data is gone. Deleting a
+%% snapshot
+%% doesn't affect snapshots stored in a file system backup.
 %%
 %% The `DeleteSnapshot' operation returns instantly. The snapshot appears
 %% with
@@ -3534,6 +4521,23 @@ delete_snapshot(Client, Input)
 delete_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteSnapshot">>, Input, Options).
+
+%% @doc Deletes an Amazon FSx for NetApp ONTAP snapshot policy.
+-spec delete_snapshot_policy(aws_client:aws_client(), delete_snapshot_policy_request()) ->
+    {ok, delete_snapshot_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_snapshot_policy_errors(), tuple()}.
+delete_snapshot_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_snapshot_policy(Client, Input, []).
+
+-spec delete_snapshot_policy(aws_client:aws_client(), delete_snapshot_policy_request(), proplists:proplist()) ->
+    {ok, delete_snapshot_policy_response(), tuple()} |
+    {error, any()} |
+    {error, delete_snapshot_policy_errors(), tuple()}.
+delete_snapshot_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteSnapshotPolicy">>, Input, Options).
 
 %% @doc Deletes an existing Amazon FSx for ONTAP storage virtual machine
 %% (SVM).
@@ -3556,6 +4560,25 @@ delete_storage_virtual_machine(Client, Input)
 delete_storage_virtual_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DeleteStorageVirtualMachine">>, Input, Options).
+
+%% @doc Deletes an Amazon FSx for NetApp ONTAP storage virtual machine (SVM)
+%% peer
+%% relationship.
+-spec delete_storage_virtual_machine_peer(aws_client:aws_client(), delete_storage_virtual_machine_peer_request()) ->
+    {ok, delete_storage_virtual_machine_peer_response(), tuple()} |
+    {error, any()} |
+    {error, delete_storage_virtual_machine_peer_errors(), tuple()}.
+delete_storage_virtual_machine_peer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    delete_storage_virtual_machine_peer(Client, Input, []).
+
+-spec delete_storage_virtual_machine_peer(aws_client:aws_client(), delete_storage_virtual_machine_peer_request(), proplists:proplist()) ->
+    {ok, delete_storage_virtual_machine_peer_response(), tuple()} |
+    {error, any()} |
+    {error, delete_storage_virtual_machine_peer_errors(), tuple()}.
+delete_storage_virtual_machine_peer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DeleteStorageVirtualMachinePeer">>, Input, Options).
 
 %% @doc Deletes an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS
 %% volume.
@@ -3624,6 +4647,38 @@ describe_backups(Client, Input)
 describe_backups(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeBackups">>, Input, Options).
+
+%% @doc Returns the description of specific Amazon FSx for NetApp ONTAP
+%% cluster peers, if a
+%% `ClusterPeerIds' value is provided.
+%%
+%% Otherwise, this operation returns all
+%% cluster peers owned by your Amazon Web Services account in the
+%% Amazon Web Services Region of the endpoint that you're calling.
+%%
+%% When retrieving all cluster peers, you can optionally specify the
+%% `MaxResults' parameter to limit the number of cluster peers in a
+%% response.
+%% If more cluster peers remain, Amazon FSx returns a `NextToken' value
+%% in the response. In this case, send a later request with the
+%% `NextToken'
+%% request parameter set to the value of `NextToken' from the last
+%% response.
+-spec describe_cluster_peers(aws_client:aws_client(), describe_cluster_peers_request()) ->
+    {ok, describe_cluster_peers_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_peers_errors(), tuple()}.
+describe_cluster_peers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_cluster_peers(Client, Input, []).
+
+-spec describe_cluster_peers(aws_client:aws_client(), describe_cluster_peers_request(), proplists:proplist()) ->
+    {ok, describe_cluster_peers_response(), tuple()} |
+    {error, any()} |
+    {error, describe_cluster_peers_errors(), tuple()}.
+describe_cluster_peers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeClusterPeers">>, Input, Options).
 
 %% @doc Returns the description of specific Amazon FSx for Lustre or Amazon
 %% File Cache
@@ -3876,9 +4931,107 @@ describe_shared_vpc_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSharedVpcConfiguration">>, Input, Options).
 
-%% @doc Returns the description of specific Amazon FSx for OpenZFS snapshots,
-%% if a
-%% `SnapshotIds' value is provided.
+%% @doc Returns the description of specific Amazon FSx for NetApp ONTAP
+%% SnapMirror policies,
+%% if a `SnapmirrorPolicyIds' value is provided.
+%%
+%% Otherwise, this operation
+%% returns all SnapMirror policies owned by your Amazon Web Services account
+%% in the
+%% Amazon Web Services Region of the endpoint that you're calling.
+%%
+%% When retrieving all SnapMirror policies, you can optionally specify the
+%% `MaxResults' parameter to limit the number of SnapMirror policies in a
+%% response. If more SnapMirror policies remain, Amazon FSx returns a
+%% `NextToken' value in the response. In this case, send a later request
+%% with
+%% the `NextToken' request parameter set to the value of `NextToken'
+%% from the last response.
+-spec describe_snapmirror_policies(aws_client:aws_client(), describe_snapmirror_policies_request()) ->
+    {ok, describe_snapmirror_policies_response(), tuple()} |
+    {error, any()} |
+    {error, describe_snapmirror_policies_errors(), tuple()}.
+describe_snapmirror_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_snapmirror_policies(Client, Input, []).
+
+-spec describe_snapmirror_policies(aws_client:aws_client(), describe_snapmirror_policies_request(), proplists:proplist()) ->
+    {ok, describe_snapmirror_policies_response(), tuple()} |
+    {error, any()} |
+    {error, describe_snapmirror_policies_errors(), tuple()}.
+describe_snapmirror_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSnapmirrorPolicies">>, Input, Options).
+
+%% @doc Returns the description of specific Amazon FSx for NetApp ONTAP
+%% SnapMirror
+%% relationships, if a `SnapmirrorRelationshipIds' value is provided.
+%%
+%% Otherwise,
+%% this operation returns all SnapMirror relationships owned by your
+%% Amazon Web Services account in the Amazon Web Services Region of the
+%% endpoint that you're
+%% calling.
+%%
+%% When retrieving all SnapMirror relationships, you can optionally specify
+%% the
+%% `MaxResults' parameter to limit the number of SnapMirror relationships
+%% in a
+%% response. If more SnapMirror relationships remain, Amazon FSx returns a
+%% `NextToken' value in the response. In this case, send a later request
+%% with the
+%% `NextToken' request parameter set to the value of `NextToken' from
+%% the last response.
+-spec describe_snapmirror_relationships(aws_client:aws_client(), describe_snapmirror_relationships_request()) ->
+    {ok, describe_snapmirror_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, describe_snapmirror_relationships_errors(), tuple()}.
+describe_snapmirror_relationships(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_snapmirror_relationships(Client, Input, []).
+
+-spec describe_snapmirror_relationships(aws_client:aws_client(), describe_snapmirror_relationships_request(), proplists:proplist()) ->
+    {ok, describe_snapmirror_relationships_response(), tuple()} |
+    {error, any()} |
+    {error, describe_snapmirror_relationships_errors(), tuple()}.
+describe_snapmirror_relationships(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSnapmirrorRelationships">>, Input, Options).
+
+%% @doc Returns the description of specific Amazon FSx for NetApp ONTAP
+%% snapshot policies, if
+%% a `SnapshotPolicyIds' value is provided.
+%%
+%% Otherwise, this operation returns
+%% all snapshot policies owned by your Amazon Web Services account in the
+%% Amazon Web Services Region of the endpoint that you're calling.
+%%
+%% When retrieving all snapshot policies, you can optionally specify the
+%% `MaxResults' parameter to limit the number of snapshot policies in a
+%% response. If more snapshot policies remain, Amazon FSx returns a
+%% `NextToken' value in the response. In this case, send a later request
+%% with
+%% the `NextToken' request parameter set to the value of `NextToken'
+%% from the last response.
+-spec describe_snapshot_policies(aws_client:aws_client(), describe_snapshot_policies_request()) ->
+    {ok, describe_snapshot_policies_response(), tuple()} |
+    {error, any()} |
+    {error, describe_snapshot_policies_errors(), tuple()}.
+describe_snapshot_policies(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_snapshot_policies(Client, Input, []).
+
+-spec describe_snapshot_policies(aws_client:aws_client(), describe_snapshot_policies_request(), proplists:proplist()) ->
+    {ok, describe_snapshot_policies_response(), tuple()} |
+    {error, any()} |
+    {error, describe_snapshot_policies_errors(), tuple()}.
+describe_snapshot_policies(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeSnapshotPolicies">>, Input, Options).
+
+%% @doc Returns the description of specific Amazon FSx for OpenZFS and Amazon
+%% FSx for NetApp ONTAP
+%% snapshots, if a `SnapshotIds' value is provided.
 %%
 %% Otherwise, this operation returns all
 %% snapshots owned by your Amazon Web Services account in the Amazon Web
@@ -3926,6 +5079,39 @@ describe_snapshots(Client, Input)
 describe_snapshots(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"DescribeSnapshots">>, Input, Options).
+
+%% @doc Returns the description of specific Amazon FSx for NetApp ONTAP
+%% storage virtual machine
+%% (SVM) peers, if a `StorageVirtualMachinePeerIds' value is provided.
+%%
+%% Otherwise,
+%% this operation returns all SVM peers owned by your Amazon Web Services
+%% account in the
+%% Amazon Web Services Region of the endpoint that you're calling.
+%%
+%% When retrieving all SVM peers, you can optionally specify the
+%% `MaxResults'
+%% parameter to limit the number of SVM peers in a response. If more SVM
+%% peers remain,
+%% Amazon FSx returns a `NextToken' value in the response. In this case,
+%% send a later request with the `NextToken' request parameter set to the
+%% value
+%% of `NextToken' from the last response.
+-spec describe_storage_virtual_machine_peers(aws_client:aws_client(), describe_storage_virtual_machine_peers_request()) ->
+    {ok, describe_storage_virtual_machine_peers_response(), tuple()} |
+    {error, any()} |
+    {error, describe_storage_virtual_machine_peers_errors(), tuple()}.
+describe_storage_virtual_machine_peers(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    describe_storage_virtual_machine_peers(Client, Input, []).
+
+-spec describe_storage_virtual_machine_peers(aws_client:aws_client(), describe_storage_virtual_machine_peers_request(), proplists:proplist()) ->
+    {ok, describe_storage_virtual_machine_peers_response(), tuple()} |
+    {error, any()} |
+    {error, describe_storage_virtual_machine_peers_errors(), tuple()}.
+describe_storage_virtual_machine_peers(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"DescribeStorageVirtualMachinePeers">>, Input, Options).
 
 %% @doc Describes one or more Amazon FSx for NetApp ONTAP storage virtual
 %% machines (SVMs).
@@ -4151,6 +5337,23 @@ untag_resource(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UntagResource">>, Input, Options).
 
+%% @doc Updates an Amazon FSx for NetApp ONTAP cluster peer relationship.
+-spec update_cluster_peer(aws_client:aws_client(), update_cluster_peer_request()) ->
+    {ok, update_cluster_peer_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_peer_errors(), tuple()}.
+update_cluster_peer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_cluster_peer(Client, Input, []).
+
+-spec update_cluster_peer(aws_client:aws_client(), update_cluster_peer_request(), proplists:proplist()) ->
+    {ok, update_cluster_peer_response(), tuple()} |
+    {error, any()} |
+    {error, update_cluster_peer_errors(), tuple()}.
+update_cluster_peer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateClusterPeer">>, Input, Options).
+
 %% @doc Updates the configuration of an existing data repository association
 %% on an Amazon FSx for Lustre file system.
 %%
@@ -4352,7 +5555,47 @@ update_shared_vpc_configuration(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSharedVpcConfiguration">>, Input, Options).
 
-%% @doc Updates the name of an Amazon FSx for OpenZFS snapshot.
+%% @doc Updates an Amazon FSx for NetApp ONTAP SnapMirror policy.
+-spec update_snapmirror_policy(aws_client:aws_client(), update_snapmirror_policy_request()) ->
+    {ok, update_snapmirror_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_snapmirror_policy_errors(), tuple()}.
+update_snapmirror_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_snapmirror_policy(Client, Input, []).
+
+-spec update_snapmirror_policy(aws_client:aws_client(), update_snapmirror_policy_request(), proplists:proplist()) ->
+    {ok, update_snapmirror_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_snapmirror_policy_errors(), tuple()}.
+update_snapmirror_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSnapmirrorPolicy">>, Input, Options).
+
+%% @doc Updates an Amazon FSx for NetApp ONTAP SnapMirror relationship.
+-spec update_snapmirror_relationship(aws_client:aws_client(), update_snapmirror_relationship_request()) ->
+    {ok, update_snapmirror_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, update_snapmirror_relationship_errors(), tuple()}.
+update_snapmirror_relationship(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_snapmirror_relationship(Client, Input, []).
+
+-spec update_snapmirror_relationship(aws_client:aws_client(), update_snapmirror_relationship_request(), proplists:proplist()) ->
+    {ok, update_snapmirror_relationship_response(), tuple()} |
+    {error, any()} |
+    {error, update_snapmirror_relationship_errors(), tuple()}.
+update_snapmirror_relationship(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSnapmirrorRelationship">>, Input, Options).
+
+%% @doc Updates an Amazon FSx for OpenZFS or Amazon FSx for NetApp ONTAP
+%% snapshot.
+%%
+%% For Amazon FSx for OpenZFS snapshots, you can update only the name. For
+%% Amazon FSx for NetApp ONTAP snapshots, you can update the name and the
+%% properties in
+%% `OntapConfiguration'.
 -spec update_snapshot(aws_client:aws_client(), update_snapshot_request()) ->
     {ok, update_snapshot_response(), tuple()} |
     {error, any()} |
@@ -4368,6 +5611,26 @@ update_snapshot(Client, Input)
 update_snapshot(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateSnapshot">>, Input, Options).
+
+%% @doc Updates an Amazon FSx for NetApp ONTAP snapshot policy.
+%%
+%% You can enable or disable
+%% the snapshot policy.
+-spec update_snapshot_policy(aws_client:aws_client(), update_snapshot_policy_request()) ->
+    {ok, update_snapshot_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_snapshot_policy_errors(), tuple()}.
+update_snapshot_policy(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_snapshot_policy(Client, Input, []).
+
+-spec update_snapshot_policy(aws_client:aws_client(), update_snapshot_policy_request(), proplists:proplist()) ->
+    {ok, update_snapshot_policy_response(), tuple()} |
+    {error, any()} |
+    {error, update_snapshot_policy_errors(), tuple()}.
+update_snapshot_policy(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateSnapshotPolicy">>, Input, Options).
 
 %% @doc Updates an FSx for ONTAP storage virtual machine (SVM).
 -spec update_storage_virtual_machine(aws_client:aws_client(), update_storage_virtual_machine_request()) ->
@@ -4385,6 +5648,24 @@ update_storage_virtual_machine(Client, Input)
 update_storage_virtual_machine(Client, Input, Options)
   when is_map(Client), is_map(Input), is_list(Options) ->
     request(Client, <<"UpdateStorageVirtualMachine">>, Input, Options).
+
+%% @doc Updates an Amazon FSx for NetApp ONTAP storage virtual machine (SVM)
+%% peer relationship.
+-spec update_storage_virtual_machine_peer(aws_client:aws_client(), update_storage_virtual_machine_peer_request()) ->
+    {ok, update_storage_virtual_machine_peer_response(), tuple()} |
+    {error, any()} |
+    {error, update_storage_virtual_machine_peer_errors(), tuple()}.
+update_storage_virtual_machine_peer(Client, Input)
+  when is_map(Client), is_map(Input) ->
+    update_storage_virtual_machine_peer(Client, Input, []).
+
+-spec update_storage_virtual_machine_peer(aws_client:aws_client(), update_storage_virtual_machine_peer_request(), proplists:proplist()) ->
+    {ok, update_storage_virtual_machine_peer_response(), tuple()} |
+    {error, any()} |
+    {error, update_storage_virtual_machine_peer_errors(), tuple()}.
+update_storage_virtual_machine_peer(Client, Input, Options)
+  when is_map(Client), is_map(Input), is_list(Options) ->
+    request(Client, <<"UpdateStorageVirtualMachinePeer">>, Input, Options).
 
 %% @doc Updates the configuration of an Amazon FSx for NetApp ONTAP or Amazon
 %% FSx for OpenZFS volume.

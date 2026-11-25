@@ -47,7 +47,7 @@
 %% that you bring to Global Accelerator (BYOIP).
 %%
 %% For a standard accelerator,
-%% they distribute incoming application traffic across multiple endpoint
+%% it distributes incoming application traffic across multiple endpoint
 %% resources in multiple Amazon Web Services Regions , which increases
 %% the availability of your applications. Endpoints for standard accelerators
 %% can be Network Load Balancers, Application Load Balancers,
@@ -2576,7 +2576,7 @@ list_custom_routing_listeners(Client, Input, Options)
 
 %% @doc Provides a complete mapping from the public accelerator IP address
 %% and port to destination EC2 instance
-%% IP addresses and ports in the virtual public cloud (VPC) subnet endpoint
+%% IP addresses and ports in the virtual private cloud (VPC) subnet endpoint
 %% for a custom routing accelerator.
 %%
 %% For each subnet endpoint that you add, Global Accelerator creates a new
@@ -2744,7 +2744,7 @@ remove_custom_routing_endpoints(Client, Input, Options)
 %% endpoints by updating an endpoint group by using the
 %% UpdateEndpointGroup:
 %% https://docs.aws.amazon.com/global-accelerator/latest/api/API_UpdateEndpointGroup.html
-%% API operation. There are two advantages to using `AddEndpoints' to
+%% API operation. There are two advantages to using `RemoveEndpoints' to
 %% remove endpoints instead:
 %%
 %% It's more convenient, because you only need to specify the endpoints
