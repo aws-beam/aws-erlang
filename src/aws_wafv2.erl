@@ -26,7 +26,7 @@
 %% WAF is a web application firewall that lets you monitor the HTTP and HTTPS
 %% requests that are forwarded to a protected resource. Protected resource
 %% types include Amazon CloudFront distribution, Amazon API Gateway REST API,
-%% Application Load Balancer, AppSync
+%% Application Load Balancer, Elastic Load Balancing for Envoy proxy, AppSync
 %% GraphQL API, Amazon Cognito user pool, App Runner service, Amplify
 %% application, and Amazon Web Services Verified Access instance. WAF also
 %% lets you control access to your content,
@@ -51,9 +51,9 @@
 %%
 %% For regional resources, you can use any of the endpoints in the list.
 %% A regional application can be an Application Load Balancer (ALB), an
-%% Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito
-%% user pool, an App Runner service, or an Amazon Web Services Verified
-%% Access instance.
+%% Elastic Load Balancing for Envoy proxy, an Amazon API Gateway REST API, an
+%% AppSync GraphQL API, an Amazon Cognito user pool, an App Runner service,
+%% or an Amazon Web Services Verified Access instance.
 %%
 %% For Amazon CloudFront and Amplify, you must use the API endpoint listed
 %% for
@@ -3469,9 +3469,10 @@ create_rule_group(Client, Input, Options)
 %% and managed rule group. You can associate a web ACL with one or more
 %% Amazon Web Services resources to protect. The resource types include
 %% Amazon CloudFront distribution, Amazon API Gateway REST API, Application
-%% Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner
-%% service, Amplify application, Amazon Web Services Verified Access
-%% instance, and Amazon Bedrock AgentCore Gateway.
+%% Load Balancer, Elastic Load Balancing for Envoy proxy, AppSync GraphQL
+%% API, Amazon Cognito user pool, App Runner service, Amplify application,
+%% Amazon Web Services Verified Access instance, and Amazon Bedrock AgentCore
+%% Gateway.
 -spec create_web_acl(aws_client:aws_client(), create_web_acl_request()) ->
     {ok, create_web_acl_response(), tuple()} |
     {error, any()} |
@@ -5032,9 +5033,10 @@ update_rule_group(Client, Input, Options)
 %% and managed rule group. You can associate a web ACL with one or more
 %% Amazon Web Services resources to protect. The resource types include
 %% Amazon CloudFront distribution, Amazon API Gateway REST API, Application
-%% Load Balancer, AppSync GraphQL API, Amazon Cognito user pool, App Runner
-%% service, Amplify application, Amazon Web Services Verified Access
-%% instance, and Amazon Bedrock AgentCore Gateway.
+%% Load Balancer, Elastic Load Balancing for Envoy proxy, AppSync GraphQL
+%% API, Amazon Cognito user pool, App Runner service, Amplify application,
+%% Amazon Web Services Verified Access instance, and Amazon Bedrock AgentCore
+%% Gateway.
 %%
 %% Temporary inconsistencies during updates
 %%
