@@ -702,6 +702,22 @@
 
 
 %% Example:
+%% catalog_options() :: #{
+%%   <<"Catalog">> => list(),
+%%   <<"Enabled">> => boolean()
+%% }
+-type catalog_options() :: #{binary() => any()}.
+
+
+%% Example:
+%% catalog_options_status() :: #{
+%%   <<"Options">> => catalog_options(),
+%%   <<"Status">> => option_status()
+%% }
+-type catalog_options_status() :: #{binary() => any()}.
+
+
+%% Example:
 %% category_diff_result() :: #{
 %%   <<"Diverged">> => integer(),
 %%   <<"InSync">> => integer(),
@@ -915,6 +931,7 @@
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
 %%   <<"AutoTuneOptions">> => auto_tune_options_input(),
 %%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_request_options(),
+%%   <<"CatalogOptions">> => catalog_options(),
 %%   <<"ClusterConfig">> => cluster_config(),
 %%   <<"CognitoOptions">> => cognito_options(),
 %%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),
@@ -1583,6 +1600,7 @@
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_status(),
 %%   <<"AutoTuneOptions">> => auto_tune_options_status(),
 %%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_options_status(),
+%%   <<"CatalogOptions">> => catalog_options_status(),
 %%   <<"ChangeProgressDetails">> => change_progress_details(),
 %%   <<"ClusterConfig">> => cluster_config_status(),
 %%   <<"CognitoOptions">> => cognito_options_status(),
@@ -1694,6 +1712,7 @@
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options(),
 %%   <<"AutoTuneOptions">> => auto_tune_options_output(),
 %%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_options(),
+%%   <<"CatalogOptions">> => catalog_options(),
 %%   <<"ChangeProgressDetails">> => change_progress_details(),
 %%   <<"ClusterConfig">> => cluster_config(),
 %%   <<"CognitoOptions">> => cognito_options(),
@@ -3044,6 +3063,14 @@
 
 
 %% Example:
+%% s3_tables_encryption_configuration() :: #{
+%%   <<"Enabled">> => boolean(),
+%%   <<"KmsKeyArn">> => string()
+%% }
+-type s3_tables_encryption_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% s3_vectors_engine() :: #{
 %%   <<"Enabled">> => boolean()
 %% }
@@ -3127,6 +3154,13 @@
 %%   <<"Enabled">> => boolean()
 %% }
 -type serverless_vector_acceleration() :: #{binary() => any()}.
+
+
+%% Example:
+%% service_managed_s3_tables_catalog() :: #{
+%%   <<"EncryptionConfiguration">> => s3_tables_encryption_configuration()
+%% }
+-type service_managed_s3_tables_catalog() :: #{binary() => any()}.
 
 
 %% Example:
@@ -3401,6 +3435,7 @@
 %%   <<"AdvancedSecurityOptions">> => advanced_security_options_input(),
 %%   <<"AutoTuneOptions">> => auto_tune_options(),
 %%   <<"AutomatedSnapshotPauseOptions">> => automated_snapshot_pause_request_options(),
+%%   <<"CatalogOptions">> => catalog_options(),
 %%   <<"ClusterConfig">> => cluster_config(),
 %%   <<"CognitoOptions">> => cognito_options(),
 %%   <<"DeploymentStrategyOptions">> => deployment_strategy_options(),

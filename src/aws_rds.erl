@@ -2598,6 +2598,7 @@
 %% delete_db_cluster_message() :: #{
 %%   <<"DBClusterIdentifier">> := string(),
 %%   <<"DeleteAutomatedBackups">> => boolean(),
+%%   <<"DeleteDBInstances">> => boolean(),
 %%   <<"FinalDBSnapshotIdentifier">> => string(),
 %%   <<"SkipFinalSnapshot">> => boolean()
 %% }
@@ -8163,6 +8164,10 @@ delete_custom_db_engine_version(Client, Input, Options)
 %% If you're deleting a Multi-AZ DB cluster with read replicas, all
 %% cluster members are terminated and read replicas are promoted to
 %% standalone instances.
+%%
+%% To delete an Amazon Aurora DB cluster and all of its DB instances in a
+%% single call, set `DeleteDBInstances' to `true'. Otherwise, delete
+%% each DB instance in the DB cluster before you delete the DB cluster.
 %%
 %% For more information on Amazon Aurora, see What is Amazon Aurora?:
 %% https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html

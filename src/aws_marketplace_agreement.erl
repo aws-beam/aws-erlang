@@ -1217,7 +1217,8 @@
 %% Example:
 %% rate_card_item() :: #{
 %%   <<"dimensionKey">> => string(),
-%%   <<"price">> => string()
+%%   <<"price">> => string(),
+%%   <<"regionalPrices">> => list(regional_price())
 %% }
 -type rate_card_item() :: #{binary() => any()}.
 
@@ -1230,6 +1231,13 @@
 %%   <<"type">> => string()
 %% }
 -type recurring_payment_term() :: #{binary() => any()}.
+
+%% Example:
+%% regional_price() :: #{
+%%   <<"price">> => string(),
+%%   <<"region">> => string()
+%% }
+-type regional_price() :: #{binary() => any()}.
 
 %% Example:
 %% reject_agreement_approval_input() :: #{

@@ -157,10 +157,11 @@
 
 %% Example:
 %% create_graph_input() :: #{
+%%   <<"computeConfiguration">> => list(),
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"graphName">> := string(),
 %%   <<"kmsKeyIdentifier">> => string(),
-%%   <<"provisionedMemory">> := integer(),
+%%   <<"provisionedMemory">> => integer(),
 %%   <<"publicConnectivity">> => [boolean()],
 %%   <<"replicaCount">> => integer(),
 %%   <<"tags">> => map(),
@@ -173,6 +174,7 @@
 %% create_graph_output() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"buildNumber">> => [string()],
+%%   <<"computeConfiguration">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"endpoint">> => [string()],
@@ -278,6 +280,7 @@
 %% delete_graph_output() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"buildNumber">> => [string()],
+%%   <<"computeConfiguration">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"endpoint">> => [string()],
@@ -433,6 +436,7 @@
 %% get_graph_output() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"buildNumber">> => [string()],
+%%   <<"computeConfiguration">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"endpoint">> => [string()],
@@ -558,6 +562,13 @@
 
 
 %% Example:
+%% graph_session_configuration() :: #{
+%%   <<"minMemory">> => integer()
+%% }
+-type graph_session_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% graph_snapshot_summary() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"id">> => string(),
@@ -573,6 +584,7 @@
 %% Example:
 %% graph_summary() :: #{
 %%   <<"arn">> => [string()],
+%%   <<"computeConfiguration">> => list(),
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"endpoint">> => [string()],
 %%   <<"id">> => string(),
@@ -760,6 +772,13 @@
 
 
 %% Example:
+%% provisioned_graph_configuration() :: #{
+%%   <<"memory">> => integer()
+%% }
+-type provisioned_graph_configuration() :: #{binary() => any()}.
+
+
+%% Example:
 %% query_summary() :: #{
 %%   <<"elapsed">> => [integer()],
 %%   <<"id">> => [string()],
@@ -781,6 +800,7 @@
 %% reset_graph_output() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"buildNumber">> => [string()],
+%%   <<"computeConfiguration">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"endpoint">> => [string()],
@@ -807,6 +827,7 @@
 
 %% Example:
 %% restore_graph_from_snapshot_input() :: #{
+%%   <<"computeConfiguration">> => list(),
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"graphName">> := string(),
 %%   <<"provisionedMemory">> => integer(),
@@ -821,6 +842,7 @@
 %% restore_graph_from_snapshot_output() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"buildNumber">> => [string()],
+%%   <<"computeConfiguration">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"endpoint">> => [string()],
@@ -887,6 +909,7 @@
 %% start_graph_output() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"buildNumber">> => [string()],
+%%   <<"computeConfiguration">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"endpoint">> => [string()],
@@ -939,6 +962,7 @@
 %% stop_graph_output() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"buildNumber">> => [string()],
+%%   <<"computeConfiguration">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"endpoint">> => [string()],
@@ -995,6 +1019,7 @@
 
 %% Example:
 %% update_graph_input() :: #{
+%%   <<"computeConfiguration">> => list(),
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"provisionedMemory">> => integer(),
 %%   <<"publicConnectivity">> => [boolean()]
@@ -1006,6 +1031,7 @@
 %% update_graph_output() :: #{
 %%   <<"arn">> => [string()],
 %%   <<"buildNumber">> => [string()],
+%%   <<"computeConfiguration">> => list(),
 %%   <<"createTime">> => [non_neg_integer()],
 %%   <<"deletionProtection">> => [boolean()],
 %%   <<"endpoint">> => [string()],
@@ -1373,6 +1399,19 @@ cancel_query(Client, QueryId, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Creates a new Neptune Analytics graph.
+%%
+%% Neptune Analytics supports two types of graphs, selected using
+%% `computeConfiguration':
+%%
+%% Provisioned graphs use dedicated compute that is always available. Use
+%% provisioned graphs for workloads that require higher memory or predictable
+%% latency.
+%%
+%% Graph sessions use ephemeral compute that is bootstrapped when a query is
+%% sent to the graph. The compute is automatically stopped after a few
+%% minutes with no traffic. The next query sent to the graph bootstraps the
+%% compute again, so queries that bootstrap the compute are subject to cold
+%% start latency.
 -spec create_graph(aws_client:aws_client(), create_graph_input()) ->
     {ok, create_graph_output(), tuple()} |
     {error, any()} |
@@ -1449,6 +1488,15 @@ create_graph_snapshot(Client, Input0, Options0) ->
 %% https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load-tutorial-format-gremlin.html
 %% or the openCypher load format:
 %% https://docs.aws.amazon.com/neptune/latest/userguide/bulk-load-tutorial-format-opencypher.html.
+%%
+%% Graph session cannot be created using this API. Create an empty Graph
+%% Session using CreateGraph:
+%% https://docs.aws.amazon.com/neptune-analytics/latest/apiref/API_CreateGraph.html
+%% or restore a snapshot as Graph Session using RestoreGraphFromSnapshot:
+%% https://docs.aws.amazon.com/neptune-analytics/latest/apiref/API_RestoreGraphFromSnapshot.html
+%% and use neptune.load CALL procedure:
+%% https://docs.aws.amazon.com/neptune-analytics/latest/userguide/batch-load.html
+%% to load data into the Graph Session instead.
 -spec create_graph_using_import_task(aws_client:aws_client(), create_graph_using_import_task_input()) ->
     {ok, create_graph_using_import_task_output(), tuple()} |
     {error, any()} |
@@ -2348,6 +2396,10 @@ start_export_task(Client, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Starts the specific graph.
+%%
+%% Graph sessions are started automatically when a query is sent to the
+%% graph. While this API is supported for graph sessions, it isn't
+%% required.
 -spec start_graph(aws_client:aws_client(), binary() | list(), start_graph_input()) ->
     {ok, start_graph_output(), tuple()} |
     {error, any()} |
@@ -2385,6 +2437,11 @@ start_graph(Client, GraphIdentifier, Input0, Options0) ->
 %% Storage Service (S3).
 %%
 %% The graph needs to be empty and in the AVAILABLE state.
+%%
+%% Graph sessions don't support this API. Use neptune.load CALL
+%% procedure:
+%% https://docs.aws.amazon.com/neptune-analytics/latest/userguide/batch-load.html
+%% to load data into the Graph Session instead.
 -spec start_import_task(aws_client:aws_client(), binary() | list(), start_import_task_input()) ->
     {ok, start_import_task_output(), tuple()} |
     {error, any()} |
@@ -2419,6 +2476,10 @@ start_import_task(Client, GraphIdentifier, Input0, Options0) ->
     request(Client, Method, Path, Query_, CustomHeaders ++ Headers, Input, Options, SuccessStatusCode).
 
 %% @doc Stops the specific graph.
+%%
+%% Graph sessions are stopped automatically after a few minutes with no
+%% traffic. While this API is supported for graph sessions, it isn't
+%% required.
 -spec stop_graph(aws_client:aws_client(), binary() | list(), stop_graph_input()) ->
     {ok, stop_graph_output(), tuple()} |
     {error, any()} |
